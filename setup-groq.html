@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奇趣学园 · 配置 Groq API Key</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0fdf9; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .card { background: white; border-radius: 20px; padding: 36px; max-width: 480px; width: 90%; box-shadow: 0 8px 40px rgba(0,168,150,.12); }
+  .logo { font-size: 28px; margin-bottom: 4px; }
+  h1 { font-size: 20px; color: #0a3d2e; margin-bottom: 4px; }
+  .sub { font-size: 13px; color: #6b7f7a; margin-bottom: 24px; }
+  label { font-size: 12px; font-weight: 700; color: #0a3d2e; display: block; margin-bottom: 6px; }
+  input { width: 100%; padding: 12px 14px; border: 1.5px solid #d0e8e0; border-radius: 10px; font-size: 14px; font-family: monospace; background: #f8fffe; color: #0a3d2e; outline: none; transition: border-color .2s; }
+  input:focus { border-color: #00a896; }
+  .btn { width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .15s; margin-top: 10px; }
+  .btn-save { background: #00a896; color: white; }
+  .btn-save:hover { background: #008f7e; }
+  .btn-test { background: #f5b800; color: #0a3d2e; }
+  .btn-test:hover { background: #e5a800; }
+  .btn-clear { background: #f0f0f0; color: #666; }
+  .btn-row { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-row .btn { margin-top: 0; flex: 1; }
+  .result { margin-top: 14px; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 600; display: none; }
+  .result.ok { display: block; background: #e6f9f4; color: #00a896; border: 1px solid #b8f0df; }
+  .result.err { display: block; background: #fff3e6; color: #d4700a; border: 1px solid #ffdba3; }
+  .hint { font-size: 11px; color: #9aabaa; margin-top: 6px; line-height: 1.6; }
+  .hint a { color: #00a896; }
+  .status { font-size: 12px; color: #6b7f7a; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e8f5f0; }
+  a.back { display: inline-block; margin-top: 20px; font-size: 13px; color: #00a896; text-decoration: none; font-weight: 600; }
+  a.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">🎓</div>
+  <h1>配置 Groq API Key</h1>
+  <p class="sub">配置后口语伙伴 AI 对话功能将启用</p>
+
+  <label>Groq API Key</label>
+  <input type="password" id="keyInput" placeholder="gsk_xxxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+  <p class="hint">
+    ① 访问 <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a> 获取 Key<br>
+    ② Key 以 <code>gsk_</code> 开头 · 免费额度充足<br>
+    ③ Key 仅保存在本机浏览器，不上传任何服务器
+  </p>
+
+  <button class="btn btn-test" onclick="testKey()">🔌 测试连接</button>
+  <button class="btn btn-save" onclick="saveKey()">💾 保存到浏览器</button>
+  <button class="btn btn-clear" onclick="clearKey()">🗑 清除 Key</button>
+
+  <div id="result" class="result"></div>
+  <div id="status" class="status"></div>
+  <a class="back" href="index.html">← 返回首页</a>
+</div>
+
+<script>
+const STORAGE_KEY = 'ququxv4_state_v1';
+const result = document.getElementById('result');
+const status = document.getElementById('status');
+
+function showResult(type, msg) {
+  result.className = 'result ' + type;
+  result.textContent = msg;
+}
+
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return s || {};
+  } catch { return {}; }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// 检查是否已有 key
+(function checkExisting() {
+  const state = loadState();
+  const key = (state.apiConfig && state.apiConfig.groqKey) || '';
+  if (key) {
+    document.getElementById('keyInput').value = key;
+    showResult('ok', '✅ 已配置 Key，最后字符：...' + key.slice(-4));
+  }
+})();
+
+async function testKey() {
+  const key = document.getElementById('keyInput').value.trim();
+  if (!key) { showResult('err', '⚠️ 请先输入 API Key'); return; }
+  showResult('', '⏳ 测试中...');
+  try {
+    const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+      body: JSON.stringify({
+        model: 'llama-3.1-8b-instant',
+        messages: [{ role: 'user', content: 'hi' }],
+        max_tokens: 5
+      })
+    });
+    const data = await resp.json();
+    if (resp.ok && data.choices) {
+      showResult('ok', '✅ 连接成功！模型回复预览：' + (data.choices[0].message?.content || 'OK'));
+    } else {
+      showResult('err', '❌ ' + (data.error?.message || '测试失败，请检查 Key 是否正确'));
+    }
+  } catch (e) {
+    showResult('err', '❌ 网络错误：' + e.message);
+  }
+}
+
+function saveKey() {
+  const key = document.getElementById('keyInput').value.trim();
+  if (!key) { showResult('err', '⚠️ 请先输入 API Key'); return; }
+  if (!key.startsWith('gsk_')) { showResult('err', '⚠️ Key 应以 gsk_ 开头'); return; }
+  const state = loadState();
+  if (!state.apiConfig) state.apiConfig = {};
+  state.apiConfig.groqKey = key;
+  saveState(state);
+  showResult('ok', '✅ API Key 已保存！现在打开主页面即可使用 AI 口语对话。');
+  status.textContent = 'Key 已写入 localStorage，下次打开应用自动生效。';
+}
+
+function clearKey() {
+  const state = loadState();
+  if (state.apiConfig) state.apiConfig.groqKey = '';
+  saveState(state);
+  document.getElementById('keyInput').value = '';
+  showResult('ok', '🗑 API Key 已清除');
+}
+</script>
+</body>
+</html>
