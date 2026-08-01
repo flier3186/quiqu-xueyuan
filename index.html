@@ -995,7 +995,15 @@ input,textarea{font-family:inherit}
 .mv-geo-outline{stroke-dasharray:2000;stroke-dashoffset:2000;animation:mvDrawStroke 1.2s ease-out forwards}
 .mv-circle-radius{stroke-dasharray:300;stroke-dashoffset:300;animation:mvDrawStroke .8s ease-out .6s forwards}
 @keyframes mvDrawStroke{to{stroke-dashoffset:0}}
+/* === V5 手机端降级：去掉SVG动画，降低渲染负担 === */
+@media (max-width: 640px){
+  .pet-svg-wrap svg animate,
+  .pet-svg-wrap svg animateTransform,
+  .pet-svg-wrap svg animateMotion{display:none !important}
+  .mv-geo-outline,.mv-circle-radius{animation:none !important;stroke-dashoffset:0 !important}
+}
 </style>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 </head>
 <body>
 <div class="app">
@@ -1024,6 +1032,20 @@ input,textarea{font-family:inherit}
 <div class="modal-mask" id="parentModal"><div class="modal"><div class="modal-head"><h2>👨‍👩‍👧 家长面板</h2><div class="modal-close" id="parentClose">×</div></div><div class="modal-body" id="parentBody"></div></div></div>
 <div class="toast" id="toast"></div>
 <script>
+// === V5 错误监控 ===
+window.onerror = function(msg, url, line, col, err) {
+  try {
+    var raw = localStorage.getItem('quiqu_error_log');
+    var logs = raw ? JSON.parse(raw) : [];
+    logs.push({time: Date.now(), msg: String(msg).slice(0,200), url: String(url).slice(0,100), line: line, col: col, err: err && err.stack ? err.stack.slice(0,300) : ''});
+    if (logs.length > 20) logs.shift();
+    localStorage.setItem('quiqu_error_log', JSON.stringify(logs));
+  } catch(e) {}
+};
+// === V5 响应式降级：手机端标记 ===
+if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
+  document.documentElement.classList.add('mobile-mode');
+}
 // === 数据 & 工具 ===
 const ASSETS = {petDragon:'assets/pet-dragon.jpg',petFox:'assets/pet-fox.jpg',petCat:'assets/pet-cat.jpg',petBunny:'assets/pet-bunny.jpg',petWhale:'assets/pet-whale.jpg',teacherEmma:'assets/teacher-emma.jpg',teacherLeo:'assets/teacher-leo.jpg',teacherAria:'assets/teacher-aria.jpg',mouthChart:'assets/mouth-chart-all.jpg'};
 
@@ -2917,7 +2939,7 @@ function renderMath(grade='3'){
           <div class="progress"><span>掌握进度</span><span class="num">${data.progress}%</span></div>
         </div>
         ${renderMathStageProgress()}
-        <div id="mathStage" class="math-stage-host">${renderMathStage(problem)}</div>
+        <div id="mathStage" class="math-stage-host">${(window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))}</div>
         <div class="knowledge-tree">
           <div class="card-title" style="margin-bottom:14px">🌳 知识图谱</div>
           ${(data.units||[]).map(k=>`
@@ -2933,16 +2955,19 @@ function renderMath(grade='3'){
     </div>`;
 }
 
-// ===== 阶段进度条（5 步进度指示器） =====
+// ===== 阶段进度条（V5 七步进度指示器） =====
 function renderMathStageProgress(){
   const stages = [
-    {key:'scene',     name:'场景导入', icon:'📖'},
-    {key:'discovery', name:'引导发现', icon:'🔍'},
-    {key:'solve',     name:'正式解题', icon:'✏️'},
-    {key:'explain',   name:'数形结合', icon:'📊'},
-    {key:'divergent', name:'发散思维', icon:'💡'}
+    {key:'review',   name:'昨日回顾', icon:'📚'},
+    {key:'warmup',   name:'数感预热', icon:'📖'},
+    {key:'discover', name:'引导发现', icon:'🔍'},
+    {key:'solve',    name:'正式解题', icon:'✏️'},
+    {key:'explain',  name:'数形结合', icon:'📊'},
+    {key:'askChild', name:'你来提问', icon:'💡'},
+    {key:'practice', name:'阶梯练习', icon:'🎯'}
   ];
-  const cur = (window.MATH_SESSION && window.MATH_SESSION.stage) || 'scene';
+  const sess = (window.MathFlowV5 && MathFlowV5._sess) || {};
+  const cur = sess.stage || 'warmup';
   const curIdx = Math.max(0, stages.findIndex(s=>s.key===cur));
   return `<div id="mathStageProgress" style="display:flex;align-items:center;gap:4px;background:white;border-radius:var(--radius-md);padding:12px 14px;box-shadow:0 2px 12px rgba(30,58,95,.05);margin-bottom:16px;flex-wrap:wrap">
     ${stages.map((s,i)=>{
@@ -2972,6 +2997,7 @@ function renderMathStage(problem){
 
 // ===== 局部刷新阶段容器（不重渲染整页，配合淡入动画） =====
 function updateMathStage(){
+  if(window.MathFlowV5 && MathFlowV5._sess){ updateMathStageV5(); return; }
   const host = document.getElementById('mathStage');
   if(!host){ render(); return; }
   const problem = window.CURRENT_MATH_PROBLEM;
@@ -2984,8 +3010,26 @@ function updateMathStage(){
   if(prog) prog.outerHTML = renderMathStageProgress();
 }
 
+// ===== V5 局部刷新阶段容器 =====
+function updateMathStageV5(){
+  const host = document.getElementById('mathStage');
+  if(!host){ render(); return; }
+  if(!window.MathFlowV5 || !MathFlowV5._sess) return;
+  host.style.animation = 'none';
+  host.innerHTML = MathFlowV5.renderCurrent();
+  void host.offsetWidth;
+  host.style.animation = 'fadeIn .45s ease';
+  const prog = document.getElementById('mathStageProgress');
+  if(prog) prog.outerHTML = renderMathStageProgress();
+}
+
 // ===== 阶段切换 =====
 function mathAdvance(stage){
+  if(window.MathFlowV5 && MathFlowV5._sess){
+    MathFlowV5.advance(stage);
+    updateMathStageV5();
+    return;
+  }
   if(!window.MATH_SESSION) return;
   window.MATH_SESSION.stage = stage;
   if(stage==='solve'){
@@ -3010,6 +3054,7 @@ function mathNextProblem(){
     discoveryStep:0, hintUsed:false, solveAttempts:0,
     divergentIdx:0, divergentNotes:[], startTs:Date.now()
   };
+  if(window.MathFlowV5) MathFlowV5._sess = null; // 重置 V5 会话
   setStar(2,'完成一题');
   render();
 }
@@ -3607,33 +3652,63 @@ function markFlipCard(idx,isCorrect,q,a){
 }
 
 function renderEnglish(grade='3',subtab='vocab'){
-  const subtabs=[
-    {id:'vocab',name:'📚 词汇图书馆'},
-    {id:'phonics',name:'🗣️ 自然拼读'},
-    {id:'phrases',name:'🔡 情景短语库'},
-    {id:'grammar',name:'✍️ 语法工厂'},
-    {id:'listen',name:'🎧 听力森林'},
-  ];
+  // 进入英语板块：启动计时会话（与 renderMath 一致）
+  try{
+    if(typeof TimeController!=='undefined' && TimeController.startSession &&
+       (!TimeController._state || !TimeController._state.running || TimeController._state.subject!=='eng')){
+      TimeController.startSession('eng');
+    }
+  }catch(e){}
+
+  const g = String(grade);
+  S.eng = S.eng || {};
+  S.eng.grade = g;
+
+  // V5: 9 板块每日流程；降级: 旧版 5 子标签
+  const hasV5 = !!window.EnglishFlowV5;
+  let content;
+  if(hasV5){
+    // 首次进入调用 start() 初始化并提示今日场景；已存在进度则 renderAll() 继续
+    if(!S.engV5 || typeof S.engV5.currentBoard !== 'number'){
+      content = EnglishFlowV5.start(S.profileId || 'default');
+    } else {
+      content = EnglishFlowV5.renderAll();
+    }
+  } else {
+    content = renderEngSub(S.eng.sub || subtab || 'vocab', g);
+  }
+
+  // V5 模式下隐藏 sub-tabs；降级模式保留
+  const subtabsHTML = hasV5 ? '' : `
+    <div class="sub-tabs" id="engSubtabs">
+      ${[
+        {id:'vocab',name:'📚 词汇图书馆'},
+        {id:'phonics',name:'🗣️ 自然拼读'},
+        {id:'phrases',name:'🔡 情景短语库'},
+        {id:'grammar',name:'✍️ 语法工厂'},
+        {id:'listen',name:'🎧 听力森林'},
+      ].map(s=>`<div class="sub-tab ${s.id===(S.eng.sub||subtab||'vocab')?'active':''}" data-sub="${s.id}">${s.name}</div>`).join('')}
+    </div>`;
+
   return `
     <div class="layout-with-side">
       <div style="flex:1;min-width:0">
         <div class="grade-bar">
           <span class="grade-label">年级：</span>
           <div class="grade-pills" id="engGrades">
-            ${['3','4','5','6'].map(g=>`<div class="grade-pill ${g===grade?'active':''}" data-grade="${g}">${g}年级</div>`).join('')}
+            ${['3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
           </div>
+          ${hasV5 ? `<span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">📋 每日9板块 · 场景贯穿</span>` : ''}
         </div>
         <div class="eng-banner">
           <div>
             <h2>英语世界</h2>
-            <p>人教版 PEP 同步 · 母语级自然拼读 · 生活场景短语</p>
+            <p>${hasV5 ? '每日场景主线 · 9板块进阶 · AI自由对话' : '人教版 PEP 同步 · 母语级自然拼读 · 生活场景短语'}</p>
           </div>
           <div class="progress"><span>本周</span><span class="num">82%</span></div>
         </div>
-        <div class="sub-tabs" id="engSubtabs">
-          ${subtabs.map(s=>`<div class="sub-tab ${s.id===subtab?'active':''}" data-sub="${s.id}">${s.name}</div>`).join('')}
-        </div>
-        <div id="engContent">${renderEngSub(subtab,grade)}</div>
+        ${subtabsHTML}
+        <div id="engContent">${content}</div>
       </div>
       ${renderSidePanel()}
     </div>`;
@@ -4553,10 +4628,13 @@ const SpeakEngine = {
 };
 
 function renderSpeak(){
-  SpeakEngine.init();
-  const teacher = SpeakEngine.getTeacherObj();
-  const sc = SpeakEngine.getScenario();
-  const srOK = !!SpeakEngine.SR;
+  SpeakEngineV5.init();
+  const teacher = SpeakEngineV5.getTeacher(S.speakV5.teacher);
+  const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
+  const sc = scenarios.find(s => s.id === S.speakV5.scenario);
+  const teachers = SpeakEngineV5.teachers;
+  const srOK = !!SpeakEngineV5.SR;
+  const groqOK = !!(S.apiConfig && S.apiConfig.groqKey);
   return `
     <style id="seStyle">
       .se-left{display:flex;flex-direction:column;gap:8px}
@@ -4606,8 +4684,8 @@ function renderSpeak(){
       <div class="se-left">
         <div class="se-section-title">📚 对话场景</div>
         <div class="se-scenarios">
-          ${SPEAK_SCENARIOS.map(s=>`
-            <div class="se-scenario-card ${S.speak.currentScenario===s.id?'active':''}" onclick="SpeakEngine.selectScenario('${s.id}')">
+          ${scenarios.map(s=>`
+            <div class="se-scenario-card ${S.speakV5.scenario===s.id?'active':''}" onclick="selectScenarioV5('${s.id}')">
               <div class="se-sc-icon">${s.icon}</div>
               <div class="se-sc-body">
                 <div class="se-sc-title">${s.title}</div>
@@ -4617,38 +4695,32 @@ function renderSpeak(){
             </div>
           `).join('')}
         </div>
-        <div class="se-section-title" style="margin-top:14px">👩‍🏫 选择老师</div>
+        <div class="se-section-title" style="margin-top:14px">👩‍🏫 选择老师 ${groqOK?'<span style="font-size:10px;color:var(--teal);font-weight:600">AI已启用</span>':'<span style="font-size:10px;color:var(--yellow-600);font-weight:600">降级模式</span>'}</div>
         <div class="se-teachers">
-          ${PERSONAS.map(p=>`
-            <div class="se-teacher-card ${S.speak.teacher===p.name?'active':''}" onclick="SpeakEngine.selectTeacher('${p.name}')">
-              <div class="persona-avatar" style="width:40px;height:40px"><img src="${p.avatar}" alt="${p.name}"></div>
+          ${Object.keys(teachers).map(tid=>{
+            const t=teachers[tid];
+            return `<div class="se-teacher-card ${S.speakV5.teacher===tid?'active':''}" onclick="selectTeacherV5('${tid}')">
+              <div class="persona-avatar" style="width:40px;height:40px;overflow:hidden;border-radius:50%;background:var(--teal-soft)"><img src="${t.avatarImg||''}" alt="${t.name}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
               <div class="se-t-info">
-                <div class="se-t-name">${p.name}</div>
-                <div class="se-t-desc">${p.desc}</div>
+                <div class="se-t-name">${t.name}</div>
+                <div class="se-t-desc">${t.personality}</div>
               </div>
-            </div>
-          `).join('')}
+            </div>`;
+          }).join('')}
         </div>
       </div>
 
       <div class="chat-area">
         <div class="chat-header">
-          <div class="chat-header-avatar"><img src="${teacher.avatar}" alt=""></div>
+          <div class="chat-header-avatar"><img src="${teacher.avatarImg||''}" alt="" onerror="this.style.display='none'"></div>
           <div class="chat-header-info">
             <div class="chat-header-name">${teacher.name}</div>
-            <div class="chat-header-status" id="seStatus">在线 · ${sc?sc.icon+' '+sc.title:'等待选择场景'}</div>
+            <div class="chat-header-status" id="seStatus">在线 · ${sc?sc.icon+' '+sc.title:'等待选择场景'} ${groqOK?'· AI对话':'· 降级模式'}</div>
           </div>
-          ${sc?`<button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="SpeakEngine.startDialogue('${sc.id}')">🔄 重新开始</button>`:''}
+          ${sc?`<button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="SpeakEngineV5.startDialog(S.speakV5.teacher,'${sc.id}');document.getElementById('seV5Dialog').innerHTML=SpeakEngineV5.renderDialog()">🔄 重新开始</button>`:''}
         </div>
-        <div class="chat-messages" id="seMessages">${SpeakEngine.messagesHTML()}</div>
-        <div class="se-hint-row hidden" id="seHint"><span style="color:var(--text-2)">💡 ${sc?'点击右下提示按钮查看建议回答':'先选一个场景开始对话～'}</span></div>
-        <div class="chat-input-area">
-          <textarea class="chat-input" id="seInput" placeholder="输入英文回复，按 Enter 发送..." rows="1" onkeydown="SpeakEngine.onInputKey(event)"></textarea>
-          <button class="se-act-btn" title="提示" onclick="SpeakEngine.toggleHint()">💡</button>
-          <div class="mic-btn ${srOK?'':'disabled'}" id="seMic" onclick="SpeakEngine.toggleMic()" title="${srOK?'点击说话':'当前浏览器不支持语音识别'}">
-            <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
-          </div>
-        </div>
+        <div class="chat-messages" id="seV5Dialog" style="padding:14px;overflow-y:auto;flex:1">${SpeakEngineV5.renderDialog()}</div>
+        <div class="se-hint-row" id="seHint"><span style="color:var(--text-2)">💡 ${sc?'输入英文或点击🎤说话，和老师自由交谈':'先选一个场景开始对话～'}</span></div>
       </div>
 
       <div class="speak-side">
@@ -4656,8 +4728,8 @@ function renderSpeak(){
           <h4>🔤 本场景词汇</h4>
           <div class="scene-word-list" id="seVocab">
             ${sc ? sc.vocabulary.map(w=>{
-              const d=WORD_DICT[w]; const zh=d?d.pos.split(' ')[0]:'';
-              return `<div class="scene-word-item" onclick="SpeakEngine.wordClick('${w}')"><div><div class="scene-word-en">${w}</div><div class="scene-word-zh">${zh||'点击听发音'}</div></div><button><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></button></div>`;
+              const d=(typeof WORD_DICT!=='undefined'&&WORD_DICT[w])||null; const zh=d?d.pos.split(' ')[0]:'';
+              return `<div class="scene-word-item" onclick="wordClickV5('${w}')"><div><div class="scene-word-en">${w}</div><div class="scene-word-zh">${zh||'点击听发音'}</div></div><button><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></button></div>`;
             }).join('') : '<div style="font-size:12px;color:var(--text-2);padding:8px 4px">选择场景后显示词汇</div>'}
           </div>
         </div>
@@ -4673,6 +4745,33 @@ function renderSpeak(){
       </div>
     </div>
   `;
+}
+
+// ===== V5 口语辅助函数 =====
+function selectScenarioV5(id){
+  SpeakEngineV5.init();
+  S.speakV5.scenario = id;
+  SpeakEngineV5._save();
+  SpeakEngineV5.startDialog(S.speakV5.teacher, id);
+  const box = document.getElementById('seV5Dialog');
+  if(box) box.innerHTML = SpeakEngineV5.renderDialog();
+  const status = document.getElementById('seStatus');
+  const sc = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS.find(s=>s.id===id) : null;
+  if(status && sc) status.textContent = '在线 · ' + sc.icon + ' ' + sc.title + (S.apiConfig&&S.apiConfig.groqKey?' · AI对话':' · 降级模式');
+  if(typeof toast === 'function') toast('🎯 ' + (sc?sc.title:'场景') + ' · 开始对话！');
+}
+function selectTeacherV5(tid){
+  SpeakEngineV5.init();
+  S.speakV5.teacher = tid;
+  SpeakEngineV5._save();
+  $('#contentArea').innerHTML = renderSpeak();
+  const t = SpeakEngineV5.getTeacher(tid);
+  if(typeof toast === 'function') toast('👩‍🏫 ' + t.name + ' 老师已选中');
+}
+function wordClickV5(w){
+  if(typeof speak === 'function') speak(w);
+  const d = (typeof WORD_DICT !== 'undefined') ? WORD_DICT[w] : null;
+  if(typeof toast === 'function') toast(d ? (w + ' ' + d.pos.split(' ')[0]) : (w + ' 🔊'));
 }
 
 function switchPersona(i){
@@ -5208,6 +5307,7 @@ function renderParentDashboard(){
         <div class="parent-tab active" data-pt="overview">📊 总览</div>
         <div class="parent-tab" data-pt="weak">🔥 漏洞检测</div>
         <div class="parent-tab" data-pt="week">📝 周报建议</div>
+        <div class="parent-tab" data-pt="ai">🤖 AI 设置</div>
       </div>
 
       <div class="parent-section active" data-psec="overview">
@@ -5363,6 +5463,46 @@ function renderParentDashboard(){
           </div>
         </div>
       </div>
+
+      <div class="parent-section" data-psec="ai">
+        <div class="report-card" style="margin-bottom:16px">
+          <div style="position:relative;z-index:2;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.2em;opacity:.8;margin-bottom:4px">AI CONFIG</div>
+            <h3 style="margin:0">🤖 AI 对话引擎设置</h3>
+            <p style="font-size:12px;color:var(--text-2);margin:6px 0 0">配置 Groq API Key 后，口语伙伴的三位老师（Emma/Leo/Aria）将与孩子进行真正的 AI 自由对话。未配置或配置失败时，自动降级为分支对话树模式。</p>
+          </div>
+
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:14px">
+            <div>
+              <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px">Groq API Key</label>
+              <div style="display:flex;gap:8px;align-items:center">
+                <input type="password" id="groqKeyInput" placeholder="gsk_..." value="${(S.apiConfig&&S.apiConfig.groqKey)||''}" style="flex:1;padding:10px 12px;border:1.5px solid var(--ink-200);border-radius:10px;font-size:13px;font-family:monospace;background:white;color:var(--navy);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--ink-200)'">
+                <button class="btn btn-ghost" id="toggleKeyVisibility" style="padding:10px 12px;font-size:12px;white-space:nowrap">👁 显示</button>
+              </div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:6px;display:flex;align-items:center;gap:4px">
+                <span>🔒 Key 仅保存在本机浏览器 localStorage，不会上传任何服务器</span>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-yellow" id="testGroqKeyBtn" style="padding:10px 16px;font-size:13px;font-weight:700">🔌 测试连接</button>
+              <button class="btn" id="saveGroqKeyBtn" style="padding:10px 16px;font-size:13px;font-weight:700;background:var(--teal);color:white">💾 保存</button>
+              <button class="btn btn-ghost" id="clearGroqKeyBtn" style="padding:10px 16px;font-size:13px;font-weight:700">🗑 清除</button>
+            </div>
+
+            <div id="groqTestResult" style="display:none;padding:12px 14px;border-radius:10px;font-size:12px;font-weight:600;line-height:1.6"></div>
+
+            <div style="background:var(--teal-soft);border-radius:10px;padding:12px 14px;font-size:11px;color:var(--navy);line-height:1.7">
+              <div style="font-weight:800;margin-bottom:6px">📌 如何获取 Groq API Key（免费）</div>
+              <div>① 访问 <a href="https://console.groq.com/keys" target="_blank" style="color:var(--teal);font-weight:700">console.groq.com/keys</a></div>
+              <div>② 注册/登录账号（支持 Google 登录）</div>
+              <div>③ 点击 "Create API Key"，复制以 <code style="background:rgba(0,0,0,.08);padding:1px 5px;border-radius:4px;font-family:monospace">gsk_</code> 开头的字符串</div>
+              <div>④ 粘贴到上方输入框，点击"测试连接"验证后保存</div>
+              <div style="margin-top:6px;color:var(--text-2)">免费额度充足，个人学习使用基本无限制。当前模型：<code style="background:rgba(0,0,0,.08);padding:1px 5px;border-radius:4px;font-family:monospace">llama-3.1-8b-instant</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>`;
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
@@ -5378,6 +5518,111 @@ function renderParentDashboard(){
     }
   });
   setTimeout(()=>initParentCharts(),320);
+  bindAiConfigEvents();
+}
+function bindAiConfigEvents(){
+  const toggleBtn=$('#toggleKeyVisibility');
+  if(toggleBtn) toggleBtn.onclick=function(){
+    const inp=$('#groqKeyInput');
+    if(!inp) return;
+    if(inp.type==='password'){inp.type='text';this.textContent='🙈 隐藏';}
+    else{inp.type='password';this.textContent='👁 显示';}
+  };
+  const testBtn=$('#testGroqKeyBtn');
+  if(testBtn) testBtn.onclick=testGroqKey;
+  const saveBtn=$('#saveGroqKeyBtn');
+  if(saveBtn) saveBtn.onclick=saveGroqKey;
+  const clearBtn=$('#clearGroqKeyBtn');
+  if(clearBtn) clearBtn.onclick=function(){
+    if(!confirm('确定清除 API Key 吗？清除后口语将降级为分支对话模式。')) return;
+    if(!S.apiConfig) S.apiConfig={};
+    S.apiConfig.groqKey='';
+    saveState();
+    const inp=$('#groqKeyInput');
+    if(inp) inp.value='';
+    showGroqTestResult('error','已清除 API Key。口语伙伴将使用降级模式。');
+  };
+}
+function showGroqTestResult(type,msg){
+  const el=$('#groqTestResult');
+  if(!el) return;
+  el.style.display='block';
+  if(type==='ok'){
+    el.style.background='rgba(0,168,150,.12)';
+    el.style.color='var(--teal)';
+    el.style.border='1px solid rgba(0,168,150,.3)';
+  }else if(type==='error'){
+    el.style.background='rgba(220,38,38,.08)';
+    el.style.color='#DC2626';
+    el.style.border='1px solid rgba(220,38,38,.2)';
+  }else{
+    el.style.background='rgba(245,184,0,.12)';
+    el.style.color='var(--yellow)';
+    el.style.border='1px solid rgba(245,184,0,.3)';
+  }
+  el.innerHTML=msg;
+}
+async function testGroqKey(){
+  const inp=$('#groqKeyInput');
+  if(!inp) return;
+  const key=inp.value.trim();
+  if(!key){
+    showGroqTestResult('error','⚠️ 请先输入 API Key');
+    return;
+  }
+  if(!key.startsWith('gsk_')){
+    showGroqTestResult('error','⚠️ Groq API Key 通常以 <code style="background:rgba(0,0,0,.08);padding:1px 5px;border-radius:4px">gsk_</code> 开头，请检查是否复制完整');
+    return;
+  }
+  const btn=$('#testGroqKeyBtn');
+  const oldText=btn.textContent;
+  btn.textContent='⏳ 测试中...';
+  btn.disabled=true;
+  showGroqTestResult('loading','🔍 正在连接 Groq API...');
+  try{
+    const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+key
+      },
+      body:JSON.stringify({
+        model:'llama-3.1-8b-instant',
+        messages:[{role:'user',content:'Say "OK" in one word.'}],
+        max_tokens:5
+      })
+    });
+    if(resp.ok){
+      const data=await resp.json();
+      const reply=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
+      showGroqTestResult('ok','✅ 连接成功！AI 回复：<b>'+(reply||'OK')+'</b><br>点击"保存"即可启用 AI 自由对话。');
+    }else if(resp.status===401){
+      showGroqTestResult('error','❌ 认证失败：API Key 无效或已过期，请重新获取');
+    }else if(resp.status===429){
+      showGroqTestResult('error','⚠️ 请求过于频繁或额度已用完，请稍后再试');
+    }else{
+      showGroqTestResult('error','❌ 连接失败：HTTP '+resp.status);
+    }
+  }catch(e){
+    showGroqTestResult('error','❌ 网络错误：'+(e.message||'无法连接到 Groq API')+'<br>请检查网络或稍后重试');
+  }finally{
+    btn.textContent=oldText;
+    btn.disabled=false;
+  }
+}
+function saveGroqKey(){
+  const inp=$('#groqKeyInput');
+  if(!inp) return;
+  const key=inp.value.trim();
+  if(!key){
+    showGroqTestResult('error','⚠️ 请先输入 API Key');
+    return;
+  }
+  if(!S.apiConfig) S.apiConfig={};
+  S.apiConfig.groqKey=key;
+  saveState();
+  showGroqTestResult('ok','✅ 已保存！口语伙伴的 AI 自由对话已启用。');
+  toast('✅ API Key 已保存');
 }
 
 /* ============ 数据持久化层 ============ */
@@ -5393,7 +5638,13 @@ const defaultState={
   // ===== 学习引擎扩展（v4 新增，不破坏原有字段） =====
   study:{lastDate:'',todayTime:0,totalTime:0,sessions:[],dailyRecords:{},weeklyPlans:{}},
   answerLog:[],
-  currentSession:null
+  currentSession:null,
+  // ===== V5 新增字段（不修改原有字段，只新增） =====
+  reviewQueue:[],            // 间隔复习队列
+  lastSession:null,          // 断点续学 {subject, stage, knowledgePoint, time}
+  sceneTheme:{date:'',theme:'',words:[]},  // 每日场景主线
+  apiConfig:{groqKey:''},    // AI API 配置（用户在设置中输入）
+  engStage:1                 // 英语三阶段：1=输入主导 2=引导输出 3=自主输出
 };
 function loadState(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));return s?{...defaultState,...s}:defaultState;}catch{return defaultState}}
 function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
@@ -5653,5 +5904,21 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(()=>{BADGES.forEach(b=>{if(b.cond())addBadge(b.id,b.name,b.icon);});},2000);
 });
 </script>
+<!-- === V5 数据文件 === -->
+<script src="data/math-data.js"></script>
+<script src="data/english-vocab.js"></script>
+<script src="data/english-phonics.js"></script>
+<script src="data/english-listening.js"></script>
+<script src="data/english-grammar.js"></script>
+<script src="data/english-scenarios.js"></script>
+<!-- === V5 引擎文件 === -->
+<script src="engine/spaced-review.js"></script>
+<script src="engine/achievements.js"></script>
+<script src="engine/mic-permission.js"></script>
+<script src="engine/scene-manager.js"></script>
+<script src="engine/math-visual-v5.js"></script>
+<script src="engine/math-flow-v5.js"></script>
+<script src="engine/speak-engine-v5.js"></script>
+<script src="engine/english-flow-v5.js"></script>
 </body>
 </html>
