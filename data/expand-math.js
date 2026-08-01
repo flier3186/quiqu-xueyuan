@@ -14,6 +14,11 @@ try { eval(code); } finally { global.window = oldWindow; }
 const data = mockWindow.MATH_BY_GRADE;
 
 const TOTAL_BEFORE = Object.values(data).reduce((s, g) => s + g.problems.length, 0);
+// 已扩充过则跳过（防止重复执行）
+if (TOTAL_BEFORE >= 700) {
+  console.log('题库已扩充（' + TOTAL_BEFORE + ' 题），跳过');
+  process.exit(0);
+}
 const gradesToExpand = ['3b', '4a', '4b', '5a', '5b', '6a', '6b'];
 
 function seededRandom(seed) {
