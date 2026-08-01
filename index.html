@@ -793,7 +793,291 @@ input,textarea{font-family:inherit}
 .achv-item.unlocked svg{fill:var(--yellow)}
 .achv-item.locked svg{fill:#D1D5DB}
 
-/* 家长面板 */
+/* 闯关游戏 */
+.game-hub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.game-card{background:white;border-radius:var(--radius-xl);padding:24px;cursor:pointer;transition:all .3s;border:2px solid transparent;box-shadow:var(--card-shadow)}
+.game-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl);border-color:var(--teal)}
+.game-card.teal{border-color:var(--teal-100)}
+.game-card.teal:hover{background:linear-gradient(160deg,#fff,var(--teal-50))}
+.game-card.coral{border-color:rgba(251,146,60,.2)}
+.game-card.coral:hover{background:linear-gradient(160deg,#fff,var(--coral-soft))}
+.game-card-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:14px}
+.game-card.teal .game-card-icon{background:linear-gradient(135deg,var(--teal),var(--teal-400));color:white}
+.game-card.coral .game-card-icon{background:linear-gradient(135deg,var(--coral),#FB7185);color:white}
+.game-card h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.game-card p{font-size:12px;color:var(--ink-500);line-height:1.5}
+.game-card .game-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-top:10px}
+.game-card.teal .game-badge{background:var(--teal-soft);color:var(--teal)}
+.game-card.coral .game-badge{background:var(--coral-soft);color:var(--coral)}
+.spell-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.spell-back{width:36px;height:36px;border-radius:10px;background:var(--ink-100);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all .2s}
+.spell-back:hover{background:var(--teal);color:white}
+.spell-word-display{display:flex;gap:8px;justify-content:center;align-items:center;min-height:64px;margin:24px 0;flex-wrap:wrap}
+.spell-slot{width:44px;height:52px;border:2px dashed var(--ink-200);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--navy);font-family:'Inter',sans-serif;transition:all .2s;cursor:pointer}
+.spell-slot.filled{border-style:solid;border-color:var(--teal);background:var(--teal-soft);animation:slotPop .2s ease}
+.spell-slot.correct{border-color:var(--teal);background:rgba(0,168,150,.2);color:var(--teal)}
+.spell-slot.wrong{border-color:#EF4444;background:rgba(239,68,68,.1);color:#EF4444}
+@keyframes slotPop{0%{transform:scale(.8)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+.spell-letters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.spell-letter{width:44px;height:52px;border-radius:10px;background:white;border:2px solid var(--ink-200);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--navy);font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm)}
+.spell-letter:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.spell-letter.used{opacity:.3;pointer-events:none;transform:scale(.9)}
+.spell-hint{font-size:13px;color:var(--ink-500);text-align:center;margin-bottom:16px}
+.spell-hint strong{color:var(--coral)}
+.spell-score-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--ink-50);border-radius:12px;margin-bottom:16px;font-size:13px;font-weight:600}
+.math-challenge-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.timer-display{font-size:28px;font-weight:900;color:var(--coral);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:6px}
+.timer-display svg{width:24px;height:24px;fill:var(--coral)}
+.timer-display.warning{animation:timerPulse 1s ease-in-out infinite}
+@keyframes timerPulse{0%,100%{opacity:1}50%{opacity:.5}}
+.challenge-score{font-size:18px;font-weight:800;color:var(--teal)}
+.challenge-question{background:white;border-radius:var(--radius-xl);padding:28px;box-shadow:var(--card-shadow);margin-bottom:20px;text-align:center}
+.challenge-question h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.challenge-question .q-text{font-size:22px;font-weight:700;color:var(--text-1);margin:16px 0}
+.challenge-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.challenge-opt{padding:16px;border-radius:14px;border:2px solid var(--ink-200);background:white;cursor:pointer;font-size:16px;font-weight:700;color:var(--navy);transition:all .2s;text-align:center}
+.challenge-opt:hover{border-color:var(--teal);background:var(--teal-soft)}
+.challenge-opt.correct{border-color:var(--teal);background:rgba(0,168,150,.15);color:var(--teal)}
+.challenge-opt.wrong{border-color:#EF4444;background:rgba(239,68,68,.1);color:#EF4444}
+.challenge-opt.disabled{pointer-events:none;opacity:.6}
+.challenge-progress{display:flex;gap:4px;margin-bottom:16px}
+.challenge-dot{flex:1;height:6px;border-radius:3px;background:#E5E7EB;transition:all .3s}
+.challenge-dot.done{background:var(--teal)}
+.challenge-dot.wrong-dot{background:#EF4444}
+.challenge-dot.current{background:var(--yellow)}
+.challenge-result{text-align:center;padding:40px 20px}
+.challenge-result .result-score{font-size:64px;font-weight:900;color:var(--teal);font-family:'Inter',sans-serif}
+.challenge-result .result-label{font-size:14px;color:var(--text-2);margin-top:8px}
+.challenge-result .result-stars{font-size:32px;margin:16px 0}
+.grade-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:white;border-radius:var(--radius-lg);margin-bottom:16px;box-shadow:var(--shadow-sm);flex-wrap:wrap}
+.grade-label{font-size:13px;font-weight:700;color:var(--text-2)}
+.grade-pills{display:flex;gap:6px;flex-wrap:wrap}
+.grade-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;border:1.5px solid var(--ink-200);background:white}
+.grade-pill:hover{border-color:var(--teal);color:var(--teal)}
+.grade-pill.active{background:var(--teal);color:white;border-color:var(--teal)}
+.sub-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sub-tab{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;background:var(--ink-50);border:1.5px solid transparent}
+.sub-tab:hover{color:var(--navy);border-color:var(--ink-200)}
+.sub-tab.active{background:var(--teal-soft);color:var(--teal);border-color:var(--teal)}
+.layout-with-side{display:flex;gap:20px;align-items:flex-start}
+.content-area{flex:1;min-width:0;padding:20px 24px 100px;max-width:900px}
+.side-panel{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto}
+.card{background:white;border-radius:var(--radius-lg);padding:18px;box-shadow:var(--card-shadow)}
+.card h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.star-bank{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.star-count{display:flex;align-items:center;gap:6px}
+.star-count svg{width:24px;height:24px;fill:var(--yellow)}
+.star-count .mono{font-size:28px;font-weight:900;color:var(--navy);font-family:'Inter',sans-serif}
+.star-sub{font-size:11px;color:var(--text-3)}
+.task-list{display:flex;flex-direction:column;gap:8px}
+.task-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:var(--teal-soft);cursor:pointer;transition:all .2s;border:1px solid transparent}
+.task-item:hover{border-color:var(--teal)}
+.task-thumb{width:32px;height:32px;border-radius:8px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.task-thumb svg{width:18px;height:18px;fill:white}
+.task-info{flex:1;min-width:0}
+.task-title{font-size:13px;font-weight:700;color:var(--navy)}
+.task-meta{font-size:11px;color:var(--text-3);margin-top:2px}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quick-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border-radius:10px;background:var(--ink-50);cursor:pointer;transition:all .2s;font-size:11px;color:var(--text-2);font-weight:600}
+.quick-item:hover{background:var(--teal-soft);color:var(--teal)}
+.quick-item svg{width:20px;height:20px;fill:currentColor}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.chart-card{background:white;border-radius:var(--radius-lg);padding:14px;box-shadow:var(--shadow-sm)}
+.chart-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.chart-box{height:160px}
+.chart-box.small{height:120px}
+.report-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.report-kpi{background:var(--teal);color:white;padding:12px;border-radius:12px;text-align:center}
+.rk-num{font-size:22px;font-weight:900;font-family:'Inter',sans-serif}
+.rk-label{font-size:11px;opacity:.85;margin-top:4px}
+.suggest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.suggest-card{background:white;border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-sm);border-top:4px solid var(--teal)}
+.suggest-card.y{border-top-color:var(--yellow)}
+.suggest-card.c{border-top-color:var(--coral)}
+.suggest-ic{font-size:24px;margin-bottom:8px}
+.suggest-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.suggest-card p{font-size:11px;color:var(--text-2);line-height:1.6}
+.heatmap-wrap{background:white;border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-sm)}
+.heat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.heat-head h4{font-size:13px;font-weight:700;color:var(--navy)}
+.heat-legend{display:flex;gap:8px;font-size:10px;color:var(--text-3)}
+.heat-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:middle}
+.heat-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
+.heat-row-label{font-size:10px;color:var(--text-3);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;white-space:nowrap}
+.heat-cell{height:28px;border-radius:4px;cursor:pointer;transition:all .15s}
+.heat-cell:hover{transform:scale(1.2);z-index:1}
+.grade-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:white;border-radius:var(--radius-lg);margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.grade-label{font-size:13px;font-weight:700;color:var(--text-2)}
+.grade-pills{display:flex;gap:6px;flex-wrap:wrap}
+.grade-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;border:1.5px solid var(--ink-200);background:white}
+.grade-pill:hover{border-color:var(--teal);color:var(--teal)}
+.grade-pill.active{background:var(--teal);color:white;border-color:var(--teal)}
+.eng-banner{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:16px 20px;background:linear-gradient(135deg,var(--yellow-50),rgba(245,184,0,.08));border-radius:var(--radius-lg)}
+.eng-banner h2{font-size:20px;font-weight:900;color:var(--navy)}
+.eng-banner p{font-size:12px;color:var(--text-2);margin-top:4px}
+.eng-banner .progress{font-size:12px;color:var(--text-2)}
+.eng-banner .progress .num{font-size:20px;font-weight:800;color:var(--teal)}
+.phase-tabs{display:flex;gap:6px;margin-bottom:16px}
+.phase-tab{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;background:var(--ink-50);border:1.5px solid transparent}
+.phase-tab:hover{border-color:var(--ink-200)}
+.phase-tab.active{background:var(--teal);color:white;border-color:var(--teal)}
+.vocab-list{display:flex;flex-direction:column;gap:10px}
+.vocab-card{background:white;border-radius:12px;padding:14px;box-shadow:var(--shadow-sm);transition:all .2s;border:2px solid transparent}
+.vocab-card:hover{border-color:var(--teal-200);box-shadow:var(--shadow-md)}
+.vocab-card.known{border-color:var(--teal);background:var(--teal-soft)}
+.vocab-word{font-size:18px;font-weight:800;color:var(--navy);font-family:'Inter',sans-serif}
+.vocab-pos{font-size:11px;color:var(--text-3);margin-left:6px}
+.vocab-def{font-size:12px;color:var(--text-2);margin-top:4px}
+.vocab-actions{display:flex;gap:8px;margin-top:8px}
+.btn-listen{display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:var(--teal-soft);color:var(--teal);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-listen:hover{background:var(--teal);color:white}
+.btn-know{padding:6px 12px;border-radius:20px;background:var(--yellow);color:var(--navy-800);font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-know.known{background:var(--teal);color:white}
+.btn-know:hover{opacity:.85}
+.speak-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.speak-header h2{font-size:18px;font-weight:900;color:var(--navy)}
+.speak-header .teacher-info{display:flex;align-items:center;gap:8px}
+.speak-header .teacher-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--teal)}
+.speak-header .teacher-name{font-size:13px;font-weight:700;color:var(--navy)}
+.dialogue-wrap{background:white;border-radius:var(--radius-xl);padding:20px;box-shadow:var(--card-shadow);margin-bottom:16px;max-height:360px;overflow-y:auto}
+.dialogue-line{display:flex;gap:10px;margin-bottom:14px;align-items:flex-start}
+.dialogue-line.teacher{flex-direction:row}
+.dialogue-line.student{flex-direction:row-reverse}
+.dialogue-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--teal-200)}
+.dialogue-bubble{max-width:75%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5}
+.dialogue-line.teacher .dialogue-bubble{background:var(--teal-soft);color:var(--navy);border-bottom-left-radius:4px}
+.dialogue-line.student .dialogue-bubble{background:var(--yellow-soft);color:var(--navy);border-bottom-right-radius:4px}
+.dialogue-bubble .dialogue-en{font-weight:700;margin-bottom:4px;font-family:'Inter',sans-serif}
+.dialogue-bubble .dialogue-zh{font-size:11px;color:var(--text-2)}
+.dialogue-bubble .dialogue-score{font-size:11px;color:var(--teal);font-weight:700;margin-top:4px}
+.speak-input-area{display:flex;gap:10px;align-items:center;margin-top:16px}
+.speak-input{flex:1;padding:12px 16px;border:2px solid var(--ink-200);border-radius:12px;font-size:14px;outline:none;transition:border-color .2s}
+.speak-input:focus{border-color:var(--teal)}
+.btn-record{width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;border:none}
+.btn-record:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(251,146,60,.4)}
+.btn-record.recording{animation:pulse 1s ease-in-out infinite;background:#EF4444}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 12px rgba(239,68,68,0)}}
+.btn-record svg{width:22px;height:22px;fill:white}
+.btn-send{padding:12px 20px;border-radius:12px;background:var(--teal);color:white;font-weight:700;font-size:14px;cursor:pointer;border:none;transition:all .2s}
+.btn-send:hover{background:var(--teal-700)}
+.scene-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.scene-card{padding:14px;border-radius:12px;background:white;cursor:pointer;transition:all .2s;border:2px solid transparent;text-align:center;box-shadow:var(--shadow-sm)}
+.scene-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.scene-card.active{border-color:var(--teal);background:var(--teal-soft)}
+.scene-card .scene-icon{font-size:28px;margin-bottom:6px}
+.scene-card .scene-name{font-size:12px;font-weight:700;color:var(--navy)}
+.phrase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.phrase-card{background:white;border-radius:10px;padding:12px;box-shadow:var(--shadow-sm);cursor:pointer;transition:all .2s;border:1px solid transparent}
+.phrase-card:hover{border-color:var(--teal-200);box-shadow:var(--shadow-md)}
+.phrase-en{font-size:14px;font-weight:700;color:var(--navy);font-family:'Inter',sans-serif}
+.phrase-zh{font-size:12px;color:var(--text-2);margin-top:3px}
+.phrase-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;background:var(--teal-soft);color:var(--teal);margin-top:6px}
+.phonics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.phonics-card{background:white;border-radius:12px;padding:14px;box-shadow:var(--shadow-sm);cursor:pointer;transition:all .2s;border:2px solid transparent;text-align:center}
+.phonics-card:hover{border-color:var(--teal)}
+.phonics-card.active{border-color:var(--teal);background:var(--teal-soft)}
+.phonics-letter{font-size:28px;font-weight:900;color:var(--teal);font-family:'Inter',sans-serif}
+.phonics-sound{font-size:11px;color:var(--text-3);margin-top:4px}
+.phonics-words{font-size:10px;color:var(--ink-500);margin-top:6px}
+.grammar-box{background:white;border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-sm)}
+.grammar-box h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.grammar-rule{padding:10px 14px;background:var(--teal-soft);border-radius:8px;margin-bottom:8px;font-size:13px;color:var(--navy)}
+.grammar-example{padding:8px 14px;background:var(--yellow-soft);border-radius:8px;font-size:12px;color:var(--ink-700);font-family:'Inter',sans-serif}
+.listen-wrap{position:relative;background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm)}
+.listen-wrap::after{content:'';position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,184,0,.3),transparent 60%);filter:blur(10px)}
+.listen-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:30px;background:linear-gradient(135deg,var(--yellow),#FFB300);color:var(--navy-800);font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;border:none;box-shadow:var(--shadow-md)}
+.listen-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.listen-btn svg{width:20px;height:20px;fill:var(--navy-800)}
+.listen-input{margin-top:16px;display:flex;gap:10px}
+.listen-input input{flex:1;padding:12px 16px;border:2px solid var(--ink-200);border-radius:10px;font-size:14px;outline:none}
+.listen-input input:focus{border-color:var(--teal)}
+.answer-wrap{margin-top:16px;padding:14px;border-radius:10px;display:none}
+.answer-wrap.show{display:block}
+.answer-wrap.correct{background:rgba(0,168,150,.1);border:1px solid var(--teal)}
+.answer-wrap.wrong{background:rgba(239,68,68,.1);border:1px solid #EF4444}
+.answer-wrap p{font-size:13px;color:var(--navy);line-height:1.6}
+.math-stage-host{background:white;border-radius:var(--radius-xl);padding:24px;box-shadow:var(--card-shadow);margin-bottom:16px;min-height:200px}
+.stage-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;background:var(--teal);color:white;margin-bottom:12px}
+.stage-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:16px}
+.stage-content{font-size:14px;color:var(--text-1);line-height:1.7;margin-bottom:20px}
+.stage-choices{display:flex;flex-direction:column;gap:10px}
+.stage-choice{padding:14px 18px;border:2px solid var(--ink-200);border-radius:12px;cursor:pointer;font-size:15px;font-weight:600;color:var(--navy);transition:all .2s;background:white;text-align:left;display:flex;align-items:center;gap:10px}
+.stage-choice:hover{border-color:var(--teal);background:var(--teal-soft)}
+.stage-choice .choice-letter{width:28px;height:28px;border-radius:50%;background:var(--ink-100);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--ink-600);flex-shrink:0}
+.stage-choice.correct{border-color:var(--teal);background:rgba(0,168,150,.1);color:var(--teal)}
+.stage-choice.correct .choice-letter{background:var(--teal);color:white}
+.stage-choice.wrong{border-color:#EF4444;background:rgba(239,68,68,.1);color:#EF4444}
+.stage-choice.wrong .choice-letter{background:#EF4444;color:white}
+.stage-choice.disabled{pointer-events:none;opacity:.6}
+.stage-btn-row{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;font-weight:600;font-size:14px;transition:all .2s;border:1px solid transparent}
+.btn-primary{background:var(--teal);color:white}
+.btn-primary:hover{background:var(--teal-700)}
+.btn-secondary{background:var(--ink-50);color:var(--navy)}
+.btn-secondary:hover{background:var(--ink-100)}
+.btn-yellow{background:var(--yellow);color:var(--navy-800)}
+.btn-yellow:hover{background:#FFB300}
+.btn-ghost{background:transparent;color:var(--text-2);border:1px solid var(--ink-200)}
+.btn-ghost:hover{background:var(--ink-50)}
+.btn-lg{padding:14px 28px;font-size:16px;border-radius:14px}
+.icon-btn{width:40px;height:40px;border-radius:10px;background:white;border:1px solid var(--ink-100);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+.icon-btn:hover{background:var(--ink-50)}
+.icon-btn svg{width:20px;height:20px;fill:var(--text-2)}
+.icon-btn.mic{position:relative}
+.icon-btn.mic.active svg{fill:var(--coral)}
+.icon-btn.mic.active::after{content:'';position:absolute;inset:-3px;border-radius:12px;border:2px solid var(--coral);animation:pulse-ring 1.5s ease-out infinite}
+@keyframes pulse-ring{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.3)}}
+.top-bar{display:flex;align-items:center;gap:16px;padding:16px 24px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,58,95,.06);position:sticky;top:0;z-index:50}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-400));display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:20px;height:20px;fill:white}
+.logo-text{font-size:18px;font-weight:900;color:var(--navy)}
+.logo-text span{color:var(--teal)}
+.top-bar-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.nav-tabs{display:flex;gap:2px;flex:1}
+.nav-tab{position:relative;display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;cursor:pointer;transition:all .25s;color:var(--text-2);font-weight:600;font-size:15px;user-select:none}
+.nav-tab:hover{background:var(--teal-soft);color:var(--navy)}
+.nav-tab svg{width:22px;height:22px;fill:var(--text-2);transition:fill .25s}
+.nav-tab:hover svg{fill:var(--navy)}
+.nav-tab.active{color:var(--teal);background:var(--teal-soft)}
+.nav-tab.active svg{fill:var(--teal)}
+.nav-tab .underline{position:absolute;bottom:-2px;left:20%;right:20%;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--teal-light));transform:scaleX(0);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.nav-tab.active .underline{transform:scaleX(1)}
+.parent-btn{display:flex;align-items:center;gap:8px;padding:6px 16px 6px 6px;border-radius:24px;background:rgba(255,255,255,.85);border:1px solid rgba(30,58,95,.08);cursor:pointer;transition:all .2s}
+.parent-btn:hover{background:white}
+.parent-btn svg{width:28px;height:28px;border-radius:50%;fill:var(--teal)}
+.parent-btn span{font-size:14px;font-weight:600;color:var(--navy)}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .3s;z-index:300;white-space:nowrap;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1}
+.toast svg{width:16px;height:16px;fill:var(--yellow);vertical-align:middle;margin-right:6px}
+.word-tooltip{position:fixed;background:white;border-radius:12px;padding:12px 16px;box-shadow:var(--shadow-xl);z-index:150;max-width:300px;display:none;border:1px solid var(--ink-100)}
+.word-tooltip.show{display:block}
+.wt-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.wt-word{font-size:18px;font-weight:800;color:var(--navy);font-family:'Inter',sans-serif}
+.wt-close{cursor:pointer;font-size:18px;color:var(--text-3)}
+.wt-pos{font-size:11px;color:var(--coral);font-weight:600;margin-bottom:4px}
+.wt-def{font-size:13px;color:var(--text-1);line-height:1.5;margin-bottom:6px}
+.wt-example{font-size:12px;color:var(--text-2);margin-bottom:6px;font-style:italic}
+.wt-coll{font-size:11px;color:var(--text-2);margin-bottom:4px}
+.wt-syn{font-size:11px;color:var(--text-2)}
+.wt-actions{display:flex;gap:8px;margin-top:10px}
+.wt-actions button{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;gap:4px}
+.wt-actions button svg{width:14px;height:14px;fill:currentColor}
+.click-word{cursor:pointer;border-bottom:1px dashed var(--teal-300);transition:color .15s}
+.click-word:hover{color:var(--teal)}
+.gradient-text{background:linear-gradient(135deg,var(--teal),var(--teal-400) 40%,var(--yellow) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tilt-card{transform-style:preserve-3d;perspective:1000px}
+.error-log-table{width:100%;border-collapse:collapse;font-size:12px}
+.error-log-table th{text-align:left;padding:8px 10px;background:var(--ink-50);color:var(--ink-600);font-weight:600;border-bottom:1px solid var(--ink-200)}
+.error-log-table td{padding:8px 10px;border-bottom:1px solid var(--ink-100);color:var(--text-1);vertical-align:top}
+.error-log-table tr:hover td{background:var(--ink-50)}
+.error-log-table .err-msg{font-family:monospace;color:var(--coral);word-break:break-all}
+.error-log-table .err-time{color:var(--text-3);white-space:nowrap}
+.error-log-table .err-url{color:var(--text-3);font-size:11px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.export-btn{padding:8px 16px;border-radius:8px;background:var(--teal);color:white;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:all .2s}
+.export-btn:hover{background:var(--teal-700)}
+.game-progress-bar{height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden;margin-top:8px}
+.game-progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--yellow));border-radius:4px;transition:width .3s}
 .modal-mask{position:fixed;inset:0;background:rgba(15,23,42,.65);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-mask.show{display:flex}
 .modal{background:white;border-radius:var(--radius-xl);width:100%;max-width:880px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;animation:modalIn .3s cubic-bezier(.34,1.56,.64,1)}
@@ -1018,6 +1302,7 @@ input,textarea{font-family:inherit}
         <div class="nav-tab" data-view="math"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg><span>数学星球</span><div class="underline"></div></div>
         <div class="nav-tab" data-view="english"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2c1.66 0 3 2.69 3 6h-6c0-3.31 1.34-6 3-6zm-3 8h6c0 3.31-1.34 6-3 6s-3-2.69-3-6zm-7-2c0-3.31 1.34-6 3-6 .69 0 1.35.27 1.93.74C8.32 7.45 8 9.65 8 12s.32 4.55.93 6.26C8.35 18.73 7.69 19 7 19c-1.66 0-3-2.69-3-6zm16 6c-.69 0-1.35-.27-1.93-.74.61-1.71.93-3.91.93-6.26s-.32-4.55-.93-6.26C16.65 4.27 17.31 4 18 4c1.66 0 3 2.69 3 6s-1.34 6-3 6z"/></svg><span>英语世界</span><div class="underline"></div></div>
         <div class="nav-tab" data-view="speak"><svg class="icon" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg><span>口语伙伴</span><div class="underline"></div></div>
+        <div class="nav-tab" data-view="game"><svg class="icon" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg><span>闯关游戏</span><div class="underline"></div></div>
         <div class="nav-tab" data-view="pet"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9.5c0 .83-.67 1.5-1.5 1.5S7 11.33 7 10.5 7.67 9 8.5 9s1.5.67 1.5 1.5zm7 0c0 .83-.67 1.5-1.5 1.5S14 11.33 14 10.5 14.67 9 15.5 9s1.5.67 1.5 1.5zM12 17.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg><span>元宇宙宠物</span><div class="underline"></div></div>
       </nav>
       <div class="top-bar-right">
@@ -2576,6 +2861,27 @@ function renderSidePanel(){
           <div class="quick-item" onclick="switchView('english')"><svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11z"/></svg><span>进阶</span></div>
           <div class="quick-item" onclick="switchView('pet')"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg><span>宠物</span></div>
           <div class="quick-item" onclick="setStar(10,'签到成功');this.style.background='var(--teal-soft)';this.querySelector('span').style.color='var(--teal)'"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>签到</span></div>
+        </div>
+      </div>
+
+      <div class="parent-section" data-psec="errors">
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <h4 style="font-size:15px;font-weight:800;color:var(--navy)">🐛 错误日志</h4>
+            <button class="export-btn" onclick="exportErrorLog()">📥 导出日志</button>
+          </div>
+          <div id="errorLogBody" style="max-height:300px;overflow-y:auto">
+            <div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错误记录</div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <h4 style="font-size:15px;font-weight:800;color:var(--navy)">❌ 错题本</h4>
+            <button class="export-btn" onclick="exportWrongProblems()">📥 导出错题</button>
+          </div>
+          <div id="wrongProblemsBody" style="max-height:300px;overflow-y:auto">
+            <div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错题记录</div>
+          </div>
         </div>
       </div>
     </div>`;
@@ -5180,6 +5486,244 @@ function playMiniGame(type){
   },800);
 }
 
+// === 闯关游戏 ===
+let spellWords=[],spellIdx=0,spellInput=[],spellRound=0,spellTotal=5,spellScore=0,spellTimer=null;
+let challengeQuestions=[],challengeIdx=0,challengeScore=0,challengeTimeLeft=60,challengeTimer=null,challengeTotal=10;
+
+function renderGameHub(){
+  const engGrade=S.eng&&S.eng.grade||'3';
+  const engWords=VOCAB_BY_GRADE[engGrade]||VOCAB_BY_GRADE['3'];
+  const allWords=[];
+  Object.keys(VOCAB_BY_GRADE).forEach(g=>(VOCAB_BY_GRADE[g]||[]).forEach(w=>allWords.push(w)));
+  const totalWords=allWords.length;
+  const mathGrades=Object.keys(MATH_BY_GRADE||{}).length;
+  const challengeBest=S.game&&S.game.challengeBest||0;
+  const spellBest=S.game&&S.game.spellBest||0;
+  return `
+    <div style="flex:1;min-width:0">
+      <div class="eng-banner">
+        <div>
+          <h2>🎮 闯关游戏</h2>
+          <p>在游戏中巩固知识，边玩边学更有趣！</p>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--text-2)">单词库 <b style="color:var(--teal)">${totalWords}</b> 词</div>
+          <div style="font-size:12px;color:var(--text-2)">数学题库 <b style="color:var(--coral)">${mathGrades}</b> 年级</div>
+        </div>
+      </div>
+      <div class="game-hub-grid">
+        <div class="game-card teal" onclick="startSpellingGame()">
+          <div class="game-card-icon">📝</div>
+          <h3>单词拼写挑战</h3>
+          <p>听发音看释义，把英文单词拼出来！共 5 轮，拼对得分</p>
+          <div class="game-badge">最高分 ${spellBest}</div>
+        </div>
+        <div class="game-card coral" onclick="startMathChallenge()">
+          <div class="game-card-icon">🧮</div>
+          <h3>数学闯关赛</h3>
+          <p>60 秒内尽可能多答对，题目来自当前年级</p>
+          <div class="game-badge">最高分 ${challengeBest}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function startSpellingGame(){
+  spellIdx=0;spellInput=[];spellScore=0;spellRound=0;spellTotal=5;spellWords=[];
+  const engGrade=S.eng&&S.eng.grade||'3';
+  const pool=(VOCAB_BY_GRADE[engGrade]||VOCAB_BY_GRADE['3']).filter(w=>w.w&&w.w.length>=3);
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  spellWords=pool.slice(0,spellTotal);
+  if(spellWords.length===0){toast('暂无单词，先去英语世界学习吧！');return;}
+  spellRound=0;renderSpellingRound();
+}
+
+function renderSpellingRound(){
+  if(spellRound>=spellWords.length){endSpellingGame();return;}
+  const word=spellWords[spellRound];
+  const letters=word.w.split('');
+  spellInput=new Array(letters.length).fill('');
+  const shuffled=[...letters].sort(()=>Math.random()-.5);
+  const correctIdx=spellInput.map(()=>null);
+  $('#contentArea').innerHTML=`
+    <div style="flex:1;min-width:0">
+      <div class="spell-score-bar">
+        <span>📝 单词拼写挑战</span>
+        <span>第 ${spellRound+1}/${spellWords.length} 题</span>
+        <span style="color:var(--teal)">得分: ${spellScore}</span>
+      </div>
+      <div class="game-progress-bar"><div class="game-progress-fill" style="width:${(spellRound/spellWords.length)*100}%"></div></div>
+      <div class="spell-word-display" id="spellSlots">
+        ${letters.map((_,i)=>`<div class="spell-slot" id="slot${i}" onclick="removeSpellLetter(${i})"></div>`).join('')}
+      </div>
+      <div class="spell-hint">
+        <strong>💡 提示：</strong>${word.def||'看着字母拼出单词'} &nbsp;
+        <button class="btn-listen" onclick="speak('${word.w}')" style="margin-left:8px">🔊 听发音</button>
+      </div>
+      <div class="spell-letters" id="spellLetters">
+        ${shuffled.map((l,i)=>`<div class="spell-letter" id="letter${i}" onclick="addSpellLetter(${i},'${l}')">${l.toUpperCase()}</div>`).join('')}
+      </div>
+      <div style="text-align:center;margin-top:16px">
+        <button class="btn btn-ghost" onclick="renderGameHub()">← 返回</button>
+      </div>
+    </div>`;
+}
+
+function addSpellLetter(idx,char){
+  const el=$('#letter'+idx);
+  if(!el||el.classList.contains('used'))return;
+  const nextEmpty=spellInput.findIndex(c=>c===null);
+  if(nextEmpty===-1)return;
+  spellInput[nextEmpty]=char;
+  el.classList.add('used');
+  const slot=$('#slot'+nextEmpty);
+  if(slot){slot.textContent=char;slot.classList.add('filled');}
+  if(spellInput.every(c=>c!==null)){
+    setTimeout(()=>checkSpelling(),400);
+  }
+}
+
+function removeSpellLetter(idx){
+  if(idx<0||idx>=spellInput.length||spellInput[idx]===null)return;
+  const char=spellInput[idx];
+  spellInput[idx]=null;
+  const slot=$('#slot'+idx);
+  if(slot){slot.textContent='';slot.classList.remove('filled','correct','wrong');}
+  const li=$$('.spell-letter');
+  for(const el of li){
+    if(el.classList.contains('used')&&el.textContent.trim().toLowerCase()===char.toLowerCase()){el.classList.remove('used');break;}
+  }
+}
+
+function checkSpelling(){
+  const word=spellWords[spellRound];
+  const answer=word.w.toLowerCase();
+  const userAnswer=spellInput.join('').toLowerCase();
+  const isCorrect=userAnswer===answer;
+  if(isCorrect){
+    spellScore+=10;
+    $$('.spell-slot').forEach(el=>el.classList.add('correct'));
+    setStar(1,'拼写正确');
+  }else{
+    $$('.spell-slot').forEach((el,i)=>{el.classList.add('wrong');if(el.textContent.toLowerCase()!==answer[i])el.textContent=answer[i]||'';});
+  }
+  setTimeout(()=>{
+    spellRound++;
+    renderSpellingRound();
+  },1200);
+}
+
+function endSpellingGame(){
+  const best=spellScore>(S.game&&S.game.spellBest||0)?spellScore:(S.game&&S.game.spellBest||0);
+  if(S.game)S.game.spellBest=best;else{S.game=S.game||{};S.game.spellBest=best;}
+  saveState();
+  const stars=spellScore>=40?3:spellScore>=20?2:spellScore>=10?1:0;
+  $('#contentArea').innerHTML=`
+    <div style="flex:1;min-width:0">
+      <div class="challenge-result">
+        <div class="result-stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div>
+        <div class="result-score">${spellScore}</div>
+        <div class="result-label">总分 · 最高分 ${best}</div>
+        <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="startSpellingGame()">🔄 再来一轮</button>
+          <button class="btn btn-secondary" onclick="renderGameHub()">🏠 返回游戏</button>
+        </div>
+      </div>
+    </div>`;
+  setStar(spellScore,'单词拼写');
+  S.pet.exp+=spellScore;checkPetLevelUp();saveState();
+}
+
+function startMathChallenge(){
+  challengeIdx=0;challengeScore=0;challengeTimeLeft=60;challengeTotal=10;
+  challengeQuestions=[];
+  const grade=S.math&&S.math.grade||'3';
+  const variants=(MATH_BY_GRADE&&MATH_BY_GRADE[grade]&&MATH_BY_GRADE[grade].variants)||[];
+  if(variants.length===0){toast('暂无题目，先去数学星球学习吧！');return;}
+  for(let i=variants.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[variants[i],variants[j]]=[variants[j],variants[i]];}
+  challengeQuestions=variants.slice(0,challengeTotal);
+  renderChallengeQuestion();
+  challengeTimer=setInterval(()=>{
+    challengeTimeLeft--;
+    const td=$('#challengeTimer');
+    if(td){td.textContent=challengeTimeLeft+'s';td.classList.toggle('warning',challengeTimeLeft<=10);}
+    if(challengeTimeLeft<=0){clearInterval(challengeTimer);endMathChallenge();}
+  },1000);
+}
+
+function renderChallengeQuestion(){
+  if(challengeIdx>=challengeQuestions.length||challengeTimeLeft<=0){endMathChallenge();return;}
+  const q=challengeQuestions[challengeIdx];
+  const opts=q.choices||['A','B','C','D'];
+  $('#contentArea').innerHTML=`
+    <div style="flex:1;min-width:0">
+      <div class="math-challenge-header">
+        <div>
+          <div style="font-size:13px;color:var(--text-2)">🧮 数学闯关赛 · ${S.math&&S.math.grade||'3'}年级</div>
+          <div class="timer-display" id="challengeTimer">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            ${challengeTimeLeft}s
+          </div>
+        </div>
+        <div class="challenge-score">⭐ ${challengeScore}</div>
+      </div>
+      <div class="challenge-progress">
+        ${challengeQuestions.map((_,i)=>{const d=challengeResults&&challengeResults[i];return `<div class="challenge-dot${i<challengeIdx?(d?' done':' wrong-dot'):i===challengeIdx?' current':''}"></div>`;}).join('')}
+      </div>
+      <div class="challenge-question">
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:8px">第 ${challengeIdx+1}/${challengeQuestions.length} 题</div>
+        <h3 style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px">${q.question||''}</h3>
+        <div class="challenge-options">
+          ${(opts||[]).map((o,i)=>`<div class="challenge-opt" id="copt${i}" onclick="answerChallenge(${i},'${String(q.answer||'').toLowerCase()}','${String(o||'').toLowerCase()}')">${String.fromCharCode(65+i)}. ${o}</div>`).join('')}
+        </div>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-ghost" onclick="endMathChallenge()">⏹ 提前结束</button>
+      </div>
+    </div>`;
+}
+
+let challengeResults=[];
+
+function answerChallenge(optIdx,correctAnswer,userAnswer){
+  if(challengeResults[challengeIdx]!==undefined)return;
+  const isCorrect=correctAnswer===userAnswer;
+  challengeResults[challengeIdx]=isCorrect;
+  $$('.challenge-opt').forEach((el,i)=>{
+    el.classList.add('disabled');
+    const optVal=el.textContent.toLowerCase().replace(/^[a-d]\.\s*/,'');
+    if(optVal===correctAnswer)el.classList.add('correct');
+    else if(i===optIdx&&!isCorrect)el.classList.add('wrong');
+  });
+  if(isCorrect){challengeScore+=10;setStar(1,'闯关答对');}
+  setTimeout(()=>{challengeIdx++;renderChallengeQuestion();},800);
+}
+
+function endMathChallenge(){
+  clearInterval(challengeTimer);challengeTimer=null;
+  const best=challengeScore>(S.game&&S.game.challengeBest||0)?challengeScore:(S.game&&S.game.challengeBest||0);
+  if(S.game)S.game.challengeBest=best;else{S.game=S.game||{};S.game.challengeBest=best;}
+  saveState();
+  const correctCount=(challengeResults||[]).filter(Boolean).length;
+  const stars=challengeScore>=80?3:challengeScore>=50?2:challengeScore>=20?1:0;
+  const timeUsed=60-challengeTimeLeft;
+  $('#contentArea').innerHTML=`
+    <div style="flex:1;min-width:0">
+      <div class="challenge-result">
+        <div class="result-stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div>
+        <div class="result-score">${challengeScore}</div>
+        <div class="result-label">答对 ${correctCount}/${challengeQuestions.length} 题 · 用时 ${timeUsed} 秒</div>
+        <div style="font-size:13px;color:var(--text-3);margin-bottom:20px">最高分：${best}</div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="startMathChallenge()">🔄 再来一局</button>
+          <button class="btn btn-secondary" onclick="renderGameHub()">🏠 返回游戏</button>
+        </div>
+      </div>
+    </div>`;
+  setStar(challengeScore,'数学闯关');
+  S.pet.exp+=challengeScore;checkPetLevelUp();saveState();
+}
+
 /* ============ 家长面板 ============ */
 let parentChart1=null,parentChart2=null;
 function disposeParentCharts(){
@@ -5384,7 +5928,7 @@ function renderParentDashboard(){
               <div style="font-size:11px;font-weight:700;letter-spacing:.2em;opacity:.8;margin-bottom:4px">WEEKLY REPORT</div>
               <h3 style="margin:0">📊 本周学习周报</h3>
             </div>
-            <button class="btn btn-yellow" onclick="toast('📄 PDF 报告生成中，请稍候...')">📄 生成 PDF 报告</button>
+            <button class="btn btn-yellow" onclick="exportWeeklyReport()">📄 导出 CSV 报告</button>
           </div>
           <div class="report-kpi-row">
             <div class="report-kpi">
@@ -5506,6 +6050,7 @@ function renderParentDashboard(){
     </div>`;
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
+  if(pt==='errors'){renderErrorLog();renderWrongProblems();}
   $$('.parent-tab').forEach(t=>t.onclick=()=>{
     $$('.parent-tab').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
@@ -5513,6 +6058,7 @@ function renderParentDashboard(){
     $$('.parent-section').forEach(s=>{
       s.classList.toggle('active',s.dataset.psec===pt);
     });
+    if(pt==='errors'){renderErrorLog();renderWrongProblems();}
     if((pt==='overview')&&typeof echarts!=='undefined'){
       setTimeout(()=>initParentCharts(),80);
     }
@@ -5625,6 +6171,81 @@ function saveGroqKey(){
   toast('✅ API Key 已保存');
 }
 
+function renderErrorLog(){
+  const el=$('#errorLogBody');
+  if(!el)return;
+  try{
+    const raw=localStorage.getItem('quiqu_error_log');
+    const logs=raw?JSON.parse(raw):[];
+    if(!logs.length){el.innerHTML='<div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错误记录 ✅</div>';return;}
+    el.innerHTML='<table class="error-log-table"><thead><tr><th>时间</th><th>错误信息</th><th>位置</th></tr></thead><tbody>'+logs.map(l=>`<tr><td class="err-time">${new Date(l.time).toLocaleString('zh-CN')}</td><td class="err-msg">${(l.msg||'').replace(/</g,'&lt;').slice(0,120)}</td><td class="err-url">${l.url?l.url.split('/').pop():''}:${l.line||''}</td></tr>`).join('')+'</tbody></table>';
+  }catch(e){el.innerHTML='<div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">加载失败</div>';}
+}
+
+function renderWrongProblems(){
+  const el=$('#wrongProblemsBody');
+  if(!el)return;
+  const wrong=(S.math&&S.math.wrongProblems)||[];
+  if(!wrong.length){el.innerHTML='<div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错题记录 ✅</div>';return;}
+  el.innerHTML='<table class="error-log-table"><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody>'+wrong.slice(-20).reverse().map((w,i)=>`<tr><td class="err-time">${wrong.length-i}</td><td class="err-msg">${(w.q||'').replace(/</g,'&lt;').slice(0,100)}</td><td>${w.a||'?'}</td></tr>`).join('')+'</tbody></table>';
+}
+
+function exportErrorLog(){
+  try{
+    const raw=localStorage.getItem('quiqu_error_log');
+    const logs=raw?JSON.parse(raw):[];
+    if(!logs.length){toast('暂无错误日志');return;}
+    let csv='时间,错误信息,URL,行号\n';
+    logs.forEach(l=>{csv+=`"${l.time}","${(l.msg||'').replace(/"/g,'""')}","${l.url||''}",${l.line||''}\n`;});
+    downloadCSV(csv,'奇趣学园_错误日志.csv');
+    toast('✅ 错误日志已导出');
+  }catch(e){toast('导出失败');}
+}
+
+function exportWrongProblems(){
+  try{
+    const wrong=(S.math&&S.math.wrongProblems)||[];
+    if(!wrong.length){toast('暂无错题记录');return;}
+    let csv='序号,题目,答案\n';
+    wrong.forEach((w,i)=>{csv+=`${i+1},"${(w.q||'').replace(/"/g,'""')}","${w.a||''}"\n`;});
+    downloadCSV(csv,'奇趣学园_错题本.csv');
+    toast('✅ 错题本已导出');
+  }catch(e){toast('导出失败');}
+}
+
+function exportWeeklyReport(){
+  try{
+    const o=S.overview||{};
+    const now=new Date();
+    const dateStr=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+    let csv='奇趣学园 学习报告\n';
+    csv+=`生成日期,${dateStr}\n\n`;
+    csv+=`指标,数值\n`;
+    csv+=`累计星星,${o.stars||0}\n`;
+    csv+=`连续学习天数,${o.streak||0}\n`;
+    csv+=`本周目标,${o.weekGoal||5}\n`;
+    csv+=`本周完成,${o.weekDone||0}\n`;
+    csv+=`总学习时长(分钟),${o.totalMin||0}\n`;
+    csv+=`平均正确率(%),${o.avgAccuracy||0}\n\n`;
+    csv+=`错题记录\n`;
+    csv+=`序号,题目,答案\n`;
+    const wrong=(S.math&&S.math.wrongProblems)||[];
+    wrong.forEach((w,i)=>{csv+=`${i+1},"${(w.q||'').replace(/"/g,'""')}","${w.a||''}"\n`;});
+    downloadCSV(csv,'奇趣学园_学习报告_'+dateStr+'.csv');
+    toast('✅ 学习报告已导出');
+  }catch(e){toast('导出失败');}
+}
+
+function downloadCSV(csv,filename){
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download=filename;
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 /* ============ 数据持久化层 ============ */
 const STORAGE_KEY='ququxv4_state_v1';
 const defaultState={
@@ -5644,7 +6265,8 @@ const defaultState={
   lastSession:null,          // 断点续学 {subject, stage, knowledgePoint, time}
   sceneTheme:{date:'',theme:'',words:[]},  // 每日场景主线
   apiConfig:{groqKey:''},    // AI API 配置（用户在设置中输入）
-  engStage:1                 // 英语三阶段：1=输入主导 2=引导输出 3=自主输出
+  engStage:1,                 // 英语三阶段：1=输入主导 2=引导输出 3=自主输出
+  game:{spellBest:0,challengeBest:0}  // 闯关游戏最高分
 };
 function loadState(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));return s?{...defaultState,...s}:defaultState;}catch{return defaultState}}
 function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
@@ -5808,6 +6430,7 @@ function render(){
   else if(currentView==='math')area.innerHTML=renderMath(currentMathGrade);
   else if(currentView==='english')area.innerHTML=renderEnglish(currentEngGrade,currentEngSub);
   else if(currentView==='speak'){area.innerHTML=renderSpeak();bindSpeakEvents();}
+  else if(currentView==='game')area.innerHTML=renderGameHub();
   else if(currentView==='pet')area.innerHTML=renderPet();
   bindDynamicEvents();
 }
