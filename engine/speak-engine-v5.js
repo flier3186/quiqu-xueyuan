@@ -101,7 +101,7 @@ window.SpeakEngineV5 = {
     speechSynthesis.speak(u);
   },
 
-  // ===== 调用 Groq AI API =====
+  // ===== 调用 Groq AI API（带重试+超时） =====
   async _callAI(teacherId, userText, dialogHistory){
     const key = (S.apiConfig && S.apiConfig.groqKey) || '';
     if(!key) return null; // 触发降级
@@ -116,27 +116,50 @@ window.SpeakEngineV5 = {
       ...recent,
       { role: 'user', content: userText }
     ];
-    try{
-      const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + key
-        },
-        body: JSON.stringify({
-          model: 'llama-3.1-8b-instant',
-          messages: messages,
-          max_tokens: 150,
-          temperature: 0.7
-        })
-      });
-      if(!resp.ok) return null;
-      const data = await resp.json();
-      const reply = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
-      return reply ? reply.trim() : null;
-    }catch(e){
-      return null;
+    const body = JSON.stringify({
+      model: 'llama-3.1-8b-instant',
+      messages: messages,
+      max_tokens: 150,
+      temperature: 0.7
+    });
+    // 最多重试 2 次（共 3 次请求），指数退避 1s/2s
+    for(var attempt=0; attempt<3; attempt++){
+      try{
+        var ctrl = new AbortController();
+        var timer = setTimeout(function(){ctrl.abort();}, 15000);
+        var resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + key
+          },
+          body: body,
+          signal: ctrl.signal
+        });
+        clearTimeout(timer);
+        if(resp.ok){
+          var data = await resp.json();
+          var reply = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+          return reply ? reply.trim() : null;
+        }
+        // 401 Key 失效：不重试，直接降级
+        if(resp.status === 401) return null;
+        // 429 限流 / 5xx 服务器错误：重试
+        if((resp.status === 429 || resp.status >= 500) && attempt < 2){
+          await new Promise(function(r){setTimeout(r, 1000 * (attempt+1));});
+          continue;
+        }
+        return null;
+      }catch(e){
+        // 网络异常 / abort：重试
+        if(attempt < 2){
+          await new Promise(function(r){setTimeout(r, 1000 * (attempt+1));});
+          continue;
+        }
+        return null;
+      }
     }
+    return null;
   },
 
   // ===== 降级模式：分支对话树 =====

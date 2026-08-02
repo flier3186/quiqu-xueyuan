@@ -1111,6 +1111,8 @@ input,textarea{font-family:inherit}
   .speak-side{flex-direction:row;flex-wrap:wrap}
   .speak-side>div{flex:1;min-width:240px}
   .overview-grid{grid-template-columns:1fr}
+  .bento-grid{grid-template-columns:1fr !important}
+  .bento-grid>*{grid-column:auto !important;grid-row:auto !important}
   .tasks-grid{grid-template-columns:1fr}
   .stat-grid{grid-template-columns:1fr 1fr}
   .top-bar{padding:0 16px;overflow-x:auto}
@@ -1147,6 +1149,7 @@ input,textarea{font-family:inherit}
   .pet-display{width:180px;height:180px}
   .stat-grid{grid-template-columns:1fr 1fr !important}
   .quick-grid{grid-template-columns:1fr 1fr !important}
+  .suggest-grid{grid-template-columns:1fr 1fr !important}
 }
 /* 超小屏适配（≤380px） */
 @media (max-width:380px){
@@ -1155,6 +1158,7 @@ input,textarea{font-family:inherit}
   .report-kpi-row{grid-template-columns:1fr}
   .stat-grid{grid-template-columns:1fr}
   .quick-grid{grid-template-columns:1fr}
+  .suggest-grid{grid-template-columns:1fr !important}
   .word-tooltip{max-width:90vw !important}
   .modal{max-width:96vw !important}
 }
@@ -3046,7 +3050,7 @@ function renderOverview(){
         </div>
 
         <!-- Bento Grid 学习驾驶舱 -->
-        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch;margin-bottom:20px">
+        <div class="bento-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch;margin-bottom:20px">
 
           <!-- 卡片1：今日学习任务（主卡，span 7，跨2行） -->
           <div class="card tilt-card" style="grid-column:span 7;grid-row:span 2;display:flex;flex-direction:column;background:linear-gradient(160deg,#fff 0%,var(--teal-50) 100%);border:1px solid var(--teal-100)">
