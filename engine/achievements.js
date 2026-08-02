@@ -58,6 +58,34 @@ window.Achievements = (function(){
       reward:{type:'petSkin', skin:'星空款'},
       cond:()=>(S.overview.streak||0) >= 7,
       prog:()=>{const v=Math.min(S.overview.streak||0,7);return{cur:v,tgt:7};}
+    },
+    // 口语
+    'review-streak-3': {
+      name:'三日回顾', icon:'🔄', desc:'连续3天回顾学习', subject:'speak',
+      cond:()=>(S.overview.streak||0) >= 3,
+      prog:()=>{const v=Math.min(S.overview.streak||0,3);return{cur:v,tgt:3};}
+    },
+    'speak-5': {
+      name:'口语达人', icon:'🗣️', desc:'完成5次口语对话', subject:'speak',
+      cond:()=>((S.speak.history||[]).length / 2) >= 5,
+      prog:()=>{const v=Math.min(Math.floor((S.speak.history||[]).length / 2),5);return{cur:v,tgt:5};}
+    },
+    // 词汇
+    'vocab-50': {
+      name:'五十词高手', icon:'📝', desc:'学会50个单词', subject:'english',
+      cond:()=>(S.eng.learnedWords||0) >= 50,
+      prog:()=>{const v=Math.min(S.eng.learnedWords||0,50);return{cur:v,tgt:50};}
+    },
+    // 数学
+    'math-perfect': {
+      name:'零失误', icon:'💯', desc:'数学一次全对', subject:'math',
+      cond:()=>(S.math.wrongProblems||[]).length === 0 && (S.answerLog||[]).length > 0,
+      prog:()=>{const m=(S.math&&S.math.mastery)||{};const wrongTotal=Object.values(m).reduce((s,v)=>s+(v.wrong||0),0);const total=(S.answerLog||[]).length||1;return{cur:total-wrongTotal,tgt:total};}
+    },
+    'first-lesson': {
+      name:'第一课', icon:'🎒', desc:'完成第一节数学课', subject:'math',
+      cond:()=>Object.values(S.math.moduleProgress||{}).some(v=>v>0),
+      prog:()=>{const vs=Object.values(S.math.moduleProgress||{});const done=vs.filter(v=>v>0).length;return{cur:done,tgt:vs.length||1};}
     }
   };
 
