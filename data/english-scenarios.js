@@ -222,5 +222,149 @@ window.SPEAK_SCENARIOS = [
     ],
     vocabulary:['wrong','headache','fever','cold','medicine','rest','water','doctor'],
     tips:'描述症状用 I have a... 如 I have a headache. 我头痛。'
+  },
+  { id:'zoo_visit', title:'动物园游玩', icon:'🦁', level:2, desc:'在动物园看动物',
+    teacherLines:[
+      {id:'t1', text:"Wow! Look at the big animals. What do you see?", cn:"哇！看那些大动物。你看到了什么？"},
+      {id:'t2', text:"The lion is so strong! What other animals do you like?", cn:"狮子好强壮！你还喜欢什么动物？"},
+      {id:'t3', text:"Nice! What color is the elephant?", cn:"不错！大象是什么颜色的？"},
+      {id:'t4', text:"Smart! Do you know what the giraffe eats?", cn:"聪明！你知道长颈鹿吃什么吗？"},
+      {id:'t5', text:"Great job! Let's go see more animals. See you later!", cn:"做得好！我们去看更多动物。再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['lion','elephant','tiger','bear','monkey','see','animal'], suggestions:["I see a lion.","I see an elephant."]},
+      {teacherLineId:'t2', keywords:['monkey','panda','giraffe','bear','like','tiger'], suggestions:["I like monkeys.","I like pandas."]},
+      {teacherLineId:'t3', keywords:['grey','gray','big','color','white'], suggestions:["The elephant is grey.","It's grey and big."]},
+      {teacherLineId:'t4', keywords:['leaf','leaves','grass','tree','eat','green'], suggestions:["It eats leaves.","It eats grass."]},
+      {teacherLineId:'t5', keywords:['yes','okay','great','thanks','bye'], suggestions:["Yes, let's go!","Thanks! Bye!"]}
+    ],
+    vocabulary:['animal','lion','elephant','giraffe','monkey','panda','see','color'],
+    tips:'描述动物用 It is + 颜色/大小，如 The elephant is big.'
+  },
+  { id:'campus_new', title:'新同学入校', icon:'🏫', level:1, desc:'欢迎新同学自我介绍',
+    teacherLines:[
+      {id:'t1', text:"Welcome to our school! What's your name?", cn:"欢迎来到我们学校！你叫什么名字？"},
+      {id:'t2', text:"Nice to meet you! How old are you?", cn:"很高兴认识你！你几岁了？"},
+      {id:'t3', text:"Cool! Where did you come from?", cn:"酷！你从哪里来的？"},
+      {id:'t4', text:"Great! Do you have any hobbies?", cn:"太棒了！你有什么爱好吗？"},
+      {id:'t5', text:"You are our new friend now! Let's play together!", cn:"你现在是我们的新朋友了！我们一起玩吧！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['name','my','i','am','call','hi'], suggestions:["My name is Tom.","I'm Lily."]},
+      {teacherLineId:'t2', keywords:['old','years','ten','nine','eight','eleven'], suggestions:["I'm ten years old.","I'm nine."]},
+      {teacherLineId:'t3', keywords:['from','china','beijing','shanghai','america','city'], suggestions:["I'm from Beijing.","I came from Shanghai."]},
+      {teacherLineId:'t4', keywords:['play','read','draw','sing','dance','football','like'], suggestions:["I like reading.","I like playing football."]},
+      {teacherLineId:'t5', keywords:['yes','okay','thanks','happy','friend'], suggestions:["Yes, thank you!","I'm happy to be here!"]}
+    ],
+    vocabulary:['welcome','school','name','old','from','friend','hobby','new'],
+    tips:'介绍自己用 My name is... 或 I am... 句型，友好地说出爱好'
+  },
+  { id:'birthday_party', title:'生日派对', icon:'🎂', level:2, desc:'参加生日派对的对话',
+    teacherLines:[
+      {id:'t1', text:"Happy birthday! How old are you today?", cn:"生日快乐！你今天几岁了？"},
+      {id:'t2', text:"Wow! Do you want a big cake or a small cake?", cn:"哇！你想要大蛋糕还是小蛋糕？"},
+      {id:'t3', text:"Yummy! What flavor do you like, chocolate or vanilla?", cn:"好吃！你喜欢什么口味，巧克力还是香草？"},
+      {id:'t4', text:"Great! Do you want to open your gifts now?", cn:"好！你想现在拆开礼物吗？"},
+      {id:'t5', text:"Have a wonderful birthday! Thank you for coming!", cn:"祝你生日快乐！谢谢你过来！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['ten','nine','eleven','twelve','years','old'], suggestions:["I'm ten years old.","I'm nine."]},
+      {teacherLineId:'t2', keywords:['big','small','cake','want','please'], suggestions:["I want a big cake, please.","A small cake is fine."]},
+      {teacherLineId:'t3', keywords:['chocolate','vanilla','strawberry','like','yum','tasty'], suggestions:["I like chocolate.","Chocolate is yummy!"]},
+      {teacherLineId:'t4', keywords:['yes','okay','now','gifts','present','soon'], suggestions:["Yes, let's open them now!","Yes, please!"]},
+      {teacherLineId:'t5', keywords:['thanks','thank','you','happy','bye'], suggestions:["Thank you! Happy birthday to you too!","Thanks! Bye!"]}
+    ],
+    vocabulary:['birthday','cake','flavor','chocolate','gift','present','party','old'],
+    tips:'生日派对常用：Happy birthday! / Would you like...? / Thank you for coming!'
+  },
+  { id:'library', title:'图书馆', icon:'📖', level:2, desc:'在图书馆借书和阅读',
+    teacherLines:[
+      {id:'t1', text:"Welcome to the library! What kind of book are you looking for?", cn:"欢迎来到图书馆！你在找什么类型的书？"},
+      {id:'t2', text:"Great choice! Let me help you find it. Do you have a library card?", cn:"好选择！我来帮你找。你有借书证吗？"},
+      {id:'t3', text:"Here you go! You can borrow up to three books at a time.", cn:"给你！你一次最多可以借三本书。"},
+      {id:'t4', text:"Please read quietly. Where should you keep your voice down?", cn:"请安静阅读。你应该在哪里保持安静？"},
+      {id:'t5', text:"Remember to return the books on time. See you next time!", cn:"记得按时还书。下次见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['story','comic','animal','science','fairytale','book','read'], suggestions:["I'm looking for a storybook.","I want a science book."]},
+      {teacherLineId:'t2', keywords:['yes','here','card','library','have','dont'], suggestions:["Yes, here is my card.","Yes, I have a library card."]},
+      {teacherLineId:'t3', keywords:['thanks','thank','three','books','borrow','okay'], suggestions:["Thank you! I'll borrow three books.","Okay, thank you!"]},
+      {teacherLineId:'t4', keywords:['quiet','silent','read','desk','table','yes','okay'], suggestions:["Yes, I'll be quiet.","I'll read quietly at my desk."]},
+      {teacherLineId:'t5', keywords:['thanks','remember','return','okay','bye'], suggestions:["Yes, I'll return them on time. Thanks!","Okay, see you next time!"]}
+    ],
+    vocabulary:['library','book','borrow','quiet','card','return','read','story'],
+    tips:'图书馆规则：Keep quiet! / Please return books on time. / Can I borrow...?'
+  },
+  { id:'sports_day', title:'运动会', icon:'🏃', level:3, desc:'参加运动会的比赛和加油',
+    teacherLines:[
+      {id:'t1', text:"Welcome to Sports Day! What event are you participating in?", cn:"欢迎参加运动会！你参加什么项目？"},
+      {id:'t2', text:"That's exciting! How do you usually train for it?", cn:"很刺激！你平时怎么训练的？"},
+      {id:'t3', text:"Good luck! Run fast and don't give up!", cn:"祝你好运！跑得飞快，不要放弃！"},
+      {id:'t4', text:"What a great race! Did you win a medal?", cn:"精彩的比赛！你拿到奖牌了吗？"},
+      {id:'t5', text:"You did amazing! Come back next year and try again. Well done!", cn:"你太棒了！明年再来试试。干得好！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['race','run','swim','jump','football','basketball','relay'], suggestions:["I'm running in the race.","I'm doing the relay race."]},
+      {teacherLineId:'t2', keywords:['practice','run','train','every','day','swim','hard'], suggestions:["I practice every day.","I run fast every morning."]},
+      {teacherLineId:'t3', keywords:['thanks','thank','okay','ready','go','fast'], suggestions:["Thank you! I'm ready!","Thanks! Let's go!"]},
+      {teacherLineId:'t4', keywords:['yes','no','win','lose','second','third','good','happy'], suggestions:["Yes, I won a silver medal!","I didn't win, but I had fun."]},
+      {teacherLineId:'t5', keywords:['thanks','happy','great','fun','bye'], suggestions:["Thank you! It was so much fun!","Thanks! I'll come back next year!"]}
+    ],
+    vocabulary:['sports','race','run','jump','win','medal','practice','fast'],
+    tips:'运动会常用：Good luck! / Well done! / Keep going!'
+  },
+  { id:'at_home', title:'在家时光', icon:'🏠', level:1, desc:'描述在家里做的事情',
+    teacherLines:[
+      {id:'t1', text:"Hi! What do you usually do at home?", cn:"嗨！你平时在家做什么？"},
+      {id:'t2', text:"Sounds nice! Do you help your parents at home?", cn:"听起来不错！你在家帮父母做事吗？"},
+      {id:'t3', text:"Good job! What room do you like most at home?", cn:"很棒！你最喜欢家里的哪个房间？"},
+      {id:'t4', text:"What do you do in that room?", cn:"在那个房间里你做什么？"},
+      {id:'t5', text:"Home is the best place! Thanks for sharing with me. Bye!", cn:"家是最好的地方！谢谢你和我分享。再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['watch','tv','play','read','sleep','eat','game','homework'], suggestions:["I watch TV at home.","I play games at home."]},
+      {teacherLineId:'t2', keywords:['yes','help','clean','wash','cook','do','chores'], suggestions:["Yes, I help clean the room.","Yes, I help my mom cook."]},
+      {teacherLineId:'t3', keywords:['bedroom','kitchen','living','room','study','like','favorite'], suggestions:["I like my bedroom.","My favorite room is the living room."]},
+      {teacherLineId:'t4', keywords:['sleep','read','play','relax','watch','tv','draw'], suggestions:["I read books there.","I play games there."]},
+      {teacherLineId:'t5', keywords:['yes','thanks','home','love','bye'], suggestions:["Yes, home is the best! Thanks!","Bye! I love my home!"]}
+    ],
+    vocabulary:['home','room','help','clean','watch','play','like','usually'],
+    tips:'描述在家活动用 I usually... 或 I often...'
+  },
+  { id:'travel_trip', title:'旅行出行', icon:'✈️', level:3, desc:'谈论旅行计划和目的地',
+    teacherLines:[
+      {id:'t1', text:"Hi! Do you like traveling? Where do you want to go?", cn:"嗨！你喜欢旅行吗？你想去哪里？"},
+      {id:'t2', text:"Cool! How do you want to get there, by plane or by train?", cn:"酷！你怎么去那里，坐飞机还是火车？"},
+      {id:'t3', text:"Great! What will you take with you?", cn:"太好了！你会带什么去？"},
+      {id:'t4', text:"Wonderful! Who will you travel with?", cn:"棒极了！你会和谁一起去旅行？"},
+      {id:'t5', text:"Have a wonderful trip! I can't wait to hear about it. See you!", cn:"祝你旅途愉快！迫不及待想听你的旅行故事。再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['yes','love','travel','paris','japan','beach','mountain','want'], suggestions:["Yes, I love traveling!","I want to go to the beach."]},
+      {teacherLineId:'t2', keywords:['plane','train','car','bus','fly','go','fast'], suggestions:["By plane.","I want to go by train."]},
+      {teacherLineId:'t3', keywords:['clothes','shoes','camera','sun','cream','phone','passport','take'], suggestions:["I'll take my camera.","I'll take some clothes."]},
+      {teacherLineId:'t4', keywords:['mom','dad','family','friend','sister','brother','alone'], suggestions:["With my family.","With my friends."]},
+      {teacherLineId:'t5', keywords:['thanks','thank','you','bye','see'], suggestions:["Thank you! See you!","Thanks! I'll tell you about it!"]}
+    ],
+    vocabulary:['travel','trip','plane','train','where','who','take','visit'],
+    tips:'谈论旅行用 I want to go to... / How do you get to...? / Who will you go with?'
+  },
+  { id:'seasons_fest', title:'季节与节日', icon:'🎉', level:4, desc:'描述四季和传统节日',
+    teacherLines:[
+      {id:'t1', text:"Hi! What's your favorite season? Why do you like it?", cn:"嗨！你最喜欢什么季节？为什么喜欢？"},
+      {id:'t2', text:"That sounds wonderful! What festival do you celebrate in that season?", cn:"听起来很棒！你在那个季节庆祝什么节日？"},
+      {id:'t3', text:"Nice! What do you usually do during that festival?", cn:"不错！你通常在节日里做什么？"},
+      {id:'t4', text:"Cool! What kind of food do you eat during the festival?", cn:"酷！节日里你吃什么食物？"},
+      {id:'t5', text:"What a lovely tradition! Thanks for telling me about it. Bye!", cn:"多么可爱的传统！谢谢你告诉我。再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['spring','summer','autumn','winter','because','like','fun'], suggestions:["My favorite season is spring.","I like summer because I can swim."]},
+      {teacherLineId:'t2', keywords:['spring','festival','dragon','boat','moon','festival','christmas','mid'], suggestions:["We celebrate Dragon Boat Festival in summer.","We celebrate Mid-Autumn Festival in autumn."]},
+      {teacherLineId:'t3', keywords:['eat','watch','run','dance','sing','play','family','together'], suggestions:["I eat zongzi with my family.","We watch the dragon boat races."]},
+      {teacherLineId:'t4', keywords:['rice','cake','mooncake','dumpling','noodle','fish','sweet','food'], suggestions:["I eat mooncakes.","We eat dumplings."]},
+      {teacherLineId:'t5', keywords:['thanks','happy','fun','bye','see'], suggestions:["Thank you! Happy holidays!","Thanks! Bye!"]}
+    ],
+    vocabulary:['season','festival','celebrate','tradition','food','family','spring','summer','winter','autumn'],
+    tips:'描述节日用 We celebrate... / During the festival, we...'
   }
 ];
