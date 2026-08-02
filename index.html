@@ -3721,6 +3721,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
       S.math.wrongProblems.push({q:problem.question, a:String(problem.answer)});
       saveState();
     }
+    try{ SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e){}
     if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。<b>看看下面的提示再试一次</b></div>`;
     // 重新渲染 solve 阶段，展示提示
     setTimeout(()=>updateMathStage(), 900);
@@ -3852,6 +3853,7 @@ function checkMathAnswer(el,val,answer){
     const qText=document.querySelector('.wp-q')?.innerText||'数学应用题';
     S.math.wrongProblems.push({q:qText,a:String(answer)});
     saveState();
+    try{ SpacedReview.add(S.currentProfileId||'default', 'math', qText); }catch(e){}
     toast('已加入错题本，正确答案已标出');
   }
 

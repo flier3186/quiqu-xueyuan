@@ -469,6 +469,7 @@ window.EnglishFlowV5 = {
       if(typeof setStar === 'function') setStar(1, '句型练习');
     } else {
       if(fb) fb.innerHTML = '<span style="color:var(--coral)">✗ 这个词不太合适，再试试</span>';
+      try{ if(typeof SpacedReview!=='undefined') SpacedReview.add(S.currentProfileId||'default', 'vocab', w); }catch(e2){}
     }
   },
 

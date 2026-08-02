@@ -82,6 +82,24 @@ window.SpacedReview = (function(){
     },
 
     // 内部：计算下次复习间隔（暴露以便测试）
-    _nextInterval: _nextInterval
+    _nextInterval: _nextInterval,
+
+    // 渲染复习提醒到指定 DOM 元素
+    renderReviewReminder(profileId){
+      const due = this.getDue(profileId || 'default');
+      if(!due || due.length === 0) return null;
+      const items = due.map(e => {
+        const label = e.type === 'math' ? '📐 ' + (e.key.substring(0, 20) + (e.key.length > 20 ? '...' : '')) : '📖 ' + e.key;
+        return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--ink-100);font-size:13px">
+          <span style="color:var(--coral)">⏰</span>
+          <span style="flex:1;color:var(--text-1)">${label}</span>
+          <span style="color:var(--teal);font-weight:700">${e.type==='math'?'数学':'英语'}</span>
+        </div>`;
+      }).join('');
+      return `<div style="padding:10px;background:var(--yellow-soft);border-radius:10px;font-size:13px">
+        <div style="font-weight:700;color:var(--yellow);margin-bottom:6px">📋 今日有 ${due.length} 项待复习</div>
+        ${items}
+      </div>`;
+    }
   };
 })();

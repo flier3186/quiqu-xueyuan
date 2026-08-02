@@ -281,6 +281,7 @@ window.MathFlowV5 = {
           if(typeof saveState==='function') saveState();
         }
       }catch(e){}
+      try{ if(typeof SpacedReview!=='undefined') SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e2){}
       if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。<b>看看下面的提示再试一次</b></div>`;
       setTimeout(()=>{ if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 900);
     }
