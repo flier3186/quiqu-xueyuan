@@ -92,8 +92,13 @@ window.SpeakEngineV5 = {
     const ques = (text.match(/\?/g) || []).length;
     if(excl > ques) rate *= 1.10;
     else if(ques > excl) rate *= 0.85;
+    // 差异化语音：每老师独特音色 + 情感语调
+    var pitch;
+    if(teacherKey==='emma'){ pitch=1.25; rate*=0.95; }    // 女声：高频、稍慢、清晰热情
+    else if(teacherKey==='leo'){ pitch=0.75; rate*=1.10; }  // 男声：低频、稍快、活泼
+    else { pitch=1.0; }                        // aria：中性
     u.rate = Math.max(0.6, Math.min(1.4, rate));
-    u.pitch = teacher.voice.pitch;
+    u.pitch = pitch;
     const v = this._selectVoice(teacher.voice.preferGender);
     if(v){ try{ u.voice = v; }catch(e){} }
     // 句末停顿模拟语调

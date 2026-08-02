@@ -139,7 +139,7 @@ input,textarea{font-family:inherit}
 .parent-btn svg{width:28px;height:28px;border-radius:50%;fill:var(--teal)}
 .parent-btn span{font-size:14px;font-weight:600;color:var(--navy)}
 
-.content-area{flex:1;padding:28px 32px 80px;max-width:1320px;width:100%}
+.content-area{flex:1;padding:28px 32px 80px;width:100%}
 .view{display:none;animation:fadeIn .4s ease}
 .view.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -1126,7 +1126,7 @@ input,textarea{font-family:inherit}
   .pet-display{width:200px;height:200px}
   .chat-messages{padding:12px}
   .msg{max-width:95%}
-  .content-area{padding:14px 12px 80px}
+  .content-area{padding:14px 12px 80px;width:100%}
   .card{padding:16px}
   .panel-card{padding:14px}
   .eng-banner{padding:14px 16px}
@@ -6427,6 +6427,7 @@ function renderParentDashboard(){
     if((pt==='overview')&&typeof echarts!=='undefined'){
       setTimeout(()=>initParentCharts(),80);
     }
+    if(pt==='ai') ensureAiPanelBound();
   });
   setTimeout(()=>initParentCharts(),320);
   bindAiConfigEvents();
@@ -7265,15 +7266,19 @@ if(typeof MATH_EXTEND_3_6!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
     }
   });
 }
-// 3. 合并口语场景：const SPEAK_SCENARIOS(8) + english-scenarios.js 额外4个 + 8个新的 = 20
+// 3. 合并口语场景：const SPEAK_SCENARIOS(内置) + speak-8-new.js 新增8个 = 最多 20 个
 if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARIOS!=='undefined'){
-  var extraScenes=window.SPEAK_SCENARIOS.filter(function(s){
-    return !SPEAK_SCENARIOS.find(function(e){return e.id===s.id;});
-  });
-  extraScenes.forEach(function(s){SPEAK_SCENARIOS.push(s);});
-}
-if(typeof SPEAK_SCENARIOS_NEW8!=='undefined' && typeof SPEAK_SCENARIOS!=='undefined'){
-  SPEAK_SCENARIOS_NEW8.forEach(function(s){SPEAK_SCENARIOS.push(s);});
+  // 找出内置 SPEAK_SCENARIOS 中已有的 id 集合
+  const existingIds = new Set(SPEAK_SCENARIOS.map(function(s){ return s.id; }));
+  // 合并 window.SPEAK_SCENARIOS 中新增的场景
+  if(Array.isArray(window.SPEAK_SCENARIOS)){
+    window.SPEAK_SCENARIOS.forEach(function(s){ if(!existingIds.has(s.id)){ SPEAK_SCENARIOS.push(s); existingIds.add(s.id); } });
+  }
+  // 合并 speak-8-new.js 中的 8 个新场景
+  if(typeof SPEAK_SCENARIOS_NEW8!=='undefined' && Array.isArray(SPEAK_SCENARIOS_NEW8)){
+    SPEAK_SCENARIOS_NEW8.forEach(function(s){ if(!existingIds.has(s.id)){ SPEAK_SCENARIOS.push(s); existingIds.add(s.id); } });
+  }
+  console.log('[QuiquV5] 英语场景合并完成：' + SPEAK_SCENARIOS.length + ' 个');
 }
 </script>
 </body>

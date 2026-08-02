@@ -258,29 +258,47 @@ window.EnglishFlowV5 = {
 
   _tprCommands(scene){
     // 基于场景生成动作指令（真实身体动作）
+    // 优先使用场景词汇生成，其次使用预设映射
+    const word = scene.words && scene.words[0] || '';
     const map = {
-      supermarket: ['Pick up the apple!', 'Put it in the bag!', 'Walk to the door!', 'Show me your money!'],
-      restaurant: ['Open the menu!', 'Drink the juice!', 'Eat the rice!', 'Wave to the waiter!'],
-      school: ['Open your book!', 'Raise your hand!', 'Stand up!', 'Sit down!'],
-      park: ['Run to the tree!', 'Point to the flower!', 'Look at the bird!', 'Jump three times!'],
-      weather: ['Touch the sun!', 'Feel the wind!', 'Show me rain!', 'Look up at the sky!'],
-      clothes: ['Put on your shirt!', 'Touch your shoes!', 'Wear your hat!', 'Show your pants!'],
-      animals: ['Walk like an elephant!', 'Jump like a rabbit!', 'Roar like a tiger!', 'Fly like a bird!'],
-      birthday: ['Clap your hands!', 'Sing happy birthday!', 'Blow the candle!', 'Give a gift!']
+      daily_greeting: ['Stand up!', 'Wave hello!', 'Clap your hands!', 'Jump three times!'],
+      self_intro: ['Point to yourself!', 'Show your name!', 'Raise your hand!', 'Say hello!'],
+      buying: ['Pick up the apple!', 'Put it in the bag!', 'Show me your money!', 'Walk to the door!'],
+      weather_report: ['Touch the sun!', 'Feel the wind!', 'Show me rain!', 'Look up at the sky!'],
+      at_school: ['Open your book!', 'Raise your hand!', 'Stand up!', 'Sit down!'],
+      park_day: ['Run to the tree!', 'Point to the flower!', 'Look at the bird!', 'Jump three times!'],
+      birthday: ['Clap your hands!', 'Sing happy birthday!', 'Blow the candle!', 'Give a gift!'],
+      at_restaurant: ['Open the menu!', 'Drink the juice!', 'Eat the rice!', 'Wave to the waiter!'],
+      visiting_doctor: ['Open your mouth!', 'Say ah!', 'Stand up!', 'Sit down!'],
+      zoo_visit: ['Walk like an elephant!', 'Jump like a rabbit!', 'Roar like a tiger!', 'Fly like a bird!'],
+      campus_new: ['Open your book!', 'Raise your hand!', 'Stand up!', 'Sit down!'],
+      birthday_party: ['Clap your hands!', 'Sing happy birthday!', 'Blow the candle!', 'Give a gift!'],
+      library: ['Shhh, be quiet!', 'Open the book!', 'Turn the page!', 'Point to the words!'],
+      sports_day: ['Run fast!', 'Jump high!', 'Clap your hands!', 'Stop and listen!'],
+      at_home: ['Go to the bed!', 'Brush your teeth!', 'Put on your Pajamas!', 'Good night!'],
+      travel_trip: ['Pack your bag!', 'Open the door!', 'Look out the window!', 'Wave goodbye!'],
+      seasons_fest: ['Feel the wind!', 'See the snow!', 'Plant a flower!', 'Jump for joy!']
     };
     return map[scene.id] || ['Stand up!', 'Sit down!', 'Clap your hands!', 'Jump three times!'];
   },
 
   _tprCn(cmd){
     const cn = {
-      'Pick up the apple!': '捡起苹果！', 'Put it in the bag!': '放进袋子里！', 'Walk to the door!': '走到门口！', 'Show me your money!': '给我看看你的钱！',
-      'Open the menu!': '打开菜单！', 'Drink the juice!': '喝果汁！', 'Eat the rice!': '吃米饭！', 'Wave to the waiter!': '向服务员挥手！',
-      'Open your book!': '打开书！', 'Raise your hand!': '举手！', 'Stand up!': '起立！', 'Sit down!': '坐下！',
-      'Run to the tree!': '跑到树那里！', 'Point to the flower!': '指一指花！', 'Look at the bird!': '看那只鸟！', 'Jump three times!': '跳三下！',
+      'Stand up!': '起立！', 'Sit down!': '坐下！', 'Clap your hands!': '拍拍手！', 'Jump three times!': '跳三下！',
+      'Wave hello!': '挥手打招呼！', 'Point to yourself!': '指指自己！', 'Show your name!': '展示你的名字！', 'Say hello!': '说你好！',
+      'Pick up the apple!': '捡起苹果！', 'Put it in the bag!': '放进袋子里！', 'Show me your money!': '给我看看你的钱！', 'Walk to the door!': '走到门口！',
       'Touch the sun!': '摸摸太阳！', 'Feel the wind!': '感受风！', 'Show me rain!': '做下雨的动作！', 'Look up at the sky!': '抬头看天空！',
-      'Put on your shirt!': '穿上衬衫！', 'Touch your shoes!': '摸摸鞋子！', 'Wear your hat!': '戴上帽子！', 'Show your pants!': '展示裤子！',
+      'Open your book!': '打开书！', 'Raise your hand!': '举手！',
+      'Run to the tree!': '跑到树那里！', 'Point to the flower!': '指一指花！', 'Look at the bird!': '看那只鸟！',
+      'Sing happy birthday!': '唱生日歌！', 'Blow the candle!': '吹蜡烛！', 'Give a gift!': '送礼物！',
+      'Open the menu!': '打开菜单！', 'Drink the juice!': '喝果汁！', 'Eat the rice!': '吃米饭！', 'Wave to the waiter!': '向服务员挥手！',
+      'Open your mouth!': '张开嘴巴！', 'Say ah!': '说啊！',
       'Walk like an elephant!': '像大象一样走！', 'Jump like a rabbit!': '像兔子一样跳！', 'Roar like a tiger!': '像老虎一样吼！', 'Fly like a bird!': '像鸟一样飞！',
-      'Clap your hands!': '拍拍手！', 'Sing happy birthday!': '唱生日歌！', 'Blow the candle!': '吹蜡烛！', 'Give a gift!': '送礼物！'
+      'Shhh, be quiet!': '嘘，安静！', 'Turn the page!': '翻一页！', 'Point to the words!': '指一指单词！',
+      'Run fast!': '快跑！', 'Jump high!': '跳高！', 'Stop and listen!': '停下来听！',
+      'Go to the bed!': '上床！', 'Brush your teeth!': '刷牙！', 'Put on your Pajamas!': '穿上睡衣！', 'Good night!': '晚安！',
+      'Pack your bag!': '收拾行李！', 'Open the door!': '打开门！', 'Look out the window!': '看窗外！', 'Wave goodbye!': '挥手告别！',
+      'Feel the wind!': '感受风！', 'See the snow!': '看雪！', 'Plant a flower!': '种花！', 'Jump for joy!': '开心地跳！'
     };
     return cn[cmd] || '做这个动作！';
   },
@@ -476,7 +494,8 @@ window.EnglishFlowV5 = {
   // ===== 7. 绘本阅读（5分钟）- 新增 =====
   _renderReading(scene){
     // 场景主题分级读物（每页1-3句），听读→跟读→自主读，翻页交互
-    const pages = this._readerPages(scene);
+    this._readerPagesStore = this._readerPages(scene);
+    const pages = this._readerPagesStore;
     return '<div style="padding:16px">' +
       '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
         '<span style="font-size:24px">📖</span>' +
@@ -501,43 +520,41 @@ window.EnglishFlowV5 = {
   },
 
   _readerPages(scene){
-    // 基于场景生成简单分级读物（每页1-3句，复用场景词汇）
-    const w = scene.words;
-    const readers = {
-      supermarket: [
-        { en: 'Mom and I go to the supermarket.', cn: '妈妈和我去超市。' },
-        { en: 'I see red apples. I want an apple.', cn: '我看到红苹果。我想要一个苹果。' },
-        { en: 'Mom buys bread and milk.', cn: '妈妈买了面包和牛奶。' },
-        { en: 'We are happy. We go home.', cn: '我们很开心。我们回家。' }
-      ],
-      restaurant: [
-        { en: 'We go to a restaurant.', cn: '我们去餐厅。' },
-        { en: 'I eat rice and chicken.', cn: '我吃米饭和鸡肉。' },
-        { en: 'I drink juice. It is sweet.', cn: '我喝果汁。它很甜。' },
-        { en: 'The food is yummy. I like it.', cn: '食物很好吃。我喜欢。' }
-      ]
+    // 场景ID → 绘本key映射（场景ID与STORYBOOKS的key不完全一致，需映射）
+    const sceneToBook = {
+      at_school:'school', school:'school', campus_new:'school',
+      park_day:'park', park:'park',
+      weather_report:'weather', weather:'weather',
+      clothes:'clothes',
+      zoo_visit:'animals', animals:'animals', visiting_doctor:'animals',
+      birthday:'birthday', birthday_party:'birthday'
     };
-    if(readers[scene.id]) return readers[scene.id];
+    const bookKey = sceneToBook[scene.id] || scene.id;
     // 优先使用专属绘本数据
-    if(typeof STORYBOOKS !== 'undefined' && STORYBOOKS[scene.id]) return STORYBOOKS[scene.id];
+    if(typeof window !== 'undefined' && window.STORYBOOKS && window.STORYBOOKS[bookKey]) return window.STORYBOOKS[bookKey];
+    if(typeof window !== 'undefined' && window.STORYBOOKS && window.STORYBOOKS[scene.id]) return window.STORYBOOKS[scene.id];
     // 通用生成
+    const w = scene.words || [];
     return [
       { en: 'Today we talk about ' + scene.name + '.', cn: '今天我们聊' + scene.name + '。' },
-      { en: 'I see a ' + w[0] + '.', cn: '我看到一个' + (this._wordInfo(w[0]).def || w[0]).split('。')[0].slice(0, 6) + '。' },
-      { en: 'I like the ' + w[1] + '.', cn: '我喜欢这个' + (this._wordInfo(w[1]).def || w[1]).split('。')[0].slice(0, 6) + '。' },
+      { en: 'I see a ' + (w[0]||'friend') + '.', cn: '我看到一个' + (w[0]||'朋友') + '。' },
+      { en: 'I like the ' + (w[1]||'day') + '.', cn: '我喜欢这个' + (w[1]||'美好的一天') + '。' },
       { en: 'It is a good day!', cn: '今天真是美好的一天！' }
     ];
   },
 
   _readerIdx: 0,
+  _getPageList(){
+    return this._readerPagesStore || this._readerPages(this._todayScene());
+  },
   _readerPlay(){
-    const pages = this._readerPages(this._todayScene());
+    const pages = this._getPageList();
     const p = pages[this._readerIdx] || pages[0];
     if(typeof speak === 'function') speak(p.en);
   },
 
   _readerRepeat(){
-    const pages = this._readerPages(this._todayScene());
+    const pages = this._getPageList();
     const p = pages[this._readerIdx] || pages[0];
     const fb = document.getElementById('efReaderFb');
     if(fb) fb.innerHTML = '<span style="color:var(--coral)">🎤 请跟读...</span>';
@@ -553,12 +570,12 @@ window.EnglishFlowV5 = {
   },
 
   _readerPrev(){
-    const pages = this._readerPages(this._todayScene());
+    const pages = this._getPageList();
     if(this._readerIdx > 0){ this._readerIdx--; this._readerRender(pages); }
   },
 
   _readerNext(){
-    const pages = this._readerPages(this._todayScene());
+    const pages = this._getPageList();
     if(this._readerIdx < pages.length - 1){ this._readerIdx++; this._readerRender(pages); }
   },
 

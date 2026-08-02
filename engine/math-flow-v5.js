@@ -62,6 +62,10 @@ window.MathFlowV5 = {
     if(stage==='solve'){ this._sess.hintUsed=false; this._sess.solveAttempts=0; this._sess.startTs=Date.now(); }
     if(stage==='practice'){ this._sess.practiceLevel=1; this._sess.practiceVisualShown=false; this._sess.socraticStep=0; }
     this._saveProgress();
+    // 立即刷新 UI（同步更新"上一步/下一步"按钮状态）
+    try{
+      if(typeof updateMathStageV5==='function') updateMathStageV5();
+    }catch(e){}
   },
 
   // ===== 保存进度到 S.lastSession（断点续学） =====
