@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>奇趣学园 V4 · AI 学习伙伴</title>
+<meta name="theme-color" content="#00A896">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="奇趣学园">
+<title>奇趣学园 V5 · AI 学习伙伴</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+<link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2836,6 +2843,56 @@ function renderSidePanel(){
         </div>
       </div>
 
+      <div class="panel-card">
+        <h3>🎭 每日场景</h3>
+        <div id="dailySceneCard">
+          ${function(){try{
+            const today=SceneManager?SceneManager.getToday(S.currentProfileId||'default'):null;
+            if(!today)return'<div style="font-size:13px;color:var(--text-3)">加载中...</div>';
+            const words=SceneManager?SceneManager.getWords(today.id):[];
+            return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="font-size:32px">${today.icon}</div>
+              <div>
+                <div style="font-size:14px;font-weight:700;color:var(--navy)">${today.name}</div>
+                <div style="font-size:11px;color:var(--text-2);margin-top:2px">${today.phrases[0]}</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px">
+              ${words.slice(0,5).map(w=>`<span style="padding:3px 8px;background:var(--teal-soft);border-radius:10px;font-size:11px;color:var(--teal);font-weight:600">${w}</span>`).join('')}
+            </div>`;
+          }catch(e){return'<div style="font-size:13px;color:var(--text-3)">暂无场景</div>';}
+          }()}</div>
+      </div>
+      <div class="panel-card">
+        <h3>📖 复习提醒</h3>
+        <div id="reviewReminder">
+          ${function(){try{
+            const sid=S.currentProfileId||'default';
+            const r=typeof SpacedReview!=='undefined'&&SpacedReview?SpacedReview.renderReviewReminder(sid):null;
+            return r||'<div style="font-size:13px;color:var(--teal)">✅ 今日复习任务已清空，太棒了！</div>';
+          }catch(e){return'<div style="font-size:13px;color:var(--text-3)">暂无复习</div>';}
+          }()}</div>
+      </div>
+      <div class="panel-card">
+        <h3>🏆 成就墙</h3>
+        <div id="achievementWall">
+          ${function(){try{
+            const sid=S.currentProfileId||'default';
+            const achieved=typeof Achievements!=='undefined'&&Achievements?Achievements.getList(sid):[];
+            const pending=typeof Achievements!=='undefined'&&Achievements?Achievements.getProgress(sid):[];
+            const all=[...achieved.map(b=>({...b,done:true})),...pending.map(p=>({...p,done:false}))];
+            if(!all.length)return'<div style="font-size:13px;color:var(--text-3)">开始学习解锁成就吧！</div>';
+            return `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px">
+              ${all.map(a=>`<div title="${a.name}" style="width:100%;aspect-ratio:1;border-radius:10px;background:${a.done?'linear-gradient(135deg,#FEF3C7,#FDE68A)':'var(--ink-100)'};display:flex;align-items:center;justify-content:center;font-size:18px;${a.done?'cursor:pointer':a.progress<a.target?'cursor:default':''};transition:all var(--dur-base)"
+                onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform=''"
+                ${a.done?`onclick="toast('🏆 ${a.name}: ${a.desc}')"`:''}>
+                ${a.done?a.icon:`<span style="font-size:10px;color:var(--text-3)">${Math.round(a.progress*100)}%</span>`}
+              </div>`).join('')}
+            </div>
+            ${achieved.length?`<div style="font-size:12px;color:var(--text-2)">已解锁 ${achieved.length}/${achieved.length+pending.length} 个</div>`:''}
+          `;}catch(e){return'<div style="font-size:13px;color:var(--text-3)">-</div>';}
+          }()}</div>
+      </div>
       <div class="parent-section" data-psec="errors">
         <div class="card" style="margin-bottom:16px">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
@@ -3984,6 +4041,18 @@ function renderEnglish(grade='3',subtab='vocab'){
             <p>${hasV5 ? '每日场景主线 · 9板块进阶 · AI自由对话' : '人教版 PEP 同步 · 母语级自然拼读 · 生活场景短语'}</p>
           </div>
           <div class="progress"><span>本周</span><span class="num">82%</span></div>
+        </div>
+        <div id="engSceneBanner" style="margin-bottom:14px;padding:12px 16px;border-radius:14px;background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:1.5px solid #6EE7B7;display:none">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span id="engSceneIcon" style="font-size:24px"></span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#065F46">🎭 今日场景：${'<span id="engSceneName"></span>'}</div>
+              <div style="font-size:12px;color:#047857;margin-top:2px" id="engSceneWords"></div>
+            </div>
+            <div style="margin-left:auto">
+              <button onclick="playEngSceneAudio()" style="padding:6px 14px;border-radius:20px;border:none;background:#059669;color:white;font-size:12px;font-weight:700;cursor:pointer">🔊 听场景对话</button>
+            </div>
+          </div>
         </div>
         ${subtabsHTML}
         <div id="engContent">${content}</div>
@@ -6832,6 +6901,10 @@ function switchView(view){
     $$('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
     render();
   });
+  // 进入英语板块时显示今日场景横幅
+  if(view==='english'){
+    setTimeout(showSceneBanner,100);
+  }
 }
 
 function render(){
@@ -6904,8 +6977,41 @@ function bindDynamicEvents(){
   });
 }
 
+// ===== 场景横幅 & 场景音频 =====
+function showSceneBanner(){
+  try{
+    const banner=$('#engSceneBanner');
+    if(!banner)return;
+    const scene=typeof SceneManager!=='undefined'&&SceneManager.getToday?SceneManager.getToday(S.currentProfileId||'default'):null;
+    if(!scene)return;
+    banner.style.display='flex';
+    banner.style.flexDirection='column';
+    const iconEl=$('#engSceneIcon');
+    const nameEl=$('#engSceneName');
+    const wordsEl=$('#engSceneWords');
+    if(iconEl)iconEl.textContent=scene.icon;
+    if(nameEl)nameEl.textContent=scene.name;
+    if(wordsEl)wordsEl.textContent='关键词：'+scene.words.slice(0,6).join(' · ')+((scene.phrases||[]).length?'  ·  '+scene.phrases[0]:'');
+  }catch(e){}
+}
+
+function playEngSceneAudio(){
+  try{
+    const scene=typeof SceneManager!=='undefined'&&SceneManager.getToday?SceneManager.getToday(S.currentProfileId||'default'):null;
+    if(!scene)return;
+    const text=(scene.phrases||[]).join('. ')+'. '+scene.grammar;
+    speak(text);
+    toast('🔊 播放场景对话...');
+  }catch(e){toast('音频播放失败');}
+}
+
+
 // 初始化
 document.addEventListener('DOMContentLoaded',()=>{
+  // 注册 PWA Service Worker
+  if('serviceWorker' in navigator){
+    try{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }catch(e){}
+  }
   // 解锁音频引擎：监听首次用户手势（click/touchstart），触发空 utterance 解锁移动端音频
   const _unlockOnce = ()=>{ unlockAudio(); document.removeEventListener('click',_unlockOnce); document.removeEventListener('touchstart',_unlockOnce); };
   document.addEventListener('click',_unlockOnce);

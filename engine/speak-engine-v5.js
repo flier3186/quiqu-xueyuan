@@ -220,13 +220,22 @@ window.SpeakEngineV5 = {
   // ===== 语音识别 =====
   startListening(onResult){
     const self = this;
+    // 兼容性检测：iOS Safari 不支持 SpeechRecognition
     if(!this.SR){
-      if(typeof toast === 'function') toast('当前浏览器不支持语音识别，请用文本输入 ✍️');
+      if(typeof toast === 'function'){
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if(isIOS) toast('📱 iOS 暂不支持语音识别，请用文字输入哦 ✍️');
+        else toast('当前浏览器不支持语音识别，请用文本输入 ✍️');
+      }
       return false;
     }
     if(this.isListening){ this.stopListening(); return false; }
     try{ this.recognition = new this.SR(); }
-    catch(e){ if(typeof toast === 'function') toast('语音识别初始化失败'); return false; }
+    catch(e){
+      if(typeof toast === 'function') toast('语音识别初始化失败，请使用文字输入');
+      return false;
+    }
+    // iOS Safari 强制设置 lang 避免报错
     this.recognition.lang = 'en-US';
     this.recognition.continuous = false;
     this.recognition.interimResults = false;
@@ -238,7 +247,13 @@ window.SpeakEngineV5 = {
     };
     this.recognition.onerror = function(ev){
       self.isListening = false;
-      if(typeof toast === 'function') toast('识别出错：' + (ev.error || '未知'));
+      const err = ev.error || '';
+      if(typeof toast === 'function'){
+        if(err === 'not-allowed') toast('🔇 麦克风权限被拒绝，请检查浏览器设置');
+        else if(err === 'no-speech') toast('🤫 没有检测到语音，请再试一次');
+        else if(err === 'network') toast('🌐 网络错误，请检查网络连接');
+        else toast('识别出错：' + err);
+      }
     };
     this.recognition.onend = function(){ self.isListening = false; };
     this.recognition.start();
