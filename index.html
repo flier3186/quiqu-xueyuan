@@ -839,7 +839,7 @@ input,textarea{font-family:inherit}
 .sub-tab:hover{color:var(--navy);border-color:var(--ink-200)}
 .sub-tab.active{background:var(--teal-soft);color:var(--teal);border-color:var(--teal)}
 .layout-with-side{display:flex;gap:20px;align-items:flex-start}
-.content-area{flex:1;min-width:0;padding:20px 24px 100px;max-width:900px}
+.content-area{flex:1;min-width:0;padding:20px 24px 100px;width:100%}
 .side-panel{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto}
 .card{background:white;border-radius:var(--radius-lg);padding:18px;box-shadow:var(--card-shadow)}
 .card h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:6px}
@@ -1115,10 +1115,13 @@ input,textarea{font-family:inherit}
   .bento-grid>*{grid-column:auto !important;grid-row:auto !important}
   .tasks-grid{grid-template-columns:1fr}
   .stat-grid{grid-template-columns:1fr 1fr}
-  .top-bar{padding:0 16px;overflow-x:auto}
-  .nav-tabs{overflow-x:auto}
-  .nav-tab span{font-size:12px}
-  .nav-tab{padding:8px 10px}
+  .top-bar{padding:0 12px;height:56px}
+  .top-bar .logo-text{font-size:15px}
+  .top-bar-right{gap:4px}
+  .top-bar-right .parent-btn{padding:6px 10px;font-size:13px}
+  .nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-tab{padding:7px 8px;font-size:13px}
+  .nav-tab span{font-size:11px;white-space:nowrap}
   .content-area{padding:18px 16px 80px}
 }
 @media (max-width:640px){
@@ -1126,7 +1129,8 @@ input,textarea{font-family:inherit}
   .pet-display{width:200px;height:200px}
   .chat-messages{padding:12px}
   .msg{max-width:95%}
-  .content-area{padding:14px 12px 80px;width:100%}
+  .chat-area{height:auto;max-height:calc(100vh - 200px);min-height:320px}
+  .content-area{padding:14px 12px 24px;width:100%}
   .card{padding:16px}
   .panel-card{padding:14px}
   .eng-banner{padding:14px 16px}
