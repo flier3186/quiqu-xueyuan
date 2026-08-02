@@ -1,10 +1,80 @@
 // english-vocab.js · 奇趣学园 V5 英语数据 · 自动生成
 // 全局变量：window.VOCAB_BY_GRADE
-// 词汇分布：三年级100 / 四年级120 / 五年级130 / 六年级120 = 470词
+// 词汇分布：二年级2b 80 / 三年级200 / 四年级120 / 五年级130 / 六年级120 = 650词
 // 字段：w(单词) pos(词性) def(释义) ex(例句) coll(搭配) syn(同义词) ant(反义词) unit(教材同步标签) circle(词汇圈: core/expand/challenge)
 
 window.VOCAB_BY_GRADE = {
-  // ========== 三年级（100词：60 PEP core + 40 expand/challenge）==========
+  // ========== 二年级下册（80词：PEP-2B U1-U6 core）==========
+  '2b': [
+    // PEP-2B-U1 My schoolbag
+    {w:'notebook',pos:'n. 名词',def:'笔记本。用来写笔记的本子。',ex:'I have a new notebook.',coll:['notebook and pen 笔记本和笔','write in a notebook 写笔记'],syn:'—',ant:'—',unit:'PEP-2B-U1',circle:'core'},
+    {w:'candy',pos:'n. 名词',def:'糖果。甜的零食。',ex:'I like candy.',coll:['eat candy 吃糖','sweet candy 甜糖'],syn:'sweets',ant:'—',unit:'PEP-2B-U1',circle:'core'},
+    {w:'key',pos:'n. 名词',def:'钥匙。用来开门的东西。',ex:'I lost my key.',coll:['lost key 丢钥匙','house key 房门钥匙'],syn:'—',ant:'—',unit:'PEP-2B-U1',circle:'core'},
+    {w:'toy',pos:'n. 名词',def:'玩具。玩耍的东西。',ex:'I have a new toy.',coll:['new toy 新玩具','play with toys 玩玩具'],syn:'—',ant:'—',unit:'PEP-2B-U1',circle:'core'},
+    {w:'schoolbag',pos:'n. 名词',def:'书包。装书本的包。',ex:'My schoolbag is heavy.',coll:['heavy schoolbag 重书包','in my schoolbag 在我书包里'],syn:'backpack',ant:'—',unit:'PEP-2B-U1',circle:'core'},
+    {w:'snack',pos:'n. 名词',def:'零食。两餐之间吃的小食物。',ex:'I eat a snack after school.',coll:['eat snacks 吃零食','healthy snack 健康零食'],syn:'—',ant:'meal',unit:'PEP-2B-U1',circle:'expand'},
+    {w:'lunchbox',pos:'n. 名词',def:'午餐盒。装午饭的盒子。',ex:'I bring my lunchbox to school.',coll:['lunchbox and water bottle 午餐盒和水瓶','open lunchbox 打开午餐盒'],syn:'—',ant:'—',unit:'PEP-2B-U1',circle:'expand'},
+    {w:'pencil case',pos:'n. 名词',def:'铅笔袋。装铅笔的袋子。',ex:'My pencil case is blue.',coll:['in my pencil case 在我铅笔袋里','new pencil case 新铅笔袋'],syn:'pencil box',ant:'—',unit:'PEP-2B-U1',circle:'expand'},
+    {w:'lost',pos:'adj. 形容词',def:'丢失的。找不到的。',ex:'I lost my book.',coll:['lost and found 失物招领','lost thing 丢失的东西'],syn:'—',ant:'found',unit:'PEP-2B-U1',circle:'expand'},
+    {w:'found',pos:'adj. 形容词',def:'找到的。被发现的。',ex:'I found my pen.',coll:['found it 找到了','found and lost 失物招领'],syn:'discovered',ant:'lost',unit:'PEP-2B-U1',circle:'expand'},
+    // PEP-2B-U2 What time is it
+    {w:'breakfast',pos:'n. 名词',def:'早饭。早上吃的第一餐。',ex:'I eat breakfast at seven.',coll:['eat breakfast 吃早饭','breakfast time 早饭时间'],syn:'—',ant:'—',unit:'PEP-2B-U2',circle:'core'},
+    {w:'lunch',pos:'n. 名词',def:'午饭。中午吃的一餐。',ex:'I have lunch at school.',coll:['have lunch 吃午饭','lunch time 午餐时间'],syn:'—',ant:'—',unit:'PEP-2B-U2',circle:'core'},
+    {w:'dinner',pos:'n. 名词',def:'晚饭。晚上吃的一餐。',ex:'Dinner is ready!',coll:['have dinner 吃晚饭','dinner time 晚饭时间'],syn:'supper',ant:'—',unit:'PEP-2B-U2',circle:'core'},
+    {w:'bedtime',pos:'n. 名词',def:'睡觉时间。该上床睡觉的时候。',ex:'It is my bedtime now.',coll:['bedtime story 睡前故事','at bedtime 在睡觉时间'],syn:'—',ant:'—',unit:'PEP-2B-U2',circle:'expand'},
+    {w:'schedule',pos:'n. 名词',def:'日程表。安排时间用的表。',ex:'Look at my schedule.',coll:['daily schedule 每日日程','check schedule 查看日程'],syn:'timetable',ant:'—',unit:'PEP-2B-U2',circle:'expand'},
+    {w:'early',pos:'adj./adv.',def:'早的；早地。比正常时间靠前。',ex:'I get up early.',coll:['get up early 早起','early bird 早起的鸟儿'],syn:'—',ant:'late',unit:'PEP-2B-U2',circle:'expand'},
+    {w:'late',pos:'adj./adv.',def:'迟的；晚的。比正常时间靠后。',ex:'I am late for school.',coll:['be late for 迟到','late at night 深夜'],syn:'—',ant:'early',unit:'PEP-2B-U2',circle:'expand'},
+    {w:'hungry',pos:'adj. 形容词',def:'饿的。想吃东西。',ex:'I am hungry now.',coll:['feel hungry 觉得饿','hungry stomach 饿肚子'],syn:'starving',ant:'full',unit:'PEP-2B-U2',circle:'expand'},
+    {w:'thirsty',pos:'adj. 形容词',def:'渴的。想喝水。',ex:'I am thirsty.',coll:['feel thirsty 觉得渴','thirsty for 渴望'],syn:'—',ant:'thirstless',unit:'PEP-2B-U2',circle:'expand'},
+    {w:'tired',pos:'adj. 形容词',def:'累的。干完活之后想休息。',ex:'I am tired after school.',coll:['feel tired 觉得累','get tired 变得累'],syn:'exhausted',ant:'energetic',unit:'PEP-2B-U2',circle:'expand'},
+    // PEP-2B-U3 Weather
+    {w:'sunny',pos:'adj. 形容词',def:'晴朗的。有太阳的天气。',ex:'It is sunny today.',coll:['sunny day 晴天','sunny morning 晴朗早晨'],syn:'—',ant:'rainy',unit:'PEP-2B-U3',circle:'core'},
+    {w:'rainy',pos:'adj. 形容词',def:'下雨的。在下雨。',ex:'It is rainy today.',coll:['rainy day 雨天','rainy season 雨季'],syn:'—',ant:'sunny',unit:'PEP-2B-U3',circle:'core'},
+    {w:'windy',pos:'adj. 形容词',def:'有风的。风很大的天气。',ex:'It is windy outside.',coll:['windy day 有风天','windy weather 有风天气'],syn:'blowy',ant:'—',unit:'PEP-2B-U3',circle:'core'},
+    {w:'cloudy',pos:'adj. 形容词',def:'多云的。天上有许多云。',ex:'It is cloudy today.',coll:['cloudy day 阴天','cloudy sky 多云天空'],syn:'—',ant:'sunny',unit:'PEP-2B-U3',circle:'core'},
+    {w:'snowy',pos:'adj. 形容词',def:'下雪的。有雪的天气。',ex:'It is snowy in winter.',coll:['snowy day 雪天','snowy winter 多雪的冬天'],syn:'—',ant:'sunny',unit:'PEP-2B-U3',circle:'core'},
+    {w:'warm',pos:'adj. 形容词',def:'温暖的。不太热也不太冷。',ex:'Spring is warm.',coll:['warm spring 温暖春天','feel warm 觉得暖'],syn:'cozy',ant:'cold',unit:'PEP-2B-U3',circle:'core'},
+    {w:'cool',pos:'adj. 形容词',def:'凉爽的。秋天那样的温度。',ex:'Autumn is cool.',coll:['cool autumn 凉秋','cool wind 凉风'],syn:'chilly',ant:'warm',unit:'PEP-2B-U3',circle:'core'},
+    {w:'hot',pos:'adj. 形容词',def:'热的。夏天那种温度。',ex:'Summer is hot.',coll:['hot summer 热夏','hot day 热天'],syn:'scorching',ant:'cold',unit:'PEP-2B-U3',circle:'core'},
+    {w:'cold',pos:'adj. 形容词',def:'冷的。冬天那种温度。',ex:'Winter is cold.',coll:['cold winter 冷冬','cold water 冷水'],syn:'freezing',ant:'hot',unit:'PEP-2B-U3',circle:'core'},
+    {w:'weather',pos:'n. 名词',def:'天气。天空中的状况。',ex:'How is the weather today?',coll:['good weather 好天气','weather report 天气预报'],syn:'climate (大范围)',ant:'—',unit:'PEP-2B-U3',circle:'core'},
+    // PEP-2B-U4 At the farm
+    {w:'tomato',pos:'n. 名词',def:'番茄；西红柿。红色的蔬菜。',ex:'I like tomatoes.',coll:['red tomato 红番茄','tomato soup 番茄汤'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'potato',pos:'n. 名词',def:'土豆；马铃薯。地下的蔬菜。',ex:'I eat potatoes.',coll:['mashed potato 土豆泥','big potato 大土豆'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'carrot',pos:'n. 名词',def:'胡萝卜。橙色的长蔬菜。',ex:'Rabbits eat carrots.',coll:['eat carrots 吃胡萝卜','orange carrot 橙胡萝卜'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'animal',pos:'n. 名词',def:'动物。有生命会动的生物。',ex:'I like animals.',coll:['wild animal 野生动物','animal farm 动物农场'],syn:'creature',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'farm',pos:'n. 名词',def:'农场。种庄稼养动物的地方。',ex:'We visit the farm.',coll:['on the farm 在农场','visit a farm 参观农场'],syn:'ranch',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'horse',pos:'n. 名词',def:'马。可以骑的大型动物。',ex:'The horse is fast.',coll:['ride a horse 骑马','fast horse 快马'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'sheep',pos:'n. 名词',def:'羊；绵羊。产羊毛的动物。',ex:'The sheep is white.',coll:['white sheep 白羊','a flock of sheep 一群羊'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'duck',pos:'n. 名词',def:'鸭子。会游泳的水鸟。',ex:'The duck can swim.',coll:['yellow duck 黄鸭','little duck 小鸭'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'cow',pos:'n. 名词',def:'奶牛。产奶的牛。',ex:'The cow gives milk.',coll:['milk a cow 挤牛奶','black and white cow 黑白花牛'],syn:'—',ant:'—',unit:'PEP-2B-U4',circle:'core'},
+    {w:'hen',pos:'n. 名词',def:'母鸡。下蛋的鸡。',ex:'The hen lays eggs.',coll:['hen house 鸡舍','lay eggs 下蛋'],syn:'—',ant:'rooster',unit:'PEP-2B-U4',circle:'core'},
+    // PEP-2B-U5 My clothes
+    {w:'coat',pos:'n. 名词',def:'外套。穿在里面的厚衣服。',ex:'I wear a coat in winter.',coll:['winter coat 冬外套','put on a coat 穿上外套'],syn:'jacket',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'shorts',pos:'n. 名词',def:'短裤。短裤子。',ex:'I wear shorts in summer.',coll:['wear shorts 穿短裤','blue shorts 蓝短裤'],syn:'—',ant:'pants',unit:'PEP-2B-U5',circle:'core'},
+    {w:'sock',pos:'n. 名词',def:'袜子。穿在脚上的薄布。',ex:'I need clean socks.',coll:['clean socks 干净袜子','a pair of socks 一双袜子'],syn:'stocking',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'dress',pos:'n. 名词',def:'连衣裙。女孩穿的裙子。',ex:'Her dress is pink.',coll:['pink dress 粉色裙','new dress 新裙子'],syn:'gown',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'skirt',pos:'n. 名词',def:'裙子。从腰往下穿的衣服。',ex:'I like my new skirt.',coll:['new skirt 新裙子','flowing skirt 飘动的裙子'],syn:'—',ant:'pants',unit:'PEP-2B-U5',circle:'core'},
+    {w:'jeans',pos:'n. 名词',def:'牛仔裤。蓝色的厚裤子。',ex:'I wear jeans to school.',coll:['wear jeans 穿牛仔裤','blue jeans 蓝牛仔裤'],syn:'trousers',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'shirt',pos:'n. 名词',def:'衬衫。有扣子的上衣。',ex:'My shirt is white.',coll:['white shirt 白衬衫','new shirt 新衬衫'],syn:'blouse (女式)',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'sweater',pos:'n. 名词',def:'毛衣。毛线织的厚上衣。',ex:'I wear a sweater in fall.',coll:['warm sweater 暖毛衣','knit sweater 针织毛衣'],syn:'jumper (英式)',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'hat',pos:'n. 名词',def:'帽子。戴在头上的遮阳物。',ex:'I wear a hat in summer.',coll:['wear a hat 戴帽','sun hat 遮阳帽'],syn:'cap',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    {w:'shoe',pos:'n. 名词',def:'鞋。穿在脚上的东西。',ex:'My shoes are new.',coll:['new shoes 新鞋','put on shoes 穿鞋'],syn:'—',ant:'—',unit:'PEP-2B-U5',circle:'core'},
+    // PEP-2B-U6 Shopping
+    {w:'much',pos:'adv. 副词',def:'非常；多少。表示程度或数量。',ex:'How much is it?',coll:['how much 多少钱','much love 很多爱'],syn:'very',ant:'little',unit:'PEP-2B-U6',circle:'core'},
+    {w:'cheap',pos:'adj. 形容词',def:'便宜的。价钱低。',ex:'This pencil is cheap.',coll:['cheap price 便宜价格','look cheap 看起来很便宜'],syn:'inexpensive',ant:'expensive',unit:'PEP-2B-U6',circle:'core'},
+    {w:'expensive',pos:'adj. 形容词',def:'贵的。价钱高。',ex:'That bag is expensive.',coll:['expensive bag 贵包','too expensive 太贵了'],syn:'costly',ant:'cheap',unit:'PEP-2B-U6',circle:'core'},
+    {w:'money',pos:'n. 名词',def:'钱。用来买东西的货币。',ex:'I have some money.',coll:['save money 省钱','make money 挣钱'],syn:'cash',ant:'—',unit:'PEP-2B-U6',circle:'core'},
+    {w:'buy',pos:'v. 动词',def:'买。用钱换东西。',ex:'I buy an apple.',coll:['buy a book 买书','buy food 买食物'],syn:'purchase',ant:'sell',unit:'PEP-2B-U6',circle:'core'},
+    {w:'sell',pos:'v. 动词',def:'卖。把东西换成钱。',ex:'They sell apples.',coll:['sell apples 卖苹果','sell out 卖完'],syn:'—',ant:'buy',unit:'PEP-2B-U6',circle:'core'},
+    {w:'shop',pos:'n./v.',def:'商店；购物。买或卖东西。',ex:'I go to the shop.',coll:['go shopping 去购物','gift shop 礼品店'],syn:'store',ant:'—',unit:'PEP-2B-U6',circle:'core'},
+    {w:'new',pos:'adj. 形容词',def:'新的。刚买来的。',ex:'I want a new bag.',coll:['new bag 新包','brand new 全新的'],syn:'fresh',ant:'old',unit:'PEP-2B-U6',circle:'core'},
+    {w:'old',pos:'adj. 形容词',def:'旧的。用了很久的。',ex:'My old shoe is broken.',coll:['old book 旧书','old friend 老朋友'],syn:'used',ant:'new',unit:'PEP-2B-U6',circle:'core'},
+    {w:'nice',pos:'adj. 形容词',def:'好的；令人愉快的。',ex:'This dress is nice.',coll:['nice dress 好看的裙子','nice to meet you 认识你很高兴'],syn:'lovely / pleasant',ant:'nasty',unit:'PEP-2B-U6',circle:'core'},
+  ],
+
+  // ========== 三年级（200词：120 PEP core + 80 expand/challenge）==========
   '3': [
     {w:'ruler',pos:'n. 名词',def:'尺子；直尺。测量长度或画直线的文具。',ex:'I have a new ruler.',coll:['a new ruler 新尺子','ruler and pen 尺和笔'],syn:'—',ant:'—',unit:'PEP-3A-U1',circle:'core'},
     {w:'pencil',pos:'n. 名词',def:'铅笔。用石墨芯的笔，可擦除。',ex:'My pencil is yellow.',coll:['sharpen a pencil 削铅笔','pencil box 铅笔盒'],syn:'—',ant:'pen (对应钢笔)',unit:'PEP-3A-U1',circle:'core'},
