@@ -5853,6 +5853,7 @@ function renderParentDashboard(){
         <div class="parent-tab" data-pt="week">📝 周报建议</div>
         <div class="parent-tab" data-pt="ai">🤖 AI 设置</div>
         <div class="parent-tab" data-pt="errors">🐛 错误日志</div>
+        <div class="parent-tab" data-pt="profiles">👨‍👩‍👧 档案管理</div>
       </div>
 
       <div class="parent-section active" data-psec="overview">
@@ -5862,13 +5863,40 @@ function renderParentDashboard(){
           </div>
           <div style="flex:1;min-width:0">
             <div style="font-size:18px;font-weight:900;color:var(--navy);margin-bottom:4px">${PETS&&PETS[S.pet.idx]?PETS[S.pet.idx].name:'宝贝'} <span style="font-size:12px;font-weight:600;color:var(--teal);background:var(--teal-soft);padding:3px 10px;border-radius:14px;margin-left:6px">${gradeTxt}</span></div>
-            <div style="font-size:12px;color:var(--ink-500);display:flex;gap:16px">
+            <div style="font-size:12px;color:var(--ink-500);display:flex;gap:16px;flex-wrap:wrap">
               <span>📅 学习总天数 <b style="color:var(--navy)">${totalDays}</b> 天</span>
               <span>🎯 本周目标 ${o.weekDone}/${o.weekGoal}</span>
               <span>🏆 徽章 <b style="color:var(--navy)">${(S.badges||[]).length}</b> 枚</span>
+              <span>🔤 英语阶段 <b style="color:var(--navy)">${S.engStage||1}</b>/3</span>
             </div>
           </div>
           <button class="btn btn-ghost" onclick="toast('宝贝档案')">📋 档案</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px">
+          <div class="card" style="border-top:3px solid var(--teal)">
+            <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">📅 今日一起练</div>
+            <div id="todayPracticeItem" style="font-size:13px;color:var(--navy);line-height:1.7"></div>
+          </div>
+          <div class="card" style="border-top:3px solid var(--yellow)">
+            <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">📚 教材进度同步</div>
+            <div id="textbookProgress" style="font-size:13px;color:var(--navy);line-height:1.7"></div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+          <div style="padding:12px;background:var(--teal-soft);border-radius:12px;text-align:center">
+            <div style="font-size:22px;font-weight:900;color:var(--teal)">${S.engStage||1}</div>
+            <div style="font-size:11px;color:var(--ink-600)">英语阶段</div>
+          </div>
+          <div style="padding:12px;background:#FEF3C7;border-radius:12px;text-align:center">
+            <div style="font-size:22px;font-weight:900;color:#D97706">${S.eng&&S.eng.phonicsStage||1}</div>
+            <div style="font-size:11px;color:var(--ink-600)">拼读阶段</div>
+          </div>
+          <div style="padding:12px;background:#FEE2E2;border-radius:12px;text-align:center">
+            <div style="font-size:22px;font-weight:900;color:#DC2626">${(S.math&&S.math.moduleProgress&&Object.values(S.math.moduleProgress).filter(v=>v>=100).length)||0}</div>
+            <div style="font-size:11px;color:var(--ink-600)">数学通关</div>
+          </div>
         </div>
 
         <div class="chart-row">
@@ -6052,6 +6080,7 @@ function renderParentDashboard(){
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
   if(pt==='errors'){renderErrorLog();renderWrongProblems();}
+  if(pt==='profiles') renderProfiles();
   $$('.parent-tab').forEach(t=>t.onclick=()=>{
     $$('.parent-tab').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
@@ -6191,6 +6220,27 @@ function renderWrongProblems(){
   el.innerHTML='<table class="error-log-table"><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody>'+wrong.slice(-20).reverse().map((w,i)=>`<tr><td class="err-time">${wrong.length-i}</td><td class="err-msg">${(w.q||'').replace(/</g,'&lt;').slice(0,100)}</td><td>${w.a||'?'}</td></tr>`).join('')+'</tbody></table>';
 }
 
+function renderProfiles(){
+  const el=$('#profilesList');
+  const delNote=$('#deleteProfileNote');
+  if(!el)return;
+  const profiles=S.profiles||{};
+  const keys=Object.keys(profiles);
+  if(keys.length<=1){delNote.textContent='至少保留一个档案';}
+  else{delNote.textContent='';}
+  el.innerHTML=keys.map(id=>{
+    const p=profiles[id];
+    const isActive=id===S.currentProfileId;
+    const canDelete=keys.length>1;
+    return `<div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;border:2px solid ${isActive?'var(--teal)':'var(--ink-200)'};${isActive?'background:var(--teal-soft)':''};cursor:pointer" onclick="switchProfile('${id}')">
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:20px">${isActive?'👑':''}</div>
+      <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--navy)">${p.name||'宝贝'}</div><div style="font-size:12px;color:var(--text-3)">年级：${p.grade||'3'}</div></div>
+      <span style="font-size:11px;padding:3px 10px;border-radius:10px;background:${isActive?'var(--teal)':'var(--ink-200)'};color:white;font-weight:700">${isActive?'当前':'切换'}</span>
+      ${canDelete?`<button onclick="event.stopPropagation();deleteProfile('${id}')" style="padding:4px 10px;border-radius:8px;border:1px solid var(--ink-200);background:white;font-size:11px;cursor:pointer;color:var(--text-3)">删除</button>`:''}
+    </div>`;
+  }).join('');
+}
+
 function exportErrorLog(){
   try{
     const raw=localStorage.getItem('quiqu_error_log');
@@ -6249,6 +6299,7 @@ function downloadCSV(csv,filename){
 
 /* ============ 数据持久化层 ============ */
 const STORAGE_KEY='ququxv4_state_v1';
+const PROFILE_META_KEY='quiqu_profiles_meta';
 const defaultState={
   overview:{stars:42,streak:7,weekGoal:6,weekDone:3,totalMin:486,avgAccuracy:87},
   math:{grade:'3',wrongProblems:[],moduleProgress:{cpa:65,bar:45,area:35,fract:25,wp:50,kg:30},mastery:{}},
@@ -6267,11 +6318,67 @@ const defaultState={
   sceneTheme:{date:'',theme:'',words:[]},  // 每日场景主线
   apiConfig:{groqKey:''},    // AI API 配置（用户在设置中输入）
   engStage:1,                 // 英语三阶段：1=输入主导 2=引导输出 3=自主输出
-  game:{spellBest:0,challengeBest:0}  // 闯关游戏最高分
+  game:{spellBest:0,challengeBest:0},  // 闯关游戏最高分
+  // ===== 多孩档案 =====
+  currentProfileId:'default',
+  profiles:{
+    default:{name:'宝贝',avatarIdx:0,grade:'3',createdAt:Date.now()},
+  }
 };
 function loadState(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));return s?{...defaultState,...s}:defaultState;}catch{return defaultState}}
 function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
 let S=loadState();
+
+// 多孩档案：保存档案元数据
+function saveProfileMeta(){
+  try{localStorage.setItem(PROFILE_META_KEY,JSON.stringify((S._profileMeta)||{}));}catch(e){}
+}
+function loadProfileMeta(){try{const m=JSON.parse(localStorage.getItem(PROFILE_META_KEY));if(m)S._profileMeta=m;}catch(e){}}
+loadProfileMeta();
+
+// 切换档案
+function switchProfile(id){
+  if(id===S.currentProfileId) return;
+  // 保存当前档案进度到profiles
+  if(!S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId]={name:'宝贝'+S.currentProfileId,grade:S.math.grade,avatarIdx:S.pet.idx,createdAt:S.profiles[S.currentProfileId]&&S.profiles[S.currentProfileId].createdAt||Date.now()};
+  else S.profiles[S.currentProfileId].grade=S.math.grade;
+  S.profiles[S.currentProfileId].avatarIdx=S.pet.idx;
+  S.currentProfileId=id;
+  saveState();
+  saveProfileMeta();
+  // 加载目标档案
+  const p=S.profiles[id]||{};
+  S.math.grade=p.grade||'3';
+  S.pet.idx=p.avatarIdx||0;
+  currentMathGrade=S.math.grade;
+  render();
+  toast(`👋 已切换到 ${p.name||'宝贝'}`);
+}
+// 新增档案
+function addProfile(name){
+  const id='p'+Date.now();
+  S.profiles[id]={name,avatarIdx:0,grade:'3',createdAt:Date.now()};
+  S.currentProfileId=id;
+  saveState();
+  saveProfileMeta();
+  currentMathGrade='3';
+  render();
+  toast(`✅ 已创建新档案：${name}`);
+}
+// 删除档案（不能删除最后一个）
+function deleteProfile(id){
+  const keys=Object.keys(S.profiles);
+  if(keys.length<=1){toast('至少保留一个档案');return;}
+  if(id===S.currentProfileId){
+    const next=keys.find(k=>k!==id)||keys[0];
+    S.currentProfileId=next;
+  }
+  delete S.profiles[id];
+  saveState();
+  saveProfileMeta();
+  render();
+  toast(`已删除档案`);
+}
 function setStar(n,msg=''){S.overview.stars+=n;saveState();toast(`⭐ +${n}${msg?' · '+msg:''}`);}
 function addBadge(id,name,icon){if(S.badges.find(b=>b.id===id))return;S.badges.push({id,name,icon,ts:Date.now()});saveState();toast(`🏆 解锁徽章：${name}`);}
 function markWordFav(w){const i=S.eng.favoriteWords.indexOf(w);if(i>=0)S.eng.favoriteWords.splice(i,1);else S.eng.favoriteWords.push(w);saveState();return i<0;}
@@ -6401,6 +6508,8 @@ const BADGES=[
   {id:'phonics_stage3',name:'拼读大师',icon:'🔤',cond:()=>S.eng.phonicsStage>=3},
   {id:'math_cpa_100',name:'CPA达人',icon:'🧩',cond:()=>S.math.moduleProgress.cpa>=100},
   {id:'vocab_100',name:'百词斩',icon:'📚',cond:()=>S.eng.learnedWords>=100},
+  {id:'eng_stage2',name:'开口说英语',icon:'🗣️',cond:()=>(S.engStage||1)>=2},
+  {id:'eng_stage3',name:'自信说英语',icon:'🎤',cond:()=>(S.engStage||1)>=3},
 ];
 
 /* ============ 路由 & 初始化 ============ */
@@ -6411,6 +6520,32 @@ let currentEngSub=S.eng.sub;
 if(!['vocab','phonics','phrases','grammar','listen'].includes(currentEngSub)){currentEngSub='vocab';S.eng.sub='vocab';saveState();}
 currentPhonicsStage=S.eng.phonicsStage;
 let flashKnownCount=0;
+
+// 渲染今日一起练
+function renderTodayPractice(){
+  const today=new Date();const dateStr=`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+  const engStage=S.engStage||1;
+  const phonicsStage=S.eng.phonicsStage||1;
+  const practiceItems=[
+    {subject:'math',name:'数学',icon:'📐',target:engStage>=2?'完成3道今日数学题':'完成5道数学练习',done:true},
+    {subject:'eng',name:'英语',icon:'🔤',target:phonicsStage>=2?'跟读5个自然拼读音':'学习3个新单词',done:true},
+    ...(engStage>=2?[{subject:'speak',name:'口语',icon:'🗣️',target:'和Emma老师对话1轮',done:false}]:[]),
+  ];
+  const doneCount=practiceItems.filter(p=>p.done).length;
+  $('#todayPracticeItem').innerHTML=practiceItems.map(p=>`<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--ink-100)"><span>${p.icon}</span><span style="flex:1">${p.name}：${p.target}</span><span>${p.done?'✅':'⏳'}</span></div>`).join('')+`<div style="font-size:11px;color:var(--text-3);margin-top:8px;text-align:center">今日 ${doneCount}/${practiceItems.length} 项完成</div>`;
+}
+
+// 渲染教材进度
+function renderTextbookProgress(){
+  const gradeMap={'3a':'三上','3b':'三下','4a':'四上','4b':'四下','5a':'五上','5b':'五下','6a':'六上','6b':'六下'};
+  const currentGrade=gradeMap[S.math.grade]||S.math.grade;
+  const units=(MATH_BY_GRADE&&MATH_BY_GRADE[S.math.grade]&&MATH_BY_GRADE[S.math.grade].units)||[];
+  const doneUnits=units.filter(u=>u.level==='done').length;
+  const currentUnit=units.find(u=>u.level==='current');
+  const engUnits=['词汇','自然拼读','日常短语','语法','听力'];
+  const engStageName={1:'输入主导期',2:'引导输出期',3:'自主输出期'}[(S.engStage||1)];
+  $('#textbookProgress').innerHTML=`<div style="margin-bottom:8px"><b>📐 数学</b>：${currentGrade} · 已完成${doneUnits}单元${currentUnit?' · 当前：'+currentUnit.name:''}</div><div><b>🔤 英语</b>：${S.eng.grade}年级 · 阶段${S.engStage||1}（${engStageName}） · 已学词${S.eng&&S.eng.learnedWords||0}</div>`;
+}
 
 function switchView(view){
   if(!document.startViewTransition){
@@ -6445,7 +6580,10 @@ function bindDynamicEvents(){
   $$('.nav-tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
   // 数学年级
   $$('#mathGrades .grade-pill').forEach(p=>p.onclick=()=>{
-    currentMathGrade=p.dataset.grade;S.math.grade=currentMathGrade;saveState();
+    currentMathGrade=p.dataset.grade;S.math.grade=currentMathGrade;
+    // 同步到当前档案
+    if(S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId].grade=currentMathGrade;
+    saveState();
     $$('#mathGrades .grade-pill').forEach(x=>x.classList.remove('active'));
     p.classList.add('active');
     render();
@@ -6526,6 +6664,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(()=>toast('👋 欢迎回来！今天也要加油哦！'),400);
   // 自动检查徽章
   setTimeout(()=>{BADGES.forEach(b=>{if(b.cond())addBadge(b.id,b.name,b.icon);});},2000);
+  // 英语三阶段升级检测
+  setTimeout(()=>{if(typeof SpeakEngineV5!=='undefined'&&SpeakEngineV5.checkStageUpgrade){SpeakEngineV5.checkStageUpgrade();}},2500);
+  // 断点续学恢复
+  if(S.lastSession&&S.lastSession.subject&&Date.now()-S.lastSession.time<86400000){
+    setTimeout(()=>{
+      const subj=S.lastSession.subject==='math'?'数学':'英语';
+      const stageText={review:'昨日回顾',discovery:'引导发现',practice:'正式解题',explain:'数形讲解',challenge:'挑战模式',summary:'总结'}[(S.lastSession.stage)||''];
+      if(confirm(`📖 发现${subj}学习未完成任务（${stageText||'上一步'}）\n\n是否继续上次进度？`)){
+        switchView(S.lastSession.subject);
+      }
+    },3000);
+  }
 });
 </script>
 <!-- === V5 数据文件 === -->

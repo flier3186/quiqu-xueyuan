@@ -362,5 +362,29 @@ window.SpeakEngineV5 = {
       const box = document.getElementById('seV5Dialog');
       if(box){ box.innerHTML = self.renderDialog(); }
     });
+  },
+
+  // 检查英语三阶段升级条件
+  checkStageUpgrade(){
+    if(typeof S.engStage !== 'number') S.engStage = 1;
+    const stage = S.engStage;
+    const words = S.eng && S.eng.learnedWords || 0;
+    const phonics = S.eng && S.eng.phonicsStage || 1;
+    const streak = S.overview && S.overview.streak || 0;
+    if(stage === 1 && words >= 50 && phonics >= 2 && streak >= 3){
+      S.engStage = 2;
+      if(typeof addBadge === 'function') addBadge('eng_stage2', '开口说英语', '🗣️');
+      if(typeof toast === 'function') toast('🎉 英语升级到第二阶段：引导输出期！');
+      if(typeof saveState === 'function') saveState();
+      return true;
+    }
+    if(stage === 2 && words >= 150 && phonics >= 3 && streak >= 7){
+      S.engStage = 3;
+      if(typeof addBadge === 'function') addBadge('eng_stage3', '自信说英语', '🎤');
+      if(typeof toast === 'function') toast('🎉 英语升级到第三阶段：自主输出期！');
+      if(typeof saveState === 'function') saveState();
+      return true;
+    }
+    return false;
   }
 };
