@@ -1,4 +1,4 @@
-// 场景绘本数据 · 奇趣学园 V5 · 6 个场景专属绘本
+// 场景绘本数据 · 奇趣学园 V5 · 14 个场景专属绘本
 window.STORYBOOKS = {
   school: [
     { en: 'I go to school at eight.', cn: '我八点去上学。' },

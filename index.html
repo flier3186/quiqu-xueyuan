@@ -7208,7 +7208,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(S.lastSession&&S.lastSession.subject&&Date.now()-S.lastSession.time<86400000){
     setTimeout(()=>{
       const subj=S.lastSession.subject==='math'?'数学':'英语';
-      const stageText={review:'昨日回顾',discovery:'引导发现',practice:'正式解题',explain:'数形讲解',challenge:'挑战模式',summary:'总结'}[(S.lastSession.stage)||''];
+      const stageText=(S.lastSession.stage&&{review:'昨日回顾',discovery:'引导发现',practice:'正式解题',explain:'数形讲解',challenge:'挑战模式',summary:'总结'}[S.lastSession.stage])||'上一步';
       if(confirm(`📖 发现${subj}学习未完成任务（${stageText||'上一步'}）\n\n是否继续上次进度？`)){
         switchView(S.lastSession.subject);
       }
@@ -7240,6 +7240,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="data/vocab-themes.js"></script>
 <script src="data/word-dict.js"></script>
 <script src="data/storybooks.js"></script>
+<script src="data/tpr-action-house.js"></script>
+<script src="data/listening-radio.js"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
