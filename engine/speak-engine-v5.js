@@ -101,9 +101,9 @@ window.SpeakEngineV5 = {
     speechSynthesis.speak(u);
   },
 
-  // ===== 调用 Groq AI API（带重试+超时） =====
+  // ===== 调用 DeepSeek AI API（OpenAI 兼容格式，带重试+超时） =====
   async _callAI(teacherId, userText, dialogHistory){
-    const key = (S.apiConfig && S.apiConfig.groqKey) || '';
+    const key = (S.apiConfig && S.apiConfig.deepseekKey) || '';
     if(!key) return null; // 触发降级
     const teacher = this.getTeacher(teacherId);
     // 对话历史只保留最近10轮
@@ -117,7 +117,7 @@ window.SpeakEngineV5 = {
       { role: 'user', content: userText }
     ];
     const body = JSON.stringify({
-      model: 'llama-3.1-8b-instant',
+      model: 'deepseek-chat',
       messages: messages,
       max_tokens: 150,
       temperature: 0.7
@@ -127,7 +127,7 @@ window.SpeakEngineV5 = {
       try{
         var ctrl = new AbortController();
         var timer = setTimeout(function(){ctrl.abort();}, 15000);
-        var resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        var resp = await fetch('https://api.deepseek.com/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
