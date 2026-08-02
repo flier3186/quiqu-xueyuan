@@ -1,3 +1,10 @@
 .vercel
 .wrangler
 scan_math.js
+node_modules/
+edge_profile_*
+screenshot_*.png
+test_*.js
+docs/
+package.json
+package-lock.json
