@@ -101,7 +101,46 @@ window.EnglishFlowV5 = {
 
   // ===== 2. 磨耳朵电台（5分钟）=====
   _renderListen(scene){
-    // 播放场景相关对话，中间插入2-3个互动验证点（听到关键词时点击）
+    // 优先使用 LISTENING_DATA 分级听力材料，回退到 SPEAK_SCENARIOS 对话
+    const grade = (S.profile && S.profile.grade) || '3';
+    const gNum = parseInt(String(grade).replace(/[^0-9]/g,'')) || 3;
+    let listenItem = null;
+    if(typeof LISTENING_DATA !== 'undefined' && LISTENING_DATA.length){
+      // 按年级筛选，如果该年级材料不够则取相邻年级
+      let pool = LISTENING_DATA.filter(function(d){return d.grade === gNum;});
+      if(!pool.length) pool = LISTENING_DATA.filter(function(d){return Math.abs(d.grade - gNum) <= 1;});
+      if(!pool.length) pool = LISTENING_DATA;
+      // 按日期轮换，每天不同材料
+      const dayIdx = Math.floor(Date.now() / 86400000) % pool.length;
+      listenItem = pool[dayIdx];
+    }
+    if(listenItem){
+      // 分级听力模式：播放原文 + 理解题
+      this._listenItem = listenItem;
+      const qHtml = listenItem.questions.map(function(q,i){
+        return '<div style="margin-bottom:10px;padding:10px;background:var(--ink-50);border-radius:8px">' +
+          '<div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">Q' + (i+1) + '. ' + q.q + '</div>' +
+          '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+            q.options.map(function(opt,j){return '<button onclick="EnglishFlowV5._listenAnswer(' + i + ',' + j + ')" class="ef-lq-btn" data-q="' + i + '" data-a="' + j + '" style="padding:6px 12px;border:1.5px solid var(--ink-200);border-radius:8px;background:white;font-size:12px;cursor:pointer">' + opt + '</button>';}).join('') +
+          '</div></div>';
+      }).join('');
+      return '<div style="padding:16px">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
+          '<span style="font-size:24px">🎧</span>' +
+          '<div><div style="font-size:16px;font-weight:800;color:var(--navy)">磨耳朵电台</div>' +
+          '<div style="font-size:12px;color:var(--text-2)">' + listenItem.title + ' · Level ' + listenItem.level + ' · ' + listenItem.type + '</div></div></div>' +
+        '<div style="background:linear-gradient(135deg,var(--teal-soft),rgba(245,184,0,.06));border-radius:14px;padding:16px;margin-bottom:12px">' +
+          '<div style="font-size:13px;color:var(--text-2);margin-bottom:8px">🔊 点击播放听力原文：</div>' +
+          '<button onclick="EnglishFlowV5._playListen()" style="background:var(--teal);color:white;border:none;border-radius:10px;padding:8px 18px;font-weight:700;cursor:pointer">▶ 播放原文</button>' +
+          '<div id="efListenText" style="margin-top:10px;font-size:13px;color:var(--navy);min-height:20px"></div>' +
+        '</div>' +
+        '<div style="font-size:13px;color:var(--text-2);margin-bottom:8px;font-weight:600">📝 听完做理解题：</div>' +
+        '<div id="efListenQuiz">' + qHtml + '</div>' +
+        '<div id="efListenResult" style="margin-top:12px;font-size:13px;min-height:20px"></div>' +
+        '<button onclick="EnglishFlowV5._completeBoard(\'listen\')" style="margin-top:14px;background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 20px;font-weight:700;cursor:pointer;width:100%">完成听力 ✓</button>' +
+      '</div>';
+    }
+    // 回退模式：对话关键词点击
     const keywords = scene.words.slice(0, 3);
     const dialogue = (typeof SPEAK_SCENARIOS !== 'undefined')
       ? (SPEAK_SCENARIOS.find(s => s.id === 'shopping' || s.id === 'restaurant') || SPEAK_SCENARIOS[0])
@@ -126,10 +165,39 @@ window.EnglishFlowV5 = {
     '</div>';
   },
 
+  _listenItem: null,
+  _listenAnswer(qi, ai){
+    const item = this._listenItem;
+    if(!item || !item.questions[qi]) return;
+    const q = item.questions[qi];
+    const btns = document.querySelectorAll('.ef-lq-btn[data-q="' + qi + '"]');
+    btns.forEach(function(b){b.style.pointerEvents = 'none';});
+    const fb = document.getElementById('efListenResult');
+    if(ai === q.answer){
+      if(btns[ai]){btns[ai].style.background = 'var(--teal)';btns[ai].style.color = 'white';btns[ai].style.borderColor = 'var(--teal)';}
+      if(fb) fb.innerHTML = '<span style="color:var(--teal);font-weight:600">✅ 正确！' + (q.cn || '') + '</span>';
+    } else {
+      if(btns[ai]){btns[ai].style.background = 'var(--coral)';btns[ai].style.color = 'white';btns[ai].style.borderColor = 'var(--coral)';}
+      if(btns[q.answer]){btns[q.answer].style.background = 'var(--teal)';btns[q.answer].style.color = 'white';btns[q.answer].style.borderColor = 'var(--teal)';}
+      if(fb) fb.innerHTML = '<span style="color:var(--coral);font-weight:600">❌ 答案是 ' + q.options[q.answer] + '。' + (q.cn || '') + '</span>';
+    }
+  },
+
   _listenLines: null,
   _listenIdx: 0,
   _listenHit: 0,
   _playListen(){
+    // 优先播放 LISTENING_DATA 原文
+    if(this._listenItem && this._listenItem.text){
+      const text = this._listenItem.text;
+      const t = document.getElementById('efListenText');
+      if(t) t.textContent = text;
+      if(typeof speak === 'function') speak(text);
+      const r = document.getElementById('efListenResult');
+      if(r) r.innerHTML = '<span style="color:var(--teal);font-weight:600">🔊 正在播放... 听完做下方理解题</span>';
+      return;
+    }
+    // 回退：对话模式
     const scene = this._todayScene();
     const dialogue = (typeof SPEAK_SCENARIOS !== 'undefined')
       ? (SPEAK_SCENARIOS.find(s => s.id === 'shopping' || s.id === 'restaurant') || SPEAK_SCENARIOS[0])
@@ -449,6 +517,8 @@ window.EnglishFlowV5 = {
       ]
     };
     if(readers[scene.id]) return readers[scene.id];
+    // 优先使用专属绘本数据
+    if(typeof STORYBOOKS !== 'undefined' && STORYBOOKS[scene.id]) return STORYBOOKS[scene.id];
     // 通用生成
     return [
       { en: 'Today we talk about ' + scene.name + '.', cn: '今天我们聊' + scene.name + '。' },

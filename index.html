@@ -1983,6 +1983,34 @@ const LearningPath = {
     return leafCurrent || anyCurrent || anyLocked || {name:data.title, parentName:''};
   },
 
+  // V5 英语板块推荐：基于完成状态推荐优先板块
+  _engV5Boards: [
+    {id:'listen', name:'磨耳朵电台', icon:'🎧'},
+    {id:'tpr', name:'TPR动作屋', icon:'🏃'},
+    {id:'phrase', name:'每日短语', icon:'💬'},
+    {id:'vocab', name:'图片词汇库', icon:'🖼️'},
+    {id:'sentence', name:'句型启蒙', icon:'📝'},
+    {id:'reading', name:'绘本阅读', icon:'📖'},
+    {id:'speak', name:'口语对话', icon:'🗣️'},
+    {id:'notebook', name:'我的单词本', icon:'📓'}
+  ],
+  _engV5Topic(state, newWords){
+    var v5 = state.engV5 || {};
+    var done = v5.completed || [];
+    // 找未完成的板块，推荐第一个
+    var next = this._engV5Boards.find(function(b){return done.indexOf(b.id)<0;});
+    if(next) return next.icon + ' ' + next.name + (newWords ? ' + 复习' + newWords.slice(0,3).join('、') : '');
+    // 全部完成，推荐词汇学习
+    return '词汇学习：' + (newWords ? newWords.slice(0,3).join('、') : '') + '等8词';
+  },
+  _engV5Goal(state){
+    var v5 = state.engV5 || {};
+    var done = v5.completed || [];
+    var next = this._engV5Boards.find(function(b){return done.indexOf(b.id)<0;});
+    if(next) return '完成「' + next.name + '」板块 + 学会8个新词';
+    return '学会8个新词 + 完成3句口语练习';
+  },
+
   // 生成今日任务（按40分钟两科分配）
   generateDailyPlan(state, date){
     const grade = (state.math && state.math.grade) || '3';
@@ -2003,8 +2031,8 @@ const LearningPath = {
       },
       {
         subject:'eng', subjectName:'英语',
-        topic: `词汇学习：${newWords.slice(0,3).join('、')}等8词`,
-        duration:20, goal:'学会8个新词 + 完成3句口语练习',
+        topic: this._engV5Topic(state, newWords),
+        duration:20, goal:this._engV5Goal(state),
         newWords, speakGoal:3,
         pitfalls:'新词用自然拼读法拆音；口语先听示范再跟读，注意语音语调。'
       }
@@ -2407,16 +2435,41 @@ const ProgressTracker = {
         solved: curSolved - prevSolved
       },
       repeatedErrors: repeated,
-      nextSuggestion: this._suggest(cur, repeated, curAccuracy)
+      nextSuggestion: this._suggest(cur, repeated, curAccuracy, state),
+      engV5Stats: this._engV5Stats(state)
     };
   },
-  _suggest(cur, repeated, acc){
+  _engV5Stats(state){
+    var v5 = (state && state.engV5) || {};
+    return {
+      completed: (v5.completed||[]).length,
+      totalBoards: 8,
+      listenStars: v5.listenStars||0,
+      tprLevels: v5.tprLevels||0,
+      booksRead: v5.booksRead||0,
+      sentencePatterns: v5.sentencePatterns||0,
+      notebookSize: (v5.notebook||[]).length,
+      repeatAvg: v5.repeatCount ? Math.round(v5.repeatSum / v5.repeatCount) : 0
+    };
+  },
+  _suggest(cur, repeated, acc, state){
     const tips=[];
     if(acc < 70) tips.push('正确率偏低，建议放慢节奏，多看可视化讲解后再练');
     else if(acc >= 90) tips.push('正确率很高，可挑战更难的拓展题');
     else tips.push('正确率良好，继续保持稳定的练习节奏');
     if(repeated.length) tips.push(`重点攻克反复错误点：${repeated.slice(0,3).map(r=>r.knowledge).join('、')}`);
     if(cur.length < 5) tips.push('本周学习天数偏少，建议保证每天40分钟');
+    // V5 英语板块建议
+    if(state && state.engV5){
+      var v5 = state.engV5;
+      var done = (v5.completed||[]).length;
+      if(done < 8) tips.push('英语 V5 板块还有 ' + (8-done) + ' 个未完成，建议每天完成 1-2 个板块');
+      if((v5.booksRead||0) < 3) tips.push('绘本阅读偏少，建议多读绘本培养语感');
+      if(v5.repeatCount && v5.repeatCount > 0){
+        var avg = Math.round(v5.repeatSum / v5.repeatCount);
+        if(avg < 60) tips.push('英语跟读评分偏低（均分'+avg+'），建议多听原音再跟读');
+      }
+    }
     return tips;
   },
 
@@ -2481,6 +2534,7 @@ const ProgressTracker = {
           <div style="font-size:12px">${repeatedHtml}</div>
         </div>
       </div>
+      ${r.engV5Stats ? '<div style="background:linear-gradient(135deg,rgba(0,168,150,.06),rgba(245,184,0,.06));border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px"><div style="font-size:12px;color:var(--text-3);margin-bottom:8px">📚 英语 V5 板块进度</div><div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text-2)"><span>板块完成 <b style="color:var(--teal)">' + r.engV5Stats.completed + '/' + r.engV5Stats.totalBoards + '</b></span><span>🎧 听力⭐' + r.engV5Stats.listenStars + '</span><span>🏃 TPR ' + r.engV5Stats.tprLevels + '</span><span>📖 绘本 ' + r.engV5Stats.booksRead + '</span><span>📝 句型 ' + r.engV5Stats.sentencePatterns + '</span><span>📓 生词本 ' + r.engV5Stats.notebookSize + '</span>' + (r.engV5Stats.repeatAvg ? '<span>🎤 跟读均分 ' + r.engV5Stats.repeatAvg + '</span>' : '') + '</div></div>' : ''}
       <div style="background:linear-gradient(135deg,var(--navy-50),var(--teal-50));border-radius:var(--radius-md);padding:12px 14px">
         <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px">🎯 下周建议</div>
         <ul style="margin:0;padding-left:18px">${suggestHtml}</ul>
@@ -7180,6 +7234,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="data/math-3-6-extend.js"></script>
 <script src="data/speak-8-new.js"></script>
 <script src="data/vocab-themes.js"></script>
+<script src="data/word-dict.js"></script>
+<script src="data/storybooks.js"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
