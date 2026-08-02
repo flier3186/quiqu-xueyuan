@@ -3262,7 +3262,7 @@ function renderMath(grade='3'){
         <div class="grade-bar">
           <span class="grade-label">年级：</span>
           <div class="grade-pills" id="mathGrades">
-            ${['3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
+            ${['2','3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
           </div>
           <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">第 ${Math.min(window.MATH_SESSION.problemIdx+1,data.problems.length)} / ${data.problems.length} 题</span>
         </div>
@@ -4114,6 +4114,25 @@ function renderEngSub(subtab,grade){
             </div>
           </div>
         </div>`).join('')}
+      </div>
+    </div>
+    <div style="margin-top:24px;background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--card-shadow)">
+      <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:4px">🎯 主题词汇闯关</h3>
+      <p style="font-size:12px;color:var(--text-2);margin-bottom:14px">选一个主题，看 emoji 选对应的英文单词！</p>
+      <div id="vocabThemeBar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+        ${(typeof VOCAB_THEMES!=='undefined'?VOCAB_THEMES:[]).map(t=>`<button class="vtheme-btn" onclick="startVocabGame('${t.id}')" style="padding:8px 16px;border-radius:20px;border:2px solid ${t.color};background:white;color:${t.color};font-size:13px;font-weight:700;cursor:pointer;transition:all .15s">${t.name}</button>`).join('')}
+      </div>
+      <div id="vocabGameArea" style="display:none">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-size:13px;color:var(--text-2)">得分：<b id="vgScore" style="color:var(--teal);font-size:16px">0</b></span>
+          <span style="font-size:13px;color:var(--text-2)">第 <b id="vgIdx">1</b> / <span id="vgTotal">10</span> 题</span>
+          <button onclick="exitVocabGame()" style="margin-left:auto;padding:4px 12px;border-radius:8px;border:1px solid var(--ink-200);background:white;color:var(--text-2);font-size:12px;cursor:pointer">退出</button>
+        </div>
+        <div style="text-align:center;padding:30px">
+          <div id="vgEmoji" style="font-size:80px;margin-bottom:20px">🍎</div>
+          <div id="vgChoices" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+          <div id="vgFeedback" style="margin-top:16px;font-size:14px;font-weight:600;min-height:20px"></div>
+        </div>
       </div>
     </div>`;
   }
@@ -6696,6 +6715,86 @@ function markFlashKnown(i){
     toast('🎉 闪卡记忆挑战完成！');
   }
 }
+// ===== 主题词汇闯关游戏 =====
+let vgState={theme:null,pool:[],idx:0,score:0,quiz:[]};
+function startVocabGame(themeId){
+  if(typeof VOCAB_THEMES==='undefined')return;
+  const theme=VOCAB_THEMES.find(t=>t.id===themeId);
+  if(!theme||!theme.words.length)return;
+  vgState={theme:themeId,pool:theme.words.slice(),idx:0,score:0,quiz:[]};
+  // 生成 10 题（或全部词如果不足 10 个）
+  var n=Math.min(10,theme.words.length);
+  for(var i=0;i<n;i++){
+    var correct=vgState.pool[Math.floor(Math.random()*vgState.pool.length)];
+    var opts=[correct];
+    while(opts.length<4){
+      var w=vgState.pool[Math.floor(Math.random()*vgState.pool.length)];
+      if(!opts.find(o=>o.w===w.w))opts.push(w);
+    }
+    // 打乱选项顺序
+    opts.sort(function(){return Math.random()-0.5;});
+    vgState.quiz.push({correct:correct,choices:opts});
+  }
+  var area=$('#vocabGameArea');
+  if(area)area.style.display='block';
+  var bar=$('#vocabThemeBar');
+  if(bar)bar.style.display='none';
+  if($('#vgTotal'))$('#vgTotal').textContent=n;
+  renderVocabQuestion();
+}
+function renderVocabQuestion(){
+  if(vgState.idx>=vgState.quiz.length){endVocabGame();return;}
+  var q=vgState.quiz[vgState.idx];
+  if($('#vgEmoji'))$('#vgEmoji').textContent=q.correct.emoji;
+  if($('#vgIdx'))$('#vgIdx').textContent=vgState.idx+1;
+  if($('#vgScore'))$('#vgScore').textContent=vgState.score;
+  if($('#vgFeedback'))$('#vgFeedback').textContent='';
+  var box=$('#vgChoices');
+  if(box){
+    box.innerHTML=q.choices.map(function(w,i){
+      return '<button class="vg-choice" onclick="answerVocab('+i+')" style="padding:10px 20px;border-radius:12px;border:2px solid var(--ink-200);background:white;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;min-width:80px">'+w.w+'</button>';
+    }).join('');
+    box._choices=q.choices;
+    box._correct=q.correct;
+  }
+  // 朗读单词
+  try{speak(q.correct.w);}catch(e){}
+}
+function answerVocab(i){
+  var box=$('#vgChoices');
+  if(!box||!box._choices)return;
+  var chosen=box._choices[i];
+  var correct=box._correct;
+  var fb=$('#vgFeedback');
+  var btns=box.querySelectorAll('.vg-choice');
+  btns.forEach(function(b){b.style.pointerEvents='none';});
+  if(chosen.w===correct.w){
+    vgState.score++;
+    if(fb){fb.textContent='✅ 正确！'+correct.def.split('。')[0];fb.style.color='var(--teal)';}
+    btns[i].style.background='var(--teal)';btns[i].style.color='white';btns[i].style.borderColor='var(--teal)';
+    setStar(2,'词汇闯关正确');
+  }else{
+    if(fb){fb.textContent='❌ 答案是 "'+correct.w+'" - '+correct.def.split('。')[0];fb.style.color='var(--coral)';}
+    btns[i].style.background='var(--coral)';btns[i].style.color='white';btns[i].style.borderColor='var(--coral)';
+    btns.forEach(function(b,j){if(box._choices[j].w===correct.w){b.style.background='var(--teal)';b.style.color='white';b.style.borderColor='var(--teal)';}});
+  }
+  S.eng.learnedWords=Math.max(S.eng.learnedWords||0,vgState.score);
+  saveState();
+  setTimeout(function(){vgState.idx++;renderVocabQuestion();},1500);
+}
+function endVocabGame(){
+  var area=$('#vocabGameArea');
+  if(area){
+    area.innerHTML='<div style="text-align:center;padding:40px"><div style="font-size:48px;margin-bottom:16px">🎉</div><div style="font-size:20px;font-weight:800;color:var(--navy)">闯关完成！</div><div style="font-size:16px;color:var(--teal);margin-top:8px">得分 '+vgState.score+' / '+vgState.quiz.length+'</div><button onclick="exitVocabGame()" style="margin-top:20px;padding:10px 24px;border-radius:12px;border:none;background:var(--teal);color:white;font-size:14px;font-weight:700;cursor:pointer">返回选择主题</button></div>';
+  }
+  if(vgState.score>=vgState.quiz.length)setStar(8,'词汇闯关全对！');
+}
+function exitVocabGame(){
+  var area=$('#vocabGameArea');
+  if(area)area.style.display='none';
+  var bar=$('#vocabThemeBar');
+  if(bar)bar.style.display='flex';
+}
 function switchGramPill(id){
   $$('#gramPills .gram-pill').forEach(p=>p.classList.toggle('active',p.dataset.pill===id));
   const g=GRAMMAR_PILLS[id];if(!g)return;
@@ -6880,7 +6979,7 @@ function renderTodayPractice(){
 
 // 渲染教材进度
 function renderTextbookProgress(){
-  const gradeMap={'3a':'三上','3b':'三下','4a':'四上','4b':'四下','5a':'五上','5b':'五下','6a':'六上','6b':'六下'};
+  const gradeMap={'2a':'二上','2b':'二下','3a':'三上','3b':'三下','4a':'四上','4b':'四下','5a':'五上','5b':'五下','6a':'六上','6b':'六下'};
   const currentGrade=gradeMap[S.math.grade]||S.math.grade;
   const units=(MATH_BY_GRADE&&MATH_BY_GRADE[S.math.grade]&&MATH_BY_GRADE[S.math.grade].units)||[];
   const doneUnits=units.filter(u=>u.level==='done').length;
@@ -7077,5 +7176,35 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/weakness-detector-v5.js"></script>
 <script src="engine/progress-tracker-v5.js"></script>
 <script src="engine/spaced-review-v5.js"></script>
+<script src="data/math-2a-2b.js"></script>
+<script src="data/math-3-6-extend.js"></script>
+<script src="data/speak-8-new.js"></script>
+<script src="data/vocab-themes.js"></script>
+<script>
+// ===== 内容扩充合并脚本 =====
+// 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
+if(typeof MATH_GRADE_2!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
+  Object.keys(MATH_GRADE_2).forEach(function(k){ MATH_BY_GRADE[k]=MATH_GRADE_2[k]; });
+}
+// 2. 追加 3-6 年级扩展题到各学期 problems
+if(typeof MATH_EXTEND_3_6!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
+  Object.keys(MATH_EXTEND_3_6).forEach(function(ek){
+    var gk=ek.replace('_e',''); // '3a_e' → '3a'
+    if(MATH_BY_GRADE[gk] && MATH_BY_GRADE[gk].problems){
+      MATH_BY_GRADE[gk].problems=MATH_BY_GRADE[gk].problems.concat(MATH_EXTEND_3_6[ek]);
+    }
+  });
+}
+// 3. 合并口语场景：const SPEAK_SCENARIOS(8) + english-scenarios.js 额外4个 + 8个新的 = 20
+if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARIOS!=='undefined'){
+  var extraScenes=window.SPEAK_SCENARIOS.filter(function(s){
+    return !SPEAK_SCENARIOS.find(function(e){return e.id===s.id;});
+  });
+  extraScenes.forEach(function(s){SPEAK_SCENARIOS.push(s);});
+}
+if(typeof SPEAK_SCENARIOS_NEW8!=='undefined' && typeof SPEAK_SCENARIOS!=='undefined'){
+  SPEAK_SCENARIOS_NEW8.forEach(function(s){SPEAK_SCENARIOS.push(s);});
+}
+</script>
 </body>
 </html>

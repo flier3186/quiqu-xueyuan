@@ -134,4 +134,8 @@ window.VOCAB_THEMES = [
       { w: 'count', pos: 'v. 动词', def: '数数。按顺序报出数目。', ex: 'I can count to ten.', emoji: '🔢', grade: '4' },
       { w: 'think', pos: 'v. 动词', def: '想；思考。用脑子考虑。', ex: 'I think hard.', emoji: '🤔', grade: '5' },
       { w: 'spell', pos: 'v. 动词', def: '拼写。把单词的字母念出来或写出来。', ex: 'I can spell it.', emoji: '🔤', grade: '5' },
-      { w: 'ask', pos: 'v.
+      { w: 'ask', pos: 'v. 动词', def: '问；请。提出问题。', ex: 'I ask a question.', emoji: '❓', grade: '4' },
+      { w: 'answer', pos: 'v./n.', def: '回答。对问题作出回应。', ex: 'I answer the question.', emoji: '🙋', grade: '4' }
+    ]
+  }
+];
