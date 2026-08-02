@@ -722,36 +722,8 @@ input,textarea{font-family:inherit}
 .pet-sel-item img{width:100%;height:100%;object-fit:cover}
 .pet-sel-item:hover{opacity:1;transform:scale(1.05)}
 .pet-sel-item.active{opacity:1;border-color:var(--yellow);box-shadow:0 0 16px rgba(245,184,0,.5);transform:scale(1.1)}
-.pet-display{position:relative;z-index:2;width:280px;height:280px;display:flex;align-items:center;justify-content:center;animation:float 5s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(-5px)}50%{transform:translateY(5px)}}
-.pet-display img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:5px solid rgba(255,255,255,.2);box-shadow:0 0 60px rgba(0,168,150,.4),0 20px 40px rgba(0,0,0,.4);animation:breathe 4s ease-in-out infinite}
-@keyframes breathe{0%,100%{filter:brightness(1)}50%{filter:brightness(1.08)}}
-.pet-display.happy{animation:happyJump .6s ease}
-@keyframes happyJump{0%,100%{transform:translateY(0)}30%{transform:translateY(-30px) scale(1.05)}60%{transform:translateY(0) scale(.95)}}
-.pet-display.shake{animation:shake .4s ease}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-/* 宠物旋转动作 */
-@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-/* 宠物挥手 */
-@keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(-15deg)}75%{transform:rotate(15deg)}}
-/* 宠物点头 */
-@keyframes nod{0%,100%{transform:rotate(0)}50%{transform:rotate(10deg)}}
-/* 宠物缩放（惊喜）*/
-@keyframes surprise{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-/* 宠物摇摆（开心）*/
-@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg) scale(1.05)}75%{transform:rotate(8deg) scale(1.05)}}
-/* 宠物翻滚 */
-@keyframes roll{0%{transform:rotate(0) translateY(0)}50%{transform:rotate(180deg) translateY(-20px)}100%{transform:rotate(360deg) translateY(0)}}
-/* 宠物打瞌睡 */
-@keyframes sleep{0%,100%{transform:rotate(-5deg) scale(0.95);filter:brightness(0.8)}50%{transform:rotate(-5deg) scale(0.98);filter:brightness(0.85)}}
-
-.pet-display.spin{animation:spin 1s ease}
-.pet-display.wave{animation:wave .5s ease 2}
-.pet-display.nod{animation:nod .6s ease 2}
-.pet-display.surprise{animation:surprise .5s ease}
-.pet-display.wiggle{animation:wiggle .6s ease 2}
-.pet-display.roll{animation:roll 1s ease}
-.pet-display.sleep{animation:sleep 3s ease infinite}
+.pet-display{position:relative;z-index:2;width:280px;height:280px;display:flex;align-items:center;justify-content:center}
+.pet-display canvas{width:100%;height:100%;border-radius:50%}
 .pet-info{text-align:center;color:white;position:relative;z-index:2;margin-top:16px}
 .pet-name{font-size:26px;font-weight:900;margin-bottom:6px}
 .pet-level{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--navy);padding:4px 12px;border-radius:20px;font-size:13px;font-weight:800}
@@ -4230,66 +4202,28 @@ function renderEngSub(subtab,grade){
     </div>`;
   }
   if(subtab==='listen'){
-    const listenData={
-      3:{
-        q:'请听录音，填入正确的单词完成句子。点击黄色播放按钮先听整段音频，然后填空！',
-        audio:'My name is Tom. I am a student. I go to school every day. I like apples and bananas.',
-        blanks:[
-          {pre:'My ',post:' is Tom.',ans:'name',hint:'n. 名字'},
-          {pre:'I am a ',post:'.',ans:'student',hint:'n. 学生'},
-          {pre:'I go to ',post:' every day.',ans:'school',hint:'n. 学校'},
-        ]
-      },
-      4:{
-        q:'听录音，补全短文。每个空只填一个单词，注意拼写哦！',
-        audio:'Look at my classroom. There is a big window and a green door. I like my English teacher very much.',
-        blanks:[
-          {pre:'Look at my ',post:'.',ans:'classroom',hint:'n. 教室'},
-          {pre:'There is a big ',post:' and a green door.',ans:'window',hint:'n. 窗户'},
-          {pre:'I like my English ',post:' very much.',ans:'teacher',hint:'n. 老师'},
-        ]
-      },
-      5:{
-        q:'听录音，完成周末活动短文。注意动词时态哦！',
-        audio:'On the weekend, I sometimes play football with my friends. I often read books at home. I always do my homework first.',
-        blanks:[
-          {pre:'I ',post:' play football with my friends.',ans:'sometimes',hint:'adv. 有时'},
-          {pre:'I ',post:' read books at home.',ans:'often',hint:'adv. 经常'},
-          {pre:'I ',post:' do my homework first.',ans:'always',hint:'adv. 总是'},
-        ]
-      },
-      6:{
-        q:'六年级听力挑战：听关于梦想的短文，补全关键词。',
-        audio:'My dream is to travel around the world in the future. I want to be a pilot. I will study hard from now on.',
-        blanks:[
-          {pre:'My ',post:' is to travel around the world.',ans:'dream',hint:'n. 梦想'},
-          {pre:'in the ',post:' (未来).',ans:'future',hint:'n. 未来'},
-          {pre:'I want to be a ',post:'.',ans:'pilot',hint:'n. 飞行员'},
-        ]
-      },
-    };
-    const d=listenData[grade]||listenData['3'];
+    const allItems=typeof LISTENING_DATA!=='undefined'&&LISTENING_DATA||[];
+    const items=allItems.filter(i=>i.grade==grade).sort((a,b)=>a.level-b.level);
+    if(!items.length) return '<div style="padding:40px;text-align:center;color:var(--text-3)">暂无听力材料</div>';
+    const gradeTitle={3:'三年级',4:'四年级',5:'五年级',6:'六年级'}[grade]||'英语';
     return `<div class="listen-wrap">
-      <div class="listen-head">
-        <h3>🎧 听力填空 · ${grade}年级</h3>
-        <div class="listen-play" onclick="playListenAudio('${d.audio.replace(/'/g,'')}')">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          播放音频
-        </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <h3 style="font-size:17px;color:var(--navy);font-weight:800">🎧 听力森林 · ${gradeTitle}</h3>
+        <span style="font-size:12px;color:var(--teal);font-weight:600">${items.length} 套练习</span>
       </div>
-      <div class="listen-q">📝 ${d.q}</div>
-      <div class="listen-blanks">
-        ${d.blanks.map((b,i)=>`<div class="listen-blank">
-          <div class="listen-num">${i+1}</div>
-          <div class="listen-text">${b.pre}<input type="text" id="listenInput${i}" placeholder="?">${b.post}<span style="display:block;font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">💡 提示：${b.hint}</span></div>
-          <div class="listen-chk" id="listenChk${i}" onclick="checkListenBlank(${i},'${b.ans}')">检查</div>
+      <div id="listenItemList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+        ${items.map((item,i)=>`<div class="card" style="border-left:3px solid var(--teal);padding:14px;cursor:pointer" onclick="startListenExercise(${i})" id="listenCard${i}">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:42px;height:42px;border-radius:12px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:20px">${item.type==='dialogue'?'💬':item.type==='story'?'📖':item.type==='song'?'🎵':'🎧'}</div>
+            <div style="flex:1">
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">${item.title}</div>
+              <div style="font-size:12px;color:var(--text-2);margin-top:2px">${item.type==='dialogue'?'对话':'故事'} · ${item.duration||'~1min'} · 第${item.level||1}级</div>
+            </div>
+            <div style="font-size:13px;color:var(--ink-400)">${item.questions?item.questions.length+'题':''}</div>
+          </div>
         </div>`).join('')}
       </div>
-    </div>
-    <div style="margin-top:16px;background:white;border-radius:var(--radius-lg);padding:18px;box-shadow:var(--card-shadow)">
-      <h3 style="font-size:15px;color:var(--navy);font-weight:800;margin-bottom:10px">📖 听力原文</h3>
-      <div style="padding:12px 16px;background:var(--ink-50);border-radius:10px;font-size:14px;line-height:1.8;color:var(--ink-700);font-family:'Inter',sans-serif;font-weight:500">${d.audio}</div>
-      <div style="margin-top:10px;font-size:12px;color:var(--text-2)">💡 学习技巧：① 先完整听一遍了解大意 ② 听第二遍抓关键词 ③ 听完再对照原文 ④ 跟着录音模仿朗读</div>
+      <div id="listenExerciseArea"></div>
     </div>`;
   }
   return '';
@@ -5135,26 +5069,16 @@ function bindSpeakEvents(){
 
 function renderPet(){
   const pet=PETS[S.pet.idx];
-  // 自动动作定时器：根据心情偶尔触发动作（心情>80 偶尔 wiggle，心情<30 显示 sleep）
-  if(window._petAutoTimer){ clearInterval(window._petAutoTimer); window._petAutoTimer=null; }
-  window._petAutoTimer = setInterval(()=>{
-    const display = document.getElementById('petDisplay');
-    if(!display){ clearInterval(window._petAutoTimer); window._petAutoTimer=null; return; }
-    const mood = S.pet.mood || 0;
-    // 用户触发的瞬时动作进行中则跳过，避免冲突
-    const busy = display.classList.contains('happy')||display.classList.contains('roll')||display.classList.contains('spin')||display.classList.contains('wave')||display.classList.contains('nod')||display.classList.contains('surprise')||display.classList.contains('wiggle');
-    if(busy) return;
-    if(mood < 30){
-      if(!display.classList.contains('sleep')) display.classList.add('sleep');
-    }else if(mood > 80 && Math.random() < 0.4){
-      ['happy','shake','spin','wave','nod','surprise','wiggle','roll','sleep'].forEach(c=>display.classList.remove(c));
-      void display.offsetWidth;
-      display.classList.add('wiggle');
-      setTimeout(()=>display.classList.remove('wiggle'),1200);
-    }else{
-      if(display.classList.contains('sleep')) display.classList.remove('sleep');
-    }
-  }, 6000);
+  // 清理旧循环
+  if(window._petRAF){cancelAnimationFrame(window._petRAF);window._petRAF=null;}
+  if(window._petAutoTimer){clearInterval(window._petAutoTimer);window._petAutoTimer=null;}
+  window._petAutoTimer=setInterval(()=>{
+    const mood=S.pet.mood||0;
+    if(petCanvasAnim._busy)return;
+    if(mood<30){petCanvasAnim._state='sleep';}
+    else if(mood>80&&Math.random()<0.3){petCanvasAnim._state='happy';setTimeout(()=>{if(petCanvasAnim._state==='happy')petCanvasAnim._state='idle';},1500);}
+    else if(petCanvasAnim._state==='sleep')petCanvasAnim._state='idle';
+  },8000);
   return `
     <div class="pet-layout">
       <div class="pet-stage">
@@ -5162,7 +5086,7 @@ function renderPet(){
           ${PETS.map((p,i)=>`<div class="pet-sel-item ${i===S.pet.idx?'active':''}" onclick="switchPet(${i})"><img src="${p.avatar}" alt="${p.type}"></div>`).join('')}
         </div>
         <div class="pet-display" id="petDisplay">
-          <img src="${pet.avatar}" alt="${pet.type}">
+          <canvas id="petCanvas" width="280" height="280"></canvas>
         </div>
         <div class="pet-info">
           <div class="pet-name">${pet.name} · ${pet.type}</div>
@@ -5172,10 +5096,10 @@ function renderPet(){
           </div>
         </div>
         <div class="pet-action-row">
-          <button class="pet-action-btn" onclick="petAction('feed')"><svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>🍗 喂食</button>
-          <button class="pet-action-btn" onclick="petAction('play')"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>🎮 玩耍</button>
-          <button class="pet-action-btn" onclick="petAction('train')"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>🎯 训练</button>
-          <button class="pet-action-btn" onclick="petAction('bath')"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 3 2 5 4 6v3c0 1 1 2 2 2h2c1 0 2-1 2-2v-3c2-1 4-3 4-6 0-4-3-7-7-7z"/></svg>🛁 洗澡</button>
+          <button class="pet-action-btn" onclick="petAction('feed')">🍗 喂食</button>
+          <button class="pet-action-btn" onclick="petAction('play')">🎮 玩耍</button>
+          <button class="pet-action-btn" onclick="petAction('train')">🎯 训练</button>
+          <button class="pet-action-btn" onclick="petAction('bath')">🛁 洗澡</button>
           <button class="pet-action-btn" onclick="petAction('sleep')">💤 睡觉</button>
           <button class="pet-action-btn" onclick="petAction('wave')">👋 挥手</button>
           <button class="pet-action-btn" onclick="petAction('nod')">👍 点头</button>
@@ -5259,62 +5183,318 @@ function switchPet(i){
   const fpLv = document.querySelector('#floatingPet [style*="Lv"]');
   if(fpLv) fpLv.textContent = 'Lv'+S.pet.level;
   $('#contentArea').innerHTML=renderPet();
+  setTimeout(()=>petCanvasAnim.init(),50);
 }
 
+// ===== Canvas 宠物动画引擎 =====
+const petCanvasAnim={
+  _c:null,_ctx:null,_raf:null,_t:0,
+  _state:'idle',_busy:false,_busyT:0,
+  _particles:[],_zzs:[],_sparkles:[],_bubbles:[],
+  init(){
+    this._c=document.getElementById('petCanvas');
+    if(!this._c)return;
+    this._ctx=this._c.getContext('2d');
+    this._start();
+  },
+  _start(){
+    if(this._raf)cancelAnimationFrame(this._raf);
+    const loop=()=>{
+      this._t+=0.016;
+      this._draw();
+      this._raf=requestAnimationFrame(loop);
+    };
+    this._raf=requestAnimationFrame(loop);
+  },
+  action(act){
+    this._state=act;this._busy=true;this._busyT=0;
+    if(act==='feed'){this._particles=[];for(let i=0;i<6;i++)this._particles.push({x:140+Math.random()*60-30,y:180,type:'food',t:Math.random()*Math.PI*2});}
+    if(act==='play'){this._sparkles=[];for(let i=0;i<8;i++)this._sparkles.push({x:100+Math.random()*80,y:80+Math.random()*60,t:Math.random()*Math.PI*2});}
+    if(act==='sleep'){this._zzs=[];}
+    if(act==='wave'||act==='nod'){this._busyT=1200;}
+    if(act==='surprise'){this._busyT=600;}
+    if(act==='roll'||act==='spin'){this._busyT=1000;}
+    setTimeout(()=>{this._busy=false;this._state=this._getAutoState();},this._busyT||1500);
+  },
+  _getAutoState(){
+    const m=S.pet.mood||0;
+    if(m<20)return'sleep';
+    if(m>85)return'happy';
+    return'idle';
+  },
+  _draw(){
+    const c=this._c,ctx=this._ctx;if(!ctx)return;
+    const W=c.width,H=c.height;
+    ctx.clearRect(0,0,W,H);
+    const mood=S.pet.mood||50;
+    const t=this._t;
+    const st=this._busy?'idle':this._state;
+    // 背景光晕
+    const glow=ctx.createRadialGradient(140,160,20,140,160,130);
+    glow.addColorStop(0,'rgba(0,168,150,0.12)');
+    glow.addColorStop(1,'rgba(0,168,150,0)');
+    ctx.fillStyle=glow;ctx.beginPath();ctx.arc(140,160,130,0,Math.PI*2);ctx.fill();
+    // 影子
+    ctx.fillStyle='rgba(0,0,0,0.15)';
+    ctx.beginPath();ctx.ellipse(140,240,55,12,0,0,Math.PI*2);ctx.fill();
+    // 角色参数
+    let bx=140,by=165,scale=1,rot=0,eyH=1,myOpen=0.3,blinking=false;
+    let bounce=0,legL=0,legR=0,armL=0,armR=0;
+    const breathe=Math.sin(t*2)*3;
+    // 根据动作设置参数
+    if(st==='idle'){
+      by=165+breathe;
+    }else if(st==='happy'){
+      bounce=Math.abs(Math.sin(t*8))*12;
+      by=165-bounce;
+      myOpen=0.5;
+    }else if(st==='sleep'){
+      by=200;bounce=Math.sin(t*1.5)*2;
+      by+=bounce;eyH=0.15;
+    }else if(st==='feed'){
+      myOpen=0.5+Math.sin(t*6)*0.15;
+      bounce=Math.sin(t*8)*3;
+      by=165-bounce;
+    }else if(st==='play'){
+      bounce=Math.abs(Math.sin(t*10))*15;
+      by=165-bounce;
+      legL=Math.sin(t*10)*12;legR=-legL;
+      armL=Math.sin(t*10)*15;armR=-armL;
+      myOpen=0.4;
+    }else if(st==='train'){
+      rot=Math.sin(t*6)*0.15;
+      legL=Math.sin(t*8)*8;legR=-legL;
+      armL=Math.sin(t*8)*10;armR=-armL;
+    }else if(st==='wave'){
+      armR=Math.sin(t*6)*0.6-0.3;
+      myOpen=0.35;
+    }else if(st==='nod'){
+      rot=Math.sin(t*5)*0.1;
+    }else if(st==='surprise'){
+      by=165+Math.sin(t*12)*5;
+      eyH=1.3;myOpen=0.1;
+    }
+    // 绘制宠物身体
+    ctx.save();
+    ctx.translate(bx,by);
+    ctx.rotate(rot);
+    ctx.scale(scale,bounce>0?1-bounce*0.01:1);
+    this._drawBody(ctx,mood,st,t);
+    ctx.restore();
+    // 绘制粒子效果
+    this._drawParticles(ctx,bx,by);
+    // Zzz 符号
+    if(st==='sleep')this._drawZzz(ctx,bx,by);
+    // 心情表情气泡
+    if(st==='happy'&&Math.sin(t*3)>0.5){
+      ctx.font='bold 20px sans-serif';ctx.textAlign='center';
+      ctx.fillText('❤️',bx+45,by-55);
+    }
+    if(st==='surprise'){
+      ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+      ctx.fillText('😲',bx,by-70);
+    }
+  },
+  _drawBody(ctx,mood,st,t){
+    const type=S.pet.idx;
+    // 身体颜色
+    const colors=[
+      {body:'#E8644A',belly:'#F5C4A8',accent:'#C0392B'},  // 龙 red
+      {body:'#D4943A',belly:'#F5DEB3',accent:'#8B4513'},  // 狐狸 orange
+      {body:'#7B8FA3',belly:'#D5DCE6',accent:'#4A5568'},  // 猫 grey
+      {body:'#F0E6D3',belly:'#FFF8E7',accent:'#C9B896'},  // 兔子 cream
+      {body:'#5B8FBF',belly:'#B8D4E8',accent:'#2E6B9E'},  // 鲸鱼 blue
+    ];
+    const col=colors[type%colors.length];
+    // 身体（圆形）
+    ctx.fillStyle=col.body;
+    ctx.beginPath();ctx.arc(0,0,60,0,Math.PI*2);ctx.fill();
+    // 肚子
+    ctx.fillStyle=col.belly;
+    ctx.beginPath();ctx.arc(0,8,38,0,Math.PI*2);ctx.fill();
+    // 耳朵（根据类型）
+    if(type===0){// 龙角
+      ctx.fillStyle=col.accent;
+      ctx.beginPath();ctx.moveTo(-35,-45);ctx.lineTo(-45,-75);ctx.lineTo(-25,-50);ctx.fill();
+      ctx.beginPath();ctx.moveTo(35,-45);ctx.lineTo(45,-75);ctx.lineTo(25,-50);ctx.fill();
+    }else if(type===1){// 狐狸尖耳
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.moveTo(-40,-38);ctx.lineTo(-50,-72);ctx.lineTo(-20,-45);ctx.fill();
+      ctx.beginPath();ctx.moveTo(40,-38);ctx.lineTo(50,-72);ctx.lineTo(20,-45);ctx.fill();
+      ctx.fillStyle=col.belly;
+      ctx.beginPath();ctx.moveTo(-38,-42);ctx.lineTo(-46,-65);ctx.lineTo(-24,-46);ctx.fill();
+      ctx.beginPath();ctx.moveTo(38,-42);ctx.lineTo(46,-65);ctx.lineTo(24,-46);ctx.fill();
+    }else if(type===2){// 猫耳
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.moveTo(-38,-35);ctx.lineTo(-48,-62);ctx.lineTo(-22,-40);ctx.fill();
+      ctx.beginPath();ctx.moveTo(38,-35);ctx.lineTo(48,-62);ctx.lineTo(22,-40);ctx.fill();
+    }else if(type===3){// 兔长耳
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(-18,-72,12,30,-0.1,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18,-72,12,30,0.1,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='pink';
+      ctx.beginPath();ctx.ellipse(-18,-72,6,20,-0.1,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18,-72,6,20,0.1,0,Math.PI*2);ctx.fill();
+    }else{// 鲸鱼鳍
+      ctx.fillStyle=col.accent;
+      ctx.beginPath();ctx.ellipse(0,-55,25,12,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(-45,-20,12,20,-0.3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(45,-20,12,20,0.3,0,Math.PI*2);ctx.fill();
+    }
+    // 眼睛
+    const eyH2=st==='sleep'?0.1:1;
+    const blinkGap=Math.sin(t*0.5)>0.95?0:eyH2;
+    // 左眼
+    ctx.fillStyle='#1a1a2e';
+    ctx.beginPath();ctx.ellipse(-22,-8,9,9*blinkGap,0,0,Math.PI*2);ctx.fill();
+    if(blinkGap>0.3){ctx.fillStyle='white';ctx.beginPath();ctx.arc(-25,-10,3,0,Math.PI*2);ctx.fill();}
+    // 右眼
+    ctx.fillStyle='#1a1a2e';
+    ctx.beginPath();ctx.ellipse(22,-8,9,9*blinkGap,0,0,Math.PI*2);ctx.fill();
+    if(blinkGap>0.3){ctx.fillStyle='white';ctx.beginPath();ctx.arc(19,-10,3,0,Math.PI*2);ctx.fill();}
+    // 眉毛（开心时上扬）
+    if(st==='happy'){
+      ctx.strokeStyle=col.accent;ctx.lineWidth=2.5;ctx.lineCap='round';
+      ctx.beginPath();ctx.arc(-22,-20,8,Math.PI+0.3,-0.3);ctx.stroke();
+      ctx.beginPath();ctx.arc(22,-20,8,Math.PI+0.3,-0.3);ctx.stroke();
+    }
+    // 嘴巴
+    ctx.strokeStyle=col.accent;ctx.lineWidth=2.5;ctx.lineCap='round';
+    if(st==='sleep'){
+      ctx.beginPath();ctx.arc(0,18,6,0.1,Math.PI-0.1);ctx.stroke();
+    }else if(st==='happy'||st==='feed'){
+      ctx.beginPath();ctx.arc(0,14,12,0.2,Math.PI-0.2);ctx.stroke();
+      // 舌头
+      ctx.fillStyle='#E8888C';
+      ctx.beginPath();ctx.ellipse(0,24,7,5,0,0,Math.PI);ctx.fill();
+    }else if(st==='surprise'){
+      ctx.fillStyle='#1a1a2e';
+      ctx.beginPath();ctx.ellipse(0,20,8,10,0,0,Math.PI*2);ctx.fill();
+    }else{
+      ctx.beginPath();ctx.moveTo(-8,18);ctx.quadraticCurveTo(0,24,8,18);ctx.stroke();
+    }
+    // 腮红
+    ctx.fillStyle='rgba(255,150,150,0.3)';
+    ctx.beginPath();ctx.ellipse(-40,5,10,7,0,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.ellipse(40,5,10,7,0,0,Math.PI*2);ctx.fill();
+    // 手臂
+    ctx.fillStyle=col.body;
+    const armL=Math.sin(t*6)*8,armR=Math.sin(t*6+Math.PI)*8;
+    if(st==='wave'){ctx.save();ctx.translate(55,-5);ctx.rotate(-0.5+Math.sin(t*8)*0.3);ctx.beginPath();ctx.ellipse(0,0,10,18,0,0,Math.PI*2);ctx.fill();ctx.restore();}
+    else{ctx.beginPath();ctx.ellipse(-52,5+armL,10,16,0.2,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(52,5+armR,10,16,-0.2,0,Math.PI*2);ctx.fill();}
+    // 腿
+    if(st==='play'){
+      const lL=Math.sin(t*10)*10,lR=-lL;
+      ctx.beginPath();ctx.ellipse(-20,58+lL,10,14,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(20,58+lR,10,14,0,0,Math.PI*2);ctx.fill();
+    }else{
+      ctx.beginPath();ctx.ellipse(-20,58,10,14,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(20,58,10,14,0,0,Math.PI*2);ctx.fill();
+    }
+    // 尾巴
+    if(type===0){// 龙尾
+      ctx.strokeStyle=col.accent;ctx.lineWidth=6;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(0,52);ctx.quadraticCurveTo(35,40+Math.sin(t*3)*8,30,20);ctx.stroke();
+      ctx.fillStyle=col.body;ctx.beginPath();ctx.arc(30,20,6,0,Math.PI*2);ctx.fill();
+    }else if(type===1){// 狐狸尾巴
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(35,40+Math.sin(t*2)*5,16,8,0.4,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=col.belly;ctx.beginPath();ctx.ellipse(40,38+Math.sin(t*2)*5,8,5,0.4,0,Math.PI*2);ctx.fill();
+    }else if(type===4){// 鲸鱼尾鳍
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.moveTo(0,55);ctx.quadraticCurveTo(30,70+Math.sin(t*2)*5,45,55);ctx.lineTo(0,55);ctx.fill();
+    }
+    // 等级徽章
+    ctx.fillStyle='rgba(255,255,255,0.15)';
+    ctx.beginPath();ctx.arc(48,-42,12,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='white';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('Lv'+S.pet.level,48,-42);
+  },
+  _drawParticles(ctx,bx,by){
+    if(this._particles.length){
+      this._particles.forEach(p=>{
+        p.t+=0.05;
+        const px=bx+p.x-Math.sin(p.t)*20;
+        const py=by-40+p.y-p.t*15;
+        ctx.font='18px sans-serif';ctx.fillText('🍖',px,py);
+      });
+      this._particles=this._particles.filter(p=>p.t<3);
+    }
+    if(this._sparkles.length){
+      this._sparkles.forEach(s=>{
+        s.t+=0.08;
+        const sx=bx+s.x-Math.sin(s.t*2)*10;
+        const sy=by-30+s.y-Math.cos(s.t)*8;
+        ctx.font='14px sans-serif';ctx.fillText('✨',sx,sy);
+      });
+      this._sparkles=this._sparkles.filter(s=>s.t<4);
+    }
+  },
+  _drawZzz(ctx,bx,by){
+    const t=this._t;
+    for(let i=0;i<3;i++){
+      const zz=Math.sin(t*2+i*2)>0.3;
+      if(zz){
+        const zx=bx+30+i*12;
+        const zy=by-50-i*18-Math.sin(t*3+i)*5;
+        ctx.font=`bold ${12+i*3}px sans-serif`;ctx.fillStyle=`rgba(150,200,255,${0.8-i*0.2})`;
+        ctx.textAlign='center';ctx.fillText('Z',zx,zy);
+      }
+    }
+  }
+};
+
 function petAction(action){
-  const display=$('#petDisplay');
-  const stage=$('.pet-stage');
-  // 触发动作前先清理已有动作类并强制 reflow，确保新动画每次都能生效
-  const playAnim=(cls,ms)=>{
-    if(!display)return;
-    ['happy','shake','spin','wave','nod','surprise','wiggle','roll','sleep'].forEach(c=>display.classList.remove(c));
-    void display.offsetWidth;
-    display.classList.add(cls);
-    if(ms && cls!=='sleep'){ setTimeout(()=>display.classList.remove(cls),ms); }
+  const stage=document.querySelector('.pet-stage');
+  const showTip=(text)=>{
+    const tip=document.createElement('div');
+    tip.style.cssText='position:absolute;top:35%;left:50%;transform:translateX(-50%);padding:8px 18px;border-radius:20px;background:rgba(0,168,150,0.9);color:white;font-size:14px;font-weight:700;pointer-events:none;z-index:10;animation:floatTipUp 1.2s ease forwards;';
+    tip.textContent=text;
+    stage.appendChild(tip);
+    setTimeout(()=>tip.remove(),1200);
   };
   if(action==='feed'){
-    playAnim('wiggle',1200);
-    S.pet.hunger = Math.min(100, S.pet.hunger + 10);
-    showFloatTip(stage,'🍖 +10 饱食');
-    toast('🍗 喂食成功！饱食+10');
+    petCanvasAnim.action('feed');
+    S.pet.hunger=Math.min(100,S.pet.hunger+10);
+    showTip('🍖 +10 饱食');toast('🍗 喂食成功！饱食+10');
   }else if(action==='play'){
-    playAnim('roll',1000);
-    S.pet.mood = Math.min(100, S.pet.mood + 15);
-    S.pet.exp += 8;
-    showFloatTip(stage,'🎮 +15 心情');
-    toast('🎮 玩耍开心！心情+15 经验+8');
+    petCanvasAnim.action('play');
+    S.pet.mood=Math.min(100,S.pet.mood+15);S.pet.exp+=8;
+    showTip('🎮 +15 心情');toast('🎮 玩耍开心！心情+15 经验+8');
     checkPetLevelUp();
   }else if(action==='train'){
-    playAnim('spin',1000);
-    S.pet.exp += 20;
-    showFloatTip(stage,'🎯 +20 经验');
-    toast('🎯 训练完成！经验+20');
+    petCanvasAnim.action('train');
+    S.pet.exp+=20;
+    showTip('🎯 +20 经验');toast('🎯 训练完成！经验+20');
     checkPetLevelUp();
   }else if(action==='bath'){
-    playAnim('surprise',500);
-    S.pet.clean = Math.min(100, S.pet.clean + 12);
-    showFloatTip(stage,'🛁 +12 清洁');
-    toast('🛁 洗澡完成！清洁+12');
+    petCanvasAnim.action('surprise');
+    S.pet.clean=Math.min(100,S.pet.clean+12);
+    showTip('🛁 +12 清洁');toast('🛁 洗澡完成！清洁+12');
   }else if(action==='sleep'){
-    playAnim('sleep',0);  // 无限循环打瞌睡，不自动移除
-    S.pet.energy = Math.min(100, (S.pet.energy||0) + 10);
-    showFloatTip(stage,'💤 +10 精力');
-    toast('💤 宠物开始打瞌睡了～');
+    petCanvasAnim.action('sleep');
+    S.pet.energy=Math.min(100,(S.pet.energy||0)+10);
+    showTip('💤 +10 精力');toast('💤 宠物开始打瞌睡了～');
   }else if(action==='wave'){
-    playAnim('wave',1000);
-    S.pet.mood = Math.min(100, (S.pet.mood||0) + 3);
-    showFloatTip(stage,'👋 挥挥手');
-    toast('👋 宠物在和你打招呼～');
+    petCanvasAnim.action('wave');
+    S.pet.mood=Math.min(100,(S.pet.mood||0)+3);
+    showTip('👋 挥挥手');toast('👋 宠物在和你打招呼～');
   }else if(action==='nod'){
-    playAnim('nod',1200);
-    S.pet.mood = Math.min(100, (S.pet.mood||0) + 5);
-    showFloatTip(stage,'👍 +5 心情');
-    toast('👍 宠物点头赞同～');
+    petCanvasAnim.action('nod');
+    S.pet.mood=Math.min(100,(S.pet.mood||0)+5);
+    showTip('👍 +5 心情');toast('👍 宠物点头赞同～');
   }
   saveState();
-  const fpLv = document.querySelector('#floatingPet [style*="Lv"]');
-  if(fpLv) fpLv.textContent = 'Lv'+S.pet.level;
+  const fpLv=document.querySelector('#floatingPet [style*="Lv"]');
+  if(fpLv)fpLv.textContent='Lv'+S.pet.level;
 }
+
+// 添加 floatTipUp 动画
+(function addPetTipStyle(){
+  const style=document.createElement('style');
+  style.textContent=`@keyframes floatTipUp{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(-40px)}}`;
+  document.head.appendChild(style);
+})();
 
 function checkPetLevelUp(){
   if(S.pet.exp >= 100){
@@ -5483,6 +5663,7 @@ function playMiniGame(type){
     saveState();
     toast(`🎉 ${title} 完成！获得 ${reward} 金币`);
     $('#contentArea').innerHTML=renderPet();
+    setTimeout(()=>petCanvasAnim.init(),50);
   },800);
 }
 
@@ -6501,6 +6682,99 @@ function checkListenBlank(i,ans){
   }
 }
 
+let _currentListenItems=[];
+let _currentListenIdx=-1;
+
+function startListenExercise(idx){
+  const allItems=typeof LISTENING_DATA!=='undefined'&&LISTENING_DATA||[];
+  const gradeNum=parseInt(currentEngGrade)||3;
+  _currentListenItems=allItems.filter(i=>i.grade==gradeNum).sort((a,b)=>a.level-b.level);
+  if(idx<0||idx>=_currentListenItems.length) return;
+  _currentListenIdx=idx;
+  renderListenExercise(_currentListenItems[idx]);
+}
+
+function renderListenExercise(item){
+  const area=$('#listenExerciseArea');
+  if(!area)return;
+  if(!item){area.innerHTML='';return;}
+  const qCount=item.questions?item.questions.length:0;
+  const playBtn=`<button onclick="speak(${JSON.stringify(item.text)});toast('🔊 正在播放...')" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:20px;border:none;background:var(--teal);color:white;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--dur-base)">🔊 播放音频</button>`;
+  const qHTML=item.questions?item.questions.map((q,i)=>`
+    <div class="card" style="margin-bottom:12px;padding:16px">
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--teal);flex-shrink:0">${i+1}</div>
+        <div style="font-size:14px;color:var(--navy);font-weight:600;line-height:1.5">${q.q}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-left:38px">
+        ${q.options.map((opt,oi)=>`<div class="listen-opt" id="lopt_${i}_${oi}" onclick="selectListenOpt(${i},${oi},${q.answer})" style="padding:10px 14px;border-radius:10px;border:2px solid var(--ink-200);font-size:14px;color:var(--navy);cursor:pointer;transition:all 0.2s;font-weight:500">${opt}</div>`).join('')}
+      </div>
+      <div id="listenExplain_${i}" style="margin-top:10px;padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text-3);display:none"></div>
+    </div>`).join(''):`<div style="text-align:center;padding:30px;color:var(--text-3)">暂无练习题</div>`;
+  area.innerHTML=`
+    <div class="card" style="margin-bottom:16px;padding:18px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="font-size:36px">${item.type==='dialogue'?'💬':item.type==='story'?'📖':item.type==='song'?'🎵':'🎧'}</div>
+        <div style="flex:1">
+          <div style="font-size:17px;font-weight:800;color:var(--navy)">${item.title}</div>
+          <div style="font-size:13px;color:var(--text-2);margin-top:3px">${item.type==='dialogue'?'情景对话':'故事阅读'} · ${item.duration||'~1min'}</div>
+        </div>
+        ${playBtn}
+      </div>
+    </div>
+    <div class="card" style="padding:16px;margin-bottom:16px">
+      <div style="font-size:13px;color:var(--text-2);margin-bottom:10px">📖 听力原文</div>
+      <div style="padding:12px 16px;background:var(--ink-50);border-radius:10px;font-size:14px;line-height:1.8;color:var(--ink-700);font-family:'Inter',sans-serif">${item.text}</div>
+      <div style="margin-top:8px;font-size:13px;color:var(--ink-500);line-height:1.7">${item.cn||''}</div>
+    </div>
+    <div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px">📝 听力理解（${qCount}题）</div>
+    ${qHTML}
+    <div id="listenResult" style="text-align:center;padding:20px;font-size:18px;font-weight:800;color:var(--teal);display:none"></div>
+    <div style="display:flex;gap:10px;margin-top:12px;justify-content:center">
+      <button onclick="renderListenList()" style="padding:8px 20px;border-radius:20px;border:2px solid var(--ink-200);background:white;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer">← 返回列表</button>
+    </div>`;
+}
+
+function selectListenOpt(qi,oi,correctIdx){
+  const opts=document.querySelectorAll(`[id^="lopt_${qi}_"]`);
+  if(opts[oi].dataset.answered) return;
+  opts[oi].dataset.answered='1';
+  const isCorrect=oi===correctIdx;
+  opts[oi].style.borderColor=isCorrect?'var(--teal)':'#EF4444';
+  opts[oi].style.background=isCorrect?'rgba(0,168,150,.15)':'rgba(239,68,68,.15)';
+  opts[oi].style.color=isCorrect?'var(--teal)':'#EF4444';
+  const expl=document.getElementById('listenExplain_'+qi);
+  if(expl){
+    const item=_currentListenItems[_currentListenIdx];
+    const q=item.questions[qi];
+    expl.textContent='💡 '+q.cn;
+    expl.style.display='block';
+    expl.style.background=isCorrect?'rgba(0,168,150,.1)':'rgba(239,68,68,.1)';
+    expl.style.color=isCorrect?'var(--teal)':'#EF4444';
+  }
+  opts.forEach((o,i)=>{if(i!==oi){o.style.opacity='0.4';o.style.cursor='default';}});
+  // 检查是否全部答完
+  const allDone=opts.length>0&&Array.from(opts).every(o=>o.dataset.answered==='1');
+  if(allDone){
+    const answered=opts.length;
+    const answeredCorrect=Array.from(opts).filter(o=>o.dataset.answered==='1').length;
+    // 计算本轮正确数
+    const area=$('#listenExerciseArea');
+    const resultEl=$('#listenResult');
+    if(resultEl){
+      resultEl.style.display='block';
+      resultEl.textContent=`🎉 完成！${answeredCorrect}/${answered} 正确`;
+      setStar(answeredCorrect*2,'听力练习');
+      toast(`🎉 听力练习完成！答对 ${answeredCorrect}/${answered}`);
+    }
+  }
+}
+
+function renderListenList(){
+  _currentListenIdx=-1;
+  render();
+}
+
 /* ============ 徽章定义 ============ */
 const BADGES=[
   {id:'first_word',name:'初次发音',icon:'🗣️',cond:()=>true},
@@ -6568,6 +6842,7 @@ function render(){
   else if(currentView==='speak'){area.innerHTML=renderSpeak();bindSpeakEvents();}
   else if(currentView==='game')area.innerHTML=renderGameHub();
   else if(currentView==='pet')area.innerHTML=renderPet();
+  setTimeout(()=>petCanvasAnim.init(),50);
   bindDynamicEvents();
 }
 
