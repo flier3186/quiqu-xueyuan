@@ -828,69 +828,6 @@ input,textarea{font-family:inherit}
 .challenge-result .result-score{font-size:64px;font-weight:900;color:var(--teal);font-family:'Inter',sans-serif}
 .challenge-result .result-label{font-size:14px;color:var(--text-2);margin-top:8px}
 .challenge-result .result-stars{font-size:32px;margin:16px 0}
-.grade-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:white;border-radius:var(--radius-lg);margin-bottom:16px;box-shadow:var(--shadow-sm);flex-wrap:wrap}
-.grade-label{font-size:13px;font-weight:700;color:var(--text-2)}
-.grade-pills{display:flex;gap:6px;flex-wrap:wrap}
-.grade-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;border:1.5px solid var(--ink-200);background:white}
-.grade-pill:hover{border-color:var(--teal);color:var(--teal)}
-.grade-pill.active{background:var(--teal);color:white;border-color:var(--teal)}
-.sub-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.sub-tab{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;background:var(--ink-50);border:1.5px solid transparent}
-.sub-tab:hover{color:var(--navy);border-color:var(--ink-200)}
-.sub-tab.active{background:var(--teal-soft);color:var(--teal);border-color:var(--teal)}
-.layout-with-side{display:flex;gap:20px;align-items:flex-start}
-.content-area{flex:1;min-width:0;padding:20px 24px 100px;width:100%}
-.side-panel{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto}
-.card{background:white;border-radius:var(--radius-lg);padding:18px;box-shadow:var(--card-shadow)}
-.card h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.star-bank{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.star-count{display:flex;align-items:center;gap:6px}
-.star-count svg{width:24px;height:24px;fill:var(--yellow)}
-.star-count .mono{font-size:28px;font-weight:900;color:var(--navy);font-family:'Inter',sans-serif}
-.star-sub{font-size:11px;color:var(--text-3)}
-.task-list{display:flex;flex-direction:column;gap:8px}
-.task-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:var(--teal-soft);cursor:pointer;transition:all .2s;border:1px solid transparent}
-.task-item:hover{border-color:var(--teal)}
-.task-thumb{width:32px;height:32px;border-radius:8px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.task-thumb svg{width:18px;height:18px;fill:white}
-.task-info{flex:1;min-width:0}
-.task-title{font-size:13px;font-weight:700;color:var(--navy)}
-.task-meta{font-size:11px;color:var(--text-3);margin-top:2px}
-.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.quick-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border-radius:10px;background:var(--ink-50);cursor:pointer;transition:all .2s;font-size:11px;color:var(--text-2);font-weight:600}
-.quick-item:hover{background:var(--teal-soft);color:var(--teal)}
-.quick-item svg{width:20px;height:20px;fill:currentColor}
-.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.chart-card{background:white;border-radius:var(--radius-lg);padding:14px;box-shadow:var(--shadow-sm)}
-.chart-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px}
-.chart-box{height:160px}
-.chart-box.small{height:120px}
-.report-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.report-kpi{background:var(--teal);color:white;padding:12px;border-radius:12px;text-align:center}
-.rk-num{font-size:22px;font-weight:900;font-family:'Inter',sans-serif}
-.rk-label{font-size:11px;opacity:.85;margin-top:4px}
-.suggest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.suggest-card{background:white;border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-sm);border-top:4px solid var(--teal)}
-.suggest-card.y{border-top-color:var(--yellow)}
-.suggest-card.c{border-top-color:var(--coral)}
-.suggest-ic{font-size:24px;margin-bottom:8px}
-.suggest-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.suggest-card p{font-size:11px;color:var(--text-2);line-height:1.6}
-.heatmap-wrap{background:white;border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-sm)}
-.heat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
-.heat-head h4{font-size:13px;font-weight:700;color:var(--navy)}
-.heat-legend{display:flex;gap:8px;font-size:10px;color:var(--text-3)}
-.heat-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:middle}
-.heat-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
-.heat-row-label{font-size:10px;color:var(--text-3);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;white-space:nowrap}
-.heat-cell{height:28px;border-radius:4px;cursor:pointer;transition:all .15s}
-.heat-cell:hover{transform:scale(1.2);z-index:1}
-.grade-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:white;border-radius:var(--radius-lg);margin-bottom:16px;box-shadow:var(--shadow-sm)}
-.grade-label{font-size:13px;font-weight:700;color:var(--text-2)}
-.grade-pills{display:flex;gap:6px;flex-wrap:wrap}
-.grade-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s;border:1.5px solid var(--ink-200);background:white}
-.grade-pill:hover{border-color:var(--teal);color:var(--teal)}
-.grade-pill.active{background:var(--teal);color:white;border-color:var(--teal)}
 .eng-banner{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:16px 20px;background:linear-gradient(135deg,var(--yellow-50),rgba(245,184,0,.08));border-radius:var(--radius-lg)}
 .eng-banner h2{font-size:20px;font-weight:900;color:var(--navy)}
 .eng-banner p{font-size:12px;color:var(--text-2);margin-top:4px}
@@ -989,46 +926,9 @@ input,textarea{font-family:inherit}
 .stage-choice.wrong .choice-letter{background:#EF4444;color:white}
 .stage-choice.disabled{pointer-events:none;opacity:.6}
 .stage-btn-row{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;font-weight:600;font-size:14px;transition:all .2s;border:1px solid transparent}
-.btn-primary{background:var(--teal);color:white}
-.btn-primary:hover{background:var(--teal-700)}
 .btn-secondary{background:var(--ink-50);color:var(--navy)}
 .btn-secondary:hover{background:var(--ink-100)}
-.btn-yellow{background:var(--yellow);color:var(--navy-800)}
-.btn-yellow:hover{background:#FFB300}
-.btn-ghost{background:transparent;color:var(--text-2);border:1px solid var(--ink-200)}
-.btn-ghost:hover{background:var(--ink-50)}
 .btn-lg{padding:14px 28px;font-size:16px;border-radius:14px}
-.icon-btn{width:40px;height:40px;border-radius:10px;background:white;border:1px solid var(--ink-100);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
-.icon-btn:hover{background:var(--ink-50)}
-.icon-btn svg{width:20px;height:20px;fill:var(--text-2)}
-.icon-btn.mic{position:relative}
-.icon-btn.mic.active svg{fill:var(--coral)}
-.icon-btn.mic.active::after{content:'';position:absolute;inset:-3px;border-radius:12px;border:2px solid var(--coral);animation:pulse-ring 1.5s ease-out infinite}
-@keyframes pulse-ring{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.3)}}
-.top-bar{display:flex;align-items:center;gap:16px;padding:16px 24px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,58,95,.06);position:sticky;top:0;z-index:50}
-.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-400));display:flex;align-items:center;justify-content:center}
-.logo-mark svg{width:20px;height:20px;fill:white}
-.logo-text{font-size:18px;font-weight:900;color:var(--navy)}
-.logo-text span{color:var(--teal)}
-.top-bar-right{display:flex;align-items:center;gap:10px;margin-left:auto}
-.nav-tabs{display:flex;gap:2px;flex:1}
-.nav-tab{position:relative;display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;cursor:pointer;transition:all .25s;color:var(--text-2);font-weight:600;font-size:15px;user-select:none}
-.nav-tab:hover{background:var(--teal-soft);color:var(--navy)}
-.nav-tab svg{width:22px;height:22px;fill:var(--text-2);transition:fill .25s}
-.nav-tab:hover svg{fill:var(--navy)}
-.nav-tab.active{color:var(--teal);background:var(--teal-soft)}
-.nav-tab.active svg{fill:var(--teal)}
-.nav-tab .underline{position:absolute;bottom:-2px;left:20%;right:20%;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--teal-light));transform:scaleX(0);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-.nav-tab.active .underline{transform:scaleX(1)}
-.parent-btn{display:flex;align-items:center;gap:8px;padding:6px 16px 6px 6px;border-radius:24px;background:rgba(255,255,255,.85);border:1px solid rgba(30,58,95,.08);cursor:pointer;transition:all .2s}
-.parent-btn:hover{background:white}
-.parent-btn svg{width:28px;height:28px;border-radius:50%;fill:var(--teal)}
-.parent-btn span{font-size:14px;font-weight:600;color:var(--navy)}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .3s;z-index:300;white-space:nowrap;box-shadow:var(--shadow-lg)}
-.toast.show{opacity:1}
-.toast svg{width:16px;height:16px;fill:var(--yellow);vertical-align:middle;margin-right:6px}
 .word-tooltip{position:fixed;background:white;border-radius:12px;padding:12px 16px;box-shadow:var(--shadow-xl);z-index:150;max-width:300px;display:none;border:1px solid var(--ink-100)}
 .word-tooltip.show{display:block}
 .wt-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
@@ -1060,7 +960,6 @@ input,textarea{font-family:inherit}
 .modal-mask{position:fixed;inset:0;background:rgba(15,23,42,.65);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-mask.show{display:flex}
 .modal{background:white;border-radius:var(--radius-xl);width:100%;max-width:880px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;animation:modalIn .3s cubic-bezier(.34,1.56,.64,1)}
-@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
 .modal-head{padding:18px 24px;border-bottom:1px solid rgba(30,58,95,.08);display:flex;align-items:center;justify-content:space-between}
 .modal-head h2{font-size:18px;font-weight:800;color:var(--navy)}
 .modal-close{width:32px;height:32px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--text-2)}
@@ -1090,10 +989,6 @@ input,textarea{font-family:inherit}
 .weakness-tag.high{background:var(--coral-soft);color:var(--coral)}
 .weakness-tag.mid{background:var(--yellow-soft);color:#B58200}
 .weakness-tag.low{background:var(--teal-soft);color:var(--teal)}
-
-.toast{position:fixed;top:90px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:12px 24px;border-radius:24px;font-size:14px;font-weight:600;box-shadow:0 8px 32px rgba(30,58,95,.3);z-index:300;opacity:0;transition:all .3s;pointer-events:none}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast svg{width:18px;height:18px;fill:var(--yellow);vertical-align:middle;margin-right:6px}
 
 /* 响应式 */
 @media (max-width:1200px){
@@ -1125,22 +1020,43 @@ input,textarea{font-family:inherit}
   .content-area{padding:18px 16px 80px}
 }
 @media (max-width:640px){
-  .quick-grid{grid-template-columns:repeat(2,1fr)}
-  .pet-display{width:200px;height:200px}
+  .top-bar .logo-text{font-size:0;display:none}
+  .top-bar{padding:0 12px;height:56px}
+  .top-bar-right{gap:4px}
+  .top-bar-right .parent-btn{padding:6px 10px;font-size:13px}
+  .nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-tab{padding:5px 6px;font-size:11px;gap:3px}
+  .nav-tab svg{width:18px;height:18px}
+  .nav-tab span{font-size:10px;white-space:nowrap}
+  .nav-tab .underline{display:none}
+  .content-area{padding:12px 10px 70px;width:100%}
+  .icon-btn{width:34px;height:34px}
+  .icon-btn svg{width:16px;height:16px}
+  .parent-btn{padding:4px 10px 4px 4px;gap:4px}
+  .parent-btn svg{width:22px;height:22px}
+  .parent-btn span{font-size:12px}
+  .chat-area{height:auto;max-height:calc(100vh - 180px);min-height:300px}
   .chat-messages{padding:12px}
   .msg{max-width:95%}
-  .chat-area{height:auto;max-height:calc(100vh - 200px);min-height:320px}
-  .content-area{padding:14px 12px 24px;width:100%}
-  .card{padding:16px}
+  .card{padding:14px}
   .panel-card{padding:14px}
+  .greeting-text h1{font-size:20px}
+  .listen-wrap{padding:14px}
+  .pet-stage{min-height:400px}
+  .pet-display{width:160px;height:160px}
+  .pet-action-btn{padding:8px 12px;font-size:12px}
+  .pet-selector{flex-wrap:wrap;gap:6px}
+  .pet-sel-item{width:44px;height:44px}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
   .eng-banner{padding:14px 16px}
   .math-banner{padding:14px 16px}
-  .greeting-text h1{font-size:22px}
   .vocab-grid{grid-template-columns:1fr}
   .phonics-letter-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-  /* 小屏单栏堆叠 + 可视化横向滚动，避免溢出 */
   .speak-layout{grid-template-columns:1fr !important}
   .pet-layout{grid-template-columns:1fr !important}
+  .layout-with-side{flex-direction:column}
+  .side-panel{position:static;width:100%;flex-direction:row;flex-wrap:wrap}
+  .side-panel .panel-card{flex:1;min-width:200px}
   .chart-row{grid-template-columns:1fr}
   .report-kpi-row{grid-template-columns:1fr 1fr}
   .heat-row{grid-template-columns:60px repeat(12,1fr);font-size:10px}
@@ -1150,10 +1066,15 @@ input,textarea{font-family:inherit}
   .vocab-grid{grid-template-columns:1fr !important}
   .phrase-grid{grid-template-columns:1fr !important}
   .flash-grid{grid-template-columns:1fr 1fr !important}
-  .pet-display{width:180px;height:180px}
   .stat-grid{grid-template-columns:1fr 1fr !important}
   .quick-grid{grid-template-columns:1fr 1fr !important}
   .suggest-grid{grid-template-columns:1fr 1fr !important}
+  .mv-geo-outline,.mv-circle-radius{animation:none !important;stroke-dashoffset:0 !important}
+  #floatingPet{bottom:12px !important;right:12px !important}
+  #floatingPet > div{width:64px !important;height:64px !important;border-radius:20px !important}
+  #floatingPet img{border-radius:16px !important}
+  #floatingPet [style*="top:-8px"]{width:22px !important;height:22px !important;font-size:11px !important}
+  #floatingPet [style*="bottom:-10px"]{font-size:9px !important;padding:2px 8px !important}
 }
 /* 超小屏适配（≤380px） */
 @media (max-width:380px){
@@ -1168,9 +1089,6 @@ input,textarea{font-family:inherit}
   .card{gap:8px !important;padding:14px !important}
   .btn,.btn-primary,.btn-yellow,.btn-ghost{font-size:12px;padding:8px 14px !important}
   .wp-choice,.listen-opt,.stage-choice{min-height:44px !important;padding:12px 8px !important}
-  .pet-svg-wrap svg animate,
-  .pet-svg-wrap svg animateTransform,
-  .pet-svg-wrap svg animateMotion{display:none !important}
 }
 
 /* 家长面板样式优化 */
@@ -1272,13 +1190,6 @@ input,textarea{font-family:inherit}
 .mv-geo-outline{stroke-dasharray:2000;stroke-dashoffset:2000;animation:mvDrawStroke 1.2s ease-out forwards}
 .mv-circle-radius{stroke-dasharray:300;stroke-dashoffset:300;animation:mvDrawStroke .8s ease-out .6s forwards}
 @keyframes mvDrawStroke{to{stroke-dashoffset:0}}
-/* === V5 手机端降级：去掉SVG动画，降低渲染负担 === */
-@media (max-width: 640px){
-  .pet-svg-wrap svg animate,
-  .pet-svg-wrap svg animateTransform,
-  .pet-svg-wrap svg animateMotion{display:none !important}
-  .mv-geo-outline,.mv-circle-radius{animation:none !important;stroke-dashoffset:0 !important}
-}
 </style>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 </head>
@@ -2785,6 +2696,7 @@ let _speakUnlocked = false, _speakVoicesReady = false;
 function speak(text){
   if(!('speechSynthesis' in window)) return;
   if(!text) return;
+  unlockAudio();  // 确保音频引擎已解锁（移动端需用户手势触发）
   speechSynthesis.cancel();
   // 首次调用预加载语音列表（部分浏览器需异步加载）
   let voices = [];
@@ -5387,6 +5299,7 @@ const petCanvasAnim={
     const mood=S.pet.mood||50;
     const t=this._t;
     const st=this._busy?'idle':this._state;
+    const type=S.pet.idx||0;
     // 背景光晕
     const glow=ctx.createRadialGradient(140,160,20,140,160,130);
     glow.addColorStop(0,'rgba(0,168,150,0.12)');
@@ -5395,53 +5308,42 @@ const petCanvasAnim={
     // 影子
     ctx.fillStyle='rgba(0,0,0,0.15)';
     ctx.beginPath();ctx.ellipse(140,240,55,12,0,0,Math.PI*2);ctx.fill();
-    // 角色参数
-    let bx=140,by=165,scale=1,rot=0,eyH=1,myOpen=0.3,blinking=false;
-    let bounce=0,legL=0,legR=0,armL=0,armR=0;
+    // 根据动作设置位置参数
+    let bx=140,by=165,rot=0,bounce=0;
     const breathe=Math.sin(t*2)*3;
-    // 根据动作设置参数
     if(st==='idle'){
       by=165+breathe;
     }else if(st==='happy'){
       bounce=Math.abs(Math.sin(t*8))*12;
       by=165-bounce;
-      myOpen=0.5;
     }else if(st==='sleep'){
-      by=200;bounce=Math.sin(t*1.5)*2;
-      by+=bounce;eyH=0.15;
+      by=200+Math.sin(t*1.5)*2;
     }else if(st==='feed'){
-      myOpen=0.5+Math.sin(t*6)*0.15;
       bounce=Math.sin(t*8)*3;
       by=165-bounce;
     }else if(st==='play'){
       bounce=Math.abs(Math.sin(t*10))*15;
       by=165-bounce;
-      legL=Math.sin(t*10)*12;legR=-legL;
-      armL=Math.sin(t*10)*15;armR=-armL;
-      myOpen=0.4;
+      rot=Math.sin(t*10)*0.15;
     }else if(st==='train'){
       rot=Math.sin(t*6)*0.15;
-      legL=Math.sin(t*8)*8;legR=-legL;
-      armL=Math.sin(t*8)*10;armR=-armL;
     }else if(st==='wave'){
-      armR=Math.sin(t*6)*0.6-0.3;
-      myOpen=0.35;
+      by=165+breathe;
     }else if(st==='nod'){
-      rot=Math.sin(t*5)*0.1;
+      by=165+breathe;
+      rot=Math.sin(t*5)*0.12;
     }else if(st==='surprise'){
       by=165+Math.sin(t*12)*5;
-      eyH=1.3;myOpen=0.1;
     }
-    // 绘制宠物身体
+    // 绘制宠物角色
     ctx.save();
     ctx.translate(bx,by);
     ctx.rotate(rot);
-    ctx.scale(scale,bounce>0?1-bounce*0.01:1);
-    this._drawBody(ctx,mood,st,t);
+    if(bounce>0)ctx.scale(1,1-bounce*0.01);
+    this._drawPet(type,mood,t);
     ctx.restore();
-    // 绘制粒子效果
+    // 粒子效果
     this._drawParticles(ctx,bx,by);
-    // Zzz 符号
     if(st==='sleep')this._drawZzz(ctx,bx,by);
     // 心情表情气泡
     if(st==='happy'&&Math.sin(t*3)>0.5){
@@ -5453,116 +5355,288 @@ const petCanvasAnim={
       ctx.fillText('😲',bx,by-70);
     }
   },
-  _drawBody(ctx,mood,st,t){
-    const type=S.pet.idx;
-    // 身体颜色
+  // 绘制卡通宠物形象（圆脸、大眼睛、身体、耳朵等）
+  _drawPet(type,mood,t){
+    const ctx=this._ctx;
+    const st=this._busy?'idle':this._state;
+    // 宠物配色（5种类型）
     const colors=[
-      {body:'#E8644A',belly:'#F5C4A8',accent:'#C0392B'},  // 龙 red
-      {body:'#D4943A',belly:'#F5DEB3',accent:'#8B4513'},  // 狐狸 orange
-      {body:'#7B8FA3',belly:'#D5DCE6',accent:'#4A5568'},  // 猫 grey
-      {body:'#F0E6D3',belly:'#FFF8E7',accent:'#C9B896'},  // 兔子 cream
-      {body:'#5B8FBF',belly:'#B8D4E8',accent:'#2E6B9E'},  // 鲸鱼 blue
+      {body:'#E8644A',belly:'#F5C4A8',accent:'#C0392B',dark:'#8B1A1A',ear:'#F5C4A8'},  // 0 星云龙
+      {body:'#D4943A',belly:'#F5DEB3',accent:'#8B4513',dark:'#5C2E00',ear:'#F5DEB3'},  // 1 机械狐
+      {body:'#7B8FA3',belly:'#D5DCE6',accent:'#4A5568',dark:'#2D3748',ear:'#D5DCE6'},  // 2 极光猫
+      {body:'#F0E6D3',belly:'#FFF8E7',accent:'#C9B896',dark:'#A08060',ear:'pink'},     // 3 量子兔
+      {body:'#5B8FBF',belly:'#B8D4E8',accent:'#2E6B9E',dark:'#1A4A6E',ear:'#B8D4E8'},  // 4 深海鲸
     ];
     const col=colors[type%colors.length];
-    // 身体（圆形）
+    const isSleep=st==='sleep';
+    const isHappy=st==='happy'||st==='play';
+    const isFeed=st==='feed';
+    const isWave=st==='wave';
+    const isNod=st==='nod';
+    const isSurprise=st==='surprise';
+    // 眨眼周期
+    const blink=Math.sin(t*0.5)>0.96?0:1;
+    // ---- 耳朵/角/鳍（在头部后面绘制） ----
+    if(type===0){// 龙：双角
+      ctx.fillStyle=col.accent;
+      ctx.beginPath();ctx.moveTo(-30,-52);ctx.lineTo(-42,-92);ctx.lineTo(-18,-55);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(30,-52);ctx.lineTo(42,-92);ctx.lineTo(18,-55);ctx.closePath();ctx.fill();
+      // 角上的小圆点
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.arc(-32,-78,5,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(32,-78,5,0,Math.PI*2);ctx.fill();
+    }else if(type===1){// 狐：尖耳朵
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.moveTo(-34,-42);ctx.lineTo(-48,-80);ctx.lineTo(-16,-48);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(34,-42);ctx.lineTo(48,-80);ctx.lineTo(16,-48);ctx.closePath();ctx.fill();
+      ctx.fillStyle=col.ear;
+      ctx.beginPath();ctx.moveTo(-32,-46);ctx.lineTo(-44,-72);ctx.lineTo(-20,-50);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(32,-46);ctx.lineTo(44,-72);ctx.lineTo(20,-50);ctx.closePath();ctx.fill();
+      // 耳朵尖抖动
+      if(!isSleep){
+        const earWiggle=Math.sin(t*4)*3;
+        ctx.fillStyle=col.dark;
+        ctx.beginPath();ctx.arc(-40+earWiggle,-76,2,0,Math.PI*2);ctx.fill();
+        ctx.beginPath();ctx.arc(40-earWiggle,-76,2,0,Math.PI*2);ctx.fill();
+      }
+    }else if(type===2){// 猫：圆耳朵
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.moveTo(-32,-38);ctx.lineTo(-44,-68);ctx.lineTo(-18,-44);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(32,-38);ctx.lineTo(44,-68);ctx.lineTo(18,-44);ctx.closePath();ctx.fill();
+      ctx.fillStyle=col.ear;
+      ctx.beginPath();ctx.moveTo(-30,-42);ctx.lineTo(-40,-62);ctx.lineTo(-20,-46);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(30,-42);ctx.lineTo(40,-62);ctx.lineTo(20,-46);ctx.closePath();ctx.fill();
+    }else if(type===3){// 兔：长耳朵（带摆动）
+      const earSwing=isSleep?0:Math.sin(t*2)*6;
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(-18+earSwing,-78,10,32,earSwing*0.02,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18-earSwing,-78,10,32,-earSwing*0.02,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='pink';
+      ctx.beginPath();ctx.ellipse(-18+earSwing,-78,5,22,earSwing*0.02,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18-earSwing,-78,5,22,-earSwing*0.02,0,Math.PI*2);ctx.fill();
+    }else if(type===4){// 鲸：头顶喷水孔
+      ctx.fillStyle=col.accent;
+      ctx.beginPath();ctx.ellipse(0,-58,16,8,0,0,Math.PI*2);ctx.fill();
+      // 喷水效果（待机时）
+      if(!isSleep&&Math.sin(t*2)>0.3){
+        const spout=Math.sin(t*3)*8;
+        ctx.strokeStyle='rgba(180,220,255,0.6)';ctx.lineWidth=2;ctx.lineCap='round';
+        ctx.beginPath();ctx.moveTo(-4,-62);ctx.quadraticCurveTo(-8+spout,-82-spout,2,-90-spout);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(4,-62);ctx.quadraticCurveTo(8+spout,-78-spout,-2,-86-spout);ctx.stroke();
+        ctx.fillStyle='rgba(180,220,255,0.4)';
+        ctx.beginPath();ctx.arc(0,-88-spout,4,0,Math.PI*2);ctx.fill();
+      }
+    }
+    // ---- 身体（椭圆） ----
     ctx.fillStyle=col.body;
-    ctx.beginPath();ctx.arc(0,0,60,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.ellipse(0,38,36,40,0,0,Math.PI*2);ctx.fill();
     // 肚子
     ctx.fillStyle=col.belly;
-    ctx.beginPath();ctx.arc(0,8,38,0,Math.PI*2);ctx.fill();
-    // 耳朵（根据类型）
-    if(type===0){// 龙角
+    ctx.beginPath();ctx.ellipse(0,44,24,28,0,0,Math.PI*2);ctx.fill();
+    // ---- 尾巴 ----
+    if(type===0){// 龙尾（带刺）
+      ctx.strokeStyle=col.accent;ctx.lineWidth=6;ctx.lineCap='round';
+      const tw=Math.sin(t*3)*6;
+      ctx.beginPath();ctx.moveTo(0,52);ctx.quadraticCurveTo(32,48+tw,28,22+tw);ctx.stroke();
       ctx.fillStyle=col.accent;
-      ctx.beginPath();ctx.moveTo(-35,-45);ctx.lineTo(-45,-75);ctx.lineTo(-25,-50);ctx.fill();
-      ctx.beginPath();ctx.moveTo(35,-45);ctx.lineTo(45,-75);ctx.lineTo(25,-50);ctx.fill();
-    }else if(type===1){// 狐狸尖耳
+      ctx.beginPath();ctx.arc(28,22+tw,7,0,Math.PI*2);ctx.fill();
+      // 尾刺
       ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.moveTo(-40,-38);ctx.lineTo(-50,-72);ctx.lineTo(-20,-45);ctx.fill();
-      ctx.beginPath();ctx.moveTo(40,-38);ctx.lineTo(50,-72);ctx.lineTo(20,-45);ctx.fill();
+      for(let i=0;i<3;i++){
+        const tx=18+i*6,ty=38+tw-i*8;
+        ctx.beginPath();ctx.moveTo(tx-4,ty);ctx.lineTo(tx+4,ty);ctx.lineTo(tx,ty-8);ctx.closePath();ctx.fill();
+      }
+    }else if(type===1){// 狐尾（蓬松）
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(30,48+Math.sin(t*2)*5,18,10,0.5,0,Math.PI*2);ctx.fill();
       ctx.fillStyle=col.belly;
-      ctx.beginPath();ctx.moveTo(-38,-42);ctx.lineTo(-46,-65);ctx.lineTo(-24,-46);ctx.fill();
-      ctx.beginPath();ctx.moveTo(38,-42);ctx.lineTo(46,-65);ctx.lineTo(24,-46);ctx.fill();
-    }else if(type===2){// 猫耳
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.moveTo(-38,-35);ctx.lineTo(-48,-62);ctx.lineTo(-22,-40);ctx.fill();
-      ctx.beginPath();ctx.moveTo(38,-35);ctx.lineTo(48,-62);ctx.lineTo(22,-40);ctx.fill();
-    }else if(type===3){// 兔长耳
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(-18,-72,12,30,-0.1,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18,-72,12,30,0.1,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle='pink';
-      ctx.beginPath();ctx.ellipse(-18,-72,6,20,-0.1,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18,-72,6,20,0.1,0,Math.PI*2);ctx.fill();
-    }else{// 鲸鱼鳍
+      ctx.beginPath();ctx.ellipse(36,46+Math.sin(t*2)*5,9,6,0.5,0,Math.PI*2);ctx.fill();
+    }else if(type===2){// 猫尾（弯曲）
+      ctx.strokeStyle=col.body;ctx.lineWidth=7;ctx.lineCap='round';
+      const cw=Math.sin(t*2.5)*5;
+      ctx.beginPath();ctx.moveTo(0,52);ctx.quadraticCurveTo(30,42+cw,38,22+cw);ctx.stroke();
       ctx.fillStyle=col.accent;
-      ctx.beginPath();ctx.ellipse(0,-55,25,12,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(-45,-20,12,20,-0.3,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(45,-20,12,20,0.3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(38,22+cw,5,0,Math.PI*2);ctx.fill();
+    }else if(type===3){// 兔尾（绒球）
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.arc(0,70+Math.sin(t*2)*3,10,0,Math.PI*2);ctx.fill();
+    }else if(type===4){// 鲸尾（鱼尾）
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.moveTo(0,56);ctx.quadraticCurveTo(24,72+Math.sin(t*2)*4,38,58);ctx.lineTo(0,56);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(0,56);ctx.quadraticCurveTo(-24,72+Math.sin(t*2)*4,-38,58);ctx.lineTo(0,56);ctx.closePath();ctx.fill();
     }
-    // 眼睛
-    const eyH2=st==='sleep'?0.1:1;
-    const blinkGap=Math.sin(t*0.5)>0.95?0:eyH2;
-    // 左眼
-    ctx.fillStyle='#1a1a2e';
-    ctx.beginPath();ctx.ellipse(-22,-8,9,9*blinkGap,0,0,Math.PI*2);ctx.fill();
-    if(blinkGap>0.3){ctx.fillStyle='white';ctx.beginPath();ctx.arc(-25,-10,3,0,Math.PI*2);ctx.fill();}
-    // 右眼
-    ctx.fillStyle='#1a1a2e';
-    ctx.beginPath();ctx.ellipse(22,-8,9,9*blinkGap,0,0,Math.PI*2);ctx.fill();
-    if(blinkGap>0.3){ctx.fillStyle='white';ctx.beginPath();ctx.arc(19,-10,3,0,Math.PI*2);ctx.fill();}
-    // 眉毛（开心时上扬）
-    if(st==='happy'){
-      ctx.strokeStyle=col.accent;ctx.lineWidth=2.5;ctx.lineCap='round';
-      ctx.beginPath();ctx.arc(-22,-20,8,Math.PI+0.3,-0.3);ctx.stroke();
-      ctx.beginPath();ctx.arc(22,-20,8,Math.PI+0.3,-0.3);ctx.stroke();
+    // ---- 头部（大圆脸） ----
+    ctx.fillStyle=col.body;
+    ctx.beginPath();ctx.arc(0,-6,48,0,Math.PI*2);ctx.fill();
+    // ---- 脸颊腮红 ----
+    ctx.fillStyle='rgba(255,150,150,0.25)';
+    ctx.beginPath();ctx.ellipse(-36,4,11,8,0,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.ellipse(36,4,11,8,0,0,Math.PI*2);ctx.fill();
+    // ---- 眼睛 ----
+    if(isSleep){
+      // 闭眼（弯弯的线）
+      ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
+      ctx.beginPath();ctx.arc(-18,-10,9,0.1,Math.PI-0.1);ctx.stroke();
+      ctx.beginPath();ctx.arc(18,-10,9,0.1,Math.PI-0.1);ctx.stroke();
+    }else{
+      const eyeH=blink;
+      // 眼白
+      ctx.fillStyle='white';
+      ctx.beginPath();ctx.ellipse(-18,-10,11,12*eyeH,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18,-10,11,12*eyeH,0,0,Math.PI*2);ctx.fill();
+      // 瞳孔
+      const pupilSize=isHappy||isSurprise?8:7;
+      const pupilOffX=isSurprise?0:Math.sin(t*0.3)*1.5;
+      ctx.fillStyle=isSurprise?'#1a1a2e':col.dark;
+      ctx.beginPath();ctx.arc(-18+pupilOffX,-9,isSurprise?6:pupilSize,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(18+pupilOffX,-9,isSurprise?6:pupilSize,0,Math.PI*2);ctx.fill();
+      // 瞳孔高光（大）
+      ctx.fillStyle='white';
+      ctx.beginPath();ctx.arc(-21+pupilOffX,-13,isSurprise?2:3.5,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(15+pupilOffX,-13,isSurprise?2:3.5,0,Math.PI*2);ctx.fill();
+      // 瞳孔高光（小）
+      ctx.beginPath();ctx.arc(-16+pupilOffX,-6,isSurprise?1.2:2,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(20+pupilOffX,-6,isSurprise?1.2:2,0,Math.PI*2);ctx.fill();
+      // 眉毛
+      if(isHappy){
+        ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
+        ctx.beginPath();ctx.arc(-18,-22,10,Math.PI+0.2,-0.2);ctx.stroke();
+        ctx.beginPath();ctx.arc(18,-22,10,Math.PI+0.2,-0.2);ctx.stroke();
+      }else if(isSurprise){
+        ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
+        ctx.beginPath();ctx.arc(-18,-24,8,Math.PI+0.5,0.5);ctx.stroke();
+        ctx.beginPath();ctx.arc(18,-24,8,Math.PI+0.5,0.5);ctx.stroke();
+      }else if(isSleep){
+        // 无眉毛
+      }else{
+        ctx.strokeStyle=col.dark;ctx.lineWidth=2;ctx.lineCap='round';
+        ctx.beginPath();ctx.moveTo(-26,-22);ctx.quadraticCurveTo(-18,-26,-10,-22);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(26,-22);ctx.quadraticCurveTo(18,-26,10,-22);ctx.stroke();
+      }
     }
-    // 嘴巴
-    ctx.strokeStyle=col.accent;ctx.lineWidth=2.5;ctx.lineCap='round';
-    if(st==='sleep'){
-      ctx.beginPath();ctx.arc(0,18,6,0.1,Math.PI-0.1);ctx.stroke();
-    }else if(st==='happy'||st==='feed'){
-      ctx.beginPath();ctx.arc(0,14,12,0.2,Math.PI-0.2);ctx.stroke();
+    // ---- 嘴巴 ----
+    if(isSleep){
+      // 睡觉张嘴
+      ctx.fillStyle=col.dark;
+      ctx.beginPath();ctx.ellipse(0,16,6,3,0,0,Math.PI*2);ctx.fill();
+    }else if(isHappy||isFeed){
+      // 开心张大嘴 / 吃东西
+      const mouthH=isFeed?6+Math.sin(t*6)*3:8;
+      const mouthW=isFeed?10:14;
+      ctx.fillStyle='#1a1a2e';
+      ctx.beginPath();ctx.ellipse(0,14,mouthW,mouthH,0,0,Math.PI*2);ctx.fill();
       // 舌头
       ctx.fillStyle='#E8888C';
-      ctx.beginPath();ctx.ellipse(0,24,7,5,0,0,Math.PI);ctx.fill();
-    }else if(st==='surprise'){
+      ctx.beginPath();ctx.ellipse(0,18+mouthH*0.2,7,4,0,0,Math.PI);ctx.fill();
+      // 牙齿（小）
+      if(!isFeed){
+        ctx.fillStyle='white';
+        ctx.beginPath();ctx.rect(-4,11,3,4);ctx.fill();
+        ctx.beginPath();ctx.rect(1,11,3,4);ctx.fill();
+      }
+    }else if(isSurprise){
+      // 惊讶 O 型嘴
       ctx.fillStyle='#1a1a2e';
-      ctx.beginPath();ctx.ellipse(0,20,8,10,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(0,18,8,10,0,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#E8888C';
+      ctx.beginPath();ctx.ellipse(0,24,4,2,0,0,Math.PI);ctx.fill();
+    }else if(isWave||isNod){
+      // 微笑
+      ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
+      ctx.beginPath();ctx.arc(0,12,8,0.15,Math.PI-0.15);ctx.stroke();
     }else{
-      ctx.beginPath();ctx.moveTo(-8,18);ctx.quadraticCurveTo(0,24,8,18);ctx.stroke();
+      // 普通微笑
+      ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
+      ctx.beginPath();ctx.arc(0,11,7,0.15,Math.PI-0.15);ctx.stroke();
     }
-    // 腮红
-    ctx.fillStyle='rgba(255,150,150,0.3)';
-    ctx.beginPath();ctx.ellipse(-40,5,10,7,0,0,Math.PI*2);ctx.fill();
-    ctx.beginPath();ctx.ellipse(40,5,10,7,0,0,Math.PI*2);ctx.fill();
-    // 手臂
-    ctx.fillStyle=col.body;
-    const armL=Math.sin(t*6)*8,armR=Math.sin(t*6+Math.PI)*8;
-    if(st==='wave'){ctx.save();ctx.translate(55,-5);ctx.rotate(-0.5+Math.sin(t*8)*0.3);ctx.beginPath();ctx.ellipse(0,0,10,18,0,0,Math.PI*2);ctx.fill();ctx.restore();}
-    else{ctx.beginPath();ctx.ellipse(-52,5+armL,10,16,0.2,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(52,5+armR,10,16,-0.2,0,Math.PI*2);ctx.fill();}
-    // 腿
-    if(st==='play'){
-      const lL=Math.sin(t*10)*10,lR=-lL;
-      ctx.beginPath();ctx.ellipse(-20,58+lL,10,14,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(20,58+lR,10,14,0,0,Math.PI*2);ctx.fill();
+    // ---- 手/前肢 ----
+    if(type===4){// 鲸：胸鳍
+      ctx.fillStyle=col.accent;
+      const fL=Math.sin(t*3)*4;
+      ctx.beginPath();ctx.ellipse(-38,22+fL,10,16,-0.3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(38,22+fL,10,16,0.3,0,Math.PI*2);ctx.fill();
+    }else if(isWave){
+      // 挥手：右手举起摇摆
+      ctx.fillStyle=col.body;
+      const waveAngle=Math.sin(t*8)*0.4-0.8;
+      ctx.save();ctx.translate(42,-8);ctx.rotate(waveAngle);
+      ctx.beginPath();ctx.ellipse(0,0,9,20,0,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+      // 左手自然下垂
+      ctx.beginPath();ctx.ellipse(-42,20+Math.sin(t*3)*4,9,16,0.2,0,Math.PI*2);ctx.fill();
+    }else if(isSleep){
+      // 睡觉时手垂在两侧
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(-42,24+Math.sin(t*1.5)*2,9,16,0.2,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(42,24+Math.sin(t*1.5)*2,9,16,-0.2,0,Math.PI*2);ctx.fill();
     }else{
-      ctx.beginPath();ctx.ellipse(-20,58,10,14,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(20,58,10,14,0,0,Math.PI*2);ctx.fill();
-    }
-    // 尾巴
-    if(type===0){// 龙尾
-      ctx.strokeStyle=col.accent;ctx.lineWidth=6;ctx.lineCap='round';
-      ctx.beginPath();ctx.moveTo(0,52);ctx.quadraticCurveTo(35,40+Math.sin(t*3)*8,30,20);ctx.stroke();
-      ctx.fillStyle=col.body;ctx.beginPath();ctx.arc(30,20,6,0,Math.PI*2);ctx.fill();
-    }else if(type===1){// 狐狸尾巴
+      // 普通手臂（轻微摆动）
       ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(35,40+Math.sin(t*2)*5,16,8,0.4,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle=col.belly;ctx.beginPath();ctx.ellipse(40,38+Math.sin(t*2)*5,8,5,0.4,0,Math.PI*2);ctx.fill();
-    }else if(type===4){// 鲸鱼尾鳍
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.moveTo(0,55);ctx.quadraticCurveTo(30,70+Math.sin(t*2)*5,45,55);ctx.lineTo(0,55);ctx.fill();
+      const aL=Math.sin(t*4)*6;
+      ctx.beginPath();ctx.ellipse(-42,18+aL,9,16,0.2,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(42,18-aL,9,16,-0.2,0,Math.PI*2);ctx.fill();
     }
-    // 等级徽章
+    // ---- 腿/后肢 ----
+    if(type===4){// 鲸：无腿，用尾鳍代替
+      // 已经画了尾鳍
+    }else if(isSleep){
+      // 睡觉时腿蜷缩
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(-18,68,12,10,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18,68,12,10,0,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=col.belly;
+      ctx.beginPath();ctx.ellipse(-18,70,7,5,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(18,70,7,5,0,0,Math.PI*2);ctx.fill();
+    }else if(st==='play'){
+      // 跳跃时腿交替
+      ctx.fillStyle=col.body;
+      const lL=Math.sin(t*10)*12,lR=-lL;
+      ctx.beginPath();ctx.ellipse(-20,62+lL,10,14,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(20,62+lR,10,14,0,0,Math.PI*2);ctx.fill();
+      // 脚掌
+      ctx.fillStyle=col.belly;
+      ctx.beginPath();ctx.ellipse(-20,74+lL,8,4,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(20,74+lR,8,4,0,0,Math.PI*2);ctx.fill();
+    }else{
+      // 普通站立
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.ellipse(-20,64,10,14,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(20,64,10,14,0,0,Math.PI*2);ctx.fill();
+      // 脚掌
+      ctx.fillStyle=col.belly;
+      ctx.beginPath();ctx.ellipse(-20,76,8,4,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(20,76,8,4,0,0,Math.PI*2);ctx.fill();
+    }
+    // ---- 特殊装饰 ----
+    if(type===0){// 龙：小翅膀
+      ctx.fillStyle=col.accent;
+      const wingT=Math.sin(t*2)*5;
+      ctx.beginPath();ctx.moveTo(-30,20);ctx.quadraticCurveTo(-52,8+wingT,-44,-8);ctx.lineTo(-28,14);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(30,20);ctx.quadraticCurveTo(52,8+wingT,44,-8);ctx.lineTo(28,14);ctx.closePath();ctx.fill();
+      // 翅膀上的小点
+      ctx.fillStyle=col.body;
+      ctx.beginPath();ctx.arc(-38,6+wingT,3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(38,6+wingT,3,0,Math.PI*2);ctx.fill();
+    }else if(type===2){// 猫：胡须
+      ctx.strokeStyle='rgba(0,0,0,0.3)';ctx.lineWidth=1.5;ctx.lineCap='round';
+      const whiskerB=Math.sin(t*3)*2;
+      // 左胡须
+      ctx.beginPath();ctx.moveTo(-40,0);ctx.lineTo(-62,-6+whiskerB);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-40,4);ctx.lineTo(-62,4+whiskerB);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-40,8);ctx.lineTo(-60,14+whiskerB);ctx.stroke();
+      // 右胡须
+      ctx.beginPath();ctx.moveTo(40,0);ctx.lineTo(62,-6+whiskerB);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(40,4);ctx.lineTo(62,4+whiskerB);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(40,8);ctx.lineTo(60,14+whiskerB);ctx.stroke();
+    }else if(type===3){// 兔：小蝴蝶结
+      ctx.fillStyle='#E8A0BF';
+      ctx.beginPath();ctx.ellipse(0,-52,10,6,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(-8,-52,4,6,-0.3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(8,-52,4,6,0.3,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#C0392B';
+      ctx.beginPath();ctx.arc(0,-52,2,0,Math.PI*2);ctx.fill();
+    }
+    // ---- 等级徽章 ----
     ctx.fillStyle='rgba(255,255,255,0.15)';
     ctx.beginPath();ctx.arc(48,-42,12,0,Math.PI*2);ctx.fill();
     ctx.fillStyle='white';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
@@ -6435,6 +6509,14 @@ function renderParentDashboard(){
   });
   setTimeout(()=>initParentCharts(),320);
   bindAiConfigEvents();
+}
+function ensureAiPanelBound(){
+  const inp=$('#deepseekKeyInput');
+  if(!inp) return;
+  // 从状态加载已保存的 API Key
+  if(S.apiConfig && S.apiConfig.deepseekKey) {
+    inp.value = S.apiConfig.deepseekKey;
+  }
 }
 function bindAiConfigEvents(){
   const toggleBtn=$('#toggleKeyVisibility');
