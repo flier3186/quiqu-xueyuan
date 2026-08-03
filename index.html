@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -362,54 +362,7 @@ input,textarea{font-family:inherit}
 .letter-big{font-size:28px;font-weight:900;color:var(--teal);font-family:'Inter',sans-serif;line-height:1}
 .letter-speak{width:28px;height:28px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .letter-speak svg{width:16px;height:16px;fill:var(--navy)}
-/* 动画口型 - 真人风格 */
-.mouth-anim-wrap{width:100%;height:110px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#FFF6EE 0%,#FFE5D0 100%);margin-bottom:6px;cursor:pointer;position:relative;border:1px solid rgba(30,58,95,.1);display:flex;align-items:flex-end;justify-content:center}
-.mouth-anim-svg{width:100%;height:100%;display:block;pointer-events:none}
-.mouth-anim-wrap .mouth-tip{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,23,42,.85));color:white;font-size:10px;padding:4px 8px;text-align:center;font-weight:600;line-height:1.4;pointer-events:none}
-.mouth-anim-wrap .play-badge{position:absolute;top:6px;right:6px;background:rgba(0,168,150,.95);color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2);pointer-events:none}
-.mouth-anim-wrap .play-badge svg{width:14px;height:14px;fill:white}
-.mouth-anim-wrap.playing .play-badge{background:var(--coral)}
-
-/* 口型路径动画 */
-@keyframes mouthA{0%,100%{transform:scaleY(.3)}25%,75%{transform:scaleY(1)}50%{transform:scaleY(.7)}}
-@keyframes mouthB{0%,100%{transform:scaleY(0)}15%{transform:scaleY(0)}30%{transform:scaleY(1)}60%{transform:scaleY(.4)}}
-@keyframes mouthOpen{0%,100%{transform:scaleY(.15)}50%{transform:scaleY(1)}}
-@keyframes tongueUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes tongueOut{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-3px) scaleY(1.2)}}
-@keyframes airFlow{0%{opacity:0;transform:translateX(0)}30%{opacity:1}100%{opacity:0;transform:translateX(15px)}}
-@keyframes lipBurst{0%,100%{transform:scaleY(0) scaleX(1)}20%{transform:scaleY(0) scaleX(1.1)}40%{transform:scaleY(1) scaleX(.95)}70%{transform:scaleY(.5)}}
-@keyframes lipRound{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.65) scaleY(.9)}}
-@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
-
-.mouth-opening{transform-origin:center center;animation:mouthOpen 1.6s ease-in-out infinite}
-.mouth-opening.v-A{animation:mouthA 1.4s ease-in-out infinite}
-.mouth-opening.v-E{animation:mouthOpen 1.5s ease-in-out infinite}
-.mouth-opening.v-B{animation:lipBurst 1.4s ease-in-out infinite}
-.mouth-opening.v-F{animation:lipBurst 1.6s ease-in-out infinite}
-.mouth-opening.v-TH{animation:mouthOpen 1.5s ease-in-out infinite}
-.mouth-opening.v-SH{animation:lipRound 1.8s ease-in-out infinite}
-.mouth-tongue{transform-origin:center bottom;animation:tongueUp 1.6s ease-in-out infinite}
-.mouth-tongue.t-TH{animation:tongueOut 1.5s ease-in-out infinite}
-.mouth-air{animation:airFlow 1.4s ease-out infinite}
-.eye-lid{transform-origin:center center;animation:blink 4s ease-in-out infinite}
-
-/* 大口型预览 */
-.mouth-modal{position:fixed;inset:0;background:rgba(15,23,42,.85);backdrop-filter:blur(8px);z-index:250;display:none;align-items:center;justify-content:center;padding:20px}
-.mouth-modal.show{display:flex}
-.mouth-modal-box{background:white;border-radius:24px;padding:24px;max-width:520px;width:100%;animation:modalIn .3s cubic-bezier(.34,1.56,.64,1)}
-.mouth-modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.mouth-modal-title{font-size:22px;font-weight:900;color:var(--navy);font-family:'Inter',sans-serif}
-.mouth-modal-big{width:100%;height:280px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#FFF6EE,#FFE5D0);margin-bottom:14px;position:relative}
-.mouth-modal-big svg{width:100%;height:100%}
-.mouth-modal-desc{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:12px;padding:12px;background:rgba(245,184,0,.06);border-radius:10px;border-left:3px solid var(--yellow)}
-.mouth-modal-words{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.mouth-modal-words .w{padding:8px 14px;background:var(--teal-soft);color:var(--teal);border-radius:8px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;font-size:14px}
-.mouth-modal-words .w:hover{background:var(--teal);color:white}
-.mouth-modal-actions{display:flex;gap:8px}
-.mouth-modal-actions button{flex:1;padding:12px;border-radius:10px;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px}
-.mouth-modal-actions .primary{background:var(--teal);color:white}
-.mouth-modal-actions .yellow{background:var(--yellow);color:var(--navy)}
-.mouth-modal-actions button svg{width:16px;height:16px;fill:currentColor}
+.letter-speak-row{display:flex;gap:10px;align-items:center;margin-bottom:8px}
 
 /* 数学3D翻转卡片 */
 .flip-card{perspective:1200px;height:240px;cursor:pointer}
@@ -3497,10 +3450,42 @@ function renderMathDiscovery(problem){
   </div>`;
 }
 
+// ===== 安全选项生成器（确保正确答案永远在选项中） =====
+function _safeMathChoices(problem){
+  const ans = problem.answer;
+  let choices = problem.choices || [];
+  if(choices.indexOf(ans) !== -1) return {choices, correctIdx: choices.indexOf(ans)};
+  const a = Number(ans);
+  const base = isNaN(a) ? ans : a;
+  const distractors = [];
+  if(typeof base === 'number'){
+    const step = Math.max(1, Math.pow(10, Math.max(0, String(Math.floor(Math.abs(base))).length-2)));
+    const pool = [
+      base + step, base - step,
+      base + step*2, base - step*2,
+      Math.round(base * 1.1), Math.round(base * 0.9),
+      base + 50, base - 50,
+      (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[0]+s[2]+s[1])*(base<0?-1:1):base+10;})(),
+      (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[1]+s[0]+s[2])*(base<0?-1:1):base-10;})()
+    ].filter(x => x !== base && !distractors.includes(x) && !choices.includes(x));
+    pool.sort((x,y)=>Math.abs(x-base)-Math.abs(y-base));
+    distractors.push(...pool.slice(0, Math.max(0, 4 - choices.length - 1)));
+    choices.forEach(c => { if(c !== ans && !distractors.includes(c)) distractors.push(c); });
+    distractors.length = Math.min(3, distractors.length);
+  } else {
+    choices.forEach(c => { if(c !== ans && !distractors.includes(c)) distractors.push(c); });
+    while(distractors.length < 3) distractors.push(ans + '？');
+    distractors.length = 3;
+  }
+  const merged = [ans, ...distractors];
+  for(let i=merged.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[merged[i],merged[j]]=[merged[j],merged[i]];}
+  return {choices: merged, correctIdx: merged.indexOf(ans)};
+}
+
 // ===== 阶段 3：正式解题（Solve） =====
 function renderMathSolve(problem){
   const showHint = window.MATH_SESSION.hintUsed;
-  const correctIdx = problem.choices.indexOf(problem.answer);
+  const {choices, correctIdx} = _safeMathChoices(problem);
   return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
     <span class="cpa-tag" style="background:var(--coral-soft);color:var(--coral)">STAGE 3 · 正式解题</span>
     <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📝 用刚才发现的方法，解决这道题</div>
@@ -3509,8 +3494,8 @@ function renderMathSolve(problem){
     </div>
     <div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${problem.formula}</span></div>
     <div style="margin-top:8px;font-size:12px;color:var(--text-3)">选择正确的答案：</div>
-    <div class="wp-choices" id="mathSolveChoices" style="grid-template-columns:repeat(${Math.min(problem.choices.length,4)},1fr);margin-top:8px">
-      ${problem.choices.map((c,i)=>`<div class="wp-choice" data-idx="${i}" data-val="${c}" onclick="mathAnswer(this,${i},${correctIdx},'solve',0)">${c}</div>`).join('')}
+    <div class="wp-choices" id="mathSolveChoices" style="grid-template-columns:repeat(${Math.min(choices.length,4)},1fr);margin-top:8px">
+      ${choices.map((c,i)=>`<div class="wp-choice" data-idx="${i}" data-val="${c}" onclick="mathAnswer(this,${i},${correctIdx},'solve',0)">${c}</div>`).join('')}
     </div>
     ${showHint?`<div style="margin-top:14px;padding:14px 16px;background:var(--yellow-soft);border-left:4px solid var(--yellow);border-radius:10px;font-size:14px;color:var(--yellow-700);line-height:1.7">💡 <b>小提示：</b>${problem.hint}<br><span style="font-size:12px;color:var(--text-3)">再想想，你可以的！</span></div>`:''}
     <div id="mathSolveFeedback" style="margin-top:14px"></div>
@@ -4234,10 +4219,8 @@ function renderEngSub(subtab,grade){
             <div class="letter-big">${L.l}</div>
             <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
           </div>
-          <div class="mouth-anim-wrap" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}');showMouthModal(${L.mouthIdx})">
-            ${renderAnimatedMouth(L,'small')}
-            <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="mouth-tip">${L.tip}</div>
+          <div class="letter-speak-row">
+            <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
           </div>
           <div class="letter-words">
             ${L.words.map(w=>`<div class="letter-word" onclick="speak('${escapeAttr(w)}')">${w}</div>`).join('')}
@@ -4392,139 +4375,7 @@ function renderPhraseCard(p){
   </div>`;
 }
 
-function renderAnimatedMouth(L, size='small'){
-  const phoneme=L.phoneme||'A';
-  const type=L.type||'vowel';
-  const idx=L.mouthIdx;
-  // 根据 type 决定口型内部元素
-  let innerMouth='',teeth='',tongue='',airFlow='',noseRing='';
-  const skinGrad=idx%3;
-  
-  if(type==='vowel'||type==='silent-e'){
-    // 元音：嘴张开，可见舌头和上齿
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="112" rx="40" ry="20" fill="#3D1810" style="transform-origin:100px 112px"/>`;
-    teeth=`<rect x="62" y="94" width="76" height="6" fill="#FFF8F0" rx="2"/>`;
-    tongue=`<ellipse class="mouth-tongue" cx="100" cy="120" rx="30" ry="9" fill="#D85060" style="transform-origin:100px 125px"/>`;
-  }else if(type==='bilabial'){
-    // 双唇音：嘴唇闭合
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="108" rx="36" ry="1" fill="#3D1810" style="transform-origin:100px 108px"/>`;
-    tongue=``;
-  }else if(type==='labiodental'){
-    // 唇齿音：上齿咬下唇
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="108" rx="36" ry="8" fill="#3D1810" style="transform-origin:100px 108px"/>`;
-    teeth=`<rect x="62" y="100" width="76" height="7" fill="#FFF8F0" rx="2"/>`;
-    airFlow=`<g class="mouth-air"><path d="M150,108 Q165,106 170,108 Q165,110 150,108" fill="#7DD3FC" opacity="0.7"/><path d="M155,112 Q172,110 178,112 Q172,114 155,112" fill="#7DD3FC" opacity="0.5"/></g>`;
-  }else if(type==='dental'){
-    // 齿音：舌头伸出齿间
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="108" rx="36" ry="14" fill="#3D1810" style="transform-origin:100px 108px"/>`;
-    teeth=`<rect x="62" y="98" width="76" height="5" fill="#FFF8F0" rx="2"/><rect x="62" y="114" width="76" height="5" fill="#FFF8F0" rx="2"/>`;
-    tongue=`<ellipse class="mouth-tongue t-TH" cx="100" cy="108" rx="20" ry="16" fill="#D85060" style="transform-origin:100px 108px"/>`;
-  }else if(type==='alveolar'){
-    // 齿龈音：舌尖抵上齿龈
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="110" rx="34" ry="12" fill="#3D1810" style="transform-origin:100px 110px"/>`;
-    teeth=`<rect x="62" y="98" width="76" height="5" fill="#FFF8F0" rx="2"/>`;
-    tongue=`<path class="mouth-tongue" d="M82,122 Q100,108 118,122 L118,128 L82,128 Z" fill="#D85060" style="transform-origin:100px 122px"/>`;
-  }else if(type==='velar'){
-    // 软腭音：舌后部抬起（前方不可见）
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="110" rx="32" ry="10" fill="#3D1810" style="transform-origin:100px 110px"/>`;
-    teeth=`<rect x="64" y="100" width="72" height="5" fill="#FFF8F0" rx="2"/>`;
-    tongue=`<ellipse class="mouth-tongue" cx="100" cy="120" rx="26" ry="7" fill="#D85060" style="transform-origin:100px 122px"/>`;
-  }else if(type==='palatal'||type==='affricate'){
-    // 硬腭音：双唇收圆
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="110" rx="22" ry="16" fill="#3D1810" style="transform-origin:100px 110px"/>`;
-    teeth=`<rect x="80" y="98" width="40" height="5" fill="#FFF8F0" rx="2"/>`;
-    tongue=`<ellipse class="mouth-tongue" cx="100" cy="116" rx="16" ry="8" fill="#D85060" style="transform-origin:100px 118px"/>`;
-    airFlow=`<g class="mouth-air"><path d="M130,108 Q150,106 158,108 Q150,110 130,108" fill="#7DD3FC" opacity="0.7"/><path d="M132,113 Q154,111 162,113 Q154,115 132,113" fill="#7DD3FC" opacity="0.5"/></g>`;
-  }else if(type==='nasal'){
-    // 鼻音：嘴半闭，气流从鼻出
-    innerMouth=`<ellipse class="mouth-opening v-${phoneme}" cx="100" cy="108" rx="28" ry="5" fill="#3D1810" style="transform-origin:100px 108px"/>`;
-    tongue=`<ellipse class="mouth-tongue" cx="100" cy="112" rx="24" ry="5" fill="#D85060" style="transform-origin:100px 112px"/>`;
-    noseRing=`<circle cx="100" cy="65" r="3" fill="none" stroke="#7DD3FC" stroke-width="1.5" opacity="0.7"/><circle cx="100" cy="65" r="6" fill="none" stroke="#7DD3FC" stroke-width="1" opacity="0.4"/>`;
-  }
-  
-  // 鼻音额外提示
-  
-  const h=size==='big'?280:140;
-  return `<svg class="mouth-anim-svg" viewBox="0 0 200 ${h/140*160}" preserveAspectRatio="xMidYMid meet">
-    <defs>
-      <radialGradient id="skin${idx}" cx="50%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="#FFE5D0"/>
-        <stop offset="60%" stop-color="#F4C5A8"/>
-        <stop offset="100%" stop-color="#E8B090"/>
-      </radialGradient>
-      <linearGradient id="lips${idx}" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#C04A40"/>
-        <stop offset="50%" stop-color="#E07060"/>
-        <stop offset="100%" stop-color="#A83830"/>
-      </linearGradient>
-      <linearGradient id="lipHi${idx}" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
-        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-      </linearGradient>
-    </defs>
-    <!-- 面部下半 -->
-    <ellipse cx="100" cy="${h/140*90}" rx="92" ry="78" fill="url(#skin${idx})"/>
-    <!-- 下巴阴影 -->
-    <ellipse cx="100" cy="${h/140*150}" rx="70" ry="18" fill="#D89878" opacity="0.3"/>
-    ${noseRing}
-    <!-- 鼻子 -->
-    <path d="M94,${h/140*52} Q90,${h/140*72} 88,${h/140*82} Q94,${h/140*86} 100,${h/140*86} Q106,${h/140*86} 112,${h/140*82} Q110,${h/140*72} 106,${h/140*52} Z" fill="#E8B090" opacity="0.5"/>
-    <ellipse cx="92" cy="${h/140*82}" rx="2" ry="3" fill="#C88868" opacity="0.5"/>
-    <ellipse cx="108" cy="${h/140*82}" rx="2" ry="3" fill="#C88868" opacity="0.5"/>
-    ${size==='big'?`
-    <!-- 大图才显示眼睛 -->
-    <g class="eye-lid" style="transform-origin:70px 35px"><ellipse cx="70" cy="35" rx="9" ry="5" fill="white"/><circle cx="70" cy="35" r="3" fill="#3D2818"/><circle cx="71" cy="34" r="1" fill="white"/></g>
-    <g class="eye-lid" style="transform-origin:130px 35px;animation-delay:.3s"><ellipse cx="130" cy="35" rx="9" ry="5" fill="white"/><circle cx="130" cy="35" r="3" fill="#3D2818"/><circle cx="131" cy="34" r="1" fill="white"/></g>
-    <path d="M60,28 Q70,24 80,28" stroke="#5C3820" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M120,28 Q130,24 140,28" stroke="#5C3820" stroke-width="2" fill="none" stroke-linecap="round"/>
-    `:''}
-    ${airFlow}
-    ${innerMouth}
-    ${teeth}
-    ${tongue}
-    <!-- 上唇 -->
-    <path d="M50,${h/140*94} Q65,${h/140*86} 80,${h/140*90} Q88,${h/140*84} 100,${h/140*84} Q112,${h/140*84} 120,${h/140*90} Q135,${h/140*86} 150,${h/140*94} Q140,${h/140*98} 125,${h/140*96} Q112,${h/140*100} 100,${h/140*98} Q88,${h/140*100} 75,${h/140*96} Q60,${h/140*98} 50,${h/140*94} Z" fill="url(#lips${idx})"/>
-    <path d="M55,${h/140*92} Q75,${h/140*88} 100,${h/140*87} Q125,${h/140*88} 145,${h/140*92} Q125,${h/140*90} 100,${h/140*89} Q75,${h/140*90} 55,${h/140*92} Z" fill="url(#lipHi${idx})"/>
-    <!-- 下唇 -->
-    <path d="M50,${h/140*110} Q60,${h/140*118} 75,${h/140*120} Q88,${h/140*126} 100,${h/140*126} Q112,${h/140*126} 125,${h/140*120} Q140,${h/140*118} 150,${h/140*110} Q140,${h/140*108} 125,${h/140*112} Q112,${h/140*110} 100,${h/140*112} Q88,${h/140*110} 75,${h/140*112} Q60,${h/140*108} 50,${h/140*110} Z" fill="url(#lips${idx})"/>
-    <path d="M60,${h/140*112} Q80,${h/140*116} 100,${h/140*116} Q120,${h/140*116} 140,${h/140*112} Q120,${h/140*114} 100,${h/140*114} Q80,${h/140*114} 60,${h/140*112} Z" fill="url(#lipHi${idx})"/>
-  </svg>`;
-}
-
 let currentPhonicsStage=2;
-function showMouthModal(idx){
-  const L=PHONICS_LETTERS.find(l=>l.mouthIdx===idx)||PHONICS_LETTERS[0];
-  let modal=$('#mouthModal');
-  if(!modal){
-    modal=document.createElement('div');
-    modal.className='mouth-modal';
-    modal.id='mouthModal';
-    modal.innerHTML=`<div class="mouth-modal-box" id="mouthModalBox"></div>`;
-    document.body.appendChild(modal);
-    modal.onclick=(e)=>{if(e.target.id==='mouthModal')modal.classList.remove('show')};
-  }
-  $('#mouthModalBox').innerHTML=`
-    <div class="mouth-modal-head">
-      <div class="mouth-modal-title">${L.l} · ${L.type==='silent-e'?'魔法e':L.l} · 发音口型</div>
-      <div class="modal-close" onclick="$('#mouthModal').classList.remove('show')">×</div>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:16px">
-      <div class="mouth-modal-big" id="mouthModalBig" style="flex:1;min-width:200px;background:var(--ink-50);border-radius:12px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:10px">
-        ${renderAnimatedMouth(L,'big')}
-      </div>
-      <div style="flex:1;min-width:180px">
-        <div class="mouth-modal-desc" style="font-size:13px;line-height:1.6">🗣️ ${L.mouth}<br><br>💡 ${L.tip}</div>
-        <div class="mouth-modal-words" style="margin-top:12px">
-          ${L.words.map(w=>`<div class="w" onclick="speak('${escapeAttr(w)}')">${w}</div>`).join('')}
-        </div>
-        <div class="mouth-modal-actions" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-          <button class="primary" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听字母音</button>
-          <button class="yellow" onclick="speak('${escapeAttr(L.words[0])}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听示例词</button>
-        </div>
-      </div>
-    </div>`;
-  modal.classList.add('show');
-}
 
 let currentPersona=0;
 const SPEAK_TOPICS = [
@@ -5222,16 +5073,6 @@ function bindSpeakEvents(){
 
 function renderPet(){
   const pet=PETS[S.pet.idx];
-  // 清理旧循环
-  if(window._petRAF){cancelAnimationFrame(window._petRAF);window._petRAF=null;}
-  if(window._petAutoTimer){clearInterval(window._petAutoTimer);window._petAutoTimer=null;}
-  window._petAutoTimer=setInterval(()=>{
-    const mood=S.pet.mood||0;
-    if(petCanvasAnim._busy)return;
-    if(mood<30){petCanvasAnim._state='sleep';}
-    else if(mood>80&&Math.random()<0.3){petCanvasAnim._state='happy';setTimeout(()=>{if(petCanvasAnim._state==='happy')petCanvasAnim._state='idle';},1500);}
-    else if(petCanvasAnim._state==='sleep')petCanvasAnim._state='idle';
-  },8000);
   return `
     <div class="pet-layout">
       <div class="pet-stage">
@@ -5239,7 +5080,7 @@ function renderPet(){
           ${PETS.map((p,i)=>`<div class="pet-sel-item ${i===S.pet.idx?'active':''}" onclick="switchPet(${i})"><img src="${p.avatar}" alt="${p.type}"></div>`).join('')}
         </div>
         <div class="pet-display" id="petDisplay">
-          <canvas id="petCanvas" width="280" height="280"></canvas>
+          <img id="petAvatar" src="${pet.avatar}" style="width:200px;height:200px;object-fit:cover;border-radius:20px;box-shadow:var(--card-shadow);display:block;margin:0 auto">
         </div>
         <div class="pet-info">
           <div class="pet-name">${pet.name} · ${pet.type}</div>
@@ -5336,428 +5177,15 @@ function switchPet(i){
   const fpLv = document.querySelector('#floatingPet [style*="Lv"]');
   if(fpLv) fpLv.textContent = 'Lv'+S.pet.level;
   $('#contentArea').innerHTML=renderPet();
-  setTimeout(()=>petCanvasAnim.init(),50);
+  updatePetAvatar();
 }
 
-// ===== Canvas 宠物动画引擎 =====
-const petCanvasAnim={
-  _c:null,_ctx:null,_raf:null,_t:0,
-  _state:'idle',_busy:false,_busyT:0,
-  _particles:[],_zzs:[],_sparkles:[],_bubbles:[],
-  init(){
-    this._c=document.getElementById('petCanvas');
-    if(!this._c)return;
-    this._ctx=this._c.getContext('2d');
-    this._start();
-  },
-  _start(){
-    if(this._raf)cancelAnimationFrame(this._raf);
-    const loop=()=>{
-      this._t+=0.016;
-      this._draw();
-      this._raf=requestAnimationFrame(loop);
-    };
-    this._raf=requestAnimationFrame(loop);
-  },
-  action(act){
-    this._state=act;this._busy=true;this._busyT=0;
-    if(act==='feed'){this._particles=[];for(let i=0;i<6;i++)this._particles.push({x:140+Math.random()*60-30,y:180,type:'food',t:Math.random()*Math.PI*2});}
-    if(act==='play'){this._sparkles=[];for(let i=0;i<8;i++)this._sparkles.push({x:100+Math.random()*80,y:80+Math.random()*60,t:Math.random()*Math.PI*2});}
-    if(act==='sleep'){this._zzs=[];}
-    if(act==='wave'||act==='nod'){this._busyT=1200;}
-    if(act==='surprise'){this._busyT=600;}
-    if(act==='roll'||act==='spin'){this._busyT=1000;}
-    setTimeout(()=>{this._busy=false;this._state=this._getAutoState();},this._busyT||1500);
-  },
-  _getAutoState(){
-    const m=S.pet.mood||0;
-    if(m<20)return'sleep';
-    if(m>85)return'happy';
-    return'idle';
-  },
-  _draw(){
-    const c=this._c,ctx=this._ctx;if(!ctx)return;
-    const W=c.width,H=c.height;
-    ctx.clearRect(0,0,W,H);
-    const mood=S.pet.mood||50;
-    const t=this._t;
-    const st=this._busy?'idle':this._state;
-    const type=S.pet.idx||0;
-    // 背景光晕
-    const glow=ctx.createRadialGradient(140,160,20,140,160,130);
-    glow.addColorStop(0,'rgba(0,168,150,0.12)');
-    glow.addColorStop(1,'rgba(0,168,150,0)');
-    ctx.fillStyle=glow;ctx.beginPath();ctx.arc(140,160,130,0,Math.PI*2);ctx.fill();
-    // 影子
-    ctx.fillStyle='rgba(0,0,0,0.15)';
-    ctx.beginPath();ctx.ellipse(140,240,55,12,0,0,Math.PI*2);ctx.fill();
-    // 根据动作设置位置参数
-    let bx=140,by=165,rot=0,bounce=0;
-    const breathe=Math.sin(t*2)*3;
-    if(st==='idle'){
-      by=165+breathe;
-    }else if(st==='happy'){
-      bounce=Math.abs(Math.sin(t*8))*12;
-      by=165-bounce;
-    }else if(st==='sleep'){
-      by=200+Math.sin(t*1.5)*2;
-    }else if(st==='feed'){
-      bounce=Math.sin(t*8)*3;
-      by=165-bounce;
-    }else if(st==='play'){
-      bounce=Math.abs(Math.sin(t*10))*15;
-      by=165-bounce;
-      rot=Math.sin(t*10)*0.15;
-    }else if(st==='train'){
-      rot=Math.sin(t*6)*0.15;
-    }else if(st==='wave'){
-      by=165+breathe;
-    }else if(st==='nod'){
-      by=165+breathe;
-      rot=Math.sin(t*5)*0.12;
-    }else if(st==='surprise'){
-      by=165+Math.sin(t*12)*5;
-    }
-    // 绘制宠物角色
-    ctx.save();
-    ctx.translate(bx,by);
-    ctx.rotate(rot);
-    if(bounce>0)ctx.scale(1,1-bounce*0.01);
-    this._drawPet(type,mood,t);
-    ctx.restore();
-    // 粒子效果
-    this._drawParticles(ctx,bx,by);
-    if(st==='sleep')this._drawZzz(ctx,bx,by);
-    // 心情表情气泡
-    if(st==='happy'&&Math.sin(t*3)>0.5){
-      ctx.font='bold 20px sans-serif';ctx.textAlign='center';
-      ctx.fillText('❤️',bx+45,by-55);
-    }
-    if(st==='surprise'){
-      ctx.font='bold 22px sans-serif';ctx.textAlign='center';
-      ctx.fillText('😲',bx,by-70);
-    }
-  },
-  // 绘制卡通宠物形象（圆脸、大眼睛、身体、耳朵等）
-  _drawPet(type,mood,t){
-    const ctx=this._ctx;
-    const st=this._busy?'idle':this._state;
-    // 宠物配色（5种类型）
-    const colors=[
-      {body:'#E8644A',belly:'#F5C4A8',accent:'#C0392B',dark:'#8B1A1A',ear:'#F5C4A8'},  // 0 星云龙
-      {body:'#D4943A',belly:'#F5DEB3',accent:'#8B4513',dark:'#5C2E00',ear:'#F5DEB3'},  // 1 机械狐
-      {body:'#7B8FA3',belly:'#D5DCE6',accent:'#4A5568',dark:'#2D3748',ear:'#D5DCE6'},  // 2 极光猫
-      {body:'#F0E6D3',belly:'#FFF8E7',accent:'#C9B896',dark:'#A08060',ear:'pink'},     // 3 量子兔
-      {body:'#5B8FBF',belly:'#B8D4E8',accent:'#2E6B9E',dark:'#1A4A6E',ear:'#B8D4E8'},  // 4 深海鲸
-    ];
-    const col=colors[type%colors.length];
-    const isSleep=st==='sleep';
-    const isHappy=st==='happy'||st==='play';
-    const isFeed=st==='feed';
-    const isWave=st==='wave';
-    const isNod=st==='nod';
-    const isSurprise=st==='surprise';
-    // 眨眼周期
-    const blink=Math.sin(t*0.5)>0.96?0:1;
-    // ---- 耳朵/角/鳍（在头部后面绘制） ----
-    if(type===0){// 龙：双角
-      ctx.fillStyle=col.accent;
-      ctx.beginPath();ctx.moveTo(-30,-52);ctx.lineTo(-42,-92);ctx.lineTo(-18,-55);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(30,-52);ctx.lineTo(42,-92);ctx.lineTo(18,-55);ctx.closePath();ctx.fill();
-      // 角上的小圆点
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.arc(-32,-78,5,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.arc(32,-78,5,0,Math.PI*2);ctx.fill();
-    }else if(type===1){// 狐：尖耳朵
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.moveTo(-34,-42);ctx.lineTo(-48,-80);ctx.lineTo(-16,-48);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(34,-42);ctx.lineTo(48,-80);ctx.lineTo(16,-48);ctx.closePath();ctx.fill();
-      ctx.fillStyle=col.ear;
-      ctx.beginPath();ctx.moveTo(-32,-46);ctx.lineTo(-44,-72);ctx.lineTo(-20,-50);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(32,-46);ctx.lineTo(44,-72);ctx.lineTo(20,-50);ctx.closePath();ctx.fill();
-      // 耳朵尖抖动
-      if(!isSleep){
-        const earWiggle=Math.sin(t*4)*3;
-        ctx.fillStyle=col.dark;
-        ctx.beginPath();ctx.arc(-40+earWiggle,-76,2,0,Math.PI*2);ctx.fill();
-        ctx.beginPath();ctx.arc(40-earWiggle,-76,2,0,Math.PI*2);ctx.fill();
-      }
-    }else if(type===2){// 猫：圆耳朵
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.moveTo(-32,-38);ctx.lineTo(-44,-68);ctx.lineTo(-18,-44);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(32,-38);ctx.lineTo(44,-68);ctx.lineTo(18,-44);ctx.closePath();ctx.fill();
-      ctx.fillStyle=col.ear;
-      ctx.beginPath();ctx.moveTo(-30,-42);ctx.lineTo(-40,-62);ctx.lineTo(-20,-46);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(30,-42);ctx.lineTo(40,-62);ctx.lineTo(20,-46);ctx.closePath();ctx.fill();
-    }else if(type===3){// 兔：长耳朵（带摆动）
-      const earSwing=isSleep?0:Math.sin(t*2)*6;
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(-18+earSwing,-78,10,32,earSwing*0.02,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18-earSwing,-78,10,32,-earSwing*0.02,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle='pink';
-      ctx.beginPath();ctx.ellipse(-18+earSwing,-78,5,22,earSwing*0.02,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18-earSwing,-78,5,22,-earSwing*0.02,0,Math.PI*2);ctx.fill();
-    }else if(type===4){// 鲸：头顶喷水孔
-      ctx.fillStyle=col.accent;
-      ctx.beginPath();ctx.ellipse(0,-58,16,8,0,0,Math.PI*2);ctx.fill();
-      // 喷水效果（待机时）
-      if(!isSleep&&Math.sin(t*2)>0.3){
-        const spout=Math.sin(t*3)*8;
-        ctx.strokeStyle='rgba(180,220,255,0.6)';ctx.lineWidth=2;ctx.lineCap='round';
-        ctx.beginPath();ctx.moveTo(-4,-62);ctx.quadraticCurveTo(-8+spout,-82-spout,2,-90-spout);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(4,-62);ctx.quadraticCurveTo(8+spout,-78-spout,-2,-86-spout);ctx.stroke();
-        ctx.fillStyle='rgba(180,220,255,0.4)';
-        ctx.beginPath();ctx.arc(0,-88-spout,4,0,Math.PI*2);ctx.fill();
-      }
-    }
-    // ---- 身体（椭圆） ----
-    ctx.fillStyle=col.body;
-    ctx.beginPath();ctx.ellipse(0,38,36,40,0,0,Math.PI*2);ctx.fill();
-    // 肚子
-    ctx.fillStyle=col.belly;
-    ctx.beginPath();ctx.ellipse(0,44,24,28,0,0,Math.PI*2);ctx.fill();
-    // ---- 尾巴 ----
-    if(type===0){// 龙尾（带刺）
-      ctx.strokeStyle=col.accent;ctx.lineWidth=6;ctx.lineCap='round';
-      const tw=Math.sin(t*3)*6;
-      ctx.beginPath();ctx.moveTo(0,52);ctx.quadraticCurveTo(32,48+tw,28,22+tw);ctx.stroke();
-      ctx.fillStyle=col.accent;
-      ctx.beginPath();ctx.arc(28,22+tw,7,0,Math.PI*2);ctx.fill();
-      // 尾刺
-      ctx.fillStyle=col.body;
-      for(let i=0;i<3;i++){
-        const tx=18+i*6,ty=38+tw-i*8;
-        ctx.beginPath();ctx.moveTo(tx-4,ty);ctx.lineTo(tx+4,ty);ctx.lineTo(tx,ty-8);ctx.closePath();ctx.fill();
-      }
-    }else if(type===1){// 狐尾（蓬松）
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(30,48+Math.sin(t*2)*5,18,10,0.5,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle=col.belly;
-      ctx.beginPath();ctx.ellipse(36,46+Math.sin(t*2)*5,9,6,0.5,0,Math.PI*2);ctx.fill();
-    }else if(type===2){// 猫尾（弯曲）
-      ctx.strokeStyle=col.body;ctx.lineWidth=7;ctx.lineCap='round';
-      const cw=Math.sin(t*2.5)*5;
-      ctx.beginPath();ctx.moveTo(0,52);ctx.quadraticCurveTo(30,42+cw,38,22+cw);ctx.stroke();
-      ctx.fillStyle=col.accent;
-      ctx.beginPath();ctx.arc(38,22+cw,5,0,Math.PI*2);ctx.fill();
-    }else if(type===3){// 兔尾（绒球）
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.arc(0,70+Math.sin(t*2)*3,10,0,Math.PI*2);ctx.fill();
-    }else if(type===4){// 鲸尾（鱼尾）
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.moveTo(0,56);ctx.quadraticCurveTo(24,72+Math.sin(t*2)*4,38,58);ctx.lineTo(0,56);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(0,56);ctx.quadraticCurveTo(-24,72+Math.sin(t*2)*4,-38,58);ctx.lineTo(0,56);ctx.closePath();ctx.fill();
-    }
-    // ---- 头部（大圆脸） ----
-    ctx.fillStyle=col.body;
-    ctx.beginPath();ctx.arc(0,-6,48,0,Math.PI*2);ctx.fill();
-    // ---- 脸颊腮红 ----
-    ctx.fillStyle='rgba(255,150,150,0.25)';
-    ctx.beginPath();ctx.ellipse(-36,4,11,8,0,0,Math.PI*2);ctx.fill();
-    ctx.beginPath();ctx.ellipse(36,4,11,8,0,0,Math.PI*2);ctx.fill();
-    // ---- 眼睛 ----
-    if(isSleep){
-      // 闭眼（弯弯的线）
-      ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
-      ctx.beginPath();ctx.arc(-18,-10,9,0.1,Math.PI-0.1);ctx.stroke();
-      ctx.beginPath();ctx.arc(18,-10,9,0.1,Math.PI-0.1);ctx.stroke();
-    }else{
-      const eyeH=blink;
-      // 眼白
-      ctx.fillStyle='white';
-      ctx.beginPath();ctx.ellipse(-18,-10,11,12*eyeH,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18,-10,11,12*eyeH,0,0,Math.PI*2);ctx.fill();
-      // 瞳孔
-      const pupilSize=isHappy||isSurprise?8:7;
-      const pupilOffX=isSurprise?0:Math.sin(t*0.3)*1.5;
-      ctx.fillStyle=isSurprise?'#1a1a2e':col.dark;
-      ctx.beginPath();ctx.arc(-18+pupilOffX,-9,isSurprise?6:pupilSize,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.arc(18+pupilOffX,-9,isSurprise?6:pupilSize,0,Math.PI*2);ctx.fill();
-      // 瞳孔高光（大）
-      ctx.fillStyle='white';
-      ctx.beginPath();ctx.arc(-21+pupilOffX,-13,isSurprise?2:3.5,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.arc(15+pupilOffX,-13,isSurprise?2:3.5,0,Math.PI*2);ctx.fill();
-      // 瞳孔高光（小）
-      ctx.beginPath();ctx.arc(-16+pupilOffX,-6,isSurprise?1.2:2,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.arc(20+pupilOffX,-6,isSurprise?1.2:2,0,Math.PI*2);ctx.fill();
-      // 眉毛
-      if(isHappy){
-        ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
-        ctx.beginPath();ctx.arc(-18,-22,10,Math.PI+0.2,-0.2);ctx.stroke();
-        ctx.beginPath();ctx.arc(18,-22,10,Math.PI+0.2,-0.2);ctx.stroke();
-      }else if(isSurprise){
-        ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
-        ctx.beginPath();ctx.arc(-18,-24,8,Math.PI+0.5,0.5);ctx.stroke();
-        ctx.beginPath();ctx.arc(18,-24,8,Math.PI+0.5,0.5);ctx.stroke();
-      }else if(isSleep){
-        // 无眉毛
-      }else{
-        ctx.strokeStyle=col.dark;ctx.lineWidth=2;ctx.lineCap='round';
-        ctx.beginPath();ctx.moveTo(-26,-22);ctx.quadraticCurveTo(-18,-26,-10,-22);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(26,-22);ctx.quadraticCurveTo(18,-26,10,-22);ctx.stroke();
-      }
-    }
-    // ---- 嘴巴 ----
-    if(isSleep){
-      // 睡觉张嘴
-      ctx.fillStyle=col.dark;
-      ctx.beginPath();ctx.ellipse(0,16,6,3,0,0,Math.PI*2);ctx.fill();
-    }else if(isHappy||isFeed){
-      // 开心张大嘴 / 吃东西
-      const mouthH=isFeed?6+Math.sin(t*6)*3:8;
-      const mouthW=isFeed?10:14;
-      ctx.fillStyle='#1a1a2e';
-      ctx.beginPath();ctx.ellipse(0,14,mouthW,mouthH,0,0,Math.PI*2);ctx.fill();
-      // 舌头
-      ctx.fillStyle='#E8888C';
-      ctx.beginPath();ctx.ellipse(0,18+mouthH*0.2,7,4,0,0,Math.PI);ctx.fill();
-      // 牙齿（小）
-      if(!isFeed){
-        ctx.fillStyle='white';
-        ctx.beginPath();ctx.rect(-4,11,3,4);ctx.fill();
-        ctx.beginPath();ctx.rect(1,11,3,4);ctx.fill();
-      }
-    }else if(isSurprise){
-      // 惊讶 O 型嘴
-      ctx.fillStyle='#1a1a2e';
-      ctx.beginPath();ctx.ellipse(0,18,8,10,0,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle='#E8888C';
-      ctx.beginPath();ctx.ellipse(0,24,4,2,0,0,Math.PI);ctx.fill();
-    }else if(isWave||isNod){
-      // 微笑
-      ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
-      ctx.beginPath();ctx.arc(0,12,8,0.15,Math.PI-0.15);ctx.stroke();
-    }else{
-      // 普通微笑
-      ctx.strokeStyle=col.dark;ctx.lineWidth=2.5;ctx.lineCap='round';
-      ctx.beginPath();ctx.arc(0,11,7,0.15,Math.PI-0.15);ctx.stroke();
-    }
-    // ---- 手/前肢 ----
-    if(type===4){// 鲸：胸鳍
-      ctx.fillStyle=col.accent;
-      const fL=Math.sin(t*3)*4;
-      ctx.beginPath();ctx.ellipse(-38,22+fL,10,16,-0.3,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(38,22+fL,10,16,0.3,0,Math.PI*2);ctx.fill();
-    }else if(isWave){
-      // 挥手：右手举起摇摆
-      ctx.fillStyle=col.body;
-      const waveAngle=Math.sin(t*8)*0.4-0.8;
-      ctx.save();ctx.translate(42,-8);ctx.rotate(waveAngle);
-      ctx.beginPath();ctx.ellipse(0,0,9,20,0,0,Math.PI*2);ctx.fill();
-      ctx.restore();
-      // 左手自然下垂
-      ctx.beginPath();ctx.ellipse(-42,20+Math.sin(t*3)*4,9,16,0.2,0,Math.PI*2);ctx.fill();
-    }else if(isSleep){
-      // 睡觉时手垂在两侧
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(-42,24+Math.sin(t*1.5)*2,9,16,0.2,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(42,24+Math.sin(t*1.5)*2,9,16,-0.2,0,Math.PI*2);ctx.fill();
-    }else{
-      // 普通手臂（轻微摆动）
-      ctx.fillStyle=col.body;
-      const aL=Math.sin(t*4)*6;
-      ctx.beginPath();ctx.ellipse(-42,18+aL,9,16,0.2,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(42,18-aL,9,16,-0.2,0,Math.PI*2);ctx.fill();
-    }
-    // ---- 腿/后肢 ----
-    if(type===4){// 鲸：无腿，用尾鳍代替
-      // 已经画了尾鳍
-    }else if(isSleep){
-      // 睡觉时腿蜷缩
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(-18,68,12,10,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18,68,12,10,0,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle=col.belly;
-      ctx.beginPath();ctx.ellipse(-18,70,7,5,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(18,70,7,5,0,0,Math.PI*2);ctx.fill();
-    }else if(st==='play'){
-      // 跳跃时腿交替
-      ctx.fillStyle=col.body;
-      const lL=Math.sin(t*10)*12,lR=-lL;
-      ctx.beginPath();ctx.ellipse(-20,62+lL,10,14,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(20,62+lR,10,14,0,0,Math.PI*2);ctx.fill();
-      // 脚掌
-      ctx.fillStyle=col.belly;
-      ctx.beginPath();ctx.ellipse(-20,74+lL,8,4,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(20,74+lR,8,4,0,0,Math.PI*2);ctx.fill();
-    }else{
-      // 普通站立
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.ellipse(-20,64,10,14,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(20,64,10,14,0,0,Math.PI*2);ctx.fill();
-      // 脚掌
-      ctx.fillStyle=col.belly;
-      ctx.beginPath();ctx.ellipse(-20,76,8,4,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(20,76,8,4,0,0,Math.PI*2);ctx.fill();
-    }
-    // ---- 特殊装饰 ----
-    if(type===0){// 龙：小翅膀
-      ctx.fillStyle=col.accent;
-      const wingT=Math.sin(t*2)*5;
-      ctx.beginPath();ctx.moveTo(-30,20);ctx.quadraticCurveTo(-52,8+wingT,-44,-8);ctx.lineTo(-28,14);ctx.closePath();ctx.fill();
-      ctx.beginPath();ctx.moveTo(30,20);ctx.quadraticCurveTo(52,8+wingT,44,-8);ctx.lineTo(28,14);ctx.closePath();ctx.fill();
-      // 翅膀上的小点
-      ctx.fillStyle=col.body;
-      ctx.beginPath();ctx.arc(-38,6+wingT,3,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.arc(38,6+wingT,3,0,Math.PI*2);ctx.fill();
-    }else if(type===2){// 猫：胡须
-      ctx.strokeStyle='rgba(0,0,0,0.3)';ctx.lineWidth=1.5;ctx.lineCap='round';
-      const whiskerB=Math.sin(t*3)*2;
-      // 左胡须
-      ctx.beginPath();ctx.moveTo(-40,0);ctx.lineTo(-62,-6+whiskerB);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(-40,4);ctx.lineTo(-62,4+whiskerB);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(-40,8);ctx.lineTo(-60,14+whiskerB);ctx.stroke();
-      // 右胡须
-      ctx.beginPath();ctx.moveTo(40,0);ctx.lineTo(62,-6+whiskerB);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(40,4);ctx.lineTo(62,4+whiskerB);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(40,8);ctx.lineTo(60,14+whiskerB);ctx.stroke();
-    }else if(type===3){// 兔：小蝴蝶结
-      ctx.fillStyle='#E8A0BF';
-      ctx.beginPath();ctx.ellipse(0,-52,10,6,0,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(-8,-52,4,6,-0.3,0,Math.PI*2);ctx.fill();
-      ctx.beginPath();ctx.ellipse(8,-52,4,6,0.3,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle='#C0392B';
-      ctx.beginPath();ctx.arc(0,-52,2,0,Math.PI*2);ctx.fill();
-    }
-    // ---- 等级徽章 ----
-    ctx.fillStyle='rgba(255,255,255,0.15)';
-    ctx.beginPath();ctx.arc(48,-42,12,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='white';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('Lv'+S.pet.level,48,-42);
-  },
-  _drawParticles(ctx,bx,by){
-    if(this._particles.length){
-      this._particles.forEach(p=>{
-        p.t+=0.05;
-        const px=bx+p.x-Math.sin(p.t)*20;
-        const py=by-40+p.y-p.t*15;
-        ctx.font='18px sans-serif';ctx.fillText('🍖',px,py);
-      });
-      this._particles=this._particles.filter(p=>p.t<3);
-    }
-    if(this._sparkles.length){
-      this._sparkles.forEach(s=>{
-        s.t+=0.08;
-        const sx=bx+s.x-Math.sin(s.t*2)*10;
-        const sy=by-30+s.y-Math.cos(s.t)*8;
-        ctx.font='14px sans-serif';ctx.fillText('✨',sx,sy);
-      });
-      this._sparkles=this._sparkles.filter(s=>s.t<4);
-    }
-  },
-  _drawZzz(ctx,bx,by){
-    const t=this._t;
-    for(let i=0;i<3;i++){
-      const zz=Math.sin(t*2+i*2)>0.3;
-      if(zz){
-        const zx=bx+30+i*12;
-        const zy=by-50-i*18-Math.sin(t*3+i)*5;
-        ctx.font=`bold ${12+i*3}px sans-serif`;ctx.fillStyle=`rgba(150,200,255,${0.8-i*0.2})`;
-        ctx.textAlign='center';ctx.fillText('Z',zx,zy);
-      }
-    }
-  }
-};
+function updatePetAvatar(){
+  const pet=PETS[S.pet.idx];
+  const img=$('#petAvatar');
+  if(img)img.src=pet.avatar;
+}
+
 
 function petAction(action){
   const stage=document.querySelector('.pet-stage');
@@ -5769,33 +5197,26 @@ function petAction(action){
     setTimeout(()=>tip.remove(),1200);
   };
   if(action==='feed'){
-    petCanvasAnim.action('feed');
     S.pet.hunger=Math.min(100,S.pet.hunger+10);
     showTip('🍖 +10 饱食');toast('🍗 喂食成功！饱食+10');
   }else if(action==='play'){
-    petCanvasAnim.action('play');
     S.pet.mood=Math.min(100,S.pet.mood+15);S.pet.exp+=8;
     showTip('🎮 +15 心情');toast('🎮 玩耍开心！心情+15 经验+8');
     checkPetLevelUp();
   }else if(action==='train'){
-    petCanvasAnim.action('train');
     S.pet.exp+=20;
     showTip('🎯 +20 经验');toast('🎯 训练完成！经验+20');
     checkPetLevelUp();
   }else if(action==='bath'){
-    petCanvasAnim.action('surprise');
     S.pet.clean=Math.min(100,S.pet.clean+12);
     showTip('🛁 +12 清洁');toast('🛁 洗澡完成！清洁+12');
   }else if(action==='sleep'){
-    petCanvasAnim.action('sleep');
     S.pet.energy=Math.min(100,(S.pet.energy||0)+10);
     showTip('💤 +10 精力');toast('💤 宠物开始打瞌睡了～');
   }else if(action==='wave'){
-    petCanvasAnim.action('wave');
     S.pet.mood=Math.min(100,(S.pet.mood||0)+3);
     showTip('👋 挥挥手');toast('👋 宠物在和你打招呼～');
   }else if(action==='nod'){
-    petCanvasAnim.action('nod');
     S.pet.mood=Math.min(100,(S.pet.mood||0)+5);
     showTip('👍 +5 心情');toast('👍 宠物点头赞同～');
   }
@@ -5978,7 +5399,6 @@ function playMiniGame(type){
     saveState();
     toast(`🎉 ${title} 完成！获得 ${reward} 金币`);
     $('#contentArea').innerHTML=renderPet();
-    setTimeout(()=>petCanvasAnim.init(),50);
   },800);
 }
 
@@ -6150,7 +5570,8 @@ function startMathChallenge(){
 function renderChallengeQuestion(){
   if(challengeIdx>=challengeQuestions.length||challengeTimeLeft<=0){endMathChallenge();return;}
   const q=challengeQuestions[challengeIdx];
-  const opts=q.choices||['A','B','C','D'];
+  // 必须用安全选项，防止变体的正确答案不在choices中
+  const {choices} = _safeMathChoices(q);
   $('#contentArea').innerHTML=`
     <div style="flex:1;min-width:0">
       <div class="math-challenge-header">
@@ -6170,7 +5591,7 @@ function renderChallengeQuestion(){
         <div style="font-size:12px;color:var(--text-3);margin-bottom:8px">第 ${challengeIdx+1}/${challengeQuestions.length} 题</div>
         <h3 style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px">${q.question||''}</h3>
         <div class="challenge-options">
-          ${(opts||[]).map((o,i)=>`<div class="challenge-opt" id="copt${i}" onclick="answerChallenge(${i},'${String(q.answer||'').toLowerCase()}','${String(o||'').toLowerCase()}')">${String.fromCharCode(65+i)}. ${o}</div>`).join('')}
+          ${choices.map((o,i)=>`<div class="challenge-opt" id="copt${i}" onclick="answerChallenge(${i},'${String(q.answer||'').toLowerCase()}','${String(o||'').toLowerCase()}')">${String.fromCharCode(65+i)}. ${o}</div>`).join('')}
         </div>
       </div>
       <div style="text-align:center">
@@ -6600,6 +6021,8 @@ function ensureAiPanelBound(){
   if(S.apiConfig && S.apiConfig.deepseekKey) {
     inp.value = S.apiConfig.deepseekKey;
   }
+  // 每次进入AI设置Tab都重新绑定按钮事件，防止绑定丢失
+  bindAiConfigEvents();
 }
 function bindAiConfigEvents(){
   const toggleBtn=$('#toggleKeyVisibility');
@@ -7256,7 +6679,7 @@ function render(){
   else if(currentView==='speak'){area.innerHTML=renderSpeak();bindSpeakEvents();}
   else if(currentView==='game')area.innerHTML=renderGameHub();
   else if(currentView==='pet')area.innerHTML=renderPet();
-  setTimeout(()=>petCanvasAnim.init(),50);
+  updatePetAvatar();
   bindDynamicEvents();
 }
 
@@ -7323,6 +6746,13 @@ function bindDynamicEvents(){
     });
     el.addEventListener('mouseleave',()=>{el.style.transform='';});
   });
+  // 家长面板按钮绑定（每次重新绑定保证点击有反应）
+  const parentBtn=$('#parentBtn');
+  if(parentBtn) parentBtn.onclick=openParentPanel;
+  const parentClose=$('#parentClose');
+  if(parentClose) parentClose.onclick=()=>{disposeParentCharts();$('#parentModal').classList.remove('show')};
+  const parentModal=$('#parentModal');
+  if(parentModal) parentModal.onclick=(e)=>{if(e.target.id==='parentModal'){disposeParentCharts();$('#parentModal').classList.remove('show')}};
 }
 
 // ===== 场景横幅 & 场景音频 =====
