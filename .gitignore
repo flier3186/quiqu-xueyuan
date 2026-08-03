@@ -8,3 +8,4 @@ test_*.js
 docs/
 package.json
 package-lock.json
+.gitee/
