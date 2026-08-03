@@ -1622,6 +1622,11 @@ const MathVisual = {
   // 1. 动态条形模型 —— 加减法 / 部分整体关系
   // data: {total, parts:[{label,val,color}]}
   barModel(data){
+    // 兼容 bars 格式（{type:"bar", bars:[{label,value,color}], total}）
+    if(data && data.bars && !data.parts){
+      data.parts = data.bars.map(b => ({label: b.label, val: b.value, color: b.color}));
+      if(data.total == null) data.total = data.parts.reduce((s,p)=>s+(p.val||0),0);
+    }
     const parts = (data && data.parts) || [];
     if(!parts.length) return '<div class="mv-empty">暂无条形数据</div>';
     const total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
@@ -2729,6 +2734,78 @@ function unlockAudio(){
   }catch(e){}
   if(typeof toast==='function') toast('🔊 音频已开启');
 }
+// 转义 HTML 属性中的特殊字符，防止单引号/双引号破坏 onclick 等内联事件
+function escapeAttr(s){
+  return String(s).replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ===== 英语年级映射：自然拼读阶段、短语场景、语法模块 =====
+function getPhonicsMaxStage(grade){
+  const map={'2b':1,'3':2,'4':3,'5':4,'6':4};
+  return map[grade]||2;
+}
+function getPhraseScenesForGrade(grade){
+  const map={
+    '2b':['居家','学校','公园','动物园','天气'],
+    '3':['居家','学校','公园','动物园','餐厅','超市','生日','运动','天气'],
+    '4':['居家','学校','公园','动物园','餐厅','超市','生日','运动','医院','图书馆','电影院','天气','旅行'],
+    '5':Object.keys(PHRASE_BANK),
+    '6':Object.keys(PHRASE_BANK)
+  };
+  return map[grade]||Object.keys(PHRASE_BANK);
+}
+function getGrammarPillsForGrade(grade){
+  const allPills=[
+    {id:'simple',name:'一般现在时',rule:'描述习惯、事实、真理。第三人称单数动词加-s/-es。I/You/We/They + 动词原形；He/She/It + 动词s形。',sentences:[
+      {en:'I <b>go</b> to school every day.',cn:'我每天上学。',hl:'go'},
+      {en:'She <b>likes</b> apples very much.',cn:'她非常喜欢苹果。',hl:'likes'},
+      {en:'The sun <b>rises</b> in the east.',cn:'太阳从东方升起。',hl:'rises'},
+      {en:'Do you <b>play</b> football on weekends?',cn:'你周末踢足球吗？',hl:'play'},
+    ]},
+    {id:'continuous',name:'现在进行时',rule:'描述此刻正在发生的动作。结构：be(am/is/are) + 动词-ing。',sentences:[
+      {en:'I <b>am reading</b> a book now.',cn:'我现在正在看书。',hl:'am reading'},
+      {en:'Look! The cat <b>is sleeping</b> on the sofa.',cn:'看！猫正在沙发上睡觉。',hl:'is sleeping'},
+      {en:'They <b>are playing</b> basketball.',cn:'他们正在打篮球。',hl:'are playing'},
+      {en:'What <b>are you doing</b> right now?',cn:'你现在在做什么？',hl:'are you doing'},
+    ]},
+    {id:'comparative',name:'比较级',rule:'两者比较用比较级。单音节词+er，多音节词前加more，不规则变化good→better, bad→worse。',sentences:[
+      {en:'Tom is <b>taller than</b> Jack.',cn:'汤姆比杰克高。',hl:'taller than'},
+      {en:'This book is <b>more interesting</b> than that one.',cn:'这本书比那本更有趣。',hl:'more interesting'},
+      {en:'I feel <b>better</b> today.',cn:'我今天感觉好多了。',hl:'better'},
+      {en:'Which is <b>bigger</b>, the sun or the moon?',cn:'太阳和月亮哪个更大？',hl:'bigger'},
+    ]},
+    {id:'past',name:'一般过去时',rule:'描述过去发生的动作。动词变过去式，加-ed（规则）或特殊变化。',sentences:[
+      {en:'I <b>visited</b> my grandma yesterday.',cn:'我昨天看望了奶奶。',hl:'visited'},
+      {en:'She <b>watched</b> a movie last night.',cn:'她昨晚看了一部电影。',hl:'watched'},
+      {en:'They <b>went</b> to the park on Sunday.',cn:'他们周日去了公园。',hl:'went'},
+      {en:'He <b>ate</b> breakfast at seven.',cn:'他七点吃了早饭。',hl:'ate'},
+    ]},
+    {id:'future',name:'一般将来时',rule:'描述将要发生的动作。结构：be going to + 动词原形 或 will + 动词原形。',sentences:[
+      {en:'I <b>am going to</b> visit Beijing.',cn:'我打算去北京。',hl:'am going to'},
+      {en:'She <b>will</b> come to my party.',cn:'她会来我的派对。',hl:'will'},
+      {en:'They <b>are going to</b> play football.',cn:'他们打算踢足球。',hl:'are going to'},
+      {en:'What <b>will</b> you do tomorrow?',cn:'你明天会做什么？',hl:'will'},
+    ]},
+    {id:'superlative',name:'最高级',rule:'三者以上比较用最高级。the + 形容词est（单音节），the most + 形容词（多音节）。',sentences:[
+      {en:'Mount Everest is <b>the highest</b> mountain.',cn:'珠穆朗玛峰是最高的山。',hl:'the highest'},
+      {en:'She is <b>the tallest</b> girl in our class.',cn:'她是班上最高的女孩。',hl:'the tallest'},
+      {en:'This is <b>the most interesting</b> book.',cn:'这是最有趣的书。',hl:'the most interesting'},
+      {en:'Summer is <b>the hottest</b> season.',cn:'夏天是最热的季节。',hl:'the hottest'},
+    ]},
+    {id:'modal',name:'情态动词',rule:'can/may/must/should + 动词原形。表示能力、许可、必须、建议。',sentences:[
+      {en:'I <b>can</b> swim very well.',cn:'我游泳游得很好。',hl:'can'},
+      {en:'You <b>must</b> finish your homework.',cn:'你必须完成作业。',hl:'must'},
+      {en:'She <b>should</b> drink more water.',cn:'她应该多喝水。',hl:'should'},
+      {en:'<b>May</b> I come in?',cn:'我可以进来吗？',hl:'May'},
+    ]},
+  ];
+  const map={'2b':[allPills[0],allPills[1]],'3':allPills.slice(0,3),'4':allPills.slice(0,5),'5':allPills.slice(0,7),'6':allPills};
+  return map[grade]||allPills.slice(0,3);
+}
+// 年级标签中文
+function gradeLabel(grade){
+  return {'2b':'二年级','3':'三年级','4':'四年级','5':'五年级','6':'六年级'}[grade]||grade+'年级';
+}
 
 function makeClickableSentence(sentence){
   return sentence.split(/(\s+)/).map((tok)=>{
@@ -2744,9 +2821,9 @@ function showWordTooltip(word,x,y){
   const w=word.toLowerCase();
   const data=WORD_DICT[w];
   if(!data){
-    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-def" style="color:var(--text-2)">该词暂未收录详细释义，可点击下方按钮听发音。</div><div class="wt-actions"><button onclick="speak('${word}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听发音</button></div>`;
+    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-def" style="color:var(--text-2)">该词暂未收录详细释义，可点击下方按钮听发音。</div><div class="wt-actions"><button onclick="speak('${escapeAttr(word)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听发音</button></div>`;
   }else{
-    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-pos">${data.pos}</div><div class="wt-def">${data.def}</div><div class="wt-example">例：${data.example||''}</div><div class="wt-coll"><strong>常见搭配：</strong>${(data.coll||[]).join(' · ')}</div><div class="wt-syn"><strong>近义：</strong>${data.syn||'—'}　<strong>反义：</strong>${data.ant||'—'}</div><div class="wt-actions"><button onclick="speak('${word}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听发音</button><button class="yellow" onclick="speak('${(data.example||word).replace(/'/g,'')}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听例句</button></div>`;
+    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-pos">${data.pos}</div><div class="wt-def">${data.def}</div><div class="wt-example">例：${data.example||''}</div><div class="wt-coll"><strong>常见搭配：</strong>${(data.coll||[]).join(' · ')}</div><div class="wt-syn"><strong>近义：</strong>${data.syn||'—'}　<strong>反义：</strong>${data.ant||'—'}</div><div class="wt-actions"><button onclick="speak('${escapeAttr(word)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听发音</button><button class="yellow" onclick="speak('${escapeAttr(data.example||word)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听例句</button></div>`;
   }
   tip.style.left=Math.min(x,window.innerWidth-320)+'px';
   tip.style.top=Math.max(80,y-20)+'px';
@@ -3980,24 +4057,29 @@ function renderEnglish(grade='3',subtab='vocab'){
   const g = String(grade);
   S.eng = S.eng || {};
   S.eng.grade = g;
+  // 初始化 useV5（首次进入英语板块时，默认显示 V5 流程）
+  if(typeof S.eng.useV5 !== 'boolean') S.eng.useV5 = true;
 
   // V5: 9 板块每日流程；降级: 旧版 5 子标签
   const hasV5 = !!window.EnglishFlowV5;
+  // 用 useV5 控制是否显示 V5 流程；若用户点击了具体 subtab 则显示经典内容
+  const showV5 = hasV5 && S.eng.useV5 && (S.eng.sub === 'v5flow' || !S.eng.sub);
   let content;
-  if(hasV5){
-    // 首次进入调用 start() 初始化并提示今日场景；已存在进度则 renderAll() 继续
+  if(showV5){
     if(!S.engV5 || typeof S.engV5.currentBoard !== 'number'){
       content = EnglishFlowV5.start(S.profileId || 'default');
     } else {
       content = EnglishFlowV5.renderAll();
     }
   } else {
-    content = renderEngSub(S.eng.sub || subtab || 'vocab', g);
+    const sub = S.eng.sub || subtab || 'vocab';
+    if(sub === 'v5flow'){ S.eng.useV5 = true; saveState(); render(); return ''; }
+    content = renderEngSub(sub, g);
   }
 
-  // V5 模式下隐藏 sub-tabs；降级模式保留
-  const subtabsHTML = hasV5 ? '' : `
-    <div class="sub-tabs" id="engSubtabs">
+  // 始终显示 sub-tabs（V5 模式下额外增加"每日流程"入口）
+  const subtabsHTML = `
+    <div class="sub-tabs" id="engSubtabs" style="display:flex;flex-wrap:wrap;align-items:center;gap:4px">
       ${[
         {id:'vocab',name:'📚 词汇图书馆'},
         {id:'phonics',name:'🗣️ 自然拼读'},
@@ -4005,6 +4087,7 @@ function renderEnglish(grade='3',subtab='vocab'){
         {id:'grammar',name:'✍️ 语法工厂'},
         {id:'listen',name:'🎧 听力森林'},
       ].map(s=>`<div class="sub-tab ${s.id===(S.eng.sub||subtab||'vocab')?'active':''}" data-sub="${s.id}">${s.name}</div>`).join('')}
+      ${hasV5 ? `<div class="sub-tab ${S.eng.useV5?'active':''}" data-sub="v5flow" style="margin-left:auto;background:${S.eng.useV5?'var(--teal-soft)':'var(--ink-50)'};color:${S.eng.useV5?'var(--teal)':'var(--text-2)'}">📋 每日流程</div>` : ''}
     </div>`;
 
   return `
@@ -4047,8 +4130,14 @@ function renderEngSub(subtab,grade){
   if(subtab==='vocab'){
     const words=VOCAB_BY_GRADE[grade]||VOCAB_BY_GRADE['3'];
     const flashWords=words.slice(0,4);
+    // 分页：每页10词
+    S.eng.vocabPage = S.eng.vocabPage || 0;
+    const pageSize = 10;
+    const totalPages = Math.ceil(words.length / pageSize);
+    const page = Math.min(S.eng.vocabPage, totalPages - 1);
+    const pageWords = words.slice(page * pageSize, (page + 1) * pageSize);
     return `<div class="vocab-grid">
-      ${words.map(w=>{
+      ${pageWords.map(w=>{
         const isFav=S.eng.favoriteWords.includes(w.w);
         return `<div class="vocab-card">
         <div class="vocab-head">
@@ -4057,7 +4146,7 @@ function renderEngSub(subtab,grade){
             <div class="vocab-fav" onclick="toggleFav('${w.w}',this)" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--dur-base);background:${isFav?'var(--yellow-100)':'var(--ink-50)'}">
               <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:${isFav?'var(--yellow)':'var(--ink-300)'}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
-            <div class="vocab-speak" onclick="speak('${w.w}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+            <div class="vocab-speak" onclick="speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
           </div>
         </div>
         <div class="vocab-pos">${w.pos}</div>
@@ -4067,6 +4156,11 @@ function renderEngSub(subtab,grade){
         <div class="vocab-syn"><strong>近义：</strong>${w.syn}　<strong>反义：</strong>${w.ant}</div>
       </div>`}).join('')}
     </div>
+    ${totalPages > 1 ? `<div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px;padding:12px;background:white;border-radius:var(--radius-md);box-shadow:var(--card-shadow)">
+      <button onclick="vocabPageChange(-1)" style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--teal);background:white;color:var(--teal);font-weight:700;font-size:13px;cursor:pointer;${page===0?'opacity:0.4;pointer-events:none':''}">← 上一页</button>
+      <span style="font-size:13px;font-weight:700;color:var(--navy)">${page+1} / ${totalPages}</span>
+      <button onclick="vocabPageChange(1)" style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--teal);background:white;color:var(--teal);font-weight:700;font-size:13px;cursor:pointer;${page>=totalPages-1?'opacity:0.4;pointer-events:none':''}">下一页 →</button>
+    </div>` : ''}
     <div style="margin-top:24px;background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--card-shadow)">
       <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:4px">🎴 闪卡记忆挑战（4张）</h3>
       <p style="font-size:12px;color:var(--text-2);margin-bottom:6px">点击卡片翻面查看词义，认识的点"✅认识"，4个全认识得8颗星！</p>
@@ -4082,7 +4176,7 @@ function renderEngSub(subtab,grade){
           <div class="flash-inner">
             <div class="flash-face flash-front">
               <div class="flash-word">${w.w}</div>
-              <div class="flash-speak" onclick="event.stopPropagation();speak('${w.w}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+              <div class="flash-speak" onclick="event.stopPropagation();speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
               <div style="font-size:11px;color:var(--ink-400);margin-top:auto">👆 点击翻面</div>
             </div>
             <div class="flash-face flash-back">
@@ -4119,14 +4213,18 @@ function renderEngSub(subtab,grade){
     </div>`;
   }
   if(subtab==='phonics'){
+    const maxStage = getPhonicsMaxStage(grade);
+    // 限制当前阶段不超过年级最大阶段
+    if(currentPhonicsStage > maxStage) currentPhonicsStage = maxStage;
     const stageLetters=PHONICS_LETTERS.filter(L=>L.stage===currentPhonicsStage);
-    const showLetters=stageLetters.length?stageLetters:PHONICS_LETTERS;
+    const showLetters=stageLetters.length?stageLetters:PHONICS_LETTERS.filter(L=>L.stage<=maxStage);
+    const availableStages = PHONICS_STAGES.filter(s => s.id <= maxStage);
     return `
       <div style="background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--card-shadow);margin-bottom:16px">
-        <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:8px">🗣️ 自然拼读 · 母语教学法</h3>
+        <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:8px">🗣️ 自然拼读 · 母语教学法 <span style="font-size:12px;color:var(--text-2);font-weight:600">（${gradeLabel(grade)}可学${maxStage}个阶段）</span></h3>
         <p style="font-size:13px;color:var(--text-2);margin-bottom:14px">不学音标！直接看真人老师视频学发音，看真实嘴巴的发音方式。点击视频可看大图，点击字母听发音，点击示例词听单词。</p>
         <div class="phonics-stage-bar" id="phonicsStages">
-          ${PHONICS_STAGES.map(s=>`<div class="phonics-stage ${s.id===currentPhonicsStage?'active':''} ${s.done?'done':''}" data-stage="${s.id}"><span class="num">${s.done?'✓':s.id}</span>${s.name}</div>`).join('')}
+          ${availableStages.map(s=>`<div class="phonics-stage ${s.id===currentPhonicsStage?'active':''} ${s.done?'done':''}" data-stage="${s.id}"><span class="num">${s.done?'✓':s.id}</span>${s.name}</div>`).join('')}
         </div>
         <div style="font-size:12px;color:var(--text-2);margin-top:8px;padding:8px 12px;background:var(--teal-soft);border-radius:8px">📌 当前阶段：${PHONICS_STAGES.find(s=>s.id===currentPhonicsStage).name} · ${PHONICS_STAGES.find(s=>s.id===currentPhonicsStage).desc}</div>
       </div>
@@ -4134,15 +4232,15 @@ function renderEngSub(subtab,grade){
         ${showLetters.map(L=>`<div class="letter-card">
           <div class="letter-card-head">
             <div class="letter-big">${L.l}</div>
-            <div class="letter-speak" onclick="speak('${L.sound.split(',')[0].trim()}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+            <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
           </div>
-          <div class="mouth-anim-wrap" onclick="showMouthModal(${L.mouthIdx})">
-            <video class="mouth-video-thumb" poster="assets/mouth-chart-all.jpg" preload="none" style="width:100%;height:100%;object-fit:cover;border-radius:10px" onclick="event.stopPropagation();showMouthModal(${L.mouthIdx})"></video>
+          <div class="mouth-anim-wrap" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}');showMouthModal(${L.mouthIdx})">
+            ${renderAnimatedMouth(L,'small')}
             <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
             <div class="mouth-tip">${L.tip}</div>
           </div>
           <div class="letter-words">
-            ${L.words.map(w=>`<div class="letter-word" onclick="speak('${w}')">${w}</div>`).join('')}
+            ${L.words.map(w=>`<div class="letter-word" onclick="speak('${escapeAttr(w)}')">${w}</div>`).join('')}
           </div>
         </div>`).join('')}
       </div>
@@ -4191,42 +4289,25 @@ function renderEngSub(subtab,grade){
       </div>`;
   }
   if(subtab==='phrases'){
+    const allowedScenes = getPhraseScenesForGrade(grade);
+    const firstScene = allowedScenes[0] || Object.keys(PHRASE_BANK)[0];
     return `
       <div style="background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--card-shadow);margin-bottom:16px">
-        <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:8px">🔡 情景短语库</h3>
-        <p style="font-size:13px;color:var(--text-2)">覆盖 20+ 生活场景，每个短语都有严谨释义、使用场景、语气说明和替换变体。点击短语可朗读整句，点单词可查详细释义。</p>
+        <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:8px">🔡 情景短语库 <span style="font-size:12px;color:var(--text-2);font-weight:600">（${gradeLabel(grade)} · ${allowedScenes.length}个场景）</span></h3>
+        <p style="font-size:13px;color:var(--text-2)">覆盖 ${allowedScenes.length}+ 生活场景，每个短语都有严谨释义、使用场景、语气说明和替换变体。点击短语可朗读整句，点单词可查详细释义。</p>
       </div>
       <div class="scene-tabs" id="sceneTabs">
-        ${Object.keys(PHRASE_BANK).map((s,i)=>`<div class="scene-tab ${i===0?'active':''}" data-scene="${s}">${s}</div>`).join('')}
+        ${allowedScenes.map((s,i)=>`<div class="scene-tab ${i===0?'active':''}" data-scene="${s}">${s}</div>`).join('')}
       </div>
       <div class="phrase-grid" id="phraseGrid">
-        ${PHRASE_BANK[Object.keys(PHRASE_BANK)[0]].map(p=>renderPhraseCard(p)).join('')}
+        ${PHRASE_BANK[firstScene] ? PHRASE_BANK[firstScene].map(p=>renderPhraseCard(p)).join('') : ''}
       </div>`;
   }
   if(subtab==='grammar'){
-    const pills=[
-      {id:'simple',name:'一般现在时',rule:'描述习惯、事实、真理。第三人称单数动词加-s/-es。I/You/We/They + 动词原形；He/She/It + 动词s形。',sentences:[
-        {en:'I <b>go</b> to school every day.',cn:'我每天上学。',hl:'go'},
-        {en:'She <b>likes</b> apples very much.',cn:'她非常喜欢苹果。',hl:'likes'},
-        {en:'The sun <b>rises</b> in the east.',cn:'太阳从东方升起。',hl:'rises'},
-        {en:'Do you <b>play</b> football on weekends?',cn:'你周末踢足球吗？',hl:'play'},
-      ]},
-      {id:'continuous',name:'现在进行时',rule:'描述此刻正在发生的动作。结构：be(am/is/are) + 动词-ing。I am / You are / He is / She is / It is / We are / They are + V-ing。',sentences:[
-        {en:'I <b>am reading</b> a book now.',cn:'我现在正在看书。',hl:'am reading'},
-        {en:'Look! The cat <b>is sleeping</b> on the sofa.',cn:'看！猫正在沙发上睡觉。',hl:'is sleeping'},
-        {en:'They <b>are playing</b> basketball.',cn:'他们正在打篮球。',hl:'are playing'},
-        {en:'What <b>are you doing</b> right now?',cn:'你现在在做什么？',hl:'are you doing'},
-      ]},
-      {id:'comparative',name:'比较级',rule:'两者比较用比较级。单音节词+er（taller），多音节词前加more（more beautiful），不规则变化good→better, bad→worse。',sentences:[
-        {en:'Tom is <b>taller than</b> Jack.',cn:'汤姆比杰克高。',hl:'taller than'},
-        {en:'This book is <b>more interesting</b> than that one.',cn:'这本书比那本更有趣。',hl:'more interesting'},
-        {en:'I feel <b>better</b> today.',cn:'我今天感觉好多了。',hl:'better'},
-        {en:'Which is <b>bigger</b>, the sun or the moon?',cn:'太阳和月亮哪个更大？',hl:'bigger'},
-      ]},
-    ];
+    const pills = getGrammarPillsForGrade(grade);
     return `<div class="gram-card">
       <div class="gram-title">
-        <h3>✍️ 语法工厂 · 例句动画</h3>
+        <h3>✍️ 语法工厂 · 例句动画 <span style="font-size:12px;color:var(--text-2);font-weight:600">（${gradeLabel(grade)} · ${pills.length}个模块）</span></h3>
         <div class="gram-pills" id="gramPills">
           ${pills.map((p,i)=>`<div class="gram-pill ${i===0?'active':''}" data-pill="${p.id}" onclick="switchGramPill('${p.id}')">${p.name}</div>`).join('')}
         </div>
@@ -4306,7 +4387,7 @@ function renderPhraseCard(p){
     <div class="phrase-def">📖 ${p.def}</div>
     <div class="phrase-variations">🔄 变体：${p.vars.map(v=>`<span class="v-tag">${v}</span>`).join('')}</div>
     <div class="phrase-actions">
-      <button onclick="speak('${p.en.replace(/'/g,'')}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读</button>
+      <button onclick="speak('${escapeAttr(p.en)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读</button>
     </div>
   </div>`;
 }
@@ -4424,21 +4505,23 @@ function showMouthModal(idx){
   }
   $('#mouthModalBox').innerHTML=`
     <div class="mouth-modal-head">
-      <div class="mouth-modal-title">${L.l} · ${L.type==='silent-e'?'魔法e':L.l} · 真人发音视频</div>
+      <div class="mouth-modal-title">${L.l} · ${L.type==='silent-e'?'魔法e':L.l} · 发音口型</div>
       <div class="modal-close" onclick="$('#mouthModal').classList.remove('show')">×</div>
     </div>
-    <div class="mouth-modal-big" id="mouthModalBig" style="position:relative;background:#000;border-radius:12px;overflow:hidden;aspect-ratio:16/9">
-      <iframe style="width:100%;height:100%;border:0" 
-        src="https://www.youtube.com/embed?listType=search&list=phonics+${encodeURIComponent(L.l)}+sound+pronunciation+for+kids" 
-        allow="autoplay;encrypted-media" allowfullscreen></iframe>
-    </div>
-    <div class="mouth-modal-desc">🗣️ ${L.mouth}<br><br>💡 ${L.tip}</div>
-    <div class="mouth-modal-words">
-      ${L.words.map(w=>`<div class="w" onclick="speak('${w}')">${w}</div>`).join('')}
-    </div>
-    <div class="mouth-modal-actions">
-      <button class="primary" onclick="speak('${L.sound.split(',')[0].trim()}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听字母音</button>
-      <button class="yellow" onclick="speak('${L.words[0]}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听示例词</button>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:16px">
+      <div class="mouth-modal-big" id="mouthModalBig" style="flex:1;min-width:200px;background:var(--ink-50);border-radius:12px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:10px">
+        ${renderAnimatedMouth(L,'big')}
+      </div>
+      <div style="flex:1;min-width:180px">
+        <div class="mouth-modal-desc" style="font-size:13px;line-height:1.6">🗣️ ${L.mouth}<br><br>💡 ${L.tip}</div>
+        <div class="mouth-modal-words" style="margin-top:12px">
+          ${L.words.map(w=>`<div class="w" onclick="speak('${escapeAttr(w)}')">${w}</div>`).join('')}
+        </div>
+        <div class="mouth-modal-actions" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="primary" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听字母音</button>
+          <button class="yellow" onclick="speak('${escapeAttr(L.words[0])}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听示例词</button>
+        </div>
+      </div>
     </div>`;
   modal.classList.add('show');
 }
@@ -5856,7 +5939,7 @@ function showScoreCard(){
       </div>
       <div class="score-detail-title">📝 逐词评分（点击可单独回放）</div>
       <div class="word-grade">
-        ${words.map(w=>`<div class="wg ${w.c}" onclick="speak('${w.w.replace(/[^a-zA-Z']/g,'')||'ok'}')">${w.w}</div>`).join('')}
+        ${words.map(w=>`<div class="wg ${w.c}" onclick="speak('${escapeAttr(w.w.replace(/[^a-zA-Z']/g,'')||'ok')}')">${w.w}</div>`).join('')}
       </div>
     </div>`;
   setStar(grade==='a'?5:grade==='b'?3:1,'跟读练习');
@@ -6841,6 +6924,12 @@ function toggleFav(w,el){
   }
   renderSidePanel&&render('english');
 }
+function vocabPageChange(delta){
+  if(!S.eng) S.eng = {};
+  S.eng.vocabPage = Math.max(0, (S.eng.vocabPage || 0) + delta);
+  saveState();
+  render('english');
+}
 function flipFlash(i){
   const c=$('#flashCard'+i);
   if(c&&!c.classList.contains('known'))c.classList.toggle('flipped');
@@ -7198,10 +7287,17 @@ function bindDynamicEvents(){
   });
   // 英语子tab
   $$('#engSubtabs .sub-tab').forEach(t=>t.onclick=()=>{
-    currentEngSub=t.dataset.sub;S.eng.sub=currentEngSub;saveState();
+    const sub = t.dataset.sub;
+    if(sub === 'v5flow'){
+      S.eng.useV5 = true;
+      S.eng.sub = 'v5flow';
+    } else {
+      S.eng.useV5 = false;
+      currentEngSub = sub;
+      S.eng.sub = sub;
+    }
     flashKnownCount=0;
-    $$('#engSubtabs .sub-tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
+    saveState();
     render();
   });
   // 短语场景

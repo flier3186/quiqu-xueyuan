@@ -66,6 +66,11 @@ window.MathVisualV5 = {
   // 1. 条形模型 —— 加减法 / 部分整体关系
   // data: {total, parts:[{label,val,color}]}
   barModel(data){
+    // 兼容 bars 格式（{type:"bar", bars:[{label,value,color}], total}）
+    if(data && data.bars && !data.parts){
+      data.parts = data.bars.map(b => ({label: b.label, val: b.value, color: b.color}));
+      if(data.total == null) data.total = data.parts.reduce((s,p)=>s+(p.val||0),0);
+    }
     const parts = (data && data.parts) || [];
     if(!parts.length) return '<div class="mv-empty">暂无条形数据</div>';
     const total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
