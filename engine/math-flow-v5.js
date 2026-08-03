@@ -403,12 +403,48 @@ window.MathFlowV5 = {
     if(level === 2) return this._renderL2(problem);
     return this._renderL4(problem);
   },
+  // ===== 工具：为 variants 生成安全选项（确保正确答案在选项中） =====
+  _safeChoices(v, problem){
+    let ans = v.answer != null ? v.answer : problem.answer;
+    let choices = (v.choices && v.choices.length) ? v.choices : problem.choices;
+    // 如果正确答案不在选项中，自动生成干扰选项
+    if(choices.indexOf(ans) === -1){
+      const a = Number(ans);
+      const base = isNaN(a) ? ans : a;
+      const distractors = [];
+      if(typeof base === 'number'){
+        // 数字题：围绕正确答案生成 ±10、±20、±50、位数错位等干扰项
+        const step = Math.max(1, Math.pow(10, Math.max(0, String(Math.floor(Math.abs(base))).length-2)));
+        const pool = [
+          base + step, base - step,
+          base + step*2, base - step*2,
+          Math.round(base * 1.1), Math.round(base * 0.9),
+          base + 50, base - 50,
+          // 易错：位数交换（如 683→638, 863）
+          (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[0]+s[2]+s[1])*(base<0?-1:1):base+10;})(),
+          (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[1]+s[0]+s[2])*(base<0?-1:1):base-10;})()
+        ].filter(x => x !== base && !distractors.includes(x));
+        // 选取3个最接近的干扰项
+        pool.sort((x,y)=>Math.abs(x-base)-Math.abs(y-base));
+        distractors.push(...pool.slice(0,3));
+      }else{
+        // 非数字题：用原题选项去掉重复后 + 正确答案
+        problem.choices.forEach(c => { if(c !== ans && !distractors.includes(c)) distractors.push(c); });
+        while(distractors.length < 3) distractors.push(ans + '？');
+        distractors.length = Math.min(3, distractors.length);
+      }
+      // 打乱顺序插入正确答案
+      const merged = [ans, ...distractors];
+      for(let i=merged.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[merged[i],merged[j]]=[merged[j],merged[i]];}
+      choices = merged;
+    }
+    return {ans, choices, correctIdx: choices.indexOf(ans)};
+  },
+
   // L1 基础：原题换数字（巩固）
   _renderL1(problem){
     const v = (problem.variants && problem.variants[0]) || problem;
-    const ans = v.answer != null ? v.answer : problem.answer;
-    const choices = v.choices || problem.choices;
-    const correctIdx = choices.indexOf(ans);
+    const {ans, choices, correctIdx} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 6 · 阶梯练习 · L1 基础</span>
       <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
@@ -431,9 +467,7 @@ window.MathFlowV5 = {
     const v = (problem.variants && problem.variants[1]) || (problem.variants && problem.variants[0]) || problem;
     if(!showVisual){
       // 1) 纯文字题：孩子先在没有图形辅助下解答
-      const ans = v.answer != null ? v.answer : problem.answer;
-      const choices = v.choices || problem.choices;
-      const correctIdx = choices.indexOf(ans);
+      const {ans, choices, correctIdx} = this._safeChoices(v, problem);
       return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
         <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 变式</span>
         <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
@@ -460,7 +494,7 @@ window.MathFlowV5 = {
     const visual = (typeof MathVisualV5!=='undefined' && MathVisualV5.render)
       ? MathVisualV5.render(problem.visualType, problem.visualData, problem)
       : '<div class="mv-empty">可视化引擎不可用</div>';
-    const ans = v.answer != null ? v.answer : problem.answer;
+    const {ans} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 图形验证</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 用图形对照你的答案</div>
@@ -477,11 +511,10 @@ window.MathFlowV5 = {
   _renderL4(problem){
     // 用第 2 个变式或构造陷阱题
     const v = (problem.variants && problem.variants[1]) || (problem.variants && problem.variants[0]) || problem;
-    const ans = v.answer != null ? v.answer : problem.answer;
-    const choices = v.choices || problem.choices;
+    const {ans, choices} = this._safeChoices(v, problem);
     // 构造陷阱选项：把正确答案和易错答案都放进去
-    const trap = choices.length > 1 ? choices[0] : (ans + 2);
-    const trapChoices = [...new Set([ans, trap, ...choices])].slice(0,4);
+    const trap = choices.length > 1 ? choices.find(c => c !== ans) : (ans + 2);
+    const trapChoices = [...new Set([ans, trap, ...choices.filter(c => c !== ans && c !== trap)])].slice(0,4);
     const correctIdx = trapChoices.indexOf(ans);
     return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 6 · 阶梯练习 · L4 陷阱</span>
