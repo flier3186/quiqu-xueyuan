@@ -11,7 +11,7 @@
 - **目标用户**：8-12 岁小学生（当前重点：二年级升三年级）
 - **核心定位**：提升数学与英语「能力」的趣味学习工具，非应试刷题
 - **技术形态**：纯前端静态站点（HTML + CSS + JS，无后端）
-- **部署平台**：Cloudflare Pages（主） + GitHub Pages（备）
+- **部署平台**：GitHub Pages（主，稳定可靠） + Gitee Pages（国内备选，加速访问）
 - **仓库地址**：https://github.com/flier3186/quiqu-xueyuan
 
 ---
@@ -234,27 +234,26 @@ prototype/v4/
 
 ## 6. 部署流程
 
-### 6.1 Cloudflare Pages（主）
-```bash
-CLOUDFLARE_API_TOKEN=xxx CLOUDFLARE_ACCOUNT_ID=xxx \
-npx wrangler pages deploy . --project-name=quiqu-xueyuan --branch=main
-```
-
-### 6.2 GitHub Pages（备）
-- push 到 master 分支 → GitHub Actions 自动部署
+### 6.1 GitHub Pages（主）
+- push 到 master 分支 → GitHub Actions 自动部署（`push` 触发）
 - 访问：https://flier3186.github.io/quiqu-xueyuan/
+
+### 6.2 Gitee Pages（国内备选）
+- 仓库部署页面：仓库 →「服务」→「Gitee Pages」→ 选择 `master` 分支 → 目录 `/` →「启动部署」
+- 或配置自动部署：`.gitee/workflows/` 下放入部署脚本，提交后由 Gitee CI 触发
+- 访问：https://yourname.gitee.io/quiqu-xueyuan/
 
 ### 6.3 访问地址
 | 平台 | 地址 | 用途 |
 |---|---|---|
-| Cloudflare Pages | https://quiqu-xueyuan.pages.dev | 国内主入口 |
-| GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 备用 |
+| GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 国内主入口（稳定） |
+| Gitee Pages | https://yourname.gitee.io/quiqu-xueyuan/ | 国内加速备选 |
 
 ---
 
 ## 7. 待办与已知限制
 
 - [ ] 口语 AI 基于场景库关键词匹配，非真 LLM（静态站点限制）
-- [ ] 数学题库 48 道，刷多次会重复，待扩充
+- [ ] 数学题库约856道（含变体近2000题），基本覆盖3-6年级核心知识点
 - [ ] 周报数据需学习几天后才有意义
 - [ ] （在此追加你的待办）
