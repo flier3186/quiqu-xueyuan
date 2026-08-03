@@ -852,8 +852,6 @@ input,textarea{font-family:inherit}
 .grammar-box h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px}
 .grammar-rule{padding:10px 14px;background:var(--teal-soft);border-radius:8px;margin-bottom:8px;font-size:13px;color:var(--navy)}
 .grammar-example{padding:8px 14px;background:var(--yellow-soft);border-radius:8px;font-size:12px;color:var(--ink-700);font-family:'Inter',sans-serif}
-.listen-wrap{position:relative;background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm)}
-.listen-wrap::after{content:'';position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,184,0,.3),transparent 60%);filter:blur(10px)}
 .listen-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:30px;background:linear-gradient(135deg,var(--yellow),#FFB300);color:var(--navy-800);font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;border:none;box-shadow:var(--shadow-md)}
 .listen-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 .listen-btn svg{width:20px;height:20px;fill:var(--navy-800)}
@@ -2797,7 +2795,7 @@ document.addEventListener('click',(e)=>{
 
 /* ============ 渲染函数 ============ */
 function renderSidePanel(){
-  const pet=PETS[S.pet.idx];
+      const pet=S.pet&&PETS[S.pet.idx]||PETS[0]||{name:'宝贝',avatar:'',type:'星云龙'};
   const streak=Math.min(7,S.overview.streak);
   return `
     <div class="side-panel">
@@ -5032,23 +5030,7 @@ function fillTemplate(t){
 
 let isRecording=false;
 function toggleMic(){
-  isRecording=!isRecording;
-  const btn=$('#micBtn');
-  if(isRecording){
-    btn.classList.add('recording');
-    toast('开始录音...');
-    setTimeout(()=>{
-      if(isRecording){
-        isRecording=false;
-        btn.classList.remove('recording');
-        const inp=$('#chatInput');
-        inp.value="I'd like a pizza, please.";
-        toast('识别完成 ✓');
-      }
-    },2500);
-  }else{
-    btn.classList.remove('recording');
-  }
+  if(typeof SpeakEngineV5!=='undefined') SpeakEngineV5.toggleMic();
 }
 
 function bindSpeakEvents(){
@@ -5072,7 +5054,7 @@ function bindSpeakEvents(){
 }
 
 function renderPet(){
-  const pet=PETS[S.pet.idx];
+  const pet=(S.pet&&PETS[S.pet.idx])||PETS[0]||{name:'宝贝',avatar:'',type:'星云龙'};
   return `
     <div class="pet-layout">
       <div class="pet-stage">
@@ -5993,24 +5975,51 @@ function renderParentDashboard(){
           </div>
         </div>
       </div>
+
+      <div class="parent-section" data-psec="errors">
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <h4 style="font-size:15px;font-weight:800;color:var(--navy)">🐛 错误日志</h4>
+            <button class="export-btn" onclick="exportErrorLog()">📥 导出日志</button>
+          </div>
+          <div id="errorLogBody" style="max-height:300px;overflow-y:auto"><div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">加载中...</div></div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <h4 style="font-size:15px;font-weight:800;color:var(--navy)">❌ 错题本</h4>
+            <button class="export-btn" onclick="exportWrongProblems()">📥 导出错题</button>
+          </div>
+          <div id="wrongProblemsBody" style="max-height:300px;overflow-y:auto"><div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">加载中...</div></div>
+        </div>
+      </div>
+
+      <div class="parent-section" data-psec="profiles">
+        <div class="card">
+          <h4 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px">👨‍👩‍👧 学员档案</h4>
+          <div id="profilesList" style="display:flex;flex-direction:column;gap:8px"><div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">加载中...</div></div>
+          <div id="deleteProfileNote" style="font-size:11px;color:var(--coral);margin-top:8px"></div>
+        </div>
+      </div>
     </div>`;
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
-  if(pt==='errors'){renderErrorLog();renderWrongProblems();}
-  if(pt==='profiles') renderProfiles();
-  $$('.parent-tab').forEach(t=>t.onclick=()=>{
-    $$('.parent-tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    const pt=t.dataset.pt;
-    $$('.parent-section').forEach(s=>{
-      s.classList.toggle('active',s.dataset.psec===pt);
-    });
-    if(pt==='errors'){renderErrorLog();renderWrongProblems();}
-    if((pt==='overview')&&typeof echarts!=='undefined'){
-      setTimeout(()=>initParentCharts(),80);
-    }
-    if(pt==='ai') ensureAiPanelBound();
-  });
+  if(pt==='overview'&&typeof echarts!=='undefined'){setTimeout(()=>initParentCharts(),80);}
+  if(pt==='ai') ensureAiPanelBound();
+  // 事件委托：避免每次渲染重复绑定
+  let parentBodyEl=$('#parentBody');
+  if(parentBodyEl){
+    parentBodyEl.onclick=function(e){
+      const tab=e.target.closest('.parent-tab');
+      if(!tab)return;
+      const pt=tab.dataset.pt;
+      $$('.parent-tab').forEach(x=>x.classList.toggle('active',x===tab));
+      $$('.parent-section').forEach(s=>s.classList.toggle('active',s.dataset.psec===pt));
+      if(pt==='errors'){renderErrorLog();renderWrongProblems();}
+      if(pt==='profiles') renderProfiles();
+      if(pt==='overview'&&typeof echarts!=='undefined') setTimeout(()=>initParentCharts(),80);
+      if(pt==='ai') ensureAiPanelBound();
+    };
+  }
   setTimeout(()=>initParentCharts(),320);
   bindAiConfigEvents();
 }
@@ -6813,7 +6822,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       onmouseout="this.style.transform=''"
       onclick="switchView('pet')">
       <div style="width:88px;height:88px;border-radius:28px;background:white;box-shadow:var(--shadow-xl);padding:6px;position:relative;border:1.5px solid var(--teal-200)">
-        <img src="${PETS[S.pet.idx].avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:22px" alt="pet">
+        <img src="${(S.pet&&PETS[S.pet.idx])?PETS[S.pet.idx].avatar:''}" style="width:100%;height:100%;object-fit:cover;border-radius:22px" alt="pet">
         <div style="position:absolute;top:-8px;right:-8px;width:28px;height:28px;border-radius:50%;background:var(--yellow);color:var(--navy-800);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md)">Lv${S.pet.level}</div>
         <div style="position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);background:var(--teal);color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;white-space:nowrap;box-shadow:var(--shadow-sm)">点我去乐园</div>
       </div>
