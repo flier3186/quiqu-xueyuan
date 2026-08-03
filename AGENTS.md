@@ -12,7 +12,7 @@
 - **核心定位**：提升数学与英语「能力」的趣味学习工具，非应试刷题
 - **技术形态**：纯前端静态站点（HTML + CSS + JS，无后端）
 - **部署平台**：GitHub Pages（主，稳定可靠） + Gitee Pages（国内备选，加速访问）
-- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan
+- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub） / https://gitee.com/leo318600/quiqu-xueyuan（Gitee）
 
 ---
 
@@ -241,13 +241,13 @@ prototype/v4/
 ### 6.2 Gitee Pages（国内备选）
 - 仓库部署页面：仓库 →「服务」→「Gitee Pages」→ 选择 `master` 分支 → 目录 `/` →「启动部署」
 - 或配置自动部署：`.gitee/workflows/` 下放入部署脚本，提交后由 Gitee CI 触发
-- 访问：https://yourname.gitee.io/quiqu-xueyuan/
+- 访问：https://leo318600.gitee.io/quiqu-xueyuan/
 
 ### 6.3 访问地址
 | 平台 | 地址 | 用途 |
 |---|---|---|
 | GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 国内主入口（稳定） |
-| Gitee Pages | https://yourname.gitee.io/quiqu-xueyuan/ | 国内加速备选 |
+| Gitee Pages | https://leo318600.gitee.io/quiqu-xueyuan/ | 国内加速备选 |
 
 ---
 
