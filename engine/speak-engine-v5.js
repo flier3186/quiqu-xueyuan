@@ -94,8 +94,9 @@ window.SpeakEngineV5 = {
     else if(ques > excl) rate *= 0.85;
     // 差异化语音：每老师独特音色 + 情感语调
     var pitch;
-    if(teacherKey==='emma'){ pitch=1.25; rate*=0.95; }    // 女声：高频、稍慢、清晰热情
-    else if(teacherKey==='leo'){ pitch=0.75; rate*=1.10; }  // 男声：低频、稍快、活泼
+    var tKey = (teacherId || '').toLowerCase();
+    if(tKey==='emma'){ pitch=1.25; rate*=0.95; }    // 女声：高频、稍慢、清晰热情
+    else if(tKey==='leo'){ pitch=0.75; rate*=1.10; }  // 男声：低频、稍快、活泼
     else { pitch=1.0; }                        // aria：中性
     u.rate = Math.max(0.6, Math.min(1.4, rate));
     u.pitch = pitch;
@@ -167,14 +168,31 @@ window.SpeakEngineV5 = {
     return null;
   },
 
-  // ===== 降级模式：分支对话树 =====
-  _fallback(scenarioId, userText){
+  // ===== 降级模式：分支对话树（带教师人设差异化） =====
+  _fallback(scenarioId, userText, teacherId){
     const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
     const sc = scenarios.find(s => s.id === scenarioId);
+    const tId = teacherId || (S.speakV5 && S.speakV5.teacher) || 'emma';
+    // 各老师独有的鼓励语
+    const teacherGood = {
+      emma: ['Exactly! ', 'Wonderful! ', 'You got it! ', 'Brilliant! ', 'Fantastic! '],
+      leo: ['Haha, nice! ', 'Cool! ', 'You rock! ', 'Amazing! ', 'Super! '],
+      aria: ['Well done! ', 'Good job! ', 'Nice try! ', 'You are doing great! ', 'I am proud of you! ']
+    };
+    const teacherBad = {
+      emma: ["Almost! ", "Don't worry! ", "Try again! ", "You can do it! "],
+      leo: ["Oops! ", "Not quite! ", "Almost there! ", "Keep trying! "],
+      aria: ["That's okay! ", "Take your time! ", "Good effort! ", "Let me help! "]
+    };
+    // 各老师独有的额外追问（无场景时用）
+    const teacherFollowups = {
+      emma: ["That's interesting! Tell me more!", "Really? I want to know more!", "Wow! What else?", "Great! And then?", "Go on, I'm listening!"],
+      leo: ["Haha, is that true? Tell me more!", "Cool story! What happened next?", "No way! Really?", "That's funny! What else?", "Awesome! Keep going!"],
+      aria: ["I see! That's nice.", "How wonderful! Tell me more.", "Oh, I understand. And then?", "Very good! What else can you say?", "I'm listening. Go ahead."]
+    };
     if(!sc){
-      // 无场景时的通用回复
-      const generic = ["That's interesting! Tell me more.", 'Great! Keep going!', 'I see! What else?', 'Nice! Can you say more?'];
-      return generic[Math.floor(Math.random() * generic.length)];
+      const followups = teacherFollowups[tId] || teacherFollowups.emma;
+      return followups[Math.floor(Math.random() * followups.length)];
     }
     // 当前轮数决定期望回答
     const turn = (S.speakV5 && S.speakV5.history || []).filter(h => h.role === 'student').length;
@@ -184,14 +202,20 @@ window.SpeakEngineV5 = {
       const t = userText.toLowerCase();
       matched = exp.keywords.some(k => t.includes(k));
     }
-    const good = ['Great! ', 'Awesome! ', 'Good job! ', 'Well done! '];
-    const bad = ["That's okay! ", "Don't worry! ", 'Good try! '];
-    const enc = matched ? good[Math.floor(Math.random() * good.length)] : bad[Math.floor(Math.random() * bad.length)];
+    const goodList = teacherGood[tId] || teacherGood.emma;
+    const badList = teacherBad[tId] || teacherBad.emma;
+    const enc = matched ? goodList[Math.floor(Math.random() * goodList.length)] : badList[Math.floor(Math.random() * badList.length)];
     const nextIdx = turn + 1;
     if(sc.teacherLines[nextIdx]){
       return enc + sc.teacherLines[nextIdx].text;
     }
-    return enc + 'You did wonderfully! See you next time!';
+    // 对话结束时的个性化结束语
+    const endings = {
+      emma: 'You did wonderfully! I had so much fun talking to you! See you next time!',
+      leo: 'That was awesome! You are my star student! Catch you later!',
+      aria: 'You did a great job today! I am very proud of you. See you next time!'
+    };
+    return endings[tId] || endings.emma;
   },
 
   // ===== 开始对话 =====
@@ -225,7 +249,7 @@ window.SpeakEngineV5 = {
     let reply = await this._callAI(teacherId, userText, S.speakV5.history);
     // 2. 失败则降级到分支对话树
     if(!reply){
-      reply = this._fallback(S.speakV5.scenario, userText);
+      reply = this._fallback(S.speakV5.scenario, userText, teacherId);
     }
     S.speakV5.history.push({ role: 'teacher', text: reply, ts: Date.now() });
     // 判断是否到达场景末尾（降级模式下）
