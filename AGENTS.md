@@ -11,8 +11,8 @@
 - **目标用户**：8-12 岁小学生（当前重点：二年级升三年级）
 - **核心定位**：提升数学与英语「能力」的趣味学习工具，非应试刷题
 - **技术形态**：纯前端静态站点（HTML + CSS + JS，无后端）
-- **部署平台**：GitHub Pages（主，稳定可靠） + Vercel（国内加速备选）
-- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub）
+- **部署平台**：GitHub Pages（主，稳定可靠） + Gitee Pages（国内直连）
+- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub） + https://gitee.com/flier3186/quiqu-xueyuan（国内直连）
 
 ---
 
@@ -226,6 +226,7 @@ prototype/v4/
 ├── assets/             # 图片资源
 ├── vercel.json         # Vercel 配置（保留，不再使用）
 ├── .github/workflows/  # GitHub Actions
+├── .gitee/             # Gitee Pages 配置（如有）
 └── AGENTS.md           # 本文件
 ```
 
@@ -258,19 +259,18 @@ prototype/v4/
 ### 6.1 GitHub Pages（主）
 - push 到 master 分支 → GitHub Actions 自动部署（`push` 触发）
 - 访问：https://flier3186.github.io/quiqu-xueyuan/
+- Agent 必须用 curl/head 工具验证线上 200 OK，并将结果汇报给用户
 
-### 6.2 Vercel（国内加速备选）
-- 项目已连接，push 到 master 自动触发部署（项目名：`quiqu-xueyuan-master`，团队：`flier2`）
-- 访问：https://quiqu-xueyuan-master.vercel.app
-- 备用域名：https://quiqu-xueyuan-master-flier2.vercel.app
-- 支持自定义域名绑定（Settings → Domains）
-- 注意：Vercel 在国内部分地区可能无法直连，必要时需绑定自定义域名 + Cloudflare CDN
+### 6.2 Gitee Pages（国内直连）
+- push 到 Gitee master 分支 → Gitee Pages 自动部署（需开启）
+- 访问：https://flier3186.gitee.io/quiqu-xueyuan/
+- Agent 部署时必须同步 push 到 GitHub 和 Gitee 两个仓库
+- Agent 必须用 curl/head 工具验证两个线上地址均 200 OK
 
-### 6.3 访问地址
-| 平台 | 地址 | 用途 |
-|---|---|---|
-| GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 主入口（稳定） |
-| Vercel | https://quiqu-xueyuan-master.vercel.app | 国内加速备选 |
+### 6.3 部署完成判定
+- 仅当 GitHub Pages 和 Gitee Pages 均返回 200 且内容与预期一致，才视为部署完成
+- 若任一地址验证失败，必须重试推送并重新验证，不得告知用户"部署成功"
+- Agent 必须将两个验证结果一起汇报，供用户判断
 
 ---
 
