@@ -299,7 +299,8 @@ window.MathFlowV5 = {
   _renderNeriage(problem){
     const n = problem.neriage || {};
     const alternatives = n.alternatives || [];
-    const errors = n.neriageErrors || n.typical_errors || [];
+    // 兼容新旧格式：新格式顶层 neriateErrors，旧格式 nested neriate
+    const errors = n.neriateErrors || n.typical_errors || problem.neriageErrors || [];
     const methodA = n.methodA || (alternatives[0] || '标准解法');
     const methodB = n.methodB || (alternatives[1] || '巧算解法');
     const errorC = n.errorC || (errors.length > 0 ? errors[0] : null);
@@ -428,6 +429,7 @@ window.MathFlowV5 = {
     setTimeout(()=>this._initFractionWall(),50);
     const layers = this._explainLayers(problem);
     const methodName = this._methodName(problem);
+    const hasRussian = problem.russianQuestions && problem.russianQuestions.length > 0;
     return `<div class="cpa-layer pictorial" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
       <span class="cpa-tag pictorial">STAGE 4 · 数形结合讲解</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 5 分钟 · 用图形看清这道题的内在结构</div>
@@ -437,6 +439,11 @@ window.MathFlowV5 = {
       <div style="text-align:center;margin-top:8px">
         <button onclick="MathFlowV5._replayVisual()" style="padding:8px 18px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(0,168,150,.3);border-radius:18px;font-size:12px;font-weight:700;cursor:pointer">🎬 重新播放动画</button>
       </div>
+      ${problem.barTranslateLine && problem.barTranslateLine.items ? `
+      <div style="margin-top:14px;padding:14px 18px;background:var(--yellow-soft);border-radius:12px;border-left:4px solid var(--yellow)">
+        <div style="font-size:12px;font-weight:700;color:var(--yellow-700);margin-bottom:8px">📝 Bar Model 翻译行</div>
+        ${problem.barTranslateLine.items.map(item=>`<div style="font-size:14px;font-weight:600;color:var(--ink-700);line-height:1.8;padding:4px 0">${this._escape(item)}</div>`).join('')}
+      </div>` : ''}
       <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
         ${layers.map(l=>`
           <div style="padding:14px 16px;border-radius:12px;background:${l.bg};border-left:4px solid ${l.color}">
@@ -444,13 +451,12 @@ window.MathFlowV5 = {
             <div style="font-size:14px;color:var(--ink-700);line-height:1.75">${l.text}</div>
           </div>`).join('')}
       </div>
-      <!-- 口诀总结 -->
       <div style="margin-top:14px;padding:14px 18px;background:linear-gradient(135deg,var(--navy),#2a4a72);border-radius:12px;color:#fff">
         <div style="font-size:12px;opacity:.85;font-weight:600;margin-bottom:4px">🎵 小口诀</div>
         <div style="font-size:15px;font-weight:800;line-height:1.6">${this._rhyme(problem, methodName)}</div>
       </div>
       <div style="text-align:center;margin-top:18px">
-        <button onclick="MathFlowV5.advance('askChild')" style="padding:12px 28px;background:linear-gradient(135deg,var(--pink),#F4C2D8);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,191,.4)">🙋 轮到你提问了 →</button>
+        <button onclick="MathFlowV5.advance('${hasRussian ? 'russian' : 'askChild'}')" style="padding:12px 28px;background:linear-gradient(135deg,var(--pink),#F4C2D8);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,191,.4)">🙋 ${hasRussian ? '俄罗斯追问 →' : '轮到你提问了 →'}</button>
       </div>
     </div>`;
   },
