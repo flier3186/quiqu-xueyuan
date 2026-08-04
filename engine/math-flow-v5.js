@@ -23,10 +23,13 @@ window.MathFlowV5 = {
       discoveryStep: 0,
       hintUsed: false,
       solveAttempts: 0,
-      practiceLevel: 1,        // 1=L1基础 2=L2变式 4=L4陷阱
+      practiceLevel: 1,        // 1=L1基础 2=L2变式 3=L3进阶 4=L4陷阱
       practiceVisualShown: false, // L2 变式：先文字后图形
       socraticStep: 0,
       reviewDone: false,
+      practiceIndex: 0,        // 当前练习题索引
+      practiceTotal: 10,        // 总练习题数
+      practiceLevels: [1, 2, 3, 4, 1, 2, 3, 4, 1, 2],  // 练习级别序列
     };
     // 若有到期复习项，先进入昨日回顾
     if(profileId && typeof SpacedReview!=='undefined' && SpacedReview.getDue){
@@ -50,6 +53,7 @@ window.MathFlowV5 = {
       case 'explain':   return this.renderExplain(p);
       case 'askChild':  return this.renderAskChild(p);
       case 'practice':  return this.renderPractice(p);
+      case 'complete':  return this._renderComplete(p);
       default:          return this.renderWarmup(p);
     }
   },
@@ -398,9 +402,10 @@ window.MathFlowV5 = {
   // 阶段 6：阶梯练习（3 分钟）—— L1基础 → L2变式(先文字后图形) → L4陷阱
   // ============================================================
   renderPractice(problem){
-    const level = this._sess.practiceLevel || 1;
+    const level = this._sess.practiceLevels[this._sess.practiceIndex] || 1;
     if(level === 1) return this._renderL1(problem);
     if(level === 2) return this._renderL2(problem);
+    if(level === 3) return this._renderL3(problem);  // 新增 L3
     return this._renderL4(problem);
   },
   // ===== 工具：为 variants 生成安全选项（确保正确答案在选项中） =====
@@ -507,6 +512,26 @@ window.MathFlowV5 = {
       </div>
     </div>`;
   },
+  // L3 进阶题：应用题（结合生活场景）
+  _renderL3(problem){
+    const variant = problem.variants && problem.variants[1] || {};
+    const scene = variant.scene || problem.scene;
+    const question = variant.question || '如果情况变化，结果会怎样？';
+    const choices = variant.choices || problem.choices;
+    const correctIdx = choices.indexOf(variant.answer != null ? variant.answer : problem.answer);
+    
+    return `<div class="cpa-layer" style="border-left-color:var(--pink);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--pink);color:#fff">STAGE 6 · 阶梯练习 · L3 进阶</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📝 进阶挑战 · 第 ${this._sess.practiceIndex + 1} / ${this._sess.practiceTotal} 题</div>
+      <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;padding:16px 18px;background:linear-gradient(135deg,#FCE7F3,#fff);border-radius:12px;border:1px solid rgba(232,160,191,.3)">
+        ${this._escape(scene)}<br>${this._escape(question)}
+      </div>
+      <div class="wp-choices" id="v5PracticeChoices" style="grid-template-columns:repeat(2,1fr);margin-top:12px">
+        ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._practiceAnswer(this,${i},${correctIdx},3)">${this._escape(String(c))}</div>`).join('')}
+      </div>
+      <div id="v5PracticeFeedback" style="margin-top:12px"></div>
+    </div>`;
+  },
   // L4 陷阱题：含干扰信息或易错点，做错触发苏格拉底追问
   _renderL4(problem){
     // 用第 2 个变式或构造陷阱题
@@ -540,31 +565,24 @@ window.MathFlowV5 = {
     if(container){
       container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
       el.classList.add(isCorrect?'correct':'wrong');
-      if(!isCorrect){
-        container.querySelectorAll('.wp-choice').forEach(c=>{ if(parseInt(c.dataset.idx||-1)===correctIdx || container.children.length>0) c.classList.remove('correct'); });
-        const correctEl = container.querySelectorAll('.wp-choice')[correctIdx];
-        if(correctEl) correctEl.classList.add('correct');
-      }
     }
     const fb = document.getElementById('v5PracticeFeedback');
-    const problem = this._sess.problem || {};
+    if(fb){
+      fb.innerHTML = isCorrect
+        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">✅ 答对了！进入下一题...</div>`
+        : `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 再想想，看下面的解析</div>`;
+    }
     if(isCorrect){
-      try{ if(typeof setStar==='function') setStar(2, '练习题'); }catch(e){}
-      if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">✅ <b>答对了！</b>+2 ⭐</div>`;
-      // L1 对 → 进 L2；L2 对 → 进 L4；L4 对 → 完成
-      setTimeout(()=>{
-        if(level===1){ this._sess.practiceLevel=2; this._sess.practiceVisualShown=false; }
-        else if(level===2){ this._sess.practiceLevel=4; }
-        else { this._finishPractice(); return; }
-        if(typeof updateMathStageV5==='function') updateMathStageV5();
-      }, 900);
-    }else{
-      // L4 做错 → 苏格拉底式追问
-      if(level===4){
-        if(fb) fb.innerHTML = this.renderSocratic(problem, el.dataset.val);
-        return;
+      this._sess.practiceIndex++;
+      if(this._sess.practiceIndex >= this._sess.practiceTotal){
+        // 完成所有练习
+        setTimeout(()=>{ this.advance('complete'); }, 1000);
+      } else {
+        setTimeout(()=>{ this.advance('practice'); }, 1200);
       }
-      if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 没关系，再想想。回看上面的算式和提示 💪</div>`;
+    } else {
+      // 答错显示解析
+      setTimeout(()=>{ if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 1500);
     }
   },
   // L2 显示图形验证
@@ -610,6 +628,29 @@ window.MathFlowV5 = {
     // 清理会话
     this._sess.stage = 'done';
     this._saveProgress();
+  },
+  // 完成页面（10题练习结束后）
+  _renderComplete(problem){
+    return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 练习完成</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">🎉 恭喜完成今日练习！</div>
+      <div style="padding:20px;background:linear-gradient(135deg,var(--yellow-soft),#fff);border-radius:14px;text-align:center">
+        <div style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:12px">🌟 今日学习完成 🌟</div>
+        <div style="font-size:14px;color:var(--text-2);line-height:1.8">
+          完成了 ${this._sess.practiceTotal} 道练习题<br>
+          掌握了 ${this._escape(problem.knowledge || '新知识')}<br>
+          继续保持，每天进步一点点！
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:18px">
+        <button onclick="MathFlowV5._backToGrade()" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer">返回年级选择</button>
+      </div>
+    </div>`;
+  },
+  // 返回年级选择
+  _backToGrade(){
+    this._sess = null;
+    if(typeof render==='function') render();
   },
 
   // ============================================================

@@ -1146,6 +1146,13 @@ input,textarea{font-family:inherit}
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 </head>
 <body>
+<div id="loading-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+  <div style="font-size:18px;font-weight:700;color:#1E3A5F;margin-bottom:20px;">🦉 奇趣学园加载中...</div>
+  <div style="width:300px;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;">
+    <div id="loading-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#00A896,#F5B800);transition:width 0.3s;"></div>
+  </div>
+  <div id="loading-status" style="margin-top:12px;font-size:13px;color:#64748b;">初始化中...</div>
+</div>
 <div class="app">
   <div class="main-area">
     <header class="top-bar">
@@ -6701,11 +6708,17 @@ function bindDynamicEvents(){
   // 顶部 nav
   $$('.nav-tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
   // 数学年级
-  $$('#mathGrades .grade-pill').forEach(p=>p.onclick=()=>{
-    currentMathGrade=p.dataset.grade;S.math.grade=currentMathGrade;
+  $$('#mathGrades .grade-pill').forEach(p=>p.onclick=async()=>{
+    const grade=p.dataset.grade;
+    currentMathGrade=grade;S.math.grade=grade;
     // 同步到当前档案
-    if(S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId].grade=currentMathGrade;
+    if(S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId].grade=grade;
     saveState();
+    // 懒加载该年级数据
+    const targetGrade = grade + (grade==='2'?'b':(grade==='3'?'a':''));
+    if(targetGrade && !MATH_BY_GRADE[targetGrade]){
+      await loadGrade(targetGrade);
+    }
     $$('#mathGrades .grade-pill').forEach(x=>x.classList.remove('active'));
     p.classList.add('active');
     render();
@@ -6848,7 +6861,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data.js"></script>
+<script src="data/math-data-core.js"></script>
 <script src="data/english-vocab.js"></script>
 <script src="data/english-phonics.js"></script>
 <script src="data/english-listening.js"></script>
@@ -6902,6 +6915,72 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   }
   console.log('[QuiquV5] 英语场景合并完成：' + SPEAK_SCENARIOS.length + ' 个');
 }
+</script>
+<script>
+// ===== 加载管理器 =====
+(function() {
+  var overlay = document.getElementById('loading-overlay');
+  var bar = document.getElementById('loading-bar');
+  var status = document.getElementById('loading-status');
+  if (!overlay) return;
+
+  // 检测移动端
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    var tip = document.createElement('div');
+    tip.id = 'mobile-tip';
+    tip.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);background:#FFF8E6;border:1px solid #F5B800;padding:10px 20px;border-radius:20px;font-size:13px;color:#92400e;z-index:9998;box-shadow:0 2px 8px rgba(0,0,0,.1)';
+    tip.textContent = '💡 建议使用电脑浏览器获得最佳体验';
+    document.body.appendChild(tip);
+    setTimeout(function() { if (tip.parentNode) tip.parentNode.removeChild(tip); }, 5000);
+  }
+
+  // 加载超时处理（15秒）
+  var timeoutTimer = setTimeout(function() {
+    if (overlay.style.display !== 'none') {
+      status.innerHTML = '<span style="color:#dc2626;">加载时间较长，请稍候...</span><br><button onclick="location.reload()" style="margin-top:8px;padding:6px 16px;background:#00A896;color:#fff;border:none;border-radius:12px;cursor:pointer;">刷新页面</button>';
+    }
+  }, 15000);
+
+  // 检查数据是否就绪
+  function checkReady() {
+    var mathReady = typeof MATH_BY_GRADE !== 'undefined';
+    var englishReady = typeof VOCAB_DATA !== 'undefined' || typeof SPEAK_SCENARIOS !== 'undefined';
+    var pct = 0;
+    if (mathReady) pct += 50;
+    if (englishReady) pct += 50;
+
+    if (bar) bar.style.width = pct + '%';
+    if (status) {
+      if (mathReady && englishReady) {
+        status.textContent = '准备就绪！';
+      } else if (mathReady) {
+        status.textContent = '正在加载英语数据...';
+      } else {
+        status.textContent = '正在加载数学题库...';
+      }
+    }
+
+    if (mathReady && englishReady) {
+      clearTimeout(timeoutTimer);
+      setTimeout(function() {
+        overlay.style.opacity = '0';
+        setTimeout(function() { overlay.style.display = 'none'; }, 300);
+      }, 300);
+      return true;
+    }
+    return false;
+  }
+
+  // 轮询检测数据就绪（每200ms检查一次）
+  var pollTimer = setInterval(function() {
+    if (checkReady()) clearInterval(pollTimer);
+  }, 200);
+
+  // 同时监听 DOMContentLoaded
+  if (document.readyState === 'complete') {
+    checkReady();
+  }
+})();
 </script>
 </body>
 </html>
