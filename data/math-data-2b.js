@@ -7227,6 +7227,96 @@ window.MATH_BY_GRADE['2b'] = {
             "color": "var(--coral)"
           }
         ]
+      },
+      {
+        "id": "2B-BM-01",
+        "scene": "小红有12颗糖果，小明比小红多5颗。小明有多少颗糖果？",
+        "question": "小明有多少颗糖果？（用条形图表示）",
+        "formula": "12 + 5 = ?",
+        "answer": 17,
+        "choices": [17, 15, 19, 7],
+        "visualType": "barModelTranslate",
+        "visualData": {
+          "total": 17,
+          "parts": [
+            { "label": "小红", "val": 12, "color": "#00A896" },
+            { "label": "多5颗", "val": 5, "color": "#F5B800" }
+          ]
+        },
+        "knowledge": "Bar Model入门·比多少",
+        "difficulty": 1,
+        "hint": "画两条条形，一条表示12，一条比它长5",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画两条条形表示数量关系", "correct": true },
+          { "label": "直接列算式", "desc": "12+5=17", "correct": true },
+          { "label": "画圆圈", "desc": "画12个圈再加5个圈", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "小明比小红多的5颗糖果，在条形图里对应哪一段？", "keywords": ["第二段","多5","右边","后面的","多出来的"] },
+          { "type": "compare", "q": "如果小红多3颗，小明的条形要变长还是变短？", "keywords": ["变长","更长","多画","加","增加"] }
+        ],
+        "barTranslateLine": { "items": ["小红=12", "小明=12+5", "总共=17"] },
+        "variants": []
+      },
+      {
+        "id": "2B-BM-02",
+        "scene": "图书馆有故事书28本，科技书比故事书多15本。科技书有多少本？",
+        "question": "科技书有多少本？",
+        "formula": "28 + 15 = ?",
+        "answer": 43,
+        "choices": [43, 38, 48, 13],
+        "visualType": "barModelTranslate",
+        "visualData": {
+          "total": 43,
+          "parts": [
+            { "label": "故事书", "val": 28, "color": "#00A896" },
+            { "label": "多15本", "val": 15, "color": "#E8A0BF" }
+          ]
+        },
+        "knowledge": "Bar Model入门·比多少",
+        "difficulty": 1,
+        "hint": "科技书的条形 = 故事书条形 + 多出来的部分",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画两条条形对比", "correct": true },
+          { "label": "列算式", "desc": "28+15=43", "correct": true },
+          { "label": "画圆圈", "desc": "画28个圈加15个圈", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "条形图里哪一段表示科技书比故事书多的本数？", "keywords": ["第二段","多15","右边","后面","突出的部分"] },
+          { "type": "reverse", "q": "如果科技书有43本，故事书有28本，多几本？", "keywords": ["减法","15","43-28","差","少"] }
+        ],
+        "barTranslateLine": { "items": ["故事书=28", "科技书=28+15", "总共=43"] },
+        "variants": []
+      },
+      {
+        "id": "2B-BM-03",
+        "scene": "树上有15只鸟，又飞来8只。现在树上一共有多少只鸟？",
+        "question": "一共有多少只鸟？",
+        "formula": "15 + 8 = ?",
+        "answer": 23,
+        "choices": [23, 21, 25, 7],
+        "visualType": "barModelTranslate",
+        "visualData": {
+          "total": 23,
+          "parts": [
+            { "label": "原来", "val": 15, "color": "#00A896" },
+            { "label": "飞来", "val": 8, "color": "#F5B800" }
+          ]
+        },
+        "knowledge": "Bar Model入门·合并",
+        "difficulty": 1,
+        "hint": "两条条形拼在一起就是总数",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画两条条形表示原来和飞来的", "correct": true },
+          { "label": "列算式", "desc": "15+8=23", "correct": true },
+          { "label": "画图", "desc": "画15只鸟再加8只", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "总条形被分成了几段？每段表示什么？", "keywords": ["两段","原来","飞来","部分","整体"] },
+          { "type": "compare", "q": "如果飞来10只而不是8只，总数会变大还是变小？", "keywords": ["变大","更多","增加","更长","更多只"] }
+        ],
+        "barTranslateLine": { "items": ["原来=15", "飞来=8", "总共=15+8=23"] },
+        "variants": []
       }
     ],
     "unitProgress": {

@@ -7145,11 +7145,14 @@ window.MATH_BY_GRADE['3a'] = {
           7,
           4
         ],
-        "visualType": "fractionStrip",
+        "visualType": "geometry",
         "visualData": {
-          "num": 1,
-          "total": 8,
-          "color": "#00A896"
+          "shape": "fractionCircle",
+          "params": {
+            "numerator": 1,
+            "denominator": 8,
+            "color": "#00A896"
+          }
         },
         "knowledge": "分数初步认识",
         "difficulty": 1,
@@ -7392,22 +7395,22 @@ window.MATH_BY_GRADE['3a'] = {
         "explainLayers": [
           {
             "icon": "👀",
-            "title": "看图 — 图形结构",
-            "text": "观察图形，理解各部分之间的关系",
+            "title": "看图 — 圆形模型",
+            "text": "把一个圆平均分成4份，取其中1份，就是1/4",
             "bg": "var(--teal-soft)",
             "color": "var(--teal)"
           },
           {
             "icon": "🧠",
-            "title": "理解 — 数学关系",
-            "text": "理解题目中的数学关系",
+            "title": "理解 — 分数含义",
+            "text": "1/4 表示把整体平均分成4份，取其中1份",
             "bg": "var(--yellow-soft)",
             "color": "var(--yellow-700)"
           },
           {
             "icon": "🚀",
-            "title": "推广 — 通用规律",
-            "text": "掌握这类问题的通用解法",
+            "title": "推广 — 分数条",
+            "text": "也可以这样表示：把一条线段平均分成4份，取其中1份",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

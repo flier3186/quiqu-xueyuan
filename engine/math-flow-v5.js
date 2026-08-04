@@ -30,6 +30,10 @@ window.MathFlowV5 = {
       practiceIndex: 0,        // 当前练习题索引
       practiceTotal: 10,        // 总练习题数
       practiceLevels: [1, 2, 3, 4, 1, 2, 3, 4, 1, 2],  // 练习级别序列
+      rmeAnswered: false,       // RME选择题是否已回答
+      neriageErrorClicked: false, // Neriage错误卡片是否已点击
+      russianIdx: 0,            // 俄罗斯追问当前索引
+      parentSettings: (typeof ParentPanel!=='undefined' && ParentPanel.getSettings) ? ParentPanel.getSettings() : {},
     };
     // 若有到期复习项，先进入昨日回顾
     if(profileId && typeof SpacedReview!=='undefined' && SpacedReview.getDue){
@@ -48,9 +52,12 @@ window.MathFlowV5 = {
     switch(s.stage){
       case 'review':    return this.renderReview(s.profileId);
       case 'warmup':    return this.renderWarmup(p);
+      case 'rme':       return this.renderRMEChoice(p);
       case 'discover':  return this.renderDiscover(p);
+      case 'neriage':   return this._renderNeriage(p);
       case 'solve':     return this.renderSolve(p);
       case 'explain':   return this.renderExplain(p);
+      case 'russian':   return this.renderRussianQuestion(p);
       case 'askChild':  return this.renderAskChild(p);
       case 'practice':  return this.renderPractice(p);
       case 'complete':  return this._renderComplete(p);
@@ -138,7 +145,6 @@ window.MathFlowV5 = {
     }catch(e){}
     if(typeof toast==='function') toast(correct?'✅ 记得很牢！进入新课':'💪 忘了没关系，重新学一遍');
     this.advance('warmup');
-    if(typeof updateMathStageV5==='function') updateMathStageV5();
   },
 
   // ============================================================
@@ -170,7 +176,7 @@ window.MathFlowV5 = {
         <div style="font-size:12px;opacity:.9;margin-top:4px">💡 提示：${this._escape(problem.hint || '')}</div>
       </div>
       <div style="text-align:center;margin-top:16px">
-        <button onclick="MathFlowV5.advance('discover')" style="padding:12px 28px;background:linear-gradient(135deg,var(--yellow),#FFD45E);color:var(--navy);border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(245,184,0,.35)">一起来发现 →</button>
+        <button onclick="MathFlowV5.advance('rme')" style="padding:12px 28px;background:linear-gradient(135deg,var(--yellow),#FFD45E);color:var(--navy);border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(245,184,0,.35)">一起来发现 →</button>
       </div>
     </div>`;
   },
@@ -180,6 +186,60 @@ window.MathFlowV5 = {
     const unique = [...new Set(nums)].slice(0,5);
     if(!unique.length) return '<span style="font-size:13px;color:var(--text-2)">故事里好像没有明显的数字，再仔细读一遍？</span>';
     return unique.map(n=>`<div onclick="this.style.background='var(--teal)';this.style.color='#fff'" style="padding:6px 14px;background:#fff;border:1.5px solid var(--teal);color:var(--teal-700);border-radius:16px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s">${n}</div>`).join('');
+  },
+
+  // ============================================================
+  // 阶段 2：RME 选择题建模（4 分钟）
+  // ============================================================
+  renderRMEChoice(problem){
+    const choices = problem.rmeChoices || [
+      { label:'画条形图', desc:'画条形表示数量关系', correct:true },
+      { label:'列算式', desc:'直接列算式计算', correct:true },
+      { label:'画圆圈/方块', desc:'画圆圈代表每个物体', correct:false }
+    ];
+    return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 2 · RME 选择题建模</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">✏️ 4 分钟 · 先纸上建模，再对照标准</div>
+      <div style="padding:16px 18px;background:linear-gradient(135deg,var(--teal-soft),#fff);border-radius:14px;border:1px solid rgba(0,168,150,.15);margin-bottom:14px">
+        <div style="font-size:12px;color:var(--teal-700);font-weight:700;margin-bottom:8px">📖 读题，在纸上画图或列算式</div>
+        <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7">${this._escape(problem.scene)}</div>
+        <div style="font-size:13px;color:var(--text-2);margin-top:8px">💡 想好怎么表示数量关系了吗？点"我算好了"</div>
+      </div>
+      <div style="text-align:center;margin-bottom:14px">
+        <button onclick="MathFlowV5._rmeShowChoices()" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,168,150,.3)">我算好了 →</button>
+      </div>
+      <div id="v5RMEChoices" style="display:none">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px">🤔 我会用什么方法建模？</div>
+        ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._rmeSelect(this,${i},${choices.length})" style="padding:14px 16px;margin-bottom:8px;border:2px solid var(--ink-100);border-radius:12px;cursor:pointer;transition:all .2s">
+          <div style="font-size:15px;font-weight:700;color:var(--navy)">${this._escape(c.label)}</div>
+          <div style="font-size:13px;color:var(--text-2);margin-top:4px">${this._escape(c.desc)}</div>
+        </div>`).join('')}
+        <div id="v5RMEFeedback" style="margin-top:12px"></div>
+      </div>
+    </div>`;
+  },
+  _rmeShowChoices(){
+    const el = document.getElementById('v5RMEChoices');
+    if(el) el.style.display = 'block';
+  },
+  _rmeSelect(el, idx, total){
+    const container = el.parentElement;
+    container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
+    const problem = this._sess.problem;
+    const choices = problem.rmeChoices || [];
+    const isCorrect = !choices[idx] || choices[idx].correct;
+    el.classList.add(isCorrect?'correct':'wrong');
+    const fb = document.getElementById('v5RMEFeedback');
+    if(fb){
+      fb.innerHTML = isCorrect
+        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">✅ 好方法！现在看看标准答案是怎么建模的</div>`
+        : `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">💪 没关系，看看标准答案怎么用图形表示</div>`;
+    }
+    this._sess.rmeAnswered = true;
+    setTimeout(()=>{
+      // RME完成后进入引导发现
+      this.advance('discover');
+    }, 1200);
   },
 
   // ============================================================
@@ -223,13 +283,76 @@ window.MathFlowV5 = {
       setTimeout(()=>{
         const next = stepIdx + 1;
         if(next >= steps.length){
-          this.advance('solve');
+          // 引导发现完成，若有 neriage 数据则进入多解法阶段
+          const hasNeriage = this._sess.problem && this._sess.problem.neriage;
+          this.advance(hasNeriage ? 'neriage' : 'solve');
         }else{
           this._sess.discoveryStep = next;
         }
-        if(typeof updateMathStageV5==='function') updateMathStageV5();
       }, 900);
     }
+  },
+
+  // ============================================================
+  // 阶段 2.5：Neriage 多解法+错误诊断（3 分钟）
+  // ============================================================
+  _renderNeriage(problem){
+    const n = problem.neriage || {};
+    const alternatives = n.alternatives || [];
+    const errors = n.neriageErrors || n.typical_errors || [];
+    const methodA = n.methodA || (alternatives[0] || '标准解法');
+    const methodB = n.methodB || (alternatives[1] || '巧算解法');
+    const errorC = n.errorC || (errors.length > 0 ? errors[0] : null);
+
+    return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 2.5 · Neriage 多解法+错误诊断</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">💡 3 分钟 · 看看别人怎么想的，找出错误在哪</div>
+
+      <!-- 3 张解法卡片 -->
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+        <div style="flex:1;min-width:140px;padding:14px;background:var(--teal-soft);border-radius:12px;border:2px solid var(--teal)">
+          <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">✅ 标准解法</div>
+          <div style="font-size:13px;color:var(--ink-700);line-height:1.6">${this._escape(methodA)}</div>
+        </div>
+        <div style="flex:1;min-width:140px;padding:14px;background:var(--teal-soft);border-radius:12px;border:2px solid var(--teal)">
+          <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">✅ 巧算解法</div>
+          <div style="font-size:13px;color:var(--ink-700);line-height:1.6">${this._escape(methodB)}</div>
+        </div>
+        ${errorC ? `
+        <div id="v5NeriageErrorCard" onclick="MathFlowV5._showNeriageError()" style="flex:1;min-width:140px;padding:14px;background:var(--coral-soft);border-radius:12px;border:2px solid var(--coral);cursor:pointer;transition:all .2s">
+          <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px">❌ 典型错误 · 点击诊断</div>
+          <div style="font-size:13px;color:var(--coral-700);font-weight:700">答案：${errorC.answer != null ? this._escape(String(errorC.answer)) : '？'}</div>
+          <div style="font-size:12px;color:var(--text-2);margin-top:4px">点我看看错在哪</div>
+        </div>` : ''}
+      </div>
+
+      <!-- Neriage 错误诊断详情 -->
+      <div id="v5NeriageErrorDetail" style="display:none;margin-bottom:14px">
+        ${errorC ? `
+        <div style="padding:16px;background:var(--coral-soft);border-radius:12px;border-left:4px solid var(--coral)">
+          <div style="font-size:14px;font-weight:700;color:var(--coral);margin-bottom:8px">🔍 错误诊断</div>
+          <div style="font-size:13px;color:var(--coral-700);line-height:1.7;margin-bottom:8px">❌ <b>错误答案：</b>${this._escape(String(errorC.answer))}</div>
+          <div style="font-size:13px;color:var(--coral-700);line-height:1.7;margin-bottom:8px">💡 <b>错误原因：</b>${this._escape(errorC.reason)}</div>
+          <div style="font-size:13px;color:var(--teal-700);line-height:1.7">✅ <b>正确做法：</b>${this._escape(errorC.fix)}</div>
+        </div>
+        <div style="margin-top:10px;padding:12px 14px;background:var(--teal-soft);border-radius:10px;font-size:13px;color:var(--teal-700);line-height:1.7">
+          💬 追问：<b>这个错误答案是怎么来的？错在哪一步？</b>
+        </div>` : ''}
+      </div>
+
+      <!-- 标准答案 -->
+      <div style="padding:10px 14px;background:var(--yellow-soft);border-radius:8px;border-left:3px solid var(--yellow);font-size:13px;color:var(--yellow-700);font-weight:600;margin-bottom:14px">
+        💡 标准答案：${this._escape(n.canonical || '计算验证')}
+      </div>
+
+      <div style="text-align:center;margin-top:16px">
+        <button onclick="MathFlowV5.advance('solve')" style="padding:12px 28px;background:var(--coral);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer">我开始答题 →</button>
+      </div>
+    </div>`;
+  },
+  _showNeriageError(){
+    const detail = document.getElementById('v5NeriageErrorDetail');
+    if(detail) detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
   },
 
   // ============================================================
@@ -343,7 +466,83 @@ window.MathFlowV5 = {
   },
 
   // ============================================================
-  // 阶段 5：你来提问（2 分钟）—— 新课标"四能"
+  // 阶段 6：俄罗斯追问（4 分钟）
+  // ============================================================
+  renderRussianQuestion(problem){
+    const qs = problem.russianQuestions || [];
+    if(!qs.length){
+      // 无追问数据，直接跳过
+      this.advance('askChild');
+      return '';
+    }
+    const idx = this._sess.russianIdx || 0;
+    if(idx >= qs.length){
+      // 追问完成
+      this.advance('askChild');
+      return '';
+    }
+    if(typeof RussianQuestioning!=='undefined' && RussianQuestioning.renderQuestion){
+      return RussianQuestioning.renderQuestion(problem, idx);
+    }
+    // 降级：显示文字输入
+    const q = qs[idx];
+    return `<div class="cpa-layer" style="border-left-color:var(--navy);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--navy);color:#fff">STAGE 6 · 俄罗斯追问 · 第 ${idx+1} / ${qs.length} 题</span>
+      <div style="padding:16px;background:linear-gradient(135deg,var(--navy),#2a4a72);border-radius:14px;color:#fff;margin-bottom:14px">
+        <div style="font-size:15px;font-weight:700;line-height:1.7">${this._escape(q.q)}</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        ${(q.keywords||[]).map(k=>`<span style="padding:4px 10px;background:var(--navy-soft);color:var(--navy);border-radius:12px;font-size:12px;font-weight:600">${this._escape(k)}</span>`).join('')}
+      </div>
+      <textarea id="v5RussianInput_${idx}" placeholder="用自己的话回答..." style="width:100%;min-height:80px;padding:12px;border:1.5px solid rgba(30,58,95,.2);border-radius:10px;font-size:14px;font-family:inherit;resize:vertical;box-sizing:border-box;margin-bottom:10px"></textarea>
+      <div style="text-align:center">
+        <button onclick="MathFlowV5._russianSubmit(${idx})" style="padding:10px 24px;background:var(--teal);color:#fff;border:none;border-radius:20px;font-weight:700;cursor:pointer">提交回答 →</button>
+      </div>
+      <div id="v5RussianFeedback_${idx}" style="margin-top:12px"></div>
+    </div>`;
+  },
+  _russianSubmit(idx){
+    const input = document.getElementById('v5RussianInput_' + idx);
+    const fb = document.getElementById('v5RussianFeedback_' + idx);
+    if(!input || !fb) return;
+    const answer = input.value.trim();
+    const problem = this._sess.problem;
+    const qs = problem && problem.russianQuestions || [];
+    const q = qs[idx];
+    if(!answer){
+      fb.innerHTML = `<div style="padding:10px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:13px;color:var(--coral)">还没写回答哦 👆</div>`;
+      return;
+    }
+    if(!q){
+      fb.innerHTML = `<div style="padding:10px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:13px;color:var(--teal-700)">回答已记录！</div>`;
+      setTimeout(()=>{ this.advance('askChild'); }, 1000);
+      return;
+    }
+    const passed = (typeof RussianQuestioning!=='undefined' && RussianQuestioning.checkAnswer)
+      ? RussianQuestioning.checkAnswer(answer, q.keywords)
+      : q.keywords.some(kw => answer.toLowerCase().indexOf(kw.toLowerCase()) >= 0);
+    if(passed){
+      fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">
+        ✅ <b>说得太棒了！</b>你提到了关键词，说明你真的理解了这道题的数量关系！
+      </div>`;
+      this._sess.russianIdx = (idx || 0) + 1;
+      this._saveProgress();
+      setTimeout(()=>{
+        if(this._sess.russianIdx >= qs.length){
+          this.advance('askChild');
+        }else{
+          if(typeof updateMathStageV5==='function') updateMathStageV5();
+        }
+      }, 1500);
+    }else{
+      fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:13px;color:var(--coral);line-height:1.7">
+        💪 再想想，试试提到这些词：<b>${q.keywords.slice(0,4).map(k=>'「'+k+'」').join('、')}</b>
+      </div>`;
+    }
+  },
+
+  // ============================================================
+  // 阶段 7：你来提问（2 分钟）—— 新课标"四能"
   // ============================================================
   renderAskChild(problem){
     // 给一个变式场景，孩子自己提出数学问题
@@ -451,7 +650,7 @@ window.MathFlowV5 = {
     const v = (problem.variants && problem.variants[0]) || problem;
     const {ans, choices, correctIdx} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 6 · 阶梯练习 · L1 基础</span>
+      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 8 · 阶梯练习 · L1 基础</span>
       <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
         <span style="padding:3px 10px;background:var(--teal-soft);color:var(--teal-700);border-radius:12px;font-size:11px;font-weight:700">L1 基础</span>
         <span style="font-size:13px;color:var(--text-3);font-weight:600">先来一道相似的题热热手</span>
@@ -474,7 +673,7 @@ window.MathFlowV5 = {
       // 1) 纯文字题：孩子先在没有图形辅助下解答
       const {ans, choices, correctIdx} = this._safeChoices(v, problem);
       return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
-        <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 变式</span>
+        <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 8 · 阶梯练习 · L2 变式</span>
         <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
           <span style="padding:3px 10px;background:var(--yellow-soft);color:var(--yellow-700);border-radius:12px;font-size:11px;font-weight:700">L2 变式</span>
           <span style="font-size:13px;color:var(--text-3);font-weight:600">先读文字解答，再看图验证 📖</span>
@@ -501,7 +700,7 @@ window.MathFlowV5 = {
       : '<div class="mv-empty">可视化引擎不可用</div>';
     const {ans} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 图形验证</span>
+      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 8 · 阶梯练习 · L2 图形验证</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 用图形对照你的答案</div>
       <div style="background:#fff;border-radius:14px;padding:8px;border:1px solid rgba(245,184,0,.25);margin-bottom:10px">${visual}</div>
       <div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">
@@ -542,7 +741,7 @@ window.MathFlowV5 = {
     const trapChoices = [...new Set([ans, trap, ...choices.filter(c => c !== ans && c !== trap)])].slice(0,4);
     const correctIdx = trapChoices.indexOf(ans);
     return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 6 · 阶梯练习 · L4 陷阱</span>
+      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 8 · 阶梯练习 · L4 陷阱</span>
       <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
         <span style="padding:3px 10px;background:var(--coral-soft);color:var(--coral);border-radius:12px;font-size:11px;font-weight:700">L4 陷阱</span>
         <span style="font-size:13px;color:var(--text-3);font-weight:600">⚠️ 小心！这道题有容易出错的地方</span>

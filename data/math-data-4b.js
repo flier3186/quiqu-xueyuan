@@ -7347,6 +7347,206 @@ window.MATH_BY_GRADE['4b'] = {
         ]
       }
     ],
+    "problems": [
+      {
+        "id": "4B-FRAC-C-01",
+        "scene": "小明吃了1/4个蛋糕，小红吃了1/4个蛋糕。两人一共吃了这个蛋糕的几分之几？",
+        "question": "两人一共吃了蛋糕的几分之几？",
+        "formula": "1/4 + 1/4 = ?",
+        "answer": "1/2",
+        "choices": ["1/2", "1/4", "3/4", "2/8"],
+        "visualType": "fractionCircleAnim",
+        "visualData": { "num": 1, "den": 4, "color": "#E8A0BF" },
+        "knowledge": "分数认识·分数圆",
+        "difficulty": 1,
+        "hint": "把两个1/4拼在一起看",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-C-02",
+        "scene": "一条路修了3/8，还剩几分之几没修？",
+        "question": "还剩几分之几没修？",
+        "formula": "1 - 3/8 = ?",
+        "answer": "5/8",
+        "choices": ["5/8", "3/8", "1/8", "3/5"],
+        "visualType": "fractionCircleAnim",
+        "visualData": { "num": 3, "den": 8, "color": "#FB923C" },
+        "knowledge": "分数认识·分数圆减法",
+        "difficulty": 2,
+        "hint": "把圆分成8份，涂了3份，没涂的是几分之几？",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-C-03",
+        "scene": "一块巧克力分成6小块，小华吃了2块，小明吃了1块。两人一共吃了这块巧克力的几分之几？",
+        "question": "两人一共吃了这块巧克力的几分之几？",
+        "formula": "2/6 + 1/6 = ?",
+        "answer": "1/2",
+        "choices": ["1/2", "3/6", "1/3", "2/6"],
+        "visualType": "fractionCircleAnim",
+        "visualData": { "num": 3, "den": 6, "color": "#00A896" },
+        "knowledge": "分数认识·分数圆加法",
+        "difficulty": 2,
+        "hint": "2/6 + 1/6 = 3/6 = 1/2",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-S-01",
+        "scene": "一根铁丝长1米，用去了3/10米。还剩几分之几？",
+        "question": "还剩几分之几？",
+        "formula": "1 - 3/10 = ?",
+        "answer": "7/10",
+        "choices": ["7/10", "3/10", "1/10", "7/100"],
+        "visualType": "fractionStrip",
+        "visualData": { "num": 7, "total": 10, "color": "#00A896" },
+        "knowledge": "分数认识·分数条",
+        "difficulty": 1,
+        "hint": "把1米分成10段，用去3段还剩7段",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-S-02",
+        "scene": "一块地种了番茄和黄瓜。番茄占了3/7，黄瓜占了2/7。两种蔬菜一共占了这块地的几分之几？",
+        "question": "番茄和黄瓜一共占了这块地的几分之几？",
+        "formula": "3/7 + 2/7 = ?",
+        "answer": "5/7",
+        "choices": ["5/7", "1/7", "6/7", "5/14"],
+        "visualType": "fractionStrip",
+        "visualData": { "num": 5, "total": 7, "color": "#F5B800" },
+        "knowledge": "分数认识·分数条加法",
+        "difficulty": 1,
+        "hint": "同分母分数相加，分母不变，分子相加",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-S-03",
+        "scene": "一本书看了5/9，还剩几分之几没看？",
+        "question": "还剩几分之几没看？",
+        "formula": "1 - 5/9 = ?",
+        "answer": "4/9",
+        "choices": ["4/9", "5/9", "1/9", "9/9"],
+        "visualType": "fractionStrip",
+        "visualData": { "num": 4, "total": 9, "color": "#E8A0BF" },
+        "knowledge": "分数认识·分数条减法",
+        "difficulty": 1,
+        "hint": "把书分成9份，看了5份还剩4份",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-W-01",
+        "scene": "在分数墙上找一找，1/2等于下面哪个分数？",
+        "question": "1/2 = ?（在分数墙上找等值分数）",
+        "formula": "1/2 = ?",
+        "answer": "2/4",
+        "choices": ["2/4", "1/4", "3/4", "1/3"],
+        "visualType": "fractionWall",
+        "visualData": {},
+        "knowledge": "等值分数·分数墙",
+        "difficulty": 2,
+        "hint": "在分数墙上找到1/2那行，看下面哪行有一段和它一样长",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-W-02",
+        "scene": "分数墙上，3/4等于下面哪个分数？",
+        "question": "3/4 = ?（找等值分数）",
+        "formula": "3/4 = ?",
+        "answer": "6/8",
+        "choices": ["6/8", "3/8", "1/2", "9/12"],
+        "visualType": "fractionWall",
+        "visualData": {},
+        "knowledge": "等值分数·分数墙",
+        "difficulty": 2,
+        "hint": "找到3/4那行，看下面哪行有相同长度的段",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-W-03",
+        "scene": "分数墙上，2/6和哪个分数等值？",
+        "question": "2/6 = ?（找等值分数）",
+        "formula": "2/6 = ?",
+        "answer": "1/3",
+        "choices": ["1/3", "2/3", "3/6", "1/2"],
+        "visualType": "fractionWall",
+        "visualData": {},
+        "knowledge": "等值分数·分数墙",
+        "difficulty": 2,
+        "hint": "找到2/6那行，看哪一行有相同长度的段",
+        "variants": []
+      },
+      {
+        "id": "4B-NEG-01",
+        "scene": "温度计显示-3℃，这表示零下3摄氏度。如果温度升高5℃，现在温度是多少？",
+        "question": "现在温度是多少℃？",
+        "formula": "-3 + 5 = ?",
+        "answer": 2,
+        "choices": [2, -2, 8, -8],
+        "visualType": "numberLineFraction",
+        "visualData": {
+          "min": -5, "max": 5, "step": 1,
+          "points": [{ "pos": -3, "label": "-3℃" }, { "pos": 2, "label": "2℃" }],
+          "highlight": [-3, 2]
+        },
+        "knowledge": "负数认识·数轴",
+        "difficulty": 2,
+        "hint": "在数轴上从-3向右移动5格",
+        "variants": []
+      },
+      {
+        "id": "4B-NEG-02",
+        "scene": "电梯从地下2层（-2）上升5层，现在在第几层？",
+        "question": "电梯现在在第几层？",
+        "formula": "-2 + 5 = ?",
+        "answer": 3,
+        "choices": [3, -3, 7, -7],
+        "visualType": "numberLineFraction",
+        "visualData": {
+          "min": -5, "max": 5, "step": 1,
+          "points": [{ "pos": -2, "label": "-2层" }, { "pos": 3, "label": "3层" }],
+          "highlight": [-2, 3]
+        },
+        "knowledge": "负数认识·数轴应用",
+        "difficulty": 2,
+        "hint": "从-2开始，向右数5格",
+        "variants": []
+      },
+      {
+        "id": "4B-NEG-03",
+        "scene": "潜水员在水下8米（-8m），又下潜了5米。现在在水下多少米？",
+        "question": "现在在水下多少米？",
+        "formula": "-8 + (-5) = ?",
+        "answer": -13,
+        "choices": [-13, -3, 13, 3],
+        "visualType": "numberLineFraction",
+        "visualData": {
+          "min": -15, "max": 5, "step": 5,
+          "points": [{ "pos": -8, "label": "-8m" }, { "pos": -13, "label": "-13m" }],
+          "highlight": [-8, -13]
+        },
+        "knowledge": "负数认识·数轴延伸",
+        "difficulty": 2,
+        "hint": "又下潜就是继续往负方向移动",
+        "variants": []
+      },
+      {
+        "id": "4B-FRAC-N-01",
+        "scene": "在数轴上标出1/2和0.5的位置，它们在同一点吗？",
+        "question": "1/2和0.5在数轴上是否在同一点？",
+        "formula": "1/2 = ?",
+        "answer": "0.5",
+        "choices": ["0.5", "0.2", "0.8", "1.5"],
+        "visualType": "numberLineFraction",
+        "visualData": {
+          "min": 0, "max": 1, "step": 0.5,
+          "points": [{ "pos": 0.5, "label": "1/2 和 0.5" }],
+          "decimal": true
+        },
+        "knowledge": "分数小数统一·数轴",
+        "difficulty": 2,
+        "hint": "1/2 = 0.5，它们在数轴上的位置相同",
+        "variants": []
+      }
+    ],
     "knowledgeMap": [
       {
         "id": "4B-01",

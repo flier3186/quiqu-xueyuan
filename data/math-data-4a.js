@@ -7619,6 +7619,98 @@ window.MATH_BY_GRADE['4a'] = {
         ]
       }
     ],
+    "problems": [
+      {
+        "id": "4A-BM-01",
+        "scene": "学校买来45本故事书，科技书比故事书多12本。科技书有多少本？",
+        "question": "科技书有多少本？",
+        "formula": "45 + 12 = ?",
+        "answer": 57,
+        "choices": [57, 47, 67, 33],
+        "visualType": "barModelTranslate",
+        "visualData": {
+          "total": 57,
+          "parts": [
+            { "label": "故事书", "val": 45, "color": "#00A896" },
+            { "label": "多12本", "val": 12, "color": "#F5B800" }
+          ]
+        },
+        "knowledge": "Bar Model翻译行·比多少",
+        "difficulty": 1,
+        "hint": "科技书的条形 = 故事书条形 + 多出来的部分",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画条形表示数量关系", "correct": true },
+          { "label": "列算式", "desc": "45+12=57", "correct": true },
+          { "label": "画圆圈", "desc": "画45个圈加12个圈", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "条形图里哪一段表示科技书比故事书多的本数？", "keywords": ["第二段","多12","右边","后面","突出的部分"] },
+          { "type": "reverse", "q": "如果科技书有57本，故事书有45本，多几本？", "keywords": ["减法","12","57-45","差","少"] }
+        ],
+        "barTranslateLine": { "items": ["故事书=45", "科技书=45+12", "总共=57"] },
+        "variants": []
+      },
+      {
+        "id": "4A-BM-02",
+        "scene": "水果店上午卖出38kg苹果，下午比上午多卖15kg。下午卖出多少kg？",
+        "question": "下午卖出多少kg苹果？",
+        "formula": "38 + 15 = ?",
+        "answer": 53,
+        "choices": [53, 43, 63, 23],
+        "visualType": "barModelTranslate",
+        "visualData": {
+          "total": 53,
+          "parts": [
+            { "label": "上午", "val": 38, "color": "#00A896" },
+            { "label": "多15kg", "val": 15, "color": "#E8A0BF" }
+          ]
+        },
+        "knowledge": "Bar Model翻译行·比多少",
+        "difficulty": 1,
+        "hint": "下午的条形 = 上午条形 + 多卖的部分",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画两条条形对比", "correct": true },
+          { "label": "列算式", "desc": "38+15=53", "correct": true },
+          { "label": "画线段", "desc": "画线段表示数量", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "条形图中多出来的那段表示什么？", "keywords": ["下午多卖","多15","第二段","突出的部分","比上午多的部分"] },
+          { "type": "compare", "q": "如果下午多卖20kg而不是15kg，下午卖出多少？", "keywords": ["58","38+20","更多","变长","增加"] }
+        ],
+        "barTranslateLine": { "items": ["上午=38", "下午=38+15", "总共=53"] },
+        "variants": []
+      },
+      {
+        "id": "4A-BM-03",
+        "scene": "一年级有135人，二年级比一年级多28人。两个年级一共有多少人？",
+        "question": "两个年级一共有多少人？",
+        "formula": "135 + (135+28) = ?",
+        "answer": 298,
+        "choices": [298, 270, 326, 107],
+        "visualType": "barModelTranslate",
+        "visualData": {
+          "total": 298,
+          "parts": [
+            { "label": "一年级", "val": 135, "color": "#00A896" },
+            { "label": "二年级", "val": 163, "color": "#F5B800" }
+          ]
+        },
+        "knowledge": "Bar Model翻译行·两步应用",
+        "difficulty": 2,
+        "hint": "先求二年级人数，再求总人数",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画条形表示两个年级人数", "correct": true },
+          { "label": "分步算式", "desc": "先算二年级，再算总数", "correct": true },
+          { "label": "一步算式", "desc": "135+28=163，然后135+163", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "两条条形分别代表什么？总条形是什么？", "keywords": ["一年级","二年级","两段","总条形","两部分"] },
+          { "type": "reverse", "q": "如果两个年级共298人，一年级135人，二年级多少人？", "keywords": ["减法","163","298-135","差","少"] }
+        ],
+        "barTranslateLine": { "items": ["一年级=135", "二年级=135+28=163", "总共=135+163=298"] },
+        "variants": []
+      }
+    ],
     "knowledgeMap": [
       {
         "id": "4A-01",

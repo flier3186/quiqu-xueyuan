@@ -28,6 +28,16 @@ window.MathVisualV5 = {
     if(k.indexOf('集合') >= 0 || k.indexOf('韦恩') >= 0) return 'vennDiagram';
     if(k.indexOf('找次品') >= 0 || shape === 'balance') return 'balanceDecision';
     if(k.indexOf('圆的面积') >= 0 || k.indexOf('圆面积') >= 0) return 'circleArea';
+    // 迭代2新增：课标打破点路由
+    if(k.indexOf('进位') >= 0 || k.indexOf('退位') >= 0 || k.indexOf('万以内') >= 0) return 'baseTenBlocks';
+    if(k.indexOf('分数墙') >= 0 || k.indexOf('等值分数') >= 0) return 'fractionWall';
+    if(k.indexOf('分数') >= 0 && (type === 'fractionCircle' || shape === 'fractionCircle')) return 'fractionCircleAnim';
+    if(k.indexOf('Bar') >= 0 || k.indexOf('条形') >= 0 || type === 'barModel') return 'barModelTranslate';
+    if(k.indexOf('分数') >= 0 && type === 'numberLine') return 'numberLineFraction';
+    if(k.indexOf('小数') >= 0 && type === 'numberLine') return 'numberLineFraction';
+    if(k.indexOf('平行四边形') >= 0 || k.indexOf('割补') >= 0 || shape === 'parallelogram') return 'cutPasteGeometry';
+    if(k.indexOf('长方体') >= 0 || k.indexOf('展开图') >= 0 || shape === 'cylinder') return 'unrollNet';
+    if(k.indexOf('两位数乘法') >= 0 || k.indexOf('多位数乘法') >= 0 || type === 'areaModel') return 'areaModelAnim';
     return type;
   },
 
@@ -37,6 +47,7 @@ window.MathVisualV5 = {
     return m[c] || c || '#00A896';
   },
   _palette(i){ const p=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F']; return p[i%p.length]; },
+  _escape(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); },
   // 修复：文字颜色对比度 —— 亮色背景用深色 #12263F，暗色背景用白色 #fff
   _textColor(hex){
     const c = String(hex || '#00A896').replace('#','');
@@ -305,6 +316,29 @@ window.MathVisualV5 = {
       }).join(' ');
       body=`<polygon class="mv-geo-outline" points="${pts}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>`;
       formula=`四边形有 ${sides} 条边、${sides} 个角`;
+    } else if(shape==='fractionCircle'){
+      const {numerator=1, denominator=2, color='#00A896'} = p;
+      const r=80, cx=W/2, cy=H/2;
+      const fillAngle = (numerator/denominator)*2*Math.PI;
+      const startAngle = -Math.PI/2;
+      const endAngle = startAngle + fillAngle;
+      const x1=cx+r*Math.cos(startAngle), y1=cy+r*Math.sin(startAngle);
+      const x2=cx+r*Math.cos(endAngle), y2=cy+r*Math.sin(endAngle);
+      const largeArc = fillAngle > Math.PI ? 1 : 0;
+      const sectorPath = `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`;
+      let divLines='';
+      for(let i=0;i<denominator;i++){
+        const a = startAngle + i*2*Math.PI/denominator;
+        const ex=cx+r*Math.cos(a), ey=cy+r*Math.sin(a);
+        divLines+=`<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="#fff" stroke-width="1.5" opacity="0.8"/>`;
+      }
+      const colorFill=color||'#00A896';
+      body=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="rgba(0,168,150,0.08)" stroke="#00A896" stroke-width="2"/>
+        <path d="${sectorPath}" fill="${colorFill}" opacity="0.85" stroke="#fff" stroke-width="1.5"/>
+        ${divLines}
+        <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
+        <text x="${cx}" y="${cy+r+18}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${numerator}/${denominator}</text>`;
+      formula=`${numerator}/${denominator} = ${numerator}÷${denominator}`;
     } else {
       return '<div class="mv-empty">未知图形类型</div>';
     }
@@ -669,19 +703,289 @@ window.MathVisualV5 = {
     const area = (radius*radius*3.14).toFixed(2);
     return `<div class="mv-wrap mv-circle-area">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
-        <!-- 左：分成 16 份的圆 -->
         <text x="${cx}" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">把圆平均分成 16 份</text>
         ${sectors}
         <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
         ${arrow}
-        <!-- 右：拼成近似长方形 -->
         <text x="${rectX+rectW/2}" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">拼成近似长方形</text>
         ${rearranged}
         ${labels}
-        <!-- 结论 -->
         <rect x="20" y="${H-30}" width="${W-40}" height="22" fill="#00A896" rx="11"/>
         <text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="${this._textColor('#00A896')}">面积 = 长 × 宽 = πr × r = πr² · r=${radius} → S = 3.14×${radius}² = ${area}</text>
       </svg>
+    </div>`;
+  },
+
+  // ============================================================
+  // 迭代2新增：8个动画渲染器
+  // ============================================================
+
+  // 引擎7：数位条块进位动画（二下/三年级进位加减法）
+  baseTenBlocks(data){
+    const a = data.a || 38, b = data.b || 45, total = data.total || 83;
+    const op = data.op || '+';
+    const W=520, H=220, blockW=28, blockH=22;
+    const tenH=blockW*1.8;
+    const tenW=blockW;
+    const colorA='#00A896', colorB='#E8A0BF';
+    // 十位条
+    const makeTenBar=(x,y,c)=>`<rect x="${x}" y="${y}" width="${tenW}" height="${tenH}" fill="${c}" rx="3" class="mv-ten-bar" style="animation:mvSlideIn .5s ${.1} ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    // 个位方块
+    const makeUnit=(x,y,c,delay)=>`<rect x="${x}" y="${y}" width="${blockW}" height="${blockH}" fill="${c}" rx="2" class="mv-unit" style="animation:mvGather .6s ${delay} ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    // 计算十位和个位数
+    const aTens=Math.floor(a/10), aOnes=a%10, bTens=Math.floor(b/10), bOnes=b%10;
+    const sumTens=Math.floor(total/10), sumOnes=total%10;
+    let svg='';
+    // 左侧：A的方块
+    const leftX=30;
+    for(let i=0;i<aTens;i++) svg+=makeTenBar(leftX+i*(tenW+4),60,colorA);
+    for(let i=0;i<aOnes;i++) svg+=makeUnit(leftX+i*blockW,100,colorA,i*0.05);
+    // 右侧：B的方块
+    const rightX=280;
+    for(let i=0;i<bTens;i++) svg+=makeTenBar(rightX+i*(tenW+4),60,colorB);
+    for(let i=0;i<bOnes;i++) svg+=makeUnit(rightX+i*blockW,100,colorB,i*0.05+0.2);
+    // 中间等号
+    svg+=`<text x="258" y="90" text-anchor="middle" font-size="22" font-weight="800" fill="#1E3A5F">${op}</text>`;
+    // 结果区域（进位动画后显示）
+    const resX=400;
+    for(let i=0;i<sumTens;i++) svg+=makeTenBar(resX+i*(tenW+4),60,'#00A896');
+    for(let i=0;i<sumOnes;i++) svg+=makeUnit(resX+i*blockW,100,'#00A896',i*0.05+0.4);
+    // 进位动画提示
+    svg+=`<text x="260" y="160" text-anchor="middle" font-size="11" fill="#FB923C" class="mv-hint" style="animation:mvFadeIn .8s 0.5s both">个位 ${aOnes}+${bOnes}=${aOnes+bOnes}，满十进一</text>`;
+    svg+=`<text x="260" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F" class="mv-result" style="animation:mvFadeIn .5s 1.2s both">= ${a} ${op} ${b} = ${total}</text>`;
+    return `<div class="mv-wrap mv-base-ten">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+        <rect x="10" y="40" width="220" height="80" fill="rgba(0,168,150,.06)" rx="8"/>
+        <rect x="250" y="40" width="60" height="80" fill="rgba(245,184,0,.06)" rx="8"/>
+        <rect x="340" y="40" width="170" height="80" fill="rgba(0,168,150,.06)" rx="8"/>
+        ${svg}
+      </svg>
+    </div>`;
+  },
+
+  // 引擎8：分数墙（等值分数对比）
+  fractionWall(data){
+    const W=500, H=320, rowH=28, rowW=360, startX=60;
+    const colors=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F','#00A896','#F5B800','#E8A0BF'];
+    const rows=[
+      {den:1,  num:[1], colors:['#00A896'], label:'1'},
+      {den:2,  num:[1], colors:['#E8A0BF'], label:'1/2'},
+      {den:4,  num:[1,2], colors:['#F5B800','#FB923C'], label:'1/4+2/4'},
+      {den:8,  num:[1,2,4,8], colors:['#E8A0BF','#00A896','#F5B800','#1E3A5F'], label:'1/8+...+8/8'},
+      {den:3,  num:[1,2], colors:['#FB923C','#E8A0BF'], label:'1/3+2/3'},
+      {den:6,  num:[1,2,3], colors:['#00A896','#F5B800','#E8A0BF'], label:'1/6+2/6+3/6'},
+      {den:12, num:[1,2,3,4,6,12], colors:['#1E3A5F','#FB923C','#E8A0BF','#00A896','#F5B800','#E8A0BF'], label:'...+12/12'},
+    ];
+    let svg=`<text x="${W/2}" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">分数墙 · 等值分数对比</text>`;
+    rows.forEach((row,i)=>{
+      const y=36+i*(rowH+6);
+      const segW=rowW/row.den;
+      // 整行背景
+      svg+=`<rect x="${startX}" y="${y}" width="${rowW}" height="${rowH}" fill="#f8f9fa" rx="4"/>`;
+      // 分段
+      row.colors.forEach((c,j)=>{
+        const segW2=rowW/row.den;
+        svg+=`<rect x="${startX+j*segW2}" y="${y}" width="${segW2-1}" height="${rowH}" fill="${c}" rx="2" class="mv-fraction-seg" style="animation:mvFadeIn .3s ${i*0.08+j*0.03} ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      });
+      // 标签
+      svg+=`<text x="${startX+rowW+8}" y="${y+rowH/2+4}" font-size="11" font-weight="600" fill="#1E3A5F">${row.label}</text>`;
+      // 等值高亮行
+      if(i===3){
+        svg+=`<text x="${startX}" y="${y+rowH+18}" font-size="10" fill="#FB923C" font-weight="700">↑ 等值：1/2 = 2/4 = 4/8</text>`;
+        svg+=`<line x1="${startX+rowW/2}" y1="${y+2}" x2="${startX+rowW/2}" y2="${y+rowH-2}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="4,3" class="mv-eq-line"/>`;
+      }
+    });
+    return `<div class="mv-wrap mv-fraction-wall">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 引擎9：分数圆增强版（动画切分）
+  fractionCircleAnim(data){
+    const num=data.num||1, den=data.den||4, color=data.color||'#E8A0BF';
+    const W=300, H=200, cx=150, cy=95, r=65;
+    const angle=360/den;
+    let svg=`<text x="${cx}" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">分数：${num}/${den}</text>`;
+    // 切分线（先画完整圆，再画切分线）
+    svg+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#1E3A5F" stroke-width="1.5"/>`;
+    for(let i=0;i<den;i++){
+      const rad=i*angle*Math.PI/180;
+      const ex=cx+r*Math.cos(rad), ey=cy+r*Math.sin(rad);
+      svg+=`<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="#1E3A5F" stroke-width="1" class="mv-cut-line" style="animation:mvLineIn .4s ${i*0.1} ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    // 涂色扇形（逐个出现）
+    for(let i=0;i<num;i++){
+      const startRad=i*angle*Math.PI/180;
+      const endRad=(i+1)*angle*Math.PI/180;
+      const x1=cx+r*Math.cos(startRad), y1=cy+r*Math.sin(startRad);
+      const x2=cx+r*Math.cos(endRad), y2=cy+r*Math.sin(endRad);
+      const largeArc=angle>180?1:0;
+      svg+=`<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${largeArc},1 ${x2},${y2} Z" fill="${color}" class="mv-sector" style="animation:mvFillIn .4s ${i*0.15+0.3} ease both;-webkit-transform-box:fill-box;transform-box:fill-box;opacity:0.8"/>`;
+    }
+    // 分数标注
+    svg+=`<text x="${cx}" y="${cy+r+22}" text-anchor="middle" font-size="16" font-weight="800" fill="#1E3A5F">${num}/${den}</text>`;
+    return `<div class="mv-wrap mv-fraction-circle">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 引擎10：Bar Model + 代数翻译行（四上起）
+  barModelTranslate(data, problem){
+    const result = this.barModel(data);
+    // 添加翻译行
+    const items = (problem && problem.barTranslateLine && problem.barTranslateLine.items) || [];
+    if(items.length > 0){
+      const translateRow = `<div class="mv-translate-row" style="margin-top:10px;padding:12px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-radius:10px;border-left:4px solid var(--teal);animation:mvFadeIn .5s ease both">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">📝 代数翻译行</div>
+        ${items.map(it=>`<div style="font-size:14px;font-weight:700;color:var(--navy);padding:3px 0;font-family:monospace">${it}</div>`).join('')}
+      </div>`;
+      return result + translateRow;
+    }
+    return result;
+  },
+
+  // 引擎11：数轴支持分数/小数标注
+  numberLineFraction(data){
+    const points = data.points || [];
+    // 判断是否包含分数
+    const hasFraction = points.some(p => typeof p.label === 'string' && (p.label.includes('/') || p.label.includes('又')));
+    if(!hasFraction && !data.decimal){
+      return this.numberLine(data);
+    }
+    // 分数数轴
+    const W=560, H=120;
+    const left=40, right=W-40, axisY=60, tickH=12;
+    const minVal=data.min||0, maxVal=data.max||1;
+    const scale=(val)=>left+((val-minVal)/(maxVal-minVal))*(right-left);
+    let svg=`<line x1="${left}" y1="${axisY}" x2="${right}" y2="${axisY}" stroke="#1E3A5F" stroke-width="2" stroke-linecap="round"/>`;
+    // 刻度
+    const step=data.step||0.5;
+    for(let v=minVal; v<=maxVal+0.001; v+=step){
+      const x=scale(v);
+      svg+=`<line x1="${x}" y1="${axisY-6}" x2="${x}" y2="${axisY+6}" stroke="#1E3A5F" stroke-width="1.5"/>`;
+      svg+=`<text x="${x}" y="${axisY+20}" text-anchor="middle" font-size="11" fill="#1E3A5F">${v===Math.floor(v)?String(v):this._formatFrac(v)}</text>`;
+    }
+    // 标注点
+    points.forEach((p,i)=>{
+      const x=scale(p.pos);
+      const col=this._palette(i);
+      svg+=`<circle cx="${x}" cy="${axisY}" r="6" fill="${col}" class="mv-point" style="animation:mvPointIn .3s ${i*0.1}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${x}" y="${axisY-14}" text-anchor="middle" font-size="12" font-weight="700" fill="${col}">${this._escape(p.label||String(p.pos))}</text>`;
+      // 虚线到轴
+      svg+=`<line x1="${x}" y1="${axisY+6}" x2="${x}" y2="${axisY+22}" stroke="${col}" stroke-width="1" stroke-dasharray="2,2"/>`;
+    });
+    // 高亮区间
+    if(data.highlight){
+      const h=data.highlight;
+      const x1=scale(h[0]), x2=scale(h[1]);
+      svg+=`<line x1="${x1}" y1="${axisY-4}" x2="${x2}" y2="${axisY-4}" stroke="#FB923C" stroke-width="4" stroke-linecap="round" class="mv-hl-frac"/>`;
+    }
+    return `<div class="mv-wrap mv-number-line-frac">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+  _formatFrac(v){
+    if(v===0) return '0';
+    const whole=Math.floor(v), frac=v-whole;
+    if(frac===0) return String(whole);
+    if(frac===0.5) return whole>0?`${whole}又1/2`:'1/2';
+    if(frac===0.25) return whole>0?`${whole}又1/4`:'1/4';
+    if(frac===0.75) return whole>0?`${whole}又3/4`:'3/4';
+    return v.toFixed(1);
+  },
+
+  // 引擎12：割补动画（平行四边形→矩形）
+  cutPasteGeometry(data){
+    const base=data.base||6, height=data.height||4;
+    const W=400, H=240;
+    const scale=25;
+    const ox=50, oy=180;
+    const b=base*scale, h=height*scale, offset=scale*1.5;
+    // 平行四边形顶点
+    const p1={x:ox,y:oy}, p2={x:ox+b,y:oy}, p3={x:ox+b+offset,y:oy-h}, p4={x:ox+offset,y:oy-h};
+    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">割补法：平行四边形 → 矩形</text>`;
+    // 平行四边形（蓝色）
+    svg+=`<polygon points="${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y} ${p4.x},${p4.y}" fill="#00A896" fill-opacity="0.3" stroke="#00A896" stroke-width="2" class="mv-parallelogram" style="animation:mvFadeIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    // 高线（红色虚线）
+    svg+=`<line x1="${p4.x}" y1="${p4.y}" x2="${p1.x}" y2="${p1.y}" stroke="#FB923C" stroke-width="2" stroke-dasharray="5,3" class="mv-height-line"/>`;
+    svg+=`<text x="${p1.x-8}" y="${(p1.y+p4.y)/2+4}" text-anchor="end" font-size="11" font-weight="700" fill="#FB923C">h=${height}</text>`;
+    // 标注底
+    svg+=`<text x="${(p1.x+p2.x)/2}" y="${p1.y+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">底=${base}</text>`;
+    // 右侧：矩形（动画后出现）
+    const rx=ox+b+offset+30, ry=oy-h;
+    svg+=`<rect x="${rx}" y="${ry}" width="${b}" height="${h}" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-dasharray="4,3" class="mv-rect-outline" style="animation:mvFadeIn .5s 1s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    svg+=`<text x="${rx+b/2}" y="${ry-8}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">矩形</text>`;
+    svg+=`<text x="${rx+b/2}" y="${ry+h+16}" text-anchor="middle" font-size="11" font-weight="700" fill="#00A896">长=${base}，宽=${height}</text>`;
+    // 结论
+    svg+=`<rect x="50" y="${H-30}" width="${W-100}" height="22" fill="#00A896" rx="11"/>`;
+    svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">面积 = 底 × 高 = ${base} × ${height} = ${base*height}</text>`;
+    return `<div class="mv-wrap mv-cut-paste">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 引擎13：长方体展开图动画
+  unrollNet(data){
+    const w=data.w||3, h=data.h||2, d=data.d||1;
+    const s=40;
+    const W=400, H=320;
+    const cx=200, cy=155;
+    let svg=`<text x="${cx}" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">长方体展开图 · ${w}×${h}×${d}</text>`;
+    // 展开图十字形
+    const colors=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F','#00A896'];
+    // 标准十字展开：前后左右上下的布局
+    const faces=[
+      {x:cx-d*s/2, y:cy-h*s/2, lw:w*s, lh:h*s, c:colors[0], label:`${w}×${h}`},   // 前
+      {x:cx-d*s/2, y:cy+h*s/2, lw:w*s, lh:d*s,   c:colors[1], label:`${w}×${d}`},  // 下
+      {x:cx-d*s/2, y:cy-h*s/2-h*s, lw:w*s, lh:d*s, c:colors[2], label:`${w}×${d}`}, // 上
+      {x:cx-d*s/2-w*s, y:cy-h*s/2, lw:d*s, lh:h*s, c:colors[3], label:`${d}×${h}`}, // 左
+      {x:cx+d*s/2, y:cy-h*s/2, lw:d*s, lh:h*s,   c:colors[4], label:`${d}×${h}`},  // 右
+      {x:cx-d*s/2, y:cy+d*s,   lw:w*s, lh:h*s,   c:colors[5], label:`${w}×${h}`},  // 后
+    ];
+    faces.forEach((f,i)=>{
+      svg+=`<rect x="${f.x}" y="${f.y}" width="${f.lw}" height="${f.lh}" fill="${f.c}" fill-opacity="0.25" stroke="${f.c}" stroke-width="1.5" rx="2" class="mv-face" style="animation:mvFaceIn .4s ${i*0.1}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${f.x+f.lw/2}" y="${f.y+f.lh/2+4}" text-anchor="middle" font-size="10" font-weight="700" fill="${this._textColor(f.c)}">${f.label}</text>`;
+    });
+    // 表面积公式
+    const area=2*(w*h+w*d+h*d);
+    svg+=`<rect x="50" y="${H-28}" width="${W-100}" height="22" fill="#1E3A5F" rx="11"/>`;
+    svg+=`<text x="${cx}" y="${H-13}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">表面积 = 2(${w}×${h}+${w}×${d}+${h}×${d}) = ${area}</text>`;
+    return `<div class="mv-wrap mv-unroll-net">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 引擎14：面积网格切分动画（两位数乘法）
+  areaModelAnim(data){
+    const a=data.a||23, b=data.b||15;
+    const aTens=Math.floor(a/10), aOnes=a%10, bTens=Math.floor(b/10), bOnes=b%10;
+    const total=a*b;
+    const W=480, H=280;
+    const ox=60, oy=40, cellW=25, cellH=20;
+    const gW=a*cellW, gH=b*cellH;
+    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${a} × ${b} = ${total}</text>`;
+    // 大矩形
+    svg+=`<rect x="${ox}" y="${oy}" width="${gW}" height="${gH}" fill="rgba(0,168,150,.08)" stroke="#1E3A5F" stroke-width="1.5" rx="2"/>`;
+    // 切分线
+    const cutX=ox+aTens*cellW, cutY=oy+bTens*cellH;
+    svg+=`<line x1="${cutX}" y1="${oy}" x2="${cutX}" y2="${oy+gH}" stroke="#E8A0BF" stroke-width="2" stroke-dasharray="6,3" class="mv-cut-v"/>`;
+    svg+=`<line x1="${ox}" y1="${cutY}" x2="${ox+gW}" y2="${cutY}" stroke="#E8A0BF" stroke-width="2" stroke-dasharray="6,3" class="mv-cut-h"/>`;
+    // 4个子矩形（逐个填充）
+    const parts=[
+      {x:ox, y:oy, w:aTens*cellW, h:bTens*cellH, v:aTens*bTens*100, c:'#00A896', label:`${aTens}0×${bTens}0=${aTens*bTens*100}`},
+      {x:cutX, y:oy, w:aOnes*cellW, h:bTens*cellH, v:aOnes*bTens*10, c:'#F5B800', label:`${aOnes}0×${bTens}0=${aOnes*bTens*10}`},
+      {x:ox, y:cutY, w:aTens*cellW, h:bOnes*cellH, v:aTens*bOnes*10, c:'#FB923C', label:`${aTens}×${bOnes}0=${aTens*bOnes*10}`},
+      {x:cutX, y:cutY, w:aOnes*cellW, h:bOnes*cellH, v:aOnes*bOnes, c:'#E8A0BF', label:`${aOnes}×${bOnes}=${aOnes*bOnes}`},
+    ];
+    parts.forEach((p,i)=>{
+      svg+=`<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" fill="${p.c}" fill-opacity="0.35" class="mv-part" style="animation:mvFillIn .5s ${i*0.2}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${p.x+p.w/2}" y="${p.y+p.h/2+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${p.label}</text>`;
+    });
+    // 总和
+    svg+=`<rect x="50" y="${H-30}" width="${W-100}" height="22" fill="#1E3A5F" rx="11"/>`;
+    svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">总面积 = ${parts.map(p=>p.label).join(' + ')} = ${total}</text>`;
+    return `<div class="mv-wrap mv-area-anim">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
     </div>`;
   }
 };
