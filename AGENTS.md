@@ -11,8 +11,8 @@
 - **目标用户**：8-12 岁小学生（当前重点：二年级升三年级）
 - **核心定位**：提升数学与英语「能力」的趣味学习工具，非应试刷题
 - **技术形态**：纯前端静态站点（HTML + CSS + JS，无后端）
-- **部署平台**：GitHub Pages（主，稳定可靠） + Gitee Pages（国内备选，加速访问）
-- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub） / https://gitee.com/leo318600/quiqu-xueyuan（Gitee）
+- **部署平台**：GitHub Pages（主，稳定可靠） + Vercel（国内加速备选）
+- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub）
 
 ---
 
@@ -98,7 +98,7 @@
 | **Code Agent** | 代码实现、Bug 修复、重构、新增功能 | `/code` 或 PM 分配 |
 | **Test Agent** | JS 语法校验、线上验证、多端测试、回归测试 | `/test` 或 PM 分配 |
 | **Content Agent** | 题库审核、教学内容检查、知识点覆盖分析 | `/content` 或 PM 分配 |
-| **Deploy Agent** | GitHub/Gitee 双仓库同步、Pages 部署、CI 监控 | `/deploy` 或 PM 分配 |
+| **Deploy Agent** | GitHub/Vercel 部署、CI 监控 | `/deploy` 或 PM 分配 |
 
 #### 5.2 工作流
 
@@ -259,16 +259,16 @@ prototype/v4/
 - push 到 master 分支 → GitHub Actions 自动部署（`push` 触发）
 - 访问：https://flier3186.github.io/quiqu-xueyuan/
 
-### 6.2 Gitee Pages（国内备选）
-- 仓库部署页面：仓库 →「服务」→「Gitee Pages」→ 选择 `master` 分支 → 目录 `/` →「启动部署」
-- 或配置自动部署：`.gitee/workflows/` 下放入部署脚本，提交后由 Gitee CI 触发
-- 访问：https://leo318600.gitee.io/quiqu-xueyuan/
+### 6.2 Vercel（国内加速备选）
+- 连接 GitHub 仓库后，push 到 master 自动触发部署
+- 访问：部署完成后在 Vercel 控制台获取 `.vercel.app` 域名
+- 支持自定义域名绑定
 
 ### 6.3 访问地址
 | 平台 | 地址 | 用途 |
 |---|---|---|
-| GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 国内主入口（稳定） |
-| Gitee Pages | https://leo318600.gitee.io/quiqu-xueyuan/ | 国内加速备选 |
+| GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 主入口（稳定） |
+| Vercel | 部署后获取 `.vercel.app` 地址 | 国内加速备选 |
 
 ---
 
