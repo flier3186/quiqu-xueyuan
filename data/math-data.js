@@ -18215,13 +18215,12 @@ window.MATH_BY_GRADE = {
         ],
         "visualType": "areaModel",
         "visualData": {
-          "a": 24,
-          "b": 4,
+          "a": 25,
+          "b": 6,
           "parts": [
-            80,
-            16
+            150
           ],
-          "result": 96
+          "result": 150
         },
         "knowledge": "除法验算",
         "difficulty": 2,
@@ -20757,7 +20756,7 @@ window.MATH_BY_GRADE = {
           {
             "icon": "👀",
             "title": "看图 — 图形结构",
-            "text": "图中的几何图形展示了题目的空间关系和属性",
+            "text": "体对角线² = 长²+宽²+高²，即 8²+6²+2²=64+36+4=104，再用数 bond 图表示分解与组合",
             "bg": "var(--teal-soft)",
             "color": "var(--teal)"
           },
@@ -27200,13 +27199,12 @@ window.MATH_BY_GRADE = {
         ],
         "visualType": "areaModel",
         "visualData": {
-          "a": 24,
-          "b": 4,
+          "a": 25,
+          "b": 6,
           "parts": [
-            80,
-            16
+            150
           ],
-          "result": 96
+          "result": 150
         },
         "knowledge": "除法验算",
         "difficulty": 2,
@@ -27257,7 +27255,7 @@ window.MATH_BY_GRADE = {
               "除法"
             ],
             "answer": "乘法",
-            "explain": "乘法：25 × 6 = ?=112"
+            "explain": "乘法：25 × 6 = 150"
           }
         ],
         "explainLayers": [
@@ -27271,7 +27269,7 @@ window.MATH_BY_GRADE = {
           {
             "icon": "🧠",
             "title": "理解 — 数学关系",
-            "text": "25 × 6 = ?=112",
+            "text": "25 × 6 = 150",
             "bg": "var(--yellow-soft)",
             "color": "var(--yellow-700)"
           },
@@ -82878,14 +82876,14 @@ window.MATH_BY_GRADE = {
           10.2,
           11
         ],
-        "visualType": "geometry",
+        "visualType": "numberBond",
         "visualData": {
-          "shape": "box",
-          "params": {
-            "l": 8,
-            "w": 6,
-            "h": 2
-          }
+          "total": 104,
+          "parts": [
+            {"val": 64, "color": "teal", "label": "长²"},
+            {"val": 36, "color": "yellow", "label": "宽²"},
+            {"val": 4, "color": "coral", "label": "高²"}
+          ]
         },
         "knowledge": "空间勾股定理",
         "difficulty": 3,
