@@ -260,15 +260,17 @@ prototype/v4/
 - 访问：https://flier3186.github.io/quiqu-xueyuan/
 
 ### 6.2 Vercel（国内加速备选）
-- 连接 GitHub 仓库后，push 到 master 自动触发部署
-- 访问：部署完成后在 Vercel 控制台获取 `.vercel.app` 域名
-- 支持自定义域名绑定
+- 项目已连接，push 到 master 自动触发部署（项目名：`quiqu-xueyuan-master`，团队：`flier2`）
+- 访问：https://quiqu-xueyuan-master.vercel.app
+- 备用域名：https://quiqu-xueyuan-master-flier2.vercel.app
+- 支持自定义域名绑定（Settings → Domains）
+- 注意：Vercel 在国内部分地区可能无法直连，必要时需绑定自定义域名 + Cloudflare CDN
 
 ### 6.3 访问地址
 | 平台 | 地址 | 用途 |
 |---|---|---|
 | GitHub Pages | https://flier3186.github.io/quiqu-xueyuan/ | 主入口（稳定） |
-| Vercel | 部署后获取 `.vercel.app` 地址 | 国内加速备选 |
+| Vercel | https://quiqu-xueyuan-master.vercel.app | 国内加速备选 |
 
 ---
 
