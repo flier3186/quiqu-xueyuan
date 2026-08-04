@@ -224,7 +224,7 @@
 prototype/v4/
 ├── index.html          # 单文件应用（所有代码）
 ├── assets/             # 图片资源
-├── vercel.json         # Vercel 配置（备用）
+├── vercel.json         # Vercel 配置（保留，不再使用）
 ├── .github/workflows/  # GitHub Actions
 └── AGENTS.md           # 本文件
 ```
