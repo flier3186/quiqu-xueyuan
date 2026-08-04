@@ -11,8 +11,8 @@
 - **目标用户**：8-12 岁小学生（当前重点：二年级升三年级）
 - **核心定位**：提升数学与英语「能力」的趣味学习工具，非应试刷题
 - **技术形态**：纯前端静态站点（HTML + CSS + JS，无后端）
-- **部署平台**：GitHub Pages（主，稳定可靠） + Gitee Pages（国内直连）
-- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub） + https://gitee.com/flier3186/quiqu-xueyuan（国内直连）
+- **部署平台**：GitHub Pages（主，稳定可靠）
+- **仓库地址**：https://github.com/flier3186/quiqu-xueyuan（GitHub，主） + https://gitee.com/leo318600/quiqu-xueyuan（Gitee，代码镜像）
 
 ---
 
@@ -268,9 +268,10 @@ prototype/v4/
 - Agent 必须用 curl/head 工具验证两个线上地址均 200 OK
 
 ### 6.3 部署完成判定
-- 仅当 GitHub Pages 和 Gitee Pages 均返回 200 且内容与预期一致，才视为部署完成
-- 若任一地址验证失败，必须重试推送并重新验证，不得告知用户"部署成功"
-- Agent 必须将两个验证结果一起汇报，供用户判断
+- GitHub Pages 返回 200 且内容与预期一致，视为部署完成
+- 若 GitHub Pages 验证失败，必须重试推送并重新验证，不得告知用户"部署成功"
+- Agent 必须将验证结果汇报，供用户判断
+- Gitee 仅做代码镜像同步，不要求 Pages 在线
 
 ---
 
