@@ -2901,26 +2901,6 @@ function renderSidePanel(){
           `;}catch(e){return'<div style="font-size:13px;color:var(--text-3)">-</div>';}
           }()}</div>
       </div>
-      <div class="parent-section" data-psec="errors">
-        <div class="card" style="margin-bottom:16px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-            <h4 style="font-size:15px;font-weight:800;color:var(--navy)">🐛 错误日志</h4>
-            <button class="export-btn" onclick="exportErrorLog()">📥 导出日志</button>
-          </div>
-          <div id="errorLogBody" style="max-height:300px;overflow-y:auto">
-            <div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错误记录</div>
-          </div>
-        </div>
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-            <h4 style="font-size:15px;font-weight:800;color:var(--navy)">❌ 错题本</h4>
-            <button class="export-btn" onclick="exportWrongProblems()">📥 导出错题</button>
-          </div>
-          <div id="wrongProblemsBody" style="max-height:300px;overflow-y:auto">
-            <div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错题记录</div>
-          </div>
-        </div>
-      </div>
     </div>`;
 }
 
@@ -5733,7 +5713,7 @@ function renderHeatmap(){
   }));
   return html;
 }
-function renderParentDashboard(){
+function renderParentDashboard(pt='overview'){
   const o=S.overview||{stars:0,streak:0,weekGoal:5,weekDone:0,totalMin:0,avgAccuracy:70};
   const petAvatar=PETS&&PETS[S.pet.idx]?PETS[S.pet.idx].avatar:'';
   const gradeTxt=(S.math&&S.math.grade?S.math.grade+'年级':'3年级');
@@ -6012,16 +5992,25 @@ function renderParentDashboard(){
       const tab=e.target.closest('.parent-tab');
       if(!tab)return;
       const pt=tab.dataset.pt;
-      $$('.parent-tab').forEach(x=>x.classList.toggle('active',x===tab));
-      $$('.parent-section').forEach(s=>s.classList.toggle('active',s.dataset.psec===pt));
-      if(pt==='errors'){renderErrorLog();renderWrongProblems();}
-      if(pt==='profiles') renderProfiles();
-      if(pt==='overview'&&typeof echarts!=='undefined') setTimeout(()=>initParentCharts(),80);
-      if(pt==='ai') ensureAiPanelBound();
+      switchParentTab(pt);
     };
   }
   setTimeout(()=>initParentCharts(),320);
   bindAiConfigEvents();
+}
+function switchParentTab(pt){
+  const activeTab=$('.parent-tab.active');
+  const activeSec=$('.parent-section.active');
+  if(activeTab) activeTab.classList.remove('active');
+  if(activeSec) activeSec.classList.remove('active');
+  const tab=$(`.parent-tab[data-pt="${pt}"]`);
+  const sec=$(`.parent-section[data-psec="${pt}"]`);
+  if(tab) tab.classList.add('active');
+  if(sec) sec.classList.add('active');
+  if(pt==='errors'){renderErrorLog();renderWrongProblems();}
+  if(pt==='profiles') renderProfiles();
+  if(pt==='overview'&&typeof echarts!=='undefined') setTimeout(()=>initParentCharts(),80);
+  if(pt==='ai') ensureAiPanelBound();
 }
 function ensureAiPanelBound(){
   const inp=$('#deepseekKeyInput');
