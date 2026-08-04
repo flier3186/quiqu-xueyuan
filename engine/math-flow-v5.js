@@ -425,6 +425,7 @@ window.MathFlowV5 = {
     const visual = (typeof MathVisualV5!=='undefined' && MathVisualV5.render)
       ? MathVisualV5.render(problem.visualType, problem.visualData, problem)
       : '<div class="mv-empty">可视化引擎不可用</div>';
+    setTimeout(()=>this._initFractionWall(),50);
     const layers = this._explainLayers(problem);
     const methodName = this._methodName(problem);
     return `<div class="cpa-layer pictorial" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
@@ -463,6 +464,35 @@ window.MathFlowV5 = {
       el.parentNode.replaceChild(clone, el);
     });
     if(typeof toast==='function') toast('🎬 动画已重新播放');
+  },
+  // 分数墙点击高亮交互
+  _initFractionWall(){
+    const svg = document.getElementById('fvWallSvg');
+    if(!svg) return;
+    const rows = svg.querySelectorAll('.mv-fraction-row');
+    rows.forEach(row=>{
+      row.addEventListener('click',()=>{
+        const idx = parseInt(row.getAttribute('data-row'));
+        const segs = svg.querySelectorAll('.mv-fraction-seg');
+        const targetRows = [1,3];
+        segs.forEach(seg=>{
+          const segRow = seg.closest('.mv-fraction-row');
+          const segIdx = Array.from(rows).indexOf(segRow);
+          if(targetRows.includes(idx) || targetRows.includes(segIdx)){
+            seg.style.opacity = (targetRows.includes(idx) && targetRows.includes(segIdx)) ? '1' : '0.25';
+          } else {
+            seg.style.opacity = '0.25';
+          }
+        });
+        const hint = svg.querySelector('text:last-child');
+        if(hint && !hint.textContent.includes('找：')){
+          const labels = ['1/2','2/4','4/8'];
+          if(idx===1) hint.textContent='💡 点击1/2，高亮等值：'+labels.join(' = ');
+          else if(idx===3) hint.textContent='💡 点击4/8，高亮等值：'+labels.join(' = ');
+          else hint.textContent='💡 点击任意行高亮等值分数';
+        }
+      });
+    });
   },
 
   // ============================================================

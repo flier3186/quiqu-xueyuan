@@ -7360,6 +7360,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数认识·分数圆",
         "difficulty": 1,
         "hint": "把两个1/4拼在一起看",
+        "rmeChoices": [
+          { "label": "画分数圆", "desc": "画两个1/4圆拼在一起", "correct": true },
+          { "label": "列算式", "desc": "1/4+1/4=2/4=1/2", "correct": true },
+          { "label": "画条形图", "desc": "画两条条形对比", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "两个1/4拼在一起是几个1/4？", "keywords": ["2/4","1/2","两份","两个","拼一起","一半"] },
+          { "type": "reverse", "q": "如果每人吃1/8，两人一共吃了多少？", "keywords": ["1/4","2/8","1+1","相加","加法"] }
+        ],
+        "neriageErrors": [
+          { "answer": "1/8", "reason": "分子分母分别加", "fix": "同分母分数相加：分母不变，分子相加。1/4+1/4=2/4=1/2，不是1/8" }
+        ],
         "variants": []
       },
       {
@@ -7374,6 +7386,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数认识·分数圆减法",
         "difficulty": 2,
         "hint": "把圆分成8份，涂了3份，没涂的是几分之几？",
+        "rmeChoices": [
+          { "label": "画分数圆", "desc": "画8等份圆，涂3份", "correct": true },
+          { "label": "列算式", "desc": "1-3/8=5/8", "correct": true },
+          { "label": "画条形图", "desc": "画8段条形涂3段", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "没涂的部分占了圆的几分之几？", "keywords": ["5/8","5份","没涂","剩余","剩下"] },
+          { "type": "compare", "q": "如果修了5/8，还剩几分之几？", "keywords": ["3/8","5份","减","差","少"] }
+        ],
+        "neriageErrors": [
+          { "answer": "3/5", "reason": "分子分母颠倒", "fix": "1-3/8=8/8-3/8=5/8，不是3/5" }
+        ],
         "variants": []
       },
       {
@@ -7388,6 +7412,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数认识·分数圆加法",
         "difficulty": 2,
         "hint": "2/6 + 1/6 = 3/6 = 1/2",
+        "rmeChoices": [
+          { "label": "画分数圆", "desc": "画6等份圆，涂3份", "correct": true },
+          { "label": "列算式", "desc": "2/6+1/6=3/6=1/2", "correct": true },
+          { "label": "画条形图", "desc": "画6段条形", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "3/6化简后等于几分之几？", "keywords": ["1/2","3/6","化简","一半","对半"] },
+          { "type": "reverse", "q": "如果小华吃了3/6，小明吃了1/6，还剩几分之几？", "keywords": ["2/6","1/3","减法","剩","还有"] }
+        ],
+        "neriageErrors": [
+          { "answer": "3/12", "reason": "分子分母分别相加", "fix": "同分母分数相加：分母不变。2/6+1/6=3/6=1/2，不是3/12" }
+        ],
         "variants": []
       },
       {
@@ -7416,6 +7452,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数认识·分数条加法",
         "difficulty": 1,
         "hint": "同分母分数相加，分母不变，分子相加",
+        "rmeChoices": [
+          { "label": "画分数条", "desc": "画7段条形，涂5段", "correct": true },
+          { "label": "列算式", "desc": "3/7+2/7=5/7", "correct": true },
+          { "label": "画圆圈", "desc": "画圆分7份", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "番茄和黄瓜一共占了7份中的几份？", "keywords": ["5份","5/7","加起来","合起来","3+2"] },
+          { "type": "reverse", "q": "如果番茄占3/7，黄瓜占4/7，一共占几分之几？", "keywords": ["1","7/7","满的","整块","1"] }
+        ],
+        "neriageErrors": [
+          { "answer": "5/14", "reason": "分母相加", "fix": "同分母分数相加：分母不变。3/7+2/7=5/7，不是5/14" }
+        ],
         "variants": []
       },
       {
@@ -7444,6 +7492,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "等值分数·分数墙",
         "difficulty": 2,
         "hint": "在分数墙上找到1/2那行，看下面哪行有一段和它一样长",
+        "rmeChoices": [
+          { "label": "看分数墙", "desc": "在墙上找等长行", "correct": true },
+          { "label": "画分数圆", "desc": "画圆涂1/2和2/4对比", "correct": true },
+          { "label": "背答案", "desc": "1/2=2/4是记忆", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "分数墙上1/2那行，下面哪行有一段和它等长？", "keywords": ["2/4","4/8","等长","一样","对等"] },
+          { "type": "compare", "q": "分数墙上3/4等于下面哪个分数？", "keywords": ["6/8","3/4","等值","一样长","6÷8"] }
+        ],
+        "neriageErrors": [
+          { "answer": "1/4", "reason": "分子分母分别加1", "fix": "等值分数是分子分母同时乘同一个数。1/2=2/4（×2），不是1+1/2+1" }
+        ],
         "variants": []
       },
       {
@@ -7458,6 +7518,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "等值分数·分数墙",
         "difficulty": 2,
         "hint": "找到3/4那行，看下面哪行有相同长度的段",
+        "rmeChoices": [
+          { "label": "看分数墙", "desc": "找3/4等长行", "correct": true },
+          { "label": "画分数条", "desc": "画条对比3/4和6/8", "correct": true },
+          { "label": "背答案", "desc": "3/4=6/8是死的", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "分数墙上3/4那行，下面哪行有等长的段？", "keywords": ["6/8","等长","一样","对等","3×2/4×2"] },
+          { "type": "reverse", "q": "6/8化简后等于几分之几？", "keywords": ["3/4","化简","÷2","等值","简化"] }
+        ],
+        "neriageErrors": [
+          { "answer": "3/8", "reason": "只看分母", "fix": "3/4=6/8（分子分母同时×2），不是3/8" }
+        ],
         "variants": []
       },
       {
@@ -7472,6 +7544,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "等值分数·分数墙",
         "difficulty": 2,
         "hint": "找到2/6那行，看哪一行有相同长度的段",
+        "rmeChoices": [
+          { "label": "看分数墙", "desc": "找2/6等长行", "correct": true },
+          { "label": "画分数条", "desc": "画条对比2/6和1/3", "correct": true },
+          { "label": "背答案", "desc": "2/6=1/3是记忆", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "分数墙上2/6那行，哪行有等长段？", "keywords": ["1/3","等长","一样","对等","2÷2/6÷2"] },
+          { "type": "compare", "q": "1/3和2/6哪个大？", "keywords": ["一样大","相等","等值","相同","相等"] }
+        ],
+        "neriageErrors": [
+          { "answer": "2/3", "reason": "分子分母处理错误", "fix": "2/6=1/3（分子分母同时÷2），不是2/3" }
+        ],
         "variants": []
       },
       {
@@ -7490,6 +7574,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "负数认识·数轴",
         "difficulty": 2,
         "hint": "在数轴上从-3向右移动5格",
+        "rmeChoices": [
+          { "label": "画数轴", "desc": "画数轴从-3右移5格", "correct": true },
+          { "label": "列算式", "desc": "-3+5=2", "correct": true },
+          { "label": "直接想", "desc": "零下3度升高5度", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "从-3向右数5格，停在哪个数？", "keywords": ["2","右移","加5","数轴上","到2"] },
+          { "type": "compare", "q": "如果从-3升高8度，温度变成多少？", "keywords": ["5","-3+8","更多","升高","变"] }
+        ],
+        "neriageErrors": [
+          { "answer": -8, "reason": "方向搞反", "fix": "升高是向右移动（加），-3+5=2，不是-3-5=-8" }
+        ],
         "variants": []
       },
       {
@@ -7508,6 +7604,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "负数认识·数轴应用",
         "difficulty": 2,
         "hint": "从-2开始，向右数5格",
+        "rmeChoices": [
+          { "label": "画数轴", "desc": "画数轴从-2右移5格", "correct": true },
+          { "label": "列算式", "desc": "-2+5=3", "correct": true },
+          { "label": "直接想", "desc": "地下2层上5层", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "从-2向右数5格停在几层？", "keywords": ["3层","+5","右移","数轴","到3"] },
+          { "type": "reverse", "q": "如果从3层下5层，到第几层？", "keywords": ["-2","下5层","减5","-2","向下"] }
+        ],
+        "neriageErrors": [
+          { "answer": -7, "reason": "方向搞反", "fix": "上升是向右移动（加），-2+5=3，不是-2-5=-7" }
+        ],
         "variants": []
       },
       {
@@ -7544,6 +7652,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数小数统一·数轴",
         "difficulty": 2,
         "hint": "1/2 = 0.5，它们在数轴上的位置相同",
+        "rmeChoices": [
+          { "label": "画数轴", "desc": "在0和1之间标出1/2和0.5", "correct": true },
+          { "label": "直接答", "desc": "1/2=0.5是等价", "correct": true },
+          { "label": "画圆圈", "desc": "画圆表示分数", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "1/2和0.5在数轴上是否重合？", "keywords": ["同一点","一样","相等","重合","是"] },
+          { "type": "compare", "q": "0.25和1/4在数轴上是否重合？", "keywords": ["同一点","一样","相等","重合","是"] }
+        ],
+        "neriageErrors": [
+          { "answer": "0.2", "reason": "误以为不同", "fix": "1/2=0.5，它们在数轴上是同一个点，不是不同位置" }
+        ],
         "variants": []
       }
     ],

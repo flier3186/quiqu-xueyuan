@@ -19486,6 +19486,18 @@ window.MATH_BY_GRADE['3b'] = {
         "knowledge": "分数认识·分数圆",
         "difficulty": 1,
         "hint": "把涂色部分合在一起看",
+        "rmeChoices": [
+          { "label": "画圆圈", "desc": "画4等份圆，涂2份", "correct": true },
+          { "label": "画条形图", "desc": "画两条条形对比", "correct": false },
+          { "label": "直接写算式", "desc": "1/4+1/4=2/4=1/2", "correct": true }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "涂色的2份合起来是整个披萨的几分之几？", "keywords": ["一半","1/2","2/4","两等份","对半","平分"] },
+          { "type": "reverse", "q": "如果小红吃了1/2，小明吃了1/4，还剩几分之几？", "keywords": ["减法","1/4","1/2-1/4","还剩","剩下"] }
+        ],
+        "neriageErrors": [
+          { "answer": "2/8", "reason": "分子加分母", "fix": "同分母分数相加：分母不变，分子相加。1/4+1/4=2/4=1/2" }
+        ],
         "variants": []
       },
       {
@@ -19500,6 +19512,18 @@ window.MATH_BY_GRADE['3b'] = {
         "knowledge": "分数认识·分数条",
         "difficulty": 1,
         "hint": "把绳子分成4段，剪掉1段还剩3段",
+        "rmeChoices": [
+          { "label": "画条形图", "desc": "画4段条形，涂3段", "correct": true },
+          { "label": "列算式", "desc": "1-1/4=3/4", "correct": true },
+          { "label": "画圆圈", "desc": "画圆分成4份", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "绳子被分成了4段，剪掉1段，剩下几段？", "keywords": ["3段","3/4","剩下","还剩","剪掉1段"] },
+          { "type": "compare", "q": "如果剪掉2段而不是1段，还剩几分之几？", "keywords": ["2/4","1/2","2段","更多","减掉"] }
+        ],
+        "neriageErrors": [
+          { "answer": "1/3", "reason": "错误约分", "fix": "1-1/4=4/4-1/4=3/4，不是1/3" }
+        ],
         "variants": []
       },
       {
@@ -19514,6 +19538,18 @@ window.MATH_BY_GRADE['3b'] = {
         "knowledge": "等值分数·分数墙",
         "difficulty": 2,
         "hint": "在分数墙上找到1/2那一行，再看下面哪一行和它一样长",
+        "rmeChoices": [
+          { "label": "看分数墙", "desc": "在墙上找等长行", "correct": true },
+          { "label": "画分数圆", "desc": "画圆涂1/2再涂2/4", "correct": true },
+          { "label": "直接背答案", "desc": "1/2=2/4是死的", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "在分数墙上1/2那行，下面哪一行有一段和它一样长？", "keywords": ["2/4","4/8","等长","一样","对等"] },
+          { "type": "reverse", "q": "分数墙上1/3等于下面哪个分数？", "keywords": ["2/6","3/9","4/12","等值","一样长"] }
+        ],
+        "neriageErrors": [
+          { "answer": "1/4", "reason": "分子分母同时加1", "fix": "等值分数是分子分母同时乘以同一个数，不是加。1/2=2/4（×2），不是1+1/2+1" }
+        ],
         "variants": []
       },
       {
@@ -19542,6 +19578,18 @@ window.MATH_BY_GRADE['3b'] = {
         "knowledge": "平行四边形面积·割补法",
         "difficulty": 2,
         "hint": "割补后长方形的长=平行四边形的底，宽=平行四边形的高",
+        "rmeChoices": [
+          { "label": "割补法", "desc": "切三角形变矩形", "correct": true },
+          { "label": "直接乘", "desc": "8×5=40", "correct": true },
+          { "label": "周长公式", "desc": "(8+5)×2=26", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "割补后长方形的长和宽是多少？", "keywords": ["长8","宽5","底8","高5","40"] },
+          { "type": "reverse", "q": "如果面积是40，底是8，高是多少？", "keywords": ["5","除法","40÷8","逆运算","÷"] }
+        ],
+        "neriageErrors": [
+          { "answer": 26, "reason": "用了周长公式", "fix": "面积=底×高=8×5=40，不是(8+5)×2=26" }
+        ],
         "variants": []
       },
       {
