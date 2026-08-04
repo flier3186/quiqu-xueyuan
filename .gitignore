@@ -9,3 +9,5 @@ docs/
 package.json
 package-lock.json
 .gitee/
+
+.vercel
