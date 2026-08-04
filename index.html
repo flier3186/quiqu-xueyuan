@@ -4555,7 +4555,7 @@ const SpeakEngine = {
     this.pushMsg('teacher', first.text, {cn:first.cn});
     saveState();
     this.renderDialogue();
-    setTimeout(()=>speak(first.text), 350);
+    speak(first.text);
   },
   selectScenario(id){
     this.startDialogue(id, null);
@@ -4624,7 +4624,7 @@ const SpeakEngine = {
     }
     saveState();
     this.renderDialogue();
-    setTimeout(()=>speak(reply.text), 400);
+    speak(reply.text);
   },
 
   // 生成老师回复：鼓励语 + 下一段台词（或结束语）
@@ -6108,6 +6108,7 @@ async function testDeepseekKey(){
       const data=await resp.json();
       const reply=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
       showDeepseekTestResult('ok','✅ 连接成功！AI 回复：<b>'+(reply||'OK')+'</b><br>点击"保存"即可启用 AI 自由对话。');
+      speak(reply||'OK');
     }else if(resp.status===401){
       showDeepseekTestResult('error','❌ 认证失败：API Key 无效或已过期，请重新获取');
     }else if(resp.status===429){
