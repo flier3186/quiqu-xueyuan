@@ -794,7 +794,7 @@ window.MathVisualV5 = {
     });
     if(targetFracs.length>0){
       const last=targetFracs[targetFracs.length-1];
-      if(last.label){
+      if(last && last.label){
         svg+=`<text x="${W/2}" y="${H-8}" text-anchor="middle" font-size="11" fill="#00A896" font-weight="700">💡 在墙上找：${last.label}</text>`;
       }
     }

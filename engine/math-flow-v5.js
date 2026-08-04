@@ -511,7 +511,7 @@ window.MathFlowV5 = {
       this.advance('askChild');
       return '';
     }
-    const idx = this._sess.russianIdx || 0;
+    const idx = (this._sess && this._sess.russianIdx) || 0;
     if(idx >= qs.length){
       // 追问完成
       this.advance('askChild');
