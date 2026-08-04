@@ -7478,6 +7478,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数认识·分数条减法",
         "difficulty": 1,
         "hint": "把书分成9份，看了5份还剩4份",
+        "rmeChoices": [
+          { "label": "画分数条", "desc": "画9段条形涂4段", "correct": true },
+          { "label": "列算式", "desc": "1-5/9=4/9", "correct": true },
+          { "label": "画圆圈", "desc": "画圆分9份", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "没看的部分占了9份中的几份？", "keywords": ["4份","4/9","还没看","剩下","剩余"] },
+          { "type": "compare", "q": "如果看了7/9，还剩几分之几？", "keywords": ["2/9","减","差","少"] }
+        ],
+        "neriageErrors": [
+          { "answer": "9/9", "reason": "忘记减", "fix": "1-5/9=9/9-5/9=4/9，不是9/9" }
+        ],
         "variants": []
       },
       {

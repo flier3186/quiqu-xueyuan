@@ -19564,6 +19564,18 @@ window.MATH_BY_GRADE['3b'] = {
         "knowledge": "平行四边形面积·割补法",
         "difficulty": 2,
         "hint": "把左边的三角形切下来补到右边，变成一个矩形",
+        "rmeChoices": [
+          { "label": "割补法", "desc": "切三角形补到右边变矩形", "correct": true },
+          { "label": "直接乘底高", "desc": "6×4=24", "correct": true },
+          { "label": "加法", "desc": "6+4=10", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "割补后矩形的长和宽分别是多少？", "keywords": ["长6","宽4","底6","高4","长乘宽","24"] },
+          { "type": "compare", "q": "如果底变成8，高不变，面积变成多少？", "keywords": ["32","8乘4","变长","更大","8×4"] }
+        ],
+        "neriageErrors": [
+          { "answer": 10, "reason": "底+高", "fix": "平行四边形面积=底×高，不是底+高。6×4=24，不是6+4=10" }
+        ],
         "variants": []
       },
       {
@@ -19604,6 +19616,18 @@ window.MATH_BY_GRADE['3b'] = {
         "knowledge": "平行四边形面积·逆运算",
         "difficulty": 2,
         "hint": "面积=底×高，所以高=面积÷底",
+        "rmeChoices": [
+          { "label": "逆运算", "desc": "高=面积÷底", "correct": true },
+          { "label": "除法", "desc": "36÷9=4", "correct": true },
+          { "label": "乘法", "desc": "36×9=324", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "用逆运算：面积÷底=高，怎么算？", "keywords": ["36÷9","4","除法","逆运算","÷"] },
+          { "type": "compare", "q": "如果底变成6，高还是4，面积变成多少？", "keywords": ["24","6×4","变小","底变了","乘法"] }
+        ],
+        "neriageErrors": [
+          { "answer": 324, "reason": "用了乘法", "fix": "已知面积和底求高，用除法：36÷9=4，不是36×9=324" }
+        ],
         "variants": []
       }
     ],
