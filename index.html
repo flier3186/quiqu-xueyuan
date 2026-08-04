@@ -4185,7 +4185,7 @@ function renderEngSub(subtab,grade){
     return `
       <div style="background:white;border-radius:var(--radius-lg);padding:20px;box-shadow:var(--card-shadow);margin-bottom:16px">
         <h3 style="font-size:18px;color:var(--navy);font-weight:800;margin-bottom:8px">🗣️ 自然拼读 · 母语教学法 <span style="font-size:12px;color:var(--text-2);font-weight:600">（${gradeLabel(grade)}可学${maxStage}个阶段）</span></h3>
-        <p style="font-size:13px;color:var(--text-2);margin-bottom:14px">不学音标！直接看真人老师视频学发音，看真实嘴巴的发音方式。点击视频可看大图，点击字母听发音，点击示例词听单词。</p>
+        <p style="font-size:13px;color:var(--text-2);margin-bottom:14px">不学音标！点击喇叭听发音，看嘴型描述学口型。<a href="${ASSETS.mouthChart}" target="_blank" style="color:var(--teal);font-weight:700">点击查看完整嘴型图</a>，点击字母听发音，点击示例词听单词。</p>
         <div class="phonics-stage-bar" id="phonicsStages">
           ${availableStages.map(s=>`<div class="phonics-stage ${s.id===currentPhonicsStage?'active':''} ${s.done?'done':''}" data-stage="${s.id}"><span class="num">${s.done?'✓':s.id}</span>${s.name}</div>`).join('')}
         </div>
@@ -4197,9 +4197,7 @@ function renderEngSub(subtab,grade){
             <div class="letter-big">${L.l}</div>
             <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
           </div>
-          <div class="letter-speak-row">
-            <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
-          </div>
+          <div style="font-size:11px;color:var(--text-2);line-height:1.5;padding:6px 8px;background:var(--teal-soft);border-radius:6px;margin:6px 0">👄 ${L.mouth}</div>
           <div class="letter-words">
             ${L.words.map(w=>`<div class="letter-word" onclick="speak('${escapeAttr(w)}')">${w}</div>`).join('')}
           </div>
@@ -5713,7 +5711,8 @@ function renderHeatmap(){
   }));
   return html;
 }
-function renderParentDashboard(pt='overview'){
+function renderParentDashboard(pt){
+  pt = pt || S.parentLastTab || 'overview';
   const o=S.overview||{stars:0,streak:0,weekGoal:5,weekDone:0,totalMin:0,avgAccuracy:70};
   const petAvatar=PETS&&PETS[S.pet.idx]?PETS[S.pet.idx].avatar:'';
   const gradeTxt=(S.math&&S.math.grade?S.math.grade+'年级':'3年级');
@@ -5996,9 +5995,10 @@ function renderParentDashboard(pt='overview'){
     };
   }
   setTimeout(()=>initParentCharts(),320);
-  bindAiConfigEvents();
+  if(pt!=='overview') switchParentTab(pt);
 }
 function switchParentTab(pt){
+  S.parentLastTab=pt; saveState();
   const activeTab=$('.parent-tab.active');
   const activeSec=$('.parent-section.active');
   if(activeTab) activeTab.classList.remove('active');
@@ -6082,18 +6082,28 @@ async function testDeepseekKey(){
   btn.disabled=true;
   showDeepseekTestResult('loading','🔍 正在连接 DeepSeek API...');
   try{
-    const resp=await fetch('https://api.deepseek.com/chat/completions',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':'Bearer '+key
-      },
-      body:JSON.stringify({
-        model:'deepseek-chat',
-        messages:[{role:'user',content:'Say "OK" in one word.'}],
-        max_tokens:5
-      })
-    });
+    const ctrl=new AbortController();
+    const timeoutId=setTimeout(()=>ctrl.abort(),10000);
+    let resp;
+    try{
+      resp=await fetch('https://api.deepseek.com/chat/completions',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization':'Bearer '+key
+        },
+        body:JSON.stringify({
+          model:'deepseek-chat',
+          messages:[{role:'user',content:'Say "OK" in one word.'}],
+          max_tokens:5
+        }),
+        signal:ctrl.signal
+      });
+    }catch(e){
+      clearTimeout(timeoutId);
+      throw new Error(e.name==='AbortError'?'请求超时（10秒），请检查网络后重试':e.message);
+    }
+    clearTimeout(timeoutId);
     if(resp.ok){
       const data=await resp.json();
       const reply=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
