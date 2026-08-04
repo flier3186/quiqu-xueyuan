@@ -1142,6 +1142,20 @@ input,textarea{font-family:inherit}
 .mv-geo-outline{stroke-dasharray:2000;stroke-dashoffset:2000;animation:mvDrawStroke 1.2s ease-out forwards}
 .mv-circle-radius{stroke-dasharray:300;stroke-dashoffset:300;animation:mvDrawStroke .8s ease-out .6s forwards}
 @keyframes mvDrawStroke{to{stroke-dashoffset:0}}
+
+/* ===== 迭代2新增动画 ===== */
+.mv-ten-bar,.mv-unit{transform-box:fill-box;transform-origin:center}
+@keyframes mvSlideIn{from{transform:translateY(-30px) scale(0.7);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes mvGather{from{transform:translateX(80px) scale(0.8);opacity:0}to{transform:translateX(0) scale(1);opacity:1}}
+.mv-fraction-seg{transform-box:fill-box}
+.mv-sector{transform-box:fill-box}
+@keyframes mvFillIn{from{opacity:0;transform:scale(0.7)}to{opacity:0.8;transform:scale(1)}}
+@keyframes mvLineIn{from{opacity:0}to{opacity:1}}
+@keyframes mvPointIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+.mv-face{transform-box:fill-box}
+@keyframes mvFaceIn{from{opacity:0;transform:rotate(-10deg) scale(0.8)}to{opacity:1;transform:rotate(0) scale(1)}}
+.mv-part{transform-box:fill-box}
+@keyframes mvCutFill{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
 </style>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 </head>
@@ -3286,15 +3300,18 @@ function renderMath(grade='3'){
     </div>`;
 }
 
-// ===== 阶段进度条（V5 七步进度指示器） =====
+// ===== 阶段进度条（V5 九步进度指示器） =====
 function renderMathStageProgress(){
   const stages = [
     {key:'review',   name:'昨日回顾', icon:'📚'},
     {key:'warmup',   name:'数感预热', icon:'📖'},
+    {key:'rme',      name:'RME建模', icon:'✏️'},
     {key:'discover', name:'引导发现', icon:'🔍'},
-    {key:'solve',    name:'正式解题', icon:'✏️'},
+    {key:'neriage',  name:'多解法', icon:'💡'},
+    {key:'solve',    name:'正式解题', icon:'📝'},
     {key:'explain',  name:'数形结合', icon:'📊'},
-    {key:'askChild', name:'你来提问', icon:'💡'},
+    {key:'russian',  name:'俄罗斯追问', icon:'🤔'},
+    {key:'askChild', name:'你来提问', icon:'🙋'},
     {key:'practice', name:'阶梯练习', icon:'🎯'}
   ];
   const sess = (window.MathFlowV5 && MathFlowV5._sess) || {};
@@ -6872,6 +6889,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/mic-permission.js"></script>
 <script src="engine/scene-manager.js"></script>
 <script src="engine/math-visual-v5.js"></script>
+<script src="engine/russian-questioning.js"></script>
+<script src="engine/parent-panel.js"></script>
 <script src="engine/math-flow-v5.js"></script>
 <script src="engine/speak-engine-v5.js"></script>
 <script src="engine/english-flow-v5.js"></script>

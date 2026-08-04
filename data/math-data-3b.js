@@ -19473,6 +19473,92 @@ window.MATH_BY_GRADE['3b'] = {
         ]
       }
     ],
+    "problems": [
+      {
+        "id": "3B-FRAC-01",
+        "scene": "妈妈买了一个披萨，切成了4等份。小红吃了1份，小明吃了1份。两人一共吃了这个披萨的几分之几？",
+        "question": "两人一共吃了这个披萨的几分之几？",
+        "formula": "1/4 + 1/4 = ?",
+        "answer": "1/2",
+        "choices": ["1/2", "1/4", "3/4", "1/8"],
+        "visualType": "fractionCircleAnim",
+        "visualData": { "num": 1, "den": 4, "color": "#E8A0BF" },
+        "knowledge": "分数认识·分数圆",
+        "difficulty": 1,
+        "hint": "把涂色部分合在一起看",
+        "variants": []
+      },
+      {
+        "id": "3B-FRAC-02",
+        "scene": "一根绳子长1米，剪掉了1/4米。还剩几分之几？",
+        "question": "还剩几分之几？",
+        "formula": "1 - 1/4 = ?",
+        "answer": "3/4",
+        "choices": ["3/4", "1/4", "1/2", "1/3"],
+        "visualType": "fractionStrip",
+        "visualData": { "num": 3, "total": 4, "color": "#00A896" },
+        "knowledge": "分数认识·分数条",
+        "difficulty": 1,
+        "hint": "把绳子分成4段，剪掉1段还剩3段",
+        "variants": []
+      },
+      {
+        "id": "3B-FRAC-03",
+        "scene": "用分数墙来看，1/2等于几分之几？",
+        "question": "1/2等于？（找分数墙上和1/2等长的行）",
+        "formula": "1/2 = ?/4 = ?/8",
+        "answer": "2/4",
+        "choices": ["2/4", "1/4", "3/4", "4/8"],
+        "visualType": "fractionWall",
+        "visualData": {},
+        "knowledge": "等值分数·分数墙",
+        "difficulty": 2,
+        "hint": "在分数墙上找到1/2那一行，再看下面哪一行和它一样长",
+        "variants": []
+      },
+      {
+        "id": "3B-GEO-01",
+        "scene": "平行四边形的底是6厘米，高是4厘米。用割补法把它变成矩形后，面积是多少？",
+        "question": "平行四边形的面积是多少？",
+        "formula": "底 × 高 = ?",
+        "answer": 24,
+        "choices": [24, 20, 28, 10],
+        "visualType": "cutPasteGeometry",
+        "visualData": { "base": 6, "height": 4 },
+        "knowledge": "平行四边形面积·割补法",
+        "difficulty": 2,
+        "hint": "把左边的三角形切下来补到右边，变成一个矩形",
+        "variants": []
+      },
+      {
+        "id": "3B-GEO-02",
+        "scene": "平行四边形底8dm，高5dm。割补成长方形后，长方形的长和宽各是多少？",
+        "question": "长方形的面积是多少？",
+        "formula": "8 × 5 = ?",
+        "answer": 40,
+        "choices": [40, 30, 50, 13],
+        "visualType": "cutPasteGeometry",
+        "visualData": { "base": 8, "height": 5 },
+        "knowledge": "平行四边形面积·割补法",
+        "difficulty": 2,
+        "hint": "割补后长方形的长=平行四边形的底，宽=平行四边形的高",
+        "variants": []
+      },
+      {
+        "id": "3B-GEO-03",
+        "scene": "平行四边形面积是36cm²，底是9cm。高是多少？",
+        "question": "平行四边形的高是多少？",
+        "formula": "36 ÷ 9 = ?",
+        "answer": 4,
+        "choices": [4, 6, 9, 324],
+        "visualType": "cutPasteGeometry",
+        "visualData": { "base": 9, "height": 4 },
+        "knowledge": "平行四边形面积·逆运算",
+        "difficulty": 2,
+        "hint": "面积=底×高，所以高=面积÷底",
+        "variants": []
+      }
+    ],
     "knowledgeMap": [
       {
         "id": "3B-01",
