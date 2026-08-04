@@ -7438,6 +7438,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "分数认识·分数条",
         "difficulty": 1,
         "hint": "把1米分成10段，用去3段还剩7段",
+        "rmeChoices": [
+          { "label": "画分数条", "desc": "画10段条形涂7段", "correct": true },
+          { "label": "列算式", "desc": "1-3/10=7/10", "correct": true },
+          { "label": "画圆圈", "desc": "画圆分10份", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "用去3/10，还剩10段中的几段？", "keywords": ["7段","7/10","还剩","剩余","10-3"] },
+          { "type": "compare", "q": "如果用了7/10，还剩几分之几？", "keywords": ["3/10","减","差","少","剩余"] }
+        ],
+        "neriageErrors": [
+          { "answer": "7/100", "reason": "分母错误", "fix": "1-3/10=10/10-3/10=7/10，不是7/100" }
+        ],
         "variants": []
       },
       {
@@ -7646,6 +7658,18 @@ window.MATH_BY_GRADE['4b'] = {
         "knowledge": "负数认识·数轴延伸",
         "difficulty": 2,
         "hint": "又下潜就是继续往负方向移动",
+        "rmeChoices": [
+          { "label": "画数轴", "desc": "画数轴从-8左移5格", "correct": true },
+          { "label": "列算式", "desc": "-8+(-5)=-13", "correct": true },
+          { "label": "直接想", "desc": "水下8米再下潜5米", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "从-8再往负方向移动5格，到多少？", "keywords": ["-13","左移","更负","水下13","-8-5"] },
+          { "type": "compare", "q": "如果从-8上升3米，到多少？", "keywords": ["-5","右移","+3","上升","没那么深"] }
+        ],
+        "neriageErrors": [
+          { "answer": -3, "reason": "符号错误", "fix": "再下潜5米是继续往负方向，-8+(-5)=-13，不是-8+5=-3" }
+        ],
         "variants": []
       },
       {

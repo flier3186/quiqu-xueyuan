@@ -7256,6 +7256,9 @@ window.MATH_BY_GRADE['2b'] = {
           { "type": "compare", "q": "如果小红多3颗，小明的条形要变长还是变短？", "keywords": ["变长","更长","多画","加","增加"] }
         ],
         "barTranslateLine": { "items": ["小红=12", "小明=12+5", "总共=17"] },
+        "neriageErrors": [
+          { "answer": 7, "reason": "减法错", "fix": "小明比小红多5颗，应该是加法：12+5=17" }
+        ],
         "variants": []
       },
       {
@@ -7286,6 +7289,9 @@ window.MATH_BY_GRADE['2b'] = {
           { "type": "reverse", "q": "如果科技书有43本，故事书有28本，多几本？", "keywords": ["减法","15","43-28","差","少"] }
         ],
         "barTranslateLine": { "items": ["故事书=28", "科技书=28+15", "总共=43"] },
+        "neriageErrors": [
+          { "answer": 13, "reason": "减法错", "fix": "科技书比故事书多15本，应该用加法：28+15=43" }
+        ],
         "variants": []
       },
       {
@@ -7316,6 +7322,9 @@ window.MATH_BY_GRADE['2b'] = {
           { "type": "compare", "q": "如果飞来10只而不是8只，总数会变大还是变小？", "keywords": ["变大","更多","增加","更长","更多只"] }
         ],
         "barTranslateLine": { "items": ["原来=15", "飞来=8", "总共=15+8=23"] },
+        "neriageErrors": [
+          { "answer": 7, "reason": "减法错", "fix": "飞来是增加，应该用加法：15+8=23" }
+        ],
         "variants": []
       }
     ],
