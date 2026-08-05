@@ -78,7 +78,7 @@ window.SpeakEngineV5 = {
     return v || null;
   },
 
-  // ===== TTS 朗读（带语调模拟 + 情绪标记） =====
+  // ===== TTS 朗读（带语调模拟 + 情绪标记）=====
   speak(text, teacherId){
     if(!('speechSynthesis' in window) || !text) return;
     const teacher = this.getTeacher(teacherId);
@@ -100,11 +100,23 @@ window.SpeakEngineV5 = {
     else { pitch=1.0; }                        // aria：中性
     u.rate = Math.max(0.6, Math.min(1.4, rate));
     u.pitch = pitch;
-    const v = this._selectVoice(teacher.voice.preferGender);
-    if(v){ try{ u.voice = v; }catch(e){} }
-    // 句末停顿模拟语调
-    try{ speechSynthesis.resume(); }catch(e){}
-    speechSynthesis.speak(u);
+    // 等待语音列表就绪
+    const trySpeak = () => {
+      const v = this._selectVoice(teacher.voice.preferGender);
+      if(v){ try{ u.voice = v; }catch(e){} }
+      try{ speechSynthesis.resume(); }catch(e){}
+      speechSynthesis.speak(u);
+    };
+    const voices = speechSynthesis.getVoices() || [];
+    if(!voices.length || !voices.some(v=>/en/i.test(v.lang))){
+      // 语音未就绪，等待事件
+      speechSynthesis.addEventListener('voiceschanged', function handler(){
+        speechSynthesis.removeEventListener('voiceschanged', handler);
+        trySpeak();
+      });
+    } else {
+      trySpeak();
+    }
   },
 
   // ===== 调用 DeepSeek AI API（OpenAI 兼容格式，带重试+超时） =====
