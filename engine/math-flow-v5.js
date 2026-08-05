@@ -758,8 +758,7 @@ window.MathFlowV5 = {
     const variant = problem.variants && problem.variants[1] || {};
     const scene = variant.scene || problem.scene;
     const question = variant.question || '如果情况变化，结果会怎样？';
-    const choices = variant.choices || problem.choices;
-    const correctIdx = choices.indexOf(variant.answer != null ? variant.answer : problem.answer);
+    const {ans, choices, correctIdx} = this._safeChoices(variant, problem);
     
     return `<div class="cpa-layer" style="border-left-color:var(--pink);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--pink);color:#fff">STAGE 6 · 阶梯练习 · L3 进阶</span>
