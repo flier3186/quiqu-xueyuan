@@ -3007,19 +3007,6 @@ window.MATH_BY_GRADE['3a'] = {
         "knowledge": "万以内加法笔算",
         "difficulty": 2,
         "hint": "相同数位对齐满十进一",
-        "visualType": "baseTenBlocks",
-        "rmeChoices": [
-          { "label": "数位条块图", "desc": "用十位条和个位方块表示数字", "correct": true },
-          { "label": "列竖式", "desc": "386+247竖式计算", "correct": true },
-          { "label": "直接心算", "desc": "386+247=633", "correct": false }
-        ],
-        "russianQuestions": [
-          { "type": "quantity", "q": "个位6+7=13满十后，十位怎么变？", "keywords": ["进一","多1","13","加1","向十位进","满十进一"] },
-          { "type": "reverse", "q": "如果结果是633本，原有386本，新买了多少本？", "keywords": ["减法","247","633-386","新买","差"] }
-        ],
-        "neriageErrors": [
-          { "answer": 533, "reason": "忘记进位", "fix": "个位6+7=13，写3进1；十位8+4+1=13，写3进1；百位3+2+1=6。正确：386+247=633" }
-        ],
         "variants": [
           {
             "question": "418+265=?",
