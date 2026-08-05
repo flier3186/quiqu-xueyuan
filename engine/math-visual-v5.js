@@ -19,6 +19,15 @@ window.MathVisualV5 = {
 
   // ===== 智能路由：根据知识点/图形形状选择优化渲染器 =====
   _resolveType(type, data, problem){
+    // 优先使用 modelFamily 字段（如果题目有明确指定）
+    const modelFamily = (problem && problem.modelFamily) || '';
+    if(modelFamily){
+      const stepRenderer = this._getStepRenderer(modelFamily);
+      // 如果有对应分步渲染器，使用它
+      if(stepRenderer && typeof this[stepRenderer] === 'function'){
+        return stepRenderer;
+      }
+    }
     const k = (problem && problem.knowledge) || '';
     const shape = (data && data.shape) || '';
     if(k.indexOf('毫米') >= 0) return 'rulerMagnifier';
@@ -29,7 +38,17 @@ window.MathVisualV5 = {
     if(k.indexOf('找次品') >= 0 || shape === 'balance') return 'balanceDecision';
     if(k.indexOf('圆的面积') >= 0 || k.indexOf('圆面积') >= 0) return 'circleArea';
     // 迭代2新增：课标打破点路由
-    if(k.indexOf('进位') >= 0 || k.indexOf('退位') >= 0 || k.indexOf('万以内') >= 0) return 'baseTenBlocks';
+    // baseTenBlocks 仅适合两位数加减法（≤99），三位数以上回退到原始类型
+    if(k.indexOf('进位') >= 0 || k.indexOf('退位') >= 0 || k.indexOf('万以内') >= 0){
+      let maxNum = 0;
+      if(data && data.parts){
+        data.parts.forEach(p => { if(p.val > maxNum) maxNum = p.val; });
+      } else if(data && data.a){
+        maxNum = Math.max(data.a, data.b || 0);
+      }
+      if(maxNum > 99) return type; // 三位数以上，使用原始可视化类型
+      return 'baseTenBlocks';
+    }
     if(k.indexOf('分数墙') >= 0 || k.indexOf('等值分数') >= 0) return 'fractionWall';
     if(k.indexOf('分数') >= 0 && (type === 'fractionCircle' || shape === 'fractionCircle')) return 'fractionCircleAnim';
     if(k.indexOf('Bar') >= 0 || k.indexOf('条形') >= 0 || type === 'barModel') return 'barModelTranslate';
@@ -39,6 +58,57 @@ window.MathVisualV5 = {
     if(k.indexOf('长方体') >= 0 || k.indexOf('展开图') >= 0 || shape === 'cylinder') return 'unrollNet';
     if(k.indexOf('两位数乘法') >= 0 || k.indexOf('多位数乘法') >= 0 || type === 'areaModel') return 'areaModelAnim';
     return type;
+  },
+
+  // ===== modelFamily 到分步渲染器的映射 =====
+  _getStepRenderer(modelFamily){
+    const map = {
+      'baseTenBlocks': 'baseTenStep',
+      'barModel': 'barModelStep',
+      'areaModel': 'areaModelStep',
+      'numberBond': 'numberBondStep',
+      'fractionModel': 'fractionStripStep',
+      'numberLine': 'numberLineStep',
+      'geometryModel': 'geometryStep',
+    };
+    return map[modelFamily] || null;
+  },
+
+  // 反向映射：从分步渲染器名获取模型家族名
+  _getModelFamilyFromStep(stepRenderer){
+    const map = {
+      'baseTenStep': 'baseTenBlocks',
+      'barModelStep': 'barModel',
+      'areaModelStep': 'areaModel',
+      'numberBondStep': 'numberBond',
+      'fractionStripStep': 'fractionModel',
+      'numberLineStep': 'numberLine',
+      'geometryStep': 'geometryModel',
+    };
+    return map[stepRenderer] || '';
+  },
+
+  // 统一获取模型家族名（供外部调用，处理 modelFamily 和知识点路由）
+  _resolveModelFamily(problem){
+    if(!problem) return '';
+    if(problem.modelFamily) return problem.modelFamily;
+    const resolved = this._resolveType(problem.visualType, problem.visualData, problem);
+    const family = this._getModelFamilyFromStep(resolved);
+    if(family) return family;
+    return resolved;
+  },
+
+  // ===== 分步动态演示入口（用于教学中的分步动画播放）=====
+  // modelFamily: 模型家族名称
+  // data: 渲染数据
+  // step: 当前步数（1-3）
+  renderStep(modelFamily, data, step){
+    const renderer = this._getStepRenderer(modelFamily);
+    if(!renderer || typeof this[renderer] !== 'function'){
+      return `<div style="padding:20px;text-align:center;color:var(--text-2)">该模型暂不支持分步演示</div>`;
+    }
+    this._injectStepStyles();
+    return this[renderer].call(this, data, step || 1);
   },
 
   // ===== 颜色工具 =====
@@ -108,9 +178,16 @@ window.MathVisualV5 = {
   },
 
   // 2. 面积模型 —— 两位数乘法
-  // data: {a, b, parts:[4个部分值], result}
+  // data: {a, b, parts:[4个部分值], result} 或 {parts:[{val},{val}]}
   areaModel(data){
-    const {a,b,parts,result} = data;
+    let {a,b,parts,result} = data;
+    // 兼容 parts 格式：从 parts 数组提取 a, b
+    if((a == null || b == null) && data.parts && data.parts.length >= 2){
+      a = data.parts[0].val;
+      b = data.parts[1].val;
+    }
+    if(a == null) a = 23;
+    if(b == null) b = 15;
     const aT=Math.floor(a/10)*10, aO=a%10;
     const bT=Math.floor(b/10)*10, bO=b%10;
     const sc=13;
@@ -722,7 +799,15 @@ window.MathVisualV5 = {
 
   // 引擎7：数位条块进位动画（二下/三年级进位加减法）
   baseTenBlocks(data){
-    const a = data.a || 38, b = data.b || 45, total = data.total || 83;
+    // 兼容 parts 格式（从题库传入的 {total, parts:[{val},{val}]} ）
+    let a = data.a, b = data.b;
+    if((a == null || b == null) && data.parts && data.parts.length >= 2){
+      a = data.parts[0].val;
+      b = data.parts[1].val;
+    }
+    a = a || 38;
+    b = b || 45;
+    const total = data.total != null ? data.total : a + b;
     const op = data.op || '+';
     const aTens=Math.floor(a/10), aOnes=a%10, bTens=Math.floor(b/10), bOnes=b%10;
     const sumTens=Math.floor(total/10), sumOnes=total%10;
@@ -1016,5 +1101,356 @@ window.MathVisualV5 = {
     return `<div class="mv-wrap mv-area-anim">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
     </div>`;
+  },
+
+  // ===== 分步动态演示引擎：6大模型家族的分步动画 =====
+  // step 从 1 开始（1=情境呈现, 2=动手操作, 3=发现规律, 4=形成概念, 5=灵活运用）
+
+  // 分步1：条形模型 — 自适应缩放，支持任意位数
+  barModelStep(data, step){
+    // 兼容 parts 格式
+    let a = data.a, b = data.b;
+    if((a == null || b == null) && data.parts && data.parts.length >= 2){
+      a = data.parts[0].val;
+      b = data.parts[1].val;
+    }
+    a = a || 12; b = b || 8;
+    const total = a + b;
+    const W=500, H=180;
+    const padL=30, padR=30, availW=W-padL-padR;
+    const scale = total > 0 ? availW / total : 1;
+    const barW_a = a * scale;
+    const barW_b = b * scale;
+    const barH = 26, barGap = 12, barY = 52;
+    const diff = Math.abs(a - b);
+    const diffW = diff * scale;
+    const isLarge = total > 99;
+    const title = isLarge ? `条形模型 · 第${step}/3步（${a} + ${b} = ${total}）` : `条形模型 · 第${step}/3步`;
+    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">${title}</text>`;
+    // 第1步：两条独立条形
+    if(step >= 1){
+      // 第一条 (a)
+      svg+=`<rect x="${padL}" y="${barY}" width="${Math.max(barW_a,2)}" height="${barH}" rx="6" fill="#00A896" fill-opacity="0.45" stroke="#00A896" stroke-width="2" class="mv-bar" style="animation:mvBarIn .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${padL+Math.max(barW_a/2,8)}" y="${barY+barH/2+5}" text-anchor="middle" font-size="${barW_a>30?12:10}" font-weight="800" fill="#00A896">${a}</text>`;
+    }
+    // 第2步：第二条 + 合并视觉
+    if(step >= 2){
+      const bar2Y = barY + barH + barGap;
+      svg+=`<rect x="${padL}" y="${bar2Y}" width="${Math.max(barW_b,2)}" height="${barH}" rx="6" fill="#F5B800" fill-opacity="0.45" stroke="#F5B800" stroke-width="2" class="mv-bar" style="animation:mvBarIn .4s .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${padL+Math.max(barW_b/2,8)}" y="${bar2Y+barH/2+5}" text-anchor="middle" font-size="${barW_b>30?12:10}" font-weight="800" fill="#1E3A5F">${b}</text>`;
+    }
+    // 第3步：总和 + 差量标注
+    if(step >= 3){
+      const sumY = barY + barH*2 + barGap*2 + 14;
+      // 合并后的总长
+      svg+=`<rect x="${padL}" y="${sumY}" width="${Math.max(barW_a+barW_b,4)}" height="${barH}" rx="6" fill="url(#mvGrad)" fill-opacity="0.5" stroke="#1E3A5F" stroke-width="2" class="mv-bar-sum" style="animation:mvBarGrow .5s .6s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      // 渐变定义
+      svg=`<defs><linearGradient id="mvGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00A896"/><stop offset="100%" stop-color="#F5B800"/></linearGradient></defs>`+svg;
+      svg+=`<text x="${padL+Math.max((barW_a+barW_b)/2,10)}" y="${sumY+barH/2+5}" text-anchor="middle" font-size="${barW_a+barW_b>60?14:11}" font-weight="800" fill="#1E3A5F">${a} + ${b} = ${total}</text>`;
+      // 差量指示（a > b 时高亮多出部分）
+      if(diff > 0 && a > b){
+        svg+=`<line x1="${padL+barW_b}" y1="${barY-6}" x2="${padL+barW_b}" y2="${barY+barH+barGap+barH+6}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="3,2" class="mv-diff-line" style="animation:mvFadeIn .4s .8s both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<text x="${padL+barW_b+diffW/2}" y="${barY-10}" text-anchor="middle" font-size="10" font-weight="700" fill="#FB923C">多${diff}</text>`;
+      }
+    }
+    return `<div class="mv-wrap mv-step-bar">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步2：面积模型 — 自适应格子大小，支持任意位数乘法
+  areaModelStep(data, step){
+    // 兼容格式：从 parts 数组或直接 a,b 参数获取
+    let a = data.a, b = data.b;
+    if((a == null || b == null) && data.parts && data.parts.length >= 2){
+      a = data.parts[0].val;
+      b = data.parts[1].val;
+    }
+    a = a || 23; b = b || 15;
+    const aTens=Math.floor(a/10), aOnes=a%10;
+    const bTens=Math.floor(b/10), bOnes=b%10;
+    const total=a*b;
+    const W=480, H=300;
+    const ox=50, oy=40;
+    // 自适应格子大小：根据位数计算
+    const maxDim = Math.max(a, b);
+    const baseCell = maxDim > 99 ? 8 : maxDim > 9 ? 16 : 22;
+    const cellW = Math.max(baseCell, 6);
+    const cellH = Math.max(baseCell - 2, 5);
+    const gW=(aTens*10+aOnes)*cellW;
+    const gH=(bTens*10+bOnes)*cellH;
+    const cutX=ox+aTens*10*cellW;
+    const cutY=oy+bTens*10*cellH;
+    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">面积模型 · 第${step}/3步（${a}×${b}=${total}）</text>`;
+    // 第1步：整体矩形
+    if(step>=1){
+      svg+=`<rect x="${ox}" y="${oy}" width="${gW}" height="${gH}" fill="rgba(30,58,95,.06)" stroke="#1E3A5F" stroke-width="2" rx="2" class="mv-total" style="animation:mvFadeIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${ox+gW/2}" y="${oy+gH+16}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">大矩形 = ${a}×${b}</text>`;
+    }
+    // 第2步：切分线
+    if(step>=2){
+      svg+=`<line x1="${cutX}" y1="${oy}" x2="${cutX}" y2="${oy+gH}" stroke="#E8A0BF" stroke-width="2.5" stroke-dasharray="8,4" class="mv-cut-v" style="animation:mvLineIn .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<line x1="${ox}" y1="${cutY}" x2="${ox+gW}" y2="${cutY}" stroke="#E8A0BF" stroke-width="2.5" stroke-dasharray="8,4" class="mv-cut-h" style="animation:mvLineIn .4s .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    // 第3步：四部分亮起
+    if(step>=3){
+      const pTensTens = aTens*bTens*100;
+      const pOnesTens = aOnes*bTens*10;
+      const pTensOnes = aTens*bOnes*10;
+      const pOnesOnes = aOnes*bOnes;
+      const parts=[
+        {x:ox,       y:oy,       w:aTens*10*cellW, h:bTens*10*cellH, v:pTensTens, c:'#00A896', label:aTens+'0×'+bTens+'0='+pTensTens},
+        {x:cutX,     y:oy,       w:aOnes*cellW,    h:bTens*10*cellH, v:pOnesTens, c:'#F5B800', label:aOnes+'×'+bTens+'0='+pOnesTens},
+        {x:ox,       y:cutY,     w:aTens*10*cellW, h:bOnes*cellH,    v:pTensOnes, c:'#FB923C', label:aTens+'0×'+bOnes+'='+pTensOnes},
+        {x:cutX,     y:cutY,     w:aOnes*cellW,    h:bOnes*cellH,    v:pOnesOnes, c:'#E8A0BF', label:aOnes+'×'+bOnes+'='+pOnesOnes},
+      ];
+      parts.forEach((p,i)=>{
+        svg+=`<rect x="${p.x}" y="${p.y}" width="${Math.max(p.w,2)}" height="${Math.max(p.h,2)}" fill="${p.c}" fill-opacity="0.4" class="mv-part" style="animation:mvPop .4s ${i*0.2}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        const fontSize = Math.min(10, Math.max(7, p.w/10));
+        svg+=`<text x="${p.x+p.w/2}" y="${p.y+p.h/2+4}" text-anchor="middle" font-size="${fontSize}" font-weight="700" fill="#1E3A5F">${p.v}</text>`;
+      });
+      // 汇总公式
+      const formulaY = oy + gH + 38;
+      svg+=`<rect x="30" y="${formulaY-12}" width="${W-60}" height="48" fill="#1E3A5F" rx="10"/>`;
+      svg+=`<text x="${W/2}" y="${formulaY+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">${pTensTens} + ${pOnesTens} + ${pTensOnes} + ${pOnesOnes} = ${total}</text>`;
+      svg+=`<text x="${W/2}" y="${formulaY+22}" text-anchor="middle" font-size="10" font-weight="600" fill="rgba(255,255,255,.7)">(${aTens}0×${bTens}0) + (${aOnes}×${bTens}0) + (${aTens}0×${bOnes}) + (${aOnes}×${bOnes})</text>`;
+    }
+    return `<div class="mv-wrap mv-step-area">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步3：数字分解 — 从"整体"到"拆分成两部分"到"组合回整体"
+  numberBondStep(data, step){
+    let total = data.total || 15;
+    // 兼容两种格式：[8,7] 或 [{val:386},{val:247}]
+    let parts = data.parts || [8, 7];
+    if(parts.length > 0 && typeof parts[0] === 'object'){
+      parts = parts.map(p => p.val);
+    }
+    if(total == null && parts.length >= 2) total = parts[0] + parts[1];
+    const W=520, H=240;
+    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">数字分解 · 第${step}/3步</text>`;
+    // 中心节点
+    const cx=W/2, cy=100;
+    if(step>=1){
+      // 整体数字
+      svg+=`<circle cx="${cx}" cy="${cy}" r="40" fill="#00A896" fill-opacity="0.2" stroke="#00A896" stroke-width="2.5" class="mv-center" style="animation:mvPop .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${cx}" y="${cy+6}" text-anchor="middle" font-size="20" font-weight="800" fill="#00A896">${total}</text>`;
+      svg+=`<text x="${cx}" y="${cy+58}" text-anchor="middle" font-size="11" fill="#1E3A5F">整体</text>`;
+    }
+    if(step>=2){
+      // 连接线
+      const lx=cx-140, ly=cy+50;
+      const rx=cx+140, ry=cy+50;
+      svg+=`<line x1="${cx}" y1="${cy+30}" x2="${lx}" y2="${ly}" stroke="#E8A0BF" stroke-width="2" class="mv-line" style="animation:mvLineIn .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<line x1="${cx}" y1="${cy+30}" x2="${rx}" y2="${ry}" stroke="#E8A0BF" stroke-width="2" class="mv-line" style="animation:mvLineIn .4s .2s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      // 左部分
+      svg+=`<circle cx="${lx}" cy="${ly}" r="32" fill="#F5B800" fill-opacity="0.25" stroke="#F5B800" stroke-width="2" class="mv-part1" style="animation:mvPop .4s .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${lx}" y="${ly+6}" text-anchor="middle" font-size="16" font-weight="800" fill="#1E3A5F">${parts[0]}</text>`;
+      // 右部分
+      svg+=`<circle cx="${rx}" cy="${ry}" r="32" fill="#FB923C" fill-opacity="0.25" stroke="#FB923C" stroke-width="2" class="mv-part2" style="animation:mvPop .4s .6s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${rx}" y="${ry+6}" text-anchor="middle" font-size="16" font-weight="800" fill="#1E3A5F">${parts[1]}</text>`;
+    }
+    if(step>=3){
+      // 汇总公式
+      svg+=`<rect x="${cx-100}" y="${cy+110}" width="200" height="36" fill="#1E3A5F" rx="8" class="mv-formula" style="animation:mvFadeIn .4s .8s both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${cx}" y="${cy+134}" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">${parts[0]} + ${parts[1]} = ${total}</text>`;
+    }
+    return `<div class="mv-wrap mv-step-bond">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步4：分数模型 — 从"整体"到"等分成份"到"涂色表示分数"
+  fractionStripStep(data, step){
+    const num=data.num||3, den=data.den||4;
+    const W=520, H=160;
+    const barW=380, barH=50, ox=70, oy=60;
+    const unitW=barW/den;
+    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">分数 ${num}/${den} · 第${step}/3步</text>`;
+    if(step>=1){
+      // 整体条
+      svg+=`<rect x="${ox}" y="${oy}" width="${barW}" height="${barH}" rx="8" fill="rgba(0,168,150,.15)" stroke="#1E3A5F" stroke-width="2" class="mv-whole" style="animation:mvBarIn .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${ox+barW/2}" y="${oy+barH+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">1（整体）</text>`;
+    }
+    if(step>=2){
+      // 分割线
+      for(let i=1;i<den;i++){
+        const x=ox+i*unitW;
+        svg+=`<line x1="${x}" y1="${oy}" x2="${x}" y2="${oy+barH}" stroke="#1E3A5F" stroke-width="1.5" class="mv-divider" style="animation:mvLineIn .3s ${i*0.08}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      }
+      // 份数标注
+      for(let i=0;i<den;i++){
+        const x=ox+i*unitW+unitW/2;
+        svg+=`<text x="${x}" y="${oy+barH+18}" text-anchor="middle" font-size="10" fill="#1E3A5F">${i+1}/${den}</text>`;
+      }
+    }
+    if(step>=3){
+      // 涂色
+      for(let i=0;i<num;i++){
+        const x=ox+i*unitW;
+        const color=i===0?'#00A896':i===1?'#F5B800':i===2?'#FB923C':'#E8A0BF';
+        svg+=`<rect x="${x+2}" y="${oy+2}" width="${unitW-4}" height="${barH-4}" rx="6" fill="${color}" fill-opacity="0.6" class="mv-shaded" style="animation:mvBarGrow .4s ${i*0.15}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      }
+      // 分数标注
+      svg+=`<text x="${ox+barW/2}" y="${oy+barH+40}" text-anchor="middle" font-size="18" font-weight="800" fill="#00A896">涂色 = ${num}/${den}</text>`;
+    }
+    return `<div class="mv-wrap mv-step-frac">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步5：数轴 — 从"轴线"到"刻度"到"标注点"
+  numberLineStep(data, step){
+    const points=data.points||[{pos:0.75,label:'3/4'}];
+    const minVal=data.min||0, maxVal=data.max||1;
+    const W=560, H=140;
+    const left=50, right=W-50, axisY=70;
+    const scale=v=>left+((v-minVal)/(maxVal-minVal))*(right-left);
+    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">数轴 · 第${step}/3步</text>`;
+    if(step>=1){
+      // 轴线
+      svg+=`<line x1="${left}" y1="${axisY}" x2="${right}" y2="${axisY}" stroke="#1E3A5F" stroke-width="2.5" stroke-linecap="round" class="mv-axis" style="animation:mvLineIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<polygon points="${right},${axisY} ${right-8},${axisY-5} ${right-8},${axisY+5}" fill="#1E3A5F"/>`;
+      // 端点
+      svg+=`<text x="${left}" y="${axisY+22}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${minVal}</text>`;
+      svg+=`<text x="${right}" y="${axisY+22}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${maxVal}</text>`;
+    }
+    if(step>=2){
+      // 刻度（按 step=0.25）
+      const tickStep=data.step||0.25;
+      for(let v=minVal;v<=maxVal+0.001;v+=tickStep){
+        const x=scale(v);
+        svg+=`<line x1="${x}" y1="${axisY-6}" x2="${x}" y2="${axisY+6}" stroke="#1E3A5F" stroke-width="1.5" class="mv-tick" style="animation:mvFadeIn .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<text x="${x}" y="${axisY+20}" text-anchor="middle" font-size="10" fill="#1E3A5F">${v===Math.floor(v)?String(v):v.toFixed(2).replace(/\.?0+$/,'')}</text>`;
+      }
+    }
+    if(step>=3){
+      // 标注点（逐个飞入）
+      points.forEach((p,i)=>{
+        const x=scale(p.pos);
+        const col=this._palette(i);
+        svg+=`<circle cx="${x}" cy="${axisY}" r="8" fill="${col}" stroke="#fff" stroke-width="2" class="mv-dot" style="animation:mvPop .5s ${i*0.3}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<text x="${x}" y="${axisY-18}" text-anchor="middle" font-size="13" font-weight="800" fill="${col}">${this._escape(p.label)}</text>`;
+      });
+    }
+    return `<div class="mv-wrap mv-step-line">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步6：几何 — 从"图形"到"高/底标注"到"割补动画"
+  geometryStep(data, step){
+    const shape=data.shape||'parallelogram';
+    const W=440, H=220;
+    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">几何变换 · 第${step}/3步</text>`;
+    if(shape==='parallelogram'){
+      const ox=80, oy=180, b=200, h=100, off=40;
+      const p1={x:ox,y:oy}, p2={x:ox+b,y:oy}, p3={x:ox+b+off,y:oy-h}, p4={x:ox+off,y:oy-h};
+      if(step>=1){
+        svg+=`<polygon points="${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y} ${p4.x},${p4.y}" fill="#00A896" fill-opacity="0.25" stroke="#00A896" stroke-width="2" class="mv-shape" style="animation:mvFadeIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<text x="${ox+b/2}" y="${oy+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">底</text>`;
+      }
+      if(step>=2){
+        // 高线
+        svg+=`<line x1="${p4.x}" y1="${p4.y}" x2="${p1.x}" y2="${p1.y}" stroke="#FB923C" stroke-width="2.5" stroke-dasharray="6,3" class="mv-height" style="animation:mvLineIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<text x="${p1.x-10}" y="${(p1.y+p4.y)/2+4}" text-anchor="end" font-size="11" font-weight="700" fill="#FB923C">高</text>`;
+        // 左侧三角形阴影
+        svg+=`<polygon points="${p1.x},${p1.y} ${p4.x},${p4.y} ${p4.x},${p1.y}" fill="#FB923C" fill-opacity="0.15" stroke="#FB923C" stroke-width="1" class="mv-tri-left" style="animation:mvFadeIn .4s .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      }
+      if(step>=3){
+        // 右侧矩形（割补后）
+        const rx=ox+b+off+20, ry=oy-h;
+        svg+=`<rect x="${rx}" y="${ry}" width="${b}" height="${h}" fill="#00A896" fill-opacity="0.3" stroke="#00A896" stroke-width="2" class="mv-result" style="animation:mvPop .5s .6s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<text x="${rx+b/2}" y="${ry+h+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">等面积矩形</text>`;
+        svg+=`<rect x="${60}" y="${H-30}" width="${W-120}" height="22" fill="#1E3A5F" rx="11"/>`;
+        svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">平行四边形面积 = 底 × 高</text>`;
+      }
+    }
+    return `<div class="mv-wrap mv-step-geo">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步7：数位条块 — 从"个位堆叠"到"聚拢成十"到"进位呈现"
+  baseTenStep(data, step){
+    // 兼容 parts 格式：提取个位数字进行进位演示
+    let ones=data.ones, tens=data.tens;
+    if(ones == null && data.parts && data.parts.length >= 2){
+      const a = data.parts[0].val;
+      const b = data.parts[1].val;
+      const aOnes = a % 10;
+      const bOnes = b % 10;
+      ones = aOnes + bOnes;
+      tens = Math.floor(ones / 10);
+    }
+    ones = ones || 13;
+    tens = tens != null ? tens : 1;
+    const W=560, H=200;
+    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">数位条块 · 第${step}/3步（${ones}→${tens||Math.floor(ones/10)}${ones%10}）</text>`;
+    // 个位方块区
+    const startX=80, startY=55, blockSize=28, gap=4;
+    if(step>=1){
+      // 全部个位方块
+      for(let i=0;i<ones;i++){
+        const col=i%10, row=Math.floor(i/10);
+        const x=startX+col*(blockSize+gap);
+        const y=startY+row*(blockSize+gap);
+        const color=i>=10?'#FB923C':'#00A896';
+        svg+=`<rect x="${x}" y="${y}" width="${blockSize}" height="${blockSize}" rx="4" fill="${color}" fill-opacity="0.5" stroke="${color}" stroke-width="1.5" class="mv-block" style="animation:mvPop .3s ${i*0.06}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      }
+      // 计数
+      const totalOnes=ones;
+      svg+=`<text x="${startX+(Math.min(ones,10)*(blockSize+gap))/2}" y="${startY+blockSize+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${totalOnes}个一</text>`;
+    }
+    if(step>=2){
+      // 打包线（圈出10个）
+      svg+=`<rect x="${startX-4}" y="${startY-4}" width="${10*(blockSize+gap)+4}" height="${blockSize+8}" rx="8" fill="none" stroke="#FB923C" stroke-width="2.5" stroke-dasharray="5,3" class="mv-pack" style="animation:mvFadeIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${startX+5*(blockSize+gap)}" y="${startY-10}" text-anchor="middle" font-size="10" font-weight="700" fill="#FB923C">10个一 = 1个十</text>`;
+    }
+    if(step>=3){
+      // 十位条出现
+      const tenBarX=startX, tenBarY=startY+50;
+      svg+=`<rect x="${tenBarX}" y="${tenBarY}" width="${10*(blockSize+gap)}" height="${blockSize+4}" rx="6" fill="#FB923C" fill-opacity="0.4" stroke="#FB923C" stroke-width="2" class="mv-ten-bar" style="animation:mvBarGrow .5s .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${tenBarX+5*(blockSize+gap)}" y="${tenBarY+blockSize/2+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">1个十</text>`;
+      // 剩余个位
+      const remOnes=ones%10;
+      if(remOnes>0){
+        const remStartX=startX;
+        const remStartY=tenBarY+blockSize+16;
+        for(let i=0;i<remOnes;i++){
+          const x=remStartX+i*(blockSize+gap);
+          svg+=`<rect x="${x}" y="${remStartY}" width="${blockSize}" height="${blockSize}" rx="4" fill="#00A896" fill-opacity="0.5" stroke="#00A896" stroke-width="1.5" class="mv-rem-block" style="animation:mvPop .3s .6s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        }
+        svg+=`<text x="${remStartX+(remOnes*(blockSize+gap))/2}" y="${remStartY+blockSize+16}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${remOnes}个一</text>`;
+      }
+      // 最终结果
+      const resultStr=Math.floor(ones/10)+'个十'+(remOnes>0?' + '+remOnes+'个一':'');
+      svg+=`<rect x="${W/2-80}" y="${H-32}" width="160" height="24" fill="#1E3A5F" rx="12"/>`;
+      svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">结果：${ones} = ${resultStr}</text>`;
+    }
+    return `<div class="mv-wrap mv-step-base10">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+
+  // 分步动画CSS注入（确保所有动画类都有对应样式）
+  _injectStepStyles(){
+    if(document.getElementById('mvStepStyles')) return;
+    const css = `<style id="mvStepStyles">
+      @keyframes mvBarIn{from{width:0;opacity:.3}to{width:var(--w,100%);opacity:1}}
+      @keyframes mvBarGrow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1)}}
+      @keyframes mvFadeIn{from{opacity:0}to{opacity:1}}
+      @keyframes mvLineIn{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+      @keyframes mvFillIn{from{opacity:0;transform:scale(.8)}to{opacity:.4;transform:scale(1)}}
+      @keyframes mvPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.2);opacity:1}100%{transform:scale(1);opacity:1}}
+      @keyframes mvPointIn{from{r:0;opacity:0}to{r:6;opacity:1}}
+      @keyframes mvSlideIn{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
+      .mv-wrap{position:relative;overflow:hidden}
+      .mv-wrap svg{display:block;width:100%;height:auto}
+      @media (max-width:640px){.mv-wrap svg{max-height:200px}}
+    </style>`;
+    document.head.insertAdjacentHTML('beforeend', css);
   }
 };

@@ -9,6 +9,59 @@ window.MathFlowV5 = {
   // ===== 会话状态（断点续学） =====
   _sess: null,
 
+  // ===== Neriage 独立错误库：按知识点分类的典型错误池 =====
+  // 设计原则：错误解法与用户数据无关，每次从错误库随机抽取
+  _ERROR_LIB: {
+    '加减法': [
+      { answer:'25', reason:'个位5+7=12，只写了2忘了进位', fix:'个位相加满十要向十位进1，十位3+4+1=8' },
+      { answer:'58', reason:'把减法当成加法做了', fix:'注意运算符号，减法要退位' },
+      { answer:'33', reason:'数位没对齐，个位和十位混加了', fix:'相同数位才能直接相加减' },
+    ],
+    '乘法': [
+      { answer:'18', reason:'乘法口诀记错了，6×3应该是18但写成了16', fix:'背熟乘法口诀表，6×3=18' },
+      { answer:'36', reason:'忘记进位，个位4×3=12只写了2', fix:'个位相乘满十要向十位进1' },
+      { answer:'24', reason:'把乘法当加法做了', fix:'注意区分乘号和加号' },
+    ],
+    '除法': [
+      { answer:'5余3', reason:'商的位置写错了，应该是6余1', fix:'从高位除起，不够商1就看前两位' },
+      { answer:'3', reason:'余数比除数大了，还可以再商1', fix:'余数必须比除数小' },
+      { answer:'12', reason:'试商偏大减不够，直接用除数改商', fix:'试商要合适，不够减就调小' },
+    ],
+    '分数': [
+      { answer:'2/6', reason:'分子分母同时加了相同的数', fix:'分数相加要先通分，分母不变分子相加' },
+      { answer:'3/4', reason:'把分子分母直接相加', fix:'异分母分数相加必须先通分' },
+      { answer:'5/8', reason:'约分没约到底，还可以继续约', fix:'约分到分子分母互质为止' },
+    ],
+    '几何': [
+      { answer:'18cm', reason:'周长和面积搞混了，这是求面积不是周长', fix:'面积用底×高，周长是各边相加' },
+      { answer:'24cm', reason:'忘记除以2，三角形面积=底×高÷2', fix:'三角形面积公式要记得除以2' },
+      { answer:'20cm²', reason:'单位写错了，面积单位应该是平方厘米', fix:'面积用平方单位，周长用长度单位' },
+    ],
+    '数位': [
+      { answer:'400', reason:'百位上的数乘100应该是400，但写成了40', fix:'百位的计数单位是100不是10' },
+      { answer:'5000', reason:'进率搞混了，百位到千位应该是10倍但写成了100倍', fix:'相邻数位进率是10' },
+      { answer:'3', reason:'把万以内的数读成了三位数', fix:'读数时要注意数位顺序' },
+    ],
+    '默认': [
+      { answer:'?', reason:'算错了，可能是运算顺序错了', fix:'按正确的运算顺序重新计算' },
+      { answer:'?', reason:'单位换算错了', fix:'检查单位换算是否正确' },
+      { answer:'?', reason:'审题不清，看错了数字或符号', fix:'仔细读题，圈出关键数字和符号' },
+    ],
+  },
+  // 从错误库按知识点随机抽取一个错误
+  _pickError(knowledge){
+    if(!knowledge) knowledge = '默认';
+    // 模糊匹配知识点
+    const keys = Object.keys(this._ERROR_LIB);
+    let matchedKey = keys.find(k => knowledge.indexOf(k) >= 0);
+    if(!matchedKey){
+      // 反向匹配：检查错误库的key是否在知识点中
+      matchedKey = keys.find(k => k !== '默认' && k.indexOf(knowledge) >= 0);
+    }
+    const pool = this._ERROR_LIB[matchedKey || '默认'];
+    return pool[Math.floor(Math.random() * pool.length)];
+  },
+
   // ===== 主流程控制器：初始化会话，返回当前阶段 HTML =====
   start(problem, profileId){
     // 断点续学：若已有未完成会话且题目一致，直接恢复
@@ -34,14 +87,86 @@ window.MathFlowV5 = {
       neriageErrorClicked: false, // Neriage错误卡片是否已点击
       russianIdx: 0,            // 俄罗斯追问当前索引
       parentSettings: (typeof ParentPanel!=='undefined' && ParentPanel.getSettings) ? ParentPanel.getSettings() : {},
+      studyMode: null,          // 学习模式：null=未选择, 'beginner'=刚学, 'intermediate'=学过但卡住, 'advanced'=已熟练
+      rmeTimeoutTimer: null,    // RME超时定时器
     };
     // 若有到期复习项，先进入昨日回顾
     if(profileId && typeof SpacedReview!=='undefined' && SpacedReview.getDue){
       const due = SpacedReview.getDue(profileId).filter(e=>e.type==='math');
       if(due.length>0) this._sess.stage = 'review';
     }
+    // 检查是否需要显示学习状态选择
+    const mathProfile = (S && S.math && S.math.mathProfile) || null;
+    if(!mathProfile){
+      // 首次使用，显示选择弹窗
+      return this._renderStudyModeChoice(problem);
+    }
+    // 应用已保存的学习模式
+    this._applyStudyMode(mathProfile.studyMode);
     this._saveProgress();
     return this.renderCurrent();
+  },
+
+  // ===== 学习状态选择弹窗 =====
+  _renderStudyModeChoice(problem){
+    const W=520;
+    return `<div class="cpa-layer" style="border-left-color:var(--navy);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--navy);color:#fff">欢迎使用 · 选择你的学习方式</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">我们会根据你的选择调整学习路径</div>
+      <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;padding:14px 16px;background:var(--teal-soft);border-radius:12px;margin-bottom:16px">
+        📖 今天我们要学习：${this._escape(problem.title || problem.question || '这道题目')}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+        <div onclick="MathFlowV5._chooseStudyMode('beginner')" style="padding:14px 16px;background:var(--teal-soft);border:2px solid var(--teal);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--teal)';this.style.color='#fff'" onmouseout="this.style.background='var(--teal-soft)';this.style.color='inherit'">
+          <div style="font-size:14px;font-weight:700;color:var(--teal-700)">🌟 刚学这个知识点</div>
+          <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">完整学习路径：从情境导入一步步来</div>
+        </div>
+        <div onclick="MathFlowV5._chooseStudyMode('intermediate')" style="padding:14px 16px;background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--yellow)';this.style.color='#fff'" onmouseout="this.style.background='var(--yellow-soft)';this.style.color='inherit'">
+          <div style="font-size:14px;font-weight:700;color:var(--navy)">💪 学过但不太会</div>
+          <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">跳过RME建模，直接看别人的解法</div>
+        </div>
+        <div onclick="MathFlowV5._chooseStudyMode('advanced')" style="padding:14px 16px;background:var(--coral-soft);border:2px solid var(--coral);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--coral)';this.style.color='#fff'" onmouseout="this.style.background='var(--coral-soft)';this.style.color='inherit'">
+          <div style="font-size:14px;font-weight:700;color:var(--coral)">🚀 已经很熟练了</div>
+          <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">跳过基础环节，直接挑战俄罗斯追问</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-3);text-align:center">💡 以后可以在"设置"中随时修改学习模式</div>
+    </div>`;
+  },
+  // 选择学习模式
+  _chooseStudyMode(mode){
+    // 保存到用户状态
+    if(S && S.math){
+      S.math.mathProfile = { studyMode: mode, setAt: Date.now() };
+      if(typeof saveState==='function') saveState();
+    }
+    this._applyStudyMode(mode);
+    this._saveProgress();
+    // 重新渲染当前阶段
+    const html = this.renderCurrent();
+    const container = document.querySelector('.stage-container') || document.getElementById('stageContent');
+    if(container){
+      container.innerHTML = html;
+    } else {
+      // 如果找不到容器，直接触发advance到对应阶段
+      this.advance(this._sess.stage);
+    }
+  },
+  // 应用学习模式到会话流程
+  _applyStudyMode(mode){
+    if(!this._sess) return;
+    this._sess.studyMode = mode;
+    // 根据模式调整初始阶段
+    if(mode === 'intermediate'){
+      // 学过但卡住：跳过RME，从引导发现开始
+      this._sess.stage = 'discover';
+    } else if(mode === 'advanced'){
+      // 已熟练：跳过RME+引导发现，直接从Neriage开始
+      this._sess.stage = 'neriage';
+    } else {
+      // 刚学：完整路径
+      this._sess.stage = 'warmup';
+    }
   },
 
   // ===== 当前阶段渲染分发 =====
@@ -189,57 +314,84 @@ window.MathFlowV5 = {
   },
 
   // ============================================================
-  // 阶段 2：RME 选择题建模（4 分钟）
+  // 阶段 2：RME 自我建模（4 分钟）—— 情境题 + 数字输入，不评判对错
   // ============================================================
   renderRMEChoice(problem){
-    const choices = problem.rmeChoices || [
-      { label:'画条形图', desc:'画条形表示数量关系', correct:true },
-      { label:'列算式', desc:'直接列算式计算', correct:true },
-      { label:'画圆圈/方块', desc:'画圆圈代表每个物体', correct:false }
-    ];
+    const scene = this._escape(problem.scene || '');
+    const hasRMEInput = this._sess.rmeAnswer != null;
+    // 启动动态超时检测（8分钟）
+    this._startRMETimeout();
     return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 2 · RME 选择题建模</span>
-      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">✏️ 4 分钟 · 先纸上建模，再对照标准</div>
+      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 2 · RME 自我建模</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">✏️ 4 分钟 · 在纸上画图或列算式，不用电脑</div>
       <div style="padding:16px 18px;background:linear-gradient(135deg,var(--teal-soft),#fff);border-radius:14px;border:1px solid rgba(0,168,150,.15);margin-bottom:14px">
-        <div style="font-size:12px;color:var(--teal-700);font-weight:700;margin-bottom:8px">📖 读题，在纸上画图或列算式</div>
-        <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7">${this._escape(problem.scene)}</div>
-        <div style="font-size:13px;color:var(--text-2);margin-top:8px">💡 想好怎么表示数量关系了吗？点"我算好了"</div>
+        <div style="font-size:12px;color:var(--teal-700);font-weight:700;margin-bottom:8px">📖 仔细读题，在纸上用你自己的方法表示数量关系</div>
+        <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7">${scene}</div>
       </div>
-      <div style="text-align:center;margin-bottom:14px">
-        <button onclick="MathFlowV5._rmeShowChoices()" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,168,150,.3)">我算好了 →</button>
-      </div>
-      <div id="v5RMEChoices" style="display:none">
-        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px">🤔 我会用什么方法建模？</div>
-        ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._rmeSelect(this,${i},${choices.length})" style="padding:14px 16px;margin-bottom:8px;border:2px solid var(--ink-100);border-radius:12px;cursor:pointer;transition:all .2s">
-          <div style="font-size:15px;font-weight:700;color:var(--navy)">${this._escape(c.label)}</div>
-          <div style="font-size:13px;color:var(--text-2);margin-top:4px">${this._escape(c.desc)}</div>
-        </div>`).join('')}
-        <div id="v5RMEFeedback" style="margin-top:12px"></div>
-      </div>
+      ${hasRMEInput ? `<div style="padding:14px;background:var(--teal-soft);border-radius:12px;border-left:4px solid var(--teal);font-size:14px;color:var(--teal-700);font-weight:700">✅ 你提交了答案：${this._sess.rmeAnswer}。<span style="font-weight:400">现在看看老师是怎么用图形表示的吧！</span></div>` : `
+      <div style="background:var(--yellow-soft);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+        <div style="font-size:13px;color:var(--navy);font-weight:600;margin-bottom:8px">💡 想好答案了吗？输入你算出的结果（不用管对不对）</div>
+        <div style="display:flex;gap:8px">
+          <input id="v5RMEAnswer" type="text" placeholder="输入答案..." style="flex:1;padding:12px 14px;border:2px solid var(--ink-100);border-radius:10px;font-size:16px;font-weight:600;color:var(--navy);outline:none" onkeydown="if(event.key==='Enter') MathFlowV5._rmeSubmit()">
+          <button onclick="MathFlowV5._rmeSubmit()" style="padding:12px 20px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-weight:800;cursor:pointer">提交</button>
+        </div>
+      </div>`}
+      <div id="v5RMETimeoutHint" style="display:none;margin-top:12px;padding:12px 14px;background:var(--coral-soft);border-radius:10px;border-left:4px solid var(--coral);font-size:13px;color:var(--coral);line-height:1.7"></div>
+      <div id="v5RMEFeedback" style="margin-top:12px"></div>
     </div>`;
   },
-  _rmeShowChoices(){
-    const el = document.getElementById('v5RMEChoices');
-    if(el) el.style.display = 'block';
+  // RME超时检测（8分钟）
+  _startRMETimeout(){
+    this._clearRMETimeout();
+    if(this._sess.rmeAnswered) return;
+    this._sess.rmeTimeoutTimer = setTimeout(()=>{
+      const hint = document.getElementById('v5RMETimeoutHint');
+      if(hint && !this._sess.rmeAnswered){
+        hint.style.display = 'block';
+        hint.innerHTML = '⏰ 时间差不多了！如果还没想好，可以先输入一个猜测的答案，或者点击下方按钮跳过，直接看讲解。<br><button onclick="MathFlowV5._rmeSkip()" style="margin-top:8px;padding:10px 20px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">跳过建模 →</button>';
+      }
+    }, 8 * 60 * 1000); // 8分钟
   },
-  _rmeSelect(el, idx, total){
-    const container = el.parentElement;
-    container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
-    const problem = this._sess.problem;
-    const choices = problem.rmeChoices || [];
-    const isCorrect = !choices[idx] || choices[idx].correct;
-    el.classList.add(isCorrect?'correct':'wrong');
+  _clearRMETimeout(){
+    if(this._sess && this._sess.rmeTimeoutTimer){
+      clearTimeout(this._sess.rmeTimeoutTimer);
+      this._sess.rmeTimeoutTimer = null;
+    }
+  },
+  // 跳过RME直接进入下一阶段
+  _rmeSkip(){
+    this._clearRMETimeout();
+    this._sess.rmeAnswer = '跳过';
+    this._sess.rmeAnswered = true;
+    this.advance('discover');
+  },
+  _rmeSubmit(){
+    const input = document.getElementById('v5RMEAnswer');
+    if(!input || !input.value.trim()){
+      const fb = document.getElementById('v5RMEFeedback');
+      if(fb) fb.innerHTML = `<div style="padding:10px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:13px;color:var(--coral)">请输入你的答案，哪怕是"?"也没关系</div>`;
+      return;
+    }
+    const answer = input.value.trim();
+    this._sess.rmeAnswer = answer;
+    this._sess.rmeAnswered = true;
     const fb = document.getElementById('v5RMEFeedback');
     if(fb){
-      fb.innerHTML = isCorrect
-        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">✅ 好方法！现在看看标准答案是怎么建模的</div>`
-        : `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">💪 没关系，看看标准答案怎么用图形表示</div>`;
+      fb.innerHTML = `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">${this._rmeSubmitFeedback(answer)}<br><span style="font-size:12px;font-weight:400">（你的答案不会被评判，它只是帮助我们选择最适合你的讲解方式）</span></div>`;
     }
-    this._sess.rmeAnswered = true;
+    // 先更新当前界面显示提交结果，然后跳转
     setTimeout(()=>{
-      // RME完成后进入引导发现
       this.advance('discover');
-    }, 1200);
+    }, 1800);
+  },
+  _rmeSubmitFeedback(answer){
+    const num = parseFloat(answer);
+    const fb = this._sess.rmeFeedback;
+    if(fb) return fb;
+    if(!isNaN(num)){
+      return `收到你的答案 ${answer}！很棒，勇敢尝试本身就是进步。`;
+    }
+    return '收到你的想法！每种思路都值得尊重，让我们看看标准的图形方法。';
   },
 
   // ============================================================
@@ -309,7 +461,8 @@ window.MathFlowV5 = {
     const errors = n.neriateErrors || n.typical_errors || problem.neriageErrors || [];
     const methodA = n.methodA || (alternatives[0] || '标准解法');
     const methodB = n.methodB || (alternatives[1] || '巧算解法');
-    const errorC = n.errorC || (errors.length > 0 ? errors[0] : null);
+    // 优先使用题目指定错误，否则从独立错误库按知识点随机抽取
+    const errorC = n.errorC || (errors.length > 0 ? errors[0] : this._pickError(problem.knowledge));
 
     return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 2.5 · Neriage 多解法+错误诊断</span>
@@ -429,6 +582,14 @@ window.MathFlowV5 = {
   // 阶段 4：数形结合讲解（5 分钟）—— 核心
   // ============================================================
   renderExplain(problem){
+    // 使用 _resolveModelFamily 统一获取模型家族名
+    const modelFamily = (typeof MathVisualV5!=='undefined' && MathVisualV5._resolveModelFamily)
+      ? MathVisualV5._resolveModelFamily(problem)
+      : (problem.modelFamily || problem.visualType);
+    const hasStepRenderer = (typeof MathVisualV5!=='undefined' && MathVisualV5._getStepRenderer)
+      ? !!MathVisualV5._getStepRenderer(modelFamily)
+      : false;
+    const hasModelFamily = hasStepRenderer;
     const visual = (typeof MathVisualV5!=='undefined' && MathVisualV5.render)
       ? MathVisualV5.render(problem.visualType, problem.visualData, problem)
       : '<div class="mv-empty">可视化引擎不可用</div>';
@@ -436,6 +597,12 @@ window.MathFlowV5 = {
     const layers = this._explainLayers(problem);
     const methodName = this._methodName(problem);
     const hasRussian = problem.russianQuestions && problem.russianQuestions.length > 0;
+    const stepControls = hasModelFamily ? `
+      <div id="v5StepControls" style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px">
+        <button onclick="MathFlowV5._prevStep()" style="padding:8px 16px;background:var(--ink-100);color:var(--navy);border:none;border-radius:16px;font-size:13px;font-weight:700;cursor:pointer">← 上一步</button>
+        <span id="v5StepIndicator" style="font-size:13px;font-weight:700;color:var(--navy)">分步演示</span>
+        <button onclick="MathFlowV5._nextStep()" style="padding:8px 16px;background:var(--teal);color:#fff;border:none;border-radius:16px;font-size:13px;font-weight:700;cursor:pointer">下一步 →</button>
+      </div>` : '';
     return `<div class="cpa-layer pictorial" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
       <span class="cpa-tag pictorial">STAGE 4 · 数形结合讲解</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 5 分钟 · 用图形看清这道题的内在结构</div>
@@ -445,6 +612,7 @@ window.MathFlowV5 = {
       <div style="text-align:center;margin-top:8px">
         <button onclick="MathFlowV5._replayVisual()" style="padding:8px 18px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(0,168,150,.3);border-radius:18px;font-size:12px;font-weight:700;cursor:pointer">🎬 重新播放动画</button>
       </div>
+      ${stepControls}
       ${problem.barTranslateLine && problem.barTranslateLine.items ? `
       <div style="margin-top:14px;padding:14px 18px;background:var(--yellow-soft);border-radius:12px;border-left:4px solid var(--yellow)">
         <div style="font-size:12px;font-weight:700;color:var(--yellow-700);margin-bottom:8px">📝 Bar Model 翻译行</div>
@@ -465,6 +633,45 @@ window.MathFlowV5 = {
         <button onclick="MathFlowV5.advance('${hasRussian ? 'russian' : 'askChild'}')" style="padding:12px 28px;background:linear-gradient(135deg,var(--pink),#F4C2D8);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,191,.4)">🙋 ${hasRussian ? '俄罗斯追问 →' : '轮到你提问了 →'}</button>
       </div>
     </div>`;
+  },
+  // ===== 分步演示控制 =====
+  _currentStep: 1,
+  _prevStep(){
+    if(!this._sess || !this._sess.problem) return;
+    if(this._currentStep <= 1) return;
+    this._currentStep--;
+    this._updateStepVisual();
+  },
+  _nextStep(){
+    if(!this._sess || !this._sess.problem) return;
+    if(this._currentStep >= 3){
+      // 完成演示
+      const indicator = document.getElementById('v5StepIndicator');
+      if(indicator) indicator.textContent = '✅ 演示完成！';
+      return;
+    }
+    this._currentStep++;
+    this._updateStepVisual();
+  },
+  _updateStepVisual(){
+    const problem = this._sess.problem;
+    if(!problem) return;
+    if(typeof MathVisualV5 === 'undefined' || !MathVisualV5.renderStep) return;
+    // 使用 _resolveModelFamily 统一获取模型家族名
+    const modelFamily = (MathVisualV5._resolveModelFamily)
+      ? MathVisualV5._resolveModelFamily(problem)
+      : (problem.modelFamily || problem.visualType);
+    if(!MathVisualV5._getStepRenderer(modelFamily)) return;
+    const stepVisual = MathVisualV5.renderStep(modelFamily, problem.visualData, this._currentStep);
+    // 更新可视化区域
+    const wrap = document.querySelector('.mv-wrap');
+    if(wrap){
+      wrap.outerHTML = stepVisual;
+    }
+    const indicator = document.getElementById('v5StepIndicator');
+    if(indicator){
+      indicator.textContent = `第 ${this._currentStep}/3 步`;
+    }
   },
   // 重新播放动画（重置 CSS 动画）
   _replayVisual(){

@@ -1,0 +1,31 @@
+{
+  "current": {
+    "task": "双仓库部署 + 线上验证",
+    "files": [
+      "AGENTS.md",
+      "state.json",
+      "DECISIONS.md",
+      "engine/math-visual-v5.js",
+      "engine/math-flow-v5.js",
+      "index.html"
+    ],
+    "stage": "部署中",
+    "description": "将修复后的数学可视化引擎推送到 GitHub 和 Gitee 仓库"
+  },
+  "next": "测试验证：确认数学可视化分步渲染、英语发音、口语识别等功能正常",
+  "mode": "deploy",
+  "updated": "2026-08-05T17:45:00+08:00",
+  "blockers": [],
+  "completed": [
+    "baseTenBlocks数据格式兼容修复",
+    "_resolveType路由逻辑修复（三位数以上回退）",
+    "barModelStep完全重写（自适应缩放+数值显示）",
+    "areaModelStep完全重写（自适应格子+公式汇总）",
+    "numberBondStep格式兼容修复",
+    "renderExplain/_updateStepVisual统一路由修复",
+    "L1语法校验通过",
+    "L2浏览器验证通过",
+    "对话协作三原则写入AGENTS.md",
+    "创建state.json和DECISIONS.md"
+  ]
+}
