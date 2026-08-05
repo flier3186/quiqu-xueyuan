@@ -1,1 +1,0 @@
-// test arrow function\nconst arr=[1,2,3];\nconst doubled=arr.map(x=>x*2);\nconsole.log(doubled);\n
