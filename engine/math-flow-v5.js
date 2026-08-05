@@ -810,16 +810,23 @@ window.MathFlowV5 = {
     const fb = document.getElementById('v5PracticeFeedback');
     if(fb){
       fb.innerHTML = isCorrect
-        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">✅ 答对了！进入下一题...</div>`
+        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7;margin-bottom:12px">✅ 答对了！</div>`
         : `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 再想想，看下面的解析</div>`;
     }
     if(isCorrect){
       this._sess.practiceIndex++;
-      if(this._sess.practiceIndex >= this._sess.practiceTotal){
-        // 完成所有练习
-        setTimeout(()=>{ this.advance('complete'); }, 1000);
+      // 立即显示下一题按钮，不依赖 setTimeout
+      const nextBtn = document.getElementById('v5PracticeNextBtn');
+      if(nextBtn){
+        nextBtn.style.display = 'block';
       } else {
-        setTimeout(()=>{ this.advance('practice'); }, 1200);
+        // 注入按钮
+        const div = document.createElement('div');
+        div.id = 'v5PracticeNextBtn';
+        div.style.cssText = 'margin-top:12px;display:none';
+        div.innerHTML = `<button onclick="MathFlowV5.advance('practice')" style="width:100%;padding:13px;background:var(--teal);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer">下一题 →</button>`;
+        fb.parentNode.appendChild(div);
+        div.style.display = 'block';
       }
     } else {
       // 答错显示解析
