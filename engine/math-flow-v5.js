@@ -250,6 +250,8 @@ window.MathFlowV5 = {
     const idx = Math.min((this._sess.discoveryStep||0), steps.length-1);
     const step = steps[idx];
     const correctIdx = step.choices.indexOf(step.answer);
+    const nextIdx = idx + 1;
+    const isLastStep = nextIdx >= steps.length;
     return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
       <span class="cpa-tag pictorial">STAGE 2 · 引导发现</span>
       <div style="display:flex;align-items:center;gap:10px;margin:14px 0 8px">
@@ -261,6 +263,9 @@ window.MathFlowV5 = {
         ${step.choices.map((c,i)=>`<div class="wp-choice" data-idx="${i}" onclick="MathFlowV5._discoverAnswer(this,${i},${correctIdx},${idx})">${this._escape(String(c))}</div>`).join('')}
       </div>
       <div id="v5DiscoveryFeedback" style="margin-top:14px"></div>
+      ${isLastStep ? `<div id="v5DiscoveryNextBtn" style="margin-top:16px;display:none">
+        <button onclick="MathFlowV5.advance('${problem.neriageErrors||problem.neriage ? 'neriage' : 'solve'}')" style="width:100%;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer">✦ 进入数形结合</button>
+      </div>` : ''}
     </div>`;
   },
   // 发现阶段答题
