@@ -91,11 +91,9 @@ window.SpeakEngineV5 = {
     return v || null;
   },
 
-  // ===== TTS 朗读（带语调模拟 + 情绪标记）=====
+  // ===== TTS 朗读（带语调模拟 + 情绪标记 + 移动端重试）=====
   speak(text, teacherId){
     if(!('speechSynthesis' in window) || !text) return;
-    // Firefox/Chrome 等无 TTS 引擎时静默返回
-    if(!this._ttsSupported()) return;
     const teacher = this.getTeacher(teacherId);
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -115,32 +113,32 @@ window.SpeakEngineV5 = {
     else { pitch=1.0; }                        // aria：中性
     u.rate = Math.max(0.6, Math.min(1.4, rate));
     u.pitch = pitch;
-    // 等待语音列表就绪（最多等待 3 秒，超时则静默返回）
-    const trySpeak = () => {
+    // 尝试直接播放（部分浏览器即使 voices 为空也能播放默认语音）
+    const doSpeak = () => {
+      try{ speechSynthesis.resume(); }catch(e){}
       const v = this._selectVoice(teacher.voice.preferGender);
       if(v){ try{ u.voice = v; }catch(e){} }
-      try{ speechSynthesis.resume(); }catch(e){}
       speechSynthesis.speak(u);
     };
     const voices = speechSynthesis.getVoices() || [];
-    if(!voices.length || !voices.some(v=>/en/i.test(v.lang))){
-      // 语音未就绪，等待 voiceschanged 事件（最多 3 秒）
+    if(voices.length && voices.some(v=>/en/i.test(v.lang))){
+      // 语音已就绪，直接播放
+      doSpeak();
+    } else {
+      // 移动端/部分浏览器：voices 异步加载，先尝试直接播放，再监听 voiceschanged
+      doSpeak(); // 先试一次（可能成功）
       let spoken = false;
       const handler = () => {
         if(spoken) return;
         speechSynthesis.removeEventListener('voiceschanged', handler);
         spoken = true;
-        trySpeak();
+        doSpeak();
       };
       speechSynthesis.addEventListener('voiceschanged', handler);
-      // 3 秒超时：如果语音仍未就绪，静默返回（不播放）
+      // 5 秒超时：如果 voiceschanged 始终不触发，放弃
       setTimeout(function(){
-        if(!spoken){
-          speechSynthesis.removeEventListener('voiceschanged', handler);
-        }
-      }, 3000);
-    } else {
-      trySpeak();
+        if(!spoken) speechSynthesis.removeEventListener('voiceschanged', handler);
+      }, 5000);
     }
   },
 
