@@ -219,6 +219,78 @@ window.MATH_BY_GRADE['9b'] = {
         "coreLiteracy": "运算能力",
         "difficulty": 2,
         "isKeyTopic": true
+      },
+      {
+        "id": "9B-19",
+        "name": "圆与圆的位置关系",
+        "concept": "外离、外切、相交、内切、内含五种位置关系",
+        "prerequisite": "9B-17 二次函数与几何综合",
+        "extends": "9B-20 圆的切线长定理",
+        "visualStrategy": "圆心距分析",
+        "visualType": "geometry",
+        "coreLiteracy": "分类思想",
+        "difficulty": 3,
+        "isKeyTopic": false
+      },
+      {
+        "id": "9B-20",
+        "name": "圆的切线长定理",
+        "concept": "从圆外一点引圆的两条切线，切线长相等",
+        "prerequisite": "9B-19",
+        "extends": "9B-21 正多边形与圆",
+        "visualStrategy": "切线长",
+        "visualType": "geometry",
+        "coreLiteracy": "推理意识",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9B-21",
+        "name": "正多边形与圆",
+        "concept": "正n边形内角=(n-2)×180°/n，有外接圆和内切圆",
+        "prerequisite": "9B-20",
+        "extends": "9B-22 弧长与扇形面积",
+        "visualStrategy": "正多边形",
+        "visualType": "geometry",
+        "coreLiteracy": "几何直观",
+        "difficulty": 2,
+        "isKeyTopic": false
+      },
+      {
+        "id": "9B-22",
+        "name": "弧长与扇形面积",
+        "concept": "弧长l=nπr/180，扇形面积S=nπr²/360=lr/2",
+        "prerequisite": "9B-21",
+        "extends": "9B-23 圆锥的侧面积",
+        "visualStrategy": "展开图",
+        "visualType": "geometry",
+        "coreLiteracy": "运算能力",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9B-23",
+        "name": "圆锥的侧面积与表面积",
+        "concept": "圆锥侧面积S侧=πrl，表面积=πr²+πrl",
+        "prerequisite": "9B-22",
+        "extends": "9B-24 几何综合与最值",
+        "visualStrategy": "展开图",
+        "visualType": "geometry",
+        "coreLiteracy": "运算能力",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9B-24",
+        "name": "几何综合与最值问题",
+        "concept": "利用函数思想解决几何最值问题",
+        "prerequisite": "9B-23",
+        "extends": "中考总复习",
+        "visualStrategy": "最值分析",
+        "visualType": "numberLine",
+        "coreLiteracy": "函数思想",
+        "difficulty": 3,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -1284,6 +1356,808 @@ window.MATH_BY_GRADE['9b'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "韦达定理：x1+x2=-b/a，x1×x2=c/a",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明解不等式组，已知x+3>5且2x-1<7，他想找出x的取值范围。",
+        "question": "不等式组的解集是什么？",
+        "formula": "x>2且x<4, 解集2<x<4",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": 0,
+          "end": 5,
+          "points": [
+            {
+              "pos": 2,
+              "label": "x>2",
+              "color": "#00A896"
+            },
+            {
+              "pos": 4,
+              "label": "x<4",
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "一元一次不等式组",
+        "difficulty": 2,
+        "hint": "分别解两个不等式，取公共部分",
+        "variants": [
+          {
+            "question": "解不等式组：x-1<3且x+2>4",
+            "formula": "x<4且x>2",
+            "answer": 2,
+            "hint": "取公共部分"
+          },
+          {
+            "question": "解不等式组：3x>6且x+1<5",
+            "formula": "x>2且x<4",
+            "answer": 3,
+            "hint": "分别求解再取交集"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解不等式组，已知x+3>5且2x-1<7，他想找出x的取值范围。」，问的是「不等式组的解集是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：1 和 2",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：1 和 2",
+            "explain": "从题目中找到的关键数是：1（不等式①中的常数）、2（不等式②中的系数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "加法",
+            "explain": "加法：x+3>5→x>2，2x-1<7→x<4，取公共部分2<x<4"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上表示不等式组的解集",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "x>2且x<4，取公共部分得2<x<4",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "不等式组：分别求解，取公共部分",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明画了一个圆，半径为5厘米。他想算出这个圆的周长和面积。",
+        "question": "圆的周长和面积分别是多少？",
+        "formula": "C=2πr=10π≈31.4, S=πr²=25π≈78.5",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "circle",
+          "params": {
+            "radius": 5
+          }
+        },
+        "knowledge": "圆的周长与面积",
+        "difficulty": 1,
+        "hint": "周长=2πr，面积=πr²",
+        "variants": [
+          {
+            "question": "圆半径3厘米，周长和面积分别是多少？",
+            "formula": "C=6π≈18.8, S=9π≈28.3",
+            "answer": 18,
+            "hint": "代入公式"
+          },
+          {
+            "question": "圆直径10厘米，周长和面积分别是多少？",
+            "formula": "r=5, C=10π, S=25π",
+            "answer": 25,
+            "hint": "先求半径"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明画了一个圆，半径为5厘米。他想算出这个圆的周长和面积。」，问的是「圆的周长和面积分别是多少？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：5",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：5",
+            "explain": "从题目中找到的关键数是：5（半径）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：C=2πr=10π≈31.4厘米，S=πr²=25π≈78.5平方厘米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示圆及其半径",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "C=2πr=10π≈31.4厘米，S=πr²=25π≈78.5平方厘米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "圆周长=2πr，圆面积=πr²",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小红画了一条抛物线y=x²-4x+3，她想找出这条抛物线的顶点坐标。",
+        "question": "抛物线的顶点坐标是什么？",
+        "formula": "x=-b/2a=2, y=4-8+3=-1, 顶点(2,-1)",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "parabola",
+          "params": {
+            "vertex": [
+              2,
+              -1
+            ],
+            "roots": [
+              1,
+              3
+            ]
+          }
+        },
+        "knowledge": "二次函数顶点",
+        "difficulty": 2,
+        "hint": "顶点横坐标x=-b/(2a)",
+        "variants": [
+          {
+            "question": "抛物线y=x²-2x-3，顶点坐标？",
+            "formula": "x=1, y=-4, 顶点(1,-4)",
+            "answer": 1,
+            "hint": "代入公式"
+          },
+          {
+            "question": "抛物线y=2x²-4x+1，顶点坐标？",
+            "formula": "x=1, y=-1, 顶点(1,-1)",
+            "answer": 1,
+            "hint": "注意a=2"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小红画了一条抛物线y=x²-4x+3，她想找出这条抛物线的顶点坐标。」，问的是「抛物线的顶点坐标是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：1、-4、3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：1、-4、3",
+            "explain": "从题目中找到的关键数是：1（二次项系数）、-4（一次项系数）、3（常数项）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：顶点横坐标x=-b/(2a)=-(-4)/(2×1)=2，代入得y=-1"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示抛物线及其顶点",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "顶点横坐标x=-b/(2a)=2，纵坐标y=-1",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "顶点坐标公式：(-b/(2a), (4ac-b²)/(4a))",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明站在离旗杆20米处，测得旗杆顶端的仰角为30度。他想算出旗杆的高度（忽略观测者身高）。",
+        "question": "旗杆的高度约为多少米？",
+        "formula": "h=20*tan30°=20*√3/3≈11.5",
+        "answer": 12,
+        "choices": [
+          12,
+          20,
+          10,
+          35
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "base": 20,
+            "angle": 30,
+            "height": 12
+          }
+        },
+        "knowledge": "三角函数应用",
+        "difficulty": 2,
+        "hint": "tan30°=√3/3≈0.577",
+        "variants": [
+          {
+            "question": "离树15米，仰角45度，树高多少？",
+            "formula": "h=15*tan45°=15",
+            "answer": 15,
+            "hint": "tan45°=1"
+          },
+          {
+            "question": "离楼30米，仰角60度，楼高多少？",
+            "formula": "h=30*tan60°=30√3≈52",
+            "answer": 52,
+            "hint": "tan60°=√3"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明站在离旗杆20米处，测得旗杆顶端的仰角为30度。他想算出旗杆的高度。」，问的是「旗杆的高度约为多少米？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：20 和 30",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：20 和 30",
+            "explain": "从题目中找到的关键数是：20（距离）、30°（仰角）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：旗杆高=20×tan30°=20×√3/3≈11.5≈12米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "直角三角形：底边20米，仰角30度，求对边（旗杆高）",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "tan30°=h/20，h=20×tan30°≈11.5≈12米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "tanθ=对边/邻边，已知邻边和角度求对边",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "学校统计学生每日睡眠时间，得到以下数据：7小时2人，8小时5人，9小时8人，10小时3人。校长想知道学生平均睡眠时间。",
+        "question": "学生平均睡眠时间是多少小时？",
+        "formula": "平均=(7×2+8×5+9×8+10×3)/(2+5+8+3)=78/18≈8.7",
+        "answer": 9,
+        "choices": [
+          9,
+          8,
+          10,
+          7
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 9,
+          "parts": [
+            {
+              "label": "7小时",
+              "val": 2,
+              "color": "#00A896"
+            },
+            {
+              "label": "8小时",
+              "val": 5,
+              "color": "#F5B800"
+            },
+            {
+              "label": "9小时",
+              "val": 8,
+              "color": "#FB923C"
+            },
+            {
+              "label": "10小时",
+              "val": 3,
+              "color": "#E8A0BF"
+            }
+          ]
+        },
+        "knowledge": "加权平均数",
+        "difficulty": 2,
+        "hint": "加权平均数=总和÷总人数",
+        "variants": [
+          {
+            "question": "数据：6小时3人，7小时4人，8小时2人，平均时间？",
+            "formula": "(18+28+16)/9=62/9≈6.9",
+            "answer": 7,
+            "hint": "分别计算再求平均"
+          },
+          {
+            "question": "数据：5小时2人，6小时6人，7小时4人，平均时间？",
+            "formula": "(10+36+28)/12=74/12≈6.2",
+            "answer": 6,
+            "hint": "加权求和"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「学校统计学生每日睡眠时间，得到以下数据：7小时2人，8小时5人，9小时8人，10小时3人。校长想知道学生平均睡眠时间。」，问的是「学生平均睡眠时间是多少小时？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：7、8、9、10 和 2、5、8、3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：7、8、9、10 和 2、5、8、3",
+            "explain": "从题目中找到的关键数是：7、8、9、10（时间）、2、5、8、3（人数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：平均=(7×2+8×5+9×8+10×3)/(2+5+8+3)=78/18≈8.7≈9小时"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示不同睡眠时间的学生人数分布",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "平均=(7×2+8×5+9×8+10×3)/18=78/18≈8.7≈9小时",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "加权平均数=各数据×权重之和÷权重之和",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明想用一个代数式来表示「比某个数x的3倍少5的数」，他不知道正确的表达式是什么。",
+        "question": "正确的代数式是什么？",
+        "formula": "3x-5",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 1,
+          "parts": [
+            {
+              "label": "3x",
+              "val": 3,
+              "color": "#00A896"
+            },
+            {
+              "label": "-5",
+              "val": 1,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "列代数式",
+        "difficulty": 1,
+        "hint": "先找倍数关系，再找差值关系",
+        "variants": [
+          {
+            "question": "用代数式表示「比y的2倍多3的数」",
+            "formula": "2y+3",
+            "answer": 0,
+            "hint": "先倍数后加法"
+          },
+          {
+            "question": "用代数式表示「x的平方除以2」",
+            "formula": "x²/2",
+            "answer": 0,
+            "hint": "先平方后除法"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明想用一个代数式来表示「比某个数x的3倍少5的数」，他不知道正确的表达式是什么。」，问的是「正确的代数式是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3 和 5",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3 和 5",
+            "explain": "从题目中找到的关键数是：3（倍数）、5（差值）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：x的3倍是3x，比3x少5是3x-5"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示3x与3x-5的数量关系",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "3x-5表示比x的3倍少5",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "列代数式：先找数量关系，再按运算顺序写式",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明测量一棵树的高度，他在离树10米处立了一根2米的标杆，标杆影长1.5米，树影长6米。他想算出树的高度。",
+        "question": "树的高度是多少米？",
+        "formula": "树高/6=2/1.5, 树高=8",
+        "answer": 8,
+        "choices": [
+          8,
+          6,
+          10,
+          12
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "height": 8,
+            "base": 6
+          }
+        },
+        "knowledge": "相似三角形应用",
+        "difficulty": 2,
+        "hint": "同一时刻，物高与影长成正比",
+        "variants": [
+          {
+            "question": "标杆高1.5米，影长1米，旗杆影长8米，旗杆高多少？",
+            "formula": "旗杆高=1.5*8/1=12",
+            "answer": 12,
+            "hint": "物高与影长成正比"
+          },
+          {
+            "question": "树高12米，影长8米，同时电线杆影长6米，电线杆多高？",
+            "formula": "电线杆高=12*6/8=9",
+            "answer": 9,
+            "hint": "列比例式求解"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明测量一棵树的高度，他在离树10米处立了一根2米的标杆，标杆影长1.5米，树影长6米。他想算出树的高度。」，问的是「树的高度是多少米？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：2、1.5、6",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：2、1.5、6",
+            "explain": "从题目中找到的关键数是：2（标杆高）、1.5（标杆影长）、6（树影长）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：树高=2×6÷1.5=8米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示相似三角形的测量原理",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "树高/6=2/1.5，树高=8米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "同一时刻，物高与影长成正比",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小红在证明一个几何命题时，已知AB=AC，点D在BC上，AD平分角BAC。她想证明BD=CD。",
+        "question": "这个命题是否成立？",
+        "formula": "由SAS可证△ABD≌△ACD，故BD=CD",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "a": 5,
+            "b": 5,
+            "c": 6
+          }
+        },
+        "knowledge": "等腰三角形性质",
+        "difficulty": 2,
+        "hint": "等腰三角形三线合一",
+        "variants": [
+          {
+            "question": "在△ABC中，AB=AC，D是BC中点，AD与BC的关系？",
+            "formula": "AD⊥BC且AD平分∠BAC",
+            "answer": 0,
+            "hint": "三线合一"
+          },
+          {
+            "question": "等腰三角形顶角80度，底角多少度？",
+            "formula": "(180-80)/2=50",
+            "answer": 50,
+            "hint": "底角相等"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小红在证明一个几何命题时，已知AB=AC，点D在BC上，AD平分角BAC。她想证明BD=CD。」，问的是「这个命题是否成立？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键信息：AB=AC, AD平分∠BAC",
+              "只有总数",
+              "只有每份数",
+              "没有关键信息"
+            ],
+            "answer": "关键信息：AB=AC, AD平分∠BAC",
+            "explain": "从题目中找到的关键信息是：AB=AC（等腰）、AD平分∠BAC（角平分线）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：由SAS可证△ABD≌△ACD，故BD=CD"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示等腰三角形ABC及中线AD",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "等腰三角形三线合一：顶角平分线、底边中线、底边高线重合",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "等腰三角形性质：三线合一",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

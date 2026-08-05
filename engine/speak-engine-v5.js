@@ -208,18 +208,46 @@ window.SpeakEngineV5 = {
     const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
     const sc = scenarios.find(s => s.id === scenarioId);
     const tId = teacherId || (S.speakV5 && S.speakV5.teacher) || 'emma';
-    // 各老师独有的鼓励语（增加自然度，不按顺序重复）
+    const history = S.speakV5 && S.speakV5.history || [];
+    const studentTurns = history.filter(h => h.role === 'student').length;
+    const teacherTurns = history.filter(h => h.role === 'teacher').length;
+    const ut = (userText || '').toLowerCase();
+    const utLen = ut.trim().length;
+    // 输入长度策略
+    let inputStrategy = 'short';
+    if(utLen >= 40) inputStrategy = 'long';
+    else if(utLen >= 15) inputStrategy = 'medium';
+
+    // 各老师独有的鼓励语（每老师 12 条以上，差异化风格）
     const teacherGood = {
-      emma: ['Wow, great job! ', 'That was wonderful! ', 'You did it! ', 'Amazing! ', 'Perfect! ', 'Excellent! ', 'So proud of you! ', 'You are a superstar! '],
-      leo: ['Haha, awesome! ', 'Nice one! ', 'You rock! ', 'Cool! ', 'That was sick! ', 'Super! ', 'You are the best! ', 'Awesome sauce! '],
-      aria: ['Well done! ', 'Good job! ', 'You are doing great! ', 'I am happy for you! ', 'You are amazing! ', 'Wonderful! ', 'Keep it up! ', 'Bravo! ']
+      emma: [
+        'Wow, great job! ', 'That was wonderful! ', 'You did it! ', 'Amazing! ',
+        'Perfect! ', 'Excellent! ', 'So proud of you! ', 'You are a superstar! ',
+        'Way to go! ', 'You nailed it! ', 'Outstanding work! ', 'Bravo, you are brilliant! ',
+        'You rock! ', 'Super awesome! ', 'Incredible! Keep it up! ', 'Fantastic effort! '
+      ],
+      leo: [
+        'Haha, awesome! ', 'Nice one! ', 'You rock! ', 'Cool! ',
+        'That was sick! ', 'Super! ', 'You are the best! ', 'Awesome sauce! ',
+        'That was totally epic! ', 'You are a legend! ', 'Dude, that was rad! ', 'Brilliant move! ',
+        'No cap, you are amazing! ', 'That was fire! ', 'You totally crushed it! ', 'Top tier! '
+      ],
+      aria: [
+        'Well done! ', 'Good job! ', 'You are doing great! ', 'I am happy for you! ',
+        'You are amazing! ', 'Wonderful! ', 'Keep it up! ', 'Bravo! ',
+        'That was lovely! ', 'You make me so proud! ', 'Such a good effort! ', 'Beautifully said! ',
+        'You are growing so much! ', 'I am so glad you tried! ', 'Very nice work! ', 'Perfectly done! '
+      ]
     };
     const teacherBad = {
-      emma: ["Almost there! ", "You can do it! ", "Try again, you got this! ", "Don't give up! ", "So close! "],
-      leo: ["Oops, not quite! ", "Almost! ", "No worries, try again! ", "You are getting there! ", "Let's try once more! "],
-      aria: ["That's okay! ", "Take your time! ", "Good effort! ", "Let me help you! ", "Keep going! "]
+      emma: ["Almost there! ", "You can do it! ", "Try again, you got this! ", "Don't give up! ", "So close! ",
+              "You're doing great already! ", "Just a little more! ", "Give it another try! "],
+      leo: ["Oops, not quite! ", "Almost! ", "No worries, try again! ", "You are getting there! ", "Let's try once more! ",
+            "Close call! Try again! ", "You're on the right track! ", "Again, you can do it! "],
+      aria: ["That's okay! ", "Take your time! ", "Good effort! ", "Let me help you! ", "Keep going! ",
+             "It's alright, try another way! ", "We'll practice this together! ", "You're doing your best! "]
     };
-    // 上下文感知追问（根据对话长度和内容动态选择）
+    // 各老师追问语（每老师 16 条，覆盖不同对话长度策略）
     const teacherFollowups = {
       emma: [
         "That's interesting! Tell me more about it!",
@@ -229,7 +257,15 @@ window.SpeakEngineV5 = {
         "You are so good at English! What else can you say?",
         "I'm so impressed! Keep talking to me!",
         "That was wonderful! And then what happened?",
-        "Amazing! Tell me another thing!"
+        "Amazing! Tell me another thing!",
+        "I'm curious! What else do you think?",
+        "Tell me more, I'm all ears!",
+        "You are an amazing speaker! What else?",
+        "I love your ideas! Go on and tell me!",
+        "That's so cool! What else did you do?",
+        "What a great story! What happens next?",
+        "Keep going! I want to hear everything!",
+        "You are doing so well! What else can you add?"
       ],
       leo: [
         "Haha, that's so cool! Tell me more!",
@@ -239,7 +275,15 @@ window.SpeakEngineV5 = {
         "That's so funny! Keep going, I'm listening!",
         "You rock! What else can you tell me?",
         "Super! I want to hear more!",
-        "Awesome! Keep talking, it's so fun!"
+        "Awesome! Keep talking, it's so fun!",
+        "That's lit! What else is the story?",
+        "Dude, go on! I'm hooked!",
+        "No way, continue! What happened next?",
+        "You are on fire! Tell me more!",
+        "That's epic! What else did you do?",
+        "Keep it coming! This is the best!",
+        "I'm laughing so hard! What else?",
+        "You are a legend! What else can you say?"
       ],
       aria: [
         "I see! That's wonderful. Tell me more, please?",
@@ -249,27 +293,76 @@ window.SpeakEngineV5 = {
         "I understand! Keep going, I am listening.",
         "That's so sweet! Can you tell me another thing?",
         "Wonderful! And then what?",
-        "You are doing great! What else is on your mind?"
+        "You are doing great! What else is on your mind?",
+        "That was so lovely to hear! Tell me more, dear?",
+        "I am so happy to hear that! What else?",
+        "You are doing beautifully! Can you say more?",
+        "How nice! I would love to know more about it.",
+        "That is wonderful! Please, keep going.",
+        "You are such a good speaker! What else?",
+        "I am listening carefully! What else can you share?",
+        "That was lovely! Do you have another story?"
+      ],
+      // 问候场景追问（teacherFollowups_greet）
+      greet: [
+        "Nice to meet you! Tell me your name too!",
+        "Hello there! How are you today?",
+        "Welcome! It is so nice to see you!",
+        "Hi friend! How was your day?",
+        "Hello! I am so happy to see you here!",
+        "Good to see you! What brings you here?",
+        "Hi! It is great to meet you! How are you?",
+        "Welcome! Are you ready to practice English?"
+      ],
+      // 告别场景追问（teacherFollowups_farewell）
+      farewell: [
+        "It was so nice talking with you! See you next time!",
+        "Goodbye! You did amazing today!",
+        "Bye bye! I will miss you already!",
+        "See you later! Have a wonderful day!",
+        "Goodbye friend! Come back soon!",
+        "Take care! It was fun talking with you!",
+        "Bye! You are doing great! Keep practicing!",
+        "See you next time! You are wonderful!"
       ]
     };
-    // 根据对话轮次选择更有变化的回应
-    const history = S.speakV5 && S.speakV5.history || [];
-    const studentTurns = history.filter(h => h.role === 'student').length;
-    const teacherTurns = history.filter(h => h.role === 'teacher').length;
 
+    // 问候场景（独立场景，teacherId 为 null 时触发）
+    if(scenarioId === 'greeting'){
+      const gFollowups = teacherFollowups.greet || teacherFollowups.emma;
+      const gi = studentTurns % gFollowups.length;
+      const gGood = teacherGood[tId] || teacherGood.emma;
+      const gi2 = studentTurns % gGood.length;
+      return gGood[gi2] + gFollowups[gi];
+    }
+    // 告别场景
+    if(scenarioId === 'farewell'){
+      const fFollowups = teacherFollowups.farewell || teacherFollowups.emma;
+      const fi = studentTurns % fFollowups.length;
+      const fGood = teacherGood[tId] || teacherGood.emma;
+      const fi2 = studentTurns % fGood.length;
+      return fGood[fi2] + fFollowups[fi];
+    }
+
+    // 无场景时使用上下文感知的追问
     if(!sc){
-      // 无场景时使用上下文感知的追问
       const followups = teacherFollowups[tId] || teacherFollowups.emma;
       // 根据对话长度选择不同的回应，避免重复感
       const variant = studentTurns % followups.length;
+      // 根据输入长度选择策略：短输入给鼓励，长输入给追问
+      if(inputStrategy === 'short'){
+        const goodList = teacherGood[tId] || teacherGood.emma;
+        const gv = studentTurns % goodList.length;
+        return goodList[gv];
+      }
       return followups[variant];
     }
     // 当前轮数决定期望回答
+    const turn = teacherTurns;
     const exp = sc.studentExpected[Math.min(turn, sc.studentExpected.length - 1)];
     let matched = false;
     if(exp && userText){
-      const t = userText.toLowerCase();
-      matched = exp.keywords.some(k => t.includes(k));
+      matched = exp.keywords.some(k => ut.includes(k));
     }
     const goodList = teacherGood[tId] || teacherGood.emma;
     const badList = teacherBad[tId] || teacherBad.emma;
@@ -278,36 +371,33 @@ window.SpeakEngineV5 = {
     let enc;
     if(matched){
       // 匹配时：从不重复上一条鼓励语，优先选择新的
-      const usedEnc = goodList.filter(g => lastReply.startsWith(g));
-      if(usedEnc.length > 0){
-        const remaining = goodList.filter(g => !lastReply.startsWith(g));
-        enc = remaining.length > 0 ? remaining[Math.floor(Math.random() * remaining.length)] : goodList[Math.floor(Math.random() * goodList.length)];
-      } else {
-        enc = goodList[Math.floor(Math.random() * goodList.length)];
-      }
+      const remaining = goodList.filter(g => !lastReply.startsWith(g.trim()));
+      enc = remaining.length > 0 ? remaining[studentTurns % remaining.length] : goodList[studentTurns % goodList.length];
     } else {
-      enc = badList[Math.floor(Math.random() * badList.length)];
+      enc = badList[studentTurns % badList.length];
     }
     const nextIdx = turn + 1;
     // 如果对话接近结束（超过总行数 70%），切换到结束语
     const totalLines = sc.teacherLines ? sc.teacherLines.length : 0;
     if(totalLines > 0 && nextIdx >= Math.ceil(totalLines * 0.7)){
-      // 结束时的个性化结束语（多样化）
       const endings = {
         emma: [
           'You did wonderfully! I had so much fun talking to you! See you next time!',
           'Wow, you are such a great English speaker! I am so proud! Bye bye!',
-          'You did an amazing job today! I cannot wait to talk to you again!'
+          'You did an amazing job today! I cannot wait to talk to you again!',
+          'Amazing conversation! You are getting so good! See you soon!'
         ],
         leo: [
           'That was awesome! You are my star student! Catch you later!',
           'You rock! That was the coolest conversation ever! See ya!',
-          'Super job! You are the best! Later, star student!'
+          'Super job! You are the best! Later, star student!',
+          'Epic talk! You nailed it! Catch you next time, legend!'
         ],
         aria: [
           'You did a great job today! I am very proud of you. See you next time!',
           'You are wonderful! It was so nice talking with you. Take care!',
-          'Great work today! I am happy we could practice together. See you!'
+          'Great work today! I am happy we could practice together. See you!',
+          'You grew so much today! It was lovely talking with you. Take care!'
         ]
       };
       const endList = endings[tId] || endings.emma;
@@ -315,7 +405,14 @@ window.SpeakEngineV5 = {
       return endList[endVariant];
     }
     if(sc.teacherLines && sc.teacherLines[nextIdx]){
-      return enc + sc.teacherLines[nextIdx].text;
+      let reply = enc + sc.teacherLines[nextIdx].text;
+      // 输入长度策略：短回复时追加追问
+      if(inputStrategy === 'short' && utLen < 10 && !(sc.teacherLines[nextIdx].text.endsWith('?'))){
+        const followups = teacherFollowups[tId] || teacherFollowups.emma;
+        const fv = (studentTurns + 1) % followups.length;
+        reply += ' ' + followups[fv];
+      }
+      return reply;
     }
     // 对话结束时的个性化结束语
     const endings = {

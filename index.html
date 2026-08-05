@@ -5741,39 +5741,86 @@ function checkParentPwd(){
     $('#pwdError').style.display='block';
   }
 }
-function renderHeatmap(){
-  const rows=['计算能力','几何图形','解决问题','自然拼读','口语对话','语法词汇'];
-  const weak=[
-    [{c:3,k:'通分-最小公倍数',s:'需短除法专项训练'},{c:4,k:'退位连减',s:'借位标记不清晰'}],
-    [{c:3,k:'面积单位换算',s:'km²/m² 进率混淆'},{c:4,k:'长方体展开',s:'对面识别错误'}],
-    [{c:4,k:'多步问题审题',s:'遗漏隐藏条件'},{c:3,k:'等量代换',s:'替换顺序有误'}],
-    [{c:3,k:'th 清浊音',s:'think/this 混淆'},{c:4,k:'魔法 e 静音',s:'like/lake 区分度 65%'}],
-    [{c:4,k:'第三人称单数',s:'动词+s 漏掉'},{c:3,k:'语调升降',s:'疑问句尾语调平'}],
-    [{c:3,k:'现在进行时',s:'be 动词遗漏'},{c:4,k:'比较级不规则',s:'good→better 未掌握'}]
-  ];
-  const palette=['#CFF6EE','#5FE0C5','#00A896','#FB923C','#DC2626'];
-  const weakPoints=[];
-  let html='<div class="heat-grid">';
-  rows.forEach((r,ri)=>{
-    html+='<div class="heat-row"><div class="heat-label">'+r+'</div>';
-    for(let c=0;c<12;c++){
-      let lvl;
-      const wk=weak[ri].find(w=>w.c===c);
-      if(wk){lvl=3+Math.floor(Math.random()*2);weakPoints.push({row:r,kn:wk.k,sug:wk.s});}
-      else{const rnd=Math.random();lvl=rnd<0.35?0:rnd<0.7?1:rnd<0.92?2:3;}
-      const bg=palette[lvl];const t=['掌握','熟练','一般','薄弱','危险'][lvl];
-      const sub=wk?wk.k:(r+' 子知识点');
-      html+='<div class="heat-cell" style="background:'+bg+"\" onclick=\"toast('知识点掌握："+t+'<br>'+sub+"')\"></div>";
+function renderKnowledgeTree(){
+  if(typeof MATH_BY_GRADE==='undefined'||typeof WeaknessDetector==='undefined') return '';
+  var allNodes=[], gradeList=[];
+  Object.keys(MATH_BY_GRADE).sort().forEach(function(g){
+    var km = (MATH_BY_GRADE[g]&&MATH_BY_GRADE[g].knowledgeMap)||[];
+    if(!km.length) return;
+    gradeList.push(g);
+    km.forEach(function(kp){
+      var mastery = 0;
+      try{ mastery = WeaknessDetector.calcMastery(S, kp.id)||0; }catch(e){ mastery=0; }
+      allNodes.push({grade:g, id:kp.id, name:kp.name, mastery:mastery, concept:kp.concept||'', visualType:kp.visualType||'', isKeyTopic:!!kp.isKeyTopic, prerequisite:kp.prerequisite||'', extends:kp.extends||''});
+    });
+  });
+  if(!allNodes.length) return '<div style="text-align:center;padding:20px;color:var(--text-3)">暂无知识数据</div>';
+  allNodes.sort(function(a,b){ return a.grade.localeCompare(b.grade)||a.id.localeCompare(b.id); });
+  var mastered=allNodes.filter(function(n){return n.mastery>=80;}).length;
+  var ok=allNodes.filter(function(n){return n.mastery>=60;}).length;
+  var weak=allNodes.filter(function(n){return n.mastery<60;}).length;
+  var html='<div class="knowledge-tree">';
+  html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">';
+  html+='<div style="font-weight:700;color:var(--navy);font-size:15px">🌳 知识掌握全景图</div>';
+  html+='<div style="display:flex;gap:10px;font-size:11px;flex-wrap:wrap">';
+  html+='<span style="color:var(--teal)">✓ 掌握 '+mastered+'</span>';
+  html+='<span style="color:#B58200">△ 熟练 '+(ok-mastered)+'</span>';
+  html+='<span style="color:var(--coral)">✗ 薄弱 '+weak+'</span>';
+  html+='</div></div>';
+  // 按年级分组渲染
+  var currentGrade=null;
+  allNodes.forEach(function(kp){
+    if(kp.grade!==currentGrade){
+      currentGrade=kp.grade;
+      html+='<div style="font-size:12px;font-weight:800;color:var(--text-3);margin:10px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--ink-100)">'+currentGrade.toUpperCase()+' 年级</div>';
     }
+    var color = kp.mastery>=80?'var(--teal)':kp.mastery>=60?'var(--yellow)':'var(--coral)';
+    var bg = kp.mastery>=80?'var(--teal-soft)':kp.mastery>=60?'var(--yellow-soft)':'var(--coral-soft)';
+    var tag = kp.isKeyTopic?'<span style="font-size:9px;background:var(--coral);color:#fff;padding:1px 4px;border-radius:4px;margin-left:4px">重点</span>':'';
+    var prereq = kp.prerequisite?'<span style="font-size:10px;color:var(--text-3);margin-left:auto">← '+kp.prerequisite+'</span>':'';
+    html+='<div style="display:flex;align-items:center;padding:7px 12px;margin-bottom:4px;border-radius:8px;background:'+bg+';font-size:13px;gap:8px;cursor:pointer" title="'+(kp.concept||'')+'" onclick="toast(\''+kp.name+'：'+color+' '+kp.mastery+'%\\n'+(kp.concept||'暂无概念说明')+'\')">';
+    html+='<div style="width:8px;height:8px;border-radius:50%;background:'+color+';flex-shrink:0"></div>';
+    html+='<span style="font-weight:600;color:var(--navy)">'+kp.name+'</span>';
+    html+='<span style="font-weight:700;font-size:12px;color:'+color+';margin-left:auto;flex-shrink:0">'+kp.mastery+'%</span>';
+    html+=tag+prereq;
     html+='</div>';
   });
+  html+='<div style="margin-top:10px;padding:8px 12px;background:var(--navy-50);border-radius:8px;font-size:11px;color:var(--navy);line-height:1.7">点击知识点查看概念说明 · 绿色≥80%已掌握 · 黄色60-80%需巩固 · 红色<60%需重点练习</div>';
   html+='</div>';
-  $('#weakPointsList')&&(weakPoints.slice(0,3).forEach(w=>{
-    const el=document.createElement('div');
-    el.className='report-item bad';
-    el.innerHTML='<div class="report-item-icon">!</div><div class="report-item-body"><div class="report-item-title">'+w.row+' · '+w.kn+'</div><div class="report-item-desc">'+w.sug+'</div></div>';
-    $('#weakPointsList').appendChild(el);
-  }));
+  return html;
+}
+function renderHeatmap(){
+  if(typeof MATH_BY_GRADE==='undefined'||typeof WeaknessDetector==='undefined') return '';
+  var allKPs=[], weakPoints=[];
+  Object.keys(MATH_BY_GRADE).sort().forEach(function(g){
+    var km = (MATH_BY_GRADE[g]&&MATH_BY_GRADE[g].knowledgeMap)||[];
+    km.forEach(function(kp){
+      var mastery = 0;
+      try{ mastery = WeaknessDetector.calcMastery(S, kp.id)||0; }catch(e){ mastery=0; }
+      allKPs.push({grade:g, id:kp.id, name:kp.name, mastery:mastery, concept:kp.concept||'', isKeyTopic:!!kp.isKeyTopic});
+      if(mastery<60) weakPoints.push({grade:g, kn:kp.name, sug:kp.concept||'需要针对性练习', mastery:mastery});
+    });
+  });
+  if(!allKPs.length) return '';
+  weakPoints.sort(function(a,b){return a.mastery-b.mastery;});
+  var palette=['#CFF6EE','#5FE0C5','#00A896','#FB923C','#DC2626'];
+  var top3 = weakPoints.slice(0,3);
+  var html='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px">';
+  allKPs.forEach(function(kp){
+    var lvl = kp.mastery>=80?0:kp.mastery>=65?1:kp.mastery>=50?2:kp.mastery>=30?3:4;
+    var bg=palette[lvl];
+    html+='<div style="background:'+bg+';border-radius:6px;padding:8px 10px;font-size:11px;cursor:pointer" onclick="toast(\''+kp.grade.toUpperCase()+' · '+kp.name+'\\n掌握度: '+kp.mastery+'%\\n'+(kp.concept||'')+'\')">'+
+      '<div style="font-weight:600;color:var(--navy);margin-bottom:2px">'+kp.name+'</div>'+
+      '<div style="font-weight:700;color:'+palette[lvl]+'">'+kp.mastery+'%</div>'+
+    '</div>';
+  });
+  html+='</div>';
+  if(top3.length){
+    html+='<div style="margin-top:12px;padding:12px;background:var(--coral-soft);border-radius:10px;font-size:12px;color:var(--coral)">';
+    html+='<b>⚠️ 最薄弱知识点（建议优先练习）：</b><br>';
+    top3.forEach((w,i)=>{ html+='<span style="display:inline-block;margin:3px 6px 3px 0;padding:3px 8px;background:white;border-radius:12px;font-weight:600">'+w.grade.toUpperCase()+'·'+w.kn+' ('+w.mastery+'%)</span>'; });
+    html+='</div>';
+  }
   return html;
 }
 function renderParentDashboard(pt){
@@ -5874,23 +5921,25 @@ function renderParentDashboard(pt){
       </div>
 
       <div class="parent-section" data-psec="weak">
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <h4 style="font-size:15px;font-weight:800;color:var(--navy);margin:0">🌳 知识掌握全景图</h4>
+            <span style="font-size:11px;color:var(--text-3)">点击知识点查看详情</span>
+          </div>
+          <div id="knowledgeTreeContainer"></div>
+        </div>
         <div class="heatmap-wrap" style="margin-bottom:16px">
           <div class="heat-head">
-            <h4>🔥 知识漏洞热力图 · 6 大领域 × 12 个知识点</h4>
-            <div class="heat-legend">
-              <span><i style="background:#CFF6EE"></i> 掌握</span>
-              <span><i style="background:#5FE0C5"></i> 熟练</span>
-              <span><i style="background:#00A896"></i> 一般</span>
-              <span><i style="background:#FB923C"></i> 薄弱</span>
-              <span><i style="background:#DC2626"></i> 危险</span>
+            <h4 style="font-size:14px;font-weight:800;color:var(--navy);margin:0 0 8px">🔥 知识点掌握热力图</h4>
+            <div class="heat-legend" style="display:flex;gap:10px;font-size:11px">
+              <span><i style="background:#CFF6EE;display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle"></i> 掌握≥80</span>
+              <span><i style="background:#5FE0C5;display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle"></i> 熟练60-80</span>
+              <span><i style="background:#FB923C;display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle"></i> 薄弱60以下</span>
             </div>
           </div>
           <div id="heatmapContainer"></div>
         </div>
-        <div class="card" style="border-top:4px solid #EF4444">
-          <h4 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">⚠️ 薄弱点 Top 3 · 专项建议</h4>
-          <div id="weakPointsList" class="report-list" style="gap:8px"></div>
-        </div>
+        <div id="weakReportArea"></div>
       </div>
 
       <div class="parent-section" data-psec="week">

@@ -219,6 +219,78 @@ window.MATH_BY_GRADE['9a'] = {
         "coreLiteracy": "运算能力",
         "difficulty": 2,
         "isKeyTopic": true
+      },
+      {
+        "id": "9A-19",
+        "name": "一元二次方程的应用",
+        "concept": "用一元二次方程解决实际问题，如面积、利润、增长率问题",
+        "prerequisite": "9A-01",
+        "extends": "9A-20 二次函数与方程的关系",
+        "visualStrategy": "方程建模",
+        "visualType": "numberLine",
+        "coreLiteracy": "模型思想",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9A-20",
+        "name": "二次函数与方程的关系",
+        "concept": "二次函数与x轴交点的横坐标是一元二次方程的根",
+        "prerequisite": "9A-18",
+        "extends": "9A-21 二次函数的图象与性质",
+        "visualStrategy": "函数图象",
+        "visualType": "numberLine",
+        "coreLiteracy": "函数思想",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9A-21",
+        "name": "二次函数的图象与性质",
+        "concept": "抛物线的开口方向、顶点坐标、对称轴",
+        "prerequisite": "9A-20",
+        "extends": "9A-22 二次函数的最值问题",
+        "visualStrategy": "动态图象",
+        "visualType": "numberLine",
+        "coreLiteracy": "数形结合",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9A-22",
+        "name": "二次函数的最值问题",
+        "concept": "求二次函数在给定区间上的最大值和最小值",
+        "prerequisite": "9A-21",
+        "extends": "9A-23 二次函数与几何综合",
+        "visualStrategy": "最值分析",
+        "visualType": "numberLine",
+        "coreLiteracy": "函数思想",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9A-23",
+        "name": "二次函数与几何综合",
+        "concept": "用二次函数解决几何中的最值与存在性问题",
+        "prerequisite": "9A-22",
+        "extends": "9A-24 反比例函数与一次函数综合",
+        "visualStrategy": "函数综合",
+        "visualType": "numberLine",
+        "coreLiteracy": "函数思想",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "9A-24",
+        "name": "反比例函数与一次函数综合",
+        "concept": "反比例函数与一次函数的交点问题",
+        "prerequisite": "9A-23",
+        "extends": "9B-01 反比例函数综合",
+        "visualStrategy": "函数交点",
+        "visualType": "numberLine",
+        "coreLiteracy": "函数思想",
+        "difficulty": 3,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -1265,6 +1337,215 @@ window.MATH_BY_GRADE['9a'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "圆锥侧面积=πrl，展开后是扇形",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明用韦达定理解决方程问题，已知方程x²-5x+6=0的两个根是x1和x2。他想算出x1²+x2²的值。",
+        "question": "x1²+x2²的值是多少？",
+        "formula": "x1+x2=5, x1*x2=6, x1²+x2²=(x1+x2)²-2x1x2=25-12=13",
+        "answer": 13,
+        "choices": [13, 19, 7, 25],
+        "visualType": "numberLine",
+        "visualData": {"start": 0, "end": 15, "points": [{"pos": 2, "label": "x1", "color": "#00A896"}, {"pos": 3, "label": "x2", "color": "#F5B800"}]},
+        "knowledge": "韦达定理应用",
+        "difficulty": 3,
+        "hint": "利用韦达定理和完全平方公式",
+        "variants": [{"question": "方程x²-4x+3=0，求x1²+x2²", "formula": "16-6=10", "answer": 10, "hint": "韦达定理"}, {"question": "方程x²-6x+8=0，求1/x1+1/x2", "formula": "(x1+x2)/(x1*x2)=6/8=3/4", "answer": 1, "hint": "通分计算"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["计算结果", "每份是多少", "总数", "差是多少"], "answer": "计算结果", "explain": "题目求x1²+x2²，求计算结果"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：5 和 6", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：5 和 6", "explain": "从题目中找到的关键数是：5（x1+x2）、6（x1*x2）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：x1²+x2²=(x1+x2)²-2x1x2=25-12=13"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示方程两根的位置", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "x1²+x2²=25-12=13", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "韦达定理：x1+x2=-b/a, x1*x2=c/a", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "学校测量一座塔的高度，小明在离塔底30米处测得塔顶仰角为60度。他想算出塔的高度（忽略观测者身高）。",
+        "question": "塔高约多少米？",
+        "formula": "h=30*tan60°=30*√3≈52",
+        "answer": 52,
+        "choices": [52, 30, 60, 45],
+        "visualType": "geometry",
+        "visualData": {"shape": "triangle", "params": {"base": 30, "angle": 60, "height": 52}},
+        "knowledge": "解直角三角形应用",
+        "difficulty": 3,
+        "hint": "tan60°=√3≈1.732",
+        "variants": [{"question": "在离楼20米处测得楼顶仰角45度，楼高多少？", "formula": "h=20*tan45°=20", "answer": 20, "hint": "tan45°=1"}, {"question": "在离旗杆40米处测得旗杆顶仰角30度，旗杆高多少？", "formula": "h=40*tan30°≈23", "answer": 23, "hint": "tan30°=√3/3"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求塔高，求总数"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：30 和 60", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：30 和 60", "explain": "从题目中找到的关键数是：30（距离）、60°（仰角）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：h=30×tan60°=30×√3≈52米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示测量塔高的直角三角形", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "h=30×√3≈52米", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "tanθ=对边/邻边，已知邻边和角度求对边", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "小明用相似三角形的性质测量池塘两岸的距离。他在岸边选取一点C，测量AC=10米，BC=8米，角C=60度。他想算出AB的距离。",
+        "question": "池塘两岸A、B之间的距离是多少米？",
+        "formula": "AB²=10²+8²-2*10*8*cos60°=100+64-80=84, AB≈9.2",
+        "answer": 9,
+        "choices": [9, 10, 8, 12],
+        "visualType": "geometry",
+        "visualData": {"shape": "triangle", "params": {"a": 10, "b": 8, "c": 9, "angle": 60}},
+        "knowledge": "余弦定理",
+        "difficulty": 3,
+        "hint": "利用余弦定理求第三边",
+        "variants": [{"question": "三角形两边5、7，夹角60度，第三边多少？", "formula": "c²=25+49-35=39, c≈6.2", "answer": 6, "hint": "余弦定理"}, {"question": "三角形两边8、10，夹角120度，第三边多少？", "formula": "c²=64+100+80=244, c≈15.6", "answer": 16, "hint": "注意cos120°=-1/2"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["每份是多少", "总数", "有几份", "差是多少"], "answer": "每份是多少", "explain": "题目求AB距离，求每份是多少"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：10、8、60", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：10、8、60", "explain": "从题目中找到的关键数是：10、8（两边）、60（夹角）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：AB²=100+64-80=84，AB≈9.2米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示三角形ABC及已知条件", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "AB²=100+64-80=84，AB≈9.2米", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "余弦定理：c²=a²+b²-2ab*cosC", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "学校要在一块圆形花坛周围铺一条环形小路，花坛半径10米，小路宽2米。校长想知道小路的面积。",
+        "question": "环形小路的面积是多少平方米？",
+        "formula": "S=π(R²-r²)=π(144-100)=44π≈138",
+        "answer": 138,
+        "choices": [138, 120, 150, 100],
+        "visualType": "geometry",
+        "visualData": {"shape": "annulus", "params": {"innerRadius": 10, "outerRadius": 12}},
+        "knowledge": "圆环面积",
+        "difficulty": 2,
+        "hint": "圆环面积=π(R²-r²)",
+        "variants": [{"question": "内圆半径3厘米，外圆半径5厘米，圆环面积多少？", "formula": "π(25-9)=16π≈50", "answer": 50, "hint": "代入公式"}, {"question": "圆环面积12π，内圆半径2，外圆半径多少？", "formula": "π(R²-4)=12π, R=4", "answer": 4, "hint": "逆用公式"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求圆环面积，求总数"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：10 和 2", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：10 和 2", "explain": "从题目中找到的关键数是：10（内圆半径）、2（路宽）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：S=π(12²-10²)=44π≈138平方米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示同心圆及环形区域", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "S=π(144-100)=44π≈138", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "圆环面积=π(R²-r²)", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "小明用统计知识分析班级成绩，全班40人，平均分75分，标准差10分。他想算出大约有多少人成绩在65-85分之间。",
+        "question": "成绩在65-85分之间的人数大约是多少？",
+        "formula": "约68%的人在此范围内，40*0.68≈27",
+        "answer": 27,
+        "choices": [27, 20, 30, 35],
+        "visualType": "barModel",
+        "visualData": {"total": 40, "parts": [{"label": "65-85分", "val": 27, "color": "#00A896"}, {"label": "其他", "val": 13, "color": "#F5B800"}]},
+        "knowledge": "正态分布",
+        "difficulty": 3,
+        "hint": "约68%的数据在平均值±1个标准差范围内",
+        "variants": [{"question": "全班50人，平均分80，标准差8，约多少人成绩在72-88分？", "formula": "50*0.68≈34", "answer": 34, "hint": "68%法则"}, {"question": "某班30人，平均分70，标准差5，约多少人成绩在65-75分？", "formula": "30*0.68≈20", "answer": 20, "hint": "代入计算"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["每份是多少（或几份）", "总数（一共多少）", "差是多少", "和是多少"], "answer": "每份是多少（或几份）", "explain": "题目求65-85分的人数，求每份是多少"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：40、75、10", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：40、75、10", "explain": "从题目中找到的关键数是：40（总人数）、75（平均分）、10（标准差）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：约68%的人在此范围，40×0.68≈27人"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示正态分布曲线", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "约68%的人成绩在65-85分之间，约27人", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "正态分布：约68%的数据在平均值±1个标准差范围内", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "小明用二次根式解决几何问题，一个直角三角形的两条直角边分别是√12厘米和√27厘米。他想算出斜边的长度。",
+        "question": "斜边的长度是多少厘米？",
+        "formula": "斜边=√(12+27)=√39≈6.2",
+        "answer": 6,
+        "choices": [6, 7, 5, 8],
+        "visualType": "geometry",
+        "visualData": {"shape": "triangle", "params": {"a": 3.46, "b": 5.2, "c": 6.24}},
+        "knowledge": "二次根式与勾股定理",
+        "difficulty": 3,
+        "hint": "先化简二次根式，再用勾股定理",
+        "variants": [{"question": "直角边√8和√18，斜边多少？", "formula": "√(8+18)=√26", "answer": 5, "hint": "化简后相加"}, {"question": "直角边√20和√5，斜边多少？", "formula": "√(20+5)=5", "answer": 5, "hint": "化简计算"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["计算结果", "每份是多少", "总数", "差是多少"], "answer": "计算结果", "explain": "题目求斜边长度，求计算结果"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：√12 和 √27", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：√12 和 √27", "explain": "从题目中找到的关键数是：√12、√27（直角边）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：斜边=√(12+27)=√39≈6.2厘米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示直角三角形及已知边长", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "斜边=√(12+27)=√39≈6.2厘米", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "勾股定理：斜边²=直角边1²+直角边2²", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "学校组织测量旗杆高度，小红用镜子反射原理：她把镜子放在离旗杆15米的地面上，自己站在离镜子1.5米的位置，眼睛离地面1.6米，刚好看到旗杆顶端。",
+        "question": "旗杆的高度是多少米？",
+        "formula": "旗杆高/15=1.6/1.5, 旗杆高=16",
+        "answer": 16,
+        "choices": [16, 15, 18, 14],
+        "visualType": "geometry",
+        "visualData": {"shape": "triangle", "params": {"height": 16, "base": 15}},
+        "knowledge": "相似三角形应用",
+        "difficulty": 3,
+        "hint": "利用相似三角形对应边成比例",
+        "variants": [{"question": "小明用影子法测树高，树影长10米，同时1.5米标杆影长2米，树高多少？", "formula": "1.5*10/2=7.5", "answer": 8, "hint": "物高与影长成正比"}, {"question": "利用相似三角形，已知AB=4，BC=6，DE=8，求DF", "formula": "DF=BC*DE/AB=12", "answer": 12, "hint": "对应边成比例"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求旗杆高度，求总数"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：15、1.5、1.6", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：15、1.5、1.6", "explain": "从题目中找到的关键数是：15（旗杆到镜子距离）、1.5（人到镜子距离）、1.6（眼睛高度）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：旗杆高=1.6×15÷1.5=16米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示相似三角形的测量原理", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "旗杆高/15=1.6/1.5，旗杆高=16米", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "相似三角形对应边成比例", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "小明解不等式组，已知2x-3<5且x+2≥1，他想找出x的取值范围。",
+        "question": "不等式组的解集是什么？",
+        "formula": "x<4且x≥-1, 解集-1≤x<4",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": -2,
+          "end": 5,
+          "points": [
+            {
+              "pos": -1,
+              "label": "x≥-1",
+              "color": "#00A896"
+            },
+            {
+              "pos": 4,
+              "label": "x<4",
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "一元一次不等式组",
+        "difficulty": 2,
+        "hint": "分别解两个不等式，取公共部分",
+        "variants": [
+          {
+            "question": "解不等式组：x+1>3且2x<8",
+            "formula": "x>2且x<4",
+            "answer": 3,
+            "hint": "取公共部分"
+          },
+          {
+            "question": "解不等式组：3x-6≤0且x+2>0",
+            "formula": "x≤2且x>-2",
+            "answer": -2,
+            "hint": "分别求解再取交集"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解不等式组，已知2x-3<5且x+2≥1，他想找出x的取值范围。」，问的是「不等式组的解集是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：2、3、5、1",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：2、3、5、1",
+            "explain": "从题目中找到的关键数是：2（不等式①系数）、3（不等式①常数）、5（不等式①右边）、1（不等式②常数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "加法",
+            "explain": "加法：2x-3<5→x<4，x+2≥1→x≥-1，取公共部分-1≤x<4"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上表示不等式组的解集",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "x<4且x≥-1，取公共部分得-1≤x<4",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "不等式组：分别求解，取公共部分",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

@@ -219,6 +219,78 @@ window.MATH_BY_GRADE['8b'] = {
         "coreLiteracy": "运算能力",
         "difficulty": 3,
         "isKeyTopic": true
+      },
+      {
+        "id": "8B-19",
+        "name": "比例线段与平行线",
+        "concept": "平行线分线段成比例定理及其推论",
+        "prerequisite": "7B-19",
+        "extends": "8B-20 相似三角形",
+        "visualStrategy": "平行线截线",
+        "visualType": "geometry",
+        "coreLiteracy": "推理意识",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "8B-20",
+        "name": "相似三角形的判定",
+        "concept": "两角对应相等、两边对应成比例且夹角相等、三边对应成比例",
+        "prerequisite": "8B-19",
+        "extends": "8B-21 相似三角形的性质",
+        "visualStrategy": "动态验证",
+        "visualType": "geometry",
+        "coreLiteracy": "推理意识",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "8B-21",
+        "name": "相似三角形的性质",
+        "concept": "相似三角形对应边成比例，对应角相等，面积比等于相似比的平方",
+        "prerequisite": "8B-20",
+        "extends": "8B-22 位似图形",
+        "visualStrategy": "缩放演示",
+        "visualType": "geometry",
+        "coreLiteracy": "推理意识",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "8B-22",
+        "name": "位似图形",
+        "concept": "两个图形相似且对应点连线交于一点，该点为位似中心",
+        "prerequisite": "8B-21",
+        "extends": "9A-01 一元二次方程",
+        "visualStrategy": "位似变换",
+        "visualType": "geometry",
+        "coreLiteracy": "几何直观",
+        "difficulty": 3,
+        "isKeyTopic": false
+      },
+      {
+        "id": "8B-23",
+        "name": "投影与视图",
+        "concept": "平行投影与中心投影，三视图的画法",
+        "prerequisite": "7B-13 图形的平移",
+        "extends": "9A-01 一元二次方程",
+        "visualStrategy": "投影演示",
+        "visualType": "geometry",
+        "coreLiteracy": "几何直观",
+        "difficulty": 2,
+        "isKeyTopic": false
+      },
+      {
+        "id": "8B-24",
+        "name": "几何变换综合",
+        "concept": "平移、旋转、对称、相似的综合应用",
+        "prerequisite": "8B-15 轴对称与中心对称",
+        "extends": "9A-01 一元二次方程",
+        "visualStrategy": "变换综合",
+        "visualType": "geometry",
+        "coreLiteracy": "几何直观",
+        "difficulty": 3,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -1288,6 +1360,475 @@ window.MATH_BY_GRADE['8b'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "先算乘方，再算乘除，同底数幂相除指数相减",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明用相似三角形测量旗杆高度，他站在旗杆旁，身高1.6米，影长2米，旗杆影长15米。",
+        "question": "旗杆的高度是多少米？",
+        "formula": "旗杆高/15=1.6/2, 旗杆高=12",
+        "answer": 12,
+        "choices": [12, 10, 15, 8],
+        "visualType": "geometry",
+        "visualData": {"shape": "triangle", "params": {"height": 12, "base": 15}},
+        "knowledge": "相似三角形应用",
+        "difficulty": 2,
+        "hint": "同一时刻，物高与影长成正比",
+        "variants": [{"question": "树高3米，影长4米，同一时刻电线杆影长10米，电线杆多高？", "formula": "3*10/4=7.5", "answer": 8, "hint": "物高与影长成正比"}, {"question": "测得一建筑物影长30米，同时1.5米竹竿影长2米，建筑物多高？", "formula": "1.5*30/2=22.5", "answer": 22, "hint": "比例关系"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求旗杆高度，求总数"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：1.6、2、15", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：1.6、2、15", "explain": "从题目中找到的关键数是：1.6、2、15"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：旗杆高=1.6×15÷2=12米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示相似三角形的测量原理", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "旗杆高/15=1.6/2，旗杆高=12米", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "同一时刻，物高与影长成正比", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "学校测量一个平行四边形花坛的面积，底边12米，高8米。校长想知道花坛的面积。",
+        "question": "平行四边形花坛的面积是多少平方米？",
+        "formula": "12*8=96",
+        "answer": 96,
+        "choices": [96, 48, 192, 72],
+        "visualType": "geometry",
+        "visualData": {"shape": "parallelogram", "params": {"base": 12, "height": 8}},
+        "knowledge": "平行四边形面积",
+        "difficulty": 2,
+        "hint": "平行四边形面积=底×高",
+        "variants": [{"question": "三角形底15厘米，高10厘米，面积是多少？", "formula": "15*10/2=75", "answer": 75, "hint": "三角形面积=底×高÷2"}, {"question": "梯形上底6米，下底10米，高5米，面积是多少？", "formula": "(6+10)*5/2=40", "answer": 40, "hint": "梯形面积=(上底+下底)×高÷2"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求平行四边形面积，求总数"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：12 和 8", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：12 和 8", "explain": "从题目中找到的关键数是：12（底）、8（高）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：面积=12×8=96平方米"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示平行四边形及其底和高", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "面积=12×8=96平方米", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "平行四边形面积=底×高", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "小明解方程组，已知一个角的补角比它的余角的2倍大30度。他想求出这个角的度数。",
+        "question": "这个角是多少度？",
+        "formula": "180-x=2(90-x)+30, x=30",
+        "answer": 30,
+        "choices": [30, 60, 45, 90],
+        "visualType": "geometry",
+        "visualData": {"shape": "angle", "params": {"angle": 30, "complement": 60, "supplement": 150}},
+        "knowledge": "方程与角度",
+        "difficulty": 3,
+        "hint": "设角为x，补角=180-x，余角=90-x",
+        "variants": [{"question": "一个角的补角比它的余角大50度，这个角是多少？", "formula": "(180-x)-(90-x)=50, 90=50矛盾", "answer": 0, "hint": "此题无解"}, {"question": "一个角的余角是它的补角的1/3，这个角是多少度？", "formula": "90-x=(180-x)/3, x=45", "answer": 45, "hint": "列方程求解"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["计算结果", "每份是多少", "总数", "差是多少"], "answer": "计算结果", "explain": "题目求角的度数，求计算结果"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：2、30", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：2、30", "explain": "从题目中找到的关键数是：2（倍数）、30（差值）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：设角为x，补角=180-x，余角=90-x，180-x=2(90-x)+30，解得x=30"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示角、余角和补角的关系", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "180-x=2(90-x)+30，x=30", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "用方程解决角度问题", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "学校调查学生最喜欢的学科，结果如下：数学15人，语文20人，英语12人，科学8人，其他5人。校长想用扇形统计图展示这些数据。",
+        "question": "语文在扇形图中对应的圆心角是多少度？",
+        "formula": "360°*20/(15+20+12+8+5)=360°*20/60=120°",
+        "answer": 120,
+        "choices": [120, 100, 140, 90],
+        "visualType": "geometry",
+        "visualData": {"shape": "pie", "params": {"angle": 120}},
+        "knowledge": "扇形统计图",
+        "difficulty": 2,
+        "hint": "圆心角=360°×该部分占总体的百分比",
+        "variants": [{"question": "某班40人，喜欢篮球的有12人，在扇形图中占多少度？", "formula": "360°*12/40=108°", "answer": 108, "hint": "圆心角=360°×比例"}, {"question": "全班60人，喜欢足球30人，喜欢篮球18人，喜欢乒乓球12人，各部分圆心角分别是多少？", "formula": "足球180°，篮球108°，乒乓球72°", "answer": 180, "hint": "分别计算"}],
+        "discoverySteps": [{"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["计算结果", "每份是多少", "总数", "差是多少"], "answer": "计算结果", "explain": "题目求语文对应的圆心角，求计算结果"}, {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：20 和 60", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：20 和 60", "explain": "从题目中找到的关键数是：20（喜欢语文的人数）、60（总人数）"}, {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：圆心角=360°×20÷60=120°"}],
+        "explainLayers": [{"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示各学科在扇形统计图中的占比", "bg": "var(--teal-soft)", "color": "var(--teal)"}, {"icon": "🧠", "title": "理解 — 数学关系", "text": "语文圆心角=360°×20/60=120°", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"}, {"icon": "🚀", "title": "推广 — 通用规律", "text": "圆心角=360°×部分÷总体", "bg": "var(--coral-soft)", "color": "var(--coral)"}]
+      },
+      {
+        "scene": "小明画了一个圆，半径为4厘米。他想算出这个圆的周长和面积。",
+        "question": "圆的周长和面积分别是多少？",
+        "formula": "C=2πr=8π≈25.1, S=πr²=16π≈50.3",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "circle",
+          "params": {
+            "radius": 4
+          }
+        },
+        "knowledge": "圆的周长与面积",
+        "difficulty": 1,
+        "hint": "周长=2πr，面积=πr²",
+        "variants": [
+          {
+            "question": "圆半径3厘米，周长和面积分别是多少？",
+            "formula": "C=6π≈18.8, S=9π≈28.3",
+            "answer": 18,
+            "hint": "代入公式"
+          },
+          {
+            "question": "圆直径10厘米，周长和面积分别是多少？",
+            "formula": "r=5, C=10π, S=25π",
+            "answer": 25,
+            "hint": "先求半径"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明画了一个圆，半径为4厘米。他想算出这个圆的周长和面积。」，问的是「圆的周长和面积分别是多少？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：4",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：4",
+            "explain": "从题目中找到的关键数是：4（半径）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：C=2π×4=8π≈25.1厘米，S=π×4²=16π≈50.3平方厘米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示圆及其半径",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "C=8π≈25.1厘米，S=16π≈50.3平方厘米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "圆周长=2πr，圆面积=πr²",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小红画了一条抛物线y=x²-2x-3，她想找出这条抛物线的顶点坐标。",
+        "question": "抛物线的顶点坐标是什么？",
+        "formula": "x=-b/2a=1, y=1-2-3=-4, 顶点(1,-4)",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "parabola",
+          "params": {
+            "vertex": [
+              1,
+              -4
+            ],
+            "roots": [
+              -1,
+              3
+            ]
+          }
+        },
+        "knowledge": "二次函数顶点",
+        "difficulty": 2,
+        "hint": "顶点横坐标x=-b/(2a)",
+        "variants": [
+          {
+            "question": "抛物线y=x²-4x+3，顶点坐标？",
+            "formula": "x=2, y=-1, 顶点(2,-1)",
+            "answer": 2,
+            "hint": "代入公式"
+          },
+          {
+            "question": "抛物线y=2x²-4x+1，顶点坐标？",
+            "formula": "x=1, y=-1, 顶点(1,-1)",
+            "answer": 1,
+            "hint": "注意a=2"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小红画了一条抛物线y=x²-2x-3，她想找出这条抛物线的顶点坐标。」，问的是「抛物线的顶点坐标是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：1、-2、-3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：1、-2、-3",
+            "explain": "从题目中找到的关键数是：1（二次项系数）、-2（一次项系数）、-3（常数项）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：顶点横坐标x=-(-2)/(2×1)=1，代入得y=-4"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示抛物线及其顶点",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "顶点横坐标x=1，纵坐标y=-4",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "顶点坐标公式：(-b/(2a), (4ac-b²)/(4a))",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明站在离旗杆25米处，测得旗杆顶端的仰角为45度。他想算出旗杆的高度（忽略观测者身高）。",
+        "question": "旗杆的高度约为多少米？",
+        "formula": "h=25*tan45°=25×1=25",
+        "answer": 25,
+        "choices": [
+          25,
+          50,
+          12,
+          35
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "base": 25,
+            "angle": 45,
+            "height": 25
+          }
+        },
+        "knowledge": "特殊角三角函数",
+        "difficulty": 1,
+        "hint": "tan45°=1",
+        "variants": [
+          {
+            "question": "离树20米，仰角30度，树高多少？",
+            "formula": "h=20*tan30°=20√3/3≈11.5",
+            "answer": 12,
+            "hint": "tan30°=√3/3"
+          },
+          {
+            "question": "离楼15米，仰角60度，楼高多少？",
+            "formula": "h=15*tan60°=15√3≈26",
+            "answer": 26,
+            "hint": "tan60°=√3"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明站在离旗杆25米处，测得旗杆顶端的仰角为45度。他想算出旗杆的高度。」，问的是「旗杆的高度约为多少米？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：25 和 45",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：25 和 45",
+            "explain": "从题目中找到的关键数是：25（距离）、45°（仰角）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：旗杆高=25×tan45°=25×1=25米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "等腰直角三角形：底边25米，仰角45度，求对边（旗杆高）",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "tan45°=h/25，h=25×1=25米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "tan45°=1，等腰直角三角形两直角边相等",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "学校统计学生每周阅读时间，得到以下数据：3小时4人，4小时6人，5小时10人，6小时5人，7小时2人。校长想知道学生平均每周阅读时间。",
+        "question": "学生平均每周阅读时间是多少小时？",
+        "formula": "平均=(3×4+4×6+5×10+6×5+7×2)/(4+6+10+5+2)=120/27≈4.4",
+        "answer": 4,
+        "choices": [
+          4,
+          5,
+          3,
+          6
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 4,
+          "parts": [
+            {
+              "label": "3小时",
+              "val": 4,
+              "color": "#00A896"
+            },
+            {
+              "label": "4小时",
+              "val": 6,
+              "color": "#F5B800"
+            },
+            {
+              "label": "5小时",
+              "val": 10,
+              "color": "#FB923C"
+            },
+            {
+              "label": "6小时",
+              "val": 5,
+              "color": "#E8A0BF"
+            },
+            {
+              "label": "7小时",
+              "val": 2,
+              "color": "#1E3A5F"
+            }
+          ]
+        },
+        "knowledge": "加权平均数",
+        "difficulty": 2,
+        "hint": "加权平均数=总和÷总人数",
+        "variants": [
+          {
+            "question": "数据：2小时3人，3小时5人，4小时2人，平均时间？",
+            "formula": "(6+15+8)/10=2.9",
+            "answer": 3,
+            "hint": "分别计算再求平均"
+          },
+          {
+            "question": "数据：80分5人，90分3人，100分2人，平均分？",
+            "formula": "(400+270+200)/10=87",
+            "answer": 87,
+            "hint": "加权求和"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「学校统计学生每周阅读时间，得到以下数据：3小时4人，4小时6人，5小时10人，6小时5人，7小时2人。校长想知道学生平均每周阅读时间。」，问的是「学生平均每周阅读时间是多少小时？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3、4、5、6、7 和 4、6、10、5、2",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3、4、5、6、7 和 4、6、10、5、2",
+            "explain": "从题目中找到的关键数是：3、4、5、6、7（时间）、4、6、10、5、2（人数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：平均=(3×4+4×6+5×10+6×5+7×2)/27=120/27≈4.4≈4小时"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示不同阅读时间的学生人数分布",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "平均=(3×4+4×6+5×10+6×5+7×2)/27=120/27≈4.4≈4小时",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "加权平均数=各数据×权重之和÷权重之和",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
