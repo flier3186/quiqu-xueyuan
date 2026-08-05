@@ -58,6 +58,19 @@ window.SpeakEngineV5 = {
     return this.teachers[id] || this.teachers.emma;
   },
 
+  // ===== Firefox/浏览器 TTS 兼容性检测 =====
+  _ttsSupported(){
+    if(!('speechSynthesis' in window)) return false;
+    // Firefox on Windows 可能返回空语音列表
+    try{
+      const voices = speechSynthesis.getVoices();
+      if(!voices || !voices.length) return false;
+      // Firefox 检测：如果没有英语语音则返回 false
+      const hasEnVoice = voices.some(v => /^en/i.test(v.lang));
+      return hasEnVoice;
+    }catch(e){ return false; }
+  },
+
   // ===== 选择最优 TTS voice =====
   _selectVoice(preferGender){
     if(!('speechSynthesis' in window)) return null;
@@ -81,6 +94,8 @@ window.SpeakEngineV5 = {
   // ===== TTS 朗读（带语调模拟 + 情绪标记）=====
   speak(text, teacherId){
     if(!('speechSynthesis' in window) || !text) return;
+    // Firefox/Chrome 等无 TTS 引擎时静默返回
+    if(!this._ttsSupported()) return;
     const teacher = this.getTeacher(teacherId);
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -100,7 +115,7 @@ window.SpeakEngineV5 = {
     else { pitch=1.0; }                        // aria：中性
     u.rate = Math.max(0.6, Math.min(1.4, rate));
     u.pitch = pitch;
-    // 等待语音列表就绪
+    // 等待语音列表就绪（最多等待 3 秒，超时则静默返回）
     const trySpeak = () => {
       const v = this._selectVoice(teacher.voice.preferGender);
       if(v){ try{ u.voice = v; }catch(e){} }
@@ -109,11 +124,21 @@ window.SpeakEngineV5 = {
     };
     const voices = speechSynthesis.getVoices() || [];
     if(!voices.length || !voices.some(v=>/en/i.test(v.lang))){
-      // 语音未就绪，等待事件
-      speechSynthesis.addEventListener('voiceschanged', function handler(){
+      // 语音未就绪，等待 voiceschanged 事件（最多 3 秒）
+      let spoken = false;
+      const handler = () => {
+        if(spoken) return;
         speechSynthesis.removeEventListener('voiceschanged', handler);
+        spoken = true;
         trySpeak();
-      });
+      };
+      speechSynthesis.addEventListener('voiceschanged', handler);
+      // 3 秒超时：如果语音仍未就绪，静默返回（不播放）
+      setTimeout(function(){
+        if(!spoken){
+          speechSynthesis.removeEventListener('voiceschanged', handler);
+        }
+      }, 3000);
     } else {
       trySpeak();
     }
@@ -180,34 +205,68 @@ window.SpeakEngineV5 = {
     return null;
   },
 
-  // ===== 降级模式：分支对话树（带教师人设差异化） =====
+  // ===== 降级模式：分支对话树（带教师人设差异化 + 上下文感知） =====
   _fallback(scenarioId, userText, teacherId){
     const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
     const sc = scenarios.find(s => s.id === scenarioId);
     const tId = teacherId || (S.speakV5 && S.speakV5.teacher) || 'emma';
-    // 各老师独有的鼓励语
+    // 各老师独有的鼓励语（增加自然度，不按顺序重复）
     const teacherGood = {
-      emma: ['Exactly! ', 'Wonderful! ', 'You got it! ', 'Brilliant! ', 'Fantastic! '],
-      leo: ['Haha, nice! ', 'Cool! ', 'You rock! ', 'Amazing! ', 'Super! '],
-      aria: ['Well done! ', 'Good job! ', 'Nice try! ', 'You are doing great! ', 'I am proud of you! ']
+      emma: ['Wow, great job! ', 'That was wonderful! ', 'You did it! ', 'Amazing! ', 'Perfect! ', 'Excellent! ', 'So proud of you! ', 'You are a superstar! '],
+      leo: ['Haha, awesome! ', 'Nice one! ', 'You rock! ', 'Cool! ', 'That was sick! ', 'Super! ', 'You are the best! ', 'Awesome sauce! '],
+      aria: ['Well done! ', 'Good job! ', 'You are doing great! ', 'I am happy for you! ', 'You are amazing! ', 'Wonderful! ', 'Keep it up! ', 'Bravo! ']
     };
     const teacherBad = {
-      emma: ["Almost! ", "Don't worry! ", "Try again! ", "You can do it! "],
-      leo: ["Oops! ", "Not quite! ", "Almost there! ", "Keep trying! "],
-      aria: ["That's okay! ", "Take your time! ", "Good effort! ", "Let me help! "]
+      emma: ["Almost there! ", "You can do it! ", "Try again, you got this! ", "Don't give up! ", "So close! "],
+      leo: ["Oops, not quite! ", "Almost! ", "No worries, try again! ", "You are getting there! ", "Let's try once more! "],
+      aria: ["That's okay! ", "Take your time! ", "Good effort! ", "Let me help you! ", "Keep going! "]
     };
-    // 各老师独有的额外追问（无场景时用）
+    // 上下文感知追问（根据对话长度和内容动态选择）
     const teacherFollowups = {
-      emma: ["That's interesting! Tell me more!", "Really? I want to know more!", "Wow! What else?", "Great! And then?", "Go on, I'm listening!"],
-      leo: ["Haha, is that true? Tell me more!", "Cool story! What happened next?", "No way! Really?", "That's funny! What else?", "Awesome! Keep going!"],
-      aria: ["I see! That's nice.", "How wonderful! Tell me more.", "Oh, I understand. And then?", "Very good! What else can you say?", "I'm listening. Go ahead."]
+      emma: [
+        "That's interesting! Tell me more about it!",
+        "Really? I love hearing your stories! What else?",
+        "Wow! That sounds fun! Can you say more?",
+        "Great answer! I want to know everything!",
+        "You are so good at English! What else can you say?",
+        "I'm so impressed! Keep talking to me!",
+        "That was wonderful! And then what happened?",
+        "Amazing! Tell me another thing!"
+      ],
+      leo: [
+        "Haha, that's so cool! Tell me more!",
+        "No way! That's awesome! What else?",
+        "You are amazing! I love your stories!",
+        "Cool story! What happened next?",
+        "That's so funny! Keep going, I'm listening!",
+        "You rock! What else can you tell me?",
+        "Super! I want to hear more!",
+        "Awesome! Keep talking, it's so fun!"
+      ],
+      aria: [
+        "I see! That's wonderful. Tell me more, please?",
+        "Oh, how nice! What else can you say?",
+        "That's interesting! I would love to hear more.",
+        "You are doing so well! What else?",
+        "I understand! Keep going, I am listening.",
+        "That's so sweet! Can you tell me another thing?",
+        "Wonderful! And then what?",
+        "You are doing great! What else is on your mind?"
+      ]
     };
+    // 根据对话轮次选择更有变化的回应
+    const history = S.speakV5 && S.speakV5.history || [];
+    const studentTurns = history.filter(h => h.role === 'student').length;
+    const teacherTurns = history.filter(h => h.role === 'teacher').length;
+
     if(!sc){
+      // 无场景时使用上下文感知的追问
       const followups = teacherFollowups[tId] || teacherFollowups.emma;
-      return followups[Math.floor(Math.random() * followups.length)];
+      // 根据对话长度选择不同的回应，避免重复感
+      const variant = studentTurns % followups.length;
+      return followups[variant];
     }
     // 当前轮数决定期望回答
-    const turn = (S.speakV5 && S.speakV5.history || []).filter(h => h.role === 'student').length;
     const exp = sc.studentExpected[Math.min(turn, sc.studentExpected.length - 1)];
     let matched = false;
     if(exp && userText){
@@ -216,9 +275,48 @@ window.SpeakEngineV5 = {
     }
     const goodList = teacherGood[tId] || teacherGood.emma;
     const badList = teacherBad[tId] || teacherBad.emma;
-    const enc = matched ? goodList[Math.floor(Math.random() * goodList.length)] : badList[Math.floor(Math.random() * badList.length)];
+    // 更自然的鼓励语选择：避免连续重复
+    const lastReply = teacherTurns > 0 ? (history[history.length-1].text || '') : '';
+    let enc;
+    if(matched){
+      // 匹配时：从不重复上一条鼓励语，优先选择新的
+      const usedEnc = goodList.filter(g => lastReply.startsWith(g));
+      if(usedEnc.length > 0){
+        const remaining = goodList.filter(g => !lastReply.startsWith(g));
+        enc = remaining.length > 0 ? remaining[Math.floor(Math.random() * remaining.length)] : goodList[Math.floor(Math.random() * goodList.length)];
+      } else {
+        enc = goodList[Math.floor(Math.random() * goodList.length)];
+      }
+    } else {
+      enc = badList[Math.floor(Math.random() * badList.length)];
+    }
     const nextIdx = turn + 1;
-    if(sc.teacherLines[nextIdx]){
+    // 如果对话接近结束（超过总行数 70%），切换到结束语
+    const totalLines = sc.teacherLines ? sc.teacherLines.length : 0;
+    if(totalLines > 0 && nextIdx >= Math.ceil(totalLines * 0.7)){
+      // 结束时的个性化结束语（多样化）
+      const endings = {
+        emma: [
+          'You did wonderfully! I had so much fun talking to you! See you next time!',
+          'Wow, you are such a great English speaker! I am so proud! Bye bye!',
+          'You did an amazing job today! I cannot wait to talk to you again!'
+        ],
+        leo: [
+          'That was awesome! You are my star student! Catch you later!',
+          'You rock! That was the coolest conversation ever! See ya!',
+          'Super job! You are the best! Later, star student!'
+        ],
+        aria: [
+          'You did a great job today! I am very proud of you. See you next time!',
+          'You are wonderful! It was so nice talking with you. Take care!',
+          'Great work today! I am happy we could practice together. See you!'
+        ]
+      };
+      const endList = endings[tId] || endings.emma;
+      const endVariant = studentTurns % endList.length;
+      return endList[endVariant];
+    }
+    if(sc.teacherLines && sc.teacherLines[nextIdx]){
       return enc + sc.teacherLines[nextIdx].text;
     }
     // 对话结束时的个性化结束语
@@ -388,6 +486,10 @@ window.SpeakEngineV5 = {
     this.init();
     const teacher = this.getTeacher(S.speakV5.teacher);
     const srOK = !!this.SR;
+    // Firefox TTS 兼容性提示
+    const ttsWarning = (!this._ttsSupported() && typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent))
+      ? '<div style="margin-bottom:12px;padding:10px 14px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.3);border-radius:10px;font-size:12px;color:var(--coral)">⚠️ Firefox 浏览器暂时无法播放语音，您可以继续用文字对话练习</div>'
+      : '';
     if(!S.speakV5.history.length){
       return '<div style="text-align:center;padding:40px 20px;color:var(--text-2)">' +
         '<div style="font-size:46px;margin-bottom:10px">🗣️</div>' +
