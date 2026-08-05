@@ -29,8 +29,6 @@ window.MathVisualV5 = {
     if(k.indexOf('找次品') >= 0 || shape === 'balance') return 'balanceDecision';
     if(k.indexOf('圆的面积') >= 0 || k.indexOf('圆面积') >= 0) return 'circleArea';
     // 迭代2新增：课标打破点路由
-    // 两位数乘法优先于进位，避免"两位数乘两位数不进位"误匹配到baseTenBlocks
-    if(k.indexOf('两位数乘法') >= 0 || k.indexOf('多位数乘法') >= 0 || type === 'areaModel') return 'areaModelAnim';
     if(k.indexOf('进位') >= 0 || k.indexOf('退位') >= 0 || k.indexOf('万以内') >= 0) return 'baseTenBlocks';
     if(k.indexOf('分数墙') >= 0 || k.indexOf('等值分数') >= 0) return 'fractionWall';
     if(k.indexOf('分数') >= 0 && (type === 'fractionCircle' || shape === 'fractionCircle')) return 'fractionCircleAnim';
@@ -39,6 +37,7 @@ window.MathVisualV5 = {
     if(k.indexOf('小数') >= 0 && type === 'numberLine') return 'numberLineFraction';
     if(k.indexOf('平行四边形') >= 0 || k.indexOf('割补') >= 0 || shape === 'parallelogram') return 'cutPasteGeometry';
     if(k.indexOf('长方体') >= 0 || k.indexOf('展开图') >= 0 || shape === 'cylinder') return 'unrollNet';
+    if(k.indexOf('两位数乘法') >= 0 || k.indexOf('多位数乘法') >= 0 || type === 'areaModel') return 'areaModelAnim';
     return type;
   },
 
