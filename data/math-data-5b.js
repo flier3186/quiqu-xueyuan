@@ -927,6 +927,19 @@ window.MATH_BY_GRADE['5b'] = {
         "knowledge": "长方体和正方体的表面积",
         "difficulty": 3,
         "hint": "2×(长×宽+长×高+宽×高)",
+        "visualType": "unrollNet",
+        "rmeChoices": [
+          { "label": "展开图", "desc": "把长方体展开成6个面", "correct": true },
+          { "label": "套公式", "desc": "2×(ab+ah+bh)", "correct": true },
+          { "label": "数面法", "desc": "一个一个面加起来", "correct": false }
+        ],
+        "russianQuestions": [
+          { "type": "quantity", "q": "展开图中有几个面是5×4的？", "keywords": ["2","上下","前后","对","两对","相对的面"] },
+          { "type": "reverse", "q": "如果表面积是94，长5宽4，高是多少？", "keywords": ["方程","5x","4x","3","代入","验算"] }
+        ],
+        "neriageErrors": [
+          { "answer": 47, "reason": "忘记乘2", "fix": "表面积公式要乘2：2×(5×4+5×3+4×3)=2×47=94。不是只算一半" }
+        ],
         "variants": [
           {
             "question": "长6宽4高2表面积？",
