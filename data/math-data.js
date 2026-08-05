@@ -7447,7 +7447,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-001"
       },
       {
         "scene": "科学课上老师展示了一个大钟面，秒针滴答滴答走了一圈。小明好奇秒针走一圈到底是多少秒。",
@@ -7555,7 +7556,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-002"
       },
       {
         "scene": "动画片中一首歌播放了1分20秒。小亮想知道这等于多少秒，好记录在自己的小本子上。",
@@ -7664,7 +7666,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-003"
       },
       {
         "scene": "周末全家坐火车去外婆家，火车9时从车站出发，路上行驶了3个小时。妈妈问小明几点能到。",
@@ -7772,7 +7775,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-004"
       },
       {
         "scene": "图书馆下午2时开门，小芳下午4时离开图书馆。她想知道自己在图书馆看了多久的书。",
@@ -7873,7 +7877,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-005"
       },
       {
         "scene": "小明8时10分开始写作业，写了25分钟后完成。他想算算自己几点写完作业。",
@@ -7976,7 +7981,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-006"
       },
       {
         "scene": "文具店里铅笔35元一盒，彩笔27元一盒。小红想各买一盒，她要算算一共多少元。",
@@ -8085,7 +8091,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-007"
       },
       {
         "scene": "学校组织捐书活动，三(1)班捐了48本，三(2)班捐了36本。大队部要统计两个班一共捐了多少本。",
@@ -8194,7 +8201,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-008"
       },
       {
         "scene": "小亮集邮，动物邮票有23枚，植物邮票有49枚。他想知道自己的邮票一共多少枚。",
@@ -8303,7 +8311,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-009"
       },
       {
         "scene": "小芳有65颗糖果，分给小朋友28颗。她想知道自己还剩多少颗糖果。",
@@ -8407,7 +8416,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-010"
       },
       {
         "scene": "学校体育室有82个皮球，借给三(1)班45个。体育老师要算算还剩多少个皮球。",
@@ -8511,7 +8521,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-011"
       },
       {
         "scene": "图书角有70本故事书，同学们借走了36本。图书管理员小红要算还剩多少本。",
@@ -8615,7 +8626,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-012"
       },
       {
         "scene": "果园里上午摘了320千克苹果，下午又摘了150千克。果农伯伯要算一共摘了多少千克。",
@@ -8724,7 +8736,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-013"
       },
       {
         "scene": "粮店运来580袋大米，卖出了240袋。店主要算算还剩多少袋大米没卖。",
@@ -8828,7 +8841,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-014"
       },
       {
         "scene": "两个养鸡场，第一个每月产蛋460个，第二个每月产蛋380个。兽医站要统计两个场一共产蛋多少个。",
@@ -8937,7 +8951,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-015"
       },
       {
         "scene": "科学课上老师让同学们测量回形针的厚度。小明发现回形针大约厚1毫米，他想知道1厘米等于多少毫米。",
@@ -9045,7 +9060,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-016"
       },
       {
         "scene": "美术课上小红画了一条3厘米长的线段。她想换算成毫米来记录，因为毫米更精确。",
@@ -9153,7 +9169,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-017"
       },
       {
         "scene": "小亮量得自己的铅笔长5厘米2毫米。他想知道换算成毫米一共是多少毫米。",
@@ -9256,7 +9273,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-018"
       },
       {
         "scene": "老师让同学们用手掌量课桌的宽度。小明的手掌张开大约是1分米，他想知道1米等于多少分米。",
@@ -9364,7 +9382,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-019"
       },
       {
         "scene": "小芳量得书桌高7分米。她想换算成厘米来记录，因为厘米她更熟悉。",
@@ -9477,7 +9496,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-020"
       },
       {
         "scene": "一根绳子长1米5分米。小红想把它换算成分米来记录，方便剪裁。",
@@ -9580,7 +9600,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-021"
       },
       {
         "scene": "学校操场一圈是400米，体育老师让同学们跑两圈半，正好是1千米。小明好奇1千米等于多少米。",
@@ -9688,7 +9709,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-022"
       },
       {
         "scene": "从家到学校有3千米。小红每天步行上学，她想知道3千米等于多少米。",
@@ -9796,7 +9818,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-023"
       },
       {
         "scene": "小明骑车从家到公园要2千米500米。他想知道换算成米一共是多少米。",
@@ -9899,7 +9922,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-024"
       },
       {
         "scene": "动物园里有一头大象重约5吨。饲养员告诉同学们1吨等于1000千克，小明好奇5吨等于多少千克。",
@@ -10012,7 +10036,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-025"
       },
       {
         "scene": "一辆卡车上装了2吨500千克的煤。司机要算算一共多少千克，好通过收费站。",
@@ -10115,7 +10140,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-026"
       },
       {
         "scene": "工厂仓库里有3吨钢材，运走了1吨200千克。管理员要算还剩多少千克钢材。",
@@ -10216,7 +10242,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-027"
       },
       {
         "scene": "学校图书馆原有故事书386本，今天又新买进247本。小明帮忙整理书架，他好奇现在一共有多少本。",
@@ -10319,7 +10346,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-028"
       },
       {
         "scene": "学校体育室有跳绳458根，又新买了375根。体育老师要统计一共有多少根跳绳。",
@@ -10422,7 +10450,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-029"
       },
       {
         "scene": "小明家离学校569米，学校离书店423米。他想知道从家经过学校到书店一共多少米。",
@@ -10525,7 +10554,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-030"
       },
       {
         "scene": "小明攒了500元压岁钱，开学时买了一个新书包用去168元。他想算算还剩多少钱存进储蓄罐。",
@@ -10626,7 +10656,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-031"
       },
       {
         "scene": "服装厂上午生产了800件衣服，下午运走了465件。厂长要算还剩多少件衣服在仓库。",
@@ -10727,7 +10758,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-032"
       },
       {
         "scene": "果园今年收了700千克苹果，已经装箱运走289千克。果农要算还剩多少千克没装。",
@@ -10828,7 +10860,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-033"
       },
       {
         "scene": "小红算了一道加法题：234+156=390。老师教她用减法验算，看看算得对不对。",
@@ -10929,7 +10962,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-034"
       },
       {
         "scene": "小亮算了一道减法题：500-268=232。老师教他用加法验算，看看算得对不对。",
@@ -11032,7 +11066,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-035"
       },
       {
         "scene": "小芳算了一道加法题：478+345=823。老师让她用减法验算，看看结果对不对。",
@@ -11133,7 +11168,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-036"
       },
       {
         "scene": "花园里有红花4朵，黄花是红花的3倍。园丁要算算黄花有多少朵。",
@@ -11236,7 +11272,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-037"
       },
       {
         "scene": "动物园里有猴子6只，孔雀2只。小亮想知道猴子的只数是孔雀的几倍。",
@@ -11344,7 +11381,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-038"
       },
       {
         "scene": "小明今年8岁，爸爸的年龄是小明的4倍。小明好奇爸爸今年多少岁。",
@@ -11447,7 +11485,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-039"
       },
       {
         "scene": "文具店里一盒铅笔20支，老师买了3盒。小红帮忙算算一共多少支铅笔。",
@@ -11543,7 +11582,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-040"
       },
       {
         "scene": "学校给每个班发200本练习本，发了4个班。教务处要算一共发了多少本。",
@@ -11639,7 +11679,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-041"
       },
       {
         "scene": "操场上一排站30人，排了5排。体育老师要算一共多少人在做操。",
@@ -11735,7 +11776,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-042"
       },
       {
         "scene": "一本故事书23元，老师买了2本送给同学。小红帮忙算算一共要付多少元。",
@@ -11832,7 +11874,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-043"
       },
       {
         "scene": "学校图书馆每个书架放312本书，共有3个书架。管理员要算一共放多少本书。",
@@ -11930,7 +11973,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-044"
       },
       {
         "scene": "教室里有21张桌子，每张桌子配4把椅子。总务处要算一共需要多少把椅子。",
@@ -12027,7 +12071,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-045"
       },
       {
         "scene": "超市里一箱酸奶25元，妈妈买了3箱。小明帮忙算算一共要付多少元。",
@@ -12124,7 +12169,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-046"
       },
       {
         "scene": "学校组织春游，每辆大巴坐45人，共3辆。老师要算一共能坐多少人。",
@@ -12221,7 +12267,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-047"
       },
       {
         "scene": "食堂每天用38千克大米，一周5天要用多少千克？厨师长要算一算。",
@@ -12318,7 +12365,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-048"
       },
       {
         "scene": "学校体育室有48个足球，每个班分6个。体育老师要算一共能分给几个班。",
@@ -12415,7 +12463,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-049"
       },
       {
         "scene": "一个书架有75本书，图书馆有8个这样的书架。管理员要算一共多少本书。",
@@ -12512,7 +12561,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-050"
       },
       {
         "scene": "工厂每天生产69个零件，一周7天生产多少个？车间主任要算一算。",
@@ -12609,7 +12659,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-051"
       },
       {
         "scene": "学校购买图书，每套102元，买了4套。财务要算一共花了多少元。",
@@ -12707,7 +12758,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-052"
       },
       {
         "scene": "农场有350只鸡，每个鸡舍养3只。农场主想知道一共有多少只鸡。",
@@ -12803,7 +12855,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-053"
       },
       {
         "scene": "图书馆有206本连环画，每层书架放5本。管理员要算一共多少本连环画。",
@@ -12901,7 +12954,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-054"
       },
       {
         "scene": "数学课上老师让同学们数一数四边形有几条边。小明仔细观察后举手回答。",
@@ -12995,7 +13049,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-055"
       },
       {
         "scene": "小红在纸上画了一些图形：正方形、三角形、圆形、长方形。她想知道其中四边形有几个。",
@@ -13089,7 +13144,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-056"
       },
       {
         "scene": "老师拿出一个图形让同学们判断是不是四边形。这个图形有四条边、四个角，且是封闭的。",
@@ -13183,7 +13239,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-057"
       },
       {
         "scene": "小红用尺子量了一个长方形，发现相对的两条边长度一样。她好奇长方形对边有什么特征。",
@@ -13278,7 +13335,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-058"
       },
       {
         "scene": "小亮用尺子量正方形，发现四条边都一样长。他想知道正方形的边长是几厘米。",
@@ -13391,7 +13449,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-059"
       },
       {
         "scene": "老师让同学们画一个长方形，长8厘米宽5厘米。小红画好后用三角尺量了四个角。",
@@ -13486,7 +13545,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-060"
       },
       {
         "scene": "小红沿花坛走了一圈，走了12米。老师告诉她这就是花坛的周长。小红好奇周长是什么意思。",
@@ -13581,7 +13641,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-061"
       },
       {
         "scene": "一个三角形三边分别是3厘米、4厘米、5厘米。小亮要算它的周长。",
@@ -13689,7 +13750,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-062"
       },
       {
         "scene": "正方形边长6厘米，小红要算它的周长。她记得正方形四边相等。",
@@ -13802,7 +13864,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-063"
       },
       {
         "scene": "社区要在花园里修一个长方形花坛，长8米、宽5米。工人师傅要在花坛四周围上一圈栅栏。",
@@ -13897,7 +13960,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-064"
       },
       {
         "scene": "小明的书桌是个长方形，长12分米、宽8分米。妈妈想给书桌贴一圈防撞条。",
@@ -13992,7 +14056,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-065"
       },
       {
         "scene": "学校有一块正方形草坪，边长15米。园丁要在草坪四周修一圈小路。",
@@ -14086,7 +14151,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-066"
       },
       {
         "scene": "王伯伯要在院子里靠墙围一个长方形菜地，长8米、宽5米，长边靠墙。他要算需要多少米篱笆。",
@@ -14182,7 +14248,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-067"
       },
       {
         "scene": "两个边长4厘米的正方形拼成一个长方形。小亮要算拼成后的长方形周长。",
@@ -14277,7 +14344,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-068"
       },
       {
         "scene": "李阿姨要给长10米、宽6米的长方形花园围篱笆，宽边靠墙。她要算需要多少米篱笆。",
@@ -14373,7 +14441,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-069"
       },
       {
         "scene": "妈妈把一个圆形大蛋糕平均切成8块。小明吃了其中1块，他想知道自己吃了这块蛋糕的几分之几。",
@@ -14466,7 +14535,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-070"
       },
       {
         "scene": "小红把一根彩带平均分成5段，取其中1段来折花。她想知道这1段是整根彩带的几分之几。",
@@ -14559,7 +14629,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-071"
       },
       {
         "scene": "小亮把一张正方形纸平均折成4份，把其中1份涂上颜色。他想知道涂色部分是整张纸的几分之几。",
@@ -14652,7 +14723,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-072"
       },
       {
         "scene": "小红的蛋糕切成了3份，小亮的蛋糕切成了5份，都是同样大的蛋糕。老师问谁的1份更大。",
@@ -14745,7 +14817,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-073"
       },
       {
         "scene": "两个同样大的比萨，小红吃了2/5，小明吃了3/5。老师问谁吃得更多。",
@@ -14838,7 +14911,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-074"
       },
       {
         "scene": "小芳有1/4块巧克力，小亮有1/6块同样大的巧克力。老师问谁的巧克力更多。",
@@ -14931,7 +15005,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-075"
       },
       {
         "scene": "小红第一次吃了1/5块蛋糕，第二次吃了2/5块。她想知道两次一共吃了这块蛋糕的几分之几。",
@@ -15024,7 +15099,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-076"
       },
       {
         "scene": "一卷彩带长5/7米，用去了1/7米。小芳想知道还剩几分之几米彩带。",
@@ -15117,7 +15193,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-077"
       },
       {
         "scene": "妈妈把一个大比萨切成9块，小红吃了2块，小明吃了3块。他们一共吃了这个比萨的几分之几。",
@@ -15210,7 +15287,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-078"
       },
       {
         "scene": "妈妈买了24个草莓，小红吃了其中的1/3。小红吃了多少个草莓？",
@@ -15318,7 +15396,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-079"
       },
       {
         "scene": "班里有30个同学，其中2/5是女生。老师要算班里有几个女生。",
@@ -15431,7 +15510,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-080"
       },
       {
         "scene": "一根彩带长20米，小红用了其中的3/4。她用了多少米彩带？",
@@ -15534,7 +15614,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-081"
       },
       {
         "scene": "三(1)班参加数学兴趣小组的有15人，参加英语兴趣小组的有12人，两个都参加的有5人。老师要算一共有多少人参加兴趣小组。",
@@ -15642,7 +15723,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-082"
       },
       {
         "scene": "同学们喜欢吃苹果的有10人，喜欢吃香蕉的有8人，两种都喜欢的有3人。老师要算一共有多少个同学。",
@@ -15750,7 +15832,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-083"
       },
       {
         "scene": "三(2)班喜欢足球的有20人，喜欢篮球的有15人，两个都喜欢的有6人。班主任要算一共有多少同学喜欢球类运动。",
@@ -15858,7 +15941,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3A-PROB-084"
       }
     ],
     "knowledgeMap": [
@@ -16408,7 +16492,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-001"
       },
       {
         "scene": "地图上方的方向是北。小亮看地图，知道北京在地图上方，他好奇北京在什么方向。",
@@ -16502,7 +16587,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-002"
       },
       {
         "scene": "放学时太阳从西方落下。小红背着书包回家，她面朝西方走。老师问她左手边是什么方向。",
@@ -16597,7 +16683,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-003"
       },
       {
         "scene": "小亮站在操场中心，老师告诉他东和北之间的方向叫东北。他好奇东和南之间叫什么方向。",
@@ -16691,7 +16778,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-004"
       },
       {
         "scene": "小红看学校地图，图书馆在教学楼的东北方向。她好奇教学楼的什么方向是西北。",
@@ -16785,7 +16873,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-005"
       },
       {
         "scene": "小明家在学校的西南方向。老师让同学们在图上标出小明家的位置，并说出西南是哪两个方向之间。",
@@ -16879,7 +16968,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-006"
       },
       {
         "scene": "小亮从家出发去学校，先向东走3格，再向北走2格。老师让他算一共走了几格。",
@@ -16987,7 +17077,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-007"
       },
       {
         "scene": "小红从家去公园，先向西走4格，再向南走3格。她要算一共走了几格路。",
@@ -17095,7 +17186,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-008"
       },
       {
         "scene": "小芳从学校去图书馆，先向东走5格，再向北走4格。她要算一共走了几格。",
@@ -17203,7 +17295,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-009"
       },
       {
         "scene": "妈妈买了60颗草莓，平均装进3个盒子里。小红帮忙分装，她想知道每盒装几颗。",
@@ -17311,7 +17404,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-010"
       },
       {
         "scene": "学校买了400本练习本，平均分给2个年级。教务处要算每个年级分多少本。",
@@ -17414,7 +17508,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-011"
       },
       {
         "scene": "体育老师有80个皮球，平均分给4个班。他要算每个班分到几个皮球。",
@@ -17527,7 +17622,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-012"
       },
       {
         "scene": "妈妈买了96颗新鲜的草莓，要平均装进4个盒子。小红帮忙分装，她想知道每个盒子装几颗。",
@@ -17640,7 +17736,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-013"
       },
       {
         "scene": "学校有84名同学参加跳绳比赛，平均分成3组。体育老师要算每组有多少人。",
@@ -17748,7 +17845,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-014"
       },
       {
         "scene": "小芳有75张画片，平均分给5个好朋友。她要算每个朋友分到多少张画片。",
@@ -17866,7 +17964,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-015"
       },
       {
         "scene": "图书馆有369本新书，平均放在3个书架上。管理员要算每个书架放多少本。",
@@ -17974,7 +18073,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-016"
       },
       {
         "scene": "学校买了448本练习本，平均分给4个班。教务处要算每个班分多少本。",
@@ -18087,7 +18187,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-017"
       },
       {
         "scene": "体育室有856根跳绳，平均分给4个年级。体育老师要算每个年级分到多少根。",
@@ -18200,7 +18301,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-018"
       },
       {
         "scene": "小红算了一道除法：96÷4=24。老师教她用乘法验算，看看算得对不对。",
@@ -18296,7 +18398,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-019"
       },
       {
         "scene": "小亮算了一道除法：75÷5=15。老师让他用乘法验算。",
@@ -18393,7 +18496,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-020"
       },
       {
         "scene": "小芳算了一道除法：369÷3=123。老师让她用乘法验算。",
@@ -18491,7 +18595,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-021"
       },
       {
         "scene": "学校有612本图书，平均放在6个书架上。管理员要算每个书架放多少本。",
@@ -18614,7 +18719,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-022"
       },
       {
         "scene": "农场收获了840千克苹果，平均装进4辆卡车。农场主算每辆卡车装多少千克。",
@@ -18727,7 +18833,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-023"
       },
       {
         "scene": "体育老师有909个乒乓球，平均分给3个班。他要算每个班分到多少个。",
@@ -18835,7 +18942,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-024"
       },
       {
         "scene": "妈妈有78元，想买4元一支的笔。小红估算大约能买多少支，先估被除数。",
@@ -18943,7 +19051,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-025"
       },
       {
         "scene": "小亮有142颗糖果，想平均分给7个朋友。他估算每人大约分多少颗。",
@@ -19051,7 +19160,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-026"
       },
       {
         "scene": "学校有59箱图书，要分给3个阅览室。老师估算每个阅览室大约分多少箱。",
@@ -19159,7 +19269,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-027"
       },
       {
         "scene": "三(1)班有15人喜欢足球，三(2)班有12人喜欢足球。体育老师要统计两个班一共有多少人喜欢足球。",
@@ -19262,7 +19373,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-028"
       },
       {
         "scene": "三(1)班20人喜欢画画，三(2)班18人喜欢画画。美术老师要统计一共多少 人。",
@@ -19365,7 +19477,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-029"
       },
       {
         "scene": "三(1)班12人喜欢音乐，三(2)班15人喜欢音乐。音乐老师要统计一共多少 人。",
@@ -19468,7 +19581,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-030"
       },
       {
         "scene": "文具店每盒水彩笔12元，老师买了20盒。小红算算一共要付多少元。",
@@ -19564,7 +19678,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-031"
       },
       {
         "scene": "超市每箱牛奶15元，食堂买了30箱。厨师长算一共要付多少元。",
@@ -19660,7 +19775,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-032"
       },
       {
         "scene": "学校每包纸24本，总务处买了10包。要算一共多少本。",
@@ -19756,7 +19872,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-033"
       },
       {
         "scene": "学校报告厅有14排座位，每排12个。开家长会老师让小刚算一共能坐多少人。",
@@ -19855,7 +19972,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-034"
       },
       {
         "scene": "教室里有21排桌子，每排13张。总务处要算一共多少张桌子。",
@@ -19954,7 +20072,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-035"
       },
       {
         "scene": "图书角每层放32本书，共12层。管理员要算一共放多少本书。",
@@ -20053,7 +20172,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-036"
       },
       {
         "scene": "学校给每班发45本新书，共24个班。教务处要算一共多少本书。",
@@ -20152,7 +20272,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-037"
       },
       {
         "scene": "超市每箱苹果36个，卖了25箱。店长算一共卖了多少个苹果。",
@@ -20251,7 +20372,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-038"
       },
       {
         "scene": "操场每排48人，共15排。体育老师算一共多少人在做操。",
@@ -20350,7 +20472,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-039"
       },
       {
         "scene": "超市有3箱饮料，每箱12瓶，每瓶4元。小红算一共多少元。",
@@ -20458,7 +20581,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-040"
       },
       {
         "scene": "妈妈买了60个苹果，每袋装5个，每箱装4袋。小红算需要几个箱子。",
@@ -20566,7 +20690,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-041"
       },
       {
         "scene": "学校买来4盒乒乓球，每盒15个，每个2元。老师算一共花了多少元。",
@@ -20679,7 +20804,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-042"
       },
       {
         "scene": "小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。",
@@ -20774,7 +20900,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-043"
       },
       {
         "scene": "老师让同学们用1平方厘米的小正方形摆一个长3厘米宽2厘米的长方形。小红要算需要多少个小正方形。",
@@ -20870,7 +20997,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-044"
       },
       {
         "scene": "小亮用1平方分米的正方形量桌面，大约能放20个。他好奇桌面面积大约是多少。",
@@ -20983,7 +21111,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-045"
       },
       {
         "scene": "爷爷在院子里开垦了一块长方形菜地，长6米、宽4米。他要在菜地里种青菜，想先算算这块地有多大。",
@@ -21078,7 +21207,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-046"
       },
       {
         "scene": "学校有一块长方形花圃，长8米、宽5米。园丁要种菊花，先算花圃面积。",
@@ -21173,7 +21303,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-047"
       },
       {
         "scene": "学校有一块正方形草坪，边长7米。园丁要算草坪面积。",
@@ -21267,7 +21398,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-048"
       },
       {
         "scene": "小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。",
@@ -21363,7 +21495,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-049"
       },
       {
         "scene": "老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。",
@@ -21459,7 +21592,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-050"
       },
       {
         "scene": "教室地面面积是8平方米。小红要换算成平方分米来记录。",
@@ -21577,7 +21711,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-051"
       },
       {
         "scene": "小明家装修客厅，客厅长6米、宽4米。用面积1平方米的地砖铺地，要算需要多少块地砖。",
@@ -21672,7 +21807,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-052"
       },
       {
         "scene": "工人要粉刷一面墙，墙长8米、高3米。每桶涂料刷4平方米，要算需要几桶涂料。",
@@ -21767,7 +21903,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-053"
       },
       {
         "scene": "地面长5米、宽4米，用面积2平方米的方砖铺设。要算需要多少块方砖。",
@@ -21862,7 +21999,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-054"
       },
       {
         "scene": "小红翻开日历，数了数一年有几个月。她好奇一年到底有多少个月。",
@@ -21970,7 +22108,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-055"
       },
       {
         "scene": "老师让同学们记住大月和小月。大月有31天，小红好奇哪些是大月。",
@@ -22073,7 +22212,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-056"
       },
       {
         "scene": "小亮查日历发现二月有时28天有时29天。老师告诉他平年二月28天，闰年二月29天。",
@@ -22181,7 +22321,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-057"
       },
       {
         "scene": "小红看钟表，下午3时她在上体育课。老师告诉她24时计时法下午3时叫15时。小红好奇下午3时是几时。",
@@ -22289,7 +22430,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-058"
       },
       {
         "scene": "小亮晚上8时开始写作业。他用24时计时法记录，想知道晚上8时是几时。",
@@ -22397,7 +22539,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-059"
       },
       {
         "scene": "小芳下午5时放学。她用24时计时法记录放学时间。",
@@ -22505,7 +22648,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-060"
       },
       {
         "scene": "图书馆9时开门，11时关门。小红想知道图书馆开了几小时。",
@@ -22613,7 +22757,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-061"
       },
       {
         "scene": "电影14时开始，16时结束。小亮想知道电影放了多少小时。",
@@ -22721,7 +22866,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-062"
       },
       {
         "scene": "小芳8时到校，17时放学。她想知道一天在学校待了多少小时。",
@@ -22829,7 +22975,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-063"
       },
       {
         "scene": "小红用1元买了一根冰棒，找回0.3元。她好奇0.3元是多少钱。",
@@ -22922,7 +23069,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-064"
       },
       {
         "scene": "小亮量得自己的铅笔长0.8分米。他想知道0.8等于十分之几。",
@@ -23015,7 +23163,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-065"
       },
       {
         "scene": "小芳的身高是1.2米。她好奇1.2米中的0.2等于十分之几。",
@@ -23108,7 +23257,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-066"
       },
       {
         "scene": "小红跳远跳了0.8米，小亮跳了0.6米。老师问谁跳得更远。",
@@ -23216,7 +23366,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-067"
       },
       {
         "scene": "小明的身高是1.2米，小亮是0.9米。老师问谁更高。",
@@ -23324,7 +23475,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-068"
       },
       {
         "scene": "一支铅笔0.5元，一块橡皮0.3元。老师问哪个更贵。",
@@ -23432,7 +23584,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-069"
       },
       {
         "scene": "文具店里一支铅笔2.5元，一块橡皮1.3元。小亮想买这两样文具，他算算一共多少元。",
@@ -23535,7 +23688,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-070"
       },
       {
         "scene": "小红有4.2元零花钱，买了一个发卡用去1.5元。她算算还剩多少钱。",
@@ -23636,7 +23790,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-071"
       },
       {
         "scene": "小亮身高1.3米，爸爸比他高0.5米。他算算爸爸有多高。",
@@ -23739,7 +23894,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-072"
       },
       {
         "scene": "小红有2件不同颜色的上衣和3条不同款式的裤子，明天春游她想搭配出一套漂亮的衣服。",
@@ -23842,7 +23998,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-073"
       },
       {
         "scene": "小亮有3种主食和2种饮料可选，他要搭配一份早餐。",
@@ -23950,7 +24107,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-074"
       },
       {
         "scene": "小芳要从3本书中选2本借回家看，她想知道有多少种选法。",
@@ -24058,7 +24216,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-075"
       },
       {
         "scene": "早晨小红去上学，太阳从东边升起。她面朝太阳站立，老师问她身后是什么方向。",
@@ -24153,7 +24312,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-076"
       },
       {
         "scene": "早晨小红去上学，太阳从东边升起。她面朝太阳站立，老师问她身后是什么方向。",
@@ -24248,7 +24408,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-077"
       },
       {
         "scene": "地图上方的方向是北。小亮看地图，知道北京在地图上方，他好奇北京在什么方向。",
@@ -24342,7 +24503,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-078"
       },
       {
         "scene": "地图上方的方向是北。小亮看地图，知道北京在地图上方，他好奇北京在什么方向。",
@@ -24436,7 +24598,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-079"
       },
       {
         "scene": "放学时太阳从西方落下。小红背着书包回家，她面朝西方走。老师问她左手边是什么方向。",
@@ -24531,7 +24694,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-080"
       },
       {
         "scene": "放学时太阳从西方落下。小红背着书包回家，她面朝西方走。老师问她左手边是什么方向。",
@@ -24626,7 +24790,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-081"
       },
       {
         "scene": "小亮站在操场中心，老师告诉他东和北之间的方向叫东北。他好奇东和南之间叫什么方向。",
@@ -24720,7 +24885,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-082"
       },
       {
         "scene": "小亮站在操场中心，老师告诉他东和北之间的方向叫东北。他好奇东和南之间叫什么方向。",
@@ -24814,7 +24980,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-083"
       },
       {
         "scene": "小红看学校地图，图书馆在教学楼的东北方向。她好奇教学楼的什么方向是西北。",
@@ -24908,7 +25075,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-084"
       },
       {
         "scene": "小红看学校地图，图书馆在教学楼的东北方向。她好奇教学楼的什么方向是西北。",
@@ -25002,7 +25170,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-085"
       },
       {
         "scene": "小明家在学校的西南方向。老师让同学们在图上标出小明家的位置，并说出西南是哪两个方向之间。",
@@ -25096,7 +25265,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-086"
       },
       {
         "scene": "小明家在学校的西南方向。老师让同学们在图上标出小明家的位置，并说出西南是哪两个方向之间。",
@@ -25190,7 +25360,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-087"
       },
       {
         "scene": "妈妈买了85颗草莓，平均装进3个盒子里。小红帮忙分装，她想知道每盒装几颗。",
@@ -25298,7 +25469,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-088"
       },
       {
         "scene": "妈妈买了49颗草莓，平均装进4个盒子里。小红帮忙分装，她想知道每盒装几颗。",
@@ -25406,7 +25578,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-089"
       },
       {
         "scene": "学校买了396本练习本，平均分给2个年级。教务处要算每个年级分多少本。",
@@ -25509,7 +25682,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-090"
       },
       {
         "scene": "学校买了436本练习本，平均分给2个年级。教务处要算每个年级分多少本。",
@@ -25612,7 +25786,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-091"
       },
       {
         "scene": "体育老师有101个皮球，平均分给4个班。他要算每个班分到几个皮球。",
@@ -25725,7 +25900,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-092"
       },
       {
         "scene": "体育老师有109个皮球，平均分给5个班。他要算每个班分到几个皮球。",
@@ -25838,7 +26014,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-093"
       },
       {
         "scene": "妈妈买了80颗新鲜的草莓，要平均装进5个盒子。小红帮忙分装，她想知道每个盒子装几颗。",
@@ -25951,7 +26128,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-094"
       },
       {
         "scene": "妈妈买了89颗新鲜的草莓，要平均装进5个盒子。小红帮忙分装，她想知道每个盒子装几颗。",
@@ -26064,7 +26242,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-095"
       },
       {
         "scene": "学校有92名同学参加跳绳比赛，平均分成4组。体育老师要算每组有多少人。",
@@ -26172,7 +26351,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-096"
       },
       {
         "scene": "学校有101名同学参加跳绳比赛，平均分成4组。体育老师要算每组有多少人。",
@@ -26280,7 +26460,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-097"
       },
       {
         "scene": "小芳有103张画片，平均分给6个好朋友。她要算每个朋友分到多少张画片。",
@@ -26398,7 +26579,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-098"
       },
       {
         "scene": "小芳有110张画片，平均分给7个好朋友。她要算每个朋友分到多少张画片。",
@@ -26516,7 +26698,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-099"
       },
       {
         "scene": "图书馆有447本新书，平均放在4个书架上。管理员要算每个书架放多少本。",
@@ -26624,7 +26807,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-100"
       },
       {
         "scene": "图书馆有484本新书，平均放在4个书架上。管理员要算每个书架放多少本。",
@@ -26732,7 +26916,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-101"
       },
       {
         "scene": "学校买了552本练习本，平均分给5个班。教务处要算每个班分多少本。",
@@ -26845,7 +27030,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-102"
       },
       {
         "scene": "学校买了587本练习本，平均分给6个班。教务处要算每个班分多少本。",
@@ -26958,7 +27144,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-103"
       },
       {
         "scene": "体育室有1267根跳绳，平均分给5个年级。体育老师要算每个年级分到多少根。",
@@ -27071,7 +27258,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-104"
       },
       {
         "scene": "体育室有753根跳绳，平均分给3个年级。体育老师要算每个年级分到多少根。",
@@ -27184,7 +27372,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-105"
       },
       {
         "scene": "小红算了一道除法：112÷6=25。老师教她用乘法验算，看看算得对不对。",
@@ -27280,7 +27469,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-106"
       },
       {
         "scene": "小红算了一道除法：90÷3=28。老师教她用乘法验算，看看算得对不对。",
@@ -27377,7 +27567,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-107"
       },
       {
         "scene": "小亮算了一道除法：107÷7=20。老师让他用乘法验算。",
@@ -27474,7 +27665,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-108"
       },
       {
         "scene": "小亮算了一道除法：88÷4=21。老师让他用乘法验算。",
@@ -27571,7 +27763,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-109"
       },
       {
         "scene": "小芳算了一道除法：542÷4=109。老师让她用乘法验算。",
@@ -27669,7 +27862,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-110"
       },
       {
         "scene": "小芳算了一道除法：517÷3=122。老师让她用乘法验算。",
@@ -27767,7 +27961,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-111"
       },
       {
         "scene": "学校有710本图书，平均放在5个书架上。管理员要算每个书架放多少本。",
@@ -27890,7 +28085,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-112"
       },
       {
         "scene": "学校有771本图书，平均放在6个书架上。管理员要算每个书架放多少本。",
@@ -28013,7 +28209,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-113"
       },
       {
         "scene": "体育老师有918个乒乓球，平均分给3个班。他要算每个班分到多少个。",
@@ -28121,7 +28318,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-114"
       },
       {
         "scene": "体育老师有1000个乒乓球，平均分给3个班。他要算每个班分到多少个。",
@@ -28229,7 +28427,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-115"
       },
       {
         "scene": "农场收获了1201千克苹果，平均装进3辆卡车。农场主算每辆卡车装多少千克。",
@@ -28342,7 +28541,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-116"
       },
       {
         "scene": "农场收获了697千克苹果，平均装进4辆卡车。农场主算每辆卡车装多少千克。",
@@ -28455,7 +28655,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-117"
       },
       {
         "scene": "三(1)班有21人喜欢足球，三(2)班有13人喜欢足球。体育老师要统计两个班一共有多少人喜欢足球。",
@@ -28558,7 +28759,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-118"
       },
       {
         "scene": "三(1)班有22人喜欢足球，三(2)班有15人喜欢足球。体育老师要统计两个班一共有多少人喜欢足球。",
@@ -28661,7 +28863,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-119"
       },
       {
         "scene": "三(1)班19人喜欢画画，三(2)班20人喜欢画画。美术老师要统计一共多少 人。",
@@ -28764,7 +28967,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-120"
       },
       {
         "scene": "三(1)班21人喜欢画画，三(2)班23人喜欢画画。美术老师要统计一共多少 人。",
@@ -28867,7 +29071,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-121"
       },
       {
         "scene": "三(1)班15人喜欢音乐，三(2)班17人喜欢音乐。音乐老师要统计一共多少 人。",
@@ -28970,7 +29175,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-122"
       },
       {
         "scene": "三(1)班16人喜欢音乐，三(3)班30人喜欢音乐。音乐老师要统计一共多少 人。",
@@ -29073,7 +29279,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-123"
       },
       {
         "scene": "文具店每盒水彩笔14元，老师买了30盒。小红算算一共要付多少元。",
@@ -29169,7 +29376,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-124"
       },
       {
         "scene": "文具店每盒水彩笔16元，老师买了18盒。小红算算一共要付多少元。",
@@ -29265,7 +29473,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-125"
       },
       {
         "scene": "超市每箱牛奶18元，食堂买了32箱。厨师长算一共要付多少元。",
@@ -29361,7 +29570,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-126"
       },
       {
         "scene": "超市每箱牛奶21元，食堂买了35箱。厨师长算一共要付多少元。",
@@ -29457,7 +29667,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-127"
       },
       {
         "scene": "学校每包纸30本，总务处买了13包。要算一共多少本。",
@@ -29553,7 +29764,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-128"
       },
       {
         "scene": "学校每包纸34本，总务处买了14包。要算一共多少本。",
@@ -29649,7 +29861,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-129"
       },
       {
         "scene": "学校报告厅有13排座位，每排16个。开家长会老师让小刚算一共能坐多少人。",
@@ -29748,7 +29961,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-130"
       },
       {
         "scene": "学校报告厅有14排座位，每排18个。开家长会老师让小刚算一共能坐多少人。",
@@ -29847,7 +30061,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-131"
       },
       {
         "scene": "教室里有25排桌子，每排18张。总务处要算一共多少张桌子。",
@@ -29946,7 +30161,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-132"
       },
       {
         "scene": "教室里有27排桌子，每排10张。总务处要算一共多少张桌子。",
@@ -30045,7 +30261,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-133"
       },
       {
         "scene": "图书角每层放46本书，共17层。管理员要算一共放多少本书。",
@@ -30144,7 +30361,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-134"
       },
       {
         "scene": "图书角每层放27本书，共10层。管理员要算一共放多少本书。",
@@ -30243,7 +30461,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-135"
       },
       {
         "scene": "学校给每班发46本新书，共35个班。教务处要算一共多少本书。",
@@ -30342,7 +30561,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-136"
       },
       {
         "scene": "学校给每班发50本新书，共21个班。教务处要算一共多少本书。",
@@ -30441,7 +30661,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-137"
       },
       {
         "scene": "超市每箱苹果46个，卖了37箱。店长算一共卖了多少个苹果。",
@@ -30540,7 +30761,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-138"
       },
       {
         "scene": "超市每箱苹果50个，卖了23箱。店长算一共卖了多少个苹果。",
@@ -30639,7 +30861,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-139"
       },
       {
         "scene": "操场每排41人，共12排。体育老师算一共多少人在做操。",
@@ -30738,7 +30961,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-140"
       },
       {
         "scene": "操场每排46人，共15排。体育老师算一共多少人在做操。",
@@ -30837,7 +31061,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-141"
       },
       {
         "scene": "超市有3箱饮料，每箱10瓶，每瓶4元。小红算一共多少元。",
@@ -30945,7 +31170,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-142"
       },
       {
         "scene": "超市有4箱饮料，每箱12瓶，每瓶5元。小红算一共多少元。",
@@ -31053,7 +31279,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-143"
       },
       {
         "scene": "学校买来4盒乒乓球，每盒14个，每个3元。老师算一共花了多少元。",
@@ -31166,7 +31393,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-144"
       },
       {
         "scene": "学校买来4盒乒乓球，每盒16个，每个2元。老师算一共花了多少元。",
@@ -31279,7 +31507,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-145"
       },
       {
         "scene": "妈妈买了85个苹果，每袋装5个，每箱装5袋。小红算需要几个箱子。",
@@ -31387,7 +31616,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-146"
       },
       {
         "scene": "妈妈买了58个苹果，每袋装5个，每箱装5袋。小红算需要几个箱子。",
@@ -31495,7 +31725,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-147"
       },
       {
         "scene": "小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。",
@@ -31590,7 +31821,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-148"
       },
       {
         "scene": "小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。",
@@ -31685,7 +31917,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-149"
       },
       {
         "scene": "老师让同学们用1平方厘米的小正方形摆一个长2厘米宽2厘米的长方形。小红要算需要多少个小正方形。",
@@ -31781,7 +32014,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-150"
       },
       {
         "scene": "老师让同学们用1平方厘米的小正方形摆一个长4厘米宽2厘米的长方形。小红要算需要多少个小正方形。",
@@ -31877,7 +32111,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-151"
       },
       {
         "scene": "小亮用1平方分米的正方形量桌面，大约能放22个。他好奇桌面面积大约是多少。",
@@ -31990,7 +32225,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-152"
       },
       {
         "scene": "小亮用1平方分米的正方形量桌面，大约能放24个。他好奇桌面面积大约是多少。",
@@ -32103,7 +32339,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-153"
       },
       {
         "scene": "爷爷在院子里开垦了一块长方形菜地，长8米、宽4米。他要在菜地里种青菜，想先算算这块地有多大。",
@@ -32198,7 +32435,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-154"
       },
       {
         "scene": "爷爷在院子里开垦了一块长方形菜地，长9米、宽5米。他要在菜地里种青菜，想先算算这块地有多大。",
@@ -32293,7 +32531,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-155"
       },
       {
         "scene": "学校有一块长方形花圃，长7米、宽6米。园丁要种菊花，先算花圃面积。",
@@ -32388,7 +32627,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-156"
       },
       {
         "scene": "学校有一块长方形花圃，长8米、宽6米。园丁要种菊花，先算花圃面积。",
@@ -32483,7 +32723,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-157"
       },
       {
         "scene": "学校有一块正方形草坪，边长8米。园丁要算草坪面积。",
@@ -32577,7 +32818,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-158"
       },
       {
         "scene": "学校有一块正方形草坪，边长9米。园丁要算草坪面积。",
@@ -32671,7 +32913,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-159"
       },
       {
         "scene": "小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。",
@@ -32767,7 +33010,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-160"
       },
       {
         "scene": "小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。",
@@ -32863,7 +33107,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-161"
       },
       {
         "scene": "老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。",
@@ -32959,7 +33204,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-162"
       },
       {
         "scene": "老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。",
@@ -33055,7 +33301,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-163"
       },
       {
         "scene": "教室地面面积是10平方米。小红要换算成平方分米来记录。",
@@ -33173,7 +33420,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-164"
       },
       {
         "scene": "教室地面面积是11平方米。小红要换算成平方分米来记录。",
@@ -33291,7 +33539,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-165"
       },
       {
         "scene": "小明家装修客厅，客厅长5米、宽5米。用面积1平方米的地砖铺地，要算需要多少块地砖。",
@@ -33386,7 +33635,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-166"
       },
       {
         "scene": "小明家装修客厅，客厅长6米、宽3米。用面积1平方米的地砖铺地，要算需要多少块地砖。",
@@ -33481,7 +33731,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-167"
       },
       {
         "scene": "工人要粉刷一面墙，墙长9米、高4米。每桶涂料刷4平方米，要算需要几桶涂料。",
@@ -33576,7 +33827,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-168"
       },
       {
         "scene": "工人要粉刷一面墙，墙长10米、高3米。每桶涂料刷6平方米，要算需要几桶涂料。",
@@ -33671,7 +33923,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-169"
       },
       {
         "scene": "地面长7米、宽6米，用面积2平方米的方砖铺设。要算需要多少块方砖。",
@@ -33766,7 +34019,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-170"
       },
       {
         "scene": "地面长4米、宽4米，用面积2平方米的方砖铺设。要算需要多少块方砖。",
@@ -33861,7 +34115,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-171"
       },
       {
         "scene": "小红用1元买了一根冰棒，找回0.4元。她好奇0.4元是多少钱。",
@@ -33954,7 +34209,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-172"
       },
       {
         "scene": "小红用1元买了一根冰棒，找回0.4元。她好奇0.4元是多少钱。",
@@ -34047,7 +34303,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-173"
       },
       {
         "scene": "小亮量得自己的铅笔长0.7分米。他想知道0.7等于十分之几。",
@@ -34140,7 +34397,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-174"
       },
       {
         "scene": "小亮量得自己的铅笔长0.8分米。他想知道0.8等于十分之几。",
@@ -34233,7 +34491,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-175"
       },
       {
         "scene": "小芳的身高是1.2米。她好奇1.2米中的0.2等于十分之几。",
@@ -34326,7 +34585,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-176"
       },
       {
         "scene": "小芳的身高是1.3米。她好奇1.3米中的0.3等于十分之几。",
@@ -34419,7 +34679,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-177"
       },
       {
         "scene": "文具店里一支铅笔2.7元，一块橡皮1.3元。小亮想买这两样文具，他算算一共多少元。",
@@ -34522,7 +34783,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-178"
       },
       {
         "scene": "文具店里一支铅笔2.4元，一块橡皮1.3元。小亮想买这两样文具，他算算一共多少元。",
@@ -34625,7 +34887,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-179"
       },
       {
         "scene": "小红有4.3元零花钱，买了一个发卡用去1.5元。她算算还剩多少钱。",
@@ -34726,7 +34989,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-180"
       },
       {
         "scene": "小红有5.2元零花钱，买了一个发卡用去1.7元。她算算还剩多少钱。",
@@ -34827,7 +35091,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-181"
       },
       {
         "scene": "小亮身高1.4米，爸爸比他高0.7米。他算算爸爸有多高。",
@@ -34930,7 +35195,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-182"
       },
       {
         "scene": "小亮身高1.4米，爸爸比他高0.5米。他算算爸爸有多高。",
@@ -35033,7 +35299,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-183"
       },
       {
         "scene": "小红有2件不同颜色的上衣和2条不同款式的裤子，明天春游她想搭配出一套漂亮的衣服。",
@@ -35136,7 +35403,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-184"
       },
       {
         "scene": "小红有7件不同颜色的上衣和3条不同款式的裤子，明天春游她想搭配出一套漂亮的衣服。",
@@ -35239,7 +35507,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-185"
       },
       {
         "scene": "小亮有4种主食和2种饮料可选，他要搭配一份早餐。",
@@ -35347,7 +35616,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-186"
       },
       {
         "scene": "小亮有4种主食和2种饮料可选，他要搭配一份早餐。",
@@ -35455,7 +35725,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-187"
       },
       {
         "scene": "小芳要从2本书中选2本借回家看，她想知道有多少种选法。",
@@ -35563,7 +35834,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-188"
       },
       {
         "scene": "小芳要从4本书中选2本借回家看，她想知道有多少种选法。",
@@ -35671,7 +35943,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "3B-PROB-189"
       }
     ],
     "knowledgeMap": [
@@ -36258,7 +36531,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-001"
       },
       {
         "scene": "小亮在存折上看到余额5040800元。老师教他读法，他好奇这个数读出来有几个零。",
@@ -36361,7 +36635,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-002"
       },
       {
         "scene": "甲市人口325万人，乙市人口280万人。小芳比较哪个城市人多。",
@@ -36469,7 +36744,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-003"
       },
       {
         "scene": "学校有学生4386人，小红用四舍五入法估算约多少人。",
@@ -36582,7 +36858,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-004"
       },
       {
         "scene": "老师告诉小明每相邻两个计数单位之间的进率都是10。小明想知道10个一万是多少。",
@@ -36680,7 +36957,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-005"
       },
       {
         "scene": "全球人口约7800000000人。小亮好奇这个数怎么读。",
@@ -36783,7 +37061,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-006"
       },
       {
         "scene": "小红用计算器算38×46，她先输入38再输入乘号和46。",
@@ -36876,7 +37155,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-007"
       },
       {
         "scene": "学校的操场面积约1公顷。小红想知道1公顷等于多少平方米。",
@@ -36972,7 +37252,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-008"
       },
       {
         "scene": "一个自然保护区面积约3平方千米。小亮想知道1平方千米等于多少公顷。",
@@ -37068,7 +37349,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-009"
       },
       {
         "scene": "小红用手电筒照向天空，光线像射线一样只有一个端点。老师问射线有几个端点。",
@@ -37163,7 +37445,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-010"
       },
       {
         "scene": "小红用量角器量一个角，读数是90度。她想知道直角是多少度。",
@@ -37258,7 +37541,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-011"
       },
       {
         "scene": "小亮画了一个角，量得是45度。老师问这是什么角。",
@@ -37353,7 +37637,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-012"
       },
       {
         "scene": "美术课上小红要画一个60度的角。她用量角器画好后想验证。",
@@ -37448,7 +37733,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-013"
       },
       {
         "scene": "学校买来12箱粉笔，每箱145盒。总务处要算一共有多少盒粉笔。",
@@ -37541,7 +37827,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-014"
       },
       {
         "scene": "一箱装106个苹果，装了30箱。果农要算一共多少个苹果。",
@@ -37634,7 +37921,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-015"
       },
       {
         "scene": "小红发现3×4=12，如果把4变成8（乘2），积也跟着变。她好奇积变成多少。",
@@ -37737,7 +38025,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-016"
       },
       {
         "scene": "文具店钢笔每支8元，小红买了15支。她算算一共要付多少元。",
@@ -37840,7 +38129,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-017"
       },
       {
         "scene": "小红骑车每分钟行200米，骑了15分钟。她算算一共骑了多少米。",
@@ -37948,7 +38238,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-018"
       },
       {
         "scene": "小红在纸上画了两条线，它们永不相交。老师问这样的两条线叫什么。",
@@ -38042,7 +38333,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-019"
       },
       {
         "scene": "小红要从直线外一点画这条直线的垂线。她用三角尺的直角来画。",
@@ -38136,7 +38428,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-020"
       },
       {
         "scene": "小红画了一个四边形，两组对边分别平行。老师问这是什么图形。",
@@ -38228,7 +38521,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-021"
       },
       {
         "scene": "小红从平行四边形一个顶点向对边画垂线。老师告诉这条线段叫高。",
@@ -38322,7 +38616,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-022"
       },
       {
         "scene": "小亮把一个四边形的四个角剪下来拼在一起，发现正好拼成一个周角。",
@@ -38416,7 +38711,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-023"
       },
       {
         "scene": "体育老师有80个跳绳，平均分给20个班。每班分几个？",
@@ -38509,7 +38805,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-024"
       },
       {
         "scene": "学校有92本故事书，每班分30本。能分给几个班？",
@@ -38612,7 +38909,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-025"
       },
       {
         "scene": "小红做除法84÷21，她把21看成20来试商。",
@@ -38710,7 +39008,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-026"
       },
       {
         "scene": "小亮做除法197÷28，他把28看成30来试商。",
@@ -38808,7 +39107,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-027"
       },
       {
         "scene": "小红发现8÷2=4，如果把8和2同时乘3，商不变。",
@@ -38906,7 +39206,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-028"
       },
       {
         "scene": "统计图上1格表示5人。小红所在兴趣小组有15人，需要画几格？",
@@ -39014,7 +39315,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-029"
       },
       {
         "scene": "妈妈给客人沏茶：洗水壶1分、烧水8分、洗茶杯2分、接茶1分。妈妈合理安排最少要几分钟？",
@@ -39132,7 +39434,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-030"
       },
       {
         "scene": "学校图书馆藏书约33655册，小红想知道33655中数字3表示多少。",
@@ -39240,7 +39543,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-031"
       },
       {
         "scene": "学校图书馆藏书约36505册，小红想知道36505中数字3表示多少。",
@@ -39348,7 +39652,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-032"
       },
       {
         "scene": "老师告诉小明每相邻两个计数单位之间的进率都是12。小明想知道12个一万是多少。",
@@ -39446,7 +39751,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-033"
       },
       {
         "scene": "老师告诉小明每相邻两个计数单位之间的进率都是13。小明想知道13个一万是多少。",
@@ -39544,7 +39850,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-034"
       },
       {
         "scene": "小红用计算器算40×40，她先输入40再输入乘号和40。",
@@ -39637,7 +39944,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-035"
       },
       {
         "scene": "小红用计算器算44×44，她先输入44再输入乘号和44。",
@@ -39730,7 +40038,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-036"
       },
       {
         "scene": "学校的操场面积约1公顷。小红想知道1公顷等于多少平方米。",
@@ -39826,7 +40135,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-037"
       },
       {
         "scene": "学校的操场面积约1公顷。小红想知道1公顷等于多少平方米。",
@@ -39922,7 +40232,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-038"
       },
       {
         "scene": "一个自然保护区面积约4平方千米。小亮想知道1平方千米等于多少公顷。",
@@ -40018,7 +40329,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-039"
       },
       {
         "scene": "一个自然保护区面积约6平方千米。小亮想知道1平方千米等于多少公顷。",
@@ -40114,7 +40426,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-040"
       },
       {
         "scene": "小红用手电筒照向天空，光线像射线一样只有一个端点。老师问射线有几个端点。",
@@ -40209,7 +40522,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-041"
       },
       {
         "scene": "小红用手电筒照向天空，光线像射线一样只有一个端点。老师问射线有几个端点。",
@@ -40304,7 +40618,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-042"
       },
       {
         "scene": "小红用量角器量一个角，读数是130度。她想知道直角是多少度。",
@@ -40399,7 +40714,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-043"
       },
       {
         "scene": "小红用量角器量一个角，读数是76度。她想知道直角是多少度。",
@@ -40494,7 +40810,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-044"
       },
       {
         "scene": "小亮画了一个角，量得是46度。老师问这是什么角。",
@@ -40589,7 +40906,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-045"
       },
       {
         "scene": "小亮画了一个角，量得是50度。老师问这是什么角。",
@@ -40684,7 +41002,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-046"
       },
       {
         "scene": "美术课上小红要画一个77度的角。她用量角器画好后想验证。",
@@ -40779,7 +41098,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-047"
       },
       {
         "scene": "美术课上小红要画一个83度的角。她用量角器画好后想验证。",
@@ -40874,7 +41194,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-048"
       },
       {
         "scene": "学校买来13箱粉笔，每箱133盒。总务处要算一共有多少盒粉笔。",
@@ -40967,7 +41288,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-049"
       },
       {
         "scene": "学校买来15箱粉笔，每箱138盒。总务处要算一共有多少盒粉笔。",
@@ -41060,7 +41382,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-050"
       },
       {
         "scene": "一箱装119个苹果，装了35箱。果农要算一共多少个苹果。",
@@ -41153,7 +41476,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-051"
       },
       {
         "scene": "一箱装129个苹果，装了39箱。果农要算一共多少个苹果。",
@@ -41246,7 +41570,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-052"
       },
       {
         "scene": "小红发现4×5=11，如果把5变成10（乘2），积也跟着变。她好奇积变成多少。",
@@ -41349,7 +41674,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-053"
       },
       {
         "scene": "小红发现4×4=11，如果把4变成11（乘2），积也跟着变。她好奇积变成多少。",
@@ -41452,7 +41778,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-054"
       },
       {
         "scene": "文具店钢笔每支8元，小红买了18支。她算算一共要付多少元。",
@@ -41555,7 +41882,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-055"
       },
       {
         "scene": "文具店钢笔每支8元，小红买了21支。她算算一共要付多少元。",
@@ -41658,7 +41986,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-056"
       },
       {
         "scene": "小红在纸上画了两条线，它们永不相交。老师问这样的两条线叫什么。",
@@ -41752,7 +42081,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-057"
       },
       {
         "scene": "小红在纸上画了两条线，它们永不相交。老师问这样的两条线叫什么。",
@@ -41846,7 +42176,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-058"
       },
       {
         "scene": "小红要从直线外一点画这条直线的垂线。她用三角尺的直角来画。",
@@ -41940,7 +42271,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-059"
       },
       {
         "scene": "小红要从直线外一点画这条直线的垂线。她用三角尺的直角来画。",
@@ -42034,7 +42366,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-060"
       },
       {
         "scene": "小红画了一个四边形，两组对边分别平行。老师问这是什么图形。",
@@ -42126,7 +42459,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-061"
       },
       {
         "scene": "小红画了一个四边形，两组对边分别平行。老师问这是什么图形。",
@@ -42218,7 +42552,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-062"
       },
       {
         "scene": "小红从平行四边形一个顶点向对边画垂线。老师告诉这条线段叫高。",
@@ -42312,7 +42647,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-063"
       },
       {
         "scene": "小红从平行四边形一个顶点向对边画垂线。老师告诉这条线段叫高。",
@@ -42406,7 +42742,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-064"
       },
       {
         "scene": "小亮把一个四边形的四个角剪下来拼在一起，发现正好拼成一个周角。",
@@ -42500,7 +42837,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-065"
       },
       {
         "scene": "小亮把一个四边形的四个角剪下来拼在一起，发现正好拼成一个周角。",
@@ -42594,7 +42932,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-066"
       },
       {
         "scene": "体育老师有117个跳绳，平均分给16个班。每班分几个？",
@@ -42687,7 +43026,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-067"
       },
       {
         "scene": "体育老师有68个跳绳，平均分给19个班。每班分几个？",
@@ -42780,7 +43120,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-068"
       },
       {
         "scene": "学校有95本故事书，每班分26本。能分给几个班？",
@@ -42883,7 +43224,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-069"
       },
       {
         "scene": "学校有103本故事书，每班分30本。能分给几个班？",
@@ -42986,7 +43328,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-070"
       },
       {
         "scene": "小红做除法109÷19，她把19看成27来试商。",
@@ -43084,7 +43427,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-071"
       },
       {
         "scene": "小红做除法117÷22，她把22看成22来试商。",
@@ -43182,7 +43526,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-072"
       },
       {
         "scene": "小亮做除法171÷26，他把26看成26来试商。",
@@ -43280,7 +43625,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-073"
       },
       {
         "scene": "小亮做除法189÷30，他把30看成38来试商。",
@@ -43378,7 +43724,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-074"
       },
       {
         "scene": "统计图上1格表示5人。小红所在兴趣小组有21人，需要画几格？",
@@ -43486,7 +43833,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-075"
       },
       {
         "scene": "统计图上1格表示6人。小红所在兴趣小组有12人，需要画几格？",
@@ -43594,7 +43942,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4A-PROB-076"
       }
     ],
     "knowledgeMap": [
@@ -44238,7 +44587,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-001"
       },
       {
         "scene": "小亮有3盒铅笔，每盒12支。他算3×12=36。老师问36叫什么。",
@@ -44331,7 +44681,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-002"
       },
       {
         "scene": "小红要算(12+8)×3。她先算括号里的。",
@@ -44429,7 +44780,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-003"
       },
       {
         "scene": "全班38人去划船，大船坐6人每条30元，小船坐4人每条20元。小红先算都坐大船需几条。",
@@ -44532,7 +44884,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-004"
       },
       {
         "scene": "小红从前面看一个长方体，看到一个长方形。她好奇从上面看会看到什么。",
@@ -44626,7 +44979,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-005"
       },
       {
         "scene": "小红算35+25和25+35，发现结果一样。",
@@ -44729,7 +45083,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-006"
       },
       {
         "scene": "小亮算4×25和25×4，发现结果一样。",
@@ -44822,7 +45177,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-007"
       },
       {
         "scene": "小红算(20+3)×4，老师教她可以拆成20×4+3×4。",
@@ -44915,7 +45271,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-008"
       },
       {
         "scene": "小红算125-38-62，老师教她可以变成125-(38+62)。",
@@ -45016,7 +45373,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-009"
       },
       {
         "scene": "小红把一个正方形平均分成100份，涂了其中的3份。老师问涂色部分用小数表示是多少。",
@@ -45109,7 +45467,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-010"
       },
       {
         "scene": "小亮写了一个小数0.45。老师问他读作什么。",
@@ -45212,7 +45571,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-011"
       },
       {
         "scene": "小红发现0.3和0.30大小一样。老师告诉她小数末尾添0大小不变。",
@@ -45305,7 +45665,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-012"
       },
       {
         "scene": "小红跳远1.25米，小亮跳1.3米。老师问谁跳得远。",
@@ -45413,7 +45774,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-013"
       },
       {
         "scene": "小亮把0.25的小数点向右移动一位，变成2.5。老师问扩大了多少倍。",
@@ -45521,7 +45883,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-014"
       },
       {
         "scene": "小红身高125厘米，她想换算成米。",
@@ -45624,7 +45987,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-015"
       },
       {
         "scene": "小亮的身高是1.356米，保留一位小数约是多少？",
@@ -45732,7 +46096,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-016"
       },
       {
         "scene": "小红用三根小棒围成一个三角形。老师问三角形有几条边。",
@@ -45824,7 +46189,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-017"
       },
       {
         "scene": "小亮画了一个三角形，三个角都是60度。老师问这是什么三角形。",
@@ -45918,7 +46284,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-018"
       },
       {
         "scene": "小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。",
@@ -46012,7 +46379,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-019"
       },
       {
         "scene": "小红有三根小棒：3cm、4cm、5cm。她好奇能不能围成三角形。",
@@ -46110,7 +46478,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-020"
       },
       {
         "scene": "小红买铅笔用了2.5元，买橡皮用了1.8元。她算算一共花了多少元。",
@@ -46213,7 +46582,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-021"
       },
       {
         "scene": "小红有10元，买文具用了3.5元，又买零食用了2.8元。她还剩多少元？",
@@ -46318,7 +46688,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-022"
       },
       {
         "scene": "小红算0.25+1.8+0.75，她用加法交换律先算0.25+0.75。",
@@ -46421,7 +46792,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-023"
       },
       {
         "scene": "小红把一张纸对折后剪出一个图形，展开后发现两边完全一样。",
@@ -46513,7 +46885,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-024"
       },
       {
         "scene": "小红把一个三角形向右移动了3格。老师问平移后图形什么不变。",
@@ -46608,7 +46981,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-025"
       },
       {
         "scene": "小红遇到一个不规则图形，她通过平移把它变成一个长5宽3的长方形。",
@@ -46703,7 +47077,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-026"
       },
       {
         "scene": "小红的数学成绩分别是90、85、95分。老师让她算平均分。",
@@ -46811,7 +47186,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-027"
       },
       {
         "scene": "统计图中男生用绿色条表示12人，女生用黄色条表示15人。小红问女生比男生多几人。",
@@ -46914,7 +47290,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-028"
       },
       {
         "scene": "农场有鸡兔共8只，腿共22条。小红用假设法算有几只兔。",
@@ -47017,7 +47394,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-029"
       },
       {
         "scene": "小红有21元，妈妈又给她13元，现在有33元。老师问加法各部分名称。",
@@ -47120,7 +47498,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-030"
       },
       {
         "scene": "小红有33元，妈妈又给她14元，现在有36元。老师问加法各部分名称。",
@@ -47223,7 +47602,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-031"
       },
       {
         "scene": "小亮有3盒铅笔，每盒16支。他算3×16=31。老师问31叫什么。",
@@ -47316,7 +47696,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-032"
       },
       {
         "scene": "小亮有4盒铅笔，每盒18支。他算4×18=44。老师问44叫什么。",
@@ -47409,7 +47790,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-033"
       },
       {
         "scene": "小红要算(16+11)×4。她先算括号里的。",
@@ -47507,7 +47889,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-034"
       },
       {
         "scene": "小红要算(112+12)×4。她先算括号里的。",
@@ -47605,7 +47988,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-035"
       },
       {
         "scene": "全班38人去划船，大船坐8人每条38元，小船坐4人每条24元。小红先算都坐大船需几条。",
@@ -47708,7 +48092,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-036"
       },
       {
         "scene": "全班60人去划船，大船坐5人每条33元，小船坐6人每条26元。小红先算都坐大船需几条。",
@@ -47811,7 +48196,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-037"
       },
       {
         "scene": "小红从前面看一个长方体，看到一个长方形。她好奇从上面看会看到什么。",
@@ -47905,7 +48291,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-038"
       },
       {
         "scene": "小红从前面看一个长方体，看到一个长方形。她好奇从上面看会看到什么。",
@@ -47999,7 +48386,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-039"
       },
       {
         "scene": "小红算52+37和37+52，发现结果一样。",
@@ -48102,7 +48490,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-040"
       },
       {
         "scene": "小红算31+23和23+31，发现结果一样。",
@@ -48205,7 +48594,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-041"
       },
       {
         "scene": "小亮算3×27和27×3，发现结果一样。",
@@ -48298,7 +48688,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-042"
       },
       {
         "scene": "小亮算4×29和29×4，发现结果一样。",
@@ -48391,7 +48782,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-043"
       },
       {
         "scene": "小红算(27+3)×6，老师教她可以拆成27×6+3×6。",
@@ -48484,7 +48876,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-044"
       },
       {
         "scene": "小红算(28+3)×5，老师教她可以拆成28×5+3×5。",
@@ -48577,7 +48970,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-045"
       },
       {
         "scene": "小红算113-34-62，老师教她可以变成113-(34+62)。",
@@ -48678,7 +49072,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-046"
       },
       {
         "scene": "小红算124-40-53，老师教她可以变成124-(40+53)。",
@@ -48779,7 +49174,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-047"
       },
       {
         "scene": "小红把一个正方形平均分成94份，涂了其中的4份。老师问涂色部分用小数表示是多少。",
@@ -48872,7 +49268,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-048"
       },
       {
         "scene": "小红把一个正方形平均分成108份，涂了其中的4份。老师问涂色部分用小数表示是多少。",
@@ -48965,7 +49362,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-049"
       },
       {
         "scene": "小红发现0.3和0.31大小一样。老师告诉她小数末尾添0大小不变。",
@@ -49058,7 +49456,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-050"
       },
       {
         "scene": "小红发现0.3和0.35大小一样。老师告诉她小数末尾添0大小不变。",
@@ -49151,7 +49550,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-051"
       },
       {
         "scene": "小红用三根小棒围成一个三角形。老师问三角形有几条边。",
@@ -49243,7 +49643,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-052"
       },
       {
         "scene": "小红用三根小棒围成一个三角形。老师问三角形有几条边。",
@@ -49335,7 +49736,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-053"
       },
       {
         "scene": "小亮画了一个三角形，三个角都是54度。老师问这是什么三角形。",
@@ -49429,7 +49831,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-054"
       },
       {
         "scene": "小亮画了一个三角形，三个角都是83度。老师问这是什么三角形。",
@@ -49523,7 +49926,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-055"
       },
       {
         "scene": "小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。",
@@ -49617,7 +50021,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-056"
       },
       {
         "scene": "小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。",
@@ -49711,7 +50116,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-057"
       },
       {
         "scene": "小红有三根小棒：3cm、5cm、5cm。她好奇能不能围成三角形。",
@@ -49809,7 +50215,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-058"
       },
       {
         "scene": "小红有三根小棒：4cm、6cm、6cm。她好奇能不能围成三角形。",
@@ -49907,7 +50314,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-059"
       },
       {
         "scene": "小红买铅笔用了3.7元，买橡皮用了1.7元。她算算一共花了多少元。",
@@ -50010,7 +50418,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-060"
       },
       {
         "scene": "小红买铅笔用了3.4元，买橡皮用了1.11元。她算算一共花了多少元。",
@@ -50113,7 +50522,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-061"
       },
       {
         "scene": "小红算0.30+1.11+0.110，她用加法交换律先算0.30+0.110。",
@@ -50216,7 +50626,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-062"
       },
       {
         "scene": "小红算0.32+1.9+0.69，她用加法交换律先算0.32+0.69。",
@@ -50319,7 +50730,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-063"
       },
       {
         "scene": "小红把一张纸对折后剪出一个图形，展开后发现两边完全一样。",
@@ -50411,7 +50823,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-064"
       },
       {
         "scene": "小红把一张纸对折后剪出一个图形，展开后发现两边完全一样。",
@@ -50503,7 +50916,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-065"
       },
       {
         "scene": "小红把一个三角形向右移动了3格。老师问平移后图形什么不变。",
@@ -50598,7 +51012,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-066"
       },
       {
         "scene": "小红把一个三角形向右移动了3格。老师问平移后图形什么不变。",
@@ -50693,7 +51108,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-067"
       },
       {
         "scene": "小红遇到一个不规则图形，她通过平移把它变成一个长7宽3的长方形。",
@@ -50788,7 +51204,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-068"
       },
       {
         "scene": "小红遇到一个不规则图形，她通过平移把它变成一个长7宽3的长方形。",
@@ -50883,7 +51300,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-069"
       },
       {
         "scene": "小红的数学成绩分别是78、80、82分。老师让她算平均分。",
@@ -50991,7 +51409,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-070"
       },
       {
         "scene": "小红的数学成绩分别是86、92、119分。老师让她算平均分。",
@@ -51099,7 +51518,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-071"
       },
       {
         "scene": "统计图中男生用绿色条表示12人，女生用黄色条表示17人。小红问女生比男生多几人。",
@@ -51202,7 +51622,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-072"
       },
       {
         "scene": "统计图中男生用绿色条表示13人，女生用黄色条表示18人。小红问女生比男生多几人。",
@@ -51305,7 +51726,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "4B-PROB-073"
       }
     ],
     "knowledgeMap": [
@@ -51916,7 +52338,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-001"
       },
       {
         "scene": "小亮房间长4.5米宽3.2米。他想算房间面积是多少平方米。",
@@ -52009,7 +52432,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-002"
       },
       {
         "scene": "小红算出苹果总价是8.736元，保留两位小数。",
@@ -52117,7 +52541,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-003"
       },
       {
         "scene": "小红算0.25×4.4，她用简便方法0.25×4×1.1。",
@@ -52215,7 +52640,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-004"
       },
       {
         "scene": "出租车3千米内收8元，超过3千米每千米1.5元。小红坐了7千米。",
@@ -52318,7 +52744,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-005"
       },
       {
         "scene": "小红在方格纸上用数对(3,5)表示位置，列是3行是5。她想知道(3,5)表示第几列第几行。",
@@ -52415,7 +52842,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-006"
       },
       {
         "scene": "小红买4.8千克大米共花了33.6元。她算每千克大米多少元。",
@@ -52513,7 +52941,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-007"
       },
       {
         "scene": "小红做除法7.2÷0.8，她把除数和被除数同时乘10变成72÷8。",
@@ -52611,7 +53040,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-008"
       },
       {
         "scene": "小亮算10÷3，除不尽保留两位小数。",
@@ -52714,7 +53144,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-009"
       },
       {
         "scene": "小红算1÷3=0.333...，老师告诉她这是循环小数。",
@@ -52817,7 +53248,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-010"
       },
       {
         "scene": "妈妈买3.5千克油，每个瓶子最多装0.8千克。需要几个瓶子？",
@@ -52920,7 +53352,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-011"
       },
       {
         "scene": "袋子里有5个红球，小红闭眼摸一个。老师问摸出什么颜色。",
@@ -53018,7 +53451,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-012"
       },
       {
         "scene": "袋子里3个红球1个蓝球。小红摸一个球。",
@@ -53121,7 +53555,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-013"
       },
       {
         "scene": "小红和小亮玩游戏，袋中2红2蓝，摸到红小红赢摸到蓝小亮赢。",
@@ -53224,7 +53659,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-014"
       },
       {
         "scene": "小红今年a岁，妈妈比她大25岁。老师问妈妈多少岁。",
@@ -53327,7 +53763,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-015"
       },
       {
         "scene": "老师教小红用字母表示长方形面积公式。",
@@ -53422,7 +53859,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-016"
       },
       {
         "scene": "小红看到天平左边放x克砝码右边放50克，天平平衡。老师问这是什么。",
@@ -53518,7 +53956,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-017"
       },
       {
         "scene": "老师告诉小红等式两边同时加同一个数等式仍成立。",
@@ -53614,7 +54053,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-018"
       },
       {
         "scene": "小红解方程x+15=40。",
@@ -53710,7 +54150,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-019"
       },
       {
         "scene": "小亮解方程3x=18。",
@@ -53806,7 +54247,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-020"
       },
       {
         "scene": "小红有x颗糖果，小亮有15颗，两人一共35颗。小红列方程。",
@@ -53909,7 +54351,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-021"
       },
       {
         "scene": "苹果比梨多5个，梨有x个苹果有3x个。老师让小红列方程3x-x=5。",
@@ -54007,7 +54450,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-022"
       },
       {
         "scene": "小红家的平行四边形花坛底6米高4米。她算花坛面积。",
@@ -54102,7 +54546,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-023"
       },
       {
         "scene": "小红画了一个三角形底5厘米高4厘米。她算三角形面积。",
@@ -54197,7 +54642,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-024"
       },
       {
         "scene": "小亮家的梯形花圃上底3米下底5米高4米。他算花圃面积。",
@@ -54293,7 +54739,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-025"
       },
       {
         "scene": "小红家的L形花坛可以分成两个长方形：一个3×4，一个2×3。她算总面积。",
@@ -54398,7 +54845,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-026"
       },
       {
         "scene": "小红用方格纸估算一片叶子的面积，数了整格12个半格8个。",
@@ -54493,7 +54941,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-027"
       },
       {
         "scene": "学校在20米长的路一边植树，每隔5米栽一棵两端都栽。",
@@ -54616,7 +55065,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-028"
       },
       {
         "scene": "在20米长的路一边植树，每隔5米栽一棵两端都不栽。",
@@ -54729,7 +55179,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-029"
       },
       {
         "scene": "小红买西瓜，每千克4.6元，买了6千克。她算算要付多少元。",
@@ -54827,7 +55278,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-030"
       },
       {
         "scene": "小红买西瓜，每千克4.7元，买了5千克。她算算要付多少元。",
@@ -54925,7 +55377,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-031"
       },
       {
         "scene": "小亮房间长3.6米宽3.2米。他想算房间面积是多少平方米。",
@@ -55018,7 +55471,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-032"
       },
       {
         "scene": "小亮房间长4.7米宽4.2米。他想算房间面积是多少平方米。",
@@ -55111,7 +55565,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-033"
       },
       {
         "scene": "小红算0.35×5.5，她用简便方法0.35×5×1.1。",
@@ -55209,7 +55664,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-034"
       },
       {
         "scene": "小红算0.37×6.6，她用简便方法0.37×6×1.1。",
@@ -55307,7 +55763,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-035"
       },
       {
         "scene": "出租车4千米内收9元，超过4千米每千米1.7元。小红坐了7千米。",
@@ -55410,7 +55867,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-036"
       },
       {
         "scene": "出租车4千米内收12元，超过4千米每千米1.5元。小红坐了7千米。",
@@ -55513,7 +55971,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-037"
       },
       {
         "scene": "小红在方格纸上用数对(4,7)表示位置，列是4行是7。她想知道(4,7)表示第几列第几行。",
@@ -55610,7 +56069,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-038"
       },
       {
         "scene": "小红在方格纸上用数对(4,4)表示位置，列是4行是4。她想知道(4,4)表示第几列第几行。",
@@ -55707,7 +56167,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-039"
       },
       {
         "scene": "小红买6.10千克大米共花了27.9元。她算每千克大米多少元。",
@@ -55805,7 +56266,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-040"
       },
       {
         "scene": "小红买4.10千克大米共花了30.5元。她算每千克大米多少元。",
@@ -55903,7 +56365,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-041"
       },
       {
         "scene": "小红做除法7.3÷0.13，她把除数和被除数同时乘13变成713÷13。",
@@ -56001,7 +56464,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-042"
       },
       {
         "scene": "小红做除法10.3÷0.10，她把除数和被除数同时乘13变成104÷10。",
@@ -56099,7 +56563,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-043"
       },
       {
         "scene": "妈妈买4.4千克油，每个瓶子最多装0.8千克。需要几个瓶子？",
@@ -56202,7 +56667,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-044"
       },
       {
         "scene": "妈妈买4.5千克油，每个瓶子最多装0.11千克。需要几个瓶子？",
@@ -56305,7 +56771,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-045"
       },
       {
         "scene": "袋子里有6个红球，小红闭眼摸一个。老师问摸出什么颜色。",
@@ -56403,7 +56870,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-046"
       },
       {
         "scene": "袋子里有7个红球，小红闭眼摸一个。老师问摸出什么颜色。",
@@ -56501,7 +56969,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-047"
       },
       {
         "scene": "袋子里3个红球1个蓝球。小红摸一个球。",
@@ -56604,7 +57073,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-048"
       },
       {
         "scene": "袋子里3个红球1个蓝球。小红摸一个球。",
@@ -56707,7 +57177,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-049"
       },
       {
         "scene": "小红和小亮玩游戏，袋中3红3蓝，摸到红小红赢摸到蓝小亮赢。",
@@ -56810,7 +57281,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-050"
       },
       {
         "scene": "小红和小亮玩游戏，袋中3红3蓝，摸到红小红赢摸到蓝小亮赢。",
@@ -56913,7 +57385,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-051"
       },
       {
         "scene": "老师教小红用字母表示长方形面积公式。",
@@ -57008,7 +57481,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-052"
       },
       {
         "scene": "老师教小红用字母表示长方形面积公式。",
@@ -57103,7 +57577,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-053"
       },
       {
         "scene": "小红看到天平左边放x克砝码右边放71克，天平平衡。老师问这是什么。",
@@ -57199,7 +57674,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-054"
       },
       {
         "scene": "小红看到天平左边放x克砝码右边放41克，天平平衡。老师问这是什么。",
@@ -57295,7 +57771,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-055"
       },
       {
         "scene": "老师告诉小红等式两边同时加同一个数等式仍成立。",
@@ -57391,7 +57868,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-056"
       },
       {
         "scene": "老师告诉小红等式两边同时加同一个数等式仍成立。",
@@ -57487,7 +57965,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-057"
       },
       {
         "scene": "小红解方程x+19=49。",
@@ -57583,7 +58062,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-058"
       },
       {
         "scene": "小红解方程x+20=55。",
@@ -57679,7 +58159,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-059"
       },
       {
         "scene": "小亮解方程2x=22。",
@@ -57775,7 +58256,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-060"
       },
       {
         "scene": "小亮解方程3x=25。",
@@ -57871,7 +58353,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-061"
       },
       {
         "scene": "小红有x颗糖果，小亮有16颗，两人一共46颗。小红列方程。",
@@ -57974,7 +58457,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-062"
       },
       {
         "scene": "小红有x颗糖果，小亮有18颗，两人一共51颗。小红列方程。",
@@ -58077,7 +58561,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-063"
       },
       {
         "scene": "苹果比梨多7个，梨有x个苹果有4x个。老师让小红列方程4x-x=7。",
@@ -58175,7 +58660,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-064"
       },
       {
         "scene": "苹果比梨多7个，梨有x个苹果有3x个。老师让小红列方程3x-x=7。",
@@ -58273,7 +58759,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-065"
       },
       {
         "scene": "小红家的平行四边形花坛底6米高6米。她算花坛面积。",
@@ -58368,7 +58855,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-066"
       },
       {
         "scene": "小红家的平行四边形花坛底6米高3米。她算花坛面积。",
@@ -58463,7 +58951,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-067"
       },
       {
         "scene": "小红画了一个三角形底6厘米高6厘米。她算三角形面积。",
@@ -58558,7 +59047,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-068"
       },
       {
         "scene": "小红画了一个三角形底7厘米高3厘米。她算三角形面积。",
@@ -58653,7 +59143,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-069"
       },
       {
         "scene": "小亮家的梯形花圃上底4米下底7米高5米。他算花圃面积。",
@@ -58749,7 +59240,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-070"
       },
       {
         "scene": "小亮家的梯形花圃上底3米下底5米高5米。他算花圃面积。",
@@ -58845,7 +59337,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-071"
       },
       {
         "scene": "小红家的L形花坛可以分成两个长方形：一个3×3，一个3×3。她算总面积。",
@@ -58950,7 +59443,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-072"
       },
       {
         "scene": "小红家的L形花坛可以分成两个长方形：一个3×4，一个3×3。她算总面积。",
@@ -59055,7 +59549,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-073"
       },
       {
         "scene": "小红用方格纸估算一片叶子的面积，数了整格16个半格7个。",
@@ -59150,7 +59645,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-074"
       },
       {
         "scene": "小红用方格纸估算一片叶子的面积，数了整格17个半格8个。",
@@ -59245,7 +59741,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5A-PROB-075"
       }
     ],
     "knowledgeMap": [
@@ -59866,7 +60363,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-001"
       },
       {
         "scene": "小红搭了一个立体图形，从上面看是3个小正方形排成一排。她想知道至少用了几个小正方体。",
@@ -59964,7 +60462,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-002"
       },
       {
         "scene": "小红把12个苹果平均分给4个小朋友。老师告诉12÷4=3，所以4和3都是12的因数。",
@@ -60072,7 +60571,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-003"
       },
       {
         "scene": "小红在百数表中圈出2的倍数。她发现2的倍数个位都是偶数。",
@@ -60190,7 +60690,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-004"
       },
       {
         "scene": "老师让小红判断7是不是质数。小红发现7只能被1和7整除。",
@@ -60318,7 +60819,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-005"
       },
       {
         "scene": "小红观察一个长方体纸盒。老师问她长方体有几个面。",
@@ -60410,7 +60912,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-006"
       },
       {
         "scene": "小亮观察一个正方体魔方。老师问他正方体有什么特征。",
@@ -60502,7 +61005,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-007"
       },
       {
         "scene": "小红要给一个长5cm宽4cm高3cm的长方体纸盒涂色。她算表面积。",
@@ -60598,7 +61102,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-008"
       },
       {
         "scene": "老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。",
@@ -60694,7 +61199,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-009"
       },
       {
         "scene": "小红算一个长5cm宽4cm高3cm的长方体体积。",
@@ -60790,7 +61296,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-010"
       },
       {
         "scene": "老师告诉小红1m³等于1000dm³。小红好奇1m³等于多少cm³。",
@@ -60898,7 +61405,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-011"
       },
       {
         "scene": "妈妈买了一瓶2L的果汁。小红想知道2L等于多少mL。",
@@ -61006,7 +61514,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-012"
       },
       {
         "scene": "小红把一块石头放入装有水的量杯中，水面从200mL升到了250mL。她算石头的体积。",
@@ -61114,7 +61623,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-013"
       },
       {
         "scene": "小红把一块蛋糕平均分成4份，吃了其中1份。老师问她吃了这块蛋糕的几分之几。",
@@ -61207,7 +61717,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-014"
       },
       {
         "scene": "小红把3块饼平均分给4个小朋友。老师问她每人分到多少块。",
@@ -61300,7 +61811,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-015"
       },
       {
         "scene": "小红看到分数3/8。老师问她这是真分数还是假分数。",
@@ -61393,7 +61905,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-016"
       },
       {
         "scene": "小红发现1/2和2/4大小一样。老师告诉她分数的基本性质。",
@@ -61486,7 +61999,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-017"
       },
       {
         "scene": "小红找12和18的最大公因数。她列出12的因数和18的因数。",
@@ -61587,7 +62101,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-018"
       },
       {
         "scene": "小红要把分数6/8化成最简分数。她用分子分母同时除以2。",
@@ -61680,7 +62195,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-019"
       },
       {
         "scene": "小红找4和6的最小公倍数。她在数轴上找它们第一个共同的倍数。",
@@ -61798,7 +62314,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-020"
       },
       {
         "scene": "小红要把1/2和1/3通分。她找到分母2和3的最小公倍数6。",
@@ -61891,7 +62408,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-021"
       },
       {
         "scene": "小红要把0.25化成分数。她知道0.25=25/100。",
@@ -61984,7 +62502,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-022"
       },
       {
         "scene": "小红把一个三角形绕一个顶点旋转90度。老师问她旋转后图形什么不变。",
@@ -62079,7 +62598,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-023"
       },
       {
         "scene": "美术课上小红用基本图形通过旋转和平移设计了一个漂亮的图案。",
@@ -62173,7 +62693,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-024"
       },
       {
         "scene": "小红吃了一个蛋糕的1/4，又吃了2/4。她算一共吃了多少。",
@@ -62266,7 +62787,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-025"
       },
       {
         "scene": "小红算1/2+1/3。她先通分变成3/6+2/6。",
@@ -62359,7 +62881,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-026"
       },
       {
         "scene": "小红算1/2+1/3-1/6。她先通分成同分母。",
@@ -62452,7 +62975,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-027"
       },
       {
         "scene": "小红看折线统计图，发现温度从早上到中午一直在升高。她知道折线统计图的特点。",
@@ -62565,7 +63089,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-028"
       },
       {
         "scene": "小红看复式折线统计图，图中有两条线分别表示甲市和乙市的气温。",
@@ -62673,7 +63198,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-029"
       },
       {
         "scene": "有5瓶药其中1瓶较轻是次品。小红用天平找次品。",
@@ -62767,7 +63293,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-030"
       },
       {
         "scene": "小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。",
@@ -62861,7 +63388,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-031"
       },
       {
         "scene": "小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。",
@@ -62955,7 +63483,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-032"
       },
       {
         "scene": "小红搭了一个立体图形，从上面看是9个小正方形排成一排。她想知道至少用了几个小正方体。",
@@ -63053,7 +63582,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-033"
       },
       {
         "scene": "小红搭了一个立体图形，从上面看是11个小正方形排成一排。她想知道至少用了几个小正方体。",
@@ -63151,7 +63681,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-034"
       },
       {
         "scene": "小红把15个苹果平均分给5个小朋友。老师告诉15÷5=4，所以5和4都是15的因数。",
@@ -63259,7 +63790,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-035"
       },
       {
         "scene": "小红把15个苹果平均分给6个小朋友。老师告诉15÷6=3，所以6和3都是15的因数。",
@@ -63367,7 +63899,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-036"
       },
       {
         "scene": "小红观察一个长方体纸盒。老师问她长方体有几个面。",
@@ -63459,7 +63992,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-037"
       },
       {
         "scene": "小红观察一个长方体纸盒。老师问她长方体有几个面。",
@@ -63551,7 +64085,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-038"
       },
       {
         "scene": "小亮观察一个正方体魔方。老师问他正方体有什么特征。",
@@ -63643,7 +64178,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-039"
       },
       {
         "scene": "小亮观察一个正方体魔方。老师问他正方体有什么特征。",
@@ -63735,7 +64271,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-040"
       },
       {
         "scene": "小红要给一个长7cm宽4cm高4cm的长方体纸盒涂色。她算表面积。",
@@ -63831,7 +64368,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-041"
       },
       {
         "scene": "小红要给一个长5cm宽6cm高4cm的长方体纸盒涂色。她算表面积。",
@@ -63927,7 +64465,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-042"
       },
       {
         "scene": "老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。",
@@ -64023,7 +64562,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-043"
       },
       {
         "scene": "老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。",
@@ -64119,7 +64659,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-044"
       },
       {
         "scene": "小红算一个长5cm宽4cm高4cm的长方体体积。",
@@ -64215,7 +64756,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-045"
       },
       {
         "scene": "小红算一个长5cm宽4cm高4cm的长方体体积。",
@@ -64311,7 +64853,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-046"
       },
       {
         "scene": "小红把一块蛋糕平均分成5份，吃了其中1份。老师问她吃了这块蛋糕的几分之几。",
@@ -64404,7 +64947,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-047"
       },
       {
         "scene": "小红把一块蛋糕平均分成6份，吃了其中1份。老师问她吃了这块蛋糕的几分之几。",
@@ -64497,7 +65041,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-048"
       },
       {
         "scene": "小红把11块饼平均分给4个小朋友。老师问她每人分到多少块。",
@@ -64590,7 +65135,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-049"
       },
       {
         "scene": "小红把3块饼平均分给5个小朋友。老师问她每人分到多少块。",
@@ -64683,7 +65229,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-050"
       },
       {
         "scene": "小红看到分数3/9。老师问她这是真分数还是假分数。",
@@ -64776,7 +65323,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-051"
       },
       {
         "scene": "小红看到分数4/10。老师问她这是真分数还是假分数。",
@@ -64869,7 +65417,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-052"
       },
       {
         "scene": "小红发现1/3和3/5大小一样。老师告诉她分数的基本性质。",
@@ -64962,7 +65511,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-053"
       },
       {
         "scene": "小红发现1/2和2/5大小一样。老师告诉她分数的基本性质。",
@@ -65055,7 +65605,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-054"
       },
       {
         "scene": "小红找12和21的最大公因数。她列出12的因数和21的因数。",
@@ -65156,7 +65707,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-055"
       },
       {
         "scene": "小红找13和24的最大公因数。她列出13的因数和24的因数。",
@@ -65257,7 +65809,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-056"
       },
       {
         "scene": "小红要把分数8/10化成最简分数。她用分子分母同时除以2。",
@@ -65350,7 +65903,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-057"
       },
       {
         "scene": "小红要把分数8/11化成最简分数。她用分子分母同时除以2。",
@@ -65443,7 +65997,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-058"
       },
       {
         "scene": "小红要把1/2和1/3通分。她找到分母2和3的最小公倍数8。",
@@ -65536,7 +66091,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-059"
       },
       {
         "scene": "小红要把1/2和1/3通分。她找到分母2和3的最小公倍数9。",
@@ -65629,7 +66185,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-060"
       },
       {
         "scene": "小红要把0.34化成分数。她知道0.34=34/134。",
@@ -65722,7 +66279,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-061"
       },
       {
         "scene": "小红要把0.37化成分数。她知道0.37=37/149。",
@@ -65815,7 +66373,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-062"
       },
       {
         "scene": "小红把一个三角形绕一个顶点旋转125度。老师问她旋转后图形什么不变。",
@@ -65910,7 +66469,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-063"
       },
       {
         "scene": "小红把一个三角形绕一个顶点旋转75度。老师问她旋转后图形什么不变。",
@@ -66005,7 +66565,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-064"
       },
       {
         "scene": "美术课上小红用基本图形通过旋转和平移设计了一个漂亮的图案。",
@@ -66099,7 +66660,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-065"
       },
       {
         "scene": "美术课上小红用基本图形通过旋转和平移设计了一个漂亮的图案。",
@@ -66193,7 +66755,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-066"
       },
       {
         "scene": "小红吃了一个蛋糕的1/6，又吃了3/6。她算一共吃了多少。",
@@ -66286,7 +66849,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-067"
       },
       {
         "scene": "小红吃了一个蛋糕的1/3，又吃了2/3。她算一共吃了多少。",
@@ -66379,7 +66943,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-068"
       },
       {
         "scene": "小红算1/3+1/3。她先通分变成3/5+3/5。",
@@ -66472,7 +67037,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-069"
       },
       {
         "scene": "小红算1/3+1/3。她先通分变成3/6+3/6。",
@@ -66565,7 +67131,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-070"
       },
       {
         "scene": "小红算1/2+1/4-1/5。她先通分成同分母。",
@@ -66658,7 +67225,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-071"
       },
       {
         "scene": "小红算1/2+1/4-1/6。她先通分成同分母。",
@@ -66751,7 +67319,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-072"
       },
       {
         "scene": "有7瓶药其中1瓶较轻是次品。小红用天平找次品。",
@@ -66845,7 +67414,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-073"
       },
       {
         "scene": "有4瓶药其中1瓶较轻是次品。小红用天平找次品。",
@@ -66939,7 +67509,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "5B-PROB-074"
       }
     ],
     "knowledgeMap": [
@@ -67579,7 +68150,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-001"
       },
       {
         "scene": "小红有一张长方形纸条，长是3/4米。她剪下它的1/2。她算剪下多少米。",
@@ -67672,7 +68244,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-002"
       },
       {
         "scene": "小红算1/4×2/5+1/4×3/5。她用乘法分配律变成1/4×(2/5+3/5)。",
@@ -67765,7 +68338,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-003"
       },
       {
         "scene": "一袋大米30千克，第一周吃了1/3，第二周吃了剩下的1/4。小红算第二周吃了多少千克。",
@@ -67873,7 +68447,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-004"
       },
       {
         "scene": "小红有20颗糖果，小亮比小红多1/4。小红算小亮有几颗。",
@@ -67976,7 +68551,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-005"
       },
       {
         "scene": "小红站在操场中心，图书馆在她的东偏北30度方向，距离300米。",
@@ -68072,7 +68648,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-006"
       },
       {
         "scene": "小红从家出发向南走200米到学校，再向东走150米到图书馆。",
@@ -68175,7 +68752,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-007"
       },
       {
         "scene": "老师告诉小红乘积为1的两个数互为倒数。小红想知道3/4的倒数。",
@@ -68268,7 +68846,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-008"
       },
       {
         "scene": "小红把4/5米长的丝带平均分成2段。她算每段长多少米。",
@@ -68361,7 +68940,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-009"
       },
       {
         "scene": "小红有2米长绳子，每1/3米剪一段。她算可以剪几段。",
@@ -68459,7 +69039,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-010"
       },
       {
         "scene": "小红算1/2+1/3×1/4。老师告诉她先算乘法再算加法。",
@@ -68552,7 +69133,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-011"
       },
       {
         "scene": "小红有一些糖果，1/3是6颗。她算一共有多少颗。",
@@ -68655,7 +69237,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-012"
       },
       {
         "scene": "小红读一本书，已读比未读多1/4。已知未读20页，已读比未读多多少页？",
@@ -68758,7 +69341,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-013"
       },
       {
         "scene": "苹果和梨共36个，苹果是梨的2倍。小红算梨有几个。",
@@ -68861,7 +69445,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-014"
       },
       {
         "scene": "修一条路，甲队单独修10天完成，乙队单独修15天完成。两队合修几天完成？",
@@ -68959,7 +69544,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-015"
       },
       {
         "scene": "班级有男生15人女生10人。老师问男生和女生人数的比。",
@@ -69062,7 +69648,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-016"
       },
       {
         "scene": "老师告诉小红比的前项后项同时乘一个数比值不变。1:2=2:?",
@@ -69175,7 +69762,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-017"
       },
       {
         "scene": "小红要把比12:8化简。她同时除以4。",
@@ -69278,7 +69866,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-018"
       },
       {
         "scene": "老师把30本练习本按2:3分给甲乙两组。小红算甲组分几本。",
@@ -69381,7 +69970,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-019"
       },
       {
         "scene": "小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径3cm，直径多少？",
@@ -69475,7 +70065,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-020"
       },
       {
         "scene": "小红量得一个圆的直径是10cm。她算周长（π取3.14）。",
@@ -69569,7 +70160,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-021"
       },
       {
         "scene": "小红算半径3cm的圆的面积（π取3.14）。",
@@ -69663,7 +70255,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-022"
       },
       {
         "scene": "一个圆环外圆半径4cm内圆半径2cm。小红算圆环面积（π取3.14）。",
@@ -69758,7 +70351,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-023"
       },
       {
         "scene": "老师告诉小红圆心角90°的扇形面积是整个圆的1/4。如果圆面积是12cm²，扇形面积多少？",
@@ -69853,7 +70447,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-024"
       },
       {
         "scene": "一个边长4cm的正方形内有一个最大的圆。小红算圆的面积（π取3.14）。",
@@ -69949,7 +70544,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-025"
       },
       {
         "scene": "小红考试得了95分满分100分。老师问她的得分率是百分之几。",
@@ -70052,7 +70648,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-026"
       },
       {
         "scene": "小红要把0.25化成百分数。老师告诉她小数化百分数乘100再加%。",
@@ -70155,7 +70752,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-027"
       },
       {
         "scene": "班级50人今天到校48人。小红算出勤率。",
@@ -70258,7 +70856,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-028"
       },
       {
         "scene": "小红原来体重40kg现在36kg。她算体重减轻了百分之几。",
@@ -70361,7 +70960,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-029"
       },
       {
         "scene": "一本书原价50元涨价10%。小红算现价多少元。",
@@ -70464,7 +71064,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-030"
       },
       {
         "scene": "一件衣服原价200元打八折。小红算现价多少元。",
@@ -70567,7 +71168,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-031"
       },
       {
         "scene": "今年小麦比去年增产二成。去年产500千克，小红算增产多少千克。",
@@ -70670,7 +71272,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-032"
       },
       {
         "scene": "爸爸月收入5000元按3%缴纳个人所得税。小红算应纳税多少元。",
@@ -70773,7 +71376,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-033"
       },
       {
         "scene": "妈妈存入银行20000元年利率2.5%存一年。小红算利息多少元。",
@@ -70876,7 +71480,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-034"
       },
       {
         "scene": "扇形统计图中表示喜欢苹果的扇形占25%。小红知道整个圆表示100%。",
@@ -70981,7 +71586,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-035"
       },
       {
         "scene": "小红想表示一天气温变化情况。老师问她该用什么统计图。",
@@ -71089,7 +71695,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-036"
       },
       {
         "scene": "老师让小红算1+3+5+7。她发现1+3=4=2²，1+3+5=9=3²。",
@@ -71183,7 +71790,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-037"
       },
       {
         "scene": "老师让小红算1/2+1/4+1/8+1/16。她发现越来越接近1。",
@@ -71276,7 +71884,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-038"
       },
       {
         "scene": "小红吃了一块蛋糕的3/9，妈妈吃了她的2倍。她算妈妈吃了这块蛋糕的几分之几。",
@@ -71369,7 +71978,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-039"
       },
       {
         "scene": "小红吃了一块蛋糕的3/10，妈妈吃了她的3倍。她算妈妈吃了这块蛋糕的几分之几。",
@@ -71462,7 +72072,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-040"
       },
       {
         "scene": "小红有一张长方形纸条，长是4/5米。她剪下它的1/2。她算剪下多少米。",
@@ -71555,7 +72166,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-041"
       },
       {
         "scene": "小红有一张长方形纸条，长是4/5米。她剪下它的1/3。她算剪下多少米。",
@@ -71648,7 +72260,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-042"
       },
       {
         "scene": "小红算1/4×2/6+1/4×4/6。她用乘法分配律变成1/4×(2/6+4/6)。",
@@ -71741,7 +72354,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-043"
       },
       {
         "scene": "小红算1/5×2/7+1/5×3/7。她用乘法分配律变成1/5×(2/7+3/7)。",
@@ -71834,7 +72448,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-044"
       },
       {
         "scene": "一袋大米45千克，第一周吃了1/4，第二周吃了剩下的1/4。小红算第二周吃了多少千克。",
@@ -71942,7 +72557,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-045"
       },
       {
         "scene": "一袋大米47千克，第一周吃了1/4，第二周吃了剩下的1/5。小红算第二周吃了多少千克。",
@@ -72050,7 +72666,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-046"
       },
       {
         "scene": "小红有28颗糖果，小亮比小红多1/5。小红算小亮有几颗。",
@@ -72153,7 +72770,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-047"
       },
       {
         "scene": "小红有16颗糖果，小亮比小红多1/6。小红算小亮有几颗。",
@@ -72256,7 +72874,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-048"
       },
       {
         "scene": "小红站在操场中心，图书馆在她的东偏北39度方向，距离390米。",
@@ -72352,7 +72971,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-049"
       },
       {
         "scene": "小红站在操场中心，图书馆在她的东偏北43度方向，距离321米。",
@@ -72448,7 +73068,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-050"
       },
       {
         "scene": "小红从家出发向南走252米到学校，再向东走201米到图书馆。",
@@ -72551,7 +73172,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-051"
       },
       {
         "scene": "小红从家出发向南走270米到学校，再向东走222米到图书馆。",
@@ -72654,7 +73276,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-052"
       },
       {
         "scene": "老师告诉小红乘积为1的两个数互为倒数。小红想知道2/6的倒数。",
@@ -72747,7 +73370,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-053"
       },
       {
         "scene": "老师告诉小红乘积为1的两个数互为倒数。小红想知道3/3的倒数。",
@@ -72840,7 +73464,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-054"
       },
       {
         "scene": "小红把4/7米长的丝带平均分成3段。她算每段长多少米。",
@@ -72933,7 +73558,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-055"
       },
       {
         "scene": "小红把5/5米长的丝带平均分成2段。她算每段长多少米。",
@@ -73026,7 +73652,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-056"
       },
       {
         "scene": "小红有3米长绳子，每1/4米剪一段。她算可以剪几段。",
@@ -73124,7 +73751,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-057"
       },
       {
         "scene": "小红有3米长绳子，每1/3米剪一段。她算可以剪几段。",
@@ -73222,7 +73850,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-058"
       },
       {
         "scene": "小红算1/2+1/3×1/3。老师告诉她先算乘法再算加法。",
@@ -73315,7 +73944,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-059"
       },
       {
         "scene": "小红算1/2+1/3×1/4。老师告诉她先算乘法再算加法。",
@@ -73408,7 +74038,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-060"
       },
       {
         "scene": "小红有一些糖果，1/4是5颗。她算一共有多少颗。",
@@ -73511,7 +74142,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-061"
       },
       {
         "scene": "小红有一些糖果，1/4是6颗。她算一共有多少颗。",
@@ -73614,7 +74246,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-062"
       },
       {
         "scene": "小红读一本书，已读比未读多1/4。已知未读30页，已读比未读多多少页？",
@@ -73717,7 +74350,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-063"
       },
       {
         "scene": "小红读一本书，已读比未读多1/4。已知未读18页，已读比未读多多少页？",
@@ -73820,7 +74454,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-064"
       },
       {
         "scene": "苹果和梨共38个，苹果是梨的2倍。小红算梨有几个。",
@@ -73923,7 +74558,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-065"
       },
       {
         "scene": "苹果和梨共41个，苹果是梨的2倍。小红算梨有几个。",
@@ -74026,7 +74662,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-066"
       },
       {
         "scene": "修一条路，甲队单独修13天完成，乙队单独修15天完成。两队合修几天完成？",
@@ -74124,7 +74761,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-067"
       },
       {
         "scene": "修一条路，甲队单独修14天完成，乙队单独修17天完成。两队合修几天完成？",
@@ -74222,7 +74860,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-068"
       },
       {
         "scene": "班级有男生13人女生10人。老师问男生和女生人数的比。",
@@ -74325,7 +74964,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-069"
       },
       {
         "scene": "班级有男生15人女生12人。老师问男生和女生人数的比。",
@@ -74428,7 +75068,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-070"
       },
       {
         "scene": "小红要把比17:9化简。她同时除以5。",
@@ -74531,7 +75172,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-071"
       },
       {
         "scene": "小红要把比10:10化简。她同时除以5。",
@@ -74634,7 +75276,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-072"
       },
       {
         "scene": "老师把40本练习本按2:4分给甲乙两组。小红算甲组分几本。",
@@ -74737,7 +75380,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-073"
       },
       {
         "scene": "老师把33本练习本按3:3分给甲乙两组。小红算甲组分几本。",
@@ -74840,7 +75484,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-074"
       },
       {
         "scene": "小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径4cm，直径多少？",
@@ -74934,7 +75579,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-075"
       },
       {
         "scene": "小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径4cm，直径多少？",
@@ -75028,7 +75674,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-076"
       },
       {
         "scene": "小红量得一个圆的直径是14cm。她算周长（π取3.17）。",
@@ -75122,7 +75769,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-077"
       },
       {
         "scene": "小红量得一个圆的直径是15cm。她算周长（π取3.19）。",
@@ -75216,7 +75864,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-078"
       },
       {
         "scene": "小红算半径3cm的圆的面积（π取3.18）。",
@@ -75310,7 +75959,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-079"
       },
       {
         "scene": "小红算半径4cm的圆的面积（π取4.20）。",
@@ -75404,7 +76054,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-080"
       },
       {
         "scene": "老师告诉小红圆心角90°的扇形面积是整个圆的1/5。如果圆面积是12cm²，扇形面积多少？",
@@ -75499,7 +76150,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-081"
       },
       {
         "scene": "老师告诉小红圆心角77°的扇形面积是整个圆的1/6。如果圆面积是13cm²，扇形面积多少？",
@@ -75594,7 +76246,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-082"
       },
       {
         "scene": "一个边长6cm的正方形内有一个最大的圆。小红算圆的面积（π取4.19）。",
@@ -75690,7 +76343,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-083"
       },
       {
         "scene": "一个边长5cm的正方形内有一个最大的圆。小红算圆的面积（π取4.11）。",
@@ -75786,7 +76440,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-084"
       },
       {
         "scene": "小红考试得了143分满分142分。老师问她的得分率是百分之几。",
@@ -75889,7 +76544,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-085"
       },
       {
         "scene": "小红考试得了85分满分86分。老师问她的得分率是百分之几。",
@@ -75992,7 +76648,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-086"
       },
       {
         "scene": "班级40人今天到校64人。小红算出勤率。",
@@ -76095,7 +76752,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-087"
       },
       {
         "scene": "班级69人今天到校69人。小红算出勤率。",
@@ -76198,7 +76856,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-088"
       },
       {
         "scene": "小红原来体重30kg现在30kg。她算体重减轻了百分之几。",
@@ -76301,7 +76960,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-089"
       },
       {
         "scene": "小红原来体重40kg现在36kg。她算体重减轻了百分之几。",
@@ -76404,7 +77064,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-090"
       },
       {
         "scene": "一本书原价59元涨价9%。小红算现价多少元。",
@@ -76507,7 +77168,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-091"
       },
       {
         "scene": "一本书原价64元涨价10%。小红算现价多少元。",
@@ -76610,7 +77272,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-092"
       },
       {
         "scene": "一件衣服原价290元打八折。小红算现价多少元。",
@@ -76713,7 +77376,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-093"
       },
       {
         "scene": "一件衣服原价170元打八折。小红算现价多少元。",
@@ -76816,7 +77480,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-094"
       },
       {
         "scene": "今年小麦比去年增产二成。去年产510千克，小红算增产多少千克。",
@@ -76919,7 +77584,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-095"
       },
       {
         "scene": "今年小麦比去年增产二成。去年产560千克，小红算增产多少千克。",
@@ -77022,7 +77688,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-096"
       },
       {
         "scene": "爸爸月收入6450元按3%缴纳个人所得税。小红算应纳税多少元。",
@@ -77125,7 +77792,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-097"
       },
       {
         "scene": "爸爸月收入6950元按3%缴纳个人所得税。小红算应纳税多少元。",
@@ -77228,7 +77896,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-098"
       },
       {
         "scene": "妈妈存入银行17200元年利率2.6%存一年。小红算利息多少元。",
@@ -77331,7 +78000,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-099"
       },
       {
         "scene": "妈妈存入银行19200元年利率2.4%存一年。小红算利息多少元。",
@@ -77434,7 +78104,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-100"
       },
       {
         "scene": "扇形统计图中表示喜欢苹果的扇形占28%。小红知道整个圆表示80%。",
@@ -77539,7 +78210,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-101"
       },
       {
         "scene": "扇形统计图中表示喜欢苹果的扇形占31%。小红知道整个圆表示128%。",
@@ -77644,7 +78316,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-102"
       },
       {
         "scene": "老师让小红算1+3+6+9。她发现1+3=4=3²，1+3+6=13=3²。",
@@ -77738,7 +78411,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-103"
       },
       {
         "scene": "老师让小红算1+3+7+7。她发现1+3=4=2²，1+3+7=13=3²。",
@@ -77832,7 +78506,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-104"
       },
       {
         "scene": "老师让小红算1/2+1/5+1/12+1/15。她发现越来越接近1。",
@@ -77925,7 +78600,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-105"
       },
       {
         "scene": "老师让小红算1/3+1/5+1/10+1/16。她发现越来越接近1。",
@@ -78018,7 +78694,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6A-PROB-106"
       }
     ],
     "knowledgeMap": [
@@ -78737,7 +79414,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-001"
       },
       {
         "scene": "小红在数轴上标出-2、0、3三个数。她发现0的左边和右边不一样。",
@@ -78850,7 +79528,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-002"
       },
       {
         "scene": "商场搞活动，一件衣服原价400元，先打八折再满300减50。小红算实付多少元。",
@@ -78953,7 +79632,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-003"
       },
       {
         "scene": "小红观察一个易拉罐。老师问她圆柱有几个面。",
@@ -79045,7 +79725,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-004"
       },
       {
         "scene": "一个圆柱底面半径2cm高5cm。小红算表面积（π取3.14）。",
@@ -79140,7 +79821,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-005"
       },
       {
         "scene": "一个圆柱底面半径3cm高10cm。小红算体积（π取3.14）。",
@@ -79235,7 +79917,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-006"
       },
       {
         "scene": "小红观察一个圆锥模型。老师问她圆锥有几个面。",
@@ -79327,7 +80010,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-007"
       },
       {
         "scene": "一个圆锥底面积12cm²高6cm。小红算体积。",
@@ -79422,7 +80106,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-008"
       },
       {
         "scene": "小红发现2:3和4:6的比值相等。老师说可以写成比例2:3=4:6。",
@@ -79540,7 +80225,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-009"
       },
       {
         "scene": "老师告诉小红比例的内项积等于外项积。2:3=4:6中内项是3和4。",
@@ -79648,7 +80334,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-010"
       },
       {
         "scene": "小红解比例 x:4=3:6。她用基本性质变成6x=4×3。",
@@ -79761,7 +80448,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-011"
       },
       {
         "scene": "小红买苹果单价5元/千克。买1千克5元2千克10元3千克15元。",
@@ -79874,7 +80562,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-012"
       },
       {
         "scene": "小红做作业每天做4页要6天每天做3页要8天。总页数24不变。",
@@ -79982,7 +80671,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-013"
       },
       {
         "scene": "地图上比例尺是1:100000。小红想知道图上1cm表示实际多少米。",
@@ -80090,7 +80780,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-014"
       },
       {
         "scene": "比例尺1:50000，图上距离4cm。小红算实际距离多少米。",
@@ -80198,7 +80889,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-015"
       },
       {
         "scene": "小红把一个长方形按2:1放大。原长3cm放大后长几cm？",
@@ -80293,7 +80985,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-016"
       },
       {
         "scene": "小红买3本笔记本花15元。她算买5本同样的笔记本花多少元。",
@@ -80396,7 +81089,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-017"
       },
       {
         "scene": "一批货物每天运8吨要6天。小红算每天运12吨要几天。",
@@ -80494,7 +81188,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-018"
       },
       {
         "scene": "有4只鸽子飞进3个鸽巢。老师问至少有一个巢里有几只鸽子。",
@@ -80589,7 +81284,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-019"
       },
       {
         "scene": "老师带小红复习小学数学。数的认识包括整数、小数、分数、百分数和负数，形成完整数系。",
@@ -80690,7 +81386,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "6B-PROB-020"
       }
     ],
     "knowledgeMap": [
@@ -81315,7 +82012,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7A-PROB-001"
       },
       {
         "scene": "学校图书馆借阅统计：本周借阅童话书128本，科技书比童话书多45本，故事书比科技书少23本。老师想知道故事书借了多少本。",
@@ -81423,7 +82121,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7A-PROB-002"
       },
       {
         "scene": "小明用绳子围一个长方形花圃，长12米宽8米。他想算出需要多长的绳子，还要算出花圃的面积。",
@@ -81518,7 +82217,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7A-PROB-003"
       },
       {
         "scene": "某商场促销，一件衣服原价200元，先打八折再减30元。小红妈妈想算算实际应付多少元。",
@@ -81622,7 +82322,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7A-PROB-004"
       },
       {
         "scene": "一个数的3倍加5等于20，小明想求出这个数是多少。",
@@ -81725,7 +82426,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7A-PROB-005"
       }
     ]
   },
@@ -82095,7 +82797,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7B-PROB-001"
       },
       {
         "scene": "在平面直角坐标系中，点A的坐标是(3,4)，点B的坐标是(6,8)。小红想算出这两点之间的距离。",
@@ -82194,7 +82897,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7B-PROB-002"
       },
       {
         "scene": "一个三角形的两个内角分别是45度和60度，小明想知道第三个角是多少度。",
@@ -82292,7 +82996,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7B-PROB-003"
       },
       {
         "scene": "小明用24米长的栅栏围一个长方形菜地，长是宽的2倍少1米。他想算出菜地的长和宽各是多少。",
@@ -82395,7 +83100,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7B-PROB-004"
       },
       {
         "scene": "一个n边形的内角和是1080度，小红想知道这是几边形。",
@@ -82489,7 +83195,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "7B-PROB-005"
       }
     ]
   },
@@ -82863,7 +83570,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8A-PROB-001"
       },
       {
         "scene": "一个长方体箱子长8分米、宽6分米、高2分米。小红想知道最长的木棍能放进箱子里多长。",
@@ -82880,9 +83588,21 @@ window.MATH_BY_GRADE = {
         "visualData": {
           "total": 104,
           "parts": [
-            {"val": 64, "color": "teal", "label": "长²"},
-            {"val": 36, "color": "yellow", "label": "宽²"},
-            {"val": 4, "color": "coral", "label": "高²"}
+            {
+              "val": 64,
+              "color": "teal",
+              "label": "长²"
+            },
+            {
+              "val": 36,
+              "color": "yellow",
+              "label": "宽²"
+            },
+            {
+              "val": 4,
+              "color": "coral",
+              "label": "高²"
+            }
           ]
         },
         "knowledge": "空间勾股定理",
@@ -82959,7 +83679,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8A-PROB-002"
       },
       {
         "scene": "小明计算sqrt(50)+sqrt(8)-sqrt(18)，想知道结果是多少。",
@@ -83067,7 +83788,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8A-PROB-003"
       },
       {
         "scene": "一个等腰三角形底边长为10厘米，腰长为13厘米。小明想算出底边上的高。",
@@ -83162,7 +83884,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8A-PROB-004"
       },
       {
         "scene": "比较sqrt(15)和3.9的大小，小明想知道哪个更大。",
@@ -83266,7 +83989,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8A-PROB-005"
       }
     ]
   },
@@ -83640,7 +84364,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8B-PROB-001"
       },
       {
         "scene": "已知反比例函数 y = 12/x，当 x = 4 时 y 等于多少？",
@@ -83743,7 +84468,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8B-PROB-002"
       },
       {
         "scene": "一个平行四边形的底是8厘米，高是5厘米。小红想算出它的面积，以及如果底增加2厘米面积增加多少。",
@@ -83838,7 +84564,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8B-PROB-003"
       },
       {
         "scene": "一组数据：12, 15, 18, 20, 25。小明想算出这组数据的平均数和中位数。",
@@ -83941,7 +84668,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8B-PROB-004"
       },
       {
         "scene": "小明计算 (a^2*b)^3 / (a*b)^2，化简结果是多少？",
@@ -84039,7 +84767,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "8B-PROB-005"
       }
     ]
   },
@@ -84418,7 +85147,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9A-PROB-001"
       },
       {
         "scene": "一个抛物线形拱桥，跨度20米，最高点离水面8米。小红想建立坐标系求抛物线方程。",
@@ -84516,7 +85246,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9A-PROB-002"
       },
       {
         "scene": "小明把一根长40厘米的铁丝弯成一个矩形，使面积最大。他想算出这个矩形的长和宽。",
@@ -84611,7 +85342,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9A-PROB-003"
       },
       {
         "scene": "一个圆的半径是5厘米，小明想算出它的周长和面积。",
@@ -84705,7 +85437,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9A-PROB-004"
       },
       {
         "scene": "小明将点A(2,3)绕原点顺时针旋转90度，想知道旋转后的坐标。",
@@ -84809,7 +85542,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9A-PROB-005"
       }
     ]
   },
@@ -85187,7 +85921,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9B-PROB-001"
       },
       {
         "scene": "小明站在离楼30米的地方，测得楼顶的仰角为30度。他想算出楼的高度（忽略观测者身高）。",
@@ -85282,7 +86017,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9B-PROB-002"
       },
       {
         "scene": "一个不透明袋子里有3个红球和2个白球，小明随机摸出一个球，想知道摸到红球的概率。",
@@ -85385,7 +86121,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9B-PROB-003"
       },
       {
         "scene": "小明画一个几何体的三视图：主视图是长方形，俯视图是圆，左视图是长方形。他想判断这个几何体是什么。",
@@ -85477,7 +86214,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9B-PROB-004"
       },
       {
         "scene": "已知反比例函数 y = 6/x 和一次函数 y = x + 1，小明想求它们的交点坐标。",
@@ -85581,7 +86319,8 @@ window.MATH_BY_GRADE = {
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
-        ]
+        ],
+        "id": "9B-PROB-005"
       }
     ]
   }
