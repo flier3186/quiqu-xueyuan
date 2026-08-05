@@ -152,5 +152,114 @@ window.SPEAK_SCENARIOS_NEW8 = [
     ],
     vocabulary:['weather','hot','cold','wear','shirt','jacket','season','summer','spring','winter'],
     tips:"穿什么用 I'll wear...；hot/cold 形容温度；季节用 It is + 季节"
+  },
+  // 新增 6 个场景：train_station / park_day / market_shopping / school_trip / concert_music / cinema_movie
+  { id:'train_station', title:'火车站', icon:'🚂', level:3, desc:'在火车站问票和车次',
+    teacherLines:[
+      {id:'t1', text:"Hello! How can I help you?", cn:"你好！需要帮忙吗？"},
+      {id:'t2', text:"Where would you like to go?", cn:"你想去哪里？"},
+      {id:'t3', text:"There is a train at 10 o'clock. Do you want to buy a ticket?", cn:"10点有一班车。你要买票吗？"},
+      {id:'t4', text:"That's one ticket to Beijing. Here you are!", cn:"一张去北京的票。给您！"},
+      {id:'t5', text:"Have a nice trip! The train is at Platform 3. Goodbye!", cn:"旅途愉快！火车在3号站台。再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['yes','help','want','need','ticket'], suggestions:["Yes, I want a ticket.","I need help, please."]},
+      {teacherLineId:'t2', keywords:['beijing','shanghai','guangzhou','go','want','visit'], suggestions:["I want to go to Beijing.","Shanghai, please."]},
+      {teacherLineId:'t3', keywords:['yes','sure','ok','buy','ticket','want'], suggestions:["Yes, please buy one.","Sure, I want a ticket."]},
+      {teacherLineId:'t4', keywords:['thanks','thank','good','ok','yes'], suggestions:["Thank you!","Thanks, that's great!"]},
+      {teacherLineId:'t5', keywords:['thanks','bye','see','you','goodbye','thank'], suggestions:["Thanks! Bye!","Thank you! See you!"]}
+    ],
+    vocabulary:['ticket','train','platform','station','go','buy','want','trip','here','there'],
+    tips:'问车次用 Where is the train? 问站台用 Which platform?'
+  },
+  { id:'park_day', title:'公园游玩', icon:'🌳', level:1, desc:'在公园描述活动和看到的景物',
+    teacherLines:[
+      {id:'t1', text:"Hi! Are you going to the park today?", cn:"嗨！你今天要去公园吗？"},
+      {id:'t2', text:"Cool! What will you do in the park?", cn:"酷！你在公园会做什么？"},
+      {id:'t3', text:"That sounds fun! What can you see in the park?", cn:"听起来有趣！你在公园能看到什么？"},
+      {id:'t4', text:"Nice! Do you have a picnic there?", cn:"不错！你会在那里野餐吗？"},
+      {id:'t5', text:"Sounds like a perfect day! Have fun! Bye!", cn:"完美的一天！玩得开心！再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['yes','yeah','going','go','want'], suggestions:["Yes, I'm going to the park!","Yes, I want to go."]},
+      {teacherLineId:'t2', keywords:['fly','kite','run','play','picnic','walk','swing','ball'], suggestions:["I'll fly a kite.","I'll play football."]},
+      {teacherLineId:'t3', keywords:['tree','flower','bird','lake','grass','dog','sun','cloud'], suggestions:["I can see trees and flowers.","There are many birds."]},
+      {teacherLineId:'t4', keywords:['yes','yeah','picnic','no','eat'], suggestions:["Yes, we will have a picnic.","No, I just want to play."]},
+      {teacherLineId:'t5', keywords:['thanks','you','bye','see','fun','yes'], suggestions:["Thanks! Bye!","Thank you! See you!"]}
+    ],
+    vocabulary:['park','play','fly','kite','tree','flower','bird','picnic','fun','have'],
+    tips:'描述公园用 There is/are... 或 I can see...'
+  },
+  { id:'market_shopping', title:'菜市场', icon:'🥬', level:2, desc:'在市场买蔬菜和水果',
+    teacherLines:[
+      {id:'t1', text:"Welcome to the market! What would you like to buy?", cn:"欢迎来市场！你想买什么？"},
+      {id:'t2', text:"We have fresh vegetables. Do you want some tomatoes?", cn:"我们有新鲜的蔬菜。你想要一些西红柿吗？"},
+      {id:'t3', text:"How much are they?", cn:"多少钱？"},
+      {id:'t4', text:"They are 5 yuan per kilo. How many kilos do you want?", cn:"每公斤5元。你想要几公斤？"},
+      {id:'t5', text:"Here you are! Thank you! Come again! Bye!", cn:"给您！谢谢！欢迎再来！再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['vegetable','fruit','tomato','apple','want','buy','rice'], suggestions:["I want to buy vegetables.","I want apples, please."]},
+      {teacherLineId:'t2', keywords:['yes','yeah','tomato','vegetable','onion','carrot','potato'], suggestions:["Yes, I want tomatoes.","Yes, some carrots please."]},
+      {teacherLineId:'t3', keywords:['much','how','price','cost','yuan','dollars'], suggestions:["How much are they?","What's the price?"]},
+      {teacherLineId:'t4', keywords:['one','two','three',' kilo','kilos','want','some'], suggestions:["I want two kilos.","One kilo, please."]},
+      {teacherLineId:'t5', keywords:['thanks','thank','bye','good','see','you'], suggestions:["Thanks! Bye!","Thank you! See you!"]}
+    ],
+    vocabulary:['market','vegetable','fruit','tomato','kilogram','buy','want','fresh','yuan','how'],
+    tips:'问价格用 How much...? 买几公斤用 ...kilos, please.'
+  },
+  { id:'school_trip', title:'学校郊游', icon:'🚌', level:2, desc:'聊学校组织郊游的活动',
+    teacherLines:[
+      {id:'t1', text:"Hello! Did your school have a field trip?", cn:"你好！你们学校组织郊游了吗？"},
+      {id:'t2', text:"Where did you go?", cn:"你们去哪里了？"},
+      {id:'t3', text:"Nice! What did you do there?", cn:"不错！你们在那里做了什么？"},
+      {id:'t4', text:"Did you eat lunch there?", cn:"你们在那里吃午饭了吗？"},
+      {id:'t5', text:"Sounds like a great trip! I hope you had fun! Bye!", cn:"听起来很棒！希望玩得开心！再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['yes','yeah','went','trip','did','no'], suggestions:["Yes, we had a trip!","No, we didn't."]},
+      {teacherLineId:'t2', keywords:['zoo','museum','park','mountain','farm','beach','school'], suggestions:["We went to the zoo.","We went to the museum."]},
+      {teacherLineId:'t3', keywords:['saw','played','ate','learned','walk','took','photo'], suggestions:["We saw many animals.","We played games there."]},
+      {teacherLineId:'t4', keywords:['yes','yeah','lunch','ate','food','sandwich','no'], suggestions:["Yes, we ate lunch there.","We had sandwiches."]},
+      {teacherLineId:'t5', keywords:['thanks','thank','yes','fun','bye','see'], suggestions:["Thanks! It was fun!","Thank you! See you!"]}
+    ],
+    vocabulary:['trip','field','go','saw','did','ate','lunch','school','fun','hope'],
+    tips:'郊游用 field trip 或 school trip；过去时用 went/saw/ate'
+  },
+  { id:'concert_music', title:'音乐会', icon:'🎵', level:3, desc:'聊喜欢的音乐和音乐会',
+    teacherLines:[
+      {id:'t1', text:"Hi! Do you like music?", cn:"嗨！你喜欢音乐吗？"},
+      {id:'t2', text:"Great! What kind of music do you like?", cn:"好！你喜欢什么类型的音乐？"},
+      {id:'t3', text:"Cool! Can you play any instruments?", cn:"酷！你会演奏乐器吗？"},
+      {id:'t4', text:"Awesome! Have you ever been to a concert?", cn:"太棒了！你参加过音乐会吗？"},
+      {id:'t5', text:"Music makes life beautiful! Keep enjoying it! Bye!", cn:"音乐让生命更美好！继续享受它！再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['yes','yeah','love','like','music','pop','rock'], suggestions:["Yes, I love music!","Yes, I like pop music."]},
+      {teacherLineId:'t2', keywords:['pop','rock','jazz','classical','country','folk','dance'], suggestions:["I like pop music.","I love classical music."]},
+      {teacherLineId:'t3', keywords:['piano','guitar','violin','drum','sing','yes','no','play'], suggestions:["Yes, I play the piano.","No, I can't play any."]},
+      {teacherLineId:'t4', keywords:['yes','yeah','been','concert','never','want','go'], suggestions:["Yes, I went to a concert.","No, I haven't been yet."]},
+      {teacherLineId:'t5', keywords:['thanks','yes','music','fun','bye','see','goodbye'], suggestions:["Thanks! Bye!","Thank you! See you!"]}
+    ],
+    vocabulary:['music','like','play','instrument','concert','piano','guitar','sing','listen','enjoy'],
+    tips:'演奏乐器用 play the + 乐器；从未做过用 I have never been to...'
+  },
+  { id:'cinema_movie', title:'电影院', icon:'🎬', level:2, desc:'在电影院买票和选座位',
+    teacherLines:[
+      {id:'t1', text:"Welcome to the cinema! Would you like to see a movie?", cn:"欢迎来到电影院！想看电影吗？"},
+      {id:'t2', text:"What kind of movie do you like?", cn:"你喜欢什么类型的电影？"},
+      {id:'t3', text:"Great choice! What time would you like to watch it?", cn:"好选择！你想看几点场的？"},
+      {id:'t4', text:"A ticket is 40 yuan. Would you like popcorn too?", cn:"一张票40元。想要爆米花吗？"},
+      {id:'t5', text:"Enjoy the movie! The screen is at the front. Have fun! Bye!", cn:"祝你观影愉快！银幕在前面。玩得开心！再见！"}
+    ],
+    studentExpected:[
+      {teacherLineId:'t1', keywords:['yes','yeah','want','movie','like'], suggestions:["Yes, I want to watch a movie.","Yes, I'd like to."]},
+      {teacherLineId:'t2', keywords:['action','comedy','cartoon','animation','scary','funny','romance'], suggestions:["I like cartoons.","I want to see an action movie."]},
+      {teacherLineId:'t3', keywords:['three','five','seven','time','clock','hour','afternoon','evening'], suggestions:["At 3 o'clock, please.","I want the 5 pm show."]},
+      {teacherLineId:'t4', keywords:['yes','popcorn','sure','no','thanks','want'], suggestions:["Yes, I want popcorn too.","No, thanks. Just a ticket."]},
+      {teacherLineId:'t5', keywords:['thanks','thank','bye','see','fun','enjoy','movie'], suggestions:["Thanks! Bye!","Thank you! Enjoy the movie!"]}
+    ],
+    vocabulary:['cinema','movie','ticket','watch','popcorn','time','screen','enjoy','fun','see'],
+    tips:'看电影用 watch a movie 或 see a movie；问时间用 What time...?'
   }
 ];

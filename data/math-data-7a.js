@@ -210,15 +210,87 @@ window.MATH_BY_GRADE['7a'] = {
       },
       {
         "id": "7A-18",
-        "name": "余角与补角",
-        "concept": "两个角之和为90度互余，之和为180度互补",
-        "prerequisite": "7A-01",
+        "name": "统计图表初步",
+        "concept": "用条形图、折线图、扇形图描述数据",
+        "prerequisite": "7A-17",
+        "extends": "7A-19 比例",
+        "visualStrategy": "多图表对比",
+        "visualType": "barModel",
+        "coreLiteracy": "数据意识",
+        "difficulty": 2,
+        "isKeyTopic": true
+      },
+      {
+        "id": "7A-19",
+        "name": "比例与比例线段",
+        "concept": "若a/b=c/d则ad=bc，比例的基本性质",
+        "prerequisite": "6A-10 比和比例",
         "extends": "7B-01 相交线与平行线",
-        "visualStrategy": "角度拼合",
+        "visualStrategy": "比例模型",
+        "visualType": "barModel",
+        "coreLiteracy": "模型思想",
+        "difficulty": 2,
+        "isKeyTopic": true
+      },
+      {
+        "id": "7A-20",
+        "name": "比例分配问题",
+        "concept": "按一定比例分配总量，各部分成比例",
+        "prerequisite": "6A-10",
+        "extends": "7A-19 比例",
+        "visualStrategy": "比例条形",
+        "visualType": "barModel",
+        "coreLiteracy": "运算能力",
+        "difficulty": 2,
+        "isKeyTopic": true
+      },
+      {
+        "id": "7A-21",
+        "name": "方程的应用",
+        "concept": "用一元一次方程解决实际问题，设未知数列方程",
+        "prerequisite": "7A-06",
+        "extends": "7A-05 整式加减",
+        "visualStrategy": "方程建模",
+        "visualType": "barModel",
+        "coreLiteracy": "模型思想",
+        "difficulty": 3,
+        "isKeyTopic": true
+      },
+      {
+        "id": "7A-22",
+        "name": "几何初步认识",
+        "concept": "点动成线，线动成面，面动成体",
+        "prerequisite": "3A-01 认识图形",
+        "extends": "7B-01 相交线与平行线",
+        "visualStrategy": "动态形成",
+        "visualType": "geometry",
+        "coreLiteracy": "几何直观",
+        "difficulty": 1,
+        "isKeyTopic": false
+      },
+      {
+        "id": "7A-23",
+        "name": "角的度量与计算",
+        "concept": "1度=60分，1分=60秒，角的和差计算",
+        "prerequisite": "4A-02 角的度量",
+        "extends": "7A-18 余角与补角",
+        "visualStrategy": "角度测量",
         "visualType": "geometry",
         "coreLiteracy": "推理意识",
         "difficulty": 2,
         "isKeyTopic": true
+      },
+      {
+        "id": "7A-24",
+        "name": "统计图表综合分析",
+        "concept": "根据实际问题选择合适的统计图表",
+        "prerequisite": "7A-14",
+        "extends": "7A-15 概率初步",
+        "visualStrategy": "图表选择",
+        "visualType": "barModel",
+        "coreLiteracy": "数据分析",
+        "difficulty": 2,
+        "isKeyTopic": false
       }
     ],
     "units": [
@@ -1315,6 +1387,310 @@ window.MATH_BY_GRADE['7a'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "补角总比余角大90°，与角的大小无关",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明用比例分配的方法分糖果，红球和白球的比例是3:2，共有50个球。他想算出红球和白球各有多少个。",
+        "question": "红球和白球各有多少个？",
+        "formula": "红球=50*3/5=30, 白球=50*2/5=20",
+        "answer": 30,
+        "choices": [30, 20, 25, 15],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 50,
+          "parts": [
+            {"label": "红球", "val": 30, "color": "#00A896"},
+            {"label": "白球", "val": 20, "color": "#F5B800"}
+          ]
+        },
+        "knowledge": "比例分配",
+        "difficulty": 2,
+        "hint": "总份数=3+2=5，红球占3/5，白球占2/5",
+        "variants": [
+          {"question": "男女生比例5:3，共40人，男女生各多少人？", "formula": "男生=40*5/8=25, 女生=40*3/8=15", "answer": 25, "hint": "总份数=8"},
+          {"question": "甲乙丙比例2:3:4，总和90，各多少？", "formula": "甲=90*2/9=20, 乙=30, 丙=40", "answer": 20, "hint": "总份数=9"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["每份是多少", "总数", "有几份", "差是多少"], "answer": "每份是多少", "explain": "题目求红球和白球各多少，求每份是多少"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：3、2、50", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：3、2、50", "explain": "从题目中找到的关键数是：3、2、50"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：总份数=5，红球=50×3/5=30，白球=50×2/5=20"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中按比例展示红球30个和白球20个", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "红球=50×3/5=30，白球=50×2/5=20", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "按比例分配：每份=总量÷总份数", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "学校统计各年级人数，一年级120人，二年级比一年级多15人，三年级比二年级少10人。校长想知道三个年级一共有多少人。",
+        "question": "三个年级共有多少人？",
+        "formula": "120+(120+15)+(120+15-10)=370",
+        "answer": 370,
+        "choices": [370, 360, 380, 350],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 370,
+          "parts": [
+            {"label": "一年级", "val": 120, "color": "#00A896"},
+            {"label": "二年级", "val": 135, "color": "#F5B800"},
+            {"label": "三年级", "val": 125, "color": "#FB923C"}
+          ]
+        },
+        "knowledge": "混合运算应用",
+        "difficulty": 2,
+        "hint": "二年级=120+15，三年级=二年级-10",
+        "variants": [
+          {"question": "一年级150人，二年级少20人，三年级多10人，共多少人？", "formula": "150+130+140", "answer": 420, "hint": "逐步计算"},
+          {"question": "苹果100个，橘子多20个，梨少10个，共多少个？", "formula": "100+120+90", "answer": 310, "hint": "先求各部分"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求三个年级总人数，求总数"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：120、15、10", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：120、15、10", "explain": "从题目中找到的关键数是：120、15、10"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "加法", "explain": "加法：二年级=135，三年级=125，总共=370"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示三个年级的人数条形", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "一年级120，二年级135，三年级125，共370", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "求总数，用加法", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "一个角的度数是它的补角的1/3，小明想知道这个角是多少度。",
+        "question": "这个角是多少度？",
+        "formula": "x=(180-x)/3, 4x=180, x=45",
+        "answer": 45,
+        "choices": [45, 60, 30, 90],
+        "visualType": "geometry",
+        "visualData": {"shape": "angle", "params": {"angle": 45, "supplement": 135}},
+        "knowledge": "余角与补角应用",
+        "difficulty": 3,
+        "hint": "设角为x，补角=180-x，列方程",
+        "variants": [
+          {"question": "一个角是它的余角的2倍，这个角是多少度？", "formula": "x=2(90-x), 3x=180, x=60", "answer": 60, "hint": "列方程求解"},
+          {"question": "一个角的补角是它的余角的3倍，这个角是多少？", "formula": "180-x=3(90-x), x=45", "answer": 45, "hint": "注意补角和余角的关系"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["计算结果", "每份是多少", "总数", "差是多少"], "answer": "计算结果", "explain": "题目求这个角的度数，求计算结果"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：1 和 3", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：1 和 3", "explain": "从题目中找到的关键数是：1、3、180"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：设角为x，补角=180-x，x=(180-x)/3，解得x=45"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示一个角和它的补角的关系", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "x=(180-x)/3→3x=180-x→4x=180→x=45", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "用方程解决角度问题", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "小明测量一块长方形土地，长是宽的2倍少5米，周长是110米。他想算出这块地的长和宽。",
+        "question": "这块地的长和宽各是多少米？",
+        "formula": "宽=x, 长=2x-5, 2(x+2x-5)=110",
+        "answer": 20,
+        "choices": [20, 25, 15, 30],
+        "visualType": "geometry",
+        "visualData": {"shape": "rectangle", "params": {"length": 35, "width": 20}},
+        "knowledge": "一元一次方程应用",
+        "difficulty": 3,
+        "hint": "设宽为x，长为2x-5，周长=2(长+宽)",
+        "variants": [
+          {"question": "长方形长比宽的3倍多2米，周长52米，长宽各多少？", "formula": "宽=x, 长=3x+2, 2(x+3x+2)=52", "answer": 6, "hint": "解方程求x"},
+          {"question": "长方形宽是长的一半少3米，周长46米，长宽各多少？", "formula": "长=x, 宽=x/2-3, 2(x+x/2-3)=46", "answer": 16, "hint": "注意比例关系"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["每份是多少", "总数", "有几份", "差是多少"], "answer": "每份是多少", "explain": "题目求长和宽各多少，求每份是多少"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：110、2、5", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：110、2、5", "explain": "从题目中找到的关键数是：110（周长）、2（倍数）、5（差值）"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：设宽=x，长=2x-5，2(x+2x-5)=110，解得x=20"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示长方形的长和宽", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "宽=20，长=35，周长=2×(20+35)=110", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "列方程解决几何问题", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "学校组织捐款，一班捐了240元，二班比一班多捐了1/4，三班比二班少捐了20元。校长想知道三个班共捐了多少元。",
+        "question": "三个班共捐款多少元？",
+        "formula": "二班=240*(1+1/4)=300, 三班=300-20=280, 总=820",
+        "answer": 820,
+        "choices": [820, 800, 840, 780],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 820,
+          "parts": [
+            {"label": "一班", "val": 240, "color": "#00A896"},
+            {"label": "二班", "val": 300, "color": "#F5B800"},
+            {"label": "三班", "val": 280, "color": "#FB923C"}
+          ]
+        },
+        "knowledge": "分数应用",
+        "difficulty": 3,
+        "hint": "二班=240×(1+1/4)，三班=二班-20",
+        "variants": [
+          {"question": "甲数120，乙数比甲多1/3，丙数比乙少15，三数之和？", "formula": "乙=160, 丙=145, 总=425", "answer": 425, "hint": "逐步计算"},
+          {"question": "一本书100页，第一天看1/5，第二天比第一天多10页，两天共看多少？", "formula": "第一天=20, 第二天=30, 共=50", "answer": 50, "hint": "分步计算"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求三个班共捐多少，求总数"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：240、1/4、20", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：240、1/4、20", "explain": "从题目中找到的关键数是：240、1/4、20"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：二班=240×5/4=300，三班=300-20=280，总共=240+300+280=820"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示三个班的捐款金额", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "一班240，二班300，三班280，共820", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "求总数，用加法", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "一个扇形的半径是6厘米，圆心角是60度。小明想算出这个扇形的面积。",
+        "question": "扇形的面积是多少平方厘米？",
+        "formula": "S=60/360*π*6²=6π≈18.85",
+        "answer": 19,
+        "choices": [19, 37, 12, 24],
+        "visualType": "geometry",
+        "visualData": {"shape": "sector", "params": {"radius": 6, "angle": 60}},
+        "knowledge": "扇形面积",
+        "difficulty": 2,
+        "hint": "扇形面积=圆心角/360×圆面积",
+        "variants": [
+          {"question": "半径4厘米，圆心角90度，扇形面积？", "formula": "90/360*π*16=4π≈12.57", "answer": 13, "hint": "90度是圆的1/4"},
+          {"question": "半径10厘米，圆心角120度，扇形面积？", "formula": "120/360*π*100=100π/3≈104.7", "answer": 105, "hint": "120度是圆的1/3"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["总数（一共多少）", "每份是多少", "有几份", "差是多少"], "answer": "总数（一共多少）", "explain": "题目求扇形面积，求总数"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：6 和 60", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：6 和 60", "explain": "从题目中找到的关键数是：6（半径）、60（圆心角）"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "乘法", "explain": "乘法：扇形面积=60/360×π×6²=6π≈18.85"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示半径为6、圆心角60度的扇形", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "扇形面积=60/360×π×36=6π≈18.85", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "扇形面积=圆心角/360×πr²", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "学校调查学生喜欢的运动项目，足球20人，篮球15人，乒乓球10人，其他5人。校长想知道喜欢足球的占全班的百分比。",
+        "question": "喜欢足球的占全班人数的百分之几？",
+        "formula": "20/(20+15+10+5)*100%=40%",
+        "answer": 40,
+        "choices": [40, 35, 45, 50],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 50,
+          "parts": [
+            {"label": "足球", "val": 20, "color": "#00A896"},
+            {"label": "篮球", "val": 15, "color": "#F5B800"},
+            {"label": "乒乓球", "val": 10, "color": "#FB923C"},
+            {"label": "其他", "val": 5, "color": "#E8A0BF"}
+          ]
+        },
+        "knowledge": "统计与百分比",
+        "difficulty": 2,
+        "hint": "百分比=部分÷总数×100%",
+        "variants": [
+          {"question": "班级40人，喜欢语文24人，喜欢数学20人，两科都喜欢的8人，只喜欢语文的有多少人？", "formula": "24-8=16", "answer": 16, "hint": "用集合思想"},
+          {"question": "果园有苹果树80棵，梨树60棵，桃树40棵，苹果树占总数的百分比？", "formula": "80/(80+60+40)*100%=40%", "answer": 40, "hint": "先求总数"}
+        ],
+        "discoverySteps": [
+          {"q": "📖 再读一遍场景，这道题要我们求什么？", "choices": ["每份是多少（或几份）", "总数（一共多少）", "差是多少", "和是多少"], "answer": "每份是多少（或几份）", "explain": "题目求足球人数占比，求每份是多少"},
+          {"q": "🔢 题目给了我们哪些关键信息？", "choices": ["关键数：20 和 50", "只有总数", "只有每份数", "没有关键数"], "answer": "关键数：20 和 50", "explain": "从题目中找到的关键数是：20（足球人数）、50（总人数）"},
+          {"q": "🧩 用什么方法计算？", "choices": ["乘法", "加法", "减法", "除法"], "answer": "除法", "explain": "除法：20÷50×100%=40%"}
+        ],
+        "explainLayers": [
+          {"icon": "👀", "title": "看图 — 图形结构", "text": "图中展示各运动项目的人数条形", "bg": "var(--teal-soft)", "color": "var(--teal)"},
+          {"icon": "🧠", "title": "理解 — 数学关系", "text": "足球占比=20÷50×100%=40%", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)"},
+          {"icon": "🚀", "title": "推广 — 通用规律", "text": "百分比=部分÷总数×100%", "bg": "var(--coral-soft)", "color": "var(--coral)"}
+        ]
+      },
+      {
+        "scene": "小明用尺规作图画一个直角，他想验证这个直角是否为90度。他用量角器测量，发现两条边互相垂直。",
+        "question": "互相垂直的两条线形成的角是多少度？",
+        "formula": "90°",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "angle",
+          "params": {
+            "angle": 90
+          }
+        },
+        "knowledge": "垂直与直角",
+        "difficulty": 1,
+        "hint": "垂直形成直角，直角=90°",
+        "variants": [
+          {
+            "question": "两条线相交成90度，它们的关系是什么？",
+            "formula": "互相垂直",
+            "answer": 0,
+            "hint": "垂直定义"
+          },
+          {
+            "question": "直角三角形的直角是多少度？",
+            "formula": "90°",
+            "answer": 0,
+            "hint": "直角定义"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明用尺规作图画一个直角，他想验证这个直角是否为90度。」，问的是「互相垂直的两条线形成的角是多少度？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键信息：垂直",
+              "只有总数",
+              "只有每份数",
+              "没有关键信息"
+            ],
+            "answer": "关键信息：垂直",
+            "explain": "从题目中找到的关键信息是：两条边互相垂直"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：垂直形成直角，直角=90°"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示两条互相垂直的线",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "互相垂直的两条线形成90°的角",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "垂直→直角=90°",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }
