@@ -288,6 +288,7 @@ window.MathFlowV5 = {
           this.advance(hasNeriage ? 'neriage' : 'solve');
         }else{
           this._sess.discoveryStep = next;
+          this.advance('discover');
         }
       }, 900);
     }
