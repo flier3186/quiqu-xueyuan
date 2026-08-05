@@ -284,7 +284,7 @@ window.MathFlowV5 = {
         const next = stepIdx + 1;
         if(next >= steps.length){
           // 引导发现完成，若有 neriage 数据则进入多解法阶段
-          const hasNeriage = this._sess.problem && this._sess.problem.neriage;
+          const hasNeriage = this._sess.problem && (this._sess.problem.neriageErrors || this._sess.problem.neriage);
           this.advance(hasNeriage ? 'neriage' : 'solve');
         }else{
           this._sess.discoveryStep = next;

@@ -724,42 +724,68 @@ window.MathVisualV5 = {
   baseTenBlocks(data){
     const a = data.a || 38, b = data.b || 45, total = data.total || 83;
     const op = data.op || '+';
-    const W=520, H=220, blockW=28, blockH=22;
-    const tenH=blockW*1.8;
-    const tenW=blockW;
-    const colorA='#00A896', colorB='#E8A0BF';
-    // 十位条
-    const makeTenBar=(x,y,c)=>`<rect x="${x}" y="${y}" width="${tenW}" height="${tenH}" fill="${c}" rx="3" class="mv-ten-bar" style="animation:mvSlideIn .5s ${.1} ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-    // 个位方块
-    const makeUnit=(x,y,c,delay)=>`<rect x="${x}" y="${y}" width="${blockW}" height="${blockH}" fill="${c}" rx="2" class="mv-unit" style="animation:mvGather .6s ${delay} ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-    // 计算十位和个位数
     const aTens=Math.floor(a/10), aOnes=a%10, bTens=Math.floor(b/10), bOnes=b%10;
     const sumTens=Math.floor(total/10), sumOnes=total%10;
+    const carry = aOnes + bOnes >= 10;
+    const W=560, H=260;
+    const tenH=70, tenW=30, unitW=22, unitH=22;
+    const colorA='#00A896', colorB='#E8A0BF', colorC='#F5B800';
     let svg='';
-    // 左侧：A的方块
-    const leftX=30;
-    for(let i=0;i<aTens;i++) svg+=makeTenBar(leftX+i*(tenW+4),60,colorA);
-    for(let i=0;i<aOnes;i++) svg+=makeUnit(leftX+i*blockW,100,colorA,i*0.05);
-    // 右侧：B的方块
-    const rightX=280;
-    for(let i=0;i<bTens;i++) svg+=makeTenBar(rightX+i*(tenW+4),60,colorB);
-    for(let i=0;i<bOnes;i++) svg+=makeUnit(rightX+i*blockW,100,colorB,i*0.05+0.2);
-    // 中间等号
-    svg+=`<text x="258" y="90" text-anchor="middle" font-size="22" font-weight="800" fill="#1E3A5F">${op}</text>`;
-    // 结果区域（进位动画后显示）
-    const resX=400;
-    for(let i=0;i<sumTens;i++) svg+=makeTenBar(resX+i*(tenW+4),60,'#00A896');
-    for(let i=0;i<sumOnes;i++) svg+=makeUnit(resX+i*blockW,100,'#00A896',i*0.05+0.4);
-    // 进位动画提示
-    svg+=`<text x="260" y="160" text-anchor="middle" font-size="11" fill="#FB923C" class="mv-hint" style="animation:mvFadeIn .8s 0.5s both">个位 ${aOnes}+${bOnes}=${aOnes+bOnes}，满十进一</text>`;
-    svg+=`<text x="260" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F" class="mv-result" style="animation:mvFadeIn .5s 1.2s both">= ${a} ${op} ${b} = ${total}</text>`;
+    // 背景区域
+    svg+=`<rect x="10" y="20" width="200" height="140" fill="rgba(0,168,150,.05)" rx="12"/>`;
+    svg+=`<rect x="230" y="20" width="200" height="140" fill="rgba(232,160,191,.05)" rx="12"/>`;
+    svg+=`<rect x="10" y="170" width="540" height="80" fill="rgba(245,184,0,.05)" rx="12"/>`;
+    // 左侧：A
+    const ax=30, ay=40;
+    svg+=`<text x="${ax+80}" y="${ay-8}" text-anchor="middle" font-size="14" font-weight="800" fill="${colorA}">${a}</text>`;
+    // A的十位条（动画逐个进入）
+    for(let i=0;i<aTens;i++){
+      const dx=ay+10+i*(tenW+6);
+      svg+=`<rect x="${dx}" y="${ay+16}" width="${tenW}" height="${tenH}" fill="${colorA}" rx="4" class="mv-ten-bar" style="animation:mvSlideIn .4s ${0.1+i*0.1}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    // A的个位方块
+    for(let i=0;i<aOnes;i++){
+      const dx=ax+10+i*(unitW+3);
+      svg+=`<rect x="${dx}" y="${ay+16+tenH+8}" width="${unitW}" height="${unitH}" fill="${colorA}" rx="3" class="mv-unit" style="animation:mvSlideIn .4s ${0.5+i*0.06}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    // 右侧：B
+    const bx=250, by=40;
+    svg+=`<text x="${bx+80}" y="${by-8}" text-anchor="middle" font-size="14" font-weight="800" fill="${colorB}">${b}</text>`;
+    for(let i=0;i<bTens;i++){
+      const dx=bx+10+i*(tenW+6);
+      svg+=`<rect x="${dx}" y="${by+16}" width="${tenW}" height="${tenH}" fill="${colorB}" rx="4" class="mv-ten-bar" style="animation:mvSlideIn .4s ${0.3+i*0.1}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    for(let i=0;i<bOnes;i++){
+      const dx=bx+10+i*(unitW+3);
+      svg+=`<rect x="${dx}" y="${by+16+tenH+8}" width="${unitW}" height="${unitH}" fill="${colorB}" rx="3" class="mv-unit" style="animation:mvSlideIn .4s ${0.7+i*0.06}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    // 中间运算符号
+    svg+=`<text x="225" y="90" text-anchor="middle" font-size="28" font-weight="900" fill="#1E3A5F">${op}</text>`;
+    // 进位动画指示（如果有进位）
+    if(carry){
+      const srcX=ax+10+aOnes*(unitW+3)+unitW/2;
+      const tgtX=bx+10+bTens*(tenW+6)+tenW/2;
+      svg+=`<path d="M${srcX},${ay+16+tenH+8+unitH/2} Q260,${ay-10} ${tgtX},${by+16}" stroke="${colorC}" stroke-width="2" fill="none" stroke-dasharray="4,3" class="mv-carry-line" style="animation:mvFadeIn .3s 1.2s both"/>`;
+      svg+=`<circle cx="260" cy="${(ay+16+tenH+8+unitH/2+by+16)/2}" r="12" fill="${colorC}" class="mv-carry-circle" style="animation:mvPop .3s 1.3s both;-webkit-transform-box:fill-box;transform-box:fill-box;transform-origin:center"/>`;
+      svg+=`<text x="260" y="${(ay+16+tenH+8+unitH/2+by+16)/2+4}" text-anchor="middle" font-size="11" font-weight="900" fill="white">1</text>`;
+    }
+    // 底部结果区域
+    svg+=`<text x="${W/2}" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#FB923C" class="mv-hint" style="animation:mvFadeIn .5s ${carry?1.5:0.8}s both">个位 ${aOnes}+${bOnes}=${aOnes+bOnes}${carry?',满十进一':''}</text>`;
+    // 结果方块（延迟显示）
+    const rx=100;
+    for(let i=0;i<sumTens;i++){
+      const dx=rx+i*(tenW+6);
+      const delay=carry?1.8:0.8;
+      svg+=`<rect x="${dx}" y="210" width="${tenW}" height="${tenH}" fill="#00A896" rx="4" class="mv-ten-bar" style="animation:mvSlideIn .4s ${delay+i*0.08}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    for(let i=0;i<sumOnes;i++){
+      const dx=rx+sumTens*(tenW+6)+6+i*(unitW+3);
+      const delay=carry?2.2:1.0;
+      svg+=`<rect x="${dx}" y="210" width="${unitW}" height="${unitH}" fill="#00A896" rx="3" class="mv-unit" style="animation:mvSlideIn .4s ${delay+i*0.06}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+    }
+    svg+=`<text x="${W/2}" y="252" text-anchor="middle" font-size="16" font-weight="900" fill="#1E3A5F" class="mv-result" style="animation:mvPop .4s ${carry?2.5:1.3}s both;-webkit-transform-box:fill-box;transform-box:fill-box">${a} ${op} ${b} = ${total}</text>`;
     return `<div class="mv-wrap mv-base-ten">
-      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
-        <rect x="10" y="40" width="220" height="80" fill="rgba(0,168,150,.06)" rx="8"/>
-        <rect x="250" y="40" width="60" height="80" fill="rgba(245,184,0,.06)" rx="8"/>
-        <rect x="340" y="40" width="170" height="80" fill="rgba(0,168,150,.06)" rx="8"/>
-        ${svg}
-      </svg>
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
     </div>`;
   },
 
