@@ -1,20 +1,13 @@
 {
   "current": {
-    "task": "双仓库部署 + 线上验证",
-    "files": [
-      "AGENTS.md",
-      "state.json",
-      "DECISIONS.md",
-      "engine/math-visual-v5.js",
-      "engine/math-flow-v5.js",
-      "index.html"
-    ],
-    "stage": "部署中",
-    "description": "将修复后的数学可视化引擎推送到 GitHub 和 Gitee 仓库"
+    "task": "为 2a 补充 knowledgeMap（0项→11项）",
+    "files": ["data/math-2a-2b.js"],
+    "stage": "验证通过",
+    "description": "2a共12题，添加11项knowledgeMap覆盖全部知识点，L1/L2验证通过"
   },
-  "next": "测试验证：确认数学可视化分步渲染、英语发音、口语识别等功能正常",
-  "mode": "deploy",
-  "updated": "2026-08-05T17:45:00+08:00",
+  "next": "L3多端验证 + 双仓库部署",
+  "mode": "code",
+  "updated": "2026-08-05T21:30:00+08:00",
   "blockers": [],
   "completed": [
     "baseTenBlocks数据格式兼容修复",
@@ -24,8 +17,22 @@
     "numberBondStep格式兼容修复",
     "renderExplain/_updateStepVisual统一路由修复",
     "L1语法校验通过",
-    "L2浏览器验证通过",
+    "L2浏览器验证通过（Playwright 18/18 PASS）",
     "对话协作三原则写入AGENTS.md",
-    "创建state.json和DECISIONS.md"
+    "创建state.json和DECISIONS.md",
+    "双仓库部署完成（GitHub 200 OK）",
+    "L3多端验证通过（桌面+手机）",
+    "L4教学逻辑验证通过",
+    "内容审核：0个数据格式问题，795题全部字段完整",
+    "内容审核：536词全部字段完整，20个口语场景无关联错误",
+    "内容审核：引擎代码无 console.log/TODO/FIXME",
+    "项目整体完成度评估：各维度详细报告",
+    "生成COMPLETION.md完成度报告",
+    "修复 2a 数据未注册到 MATH_BY_GRADE 的问题",
+    "2a补充knowledgeMap（11项）",
+    "2b补充knowledgeMap（11项）",
+    "7a-9b各年级扩展至10题18知识点",
+    "绘本库从6本扩至16本",
+    "英语情景→绘本映射扩展至10个场景"
   ]
 }

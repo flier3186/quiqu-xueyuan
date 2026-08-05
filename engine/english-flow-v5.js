@@ -527,7 +527,14 @@ window.EnglishFlowV5 = {
       weather_report:'weather', weather:'weather',
       clothes:'clothes',
       zoo_visit:'animals', animals:'animals', visiting_doctor:'animals',
-      birthday:'birthday', birthday_party:'birthday'
+      birthday:'birthday', birthday_party:'birthday',
+      restaurant:'food', shopping:'food',
+      family:'family', health:'hospital',
+      weekend_plan:'weekend', dream_future:'weekend',
+      travel_trip:'travel', seasons_fest:'seasons',
+      at_home:'home', library:'library',
+      sports_day:'sports', daily_greeting:'school',
+      self_intro:'school', school_life:'school', hobbies:'sports'
     };
     const bookKey = sceneToBook[scene.id] || scene.id;
     // 优先使用专属绘本数据

@@ -207,6 +207,18 @@ window.MATH_BY_GRADE['8a'] = {
         "coreLiteracy": "推理意识",
         "difficulty": 3,
         "isKeyTopic": false
+      },
+      {
+        "id": "8A-18",
+        "name": "直角三角形斜边高",
+        "concept": "斜边上的高=两直角边乘积÷斜边",
+        "prerequisite": "8A-01",
+        "extends": "8A-08 相似三角形",
+        "visualStrategy": "面积法",
+        "visualType": "geometry",
+        "coreLiteracy": "运算能力",
+        "difficulty": 3,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -769,6 +781,510 @@ window.MATH_BY_GRADE['8a'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "根据题目条件，直接计算结果",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一根竹竿长10米，斜靠在墙上，竹竿顶端距地面8米。小明想知道竹竿底端离墙有多远。",
+        "question": "竹竿底端离墙多少米？",
+        "formula": "sqrt(10^2-8^2) = ?",
+        "answer": 6,
+        "choices": [
+          6,
+          4,
+          8,
+          12
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "sides": [
+              6,
+              8,
+              10
+            ],
+            "rightAngle": true
+          }
+        },
+        "knowledge": "勾股定理应用",
+        "difficulty": 2,
+        "hint": "直角边=sqrt(斜边²-另一直角边²)",
+        "variants": [
+          {
+            "question": "斜边13，一直角边5，另一直角边？",
+            "formula": "sqrt(13^2-5^2)",
+            "answer": 12,
+            "hint": "勾股数5-12-13"
+          },
+          {
+            "question": "直角边6和8，斜边？",
+            "formula": "sqrt(6^2+8^2)",
+            "answer": 10,
+            "hint": "勾股数6-8-10"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「一根竹竿长10米，斜靠在墙上，竹竿顶端距地面8米。小明想知道竹竿底端离墙有多远。」，问的是「竹竿底端离墙多少米？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：10 和 8",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：10 和 8",
+            "explain": "从题目中找到的关键数是：10（竹竿长/斜边）、8（墙高）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "减法",
+            "explain": "减法：底端距离=sqrt(10²-8²)=sqrt(100-64)=sqrt(36)=6米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "直角三角形：斜边10米，一直角边8米，求另一直角边",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "底边²=斜边²-高²=100-64=36，底边=6米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "勾股定理：直角边²=斜边²-另一直角边²",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明想测量池塘两岸A、B两点之间的距离，他在岸边找了点C，量得AC=30米，BC=40米，角C=90度。",
+        "question": "池塘两岸距离AB是多少米？",
+        "formula": "sqrt(30^2+40^2) = ?",
+        "answer": 50,
+        "choices": [
+          50,
+          70,
+          10,
+          60
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "sides": [
+              30,
+              40,
+              50
+            ],
+            "rightAngle": true
+          }
+        },
+        "knowledge": "勾股定理实际应用",
+        "difficulty": 2,
+        "hint": "AB是斜边，AB=sqrt(AC²+BC²)",
+        "variants": [
+          {
+            "question": "直角边6和8，斜边？",
+            "formula": "sqrt(6^2+8^2)",
+            "answer": 10,
+            "hint": "勾股数6-8-10"
+          },
+          {
+            "question": "直角边9和12，斜边？",
+            "formula": "sqrt(9^2+12^2)",
+            "answer": 15,
+            "hint": "勾股数9-12-15"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明想测量池塘两岸A、B两点之间的距离，他在岸边找了点C，量得AC=30米，BC=40米，角C=90度。」，问的是「池塘两岸距离AB是多少米？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：30 和 40",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：30 和 40",
+            "explain": "从题目中找到的关键数是：30（AC）、40（BC）、90°（直角）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "加法",
+            "explain": "加法：AB²=30²+40²=900+1600=2500，AB=50米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "直角三角形ABC，直角在C点",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "AB²=AC²+BC²=900+1600=2500，AB=50米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "勾股定理：斜边²=直角边1²+直角边2²",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明化简sqrt(72)，他想知道结果是多少。",
+        "question": "sqrt(72)化简结果是多少？",
+        "formula": "sqrt(36*2) = 6*sqrt(2)",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 6,
+          "parts": [
+            {
+              "label": "sqrt(72)",
+              "val": 6,
+              "color": "#00A896"
+            },
+            {
+              "label": "sqrt(2)",
+              "val": 1,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "二次根式化简",
+        "difficulty": 2,
+        "hint": "把72分解为完全平方数×2",
+        "variants": [
+          {
+            "question": "化简sqrt(50)",
+            "formula": "sqrt(25*2)=5*sqrt(2)",
+            "answer": 5,
+            "hint": "50=25×2"
+          },
+          {
+            "question": "化简sqrt(27)",
+            "formula": "sqrt(9*3)=3*sqrt(3)",
+            "answer": 3,
+            "hint": "27=9×3"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明化简sqrt(72)，他想知道结果是多少。」，问的是「sqrt(72)化简结果是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：36 和 2",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：36 和 2",
+            "explain": "从题目中找到的关键数是：72=36×2，其中36是完全平方数"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：sqrt(72)=sqrt(36×2)=sqrt(36)×sqrt(2)=6sqrt(2)"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示72分解为36×2的过程",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "sqrt(72)=sqrt(36×2)=6sqrt(2)",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "化简二次根式：找出被开方数中的完全平方因子",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明计算sqrt(12)×sqrt(3)，他想知道结果是多少。",
+        "question": "sqrt(12)×sqrt(3) = ?",
+        "formula": "sqrt(36) = 6",
+        "answer": 6,
+        "choices": [
+          6,
+          9,
+          3,
+          12
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 6,
+          "parts": [
+            {
+              "label": "sqrt(12)",
+              "val": 2,
+              "color": "#00A896"
+            },
+            {
+              "label": "sqrt(3)",
+              "val": 3,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "二次根式乘法",
+        "difficulty": 2,
+        "hint": "√a×√b=√(ab)",
+        "variants": [
+          {
+            "question": "sqrt(8)×sqrt(2)=?",
+            "formula": "sqrt(16)=4",
+            "answer": 4,
+            "hint": "8×2=16"
+          },
+          {
+            "question": "sqrt(5)×sqrt(20)=?",
+            "formula": "sqrt(100)=10",
+            "answer": 10,
+            "hint": "5×20=100"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明计算sqrt(12)×sqrt(3)，他想知道结果是多少。」，问的是「sqrt(12)×sqrt(3) = ?」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：12 和 3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：12 和 3",
+            "explain": "从题目中找到的关键数是：12、3、36"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：sqrt(12)×sqrt(3)=sqrt(12×3)=sqrt(36)=6"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示二次根式乘法过程",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "sqrt(12)×sqrt(3)=sqrt(36)=6",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "二次根式乘法：√a×√b=√(ab)",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个直角三角形的两条直角边分别是5厘米和12厘米。小明想算出斜边上的高。",
+        "question": "斜边上的高是多少厘米？",
+        "formula": "h=5*12/13",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "sides": [
+              5,
+              12,
+              13
+            ],
+            "rightAngle": true,
+            "altitude": true
+          }
+        },
+        "knowledge": "直角三角形斜边高",
+        "difficulty": 3,
+        "hint": "先用勾股定理求斜边，再用面积法求高",
+        "variants": [
+          {
+            "question": "直角边6和8，斜边上的高？",
+            "formula": "h=6*8/10",
+            "answer": 4,
+            "hint": "斜边=10，高=4.8"
+          },
+          {
+            "question": "直角边9和12，斜边上的高？",
+            "formula": "h=9*12/15",
+            "answer": 7,
+            "hint": "斜边=15，高=7.2"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「一个直角三角形的两条直角边分别是5厘米和12厘米。小明想算出斜边上的高。」，问的是「斜边上的高是多少厘米？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：5 和 12",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：5 和 12",
+            "explain": "从题目中找到的关键数是：5（直角边）、12（直角边）、13（斜边）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：斜边=13，面积=5×12÷2=30，高=2×30÷13≈4.6厘米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "直角三角形及斜边上的高",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "斜边=13，面积=5×12÷2=30，高=2×30÷13≈4.6",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "直角三角形斜边高=两直角边乘积÷斜边",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

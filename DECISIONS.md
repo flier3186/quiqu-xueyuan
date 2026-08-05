@@ -78,3 +78,19 @@
 - Deploy Agent：双仓库部署、CI 监控
 
 **影响范围**：全项目工作流
+
+---
+
+## 2026-08-05 · 2a 数据合并脚本修复
+
+### 决策：const 改为 var 以跨脚本块访问
+
+**背景**：合并脚本（index.html 行 6948-6977）无法访问上一 script 块中用 `const` 声明的 `MATH_BY_GRADE`，导致 `math-2a-2b.js` 中的 2a/2b 数据合并失败。
+
+**决定**：
+1. 将 `const MATH_BY_GRADE` 改为 `var MATH_BY_GRADE`（函数作用域，跨 script 块可访问）
+2. 合并脚本中 `MATH_GRADE_2` 显式加 `window.` 前缀
+
+**影响范围**：index.html 第 1394 行、第 6951-6953 行
+
+---

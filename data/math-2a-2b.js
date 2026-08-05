@@ -15,6 +15,19 @@ window.MATH_GRADE_2 = {
       { name: '观察物体（一）', level: 'locked', children: [{ name: '前侧后观察', level: 'locked' }] },
       { name: '认识时间', level: 'locked', children: [{ name: '几时几分', level: 'locked' }] }
     ],
+    knowledgeMap: [
+      { id: '2A-01', name: '厘米和米', concept: '1米=100厘米，量较长物体用米，量较短物体用厘米', prerequisite: '一上·10以内数', extends: '2A-02 线段', visualStrategy: '条形图分段', visualType: 'barModel', coreLiteracy: '量感', difficulty: 1, isKeyTopic: true },
+      { id: '2A-02', name: '线段', concept: '线段是直的，有两个端点，可以量出长度', prerequisite: '2A-01 厘米和米', extends: '2A-03 不进位加法', visualStrategy: '尺子测量', visualType: 'numberLine', coreLiteracy: '几何直观', difficulty: 1, isKeyTopic: false },
+      { id: '2A-03', name: '100以内进位加法', concept: '个位满十向十位进一，相同数位对齐从个位算起', prerequisite: '2A-02 线段', extends: '2A-04 不退位减法', visualStrategy: '条形图合并', visualType: 'barModel', coreLiteracy: '运算能力', difficulty: 2, isKeyTopic: true },
+      { id: '2A-04', name: '100以内退位减法', concept: '个位不够减从十位借一当十，相同数位对齐从个位算起', prerequisite: '2A-03 进位加法', extends: '2A-05 加减混合', visualStrategy: '数轴回退', visualType: 'numberLine', coreLiteracy: '运算能力', difficulty: 2, isKeyTopic: true },
+      { id: '2A-05', name: '加减混合运算', concept: '从左到右依次计算，先算前两个数再加或减第三个数', prerequisite: '2A-04 退位减法', extends: '2A-06 表内乘法', visualStrategy: '步骤拆解条形图', visualType: 'barModel', coreLiteracy: '推理意识', difficulty: 2, isKeyTopic: true },
+      { id: '2A-06', name: '表内乘法·2-4口诀', concept: '求几个相同加数的和用乘法，二四得八、三四十二等', prerequisite: '2A-05 加减混合', extends: '2A-07 表内乘法·5-6口诀', visualStrategy: '条形图分组', visualType: 'barModel', coreLiteracy: '运算能力', difficulty: 1, isKeyTopic: true },
+      { id: '2A-07', name: '表内乘法·5-6口诀', concept: '五的乘法口诀积的个位是0或5，六的乘法口诀积逐次加6', prerequisite: '2A-06 2-4口诀', extends: '2A-08 角的认识', visualStrategy: '数轴等距跳跃', visualType: 'numberLine', coreLiteracy: '运算能力', difficulty: 2, isKeyTopic: true },
+      { id: '2A-08', name: '角的初步认识', concept: '角有一个顶点和两条边，直角=90°，锐角<90°，钝角>90°', prerequisite: '2A-07 5-6口诀', extends: '2A-09 观察物体', visualStrategy: '动态角演示', visualType: 'geometry', coreLiteracy: '几何直观', difficulty: 1, isKeyTopic: true },
+      { id: '2A-09', name: '观察物体（一）', concept: '从不同方向观察同一物体，看到的形状可能不同，长方体从一个方向最多看到3个面', prerequisite: '2A-08 角的认识', extends: '2A-10 认识时间', visualStrategy: '多视角对比', visualType: 'geometry', coreLiteracy: '空间观念', difficulty: 1, isKeyTopic: true },
+      { id: '2A-10', name: '认识时间·1时=60分', concept: '钟面上1圈是60分，时针走1大格是1时，1时=60分', prerequisite: '2A-09 观察物体', extends: '2A-11 几时几分', visualStrategy: '钟表动态', visualType: 'numberLine', coreLiteracy: '量感', difficulty: 2, isKeyTopic: true },
+      { id: '2A-11', name: '认识时间·几时几分', concept: '时针指几过几就是几时几分，分针指几乘5就是几分', prerequisite: '2A-10 1时=60分', extends: '', visualStrategy: '钟面图示', visualType: 'numberLine', coreLiteracy: '量感', difficulty: 2, isKeyTopic: true }
+    ],
     problems: [
       // 单元1 长度单位（1米=100厘米）
       {

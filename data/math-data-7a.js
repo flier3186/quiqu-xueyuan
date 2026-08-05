@@ -207,6 +207,18 @@ window.MATH_BY_GRADE['7a'] = {
         "coreLiteracy": "函数思想",
         "difficulty": 3,
         "isKeyTopic": true
+      },
+      {
+        "id": "7A-18",
+        "name": "余角与补角",
+        "concept": "两个角之和为90度互余，之和为180度互补",
+        "prerequisite": "7A-01",
+        "extends": "7B-01 相交线与平行线",
+        "visualStrategy": "角度拼合",
+        "visualType": "geometry",
+        "coreLiteracy": "推理意识",
+        "difficulty": 2,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -785,6 +797,524 @@ window.MATH_BY_GRADE['7a'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "求几个数的和，用加法。加数+加数=和",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "超市促销，苹果每千克8元，小明买了3千克，妈妈给了他50元。小明想知道找零多少元。",
+        "question": "应该找零多少元？",
+        "formula": "50 - 8*3 = ?",
+        "answer": 26,
+        "choices": [
+          26,
+          24,
+          28,
+          22
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 50,
+          "parts": [
+            {
+              "label": "花费",
+              "val": 24,
+              "color": "#00A896"
+            },
+            {
+              "label": "找零",
+              "val": 26,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "有理数混合运算",
+        "difficulty": 2,
+        "hint": "先算乘法再算减法",
+        "variants": [
+          {
+            "question": "香蕉每千克5元，买4千克，给30元，找零？",
+            "formula": "30-5*4=?",
+            "answer": 10,
+            "hint": "先乘后减"
+          },
+          {
+            "question": "橙子每千克6元，买5千克，给40元，够吗？",
+            "formula": "6*5=30<40",
+            "answer": 1,
+            "hint": "比较大小"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "差是多少",
+              "有几份"
+            ],
+            "answer": "差是多少",
+            "explain": "题目说「超市促销，苹果每千克8元，小明买了3千克，妈妈给了他50元。小明想知道找零多少元。」，问的是「应该找零多少元？」，这是求差是多少"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：50、8、3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：50、8、3",
+            "explain": "从题目中找到的关键数是：50（给的钱）、8（单价）、3（数量）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "减法",
+            "explain": "减法：先算花费8×3=24元，再算找零50-24=26元"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中50元分成花费24元和找零26元两部分",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "50 - 8×3 = 50 - 24 = 26元",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "找零=付的钱-总价，总价=单价×数量",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小红在数轴上从原点出发，先向右移动5个单位，再向左移动3个单位，她想知道现在在哪里。",
+        "question": "小红现在在数轴上的什么位置？",
+        "formula": "0 + 5 - 3 = ?",
+        "answer": 2,
+        "choices": [
+          2,
+          -2,
+          8,
+          -8
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": -5,
+          "end": 5,
+          "points": [
+            {
+              "pos": 0,
+              "label": "起点",
+              "color": "#00A896"
+            },
+            {
+              "pos": 5,
+              "label": "右移5",
+              "color": "#F5B800"
+            },
+            {
+              "pos": 2,
+              "label": "终点",
+              "color": "#FB923C"
+            }
+          ],
+          "highlight": [
+            0,
+            2
+          ]
+        },
+        "knowledge": "数轴上的点移动",
+        "difficulty": 1,
+        "hint": "向右为正，向左为负",
+        "variants": [
+          {
+            "question": "从0出发，向左4单位再向右7单位，终点？",
+            "formula": "0-4+7=?",
+            "answer": 3,
+            "hint": "左负右正"
+          },
+          {
+            "question": "从-2出发，向右5单位再向左3单位，终点？",
+            "formula": "-2+5-3=?",
+            "answer": 0,
+            "hint": "注意起点"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小红在数轴上从原点出发，先向右移动5个单位，再向左移动3个单位，她想知道现在在哪里。」，问的是「小红现在在数轴上的什么位置？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：0、5、3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：0、5、3",
+            "explain": "从题目中找到的关键数是：0（起点）、5（右移）、3（左移）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "加法",
+            "explain": "加法：0 + 5 - 3 = 2"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上从0到5再到2，展示移动过程",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "0 + 5 - 3 = 2",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "数轴上向右加、向左减，最终位置=起点+移动量",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明解方程2x - 7 = 9，他想知道x等于多少才能满足方程。",
+        "question": "方程的解x是多少？",
+        "formula": "2x = 9 + 7, x = ?",
+        "answer": 8,
+        "choices": [
+          8,
+          6,
+          16,
+          2
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 9,
+          "parts": [
+            {
+              "label": "2x",
+              "val": 16,
+              "color": "#00A896"
+            },
+            {
+              "label": "-7",
+              "val": 7,
+              "color": "#FB923C"
+            }
+          ]
+        },
+        "knowledge": "解一元一次方程",
+        "difficulty": 2,
+        "hint": "先移项再除以系数",
+        "variants": [
+          {
+            "question": "解方程3x + 5 = 20",
+            "formula": "3x=15, x=5",
+            "answer": 5,
+            "hint": "先减5再除以3"
+          },
+          {
+            "question": "解方程5x - 3 = 17",
+            "formula": "5x=20, x=4",
+            "answer": 4,
+            "hint": "先加3再除以5"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解方程2x - 7 = 9，他想知道x等于多少才能满足方程。」，问的是「方程的解x是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：2、7、9",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：2、7、9",
+            "explain": "从题目中找到的关键数是：2（系数）、7（常数项）、9（结果）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "加法",
+            "explain": "加法：2x = 9 + 7 = 16, x = 16/2 = 8"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示方程2x-7=9的平衡关系",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "2x - 7 = 9 → 2x = 16 → x = 8",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "解方程：移项变号，系数化为1",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "学校组织植树活动，一班植了25棵，二班植的是一班的1.2倍少3棵。校长想知道两个班一共植了多少棵树。",
+        "question": "两个班共植树多少棵？",
+        "formula": "25 + (25*1.2-3) = ?",
+        "answer": 52,
+        "choices": [
+          52,
+          50,
+          55,
+          48
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 52,
+          "parts": [
+            {
+              "label": "一班",
+              "val": 25,
+              "color": "#00A896"
+            },
+            {
+              "label": "二班",
+              "val": 27,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "代数式求值",
+        "difficulty": 2,
+        "hint": "先算二班：25×1.2-3=27棵",
+        "variants": [
+          {
+            "question": "一班30棵，二班是一班的2倍多5棵，共多少？",
+            "formula": "30+(30*2+5)",
+            "answer": 95,
+            "hint": "先算二班再求和"
+          },
+          {
+            "question": "一班40棵，二班比一班少10棵，共多少？",
+            "formula": "40+(40-10)",
+            "answer": 70,
+            "hint": "简单减法"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「学校组织植树活动，一班植了25棵，二班植的是一班的1.2倍少3棵。校长想知道两个班一共植了多少棵树。」，问的是「两个班共植树多少棵？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：25、1.2、3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：25、1.2、3",
+            "explain": "从题目中找到的关键数是：25（一班）、1.2（倍数）、3（少植）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：二班=25×1.2-3=27，总共=25+27=52棵"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中有两部分：一班25棵，二班27棵",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "二班=25×1.2-3=27，总数=25+27=52",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "先求第二份量，再求总量",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个角的补角比它的余角大多少度？小明想用代数的方法算出这个差值。",
+        "question": "补角比余角大多少度？",
+        "formula": "(180-x) - (90-x) = 90",
+        "answer": 90,
+        "choices": [
+          90,
+          45,
+          180,
+          60
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "angle",
+          "params": {
+            "angle": 45,
+            "complement": 135,
+            "supplement": 90
+          }
+        },
+        "knowledge": "余角与补角",
+        "difficulty": 2,
+        "hint": "余角=90°-角，补角=180°-角",
+        "variants": [
+          {
+            "question": "一个角是30度，它的余角和补角各是多少？",
+            "formula": "余角=60, 补角=150",
+            "answer": 60,
+            "hint": "分别计算"
+          },
+          {
+            "question": "一个角的补角是120度，它的余角是多少？",
+            "formula": "角=60, 余角=30",
+            "answer": 30,
+            "hint": "先求角再求余角"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "差是多少",
+              "总数",
+              "每份是多少",
+              "有几份"
+            ],
+            "answer": "差是多少",
+            "explain": "题目说「一个角的补角比它的余角大多少度？」，问的是补角与余角的差，这是求差是多少"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：180 和 90",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：180 和 90",
+            "explain": "从题目中找到的关键数是：180（补角定义）、90（余角定义）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "减法",
+            "explain": "减法：补角-余角=(180-x)-(90-x)=90"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示一个角、它的余角和补角的关系",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "补角-余角=(180°-x)-(90°-x)=90°",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "补角总比余角大90°，与角的大小无关",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

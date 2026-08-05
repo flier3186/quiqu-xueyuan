@@ -1392,7 +1392,7 @@ const PHRASE_BANK = {
 };
 
 // === 数学CPA数据 ===
-const MATH_BY_GRADE = {
+var MATH_BY_GRADE = {
   // ========== 三年级上册（3a）万以内加减法 · 时分秒 · 测量 · 长方形正方形 · 分数初步认识 ==========
   '3a':{
     title:'三年级上册·万以内加减法与时分秒',
@@ -6948,8 +6948,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
-if(typeof MATH_GRADE_2!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
-  Object.keys(MATH_GRADE_2).forEach(function(k){ MATH_BY_GRADE[k]=MATH_GRADE_2[k]; });
+if(typeof window.MATH_GRADE_2!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
+  Object.keys(window.MATH_GRADE_2).forEach(function(k){ MATH_BY_GRADE[k]=window.MATH_GRADE_2[k]; });
+  console.log('[QuiquV5] 2a/2b 数学合并完成，MATH_BY_GRADE 当前年级:', Object.keys(MATH_BY_GRADE).join(','));
 }
 // 2. 追加 3-6 年级扩展题到各学期 problems
 if(typeof MATH_EXTEND_3_6!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
