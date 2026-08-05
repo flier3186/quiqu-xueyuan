@@ -207,6 +207,18 @@ window.MATH_BY_GRADE['9a'] = {
         "coreLiteracy": "推理意识",
         "difficulty": 3,
         "isKeyTopic": false
+      },
+      {
+        "id": "9A-18",
+        "name": "圆锥侧面积",
+        "concept": "侧面积=πrl，r为底面半径，l为母线长",
+        "prerequisite": "9A-11",
+        "extends": "9B-14 圆锥侧面积",
+        "visualStrategy": "展开图",
+        "visualType": "geometry",
+        "coreLiteracy": "运算能力",
+        "difficulty": 2,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -762,6 +774,497 @@ window.MATH_BY_GRADE['9a'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "求差或剩余，用减法。被减数-减数=差",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明解方程 x^2 - 4x - 5 = 0，他想知道两个根分别是多少。",
+        "question": "方程的两个根是多少？",
+        "formula": "(x-5)(x+1)=0, x1=5 x2=-1",
+        "answer": 5,
+        "choices": [
+          5,
+          -1,
+          1,
+          -5
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": -6,
+          "end": 6,
+          "points": [
+            {
+              "pos": -1,
+              "label": "x1",
+              "color": "#00A896"
+            },
+            {
+              "pos": 5,
+              "label": "x2",
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "一元二次方程因式分解",
+        "difficulty": 2,
+        "hint": "寻找两个数，乘积为-5，和为-4",
+        "variants": [
+          {
+            "question": "解方程 x^2-2x-3=0",
+            "formula": "(x-3)(x+1)=0",
+            "answer": 3,
+            "hint": "因式分解"
+          },
+          {
+            "question": "解方程 x^2-7x+12=0",
+            "formula": "(x-3)(x-4)=0",
+            "answer": 3,
+            "hint": "寻找两数积12和7"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解方程 x^2 - 4x - 5 = 0，他想知道两个根分别是多少。」，问的是「方程的两个根是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：1、-4、-5",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：1、-4、-5",
+            "explain": "从题目中找到的关键数是：1（二次项系数）、-4（一次项系数）、-5（常数项）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：(x-5)(x+1)=0，x1=5，x2=-1"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上标出两个根x1=-1和x2=5",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "x^2-4x-5=0 → (x-5)(x+1)=0 → x1=5, x2=-1",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "因式分解法：将方程化为两个一次因式乘积为0",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "抛物线y=x²-4x+3与x轴的交点坐标是多少？小红想知道这两个交点。",
+        "question": "抛物线与x轴的交点横坐标分别是多少？",
+        "formula": "x²-4x+3=0, (x-1)(x-3)=0",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "parabola",
+          "params": {
+            "vertex": [
+              2,
+              -1
+            ],
+            "roots": [
+              1,
+              3
+            ]
+          }
+        },
+        "knowledge": "二次函数与x轴交点",
+        "difficulty": 3,
+        "hint": "令y=0，解一元二次方程",
+        "variants": [
+          {
+            "question": "抛物线y=x²-5x+6与x轴交点",
+            "formula": "x²-5x+6=0, (x-2)(x-3)=0",
+            "answer": 2,
+            "hint": "因式分解"
+          },
+          {
+            "question": "抛物线y=x²-2x-3与x轴交点",
+            "formula": "x²-2x-3=0, (x-3)(x+1)=0",
+            "answer": 3,
+            "hint": "寻找两数积-3和-2"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「抛物线y=x²-4x+3与x轴的交点坐标是多少？小红想知道这两个交点。」，问的是「抛物线与x轴的交点横坐标分别是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：1、-4、3",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：1、-4、3",
+            "explain": "从题目中找到的关键数是：1（二次项系数）、-4（一次项系数）、3（常数项）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：令y=0，x²-4x+3=0，(x-1)(x-3)=0，x1=1，x2=3"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "抛物线与x轴交于(1,0)和(3,0)",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "令y=0，解x²-4x+3=0得x1=1，x2=3",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "二次函数与x轴交点横坐标即对应方程的根",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个矩形花园长20米宽15米，小红想围绕花园修一条宽度相同的小路，使花园加小路总面积为450平方米。她想算出小路的宽度。",
+        "question": "小路宽度是多少米？",
+        "formula": "(20+2x)(15+2x)=450",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "rectangle",
+          "params": {
+            "length": 20,
+            "width": 15,
+            "pathWidth": 2.5
+          }
+        },
+        "knowledge": "一元二次方程应用",
+        "difficulty": 3,
+        "hint": "设小路宽x米，总面积=(20+2x)(15+2x)",
+        "variants": [
+          {
+            "question": "长方形长10宽8，修路后面积144，路宽？",
+            "formula": "(10+2x)(8+2x)=144",
+            "answer": 1,
+            "hint": "解方程求x"
+          },
+          {
+            "question": "正方形地边长20，修路后面积576，路宽？",
+            "formula": "(20+2x)²=576",
+            "answer": 4,
+            "hint": "开方求解"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "每份是多少",
+              "总数",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "每份是多少",
+            "explain": "题目说「一个矩形花园长20米宽15米，小红想围绕花园修一条宽度相同的小路，使花园加小路总面积为450平方米。她想算出小路的宽度。」，问的是「小路宽度是多少米？」，这是求每份是多少"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：20、15、450",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：20、15、450",
+            "explain": "从题目中找到的关键数是：20（长）、15（宽）、450（总面积）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：(20+2x)(15+2x)=450，展开得4x²+70x+300=450，解得x=2.5米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示矩形花园及周围小路",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "(20+2x)(15+2x)=450 → 4x²+70x-150=0 → x=2.5",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "实际问题转化为方程，注意检验根的合理性",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明测量一座塔的高度，他在离塔底30米处测得塔顶仰角为60度。他想算出塔的高度（忽略观测者身高）。",
+        "question": "塔高约多少米？",
+        "formula": "h = 30 * tan60度 = 30*sqrt(3) ≈ ?",
+        "answer": 52,
+        "choices": [
+          52,
+          30,
+          17,
+          60
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "triangle",
+          "params": {
+            "base": 30,
+            "angle": 60
+          }
+        },
+        "knowledge": "特殊角三角函数",
+        "difficulty": 3,
+        "hint": "tan60°=√3≈1.732",
+        "variants": [
+          {
+            "question": "距离塔40米，仰角45度，塔高？",
+            "formula": "h=40*tan45=40",
+            "answer": 40,
+            "hint": "tan45=1"
+          },
+          {
+            "question": "距离塔20米，仰角30度，塔高？",
+            "formula": "h=20*tan30=20*sqrt(3)/3",
+            "answer": 12,
+            "hint": "tan30=√3/3"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明测量一座塔的高度，他在离塔底30米处测得塔顶仰角为60度。他想算出塔的高度（忽略观测者身高）。」，问的是「塔高约多少米？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：30 和 60",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：30 和 60",
+            "explain": "从题目中找到的关键数是：30（距离）、60°（仰角）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：塔高=30×tan60°=30×√3≈30×1.732≈52米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "直角三角形：底边30米，仰角60度，求对边（塔高）",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "tan60°=对边/邻边=h/30，h=30×tan60°=30√3≈52米",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "tanθ=对边/邻边，已知邻边和角度求对边",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个圆锥的底面半径是3厘米，母线长是5厘米。小明想算出这个圆锥的侧面积。",
+        "question": "圆锥的侧面积是多少平方厘米？",
+        "formula": "S=πrl=π*3*5=15π≈47.1",
+        "answer": 47,
+        "choices": [
+          47,
+          28,
+          90,
+          15
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "cone",
+          "params": {
+            "radius": 3,
+            "slantHeight": 5
+          }
+        },
+        "knowledge": "圆锥侧面积",
+        "difficulty": 2,
+        "hint": "侧面积=π×半径×母线长",
+        "variants": [
+          {
+            "question": "圆锥底面半径4母线长6，侧面积？",
+            "formula": "π*4*6=24π≈75.4",
+            "answer": 75,
+            "hint": "代入公式"
+          },
+          {
+            "question": "圆锥底面直径6母线长5，侧面积？",
+            "formula": "r=3, S=π*3*5=15π",
+            "answer": 47,
+            "hint": "先求半径"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「一个圆锥的底面半径是3厘米，母线长是5厘米。小明想算出这个圆锥的侧面积。」，问的是「圆锥的侧面积是多少平方厘米？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3 和 5",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3 和 5",
+            "explain": "从题目中找到的关键数是：3（底面半径）、5（母线长）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：侧面积=πrl=π×3×5=15π≈47.1平方厘米"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示圆锥及其展开后的扇形",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "侧面积=π×r×l=π×3×5=15π≈47.1",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "圆锥侧面积=πrl，展开后是扇形",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

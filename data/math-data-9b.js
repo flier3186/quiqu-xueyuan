@@ -207,6 +207,18 @@ window.MATH_BY_GRADE['9b'] = {
         "coreLiteracy": "函数思想",
         "difficulty": 3,
         "isKeyTopic": true
+      },
+      {
+        "id": "9B-18",
+        "name": "韦达定理应用",
+        "concept": "一元二次方程根与系数的关系：x1+x2=-b/a, x1x2=c/a",
+        "prerequisite": "9A-01",
+        "extends": "9B-12 二次函数最值",
+        "visualStrategy": "数轴与根",
+        "visualType": "numberLine",
+        "coreLiteracy": "运算能力",
+        "difficulty": 2,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -764,6 +776,514 @@ window.MATH_BY_GRADE['9b'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "求每份是多少或求有几份，用除法。总数÷每份数=份数",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明解分式方程 2/(x-1) + 3/(x+1) = 1，他想知道x的值。",
+        "question": "方程的解是多少？",
+        "formula": "2(x+1)+3(x-1)=(x-1)(x+1)",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": -5,
+          "end": 5,
+          "points": [
+            {
+              "pos": 3,
+              "label": "x",
+              "color": "#00A896"
+            }
+          ]
+        },
+        "knowledge": "分式方程综合",
+        "difficulty": 3,
+        "hint": "先通分，去分母化为整式方程",
+        "variants": [
+          {
+            "question": "解方程 1/(x-2) + 1/(x+2) = 4/(x²-4)",
+            "formula": "无解",
+            "answer": 0,
+            "hint": "增根需检验"
+          },
+          {
+            "question": "解方程 2/x + 1/(x-3) = 1",
+            "formula": "x²-5x+6=0",
+            "answer": 2,
+            "hint": "去分母化简"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解分式方程 2/(x-1) + 3/(x+1) = 1，他想知道x的值。」，问的是「方程的解是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：2、3、1",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：2、3、1",
+            "explain": "从题目中找到的关键数是：2、3、1（系数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：去分母，化为整式方程求解"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上标出方程的解",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "去分母，化为整式方程求解，注意检验增根",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "分式方程：通分去分母，化为整式方程，检验增根",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "反比例函数y=k/x经过点(3,4)，正比例函数y=mx经过同一点。小红想知道这两个函数的解析式和图像交点。",
+        "question": "两个函数图像交点坐标是什么？",
+        "formula": "k=12, m=4/3, 交点(3,4)和(-3,-4)",
+        "answer": 3,
+        "choices": [
+          3,
+          -3,
+          4,
+          -4
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "coordinate",
+          "params": {
+            "points": [
+              [
+                3,
+                4
+              ],
+              [
+                -3,
+                -4
+              ]
+            ]
+          }
+        },
+        "knowledge": "函数交点问题",
+        "difficulty": 3,
+        "hint": "正比例函数过原点，与反比例函数有两个对称交点",
+        "variants": [
+          {
+            "question": "y=6/x与y=2x的交点",
+            "formula": "2x=6/x, x²=3",
+            "answer": 3,
+            "hint": "联立方程"
+          },
+          {
+            "question": "y=8/x与y=x的交点",
+            "formula": "x=8/x, x²=8",
+            "answer": 2,
+            "hint": "x=±2√2"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「反比例函数y=k/x经过点(3,4)，正比例函数y=mx经过同一点。小红想知道这两个函数的解析式和图像交点。」，问的是「两个函数图像交点坐标是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3 和 4",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3 和 4",
+            "explain": "从题目中找到的关键数是：3（x坐标）、4（y坐标）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：k=3×4=12，m=4/3，两函数交点关于原点对称"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "反比例函数和正比例函数的图像",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "y=12/x与y=4/3x，交点(3,4)和(-3,-4)",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "正比例与反比例函数图像有两个对称交点",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个不透明袋子里有3个红球、2个白球和1个蓝球。小红随机摸出两个球，她想算出摸出的两个球颜色不同的概率。",
+        "question": "摸出的两个球颜色不同的概率是多少？",
+        "formula": "1 - P(同色) = 1 - 1/5 = 4/5",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 6,
+          "parts": [
+            {
+              "label": "红球",
+              "val": 3,
+              "color": "#00A896"
+            },
+            {
+              "label": "白球",
+              "val": 2,
+              "color": "#F5B800"
+            },
+            {
+              "label": "蓝球",
+              "val": 1,
+              "color": "#E8A0BF"
+            }
+          ]
+        },
+        "knowledge": "概率的组合计算",
+        "difficulty": 3,
+        "hint": "用1减去同色的概率更简单",
+        "variants": [
+          {
+            "question": "袋中2红3蓝，摸两球（不放回）颜色不同的概率",
+            "formula": "1 - P(同色)",
+            "answer": 3,
+            "hint": "计算同色概率再相减"
+          },
+          {
+            "question": "袋中1红1蓝1绿，摸两球颜色不同的概率",
+            "formula": "1",
+            "answer": 1,
+            "hint": "颜色都不同"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "每份是多少（或几份）",
+              "总数（一共多少）",
+              "差是多少",
+              "和是多少"
+            ],
+            "answer": "每份是多少（或几份）",
+            "explain": "题目说「一个不透明袋子里有3个红球、2个白球和1个蓝球。小红随机摸出两个球，她想算出摸出的两个球颜色不同的概率。」，问的是「摸出的两个球颜色不同的概率是多少？」，这是求每份是多少"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3、2、1",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3、2、1",
+            "explain": "从题目中找到的关键数是：3（红球）、2（白球）、1（蓝球）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "减法",
+            "explain": "减法：P(不同)=1-P(同色)=1-[C(3,2)+C(2,2)]/C(6,2)=1-4/15=11/15"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示袋中不同颜色球的数量",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "P(不同)=1-P(同色)，总组合C(6,2)=15",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "间接法：用1减去对立事件的概率",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个几何体的三视图都是圆，小明想知道这个几何体是什么形状。",
+        "question": "这个几何体是什么？",
+        "formula": "三视图均为圆的几何体",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "geometry",
+        "visualData": {
+          "shape": "sphere",
+          "params": {
+            "radius": 3
+          }
+        },
+        "knowledge": "三视图识别",
+        "difficulty": 1,
+        "hint": "三视图都是圆的几何体只有一个",
+        "variants": [
+          {
+            "question": "主视图和左视图是矩形，俯视图是圆，是什么几何体？",
+            "formula": "圆柱",
+            "answer": 0,
+            "hint": "侧面投影矩形"
+          },
+          {
+            "question": "三个视图都是三角形，是什么几何体？",
+            "formula": "三棱锥",
+            "answer": 0,
+            "hint": "锥体投影"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「一个几何体的三视图都是圆，小明想知道这个几何体是什么形状。」，问的是「这个几何体是什么？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键信息：三视图",
+              "只有总数",
+              "只有每份数",
+              "没有关键信息"
+            ],
+            "answer": "关键信息：三视图",
+            "explain": "从题目中找到的关键信息是三视图都是圆"
+          },
+          {
+            "q": "🧩 用什么方法判断？",
+            "choices": [
+              "分析三视图特征",
+              "计算体积",
+              "比较面积",
+              "测量边长"
+            ],
+            "answer": "分析三视图特征",
+            "explain": "分析：三视图都是圆，只有球体满足这个条件"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "球体的三视图都是圆",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "球体从任何方向看都是圆形",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "三视图都是圆的几何体是球体",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明解方程 x²-6x+8=0，他想知道两个根的和与积。",
+        "question": "方程两根之和与两根之积分别是多少？",
+        "formula": "x1+x2=6, x1*x2=8",
+        "answer": 6,
+        "choices": [
+          6,
+          8,
+          4,
+          2
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": -2,
+          "end": 5,
+          "points": [
+            {
+              "pos": 2,
+              "label": "x1",
+              "color": "#00A896"
+            },
+            {
+              "pos": 4,
+              "label": "x2",
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "韦达定理",
+        "difficulty": 2,
+        "hint": "对于ax²+bx+c=0，两根之和=-b/a，两根之积=c/a",
+        "variants": [
+          {
+            "question": "方程x²-5x+6=0，两根之和与积",
+            "formula": "和=5, 积=6",
+            "answer": 5,
+            "hint": "韦达定理"
+          },
+          {
+            "question": "方程2x²-4x-6=0，两根之和与积",
+            "formula": "和=2, 积=-3",
+            "answer": 2,
+            "hint": "注意a=2"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解方程 x²-6x+8=0，他想知道两个根的和与积。」，问的是「方程两根之和与两根之积分别是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：1、-6、8",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：1、-6、8",
+            "explain": "从题目中找到的关键数是：1（二次项系数）、-6（一次项系数）、8（常数项）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "加法",
+            "explain": "加法：根据韦达定理，x1+x2=-(-6)/1=6，x1×x2=8/1=8"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上标出两根x1=2和x2=4",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "根据韦达定理：x1+x2=6，x1×x2=8",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "韦达定理：x1+x2=-b/a，x1×x2=c/a",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

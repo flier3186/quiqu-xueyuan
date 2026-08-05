@@ -207,6 +207,18 @@ window.MATH_BY_GRADE['8b'] = {
         "coreLiteracy": "推理意识",
         "difficulty": 2,
         "isKeyTopic": false
+      },
+      {
+        "id": "8B-18",
+        "name": "概率与整式运算",
+        "concept": "独立事件概率相乘，整式运算遵循指数法则",
+        "prerequisite": "8B-03",
+        "extends": "9A-06 二次函数的应用",
+        "visualStrategy": "树状图与式子",
+        "visualType": "barModel",
+        "coreLiteracy": "运算能力",
+        "difficulty": 3,
+        "isKeyTopic": true
       }
     ],
     "units": [
@@ -765,6 +777,517 @@ window.MATH_BY_GRADE['8b'] = {
             "icon": "🚀",
             "title": "推广 — 通用规律",
             "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明解分式方程 3/(x-1) = 2/(x+1)，他想知道x的值是多少。",
+        "question": "方程的解是多少？",
+        "formula": "3(x+1) = 2(x-1), x = ?",
+        "answer": -5,
+        "choices": [
+          -5,
+          5,
+          1,
+          -1
+        ],
+        "visualType": "numberLine",
+        "visualData": {
+          "start": -10,
+          "end": 10,
+          "points": [
+            {
+              "pos": -5,
+              "label": "x",
+              "color": "#00A896"
+            }
+          ]
+        },
+        "knowledge": "分式方程求解",
+        "difficulty": 3,
+        "hint": "交叉相乘，注意检验增根",
+        "variants": [
+          {
+            "question": "解方程 2/(x+2) = 1/x",
+            "formula": "2x=x+2, x=2",
+            "answer": 2,
+            "hint": "交叉相乘"
+          },
+          {
+            "question": "解方程 1/(x-2) = 2/(x+2)",
+            "formula": "x+2=2(x-2)",
+            "answer": 6,
+            "hint": "移项求解"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「小明解分式方程 3/(x-1) = 2/(x+1)，他想知道x的值是多少。」，问的是「方程的解是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3、1、2、1",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3、1、2、1",
+            "explain": "从题目中找到的关键数是：3、1、2、1"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：3(x+1)=2(x-1)，3x+3=2x-2，x=-5"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "数轴上标出解x=-5",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "3(x+1)=2(x-1) → 3x+3=2x-2 → x=-5",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "分式方程：交叉相乘，去分母，注意检验增根",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "已知反比例函数y=k/x经过点(-2, 6)，小红想求出k的值和当x=3时的y值。",
+        "question": "k和x=3时的y分别是多少？",
+        "formula": "k=-12, y=-12/3=-4",
+        "answer": -4,
+        "choices": [
+          -4,
+          4,
+          -2,
+          2
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": -4,
+          "parts": [
+            {
+              "label": "k",
+              "val": -12,
+              "color": "#00A896"
+            },
+            {
+              "label": "y(x=3)",
+              "val": -4,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "反比例函数系数",
+        "difficulty": 2,
+        "hint": "k=xy，代入点坐标求k",
+        "variants": [
+          {
+            "question": "反比例函数过点(3,4)，求k和当x=6时y",
+            "formula": "k=12, y=12/6=2",
+            "answer": 2,
+            "hint": "k=xy"
+          },
+          {
+            "question": "y=k/x过点(-4,3)，求k和当x=-2时y",
+            "formula": "k=-12, y=-12/-2=6",
+            "answer": 6,
+            "hint": "k=xy"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「已知反比例函数y=k/x经过点(-2, 6)，小红想求出k的值和当x=3时的y值。」，问的是「k和x=3时的y分别是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：-2 和 6",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：-2 和 6",
+            "explain": "从题目中找到的关键数是：-2（x坐标）、6（y坐标）、3（求y时的x值）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：k=(-2)×6=-12，y=-12/3=-4"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示反比例函数k值与y值的关系",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "k=(-2)×6=-12，y=-12/3=-4",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "反比例函数：k=xy，代入点坐标求k",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一组数据：15, 20, 25, 30, 35, 40。小明想算出这组数据的方差。",
+        "question": "这组数据的方差是多少？",
+        "formula": "平均数=27.5, 方差=87.5",
+        "answer": 87,
+        "choices": [
+          87,
+          75,
+          100,
+          50
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 87.5,
+          "parts": [
+            {
+              "label": "平均数",
+              "val": 27.5,
+              "color": "#00A896"
+            },
+            {
+              "label": "方差",
+              "val": 87.5,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "数据的离散程度",
+        "difficulty": 3,
+        "hint": "方差=各数据与平均数差的平方和÷数据个数",
+        "variants": [
+          {
+            "question": "数据：2,4,6,8,10，方差？",
+            "formula": "平均=6, 方差=8",
+            "answer": 8,
+            "hint": "对称数据"
+          },
+          {
+            "question": "数据：10,10,10,10,10，方差？",
+            "formula": "平均=10, 方差=0",
+            "answer": 0,
+            "hint": "数据相同方差为0"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "计算结果",
+              "每份是多少",
+              "总数",
+              "差是多少"
+            ],
+            "answer": "计算结果",
+            "explain": "题目说「一组数据：15, 20, 25, 30, 35, 40。小明想算出这组数据的方差。」，问的是「这组数据的方差是多少？」，这是求计算结果"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：15,20,25,30,35,40",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：15,20,25,30,35,40",
+            "explain": "从题目中找到的关键数是：15、20、25、30、35、40（共6个数据）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：平均数=27.5，方差=[(15-27.5)²+(20-27.5)²+...+(40-27.5)²]÷6≈87.5"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示数据的分布与离散程度",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "平均数=27.5，各数据与平均数差的平方和=525，方差=525÷6=87.5",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "方差衡量数据的离散程度，方差越大数据越分散",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "一个袋子中有3个红球和2个白球，小明随机摸出一个球后放回，再摸一个。他想算出两次都摸到红球的概率。",
+        "question": "两次都摸到红球的概率是多少？",
+        "formula": "P=3/5×3/5=9/25",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 9,
+          "parts": [
+            {
+              "label": "红球",
+              "val": 3,
+              "color": "#00A896"
+            },
+            {
+              "label": "白球",
+              "val": 2,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "概率的乘法",
+        "difficulty": 3,
+        "hint": "放回抽样，两次独立，概率相乘",
+        "variants": [
+          {
+            "question": "袋中有2红3蓝，不放回摸两次都是红球的概率？",
+            "formula": "2/5×1/4=1/10",
+            "answer": 1,
+            "hint": "不放回，第二次分母减1"
+          },
+          {
+            "question": "袋中有4红2蓝，摸两次（放回）一红一蓝的概率？",
+            "formula": "4/6×2/6×2=8/18",
+            "answer": 8,
+            "hint": "两种顺序：红蓝或蓝红"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "每份是多少（或几份）",
+              "总数（一共多少）",
+              "差是多少",
+              "和是多少"
+            ],
+            "answer": "每份是多少（或几份）",
+            "explain": "题目说「一个袋子中有3个红球和2个白球，小明随机摸出一个球后放回，再摸一个。他想算出两次都摸到红球的概率。」，问的是「两次都摸到红球的概率是多少？」，这是求每份是多少"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：3 和 5",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：3 和 5",
+            "explain": "从题目中找到的关键数是：3（红球数）、2（白球数）、5（总数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "乘法",
+            "explain": "乘法：P(红)=3/5，放回后P(红)=3/5，两次都红=3/5×3/5=9/25"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示袋中红白球的数量分布",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "P(两次都红)=3/5×3/5=9/25",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "独立事件概率：P(A∩B)=P(A)×P(B)",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ]
+      },
+      {
+        "scene": "小明计算 (2a²b)³ ÷ (4ab²)，他想知道化简结果是多少。",
+        "question": "化简结果是多少？",
+        "formula": "8a^6*b^3 / 4a*b^2 = 2a^5*b",
+        "answer": 0,
+        "choices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualType": "barModel",
+        "visualData": {
+          "total": 2,
+          "parts": [
+            {
+              "label": "系数",
+              "val": 2,
+              "color": "#00A896"
+            },
+            {
+              "label": "a^5*b",
+              "val": 1,
+              "color": "#F5B800"
+            }
+          ]
+        },
+        "knowledge": "整式乘除运算",
+        "difficulty": 3,
+        "hint": "先算乘方再算除法，同底数幂相除指数相减",
+        "variants": [
+          {
+            "question": "(x^3)^2 ÷ x^4 = ?",
+            "formula": "x^6/x^4=x^2",
+            "answer": 2,
+            "hint": "指数相减"
+          },
+          {
+            "question": "(3a²b)² ÷ (6ab) = ?",
+            "formula": "9a^4*b^2/6ab=3/2*a^3*b",
+            "answer": 3,
+            "hint": "系数相除，指数相减"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "📖 再读一遍场景，这道题要我们求什么？",
+            "choices": [
+              "总数（一共多少）",
+              "每份是多少",
+              "有几份",
+              "差是多少"
+            ],
+            "answer": "总数（一共多少）",
+            "explain": "题目说「小明计算 (2a²b)³ ÷ (4ab²)，他想知道化简结果是多少。」，问的是「化简结果是多少？」，这是求总数"
+          },
+          {
+            "q": "🔢 题目给了我们哪些关键信息？",
+            "choices": [
+              "关键数：2、3、4",
+              "只有总数",
+              "只有每份数",
+              "没有关键数"
+            ],
+            "answer": "关键数：2、3、4",
+            "explain": "从题目中找到的关键数是：2（系数）、3（指数）、4（除数系数）"
+          },
+          {
+            "q": "🧩 用什么方法计算？",
+            "choices": [
+              "乘法",
+              "加法",
+              "减法",
+              "除法"
+            ],
+            "answer": "除法",
+            "explain": "除法：(2a²b)³=8a⁶b³，8a⁶b³÷4ab²=2a⁵b"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示整式乘除的运算过程",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "(2a²b)³÷(4ab²)=8a⁶b³÷4ab²=2a⁵b",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "先算乘方，再算乘除，同底数幂相除指数相减",
             "bg": "var(--coral-soft)",
             "color": "var(--coral)"
           }

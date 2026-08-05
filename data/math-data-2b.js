@@ -7493,6 +7493,140 @@ window.MATH_BY_GRADE["2b"] = {
             "variants": []
         }
     ],
+    "knowledgeMap": [
+        {
+            "id": "2B-01",
+            "name": "9的乘法口诀",
+            "concept": "9×1到9×9的口诀，积的个位与十位互补（积的各位数字之和为9）",
+            "prerequisite": "一上·10以内加法",
+            "extends": "2B-02 乘法应用",
+            "visualStrategy": "条形图计数",
+            "visualType": "barModel",
+            "coreLiteracy": "运算能力",
+            "difficulty": 1,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-02",
+            "name": "乘法应用",
+            "concept": "求几个相同加数的和用乘法，口诀求积",
+            "prerequisite": "9的乘法口诀",
+            "extends": "3A-13 倍的认识",
+            "visualStrategy": "条形图分组",
+            "visualType": "barModel",
+            "coreLiteracy": "模型意识",
+            "difficulty": 1,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-03",
+            "name": "9的除法",
+            "concept": "用乘法口诀求商，除法是乘法的逆运算",
+            "prerequisite": "9的乘法口诀",
+            "extends": "2B-04 除法应用",
+            "visualStrategy": "平均分条形图",
+            "visualType": "barModel",
+            "coreLiteracy": "运算能力",
+            "difficulty": 1,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-04",
+            "name": "除法应用",
+            "concept": "平均分问题，求份数或每份数",
+            "prerequisite": "9的除法",
+            "extends": "2B-07 有余数的除法",
+            "visualStrategy": "条形图平均分",
+            "visualType": "barModel",
+            "coreLiteracy": "模型意识",
+            "difficulty": 1,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-05",
+            "name": "万以内数的认识",
+            "concept": "千位、百位、十位、个位，读数写数按数位顺序",
+            "prerequisite": "一上·100以内数的认识",
+            "extends": "2B-06 万以内加减",
+            "visualStrategy": "数位条",
+            "visualType": "numberLine",
+            "coreLiteracy": "数感",
+            "difficulty": 1,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-06",
+            "name": "万以内加减法",
+            "concept": "相同数位对齐，从个位算起，满十进一/不够借一当十",
+            "prerequisite": "万以内数的认识",
+            "extends": "2B-10 混合运算",
+            "visualStrategy": "条形图分段",
+            "visualType": "barModel",
+            "coreLiteracy": "运算能力",
+            "difficulty": 2,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-07",
+            "name": "克与千克",
+            "concept": "1kg=1000g，克量轻物，千克量重物",
+            "prerequisite": "二上·厘米和米",
+            "extends": "2B-08 图形的运动",
+            "visualStrategy": "实物对比",
+            "visualType": "numberLine",
+            "coreLiteracy": "量感",
+            "difficulty": 1,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-08",
+            "name": "轴对称与平移旋转",
+            "concept": "沿折痕对折完全重合叫轴对称；平移不改变方向，旋转绕点转动",
+            "prerequisite": "一上·位置与方向",
+            "extends": "2B-09 两步混合运算",
+            "visualStrategy": "动态演示",
+            "visualType": "numberLine",
+            "coreLiteracy": "几何直观",
+            "difficulty": 1,
+            "isKeyTopic": false
+        },
+        {
+            "id": "2B-09",
+            "name": "两步混合运算",
+            "concept": "先乘除后加减，有括号先算括号里的",
+            "prerequisite": "表内乘除法",
+            "extends": "2B-07 有余数的除法",
+            "visualStrategy": "步骤拆解条形图",
+            "visualType": "barModel",
+            "coreLiteracy": "推理意识",
+            "difficulty": 2,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-10",
+            "name": "有余数的除法",
+            "concept": "平均分后剩余不够再分，余数要比除数小",
+            "prerequisite": "表内除法",
+            "extends": "3A-17 多位数除法",
+            "visualStrategy": "圈一圈数轴",
+            "visualType": "numberBond",
+            "coreLiteracy": "推理意识",
+            "difficulty": 2,
+            "isKeyTopic": true
+        },
+        {
+            "id": "2B-11",
+            "name": "简单推理",
+            "concept": "根据已知条件排除不可能，逐步确定答案",
+            "prerequisite": "2B-06 万以内加减法",
+            "extends": "3B-10 逻辑推理",
+            "visualStrategy": "表格排除法",
+            "visualType": "barModel",
+            "coreLiteracy": "推理意识",
+            "difficulty": 2,
+            "isKeyTopic": true
+        }
+    ],
     "unitProgress": {
         "表内乘法": 0,
         "表内除法": 0,
