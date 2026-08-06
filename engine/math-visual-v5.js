@@ -1448,25 +1448,118 @@ window.MathVisualV5 = {
   geometryStep(data, step){
     const shape=data.shape||'parallelogram';
     const W=440, H=220;
-    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">几何变换 · 第${step}/3步</text>`;
-    if(shape==='parallelogram'){
+    let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">几何 · 第${step}/3步</text>`;
+    if(shape==='sphere'){
+      const r=data.radius||50, cx=W/2, cy=H/2;
+      if(step>=1){
+        svg+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5" class="mv-shape" style="animation:mvFadeIn .5s ease both"/>`;
+        svg+=`<circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>`;
+      }
+      if(step>=2){
+        svg+=`<line x1="${cx-r}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="4,3" class="mv-dim" style="animation:mvLineIn .4s .3s ease both"/>`;
+        svg+=`<text x="${cx+r+6}" y="${cy+4}" font-size="11" font-weight="700" fill="#FB923C">r=${r}</text>`;
+        svg+=`<ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r*0.3}" fill="none" stroke="#00A896" stroke-width="1.2" stroke-dasharray="3,2" class="mv-eq" style="animation:mvFadeIn .4s .5s ease both"/>`;
+      }
+      if(step>=3){
+        const S=(4*Math.PI*r*r).toFixed(0), V=(4/3*Math.PI*r*r*r).toFixed(0);
+        svg+=`<rect x="${40}" y="${H-30}" width="${W-80}" height="22" fill="#1E3A5F" rx="11"/>`;
+        svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">表面积=${S}　体积=${V}</text>`;
+      }
+    } else if(shape==='cone'){
+      const r=data.radius||50, h=data.height||70, cx=W/2, baseY=H-40, topY=40;
+      const rr=r*1.3;
+      if(step>=1){
+        svg+=`<ellipse cx="${cx}" cy="${baseY}" rx="${rr}" ry="${rr*0.35}" fill="rgba(245,184,0,0.15)" stroke="#F5B800" stroke-width="2" class="mv-shape" style="animation:mvFadeIn .5s ease both"/>`;
+        svg+=`<line x1="${cx-rr}" y1="${baseY}" x2="${cx}" y2="${topY}" stroke="#F5B800" stroke-width="2" class="mv-side" style="animation:mvLineIn .4s .2s ease both"/>`;
+        svg+=`<line x1="${cx+rr}" y1="${baseY}" x2="${cx}" y2="${topY}" stroke="#F5B800" stroke-width="2" class="mv-side" style="animation:mvLineIn .4s .35s ease both"/>`;
+      }
+      if(step>=2){
+        svg+=`<line x1="${cx}" y1="${topY}" x2="${cx}" y2="${baseY}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="4,3" class="mv-h" style="animation:mvLineIn .4s .5s ease both"/>`;
+        svg+=`<text x="${cx+8}" y="${(topY+baseY)/2}" font-size="11" font-weight="700" fill="#FB923C">h=${h}</text>`;
+        svg+=`<text x="${cx+rr+4}" y="${baseY+4}" font-size="11" font-weight="700" fill="#1E3A5F">r=${r}</text>`;
+      }
+      if(step>=3){
+        const L=Math.sqrt(r*r+h*h).toFixed(0);
+        const V=(1/3*Math.PI*r*r*h).toFixed(0);
+        svg+=`<rect x="${40}" y="${H-30}" width="${W-80}" height="22" fill="#1E3A5F" rx="11"/>`;
+        svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">母线=${L}　体积=${V}</text>`;
+      }
+    } else if(shape==='sector'){
+      const r=data.radius||50, angle=data.angle||90, cx=W/2, cy=H/2;
+      const sc=1.5, R=r*sc;
+      const sa=-Math.PI/2, ea=sa+(angle/180)*Math.PI;
+      const x1=cx+R*Math.cos(sa), y1=cy+R*Math.sin(sa);
+      const x2=cx+R*Math.cos(ea), y2=cy+R*Math.sin(ea);
+      const la=angle>180?1:0;
+      if(step>=1){
+        svg+=`<path d="M ${cx} ${cy} L ${x1} ${y1} A ${R} ${R} 0 ${la} 1 ${x2} ${y2} Z" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2" class="mv-shape" style="animation:mvFadeIn .5s ease both"/>`;
+      }
+      if(step>=2){
+        svg+=`<line x1="${cx}" y1="${cy}" x2="${x1}" y2="${y1}" stroke="#1E3A5F" stroke-width="1.5" class="mv-r1"/>`;
+        svg+=`<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#1E3A5F" stroke-width="1.5" class="mv-r2"/>`;
+        svg+=`<text x="${cx+10}" y="${cy-10}" font-size="11" font-weight="700" fill="#F5B800">θ=${angle}°</text>`;
+      }
+      if(step>=3){
+        const L=(angle/360*2*Math.PI*r).toFixed(1), A=(angle/360*Math.PI*r*r).toFixed(1);
+        svg+=`<rect x="${40}" y="${H-30}" width="${W-80}" height="22" fill="#1E3A5F" rx="11"/>`;
+        svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">弧长=${L}　面积=${A}</text>`;
+      }
+    } else if(shape==='regularPolygon'){
+      const sides=data.sides||6, r=data.radius||60, cx=W/2, cy=H/2;
+      const pts=Array.from({length:sides},(_,i)=>{
+        const a=-Math.PI/2+i*2*Math.PI/sides;
+        return `${cx+r*Math.cos(a)},${cy+r*Math.sin(a)}`;
+      }).join(' ');
+      if(step>=1){
+        svg+=`<polygon points="${pts}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2" class="mv-shape" style="animation:mvFadeIn .5s ease both"/>`;
+      }
+      if(step>=2){
+        svg+=`<circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>`;
+        svg+=`<text x="${cx+r+6}" y="${cy-6}" font-size="11" font-weight="700" fill="#1E3A5F">r=${r}</text>`;
+      }
+      if(step>=3){
+        const IA=((sides-2)*180/sides).toFixed(0);
+        svg+=`<rect x="${40}" y="${H-30}" width="${W-80}" height="22" fill="#1E3A5F" rx="11"/>`;
+        svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">正${sides}边形　内角=${IA}°</text>`;
+      }
+    } else if(shape==='prism'){
+      const base=data.base||60, h=data.height||80, bs=data.baseSides||6;
+      const cx=W/2, baseY=H-40, topY=50;
+      const ptsTop=Array.from({length:bs},(_,i)=>{const a=-Math.PI/2+i*2*Math.PI/bs;return`${cx+base*Math.cos(a)},${topY+base*0.4*Math.sin(a)}`}).join(' ');
+      const ptsBot=Array.from({length:bs},(_,i)=>{const a=-Math.PI/2+i*2*Math.PI/bs;return`${cx+base*Math.cos(a)},${baseY+base*0.4*Math.sin(a)}`}).join(' ');
+      if(step>=1){
+        svg+=`<polygon points="${ptsTop}" fill="rgba(0,168,150,0.15)" stroke="#00A896" stroke-width="2" class="mv-top" style="animation:mvFadeIn .4s ease both"/>`;
+        svg+=`<polygon points="${ptsBot}" fill="rgba(0,168,150,0.08)" stroke="#00A896" stroke-width="2" class="mv-bot" style="animation:mvFadeIn .4s .2s ease both"/>`;
+      }
+      if(step>=2){
+        for(let i=0;i<bs;i++){
+          const a1=-Math.PI/2+i*2*Math.PI/bs;
+          const x1=cx+base*Math.cos(a1), y1=topY+base*0.4*Math.sin(a1);
+          const x2=cx+base*Math.cos(a1), y2=baseY+base*0.4*Math.sin(a1);
+          svg+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#00A896" stroke-width="1.5" class="mv-edge" style="animation:mvLineIn .3s ${0.3+i*0.05}s ease both"/>`;
+        }
+        svg+=`<text x="${cx+base+6}" y="${(topY+baseY)/2}" font-size="11" font-weight="700" fill="#FB923C">h=${h}</text>`;
+      }
+      if(step>=3){
+        svg+=`<rect x="${40}" y="${H-30}" width="${W-80}" height="22" fill="#1E3A5F" rx="11"/>`;
+        svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">正${bs}棱柱　底面正${bs}边形</text>`;
+      }
+    } else {
+      // parallelogram（原有逻辑）
       const ox=80, oy=180, b=200, h=100, off=40;
       const p1={x:ox,y:oy}, p2={x:ox+b,y:oy}, p3={x:ox+b+off,y:oy-h}, p4={x:ox+off,y:oy-h};
       if(step>=1){
-        svg+=`<polygon points="${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y} ${p4.x},${p4.y}" fill="#00A896" fill-opacity="0.25" stroke="#00A896" stroke-width="2" class="mv-shape" style="animation:mvFadeIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<polygon points="${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y} ${p4.x},${p4.y}" fill="#00A896" fill-opacity="0.25" stroke="#00A896" stroke-width="2" class="mv-shape" style="animation:mvFadeIn .5s ease both"/>`;
         svg+=`<text x="${ox+b/2}" y="${oy+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">底</text>`;
       }
       if(step>=2){
-        // 高线
-        svg+=`<line x1="${p4.x}" y1="${p4.y}" x2="${p1.x}" y2="${p1.y}" stroke="#FB923C" stroke-width="2.5" stroke-dasharray="6,3" class="mv-height" style="animation:mvLineIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<line x1="${p4.x}" y1="${p4.y}" x2="${p1.x}" y2="${p1.y}" stroke="#FB923C" stroke-width="2.5" stroke-dasharray="6,3" class="mv-height" style="animation:mvLineIn .5s ease both"/>`;
         svg+=`<text x="${p1.x-10}" y="${(p1.y+p4.y)/2+4}" text-anchor="end" font-size="11" font-weight="700" fill="#FB923C">高</text>`;
-        // 左侧三角形阴影
-        svg+=`<polygon points="${p1.x},${p1.y} ${p4.x},${p4.y} ${p4.x},${p1.y}" fill="#FB923C" fill-opacity="0.15" stroke="#FB923C" stroke-width="1" class="mv-tri-left" style="animation:mvFadeIn .4s .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<polygon points="${p1.x},${p1.y} ${p4.x},${p4.y} ${p4.x},${p1.y}" fill="#FB923C" fill-opacity="0.15" stroke="#FB923C" stroke-width="1" class="mv-tri-left" style="animation:mvFadeIn .4s .3s ease both"/>`;
       }
       if(step>=3){
-        // 右侧矩形（割补后）
         const rx=ox+b+off+20, ry=oy-h;
-        svg+=`<rect x="${rx}" y="${ry}" width="${b}" height="${h}" fill="#00A896" fill-opacity="0.3" stroke="#00A896" stroke-width="2" class="mv-result" style="animation:mvPop .5s .6s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+        svg+=`<rect x="${rx}" y="${ry}" width="${b}" height="${h}" fill="#00A896" fill-opacity="0.3" stroke="#00A896" stroke-width="2" class="mv-result" style="animation:mvPop .5s .6s ease both"/>`;
         svg+=`<text x="${rx+b/2}" y="${ry+h+18}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">等面积矩形</text>`;
         svg+=`<rect x="${60}" y="${H-30}" width="${W-120}" height="22" fill="#1E3A5F" rx="11"/>`;
         svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">平行四边形面积 = 底 × 高</text>`;

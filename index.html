@@ -4813,31 +4813,201 @@ const SpeakEngine = {
     speak(reply.text);
   },
 
-  // 生成老师回复：鼓励语 + 下一段台词（或结束语）
+  // 生成老师回复：鼓励语 + 下一段台词（或结束语）+ 上下文感知提示
   generateTeacherReply(matched){
     const sc = this.getScenario();
-    const good = ['Great! ','Awesome! ','Good job! ','Well done! ','Perfect! ','Excellent! '];
-    const bad  = ["That's okay! ","Don't worry! ","Good try! ","Almost! ","Let me help. "];
+    const history = S.speak && S.speak.history || [];
+    const lastStudentMsg = history.slice().reverse().find(h => h.role === 'student');
+    const lastStudentText = (lastStudentMsg && lastStudentMsg.text || '').toLowerCase();
+    const good = ['Great! ','Awesome! ','Good job! ','Well done! ','Perfect! ','Excellent! ','Nice one! ','Super! '];
+    const bad  = ["That's okay! ","Don't worry! ","Good try! ","Almost! ","Let me help. ","You're close! ","Keep going! ","I believe in you! "];
     const pick = arr => arr[Math.floor(Math.random()*arr.length)];
     const enc = matched ? pick(good) : pick(bad);
     const nextIdx = S.speak.currentLine + 1;
     if(sc && sc.teacherLines[nextIdx]){
       const nl = sc.teacherLines[nextIdx];
+      // 未匹配时追加自然提示（引用学生刚才说的内容）
+      if(!matched && lastStudentText){
+        const hintWords = lastStudentText.split(/\s+/).slice(0,3).join(' ');
+        const hints = [
+          "Try using: " + pick(['"I like..."', '"I went to..."', '"My favorite is..."']) + ". ",
+          "Here's a hint: you could say something about " + hintWords + ". ",
+          "How about saying: " + pick(['"I think..."', '"I want..."', '"I like..."']) + "? "
+        ];
+        return {text: enc + hints[Math.floor(Math.random()*hints.length)] + nl.text, cn: nl.cn};
+      }
       return {text: enc + nl.text, cn: nl.cn};
     }
     return {text: enc + "You did wonderfully! See you next time!", cn:"你表现得太棒了！下次见！"};
   },
 
-  // 关键词匹配 + 模糊容错（包含匹配 或 单词级编辑距离 <= 2）
+  // 关键词匹配 + 模糊容错（包含匹配 + 单词级编辑距离 + 常见儿童拼写变体）
+  _phoneticSubstitutions: {
+    'scool':'school','skool':'school','frend':'friend','friending':'friend','frens':'friends',
+    'wanna':'want','gonna':'going','gona':'going','Imma':'will','outta':'out of',
+    'thang':'thing','thangs':'things','becuz':'because','bcz':'because','bcos':'because',
+    'luv':'love','loved':'loved','sum':'some','sumthin':'something','sumting':'something',
+    'dunno':'don\'t know','unno':'know','dont':'don\'t','dont':'do not','didnt':'didn\'t',
+    'wont':'won\'t','cant':'can\'t','cannt':'can\'t','cants':'can\'t',
+    'pefect':'perfect','excelent':'excellent','awcom':'awesome','amazingg':'amazing',
+    'yesturday':'yesterday','tommorow':'tomorrow','tommorrow':'tomorrow',
+    'becouse':'because','becuase':'because','because':'because',
+    'likey':'like','liking':'liking','playng':'playing','playng':'playing',
+    'readng':'reading','readig':'reading','writng':'writing','writting':'writing',
+    'eatin':'eating','eatting':'eating','drinkng':'drinking','drimking':'drinking',
+    'sleev':'sleeve','sneck':'snake','sneck':'snack','snews':'snacks',
+    'breakfas':'breakfast','brakfast':'breakfast','brkfst':'breakfast',
+    'maths':'math','englsih':'english','englsh':'english','engligh':'english',
+    'schol':'school','shcool':'school','scool':'school','scle':'scale','scold':'school',
+    'techer':'teacher','teachar':'teacher','tacher':'teacher','tchr':'teacher',
+    'homwork':'homework','homewok':'homework','homwork':'homework',
+    'playgrd':'playground','playgroud':'playground','playgd':'playground',
+    'lunchtime':'lunch','lunchtim':'lunch','lunchyme':'lunch',
+    'friends':'friends','frinds':'friends','freinds':'friends','frends':'friends',
+    'mother':'mother','mommy':'mom','mommy':'mother','mummy':'mom',
+    'father':'father','daddy':'dad','daddyy':'dad','dady':'dad',
+    'brother':'brother','brohter':'brother','brothr':'brother','brothe':'brother',
+    'sister':'sister','sistter':'sister','sitser':'sister','sistr':'sister',
+    'animal':'animal','animall':'animal','anmial':'animal','animael':'animal',
+    'color':'color','colour':'color','coler':'color','clour':'color',
+    'favorite':'favorite','favourite':'favorite','favrite':'favorite','favourite':'favorite',
+    'beautiful':'beautiful','beutiful':'beautiful','beutfull':'beautiful','beaitful':'beautiful',
+    'delicious':'delicious','delishious':'delicious','delicios':'delicious','delishus':'delicious',
+    'different':'different','diferent':'different','diffrent':'different','differnet':'different',
+    'important':'important','imortant':'important','impotant':'important','imporant':'important',
+    'interesting':'interesting','intersting':'interesting','intresting':'interesting','insteresting':'interesting',
+    'exciting':'exciting','exiciting':'exciting','exsitng':'exciting','exsiting':'exciting',
+    'enjoyable':'enjoyable','enjoyble':'enjoyable','enjoable':'enjoyable','enjoydble':'enjoyable',
+    'beautiful':'beautiful','beutiful':'beautiful','beutifull':'beautiful','beaitful':'beautiful',
+    'wonderful':'wonderful','woderful':'wonderful','wondeful':'wonderful','wondefull':'wonderful',
+    'amazing':'amazing','amazeing':'amazing','amazzing':'amazing','amaizing':'amazing',
+    'awesome':'awesome','awsm':'awesome','awsome':'awesome','aowsome':'awesome','awsom':'awesome',
+    'fantastic':'fantastic','fantastik':'fantastic','fantstic':'fantastic','fantastics':'fantastic',
+    'marvelous':'marvelous','marvellous':'marvelous','marvalous':'marvelous','marvelus':'marvelous',
+    'terrible':'terrible','terribble':'terrible','terrible':'terrible','terrable':'terrible',
+    'worried':'worried','worrried':'worried','worid':'worried','woryed':'worried',
+    'happy':'happy','happpy':'happy','hapy':'happy','haps':'happy','appy':'happy',
+    'sad':'sad','sadd':'sad','sads':'sad','sead':'sad',
+    'tired':'tired','tierd':'tired','tyred':'tired','tired':'tired','tyred':'tired',
+    'hungry':'hungry','hungrey':'hungry','hunger':'hungry','hungray':'hungry','hunger':'hungry',
+    'thirsty':'thirsty','thirstey':'thirsty','thisty':'thirsty','thirsy':'thirsty',
+    'sick':'sick','sICK':'sick','sik':'sick','sicc':'sick','sik':'sick',
+    'hurt':'hurt','hurty':'hurt','hrut':'hurt','hutt':'hurt',
+    'help':'help','hlpe':'help','helpp':'help','hlep':'help','hepl':'help',
+    'want':'want','wants':'wants','wabt':'want','wated':'wanted','wanna':'want',
+    'like':'like','liker':'like','likd':'liked','likey':'like','likek':'like',
+    'love':'love','loved':'love','lovers':'loved','loves':'loved','lovi':'love',
+    'play':'play','played':'played','playes':'plays','plaing':'playing','playd':'played',
+    'go':'go','goes':'goes','goed':'went','goed':'gone','going':'going','gose':'goes',
+    'eat':'eat','eats':'eats','eated':'ate','eatting':'eating','eatten':'eaten',
+    'drink':'drink','drank':'drank','drunk':'drunk','drinked':'drank','drinked':'drank',
+    'sleep':'sleep','sleeped':'slept','sleeps':'sleeps','slpe':'sleep','slep':'sleep',
+    'read':'read','readed':'read','reading':'reading','red':'read','readng':'reading',
+    'write':'write','wrote':'wrote','writee':'wrote','writting':'writing','writ':'write',
+    'draw':'draw','drew':'drew','drawn':'drawn','drawed':'drew','drwa':'draw',
+    'sing':'sing','sang':'sang','sung':'sung','singed':'sang','singing':'singing',
+    'dance':'dance','danced':'danced','dancer':'dancer','dancing':'dancing','danse':'dance',
+    'swim':'swim','swam':'swam','swum':'swum','swimed':'swam','swiming':'swimming',
+    'run':'run','ran':'ran','runned':'ran','runing':'running','rund':'ran',
+    'walk':'walk','walked':'walked','walks':'walks','walke':'walked','waliking':'walking',
+    'buy':'buy','bought':'bought','buyed':'bought','buing':'buying','by':'buy',
+    'cook':'cook','cooked':'cooked','cooks':'cooks','coking':'cooking','cookd':'cooked',
+    'clean':'clean','cleaned':'cleaned','cleans':'cleans','cleanng':'cleaning','cleen':'clean',
+    'make':'make','made':'made','makemake':'make','maked':'made','makeing':'making',
+    'open':'open','opened':'opened','opens':'opens','opean':'open','opend':'opened',
+    'close':'close','closed':'closed','closes':'closes','cloze':'close','clsoe':'close',
+    'use':'use','used':'used','uses':'uses','using':'using','usd':'used',
+    'give':'give','gave':'gave','given':'given','giveing':'giving','giben':'given',
+    'take':'take','took':'took','taken':'taken','takeing':'taking','taked':'took',
+    'come':'come','came':'came','comed':'came','coming':'coming','com':'come',
+    'see':'see','saw':'saw','seen':'seen','seing':'seeing','seee':'see','sew':'saw',
+    'know':'know','knew':'knew','known':'known','knowing':'knowing','knw':'know','now':'know',
+    'think':'think','thought':'thought','thinked':'thought','thinking':'thinking','thiink':'think',
+    'say':'say','said':'said','saying':'saying','sayd':'said','saing':'saying',
+    'tell':'tell','told':'told','telling':'telling','telll':'told','tel':'tell',
+    'ask':'ask','asked':'asked','asks':'asks','asking':'asking','askd':'asked',
+    'get':'get','got':'got','gotten':'gotten','geting':'getting','gettet':'got',
+    'have':'have','had':'had','has':'has','having':'having','hve':'have','hava':'have',
+    'do':'do','did':'did','does':'does','doing':'doing','don\'t':'don\'t','doe':'does',
+    'can':'can','could':'could','cans':'can','coud':'could','caned':'could',
+    'will':'will','wll':'will','wilt':'will','willed':'would','wil':'will',
+    'is':'is','was':'was','are':'are','were':'were','am':'am','iis':'is','waas':'was',
+    'the':'the','teh':'the','tha':'that','ti':'the','eht':'the','tre':'the',
+    'a':'a','an':'an','b':'b','nd':'and','n':'and','&':'and','b/c':'because',
+    'my':'my','me':'me','mine':'mine','myself':'myself','mym':'my','myy':'my',
+    'your':'your','youre':'you\'re','yours':'yours','yourself':'yourself','yur':'your',
+    'his':'his','her':'her','she':'she','him':'him','hre':'her','shi':'she',
+    'their':'their','there':'there','theyre':'they\'re','they\'re':'they\'re','thier':'their',
+    'we':'we','us':'us','our':'our','ours':'ours','wee':'we','owur':'our',
+    'you':'you','u':'you','yuo':'you','youu':'you','yov':'you',
+    'he':'he','him':'him','his':'his','heh':'he','hei':'he',
+    'she':'she','shes':'she\'s','shed':'she\'d','shce':'she','seh':'she',
+    'it':'it','its':'its','it\'s':'it\'s','itss':'its','iit':'it',
+    'this':'this','that':'that','these':'these','those':'those','thsi':'this','htaht':'that',
+    'what':'what','whats':'what\'s','whaat':'what','whaht':'what','what\'s':'what\'s',
+    'where':'where','wher':'where','were':'were','whwere':'where','whre':'where',
+    'when':'when','whem':'when','wen':'when','whn':'when','whheen':'when',
+    'who':'who','whoo':'who','whom':'whom','whomn':'whom','hwo':'who',
+    'why':'why','whhy':'why','wy':'why','whi':'why','whyy':'why',
+    'how':'how','hw':'how','hwo':'how','ho':'how','howa':'how',
+    'and':'and','n':'and','&':'and','d':'and','abnd':'and','aannd':'and',
+    'but':'but','btu':'but','buto':'but','abut':'about','buttt':'but',
+    'because':'because','bcuz':'because','becuase':'because','becuase':'because','becouse':'because',
+    'about':'about','abt':'about','abount':'about','bot':'about','aubout':'about',
+    'with':'with','wih':'with','wiht':'with','wuth':'with','whith':'with',
+    'from':'from','frm':'from','fom':'from','fromm':'from','frim':'from',
+    'for':'for','fr':'for','fpr':'for','fo':'for','ffor':'for',
+    'to':'to','too':'to','2':'to','tooo':'to','t o':'to',
+    'been':'been','bee':'been','beeen':'been','beern':'been','bin':'been',
+    'being':'being','bwing':'being','beeing':'being','beign':'being',
+    'just':'just','jusst':'just','jst':'just','jus':'just','juust':'just',
+    'also':'also','aslso':'also','aloso':'also','alo':'also','aliso':'also',
+    'really':'really','realy':'really','raly':'really','reall':'really','realli':'really',
+    'very':'very','verry':'very','vrey':'very','veryy':'very','verry':'very',
+    'much':'much','mch':'much','muqh':'much','moch':'much','muc':'much',
+    'many':'many','manyu':'many','maney':'many','mang':'many','manyy':'many',
+    'still':'still','stiil':'still','stll':'still','sitll':'still','stll':'still',
+    'always':'always','alwayss':'always','alyways':'always','alwasy':'always','awlays':'always',
+    'never':'never','neve':'never','nevver':'never','nvr':'never','neeve':'never',
+    'sometimes':'sometimes','somtimes':'sometimes','smetimes':'sometimes','some times':'sometimes',
+    'often':'often','ofen':'often','ofthen':'often','oftn':'often','offtn':'often',
+    'every':'every','evry':'every','everty':'every','veery':'every','evry':'every',
+    'each':'each','ech':'each','eaach':'each','eahc':'each','eack':'each',
+    'another':'another','anoher':'another','anoter':'another','anoter':'another','anothr':'another',
+    'other':'other','othre':'other','ohter':'other','ohter':'other','ohther':'other',
+    'different':'different','diferent':'different','diffrent':'different','diffrent':'different',
+    'same':'same','saem':'same','smae':'same','seam':'same','samme':'same',
+    'next':'next','nextt':'next','netx':'next','nex':'next','nxt':'next',
+    'last':'last','las':'last','lat':'last','lst':'last','lats':'last',
+    'first':'first','furst':'first','firsr':'first','frst':'first','firs':'first',
+    'one':'one','1':'one','onne':'one','oane':'one','noe':'one',
+    'two':'two','2':'two','too':'two','tw o':'two','twe':'two',
+    'three':'three','3':'three','thress':'three','tehree':'three','tre':'three',
+    'four':'four','4':'four','foor':'four','frour':'four','faur':'four',
+    'five':'five','5':'five','fife':'five','fove':'five','fiv':'five',
+    'six':'six','6':'six','siix':'six','sxi':'six','sixx':'six',
+    'seven':'seven','7':'seven','seveen':'seven','sevn':'seven','sevan':'seven',
+    'eight':'eight','8':'eight','eigth':'eight','eigt':'eight','eht':'eight',
+    'nine':'nine','9':'nine','nien':'nine','ninee':'nine','nibe':'nine',
+    'ten':'ten','tne':'ten','teen':'ten','tn':'ten','tenn':'ten'
+  },
+  // 关键词匹配 + 模糊容错（包含匹配 + 单词级编辑距离 + 常见儿童拼写变体）
   matchKeywords(text, keywords){
     const t = (text||'').toLowerCase();
     if(!t) return false;
-    const words = t.split(/[^a-z']+/).filter(Boolean);
+    const words = t.split(/[^a-z'-]+/).filter(w => w.length > 0);
     return keywords.some(k=>{
       const kk = (k||'').toLowerCase();
       if(!kk) return false;
+      // 1. 直接包含匹配（最快路径）
       if(t.includes(kk)) return true;
-      return words.some(w => this.levenshtein(w, kk) <= 2);
+      // 2. 单词级编辑距离容错（距离<=2，短词放宽到3）
+      const maxDist = kk.length <= 3 ? 3 : 2;
+      if(words.some(w => this.levenshtein(w, kk) <= maxDist)) return true;
+      // 3. 常见儿童拼写变体映射
+      if(this._phoneticSubstitutions[kk] && words.some(w => w === this._phoneticSubstitutions[kk])) return true;
+      // 4. 变体反向查找：学生输入的每个词是否在变体表中对应关键词
+      return words.some(w => this._phoneticSubstitutions[w] === kk);
     });
   },
 
