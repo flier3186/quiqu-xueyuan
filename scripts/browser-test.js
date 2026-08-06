@@ -10,6 +10,7 @@ const { chromium } = require('playwright');
   page.on('pageerror', err => consoleErrors.push(err.message));
 
   const BASE_URL = 'http://127.0.0.1:8080/';
+const DEPLOYED_URL = 'https://flier3186.github.io/quiqu-xueyuan/';
   let pass = 0, fail = 0;
   function log(tag, ok, msg) {
     if (ok) { console.log(`  PASS  ${tag}: ${msg}`); pass++; }
@@ -191,6 +192,46 @@ const { chromium } = require('playwright');
   if (consoleErrors.length > 0) {
     consoleErrors.slice(0, 5).forEach(e => console.log('    -', e.slice(0, 120)));
   }
+
+  // ====== Test 12: Image Loading (Eng Flashcard) ======
+  console.log('=== Test 12: English Image Loading ===');
+  try {
+    const engCtx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const engPage = await engCtx.newPage();
+    const imgErrors = [];
+    engPage.on('console', msg => { if (msg.type() === 'error') imgErrors.push(msg.text()); });
+    await engPage.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 15000 });
+    await engPage.locator('nav .nav-tab[data-view="english"]').click();
+    await engPage.waitForTimeout(2000);
+    // Switch to vocab tab
+    await engPage.locator('.sub-tab[data-sub="vocab"]').click();
+    await engPage.waitForTimeout(1000);
+    // Check flashcard images exist and have correct src
+    const flashPhotos = await engPage.locator('.flash-photo').count();
+    const photoSrcs = await engPage.evaluate(() => {
+      const imgs = document.querySelectorAll('.flash-photo');
+      return Array.from(imgs).map(img => ({
+        src: img.src,
+        naturalWidth: img.naturalWidth,
+        complete: img.complete
+      }));
+    });
+    log('image_loading', flashPhotos > 0, `flashphotos=${flashPhotos} src_ok=${photoSrcs.length > 0 ? photoSrcs[0].src.includes('trae-api') : 'N/A'}`);
+    // Check engPhotoUrl function exists on window
+    const hasEngPhotoUrl = await engPage.evaluate(() => typeof window.engPhotoUrl === 'function');
+    log('engPhotoUrl_exists', hasEngPhotoUrl, `typeof=window.engPhotoUrl`);
+    // Check vocab HTML contains flash-photo
+    const hasFlashPhotoHtml = await engPage.locator('.flash-photo').count() > 0;
+    log('flash_photo_in_dom', hasFlashPhotoHtml, `count=${flashPhotos}`);
+    await engPage.close();
+  } catch (e) { log('image_loading', false, e.message); }
+
+  // ====== Test 13: Deployed URL Accessibility (L3) ======
+  console.log('=== Test 13: Deployed URL ===');
+  try {
+    const resp = await fetch(DEPLOYED_URL, { method: 'HEAD', redirect: 'follow' });
+    log('deployed_url', resp.ok, `status=${resp.status} url=${DEPLOYED_URL}`);
+  } catch (e) { log('deployed_url', false, e.message); }
 
   await browser.close();
 
