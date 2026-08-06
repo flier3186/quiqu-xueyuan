@@ -144,7 +144,7 @@ window.MathFlowV5 = {
     this._saveProgress();
     // 重新渲染当前阶段
     const html = this.renderCurrent();
-    const container = document.querySelector('.stage-container') || document.getElementById('stageContent');
+    const container = document.getElementById('mathStage') || document.getElementById('stageContent') || document.querySelector('.stage-container');
     if(container){
       container.innerHTML = html;
     } else {
