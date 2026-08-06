@@ -413,6 +413,7 @@ input,textarea{font-family:inherit}
 .flash-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius-lg);padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;box-shadow:var(--card-shadow)}
 .flash-front{background:linear-gradient(180deg,#fff 0%,var(--teal-50) 100%);border:1.5px solid var(--teal-100)}
 .flash-back{background:linear-gradient(180deg,#fff 0%,var(--yellow-50) 100%);border:1.5px solid var(--yellow-100);transform:rotateY(180deg)}
+.flash-photo{width:100%;height:55%;object-fit:cover;border-radius:10px;margin-bottom:6px;display:block}
 .flash-word{font-size:22px;font-weight:900;color:var(--navy);font-family:'Inter',sans-serif}
 .flash-speak{width:36px;height:36px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center}
 .flash-speak svg{width:16px;height:16px;fill:white}
@@ -2671,6 +2672,123 @@ const PETS = [
 function $(s){return document.querySelector(s)}
 function $$(s){return Array.from(document.querySelectorAll(s))}
 function toast(msg){const t=$('#toast');t.innerHTML=`<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+// 英语单词照片映射：单词→Unsplash真实照片查询词
+const ENG_PHOTO_MAP={
+  'notebook':'notebook,paper,stationery','candy':'candy,sweets,confectionery','key':'key,lock,vintage',
+  'toy':'toy,children,playground','schoolbag':'schoolbag,backpack,education','snack':'snack,cookies',
+  'lunchbox':'lunchbox,lunch,box','pencil case':'pencil case,stationery','lost':'lost,finding',
+  'found':'found,discovered,discovery','breakfast':'breakfast,morning meal','lunch':'lunch,noon meal',
+  'dinner':'dinner,evening meal','bedtime':'bedtime,sleeping,night','schedule':'schedule,timetable',
+  'early':'early,morning,sunrise','late':'late,arriving,timing','hungry':'hungry,food,meal',
+  'thirsty':'thirsty,water,drink','tired':'tired,resting,exhausted','sunny':'sunny,weather,clouds',
+  'rainy':'rainy,weather,raindrops','windy':'windy,wind,nature','cloudy':'cloudy,weather,sky',
+  'snowy':'snowy,winter,snow','warm':'warm,cozy,spring','cool':'cool,autumn,breeze',
+  'hot':'hot,summer,sun','cold':'cold,winter,frost','weather':'weather,forecast,sky',
+  'tomato':'tomato,red,vegetable','potato':'potato,vegetable,farm','carrot':'carrot,orange,vegetable',
+  'animal':'animal,creature,nature','farm':'farm,rural,countryside','horse':'horse,animal,nature',
+  'sheep':'sheep,farm,animal','duck':'duck,water,animal','cow':'cow,farm,animal',
+  'hen':'hen,chicken,farm','coat':'coat,jacket,clothing','shorts':'shorts,summer,clothing',
+  'sock':'sock,footwear,clothing','dress':'dress,fashion,clothing','skirt':'skirt,fashion',
+  'jeans':'jeans,pants,clothing','shirt':'shirt,clothing,fashion','glove':'gloves,winter',
+  'hat':'hat,clothing,summer','sweater':'sweater,clothing,winter','scarf':'scarf,winter',
+  'raincoat':'raincoat,umbrella,rain','favourite':'favourite,love,cherished','season':'season,nature',
+  'spring':'spring,nature,flowers','summer':'summer,beach,sun','autumn':'autumn,fall,leaves',
+  'winter':'winter,snow,cold','north':'north,compass,map','south':'south,compass,map',
+  'east':'east,compass,sunrise','west':'west,compass,sunset','letter':'letter,mail,writing',
+  'postcard':'postcard,travel,mail','story':'story,book,fairy','colour':'color,art,palette',
+  'blue':'blue,color,sky','green':'green,color,nature','red':'red,color,apple',
+  'yellow':'yellow,color,sun','white':'white,color,cloud','black':'black,color,night',
+  'size':'size,measurement,clothing','thin':'thin,slim,nature','long':'long,tall,nature',
+  'big':'big,large,nature','small':'small,tiny,nature','heavy':'heavy,weight,luggage',
+  'light':'light,bright,nature','new':'new,fresh,young','old':'old,ancient,vintage',
+  'high':'high,tall,mountain','low':'low,short,ground','far':'far,distance,travel',
+  'near':'near,close,nearby','behind':'behind,hidden,nature','in':'in,inside,nature',
+  'on':'on,top,surface','under':'under,below,nature','between':'between,two,nature',
+  'over':'over,above,nature','next':'next,following,nature','front':'front,face,nature',
+  'inside':'inside,interior,home','outside':'outside,exterior,nature','home':'home,house,family',
+  'hospital':'hospital,doctor,health','zoo':'zoo,animals,nature','cinema':'cinema,movie',
+  'supermarket':'supermarket,shop,food','restaurant':'restaurant,food,dining',
+  'garden':'garden,flowers,nature','lake':'lake,water,nature','river':'river,water,nature',
+  'hill':'hill,mountain,nature','mountain':'mountain,hill,nature','tree':'tree,nature,forest',
+  'flower':'flower,plant,nature','grass':'grass,nature,green','bird':'bird,animal,nature',
+  'fish':'fish,sea,animal','rabbit':'rabbit,animal,fluffy','bear':'bear,animal,wild',
+  'elephant':'elephant,animal,large','monkey':'monkey,animal,jungle','lion':'lion,animal',
+  'tiger':'tiger,animal,wild','cat':'cat,animal,pet','dog':'dog,animal,pet',
+  'apple':'apple,fruit,red','banana':'banana,fruit,yellow','orange':'orange,fruit',
+  'grape':'grape,fruit,berry','watermelon':'watermelon,fruit,summer','bread':'bread,bakery',
+  'rice':'rice,food,asian','milk':'milk,dairy,drink','egg':'egg,breakfast,food',
+  'meat':'meat,food,protein','cake':'cake,dessert,birthday','juice':'juice,drink,fruit',
+  'tea':'tea,drink,hot','coffee':'coffee,drink,hot','water':'water,drink,healthy',
+  'bus':'bus,transport,travel','train':'train,transport,railway','plane':'plane,airplane',
+  'bike':'bike,cycle,transport','car':'car,vehicle,transport','taxi':'taxi,vehicle',
+  'boat':'boat,ship,water','ship':'ship,boat,ocean','truck':'truck,vehicle',
+  'subway':'subway,metro,train','robot':'robot,technology,computer','computer':'computer,tech',
+  'phone':'phone,telephone,mobile','watch':'watch,time,clock','clock':'clock,time',
+  'bed':'bed,sleep,furniture','desk':'desk,furniture,study','chair':'chair,furniture',
+  'door':'door,entrance,house','window':'window,house,light','table':'table,furniture',
+  'light':'light,bright,lamp','star':'star,night,sky','moon':'moon,night,sky',
+  'sun':'sun,day,sky','cloud':'cloud,sky,weather','rain':'rain,weather,drop',
+  'snow':'snow,winter,white','wind':'wind,weather,breeze','fire':'fire,flame,hot',
+  'earth':'earth,planet,world','sky':'sky,blue,clouds','sea':'sea,ocean,water',
+  'sand':'sand,beach,desert','stone':'stone,rock,pebble','wood':'wood,tree,forest',
+  'paper':'paper,notebook,white','pen':'pen,writing,ink','book':'book,reading',
+  'eraser':'eraser,school,stationery','ruler':'ruler,measure,school','bag':'bag,carry',
+  'ball':'ball,sport,round','kite':'kite,fly,wind','flag':'flag,country,color',
+  'map':'map,travel,world','wall':'wall,house,room','floor':'floor,ground,room',
+  'roof':'roof,house,top','garden':'garden,flowers,green','bridge':'bridge,river',
+  'tower':'tower,building,high','castle':'castle,fairy,tale','palace':'palace,royal',
+  'factory':'factory,building,work','shop':'shop,store,market','market':'market,food',
+  'station':'station,train,travel','airport':'airport,plane,travel','port':'port,ship',
+  'hotel':'hotel,travel,stay','hostel':'hostel,travel,budget','motel':'motel,travel',
+  'resort':'resort,vacation,beach','camping':'camping,outdoor,nature','hiking':'hiking,mountain',
+  'swimming':'swimming,water,sport','surfing':'surfing,ocean,sport','diving':'diving,sea',
+  'fishing':'fishing,boat,sea','hunting':'hunting,forest,wild','skiing':'skiing,snow',
+  'skating':'skating,ice,sport','running':'running,sport,exercise','jogging':'jogging,park',
+  'cycling':'cycling,bike,sport','walking':'walking,park,exercise','dancing':'dancing,music',
+  'singing':'singing,music,voice','playing':'playing,fun,kids','reading':'reading,book',
+  'drawing':'drawing,art,pencil','painting':'painting,art,color','writing':'writing,pen',
+  'cooking':'cooking,kitchen,food','baking':'baking,oven,cake','gardening':'gardening,plants',
+  'cleaning':'cleaning,home,tidy','washing':'washing,clothes,clean','ironing':'ironing,clothes',
+  'folding':'folding,clothes,neat','driving':'driving,car,road','flying':'flying,plane',
+  'sailing':'sailing,boat,sea','rowing':'rowing,boat,water','climbing':'climbing,mountain',
+  'building':'building,construct,work','creating':'creating,make,new','discovering':'discovering,explore',
+  'learning':'learning,study,grow','teaching':'teaching,school,kids','helping':'helping,others',
+  'sharing':'sharing,together,give','working':'working,job,earn','resting':'resting,sleep',
+  'eating':'eating,food,hungry','drinking':'drinking,water,thirsty','sleeping':'sleeping,rest',
+  'waking':'waking,morning,up','getting':'getting,up,morning','going':'going,move,walk',
+  'coming':'coming,arrive,here','seeing':'seeing,look,watch','looking':'looking,find,see',
+  'finding':'finding,discover,learn','making':'making,create,build','breaking':'breaking,fix',
+  'opening':'opening,door,start','closing':'closing,door,end','starting':'starting,begin',
+  'finishing':'finishing,end,done','beginning':'beginning,start,begin','ending':'ending,close',
+  'growing':'growing,up,big','changing':'changing,update,new','moving':'moving,shift',
+  'staying':'staying,remain,here','leaving':'leaving,go,away','arriving':'arriving,reach',
+  'returning':'returning,come,back','entering':'entering,go,inside','exiting':'exiting,leave',
+  'joining':'joining,meet,together','waiting':'waiting,patient,stay','trying':'trying,attempt',
+  'asking':'asking,question,need','answering':'answering,response,reply','thinking':'thinking,idea',
+  'wondering':'wondering,curious,ask','knowing':'knowing,understand,learn','remembering':'remembering,memory',
+  'forgetting':'forgetting,memory,lose','believing':'believing,trust,think','hoping':'hoping,dream',
+  'wanting':'wanting,need,like','needing':'needing,require,must','liking':'liking,love,enjoy',
+  'loving':'loving,heart,like','enjoying':'enjoying,fun,happy','feeling':'feeling,emotion',
+  'sensing':'sensing,feel,notice','hearing':'hearing,list,sound','listening':'listening,hear',
+  'speaking':'speaking,talk,voice','talking':'talking,chat,words','saying':'saying,words,tell',
+  'telling':'telling,story,share','explaining':'explaining,show,help','describing':'describing,show',
+  'showing':'showing,demonstrate,give','calling':'calling,name,phone','screaming':'screaming,shout',
+  'whispering':'whispering,quiet,speak','shouting':'shouting,call,voice','yelling':'yelling,loud',
+  'laughing':'laughing,fun,happy','crying':'crying,sad,tears','smiling':'smiling,happy,face',
+  'frowning':'frowning,sad,upset','waving':'waving,hello,hand','pointing':'pointing,show,direction',
+  'nodding':'nodding,yes,head','shaking':'shaking,no,movement','holding':'holding,grab,care',
+  'grabbing':'grabbing,hold,fast','pulling':'pulling,draw,toward','pushing':'pushing,move,away',
+  'carrying':'carrying,hold,moving','lifting':'lifting,raise,up','dropping':'dropping,fall,down',
+  'catching':'catching,grab,ball','throwing':'throwing,toss,away','kicking':'kicking,sport,foot',
+  'hitting':'hitting,strike,ball',
+  // 默认
+  'default':'education,kids,learning'
+};
+function engPhotoUrl(word){
+  if(!word) return 'https://source.unsplash.com/400x400/?education,kids';
+  var w=word.toLowerCase().replace(/'/g,'').replace(/ /g,'-');
+  return 'https://source.unsplash.com/400x400/?'+(ENG_PHOTO_MAP[w]||'education,kids')+'&sig='+Date.now();
+}
 let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
 function speak(text){
@@ -4383,18 +4501,18 @@ function renderEngSub(subtab,grade){
     const gradeTitle={3:'三年级',4:'四年级',5:'五年级',6:'六年级'}[grade]||'英语';
     return `<div class="listen-wrap">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-        <h3 style="font-size:17px;color:var(--navy);font-weight:800">🎧 听力森林 · ${gradeTitle}</h3>
-        <span style="font-size:12px;color:var(--teal);font-weight:600">${items.length} 套练习</span>
+        <h3 style="font-size:17px;color:white;font-weight:800">🎧 听力森林 · ${gradeTitle}</h3>
+        <span style="font-size:12px;color:rgba(255,255,255,.85);font-weight:600">${items.length} 套练习</span>
       </div>
       <div id="listenItemList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
-        ${items.map((item,i)=>`<div class="card" style="border-left:3px solid var(--teal);padding:14px;cursor:pointer" onclick="startListenExercise(${i})" id="listenCard${i}">
+        ${items.map((item,i)=>`<div class="card" style="border-left:3px solid var(--yellow);padding:14px;cursor:pointer;background:rgba(255,255,255,.12);backdrop-filter:blur(8px)" onclick="startListenExercise(${i})" id="listenCard${i}">
           <div style="display:flex;align-items:center;gap:12px">
-            <div style="width:42px;height:42px;border-radius:12px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:20px">${item.type==='dialogue'?'💬':item.type==='story'?'📖':item.type==='song'?'🎵':'🎧'}</div>
+            <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:20px">${item.type==='dialogue'?'💬':item.type==='story'?'📖':item.type==='song'?'🎵':'🎧'}</div>
             <div style="flex:1">
-              <div style="font-size:14px;font-weight:700;color:var(--navy)">${item.title}</div>
-              <div style="font-size:12px;color:var(--text-2);margin-top:2px">${item.type==='dialogue'?'对话':'故事'} · ${item.duration||'~1min'} · 第${item.level||1}级</div>
+              <div style="font-size:14px;font-weight:700;color:white">${item.title}</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:2px">${item.type==='dialogue'?'对话':'故事'} · ${item.duration||'~1min'} · 第${item.level||1}级</div>
             </div>
-            <div style="font-size:13px;color:var(--ink-400)">${item.questions?item.questions.length+'题':''}</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.7)">${item.questions?item.questions.length+'题':''}</div>
           </div>
         </div>`).join('')}
       </div>
@@ -6539,7 +6657,12 @@ function startVocabGame(themeId){
 function renderVocabQuestion(){
   if(vgState.idx>=vgState.quiz.length){endVocabGame();return;}
   var q=vgState.quiz[vgState.idx];
-  if($('#vgEmoji'))$('#vgEmoji').textContent=q.correct.emoji;
+  if($('#vgEmoji')){
+    var el=$('#vgEmoji');
+    var photoUrl=engPhotoUrl(q.correct.w);
+    if(el.querySelector('img')){el.querySelector('img').src=photoUrl;}
+    else{el.innerHTML='<img src="'+photoUrl+'" style="width:160px;height:160px;object-fit:cover;border-radius:16px;box-shadow:var(--card-shadow)">';el.querySelector('img').onerror=function(){this.parentElement.textContent=q.correct.emoji||q.correct.w;};}
+  }
   if($('#vgIdx'))$('#vgIdx').textContent=vgState.idx+1;
   if($('#vgScore'))$('#vgScore').textContent=vgState.score;
   if($('#vgFeedback'))$('#vgFeedback').textContent='';

@@ -1154,17 +1154,19 @@ window.MathVisualV5 = {
     const diffW = diff * scale;
     const isLarge = total > 99;
     const title = isLarge ? `条形模型 · 第${step}/3步（${a} + ${b} = ${total}）` : `条形模型 · 第${step}/3步`;
-    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">${title}</text>`;
+    // 渐变定义必须放在最前面
+    const defsSvg = `<defs><linearGradient id="mvGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00A896"/><stop offset="100%" stop-color="#F5B800"/></linearGradient></defs>`;
+    let svg=defsSvg+`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">${title}</text>`;
     // 第1步：两条独立条形
     if(step >= 1){
       // 第一条 (a)
-      svg+=`<rect x="${padL}" y="${barY}" width="${Math.max(barW_a,2)}" height="${barH}" rx="6" fill="#00A896" fill-opacity="0.45" stroke="#00A896" stroke-width="2" class="mv-bar" style="animation:mvBarIn .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-      svg+=`<text x="${padL+Math.max(barW_a/2,8)}" y="${barY+barH/2+5}" text-anchor="middle" font-size="${barW_a>30?12:10}" font-weight="800" fill="#00A896">${a}</text>`;
+      svg+=`<rect x="${padL}" y="${barY}" width="${Math.max(barW_a,2)}" height="${barH}" rx="6" fill="#00A896" stroke="#00A896" stroke-width="2" class="mv-bar" style="animation:mvBarIn .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<text x="${padL+Math.max(barW_a/2,8)}" y="${barY+barH/2+5}" text-anchor="middle" font-size="${barW_a>30?12:10}" font-weight="800" fill="#fff">${a}</text>`;
     }
     // 第2步：第二条 + 合并视觉
     if(step >= 2){
       const bar2Y = barY + barH + barGap;
-      svg+=`<rect x="${padL}" y="${bar2Y}" width="${Math.max(barW_b,2)}" height="${barH}" rx="6" fill="#F5B800" fill-opacity="0.45" stroke="#F5B800" stroke-width="2" class="mv-bar" style="animation:mvBarIn .4s .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      svg+=`<rect x="${padL}" y="${bar2Y}" width="${Math.max(barW_b,2)}" height="${barH}" rx="6" fill="#F5B800" stroke="#F5B800" stroke-width="2" class="mv-bar" style="animation:mvBarIn .4s .3s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
       svg+=`<text x="${padL+Math.max(barW_b/2,8)}" y="${bar2Y+barH/2+5}" text-anchor="middle" font-size="${barW_b>30?12:10}" font-weight="800" fill="#1E3A5F">${b}</text>`;
     }
     // 第3步：总和 + 差量标注
