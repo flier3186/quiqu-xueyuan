@@ -1,0 +1,26 @@
+[[headers]]
+for = "/*"
+  [headers.values]
+  Cache-Control = "public, max-age=3600"
+  X-Content-Type-Options = "nosniff"
+  X-Frame-Options = "DENY"
+
+[[headers]]
+for = "/(data|engine|assets)/(.*)"
+  [headers.values]
+  Cache-Control = "public, max-age=86400, immutable"
+
+[[headers]]
+for = "/(data/math-data\\.js|data/english-.*\\.js)"
+  [headers.values]
+  Cache-Control = "public, max-age=604800, immutable"
+
+[[headers]]
+for = "/assets/.*\\.(jpg|png|svg)"
+  [headers.values]
+  Cache-Control = "public, max-age=2592000, immutable"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
