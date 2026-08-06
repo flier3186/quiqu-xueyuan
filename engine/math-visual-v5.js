@@ -68,8 +68,10 @@ window.MathVisualV5 = {
       'areaModel': 'areaModelStep',
       'numberBond': 'numberBondStep',
       'fractionModel': 'fractionStripStep',
+      'fractionStrip': 'fractionStripStep',
       'numberLine': 'numberLineStep',
       'geometryModel': 'geometryStep',
+      'geometry': 'geometryStep',
     };
     return map[modelFamily] || null;
   },
@@ -416,6 +418,78 @@ window.MathVisualV5 = {
         <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
         <text x="${cx}" y="${cy+r+18}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${numerator}/${denominator}</text>`;
       formula=`${numerator}/${denominator} = ${numerator}÷${denominator}`;
+    } else if(shape==='sector'){
+      const {radius=60, angle=90, color='#00A896'} = p;
+      const sc=1.5, r=radius*sc, cx=W/2, cy=H/2;
+      const startRad=-Math.PI/2, endRad=startRad+(angle/180)*Math.PI;
+      const x1=cx+r*Math.cos(startRad), y1=cy+r*Math.sin(startRad);
+      const x2=cx+r*Math.cos(endRad), y2=cy+r*Math.sin(endRad);
+      const largeArc=angle>180?1:0;
+      body=`<path class="mv-geo-outline" d="M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z" fill="rgba(245,184,0,0.2)" stroke="#F5B800" stroke-width="2.5"/>
+        <line x1="${cx}" y1="${cy}" x2="${x1}" y2="${y1}" stroke="#1E3A5F" stroke-width="1.5"/>
+        <line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#1E3A5F" stroke-width="1.5"/>
+        <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
+        <text x="${cx+r/2+10}" y="${cy-r/2}" font-size="12" font-weight="700" fill="#1E3A5F">r=${radius}</text>
+        <text x="${cx}" y="${cy+14}" text-anchor="middle" font-size="11" fill="#F5B800">θ=${angle}°</text>`;
+      const L=(angle/360*2*Math.PI*radius).toFixed(2), A=(angle/360*Math.PI*radius*radius).toFixed(2);
+      formula=`扇形弧长 = ${L}　扇形面积 = ${A}`;
+    } else if(shape==='regularPolygon'){
+      const {sides=5, radius=65, color='#00A896'} = p;
+      const cx=W/2, cy=H/2;
+      const pts=Array.from({length:sides},(_,i)=>{
+        const a=-Math.PI/2+i*2*Math.PI/sides;
+        return `${cx+radius*Math.cos(a)},${cy+radius*Math.sin(a)}`;
+      }).join(' ');
+      body=`<polygon class="mv-geo-outline" points="${pts}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>`;
+      const interiorAngle=((sides-2)*180/sides).toFixed(0);
+      formula=`正${sides}边形：内角=${interiorAngle}°，共有${sides}条边${sides}个角`;
+    } else if(shape==='sphere'){
+      const {radius=50} = p;
+      const sc=1.5, r=radius*sc, cx=W/2, cy=H/2;
+      body=`<circle class="mv-geo-outline" cx="${cx}" cy="${cy}" r="${r}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5"/>
+        <ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r*0.3}" fill="none" stroke="#00A896" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="${cx-r}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="${cx}" y1="${cy-r*0.3}" x2="${cx}" y2="${cy+r*0.3}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
+        <text x="${cx+r+6}" y="${cy+4}" font-size="11" font-weight="700" fill="#FB923C">r=${radius}</text>`;
+      const S=(4*Math.PI*radius*radius).toFixed(1), V=(4/3*Math.PI*radius*radius*radius).toFixed(1);
+      formula=`表面积 = 4πr² = ${S}　体积 = 4/3πr³ = ${V}`;
+    } else if(shape==='prism'){
+      const {base=60,height=80,baseSides=6} = p;
+      const cx=W/2, baseY=H-50, topY=50;
+      const ptsTop=Array.from({length:baseSides},(_,i)=>{
+        const a=-Math.PI/2+i*2*Math.PI/baseSides;
+        return `${cx+base*Math.cos(a)},${topY+base*0.5*Math.sin(a)}`;
+      }).join(' ');
+      const ptsBot=Array.from({length:baseSides},(_,i)=>{
+        const a=-Math.PI/2+i*2*Math.PI/baseSides;
+        return `${cx+base*Math.cos(a)},${baseY+base*0.5*Math.sin(a)}`;
+      }).join(' ');
+      body=`<polygon class="mv-geo-outline" points="${ptsTop}" fill="rgba(0,168,150,0.15)" stroke="#00A896" stroke-width="2.5"/>
+        <polygon class="mv-geo-outline" points="${ptsBot}" fill="rgba(0,168,150,0.08)" stroke="#00A896" stroke-width="2.5"/>`;
+      for(let i=0;i<baseSides;i++){
+        const a1=-Math.PI/2+i*2*Math.PI/baseSides;
+        const a2=-Math.PI/2+((i+1)%baseSides)*2*Math.PI/baseSides;
+        const x1=cx+base*Math.cos(a1), y1=topY+base*0.5*Math.sin(a1);
+        const x2=cx+base*Math.cos(a2), y2=topY+base*0.5*Math.sin(a2);
+        const x3=cx+base*Math.cos(a2), y3=baseY+base*0.5*Math.sin(a2);
+        const x4=cx+base*Math.cos(a1), y4=baseY+base*0.5*Math.sin(a1);
+        body+=`<line x1="${x1}" y1="${y1}" x2="${x4}" y2="${y4}" stroke="#00A896" stroke-width="1.8"/>`;
+      }
+      formula=`正${baseSides}棱柱：底面为正${baseSides}边形，高=${height}`;
+    } else if(shape==='cone'){
+      const {radius=50,height=70} = p;
+      const cx=W/2, baseY=H-50, topY=40;
+      const r=radius*1.2;
+      body=`<ellipse cx="${cx}" cy="${baseY}" rx="${r}" ry="${r*0.35}" fill="rgba(245,184,0,0.15)" stroke="#F5B800" stroke-width="2.5"/>
+        <line x1="${cx-r}" y1="${baseY}" x2="${cx}" y2="${topY}" stroke="#F5B800" stroke-width="2.5"/>
+        <line x1="${cx+r}" y1="${baseY}" x2="${cx}" y2="${topY}" stroke="#F5B800" stroke-width="2.5"/>
+        <line x1="${cx}" y1="${topY}" x2="${cx}" y2="${baseY}" stroke="#FB923C" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="${cx}" cy="${baseY}" r="3" fill="#1E3A5F"/>
+        <text x="${cx+8}" y="${(topY+baseY)/2}" font-size="11" font-weight="700" fill="#FB923C">高 ${height}</text>
+        <text x="${cx+r+4}" y="${baseY+4}" font-size="11" font-weight="700" fill="#1E3A5F">r=${radius}</text>`;
+      const L=Math.sqrt(radius*radius+height*height).toFixed(1);
+      formula=`母线长 = √(r²+h²) = ${L}　体积 = 1/3πr²h = ${(1/3*Math.PI*radius*radius*height).toFixed(1)}`;
     } else {
       return '<div class="mv-empty">未知图形类型</div>';
     }
