@@ -1,13 +1,13 @@
 {
   "current": {
-    "task": "中等优先级任务（分数墙交互增强+家长入口集成）",
-    "files": ["engine/math-visual-v5.js", "engine/parent-panel.js", "index.html", "scripts/browser-test.js"],
-    "stage": "已完成验证",
-    "description": "1.fractionWall点击等值行高亮交互 2.parent-panel挂载到家长面板数学设置tab 3.L2测试19/19 PASS"
+    "task": "配置Cloudflare Pages国内加速部署",
+    "files": [".github/workflows/deploy-cf-pages.yml", "netlify.toml", "_headers"],
+    "stage": "等待用户授权Cloudflare",
+    "description": "1.代码已推送双仓库 2.用户在Cloudflare授权GitHub 3.自动构建部署"
   },
-  "next": "Gitee Pages启用（需用户在Gitee后台操作）",
+  "next": "验证Cloudflare Pages线上地址200 OK",
   "mode": "pm",
-  "updated": "2026-08-06T14:00:00+08:00",
+  "updated": "2026-08-06T14:30:00+08:00",
   "blockers": [],
   "completed": [
     "baseTenBlocks数据格式兼容修复",
@@ -44,6 +44,9 @@
     "口语板块增强 speak-engine-v5 + 8新场景",
     "分数墙点击等值行高亮交互（fractionWall add click handler）",
     "家长面板新增「数学设置」tab（ParentPanel挂载）",
-    "L2浏览器验证通过（Playwright 19/19 PASS）"
+    "L2浏览器验证通过（Playwright 19/19 PASS）",
+    "双仓库部署完成（GitHub 200 OK）",
+    "Gitee代码镜像同步完成（master分支已推送）",
+    "配置Cloudflare Pages国内加速部署（代码+CI已就绪）"
   ]
 }
