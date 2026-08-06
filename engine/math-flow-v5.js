@@ -645,9 +645,11 @@ window.MathFlowV5 = {
   _nextStep(){
     if(!this._sess || !this._sess.problem) return;
     if(this._currentStep >= 3){
-      // 完成演示
       const indicator = document.getElementById('v5StepIndicator');
       if(indicator) indicator.textContent = '✅ 演示完成！';
+      // 演示完成 → 自动进入下一阶段
+      const hasRussian = this._sess.problem.russianQuestions && this._sess.problem.russianQuestions.length > 0;
+      setTimeout(()=>{ this.advance(hasRussian ? 'russian' : 'askChild'); }, 800);
       return;
     }
     this._currentStep++;
