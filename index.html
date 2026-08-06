@@ -2785,10 +2785,12 @@ const ENG_PHOTO_MAP={
   'default':'education,kids,learning'
 };
 function engPhotoUrl(word){
-  if(!word) return 'https://source.unsplash.com/400x400/?education,kids';
-  var w=word.toLowerCase().replace(/'/g,'').replace(/ /g,'-');
-  return 'https://source.unsplash.com/400x400/?'+(ENG_PHOTO_MAP[w]||'education,kids')+'&sig='+Date.now();
+  if(!word) return 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=educational+kids+illustration+apple+fruit+simple+colorful&image_size=square_hd';
+  var w=word.toLowerCase().replace(/'/g,'').replace(/ /g,'+');
+  return 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt='+w+'&image_size=square_hd';
 }
+window.engPhotoUrl = engPhotoUrl;
+window.ENG_PHOTO_MAP = ENG_PHOTO_MAP;
 let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
 function speak(text){
@@ -4321,6 +4323,7 @@ function renderEngSub(subtab,grade){
         ${flashWords.map((w,i)=>`<div class="flash-card" id="flashCard${i}" onclick="flipFlash(${i})">
           <div class="flash-inner">
             <div class="flash-face flash-front">
+              <img src="${engPhotoUrl(w.w)}" class="flash-photo" alt="${w.w}" onerror="this.style.display='none'" loading="lazy">
               <div class="flash-word">${w.emoji||'📚'} ${w.w}</div>
               <div class="flash-speak" onclick="event.stopPropagation();speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
               <div style="font-size:11px;color:var(--ink-400);margin-top:auto">👆 点击翻面</div>
