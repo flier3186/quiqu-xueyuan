@@ -93,9 +93,9 @@ const { chromium } = require('playwright');
 
     const modalVisible = await page.locator('#parentModal').isVisible();
     const tabs = await page.locator('.parent-tab').count();
-    log('parent_panel_open', modalVisible && tabs === 6, `visible=${modalVisible} tabs=${tabs}`);
+    log('parent_panel_open', modalVisible && tabs === 7, `visible=${modalVisible} tabs=${tabs}`);
 
-    if (modalVisible && tabs === 6) {
+    if (modalVisible && tabs === 7) {
       // Test overview tab
       const overviewVisible = await page.locator('.parent-section[data-psec="overview"]').isVisible();
       log('parent_tab_overview', overviewVisible, `visible=${overviewVisible}`);
@@ -114,12 +114,19 @@ const { chromium } = require('playwright');
       const weakHidden = !(await page.locator('.parent-section[data-psec="weak"]').isVisible());
       log('parent_tab_week', weekVisible && weakHidden, `week=${weekVisible} weakHidden=${weakHidden}`);
 
+      // Test math tab
+      await page.locator('.parent-tab[data-pt="math"]').click();
+      await page.waitForTimeout(500);
+      const mathVisible = await page.locator('#parentMathSettings').count() > 0;
+      const weekHidden2 = !(await page.locator('.parent-section[data-psec="week"]').isVisible());
+      log('parent_tab_math', mathVisible && weekHidden2, `mathVisible=${mathVisible} weekHidden=${weekHidden2}`);
+
       // Test AI tab
       await page.locator('.parent-tab[data-pt="ai"]').click();
       await page.waitForTimeout(500);
       const aiVisible = await page.locator('.parent-section[data-psec="ai"]').isVisible();
-      const weekHidden2 = !(await page.locator('.parent-section[data-psec="week"]').isVisible());
-      log('parent_tab_ai', aiVisible && weekHidden2, `ai=${aiVisible} weekHidden=${weekHidden2}`);
+      const mathHidden = !(await page.locator('.parent-section[data-psec="math"]').isVisible());
+      log('parent_tab_ai', aiVisible && mathHidden, `ai=${aiVisible} mathHidden=${mathHidden}`);
 
       // Test errors tab
       await page.locator('.parent-tab[data-pt="errors"]').click();

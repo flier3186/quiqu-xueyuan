@@ -888,18 +888,18 @@ window.MathVisualV5 = {
       {den:12, num:[1,2,3,4,6,12], colors:['#1E3A5F','#FB923C','#E8A0BF','#00A896','#F5B800','#E8A0BF'], label:'...+12/12'},
     ];
     const eqPairs=[
-      {a:1,b:2,c:4,d:8,labels:['1/2','2/4','4/8']},
-      {a:1,b:3,c:2,d:6,labels:['1/3','2/6']},
-      {a:1,b:2,c:3,d:6,labels:['1/2','3/6']},
+      {den:[2,4,8], labels:['1/2','2/4','4/8']},
+      {den:[3,6],   labels:['1/3','2/6']},
+      {den:[2,6],   labels:['1/2','3/6']},
     ];
     const targetFracs=(problem&&problem.russianQuestions)?problem.russianQuestions.map(q=>q.targetFrac):[];
     let svg=`<text x="${W/2}" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">分数墙 · 点击行高亮等值分数</text>`;
     rows.forEach((row,i)=>{
       const y=36+i*(rowH+6);
       const segW=rowW/row.den;
-      svg+=`<rect x="${startX}" y="${y}" width="${rowW}" height="${rowH}" fill="#f8f9fa" rx="4" class="mv-fraction-row" data-row="${i}" style="cursor:pointer"/>`;
+      svg+=`<rect x="${startX}" y="${y}" width="${rowW}" height="${rowH}" fill="#f8f9fa" rx="4" class="mv-fraction-row" data-row="${i}" data-den="${row.den}" style="cursor:pointer"/>`;
       row.colors.forEach((c,j)=>{
-        svg+=`<rect x="${startX+j*segW}" y="${y}" width="${segW-1}" height="${rowH}" fill="${c}" rx="2" class="mv-fraction-seg" style="animation:mvFadeIn .3s ${i*0.08+j*0.03} ease both;-webkit-transform-box:fill-box;transform-box:fill-box;transition:opacity .3s"/>`;
+        svg+=`<rect x="${startX+j*segW}" y="${y}" width="${segW-1}" height="${rowH}" fill="${c}" rx="2" class="mv-fraction-seg" style="animation:mvFadeIn .3s ${i*0.08+j*0.03} ease both;-webkit-transform-box:fill-box;transform-box:fill-box;transition:opacity .3s,transform .3s"/>`;
       });
       svg+=`<text x="${startX+rowW+8}" y="${y+rowH/2+4}" font-size="11" font-weight="600" fill="#1E3A5F">${row.label}</text>`;
     });
@@ -909,9 +909,37 @@ window.MathVisualV5 = {
         svg+=`<text x="${W/2}" y="${H-8}" text-anchor="middle" font-size="11" fill="#00A896" font-weight="700">💡 在墙上找：${last.label}</text>`;
       }
     }
-    return `<div class="mv-wrap mv-fraction-wall">
+    const wrapId='fvWall_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
+    const html=`<div class="mv-wrap mv-fraction-wall" id="${wrapId}">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" id="fvWallSvg">${svg}</svg>
     </div>`;
+    setTimeout(()=>{
+      const wrap=document.getElementById(wrapId);
+      if(!wrap) return;
+      const rows_el=wrap.querySelectorAll('.mv-fraction-row');
+      let selectedDen=null;
+      rows_el.forEach(el=>{
+        el.addEventListener('click',()=>{
+          const den=parseInt(el.dataset.den);
+          if(selectedDen===den){
+            // 再次点击同一行→取消高亮
+            selectedDen=null;
+            rows_el.forEach(r=>r.style.opacity='1');
+            return;
+          }
+          selectedDen=den;
+          // 找所有等值分数的den
+          const matchDen=new Set([den]);
+          eqPairs.forEach(p=>{
+            if(p.den.includes(den)) p.den.forEach(d=>matchDen.add(d));
+          });
+          rows_el.forEach(r=>{
+            r.style.opacity=matchDen.has(parseInt(r.dataset.den))?'1':'0.25';
+          });
+        });
+      });
+    },100);
+    return html;
   },
 
   // 引擎9：分数圆增强版（动画切分）

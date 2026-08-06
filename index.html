@@ -5841,6 +5841,7 @@ function renderParentDashboard(pt){
         <div class="parent-tab active" data-pt="overview">📊 总览</div>
         <div class="parent-tab" data-pt="weak">🔥 漏洞检测</div>
         <div class="parent-tab" data-pt="week">📝 周报建议</div>
+        <div class="parent-tab" data-pt="math">🧮 数学设置</div>
         <div class="parent-tab" data-pt="ai">🤖 AI 设置</div>
         <div class="parent-tab" data-pt="errors">🐛 错误日志</div>
         <div class="parent-tab" data-pt="profiles">👨‍👩‍👧 档案管理</div>
@@ -6093,6 +6094,10 @@ function renderParentDashboard(pt){
           <div id="deleteProfileNote" style="font-size:11px;color:var(--coral);margin-top:8px"></div>
         </div>
       </div>
+
+      <div class="parent-section" data-psec="math">
+        <div id="parentMathSettings"></div>
+      </div>
     </div>`;
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
@@ -6123,6 +6128,7 @@ function switchParentTab(pt){
   if(sec) sec.classList.add('active');
   if(pt==='errors'){renderErrorLog();renderWrongProblems();}
   if(pt==='profiles') renderProfiles();
+  if(pt==='math' && typeof ParentPanel!=='undefined'){const c=$('#parentMathSettings');if(c)c.innerHTML=ParentPanel.render();}
   if(pt==='overview'&&typeof echarts!=='undefined') setTimeout(()=>initParentCharts(),80);
   if(pt==='ai') ensureAiPanelBound();
 }

@@ -1,13 +1,13 @@
 {
   "current": {
-    "task": "优先级任务执行（知识树+绘本+高年级题库+口语增强）",
-    "files": ["index.html", "data/storybooks.js", "data/math-data-7a.js", "data/math-data-7b.js", "data/math-data-8a.js", "data/math-data-8b.js", "data/math-data-9a.js", "data/math-data-9b.js", "engine/speak-engine-v5.js", "data/speak-8-new.js"],
-    "stage": "已完成验证，待部署",
-    "description": "1.知识树可视化(renderKnowledgeTree/renderHeatmap) 2.绘本15本×10页 3.高年级18题×6个年级 4.口语增强+8新场景"
+    "task": "中等优先级任务（分数墙交互增强+家长入口集成）",
+    "files": ["engine/math-visual-v5.js", "engine/parent-panel.js", "index.html", "scripts/browser-test.js"],
+    "stage": "已完成验证",
+    "description": "1.fractionWall点击等值行高亮交互 2.parent-panel挂载到家长面板数学设置tab 3.L2测试19/19 PASS"
   },
-  "next": "待用户新需求",
+  "next": "Gitee Pages启用（需用户在Gitee后台操作）",
   "mode": "pm",
-  "updated": "2026-08-06T10:30:00+08:00",
+  "updated": "2026-08-06T14:00:00+08:00",
   "blockers": [],
   "completed": [
     "baseTenBlocks数据格式兼容修复",
@@ -41,6 +41,9 @@
     "知识树可视化 renderKnowledgeTree + renderHeatmap 实现",
     "绘本内容深化 15本×10页=150页交互内容",
     "高年级题库扩展 7a-9b 各18题24知识点",
-    "口语板块增强 speak-engine-v5 + 8新场景"
+    "口语板块增强 speak-engine-v5 + 8新场景",
+    "分数墙点击等值行高亮交互（fractionWall add click handler）",
+    "家长面板新增「数学设置」tab（ParentPanel挂载）",
+    "L2浏览器验证通过（Playwright 19/19 PASS）"
   ]
 }
