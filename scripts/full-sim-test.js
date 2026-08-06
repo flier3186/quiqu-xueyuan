@@ -202,7 +202,7 @@ const { chromium } = require('playwright');
   console.log('\n【TEST 14】JS语法校验');
   try {
     const fs = require('fs');
-    const engineCode = fs.readFileSync('engine/math-flow-v5.js', 'utf8');
+    const engineCode = fs.readFileSync(require('path').join(__dirname, '..', 'engine', 'math-flow-v5.js'), 'utf8');
     new Function(engineCode);
     assert(true, 'math-flow-v5.js语法正确');
   } catch(e) {
