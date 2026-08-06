@@ -47,6 +47,7 @@
     "L2浏览器验证通过（Playwright 19/19 PASS）",
     "双仓库部署完成（GitHub 200 OK）",
     "Gitee代码镜像同步完成（master分支已推送）",
-    "配置Cloudflare Pages国内加速部署（代码+CI已就绪）"
+    "配置Cloudflare Pages国内加速部署（代码+CI已就绪）",
+    "GitHub Pages验证200 OK，国内可正常访问"
   ]
 }
