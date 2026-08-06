@@ -1,3 +1,12 @@
+// scripts/full-sim-test.js
+// 全链路用户模拟测试：从首页到数学全流程到口语对话
+// 对应 AGENTS.md 规则：
+//   - 数形结合是教学铁律：每道题必须有可视化图形
+//   - 必须是动态图形：barModel / areaModel / numberBond / fractionStrip / numberLine / geometry
+//   - 调用 MathVisual.render(type, data) 渲染，不要手写 SVG
+//   - 答案讲解阶段必须配图，不能只有文字
+//   - 不修改 defaultState 现有字段（只能新增）
+//   - 不删除已部署的引擎对象
 const { chromium } = require('playwright');
 (async () => {
   const p = await chromium.launch({ headless: true });
