@@ -440,6 +440,9 @@ window.MathFlowV5 = {
   },
   // 发现阶段答题
   _discoverAnswer(el, chosenIdx, correctIdx, stepIdx){
+    chosenIdx = parseInt(chosenIdx);
+    correctIdx = parseInt(correctIdx);
+    stepIdx = parseInt(stepIdx);
     const isCorrect = chosenIdx === correctIdx;
     const container = el.parentElement;
     if(container){
@@ -556,6 +559,8 @@ window.MathFlowV5 = {
   },
   // 解题阶段答题
   _solveAnswer(el, chosenIdx, correctIdx){
+    chosenIdx = parseInt(chosenIdx);
+    correctIdx = parseInt(correctIdx);
     const isCorrect = chosenIdx === correctIdx;
     const container = el.parentElement;
     const problem = this._sess.problem || {};
@@ -1027,6 +1032,9 @@ window.MathFlowV5 = {
   },
   // 阶梯练习答题
   _practiceAnswer(el, chosenIdx, correctIdx, level){
+    chosenIdx = parseInt(chosenIdx);
+    correctIdx = parseInt(correctIdx);
+    level = parseInt(level);
     const isCorrect = chosenIdx === correctIdx;
     const container = el.parentElement;
     if(container){
@@ -1257,6 +1265,8 @@ window.MathFlowV5 = {
     }
   },
   _teachChoose(el, chosenIdx, correctIdx){
+    chosenIdx = parseInt(chosenIdx);
+    correctIdx = parseInt(correctIdx);
     const isCorrect = chosenIdx === correctIdx;
     const container = el.parentElement;
     container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
