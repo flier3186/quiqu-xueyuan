@@ -1,13 +1,13 @@
 {
   "current": {
-    "task": "彻底修复6个问题（含根因分析）",
-    "files": ["engine/math-flow-v5.js", "engine/math-visual-v5.js", "index.html", "scripts/online-test.js"],
-    "stage": "✅ 全部修复并上线验证通过",
-    "description": "根因：_chooseStudyMode的onclick在div上跨浏览器不兼容→改用addEventListener；图片源source.unsplash.com已关闭→切换trae-api CDN"
+    "task": "仓库部署时间查询",
+    "files": ["state.json"],
+    "stage": "📋 查询部署时间线",
+    "description": "查询 GitHub/Gitee 最新部署时间和状态"
   },
-  "next": "待用户新需求",
+  "next": "等待用户新需求",
   "mode": "pm",
-  "updated": "2026-08-06T16:00:00+08:00",
+  "updated": "2026-08-06T21:15:00+08:00",
   "blockers": [],
   "completed": [
     "baseTenBlocks数据格式兼容修复",
@@ -50,6 +50,7 @@
     "GitHub Pages验证200 OK，国内可正常访问",
     "彻底修复6个问题：SVG defs顺序/_chooseStudyMode容器/图片源/题型比例/点击失效/闪卡配图",
     "修复发现阶段类型不匹配bug（parseInt强制转换4个答题函数）",
-    "全模拟测试30/30通过，双仓库部署成功"
+    "全模拟测试30/30通过，双仓库部署成功",
+    "部署时间查询：GitHub Pages 200 OK，Gitee Pages 404（代码镜像正常）"
   ]
 }

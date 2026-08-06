@@ -78696,6 +78696,646 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "6A-PROB-106"
+      },
+      {
+        "scene": "分数比较 - 1/3",
+        "question": "分数比较 - 第1题",
+        "formula": "1/3",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":1,"denominator":3},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-FS-NEW-001"
+      },
+      {
+        "scene": "分数加法 - 1/4",
+        "question": "分数加法 - 第2题",
+        "formula": "1/4",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":1,"denominator":4},
+        "knowledge": "分数加法",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数加法的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数加法的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-FS-NEW-002"
+      },
+      {
+        "scene": "分数减法 - 3/5",
+        "question": "分数减法 - 第3题",
+        "formula": "3/5",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":3,"denominator":5},
+        "knowledge": "分数减法",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数减法的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数减法的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-FS-NEW-003"
+      },
+      {
+        "scene": "分数化简 - 2/6",
+        "question": "分数化简 - 第4题",
+        "formula": "2/6",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":2,"denominator":6},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-FS-NEW-004"
+      },
+      {
+        "scene": "分数比较 - 3/4",
+        "question": "分数比较 - 第5题",
+        "formula": "3/4",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":3,"denominator":4},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-FS-NEW-005"
+      },
+      {
+        "scene": "正负数 - /",
+        "question": "正负数 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-3,"max":3,"point":2},
+        "knowledge": "正负数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正负数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正负数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-NL-NEW-001"
+      },
+      {
+        "scene": "正负数 - /",
+        "question": "正负数 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-5,"max":5,"point":-3},
+        "knowledge": "正负数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正负数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正负数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-NL-NEW-002"
+      },
+      {
+        "scene": "数轴比较 - /",
+        "question": "数轴比较 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-4,"max":4,"point":0},
+        "knowledge": "数轴比较",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-NL-NEW-003"
+      },
+      {
+        "scene": "数轴运算 - /",
+        "question": "数轴运算 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-2,"max":6,"point":4},
+        "knowledge": "数轴运算",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-NL-NEW-004"
+      },
+      {
+        "scene": "数轴运算 - /",
+        "question": "数轴运算 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-6,"max":2,"point":-1},
+        "knowledge": "数轴运算",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6A-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6A-NL-NEW-005"
       }
     ],
     "knowledgeMap": [
@@ -81388,6 +82028,906 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "6B-PROB-020"
+      },
+      {
+        "scene": "分数运算 - 2/5",
+        "question": "分数运算 - 第1题",
+        "formula": "2/5",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":2,"denominator":5},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-FS-NEW-001"
+      },
+      {
+        "scene": "分数运算 - 3/8",
+        "question": "分数运算 - 第2题",
+        "formula": "3/8",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":3,"denominator":8},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-FS-NEW-002"
+      },
+      {
+        "scene": "分数比较 - 5/6",
+        "question": "分数比较 - 第3题",
+        "formula": "5/6",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":5,"denominator":6},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-FS-NEW-003"
+      },
+      {
+        "scene": "分数化简 - 4/10",
+        "question": "分数化简 - 第4题",
+        "formula": "4/10",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":4,"denominator":10},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-FS-NEW-004"
+      },
+      {
+        "scene": "分数运算 - 7/12",
+        "question": "分数运算 - 第5题",
+        "formula": "7/12",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":7,"denominator":12},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-FS-NEW-005"
+      },
+      {
+        "scene": "小数表示 - /",
+        "question": "小数表示 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":0,"max":5,"point":2.5},
+        "knowledge": "小数表示",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "小数表示的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握小数表示的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-NL-NEW-001"
+      },
+      {
+        "scene": "小数比较 - /",
+        "question": "小数比较 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":0,"max":3,"point":1.75},
+        "knowledge": "小数比较",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "小数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握小数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-NL-NEW-002"
+      },
+      {
+        "scene": "小数运算 - /",
+        "question": "小数运算 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":0,"max":10,"point":3.2},
+        "knowledge": "小数运算",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "小数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握小数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-NL-NEW-003"
+      },
+      {
+        "scene": "负小数 - /",
+        "question": "负小数 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-3,"max":3,"point":-1.5},
+        "knowledge": "负小数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "负小数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握负小数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-NL-NEW-004"
+      },
+      {
+        "scene": "分数表示 - /",
+        "question": "分数表示 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":0,"max":4,"point":1.5},
+        "knowledge": "分数表示",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数表示的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数表示的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-NL-NEW-005"
+      },
+      {
+        "scene": "多边形面积 - trapezoid",
+        "question": "多边形面积 - 第1题",
+        "formula": "多边形面积 trapezoid",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"trapezoid","topBase":6,"bottomBase":10,"height":8},
+        "knowledge": "多边形面积",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "多边形面积的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握多边形面积的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-Geo-NEW-001"
+      },
+      {
+        "scene": "多边形面积 - trapezoid",
+        "question": "多边形面积 - 第2题",
+        "formula": "多边形面积 trapezoid",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"trapezoid","topBase":8,"bottomBase":12,"height":6},
+        "knowledge": "多边形面积",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "多边形面积的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握多边形面积的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-Geo-NEW-002"
+      },
+      {
+        "scene": "扇形面积 - sector",
+        "question": "扇形面积 - 第3题",
+        "formula": "扇形面积 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":50,"angle":60},
+        "knowledge": "扇形面积",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形面积的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形面积的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-Geo-NEW-003"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第4题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":6,"radius":60},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 6B-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "6B-Geo-NEW-004"
       }
     ],
     "knowledgeMap": [
@@ -82428,6 +83968,971 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "7A-PROB-005"
+      },
+      {
+        "scene": "分数四则运算 - 3/7",
+        "question": "分数四则运算 - 第1题",
+        "formula": "3/7",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":3,"denominator":7},
+        "knowledge": "分数四则运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数四则运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数四则运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-FS-NEW-001"
+      },
+      {
+        "scene": "分数四则运算 - 5/9",
+        "question": "分数四则运算 - 第2题",
+        "formula": "5/9",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":5,"denominator":9},
+        "knowledge": "分数四则运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数四则运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数四则运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-FS-NEW-002"
+      },
+      {
+        "scene": "分数运算 - 2/3",
+        "question": "分数运算 - 第3题",
+        "formula": "2/3",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":2,"denominator":3},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-FS-NEW-003"
+      },
+      {
+        "scene": "分数运算 - 7/10",
+        "question": "分数运算 - 第4题",
+        "formula": "7/10",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":7,"denominator":10},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-FS-NEW-004"
+      },
+      {
+        "scene": "分数比较 - 4/9",
+        "question": "分数比较 - 第5题",
+        "formula": "4/9",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":4,"denominator":9},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-FS-NEW-005"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-5,"max":5,"point":-2},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-NL-NEW-001"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-4,"max":4,"point":3},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-NL-NEW-002"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-3,"max":7,"point":1},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-NL-NEW-003"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-6,"max":0,"point":-4},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-NL-NEW-004"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-2,"max":6,"point":0},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-NL-NEW-005"
+      },
+      {
+        "scene": "立体图形 - sphere",
+        "question": "立体图形 - 第1题",
+        "formula": "立体图形 sphere",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sphere","radius":50},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-Geo-NEW-001"
+      },
+      {
+        "scene": "立体图形 - prism",
+        "question": "立体图形 - 第2题",
+        "formula": "立体图形 prism",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"prism","base":60,"height":80,"baseSides":4},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-Geo-NEW-002"
+      },
+      {
+        "scene": "立体图形 - cone",
+        "question": "立体图形 - 第3题",
+        "formula": "立体图形 cone",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"cone","radius":50,"height":70},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-Geo-NEW-003"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第4题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":8,"radius":60},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-Geo-NEW-004"
+      },
+      {
+        "scene": "扇形 - sector",
+        "question": "扇形 - 第5题",
+        "formula": "扇形 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":50,"angle":120},
+        "knowledge": "扇形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7A-Geo-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7A-Geo-NEW-005"
       }
     ]
   },
@@ -83197,6 +85702,971 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "7B-PROB-005"
+      },
+      {
+        "scene": "分数运算 - 5/6",
+        "question": "分数运算 - 第1题",
+        "formula": "5/6",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":5,"denominator":6},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-FS-NEW-001"
+      },
+      {
+        "scene": "分数运算 - 1/6",
+        "question": "分数运算 - 第2题",
+        "formula": "1/6",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":1,"denominator":6},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-FS-NEW-002"
+      },
+      {
+        "scene": "分数比较 - 2/7",
+        "question": "分数比较 - 第3题",
+        "formula": "2/7",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":2,"denominator":7},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-FS-NEW-003"
+      },
+      {
+        "scene": "分数化简 - 8/12",
+        "question": "分数化简 - 第4题",
+        "formula": "8/12",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":8,"denominator":12},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-FS-NEW-004"
+      },
+      {
+        "scene": "分数运算 - 3/10",
+        "question": "分数运算 - 第5题",
+        "formula": "3/10",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":3,"denominator":10},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-FS-NEW-005"
+      },
+      {
+        "scene": "有理数运算 - /",
+        "question": "有理数运算 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-8,"max":8,"point":5},
+        "knowledge": "有理数运算",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-NL-NEW-001"
+      },
+      {
+        "scene": "有理数运算 - /",
+        "question": "有理数运算 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-10,"max":0,"point":-3},
+        "knowledge": "有理数运算",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-NL-NEW-002"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-5,"max":5,"point":0},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-NL-NEW-003"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-6,"max":4,"point":-2},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-NL-NEW-004"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-3,"max":7,"point":6},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-NL-NEW-005"
+      },
+      {
+        "scene": "立体图形 - sphere",
+        "question": "立体图形 - 第1题",
+        "formula": "立体图形 sphere",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sphere","radius":60},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-Geo-NEW-001"
+      },
+      {
+        "scene": "立体图形 - cone",
+        "question": "立体图形 - 第2题",
+        "formula": "立体图形 cone",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"cone","radius":50,"height":80},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-Geo-NEW-002"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第3题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":5,"radius":60},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-Geo-NEW-003"
+      },
+      {
+        "scene": "扇形 - sector",
+        "question": "扇形 - 第4题",
+        "formula": "扇形 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":50,"angle":45},
+        "knowledge": "扇形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-Geo-NEW-004"
+      },
+      {
+        "scene": "棱柱 - prism",
+        "question": "棱柱 - 第5题",
+        "formula": "棱柱 prism",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"prism","base":50,"height":90,"baseSides":6},
+        "knowledge": "棱柱",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 7B-Geo-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "棱柱的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握棱柱的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "7B-Geo-NEW-005"
       }
     ]
   },
@@ -83991,6 +87461,971 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "8A-PROB-005"
+      },
+      {
+        "scene": "分数运算 - 4/11",
+        "question": "分数运算 - 第1题",
+        "formula": "4/11",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":4,"denominator":11},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-FS-NEW-001"
+      },
+      {
+        "scene": "分数运算 - 7/15",
+        "question": "分数运算 - 第2题",
+        "formula": "7/15",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":7,"denominator":15},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-FS-NEW-002"
+      },
+      {
+        "scene": "分数化简 - 9/12",
+        "question": "分数化简 - 第3题",
+        "formula": "9/12",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":9,"denominator":12},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-FS-NEW-003"
+      },
+      {
+        "scene": "分数运算 - 1/8",
+        "question": "分数运算 - 第4题",
+        "formula": "1/8",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":1,"denominator":8},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-FS-NEW-004"
+      },
+      {
+        "scene": "分数比较 - 5/14",
+        "question": "分数比较 - 第5题",
+        "formula": "5/14",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":5,"denominator":14},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-FS-NEW-005"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-10,"max":10,"point":7},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-NL-NEW-001"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-8,"max":2,"point":-5},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-NL-NEW-002"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-4,"max":6,"point":3},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-NL-NEW-003"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-7,"max":3,"point":-1},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-NL-NEW-004"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-5,"max":5,"point":4},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-NL-NEW-005"
+      },
+      {
+        "scene": "立体图形 - sphere",
+        "question": "立体图形 - 第1题",
+        "formula": "立体图形 sphere",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sphere","radius":70},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-Geo-NEW-001"
+      },
+      {
+        "scene": "立体图形 - cone",
+        "question": "立体图形 - 第2题",
+        "formula": "立体图形 cone",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"cone","radius":60,"height":90},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-Geo-NEW-002"
+      },
+      {
+        "scene": "棱柱 - prism",
+        "question": "棱柱 - 第3题",
+        "formula": "棱柱 prism",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"prism","base":70,"height":100,"baseSides":5},
+        "knowledge": "棱柱",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "棱柱的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握棱柱的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-Geo-NEW-003"
+      },
+      {
+        "scene": "扇形 - sector",
+        "question": "扇形 - 第4题",
+        "formula": "扇形 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":60,"angle":90},
+        "knowledge": "扇形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-Geo-NEW-004"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第5题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":10,"radius":60},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8A-Geo-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8A-Geo-NEW-005"
       }
     ]
   },
@@ -84769,6 +89204,971 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "8B-PROB-005"
+      },
+      {
+        "scene": "分数运算 - 6/13",
+        "question": "分数运算 - 第1题",
+        "formula": "6/13",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":6,"denominator":13},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-FS-NEW-001"
+      },
+      {
+        "scene": "分数化简 - 10/15",
+        "question": "分数化简 - 第2题",
+        "formula": "10/15",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":10,"denominator":15},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-FS-NEW-002"
+      },
+      {
+        "scene": "分数运算 - 3/11",
+        "question": "分数运算 - 第3题",
+        "formula": "3/11",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":3,"denominator":11},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-FS-NEW-003"
+      },
+      {
+        "scene": "分数比较 - 8/17",
+        "question": "分数比较 - 第4题",
+        "formula": "8/17",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":8,"denominator":17},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-FS-NEW-004"
+      },
+      {
+        "scene": "分数运算 - 5/16",
+        "question": "分数运算 - 第5题",
+        "formula": "5/16",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":5,"denominator":16},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-FS-NEW-005"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-12,"max":12,"point":9},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-NL-NEW-001"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-10,"max":0,"point":-7},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-NL-NEW-002"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-6,"max":4,"point":2},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-NL-NEW-003"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-9,"max":3,"point":-4},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-NL-NEW-004"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-7,"max":5,"point":0},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-NL-NEW-005"
+      },
+      {
+        "scene": "立体图形 - sphere",
+        "question": "立体图形 - 第1题",
+        "formula": "立体图形 sphere",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sphere","radius":80},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-Geo-NEW-001"
+      },
+      {
+        "scene": "立体图形 - cone",
+        "question": "立体图形 - 第2题",
+        "formula": "立体图形 cone",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"cone","radius":65,"height":100},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-Geo-NEW-002"
+      },
+      {
+        "scene": "棱柱 - prism",
+        "question": "棱柱 - 第3题",
+        "formula": "棱柱 prism",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"prism","base":75,"height":110,"baseSides":8},
+        "knowledge": "棱柱",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "棱柱的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握棱柱的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-Geo-NEW-003"
+      },
+      {
+        "scene": "扇形 - sector",
+        "question": "扇形 - 第4题",
+        "formula": "扇形 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":70,"angle":135},
+        "knowledge": "扇形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-Geo-NEW-004"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第5题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":12,"radius":60},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 8B-Geo-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "8B-Geo-NEW-005"
       }
     ]
   },
@@ -85544,6 +90944,971 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "9A-PROB-005"
+      },
+      {
+        "scene": "分数运算 - 7/18",
+        "question": "分数运算 - 第1题",
+        "formula": "7/18",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":7,"denominator":18},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-FS-NEW-001"
+      },
+      {
+        "scene": "分数运算 - 11/20",
+        "question": "分数运算 - 第2题",
+        "formula": "11/20",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":11,"denominator":20},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-FS-NEW-002"
+      },
+      {
+        "scene": "分数化简 - 12/18",
+        "question": "分数化简 - 第3题",
+        "formula": "12/18",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":12,"denominator":18},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-FS-NEW-003"
+      },
+      {
+        "scene": "分数运算 - 5/14",
+        "question": "分数运算 - 第4题",
+        "formula": "5/14",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":5,"denominator":14},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-FS-NEW-004"
+      },
+      {
+        "scene": "分数比较 - 9/22",
+        "question": "分数比较 - 第5题",
+        "formula": "9/22",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":9,"denominator":22},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-FS-NEW-005"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-15,"max":15,"point":11},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-NL-NEW-001"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-12,"max":8,"point":-8},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-NL-NEW-002"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-8,"max":2,"point":5},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-NL-NEW-003"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-11,"max":1,"point":-3},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-NL-NEW-004"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-6,"max":10,"point":0},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-NL-NEW-005"
+      },
+      {
+        "scene": "立体图形 - sphere",
+        "question": "立体图形 - 第1题",
+        "formula": "立体图形 sphere",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sphere","radius":90},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-Geo-NEW-001"
+      },
+      {
+        "scene": "立体图形 - cone",
+        "question": "立体图形 - 第2题",
+        "formula": "立体图形 cone",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"cone","radius":70,"height":120},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-Geo-NEW-002"
+      },
+      {
+        "scene": "棱柱 - prism",
+        "question": "棱柱 - 第3题",
+        "formula": "棱柱 prism",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"prism","base":80,"height":120,"baseSides":6},
+        "knowledge": "棱柱",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "棱柱的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握棱柱的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-Geo-NEW-003"
+      },
+      {
+        "scene": "扇形 - sector",
+        "question": "扇形 - 第4题",
+        "formula": "扇形 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":80,"angle":150},
+        "knowledge": "扇形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-Geo-NEW-004"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第5题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":12,"radius":70},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9A-Geo-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9A-Geo-NEW-005"
       }
     ]
   },
@@ -86321,6 +92686,971 @@ window.MATH_BY_GRADE = {
           }
         ],
         "id": "9B-PROB-005"
+      },
+      {
+        "scene": "分数运算 - 8/21",
+        "question": "分数运算 - 第1题",
+        "formula": "8/21",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":8,"denominator":21},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-FS-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-FS-NEW-001"
+      },
+      {
+        "scene": "分数运算 - 13/24",
+        "question": "分数运算 - 第2题",
+        "formula": "13/24",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":13,"denominator":24},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-FS-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-FS-NEW-002"
+      },
+      {
+        "scene": "分数化简 - 15/20",
+        "question": "分数化简 - 第3题",
+        "formula": "15/20",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":15,"denominator":20},
+        "knowledge": "分数化简",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-FS-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数化简的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数化简的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-FS-NEW-003"
+      },
+      {
+        "scene": "分数运算 - 7/18",
+        "question": "分数运算 - 第4题",
+        "formula": "7/18",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":7,"denominator":18},
+        "knowledge": "分数运算",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-FS-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数运算的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数运算的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-FS-NEW-004"
+      },
+      {
+        "scene": "分数比较 - 10/27",
+        "question": "分数比较 - 第5题",
+        "formula": "10/27",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "fractionStrip",
+        "visualData": {"numerator":10,"denominator":27},
+        "knowledge": "分数比较",
+        "difficulty": 2,
+        "hint": "使用fractionStrip来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-FS-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了fractionStrip，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "分数比较的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握分数比较的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-FS-NEW-005"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第1题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-18,"max":18,"point":13},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-NL-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-NL-NEW-001"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第2题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-14,"max":10,"point":-10},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-NL-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-NL-NEW-002"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第3题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-10,"max":0,"point":7},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-NL-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-NL-NEW-003"
+      },
+      {
+        "scene": "数轴距离 - /",
+        "question": "数轴距离 - 第4题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-13,"max":3,"point":-5},
+        "knowledge": "数轴距离",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-NL-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "数轴距离的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握数轴距离的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-NL-NEW-004"
+      },
+      {
+        "scene": "有理数 - /",
+        "question": "有理数 - 第5题",
+        "formula": "/",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "numberLine",
+        "visualData": {"min":-8,"max":12,"point":0},
+        "knowledge": "有理数",
+        "difficulty": 2,
+        "hint": "使用numberLine来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-NL-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了numberLine，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "有理数的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握有理数的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-NL-NEW-005"
+      },
+      {
+        "scene": "立体图形 - sphere",
+        "question": "立体图形 - 第1题",
+        "formula": "立体图形 sphere",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sphere","radius":100},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-Geo-NEW-001",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-Geo-NEW-001"
+      },
+      {
+        "scene": "立体图形 - cone",
+        "question": "立体图形 - 第2题",
+        "formula": "立体图形 cone",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"cone","radius":80,"height":130},
+        "knowledge": "立体图形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-Geo-NEW-002",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "立体图形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握立体图形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-Geo-NEW-002"
+      },
+      {
+        "scene": "棱柱 - prism",
+        "question": "棱柱 - 第3题",
+        "formula": "棱柱 prism",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"prism","base":90,"height":130,"baseSides":6},
+        "knowledge": "棱柱",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-Geo-NEW-003",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "棱柱的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握棱柱的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-Geo-NEW-003"
+      },
+      {
+        "scene": "扇形 - sector",
+        "question": "扇形 - 第4题",
+        "formula": "扇形 sector",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"sector","radius":90,"angle":180},
+        "knowledge": "扇形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-Geo-NEW-004",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "扇形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握扇形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-Geo-NEW-004"
+      },
+      {
+        "scene": "正多边形 - regularPolygon",
+        "question": "正多边形 - 第5题",
+        "formula": "正多边形 regularPolygon",
+        "answer": 0,
+        "choices": [0, 1, 2, 3],
+        "visualType": "geometryModel",
+        "visualFamily": "geometry",
+        "visualData": {"shape":"regularPolygon","sides":16,"radius":75},
+        "knowledge": "正多边形",
+        "difficulty": 2,
+        "hint": "使用geometryModel来理解这道题",
+        "variants": [
+          {
+            "question": "变式题 9B-Geo-NEW-005",
+            "formula": "变式1",
+            "answer": 1,
+            "hint": "变式提示"
+          }
+        ],
+        "discoverySteps": [
+          {
+            "q": "这道题要我们求什么？",
+            "choices": ["总数", "每份数", "份数", "差"],
+            "answer": "总数",
+            "explain": "题目要求总数"
+          },
+          {
+            "q": "题目给出了哪些信息？",
+            "choices": ["关键数", "只有总数", "只有每份数", "没有信息"],
+            "answer": "关键数",
+            "explain": "从题目中找到关键信息"
+          },
+          {
+            "q": "用什么方法计算？",
+            "choices": ["乘法", "加法", "减法", "除法"],
+            "answer": "乘法",
+            "explain": "根据题目类型选择计算方法"
+          }
+        ],
+        "explainLayers": [
+          {
+            "icon": "👀",
+            "title": "看图 — 图形结构",
+            "text": "图中展示了geometryModel，帮助我们理解题目",
+            "bg": "var(--teal-soft)",
+            "color": "var(--teal)"
+          },
+          {
+            "icon": "🧠",
+            "title": "理解 — 数学关系",
+            "text": "正多边形的核心概念",
+            "bg": "var(--yellow-soft)",
+            "color": "var(--yellow-700)"
+          },
+          {
+            "icon": "🚀",
+            "title": "推广 — 通用规律",
+            "text": "掌握正多边形的解题方法",
+            "bg": "var(--coral-soft)",
+            "color": "var(--coral)"
+          }
+        ],
+        "id": "9B-Geo-NEW-005"
       }
     ]
   }
