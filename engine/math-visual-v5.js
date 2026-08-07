@@ -1333,14 +1333,19 @@ window.MathVisualV5 = {
       parts = parts.map(p => p.val);
     }
     if(total == null && parts.length >= 2) total = parts[0] + parts[1];
-    const W=520, H=240;
+    // 根据数字大小自适应画布高度
+    const maxNum = Math.max(total, parts[0], parts[1]);
+    const H = maxNum >= 100 ? 300 : maxNum >= 20 ? 260 : 240;
+    const W = 520;
+    const numFontSize = maxNum >= 100 ? 26 : maxNum >= 20 ? 22 : 20;
+    const partFontSize = maxNum >= 100 ? 20 : 18;
     let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">数字分解 · 第${step}/3步</text>`;
     // 中心节点
     const cx=W/2, cy=100;
     if(step>=1){
       // 整体数字
       svg+=`<circle cx="${cx}" cy="${cy}" r="40" fill="#00A896" fill-opacity="0.2" stroke="#00A896" stroke-width="2.5" class="mv-center" style="animation:mvPop .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-      svg+=`<text x="${cx}" y="${cy+6}" text-anchor="middle" font-size="20" font-weight="800" fill="#00A896">${total}</text>`;
+      svg+=`<text x="${cx}" y="${cy+6}" text-anchor="middle" font-size="${numFontSize}" font-weight="800" fill="#00A896">${total}</text>`;
       svg+=`<text x="${cx}" y="${cy+58}" text-anchor="middle" font-size="11" fill="#1E3A5F">整体</text>`;
     }
     if(step>=2){
@@ -1351,15 +1356,15 @@ window.MathVisualV5 = {
       svg+=`<line x1="${cx}" y1="${cy+30}" x2="${rx}" y2="${ry}" stroke="#E8A0BF" stroke-width="2" class="mv-line" style="animation:mvLineIn .4s .2s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
       // 左部分
       svg+=`<circle cx="${lx}" cy="${ly}" r="32" fill="#F5B800" fill-opacity="0.25" stroke="#F5B800" stroke-width="2" class="mv-part1" style="animation:mvPop .4s .4s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-      svg+=`<text x="${lx}" y="${ly+6}" text-anchor="middle" font-size="16" font-weight="800" fill="#1E3A5F">${parts[0]}</text>`;
+      svg+=`<text x="${lx}" y="${ly+6}" text-anchor="middle" font-size="${partFontSize}" font-weight="800" fill="#1E3A5F">${parts[0]}</text>`;
       // 右部分
       svg+=`<circle cx="${rx}" cy="${ry}" r="32" fill="#FB923C" fill-opacity="0.25" stroke="#FB923C" stroke-width="2" class="mv-part2" style="animation:mvPop .4s .6s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-      svg+=`<text x="${rx}" y="${ry+6}" text-anchor="middle" font-size="16" font-weight="800" fill="#1E3A5F">${parts[1]}</text>`;
+      svg+=`<text x="${rx}" y="${ry+6}" text-anchor="middle" font-size="${partFontSize}" font-weight="800" fill="#1E3A5F">${parts[1]}</text>`;
     }
     if(step>=3){
       // 汇总公式
       svg+=`<rect x="${cx-100}" y="${cy+110}" width="200" height="36" fill="#1E3A5F" rx="8" class="mv-formula" style="animation:mvFadeIn .4s .8s both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-      svg+=`<text x="${cx}" y="${cy+134}" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">${parts[0]} + ${parts[1]} = ${total}</text>`;
+      svg+=`<text x="${cx}" y="${cy+134}" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">${parts[0]} + ${parts[1]} = ${total}</text>`;
     }
     return `<div class="mv-wrap mv-step-bond">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>

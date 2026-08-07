@@ -64,10 +64,7 @@ window.MathFlowV5 = {
 
   // ===== 主流程控制器：初始化会话，返回当前阶段 HTML =====
   start(problem, profileId){
-    // 断点续学：若已有未完成会话且题目一致，直接恢复
-    if(this._sess && this._sess.problem && problem && this._sess.problem.question === problem.question){
-      return this.renderCurrent();
-    }
+    // 每次 start() 都强制创建新会话，避免断点续学导致同题循环
     this._sess = {
       stage: 'warmup',
       problem: problem,
@@ -400,6 +397,7 @@ window.MathFlowV5 = {
     // 先更新当前界面显示提交结果，然后跳转
     setTimeout(()=>{
       this.advance('discover');
+      if(typeof updateMathStageV5==='function') updateMathStageV5();
     }, 1800);
   },
   _rmeSubmitFeedback(answer){
@@ -1049,6 +1047,10 @@ window.MathFlowV5 = {
     }
     if(isCorrect){
       this._sess.practiceIndex++;
+      if(this._sess.practiceIndex >= this._sess.practiceTotal){
+        this._finishPractice();
+        return;
+      }
       // 立即显示下一题按钮，不依赖 setTimeout
       const nextBtn = document.getElementById('v5PracticeNextBtn');
       if(nextBtn){
@@ -1089,27 +1091,10 @@ window.MathFlowV5 = {
       if(pid && k && typeof SpacedReview!=='undefined' && SpacedReview.add) SpacedReview.add(pid, 'math', k);
     }catch(e){}
     if(typeof toast==='function') toast('🎉 今日学习完成！已加入复习队列');
-    // 渲染完成页
-    const html = `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .5s ease">
-      <span class="cpa-tag" style="background:var(--teal);color:#fff">🎉 今日学习完成</span>
-      <div style="margin:20px 0;padding:22px 24px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-radius:16px;text-align:center">
-        <div style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px">🏆 太棒了！你完成了今天的学习</div>
-        <div style="font-size:14px;color:var(--ink-700);line-height:1.8">
-          知识点：<b style="color:var(--teal)">${this._escape(this._sess.problem && this._sess.problem.knowledge || '')}</b><br>
-          明天会自动安排复习，记得来哦！<br>
-          <span style="font-size:12px;color:var(--text-2)">💡 教别人一遍，胜过自己学十遍。试试教小伙伴模式？</span>
-        </div>
-      </div>
-      <div style="text-align:center;display:flex;gap:10px;justify-content:center">
-        <button onclick="MathFlowV5.renderTeachPetModal()" style="padding:12px 24px;background:linear-gradient(135deg,var(--pink),var(--coral));color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer">🐰 教小伙伴</button>
-        <button onclick="MathFlowV5.advance('warmup');if(typeof updateMathStageV5==='function') updateMathStageV5()" style="padding:12px 24px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer">学习下一题 →</button>
-      </div>
-    </div>`;
-    const target = document.getElementById('v5PracticeFeedback');
-    if(target) target.innerHTML = html;
-    // 清理会话
-    this._sess.stage = 'done';
+    // 设置完成状态并立即更新DOM
+    this._sess.stage = 'complete';
     this._saveProgress();
+    if(typeof updateMathStageV5==='function') updateMathStageV5();
   },
   // 完成页面（10题练习结束后）
   _renderComplete(problem){
@@ -1125,7 +1110,8 @@ window.MathFlowV5 = {
         </div>
       </div>
       <div style="text-align:center;margin-top:18px">
-        <button onclick="MathFlowV5._backToGrade()" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer">返回年级选择</button>
+        <button onclick="mathNextProblem()" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer">下一题 →</button>
+        <button onclick="MathFlowV5._backToGrade()" style="padding:12px 28px;margin-left:8px;background:var(--navy-soft);color:var(--navy);border:2px solid var(--navy);border-radius:22px;font-weight:700;cursor:pointer">返回年级选择</button>
       </div>
     </div>`;
   },

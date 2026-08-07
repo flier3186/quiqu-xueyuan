@@ -2785,9 +2785,26 @@ const ENG_PHOTO_MAP={
   'default':'education,kids,learning'
 };
 function engPhotoUrl(word){
-  if(!word) return 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=educational+kids+illustration+apple+fruit+simple+colorful&image_size=square_hd';
+  if(!word) return '';
   var w=word.toLowerCase().replace(/'/g,'').replace(/ /g,'+');
-  return 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt='+w+'&image_size=square_hd';
+  // 优先使用本地 emoji 占位图，避免依赖外部API
+  var emojiMap={
+    apple:'🍎',banana:'🍌',cat:'🐱',dog:'🐕',fish:'🐟',bird:'🐦',
+    book:'📚',pen:'🖊️',pencil:'✏️',bag:'🎒',school:'🏫',teacher:'👩‍🏫',
+    student:'👦',friend:'👫',family:'👨‍👩‍👧',mother:'👩',father:'👨',
+    sun:'☀️',moon:'🌙',star:'⭐',flower:'🌸',tree:'🌳',grass:'🌿',
+    rain:'🌧️',snow:'❄️',cloud:'☁️',wind:'💨',
+    egg:'🥚',bread:'🍞',rice:'🍚',milk:'🥛',water:'💧',
+    apple:'🍎',orange:'🍊',pear:'🍐',grape:'🍇',peach:'🍑',
+    one:'1️⃣',two:'2️⃣',three:'3️⃣',four:'4️⃣',five:'5️⃣',
+    six:'6️⃣',seven:'7️⃣',eight:'8️⃣',nine:'9️⃣',ten:'🔟',
+  };
+  var em=emojiMap[w]||null;
+  if(em){
+    return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f0fdf9" rx="12"/><text x="50" y="62" text-anchor="middle" font-size="48">'+em+'</text><text x="50" y="90" text-anchor="middle" font-size="11" fill="#047857" font-family="sans-serif">'+w+'</text></svg>');
+  }
+  // fallback: 返回空让 onerror 处理
+  return '';
 }
 window.engPhotoUrl = engPhotoUrl;
 window.ENG_PHOTO_MAP = ENG_PHOTO_MAP;
@@ -2882,8 +2899,8 @@ function getPhraseScenesForGrade(grade){
     '2b':['居家','学校','公园','动物园','天气'],
     '3':['居家','学校','公园','动物园','餐厅','超市','生日','运动','天气'],
     '4':['居家','学校','公园','动物园','餐厅','超市','生日','运动','医院','图书馆','电影院','天气','旅行'],
-    '5':Object.keys(PHRASE_BANK),
-    '6':Object.keys(PHRASE_BANK)
+    '5':['学校','餐厅','超市','医院','图书馆','机场','酒店','旅行','天气','求助','电影院'],
+    '6':['学校','医院','银行','邮局','机场','酒店','夏令营','旅行','天气','求助','图书馆','电影院']
   };
   return map[grade]||Object.keys(PHRASE_BANK);
 }
@@ -2932,7 +2949,7 @@ function getGrammarPillsForGrade(grade){
       {en:'<b>May</b> I come in?',cn:'我可以进来吗？',hl:'May'},
     ]},
   ];
-  const map={'2b':[allPills[0],allPills[1]],'3':allPills.slice(0,3),'4':allPills.slice(0,5),'5':allPills.slice(0,7),'6':allPills};
+  const map={'2b':[allPills[0],allPills[1]],'3':allPills.slice(0,3),'4':allPills.slice(0,5),'5':allPills.slice(1,8),'6':allPills};
   return map[grade]||allPills.slice(0,3);
 }
 // 年级标签中文
@@ -4323,7 +4340,7 @@ function renderEngSub(subtab,grade){
         ${flashWords.map((w,i)=>`<div class="flash-card" id="flashCard${i}" onclick="flipFlash(${i})">
           <div class="flash-inner">
             <div class="flash-face flash-front">
-              <img src="${engPhotoUrl(w.w)}" class="flash-photo" alt="${w.w}" onerror="this.style.display='none'" loading="lazy">
+              ${engPhotoUrl(w.w)?`<img src="${engPhotoUrl(w.w)}" class="flash-photo" alt="${w.w}" loading="lazy">`:`<div class="flash-emoji-fallback" style="display:block;font-size:48px;text-align:center;line-height:120px">${w.emoji||'📚'}</div>`}
               <div class="flash-word">${w.emoji||'📚'} ${w.w}</div>
               <div class="flash-speak" onclick="event.stopPropagation();speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
               <div style="font-size:11px;color:var(--ink-400);margin-top:auto">👆 点击翻面</div>
@@ -5702,20 +5719,174 @@ function selectSpeakTopic(id){
 }
 
 /* ============ 宠物小游戏 ============ */
+let miniGameTimer=null;
 function playMiniGame(type){
-  const title={memory:'记忆翻牌',math:'数学速算',word:'单词接龙'}[type];
-  toast(`🎮 小游戏加载中：${title}... +5 exp`);
+  if(miniGameTimer){clearInterval(miniGameTimer);miniGameTimer=null;}
   S.pet.exp += 5;
   setStar(2,'小游戏练习');
   checkPetLevelUp();
   saveState();
-  setTimeout(()=>{
-    const reward=10+Math.floor(Math.random()*20);
-    S.pet.coins += reward;
-    saveState();
-    toast(`🎉 ${title} 完成！获得 ${reward} 金币`);
-    $('#contentArea').innerHTML=renderPet();
-  },800);
+  if(type==='memory') startMemoryGame();
+  else if(type==='math') startMathMiniGame();
+  else if(type==='word') startWordMatchGame();
+}
+
+// 记忆翻牌游戏
+let memoryCards=[],memoryFlipped=[],memoryMatched=0,memoryLocked=false;
+function startMemoryGame(){
+  const emojis=['🍎','🍌','🐱','🐶','🌻','⭐','🎈','🐟'];
+  var pairs=[...emojis,...emojis].sort(()=>Math.random()-0.5);
+  memoryCards=pairs.map((e,i)=>{return{emoji:e,id:i,flipped:false,matched:false};});
+  memoryFlipped=[];memoryMatched=0;memoryLocked=false;
+  S.pet.coins += 10;saveState();
+  renderMemoryBoard();
+}
+function renderMemoryBoard(){
+  var html=`<div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center">
+    <div class="spell-score-bar">🃏 记忆翻牌 · 配对所有卡片</div>
+    <div class="game-progress-bar"><div class="game-progress-fill" style="width:${(memoryMatched/memoryCards.length)*100}%"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0;max-width:360px">
+      ${memoryCards.map((c,i)=>`<div class="mini-game-card c${i%3+1}" onclick="flipMemoryCard(${i})" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;min-height:72px;${c.matched?'opacity:0.4;pointer-events:none':''};${c.flipped||c.matched?'background:var(--teal-soft)':''}">
+        ${c.flipped||c.matched?c.emoji:'❓'}
+      </div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:12px">
+      <button class="btn btn-ghost" onclick="renderPet()">← 返回</button>
+      ${memoryMatched>=memoryCards.length?`<button class="btn btn-primary" onclick="finishMemoryGame()" style="margin-left:8px">🎉 完成！</button>`:''}
+    </div>
+  </div>`;
+  $('#contentArea').innerHTML=html;
+}
+function flipMemoryCard(i){
+  if(memoryLocked||memoryCards[i].flipped||memoryCards[i].matched)return;
+  memoryCards[i].flipped=true;
+  memoryFlipped.push(i);
+  if(memoryFlipped.length===2){
+    memoryLocked=true;
+    var a=memoryFlipped[0],b=memoryFlipped[1];
+    if(memoryCards[a].emoji===memoryCards[b].emoji){
+      memoryCards[a].matched=true;memoryCards[b].matched=true;
+      memoryMatched+=2;memoryFlipped=[];memoryLocked=false;
+      S.pet.coins+=5;saveState();
+      if(memoryMatched>=memoryCards.length){
+        setTimeout(()=>{toast('🎉 全部配对成功！');},300);
+      }
+    }else{
+      setTimeout(()=>{memoryCards[a].flipped=false;memoryCards[b].flipped=false;memoryFlipped=[];memoryLocked=false;},800);
+    }
+    renderMemoryBoard();
+  }
+}
+function finishMemoryGame(){
+  S.pet.coins+=20;saveState();
+  toast('🎉 记忆翻牌完成！+20 金币');
+  renderPet();
+}
+
+// 数学速算游戏
+let mathMiniQ=null,mathMiniScore=0,mathMiniTotal=0,mathMiniTime=30;
+function startMathMiniGame(){
+  mathMiniScore=0;mathMiniTotal=0;mathMiniTime=30;
+  if(miniGameTimer)clearInterval(miniGameTimer);
+  nextMathMiniQ();
+  miniGameTimer=setInterval(()=>{
+    mathMiniTime--;
+    var td=$('#mathMiniTime');
+    if(td){td.textContent=mathMiniTime+'s';if(mathMiniTime<=5)td.style.color='var(--coral)';}
+    if(mathMiniTime<=0){clearInterval(miniGameTimer);endMathMiniGame();}
+  },1000);
+}
+function nextMathMiniQ(){
+  var a=Math.floor(Math.random()*20)+1,b=Math.floor(Math.random()*20)+1;
+  var op=['+','-','×'][Math.floor(Math.random()*3)];
+  if(op==='-'&&a<b)[a,b]=[b,a];
+  var ans=op==='+'?a+b:op==='-'?a-b:a*b;
+  mathMiniQ={a:a,b:b,op:op,ans:ans};
+  var opts=[ans];
+  while(opts.length<4){var w=ans+Math.floor(Math.random()*10)-5;if(w!==ans&&w>=0&&!opts.includes(w))opts.push(w);}
+  opts.sort(()=>Math.random()-0.5);
+  var html=`<div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center">
+    <div class="spell-score-bar">🧮 数学速算 · 得分:${mathMiniScore} · <span id="mathMiniTime">${mathMiniTime}s</span></div>
+    <div style="font-size:36px;font-weight:900;color:var(--navy);margin:20px 0">${mathMiniQ.a} ${mathMiniQ.op} ${mathMiniQ.b} = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:300px">
+      ${opts.map(o=>`<button onclick="answerMathMini(${o})" style="padding:14px;font-size:18px;font-weight:800;border-radius:12px;border:2px solid var(--teal-100);background:white;cursor:pointer;transition:all .15s">${o}</button>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:16px"><button class="btn btn-ghost" onclick="endMathMiniGame()">⏹ 结束</button></div>
+  </div>`;
+  $('#contentArea').innerHTML=html;
+}
+function answerMathMini(ans){
+  mathMiniTotal++;
+  if(ans===mathMiniQ.ans){mathMiniScore+=10;toast('✅ 正确！');}
+  else{toast('❌ 错了，答案是'+mathMiniQ.ans);}
+  if(mathMiniTime>0)nextMathMiniQ();
+}
+function endMathMiniGame(){
+  if(miniGameTimer){clearInterval(miniGameTimer);miniGameTimer=null;}
+  S.pet.coins+=mathMiniScore;saveState();
+  var html=`<div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div style="font-size:48px;margin-bottom:12px">🏆</div>
+    <div style="font-size:24px;font-weight:900;color:var(--navy)">得分: ${mathMiniScore}</div>
+    <div style="font-size:14px;color:var(--text-2);margin-top:8px">共答 ${mathMiniTotal} 题</div>
+    <div style="margin-top:24px;display:flex;gap:12px">
+      <button class="btn btn-primary" onclick="startMathMiniGame()">🔄 再来一轮</button>
+      <button class="btn btn-ghost" onclick="renderPet()">← 返回</button>
+    </div>
+  </div>`;
+  $('#contentArea').innerHTML=html;
+  toast('🎉 数学速算完成！+'+mathMiniScore+' 金币');
+}
+
+// 单词配对游戏
+let wordMatchWords=[],wordMatchFlipped=[],wordMatchScore=0,wordMatchTotal=0;
+function startWordMatchGame(){
+  wordMatchScore=0;wordMatchTotal=0;
+  var pool=(VOCAB_BY_GRADE[S.eng&&S.eng.grade||'3']||VOCAB_BY_GRADE['3']).slice(0,20);
+  if(pool.length<4)pool=pool.slice(0,4);
+  var pairs=[];
+  pool.forEach(w=>{
+    pairs.push({type:'word',content:w.w,matchId:w.w});
+    pairs.push({type:'def',content:w.def.split('.')[0].split('；')[0].slice(0,12),matchId:w.w});
+  });
+  pairs.sort(()=>Math.random()-0.5);
+  wordMatchWords=pairs;wordMatchFlipped=[];
+  renderWordMatchBoard();
+}
+function renderWordMatchBoard(){
+  var html=`<div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center">
+    <div class="spell-score-bar">🔤 单词配对 · 得分:${wordMatchScore}</div>
+    <div style="font-size:12px;color:var(--text-2);margin:8px 0">点击英文单词，再点击对应的中文释义</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0;max-width:400px">
+      ${wordMatchWords.map((c,i)=>`<div onclick="flipWordMatch(${i})" id="wm${i}" style="padding:10px 6px;border-radius:10px;border:2px solid var(--ink-200);background:white;cursor:pointer;font-size:12px;font-weight:700;text-align:center;min-height:56px;display:flex;align-items:center;justify-content:center;word-break:break-all;${c.matched?'opacity:0.3;pointer-events:none;border-color:var(--teal)':''};${wordMatchFlipped.includes(i)?'background:var(--teal-soft);border-color:var(--teal)':''}">${c.content}</div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:12px"><button class="btn btn-ghost" onclick="renderPet()">← 返回</button> ${wordMatchWords.filter(c=>c.matched).length>=wordMatchWords.length?'<button class="btn btn-primary" onclick="finishWordMatch()" style="margin-left:8px">🎉 完成！</button>':''}</div>
+  </div>`;
+  $('#contentArea').innerHTML=html;
+}
+function flipWordMatch(i){
+  if(wordMatchWords[i].matched||wordMatchFlipped.includes(i))return;
+  wordMatchFlipped.push(i);
+  if(wordMatchFlipped.length===2){
+    var a=wordMatchFlipped[0],b=wordMatchFlipped[1];
+    if(wordMatchWords[a].matchId===wordMatchWords[b].matchId&&wordMatchWords[a].type!==wordMatchWords[b].type){
+      wordMatchWords[a].matched=true;wordMatchWords[b].matched=true;
+      wordMatchScore+=10;wordMatchTotal++;
+      toast('✅ 配对成功！');
+      wordMatchFlipped=[];
+      if(wordMatchWords.filter(c=>c.matched).length>=wordMatchWords.length){
+        setTimeout(()=>toast('🎉 全部配对成功！'),300);
+      }
+    }else{
+      toast('❌ 不匹配，再试试');
+      setTimeout(()=>{wordMatchFlipped=[];},600);
+    }
+    renderWordMatchBoard();
+  }
+}
+function finishWordMatch(){
+  S.pet.coins+=wordMatchScore;saveState();
+  toast('🎉 单词配对完成！+'+wordMatchScore+' 金币');
+  renderPet();
 }
 
 // === 闯关游戏 ===
@@ -5792,6 +5963,7 @@ function renderSpellingRound(){
         <strong>💡 提示：</strong>${word.def||'看着字母拼出单词'} &nbsp;
         <button class="btn-listen" onclick="speak('${word.w}')" style="margin-left:8px">🔊 听发音</button>
       </div>
+      <div id="spellFeedback" style="margin-top:10px"></div>
       <div class="spell-letters" id="spellLetters">
         ${shuffled.map((l,i)=>`<div class="spell-letter" id="letter${i}" onclick="addSpellLetter(${i},'${l}')">${l.toUpperCase()}</div>`).join('')}
       </div>
@@ -5832,17 +6004,40 @@ function checkSpelling(){
   const answer=word.w.toLowerCase();
   const userAnswer=spellInput.join('').toLowerCase();
   const isCorrect=userAnswer===answer;
+  const fb=document.getElementById('spellFeedback');
   if(isCorrect){
     spellScore+=10;
     $$('.spell-slot').forEach(el=>el.classList.add('correct'));
+    if(fb)fb.innerHTML='<div style="padding:10px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal);font-weight:700">✅ 拼写正确！+'+word.w.length*2+'分</div>';
     setStar(1,'拼写正确');
+    var nextBtn=document.getElementById('spellNextBtn');
+    if(!nextBtn){
+      nextBtn=document.createElement('div');
+      nextBtn.id='spellNextBtn';
+      nextBtn.style.cssText='text-align:center;margin-top:12px;display:none';
+      nextBtn.innerHTML='<button onclick="spellAdvance()" style="padding:10px 28px;background:var(--teal);color:#fff;border:none;border-radius:20px;font-weight:800;cursor:pointer">下一题 →</button>';
+      var area=document.getElementById('spellSlots')&&document.getElementById('spellSlots').parentElement;
+      if(area)area.appendChild(nextBtn);
+    }
+    nextBtn.style.display='block';
   }else{
-    $$('.spell-slot').forEach((el,i)=>{el.classList.add('wrong');if(el.textContent.toLowerCase()!==answer[i])el.textContent=answer[i]||'';});
+    $$('.spell-slot').forEach((el,i)=>{el.classList.add('wrong');if(el.textContent.toLowerCase()!==answer[i])el.textContent=answer[i].toUpperCase()||'';});
+    if(fb)fb.innerHTML='<div style="padding:10px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);font-weight:700">❌ 再想想，正确答案是：<b>'+word.w+'</b></div>';
+    var nextBtn=document.getElementById('spellNextBtn');
+    if(!nextBtn){
+      nextBtn=document.createElement('div');
+      nextBtn.id='spellNextBtn';
+      nextBtn.style.cssText='text-align:center;margin-top:12px;display:none';
+      nextBtn.innerHTML='<button onclick="spellAdvance()" style="padding:10px 28px;background:var(--coral);color:#fff;border:none;border-radius:20px;font-weight:800;cursor:pointer">继续 →</button>';
+      var area=document.getElementById('spellSlots')&&document.getElementById('spellSlots').parentElement;
+      if(area)area.appendChild(nextBtn);
+    }
+    nextBtn.style.display='block';
   }
-  setTimeout(()=>{
-    spellRound++;
-    renderSpellingRound();
-  },1200);
+}
+function spellAdvance(){
+  spellRound++;
+  renderSpellingRound();
 }
 
 function endSpellingGame(){
