@@ -206,15 +206,18 @@ git status
 git add .
 git commit -m "<type>: <描述>"
 
-# 3. 推送到 origin（GitHub HTTPS）
+# 3. 推送到 origin（GitHub SSH）
 git push origin master
 
-# 4. 推送到 mirror（GitHub SSH）
+# 4. 推送到 mirror（GitHub SSH，与 origin 相同，双保险）
 git push mirror master
 
 # 5. 推送到 gitee（国内镜像）
 git push gitee master
 ```
+
+> **注意**：origin 已切换为 SSH 协议（`git@github.com:...`），如果原 HTTPS 连接仍然超时，
+> 请直接使用 mirror 或 gitee 推送，无需重试 origin。
 
 ### 6.2 验证部署
 
@@ -345,9 +348,9 @@ console.log(MathFlowV5._sess.problem?.visualType)
 git remote -v
 
 # 预期输出：
-# origin  https://flier3186@github.com/flier3186/quiqu-xueyuan.git（HTTPS）
-# mirror  git@github.com:flier3186/quiqu-xueyuan.git（SSH）
-# gitee   https://gitee.com/leo318600/quiqu-xueyuan.git
+# origin  git@github.com:flier3186/quiqu-xueyuan.git（SSH，主推送通道）
+# mirror  git@github.com:flier3186/quiqu-xueyuan.git（SSH，镜像备份）
+# gitee   https://gitee.com/leo318600/quiqu-xueyuan.git（国内镜像）
 ```
 
 ## 附录：测试覆盖率
