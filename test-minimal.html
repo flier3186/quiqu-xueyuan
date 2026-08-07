@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>奇趣学园 - 最小化测试版</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; background: #f8fafc; padding: 16px; }
+.card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+h1 { font-size: 20px; color: #1e3a5f; margin-bottom: 16px; }
+.btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; margin-bottom: 10px; cursor: pointer; }
+.btn-teal { background: #00a896; color: white; }
+.btn-yellow { background: #f5b800; color: #1e3a5f; }
+.btn-coral { background: #fb923c; color: white; }
+.result { padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 14px; }
+.pass { background: #c8e6c9; color: #2e7d32; }
+.fail { background: #ffcdd2; color: #c62828; }
+.info { background: #fff9c4; color: #f57f17; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🎓 奇趣学园 - 最小化测试版</h1>
+  <p style="color:#64748b;font-size:13px;margin-bottom:16px">如果以下按钮能点击并显示结果，说明浏览器正常工作</p>
+  
+  <button class="btn btn-teal" onclick="testThis('数学学习')">📐 数学学习</button>
+  <button class="btn btn-yellow" onclick="testThis('英语单词')">📖 英语单词</button>
+  <button class="btn btn-coral" onclick="testThis('闯关游戏')">🎮 闯关游戏</button>
+  
+  <div id="resultArea"></div>
+</div>
+
+<div class="card">
+  <h2>📊 浏览器信息</h2>
+  <div id="browserInfo" style="font-size:13px;color:#64748b;line-height:1.8"></div>
+</div>
+
+<div class="card">
+  <h2>🔗 官方地址</h2>
+  <p style="font-size:13px;color:#64748b;line-height:1.8">
+    GitHub: <a href="https://flier3186.github.io/quiqu-xueyuan/">flier3186.github.io/quiqu-xueyuan</a><br>
+    备用: <a href="https://flier3186.gitee.io/quiqu-xueyuan/">flier3186.gitee.io/quiqu-xueyuan</a>
+  </p>
+</div>
+
+<script>
+// 显示浏览器信息
+(function(){
+  const ua = navigator.userAgent;
+  const info = document.getElementById('browserInfo');
+  info.innerHTML = `
+    <div>浏览器: <b>${ua.includes('Alook') ? 'Alook' : ua.match(/(iPhone|iPad|iPod)/ ? 'Safari/iOS' : ua.match(/Chrome/ ? 'Chrome' : ua.match(/Safari/ ? 'Safari' : 'Unknown')}</b></div>
+    <div>屏幕: <b>${window.innerWidth}x${window.innerHeight}</b></div>
+    <div>缩放: <b>${window.devicePixelRatio}x</b></div>
+    <div>在线: <b>${navigator.onLine ? '是' : '否'}</b></div>
+    <div>网络类型: <b>${navigator.connection ? navigator.connection.effectiveType : 'unknown'}</b></div>
+    <div>JavaScript: <b>${typeof console.log === 'function' ? '支持' : '不支持'}</b></div>
+    <div>localStorage: <b>${typeof localStorage !== 'undefined' ? '支持' : '不支持'}</b></div>
+  `;
+})();
+
+function testThis(feature) {
+  const area = document.getElementById('resultArea');
+  area.innerHTML = '<div class="result info">⏳ 测试 ' + feature + '...</div>';
+  setTimeout(() => {
+    area.innerHTML = '<div class="result pass">✅ ' + feature + ' 按钮点击正常！浏览器工作正常。</div>' +
+                     '<div class="result info">💡 如果这个测试页能正常工作，但官网打不开，可能是网络问题或官网加载了外部资源（字体、CDN等）导致超时。</div>' +
+                     '<div class="result pass">📌 官方网址：<a href="https://flier3186.github.io/quiqu-xueyuan/">https://flier3186.github.io/quiqu-xueyuan/</a></div>';
+  }, 500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网络连通性测试</title>
+</head>
+<body style="font-family:sans-serif;padding:20px;background:#f0f0f0">
+<h2>🔍 网络连通性测试</h2>
+<p id="status">正在测试...</p>
+<div id="details"></div>
+<script>
+(function(){
+  const status = document.getElementById('status');
+  const details = document.getElementById('details');
+  
+  function log(msg, type) {
+    const div = document.createElement('div');
+    div.style.cssText = `padding:8px;margin:4px 0;border-radius:4px;background:${type==='ok'?'#c8e6c9':type==='error'?'#ffcdd2':'#fff9c4'}`;
+    div.textContent = msg;
+    details.appendChild(div);
+  }
+  
+  const tests = [
+    ['URL', 'https://flier3186.github.io/quiqu-xueyuan/'],
+    ['备用URL', 'https://flier3186.github.io/quiqu-xueyuan/index.html'],
+    ['GitHub API', 'https://api.github.com'],
+    ['BootCDN', 'https://cdn.bootcdn.net'],
+  ];
+  
+  let completed = 0;
+  tests.forEach(async ([name, url]) => {
+    try {
+      const start = Date.now();
+      const resp = await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: AbortSignal.timeout(8000) });
+      const elapsed = Date.now() - start;
+      log(`✅ ${name}: ${url} (${elapsed}ms)`, 'ok');
+    } catch(e) {
+      log(`❌ ${name}: ${url} - ${e.message}`, 'error');
+    }
+    completed++;
+    if (completed === tests.length) {
+      status.textContent = '测试完成，请查看下方结果';
+    }
+  });
+})();
+</script>
+</body>
+</html>
