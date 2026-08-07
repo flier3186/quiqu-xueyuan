@@ -5895,7 +5895,6 @@ let challengeQuestions=[],challengeIdx=0,challengeScore=0,challengeTimeLeft=60,c
 
 function renderGameHub(){
   const engGrade=S.eng&&S.eng.grade||'3';
-  const engWords=VOCAB_BY_GRADE[engGrade]||VOCAB_BY_GRADE['3'];
   const allWords=[];
   Object.keys(VOCAB_BY_GRADE).forEach(g=>(VOCAB_BY_GRADE[g]||[]).forEach(w=>allWords.push(w)));
   const totalWords=allWords.length;
@@ -5926,6 +5925,34 @@ function renderGameHub(){
           <h3>数学闯关赛</h3>
           <p>60 秒内尽可能多答对，题目来自当前年级</p>
           <div class="game-badge">最高分 ${challengeBest}</div>
+        </div>
+      </div>
+      <div style="margin-top:24px">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:6px">
+          🐾 训练小游戏 <span style="font-size:12px;color:var(--text-3);font-weight:500">· 和宠物一起玩</span>
+        </div>
+        <div class="pet-mini-grid">
+          <div class="mini-game-card c1" onclick="playMiniGame('memory')">
+            <div class="mini-game-ic">🃏</div>
+            <div>
+              <div class="mini-game-title">记忆翻牌</div>
+              <div class="mini-game-desc">翻开匹配相同卡片，锻炼记忆力</div>
+            </div>
+          </div>
+          <div class="mini-game-card c2" onclick="playMiniGame('math')">
+            <div class="mini-game-ic">🧮</div>
+            <div>
+              <div class="mini-game-title">数学速算</div>
+              <div class="mini-game-desc">快速计算加减乘除，挑战反应力</div>
+            </div>
+          </div>
+          <div class="mini-game-card c3" onclick="playMiniGame('word')">
+            <div class="mini-game-ic">📝</div>
+            <div>
+              <div class="mini-game-title">单词接龙</div>
+              <div class="mini-game-desc">首尾字母相连，扩充词汇量</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>`;
