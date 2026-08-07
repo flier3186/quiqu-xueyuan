@@ -1,0 +1,107 @@
+{
+  "tests": [
+    {
+      "name": "首页标题",
+      "passed": true,
+      "detail": "标题: \"奇趣学园 V5 · AI 学习伙伴\""
+    },
+    {
+      "name": "导航tab存在",
+      "passed": true,
+      "detail": "导航: overview, math, english, speak, game, pet"
+    },
+    {
+      "name": "年级选择器存在",
+      "passed": true,
+      "detail": "年级选择器数量: 5"
+    },
+    {
+      "name": "学习模式按钮存在",
+      "passed": true,
+      "detail": "模式: beginner, intermediate, advanced"
+    },
+    {
+      "name": "学习模式激活",
+      "passed": true,
+      "detail": "模式: beginner"
+    },
+    {
+      "name": "RME阶段跳过",
+      "passed": true,
+      "detail": "无输入框"
+    },
+    {
+      "name": "发现阶段第1步成功",
+      "passed": true,
+      "detail": "discoveryStep=1, stage=discover"
+    },
+    {
+      "name": "发现阶段第2步成功",
+      "passed": true,
+      "detail": "discoveryStep=2, stage=discover"
+    },
+    {
+      "name": "发现阶段第3步成功",
+      "passed": true,
+      "detail": "discoveryStep=2, stage=solve"
+    },
+    {
+      "name": "solve阶段有选项",
+      "passed": true,
+      "detail": "选项数量: 4"
+    },
+    {
+      "name": "答案提交响应",
+      "passed": true,
+      "detail": "第一个选项已点击"
+    },
+    {
+      "name": "讲解内容出现",
+      "passed": true,
+      "detail": "讲解内容长度: 1711"
+    },
+    {
+      "name": "讲解阶段有SVG",
+      "passed": true,
+      "detail": "无SVG（正常）"
+    },
+    {
+      "name": "英语板块加载",
+      "passed": true,
+      "detail": "英语场景可见"
+    },
+    {
+      "name": "词汇闪卡存在",
+      "passed": true,
+      "detail": "闪卡数量: 4"
+    },
+    {
+      "name": "口语场景加载",
+      "passed": true,
+      "detail": "口语场景可见"
+    },
+    {
+      "name": "对话界面打开",
+      "passed": true,
+      "detail": "对话界面已激活"
+    },
+    {
+      "name": "教师消息出现",
+      "passed": true,
+      "detail": "消息: \"Hi! How are you today?\""
+    },
+    {
+      "name": "手机端布局正常",
+      "passed": true,
+      "detail": "宽度375px"
+    },
+    {
+      "name": "平板端布局正常",
+      "passed": true,
+      "detail": "宽度768px"
+    }
+  ],
+  "errors": [],
+  "issues": [],
+  "passRate": 100
+}
