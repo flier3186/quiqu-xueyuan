@@ -68,6 +68,7 @@
     "添加项目部署操作手册 DEPLOY.md（环境/测试/部署/排查/维护）",
     "打包测试详细日志到 scripts/test-results/ 及 test-results-20260807_0950.zip",
     "修复 origin HTTPS 推送失败，切换为 SSH 协议，三仓库完全同步",
-    "更新 README.md 为完整最终验收报告（10大章节，含关键修复记录）"
+    "更新 README.md 为完整最终验收报告（10大章节，含关键修复记录）",
+    "修正 DEPLOY.md 版本 v1.0→v1.1（origin HTTPS→SSH 协议同步更新，补充推送注意事项）"
   ]
 }
