@@ -106,64 +106,44 @@ window.MathFlowV5 = {
 
   // ===== 学习状态选择弹窗 =====
   _renderStudyModeChoice(problem){
-    const W=520;
+    const q = this._escape(problem.title || problem.question || '这道题目');
     const html = `<div class="cpa-layer mode-choice-layer" style="border-left-color:var(--navy);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--navy);color:#fff">欢迎使用 · 选择你的学习方式</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">我们会根据你的选择调整学习路径</div>
       <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;padding:14px 16px;background:var(--teal-soft);border-radius:12px;margin-bottom:16px">
-        📖 今天我们要学习：${this._escape(problem.title || problem.question || '这道题目')}
+        📖 今天我们要学习：${q}
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
-        <div data-mode="beginner" style="padding:14px 16px;background:var(--teal-soft);border:2px solid var(--teal);border-radius:12px;cursor:pointer;transition:all .2s">
+        <div onclick="MathFlowV5._chooseStudyMode('beginner')" style="padding:14px 16px;background:var(--teal-soft);border:2px solid var(--teal);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--teal)';this.style.color='#fff'" onmouseout="this.style.background='var(--teal-soft)';this.style.color='inherit'">
           <div style="font-size:14px;font-weight:700;color:var(--teal-700)">🌟 刚学这个知识点</div>
           <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">完整学习路径：从情境导入一步步来</div>
         </div>
-        <div data-mode="intermediate" style="padding:14px 16px;background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:12px;cursor:pointer;transition:all .2s">
+        <div onclick="MathFlowV5._chooseStudyMode('intermediate')" style="padding:14px 16px;background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--yellow)';this.style.color='var(--navy)'" onmouseout="this.style.background='var(--yellow-soft)';this.style.color='inherit'">
           <div style="font-size:14px;font-weight:700;color:var(--navy)">💪 学过但不太会</div>
           <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">跳过RME建模，直接看别人的解法</div>
         </div>
-        <div data-mode="advanced" style="padding:14px 16px;background:var(--coral-soft);border:2px solid var(--coral);border-radius:12px;cursor:pointer;transition:all .2s">
+        <div onclick="MathFlowV5._chooseStudyMode('advanced')" style="padding:14px 16px;background:var(--coral-soft);border:2px solid var(--coral);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--coral)';this.style.color='#fff'" onmouseout="this.style.background='var(--coral-soft)';this.style.color='inherit'">
           <div style="font-size:14px;font-weight:700;color:var(--coral)">🚀 已经很熟练了</div>
           <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">跳过基础环节，直接挑战俄罗斯追问</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-3);text-align:center">💡 以后可以在"设置"中随时修改学习模式</div>
     </div>`;
-    // 绑定事件（确保跨浏览器兼容）
-    setTimeout(()=>{
-      document.querySelectorAll('.mode-choice-layer [data-mode]').forEach(el=>{
-        el.addEventListener('click',e=>{
-          e.preventDefault();
-          e.stopPropagation();
-          this._chooseStudyMode(el.dataset.mode);
-        });
-        el.addEventListener('mouseover',()=>{
-          el.style.background='var(--teal)'; el.style.color='#fff';
-        });
-        el.addEventListener('mouseout',()=>{
-          const bgMap={beginner:'var(--teal-soft)',intermediate:'var(--yellow-soft)',advanced:'var(--coral-soft)'};
-          el.style.background=bgMap[el.dataset.mode]||'var(--teal-soft)'; el.style.color='inherit';
-        });
-      });
-    }, 50);
     return html;
   },
   // 选择学习模式
   _chooseStudyMode(mode){
-    // 保存到用户状态
     if(S && S.math){
       S.math.mathProfile = { studyMode: mode, setAt: Date.now() };
       if(typeof saveState==='function') saveState();
     }
     this._applyStudyMode(mode);
     this._saveProgress();
-    // 重新渲染当前阶段
-    const html = this.renderCurrent();
-    const container = document.getElementById('mathStage') || document.getElementById('stageContent') || document.querySelector('.stage-container');
-    if(container){
-      container.innerHTML = html;
-    } else {
-      // 如果找不到容器，直接触发advance到对应阶段
+    try{
+      if(typeof updateMathStageV5==='function'){ updateMathStageV5(); return; }
+      const container = document.getElementById('mathStage');
+      if(container) container.innerHTML = this.renderCurrent();
+    }catch(e){
       this.advance(this._sess.stage);
     }
   },
