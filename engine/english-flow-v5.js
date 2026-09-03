@@ -379,9 +379,12 @@ window.EnglishFlowV5 = {
       SpeakEngineV5.startListening(function(tr){
         const res = SpeakEngineV5.scorePronunciation(tr, self._phraseRepeatTarget);
         self.init();
-        S.engV5.repeatSum += res.score;
-        S.engV5.repeatCount++;
-        self._save();
+        // 识别失败不计入平均分：那不是孩子说错了，是引擎没听清，不该拉低成绩
+        if(!res.noInput){
+          S.engV5.repeatSum += res.score;
+          S.engV5.repeatCount++;
+          self._save();
+        }
         if(fb) fb.innerHTML = '<span style="color:var(--teal)">' + res.feedback + '</span>';
       });
     } else if(fb){

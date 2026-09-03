@@ -543,22 +543,60 @@ window.SpeakEngineV5 = {
     return m[b.length][a.length];
   },
 
+  // ===== 儿童补偿曲线 =====
+  // Web Speech API 的声学模型主要以成人语音训练，儿童音调更高、发音更不稳，
+  // 识别文本与目标的编辑距离系统性偏大 —— 也就是说原始分对孩子天然偏低。
+  // 这里用一条凹曲线做补偿：低分抬得多、高分抬得少、保持排序、不封顶。
+  // 目的是修正已知的测量偏差，不是无差别送分。
+  _childCurve(raw){
+    const r = Math.max(0, Math.min(100, raw));
+    return Math.round(100 * Math.pow(r / 100, 0.75));
+  },
+
+  // 连续"识别失败"计数：给孩子台阶，不无限次要求重试
+  _noInputStreak(next){
+    try{
+      S.speakV5 = S.speakV5 || {};
+      if(next === 'reset'){ S.speakV5.noInputStreak = 0; return 0; }
+      S.speakV5.noInputStreak = (S.speakV5.noInputStreak || 0) + 1;
+      return S.speakV5.noInputStreak;
+    }catch(e){ return 1; }
+  },
+
   scorePronunciation(spoken, target, stage){
     const st = stage || (typeof S.engStage === 'number' ? S.engStage : 1);
     const e = (target || '').toLowerCase().replace(/[^a-z\s]/g, '').trim();
     const r = (spoken || '').toLowerCase().replace(/[^a-z\s]/g, '').trim();
+
+    // 识别失败：孩子说了，但引擎没返回文本。这不是"说错了"，不打分、不记 0 分。
+    if(!r){
+      const streak = this._noInputStreak();
+      // 连续 3 次识别不到就放孩子过去，不再要求重试
+      if(streak >= 3){
+        this._noInputStreak('reset');
+        return { passed: true, score: null, noInput: true, feedback: '这次先过，我们下次再来 🌱' };
+      }
+      const why = streak >= 2
+        ? '还是没听清。可能是周围有点吵，或者离麦克风远了一点点 —— 换个安静的地方再试试？'
+        : '没听清呢～ 可能是环境有点吵，或者说话时离麦克风远了一点点。再试一次？';
+      return { passed: false, score: null, noInput: true, feedback: why };
+    }
+    this._noInputStreak('reset'); // 成功识别，清零
+
     // 阶段1：不评分，只检测有没有说话（有声音即通过）
     if(st === 1){
-      const passed = r.length > 0;
-      return { passed: passed, score: passed ? 100 : 0, feedback: passed ? '真棒，你开口说啦！🌟' : '没听清，再试一次好吗？' };
+      return { passed: true, score: 100, feedback: '真棒，你开口说啦！🌟' };
     }
-    if(!e && !r) return { passed: false, score: 0, feedback: '再试一次吧 🌱' };
-    if(!e || !r) return { passed: false, score: r ? 40 : 20, feedback: '再大声说一次 💪' };
+    // 缺少范例句：属于数据问题，不怪孩子，不打分
+    if(!e) return { passed: false, score: null, noInput: true, feedback: '这句的范例句还没准备好，换一句试试 🌱' };
+
     const dist = this._levenshtein(e, r);
     const maxLen = Math.max(e.length, r.length);
     const sim = maxLen ? 1 - dist / maxLen : 1;
-    const score = Math.round(Math.max(0, Math.min(1, sim)) * 100);
-    const prev = S.speakV5 && S.speakV5.lastScore || 0;
+    const raw = Math.round(Math.max(0, Math.min(1, sim)) * 100);
+    const score = this._childCurve(raw);
+    const prev = (S.speakV5 && S.speakV5.lastScore) || 0;
+    S.speakV5 = S.speakV5 || {};
     S.speakV5.lastScore = score;
     this._save();
     // 阶段2：评分但不显示绝对分，显示"比上次好多了！"
@@ -566,7 +604,7 @@ window.SpeakEngineV5 = {
       const better = score >= prev;
       return { passed: true, score: score, feedback: better ? '比上次好多了！继续加油！🎉' : '不错哦，再多练几次会更棒！💪' };
     }
-    // 阶段3：正式评分，及格线40%
+    // 阶段3：正式评分，及格线 40%（已过儿童补偿曲线）
     const passed = score >= 40;
     let feedback;
     if(score >= 85) feedback = '发音很棒！🌟';
