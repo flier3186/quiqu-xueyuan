@@ -830,23 +830,48 @@ window.MathFlowV5 = {
       <div id="v5AskFeedback" style="margin-top:12px"></div>
     </div>`;
   },
+  // 三个预设问题给出差异化反馈：说清楚"这个问题好在哪"，而不是一律同一句夸奖
   _askChoose(el, idx){
     const container = el.parentElement;
     container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct'));
     el.classList.add('correct');
     const fb = document.getElementById('v5AskFeedback');
-    if(fb) fb.innerHTML = `<div style="padding:10px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:13px;color:var(--teal-700);line-height:1.7">🌟 好问题！会提问的孩子，数学一定学得好。</div>`;
+    if(!fb) return;
+    const tips = {
+      1: '这就是这道题<b>本身</b>在问的事。能一眼看清"题目到底要你求什么"，是解题最关键的一步 ✅',
+      2: '把数字换一换再问一遍 —— 这是数学家找规律的老办法。条件变了，原来的方法还成立吗？🔍',
+      3: '你换了个方向提问。想一想：这个新问题和刚才那道，解法会一样吗？哪里会不一样？🤔'
+    };
+    fb.innerHTML = `<div style="padding:10px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:13px;color:var(--teal-700);line-height:1.7">${tips[idx] || '🌟 好问题！会提问的孩子，数学一定学得好。'}</div>`;
+  },
+
+  // 判断孩子提的是不是一个"能算出答案的数学问题"
+  _askQuality(q){
+    if(!q) return { ok:false, reason:'empty' };
+    if(q.length < 5) return { ok:false, reason:'short' };
+    const m = q.match(/多少|几个|几只|几条|几支|第几|为什么|怎么会|怎么|怎样|一共|总共|还剩|剩下|比|多远|多久|哪个/);
+    if(m) return { ok:true, hook:m[0] };
+    if(/\d/.test(q)) return { ok:true, hook:null };   // 有具体数字，也能算
+    return { ok:false, reason:'notaquestion' };
   },
   _askSubmit(){
     const ta = document.getElementById('v5AskInput');
     const q = ta ? ta.value.trim() : '';
     const fb = document.getElementById('v5AskFeedback');
-    if(fb){
-      fb.innerHTML = q
-        ? `<div style="padding:12px 14px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">🌟 <b>你提的问题真棒！</b>「${this._escape(q)}」<br><span style="font-size:12px;color:var(--text-2)">数学家就是这样从问题开始的。进入练习检验今天的学习吧！</span></div>`
-        : `<div style="padding:10px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:13px;color:var(--coral)">还没写问题哦，或者从上面选一个也行 👆</div>`;
+    if(!fb) return;
+    const r = this._askQuality(q);
+    if(r.ok){
+      const why = r.hook
+        ? `你用上了「${this._escape(r.hook)}」—— 这就是一个<b>能算出答案</b>的问题 👍`
+        : `你给出了具体的数字，这样问题就能算了 👍`;
+      fb.innerHTML = `<div style="padding:12px 14px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">🌟 <b>会问了！</b>${why}<br><span style="font-size:12px;color:var(--text-2)">数学家就是从"能算的问题"开始的。进入练习检验一下吧！</span></div>`;
+      setTimeout(()=>{ this.advance('practice'); if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 1400);
+    } else {
+      const tip = r.reason === 'short'
+        ? '再写长一点点～ 好问题里通常会有「多少」「几个」「为什么」这样的词 👀'
+        : `你写的是「${this._escape(q.slice(0,24))}」，它更像一句话，不像一个能算出来的问题。<br>试试加上「多少」或「为什么」，让它变成一个<b>有答案</b>的数学问题？✏️`;
+      fb.innerHTML = `<div style="padding:10px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:13px;color:var(--coral);line-height:1.7">${r.reason === 'empty' ? '还没写问题哦，或者从上面选一个也行 👆' : tip}</div>`;
     }
-    if(q) setTimeout(()=>{ this.advance('practice'); if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 1400);
   },
 
   // ============================================================
