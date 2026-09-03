@@ -2,12 +2,12 @@
 .wrangler
 scan_math.js
 node_modules/
+# 自动化浏览器 profile（Playwright/Puppeteer 产物，含 Cookies 与登录凭据，禁止提交）
 edge_profile_*
+edge_test_*
 screenshot_*.png
 test_*.js
 docs/
 package.json
 package-lock.json
 .gitee/
-
-.vercel
