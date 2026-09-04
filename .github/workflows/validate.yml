@@ -1,0 +1,35 @@
+# 内容校验门禁 —— 把 AGENTS.md 的 R1 铁律（绝不能再出现减法写成加法）变成自动检查
+#
+# 校验内容：
+#   1. index.html 内联脚本语法
+#   2. 运行时实际加载的数据 / 引擎文件语法
+#   3. 分年级题库：必填字段 / 答案在选项中 / 答案与算式一致 / 可视化类型有对应渲染器
+#
+# 失败即阻断，避免错题内容被部署上线。
+
+name: Content Validation
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run content validation
+        run: node scripts/validate-all.js
