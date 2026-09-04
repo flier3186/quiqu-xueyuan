@@ -2450,12 +2450,13 @@ const ProgressTracker = {
 };
 
 // === 4. TimeController 时长控制引擎 ===
-// 单科20分钟 / 总40分钟 / 每15分钟护眼提醒 / 顶部固定计时器
+// 单科30分钟 / 总60分钟 / 每15分钟护眼提醒 / 顶部固定计时器
+// （2026-09-04 对齐：完整学习流程各阶段标注合计约 33 分钟，旧上限 20 分钟会导致流程未走完就被提醒换科）
 const TimeController = {
   _state: { subject:null, startTs:0, elapsed:0, running:false, lastBreakCheck:0, reminders:{} },
   _timer: null,
-  SUBJECT_LIMIT: 20*60,    // 单科20分钟
-  TOTAL_LIMIT:   40*60,    // 总时长40分钟
+  SUBJECT_LIMIT: 30*60,    // 单科30分钟
+  TOTAL_LIMIT:   60*60,    // 总时长60分钟
   BREAK_INTERVAL:15*60,    // 每15分钟护眼提醒
 
   // 开始学习会话
@@ -2492,20 +2493,20 @@ const TimeController = {
     const e = this._state.elapsed;
     this._state.reminders = this._state.reminders || {};
     const r = this._state.reminders;
-    // 提前 10 分钟提醒（30 分钟）
-    if(e >= 30*60 && !r.m30){ r.m30 = true; if(typeof toast==='function') toast('⏰ 还有10分钟到40分钟'); }
-    // 提前 5 分钟提醒（35 分钟）
-    if(e >= 35*60 && !r.m35){ r.m35 = true; if(typeof toast==='function') toast('⏰ 还有5分钟到40分钟'); }
-    // 单科 20 分钟：提醒但不强制
+    // 提前 10 分钟提醒（20 分钟）
+    if(e >= 20*60 && !r.m30){ r.m30 = true; if(typeof toast==='function') toast('⏰ 还有10分钟到30分钟'); }
+    // 提前 5 分钟提醒（25 分钟）
+    if(e >= 25*60 && !r.m35){ r.m35 = true; if(typeof toast==='function') toast('⏰ 还有5分钟到30分钟'); }
+    // 单科 30 分钟：提醒但不强制
     if(e >= this.SUBJECT_LIMIT && !r.subject){
       r.subject = true;
       const subj = this._state.subject==='math'?'数学':(this._state.subject==='eng'?'英语':'本节');
-      if(typeof toast==='function') toast(`⏰ ${subj}20分钟到啦，建议切换科目`);
+      if(typeof toast==='function') toast(`⏰ ${subj}30分钟到啦，建议切换科目`);
     }
-    // 总时长到 40 分钟：不调用 forceBreak，只提醒，继续计时
+    // 总时长到 60 分钟：不调用 forceBreak，只提醒，继续计时
     if(e >= this.TOTAL_LIMIT){
-      if(!r.total){ r.total = true; if(typeof toast==='function') toast('⏰ 已学习40分钟，建议休息！如需继续请点击延时'); }
-      return { type:'totalTimeout', elapsed:e, msg:'⏰ 已学习40分钟，建议休息！如需继续请点击延时' };
+      if(!r.total){ r.total = true; if(typeof toast==='function') toast('⏰ 已学习60分钟，建议休息！如需继续请点击延时'); }
+      return { type:'totalTimeout', elapsed:e, msg:'⏰ 已学习60分钟，建议休息！如需继续请点击延时' };
     }
     return { type:'running', elapsed:e, remaining:this.TOTAL_LIMIT-e };
   },
@@ -6895,7 +6896,28 @@ const defaultState={
     default:{name:'宝贝',avatarIdx:0,grade:'3',createdAt:Date.now()},
   }
 };
-function loadState(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));return s?{...defaultState,...s}:defaultState;}catch{return defaultState}}
+// ===== 状态版本与迁移（只增不改：新结构变更在此追加分支，绝不删除旧字段） =====
+const STATE_VERSION=5;
+function migrateState(s){
+  if(!s || typeof s!=='object') return {};
+  if(!s.stateVersion) s.stateVersion=1;
+  // v1→v5：历史结构变更占位。未来升级在此追加 if(s.stateVersion<2){...} 等
+  s.stateVersion=STATE_VERSION;
+  return s;
+}
+function loadState(){
+  const raw=localStorage.getItem(STORAGE_KEY);
+  if(!raw) return {...defaultState, stateVersion:STATE_VERSION};
+  let s;
+  try{ s=JSON.parse(raw); }
+  catch(e){
+    // 解析失败：先抢救原始数据，再回退默认态（孩子的学习记录比代码值钱）
+    try{ localStorage.setItem(STORAGE_KEY+'_corrupt_'+Date.now(), raw); }catch(_){}
+    return {...defaultState, stateVersion:STATE_VERSION};
+  }
+  s=migrateState(s||{});
+  return {...defaultState,...s};
+}
 function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
 let S=loadState();
 
