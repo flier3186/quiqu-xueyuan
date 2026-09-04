@@ -235,7 +235,7 @@ window.MathVisualV5 = {
       const color=this._hex(p.color)||this._palette(i);
       return `<g class="mv-bond-part" style="animation-delay:${0.55+i*0.2}s">
         <circle cx="${bx}" cy="${bottomY}" r="26" fill="${color}"/>
-        <text x="${bx}" y="${bottomY+6}" text-anchor="middle" font-size="18" font-weight="700" fill="${this._textColor(color)}">${p.val}</text>
+        <text x="${bx}" y="${bottomY+6}" text-anchor="middle" font-size="18" font-weight="700" fill="${this._textColor(color)}">${p.val != null ? p.val : p.value}</text>
       </g>`;
     }).join('');
     return `<div class="mv-wrap mv-number-bond">
@@ -284,7 +284,10 @@ window.MathVisualV5 = {
   // 5. 数轴 —— 整数 / 小数 / 负数 / 运算过程
   // data: {start, end, points:[{pos,label,color}], highlight:[a,b]}
   numberLine(data){
-    const {start, end, points, highlight} = data;
+    const {points, highlight} = data;
+    // 兼容 min/max 命名（如负数认识题）
+    const start = data.start != null ? data.start : data.min;
+    const end = data.end != null ? data.end : data.max;
     const W=560, H=150, padX=40, padY=78, lineW=W-padX*2-16;
     const range=end-start;
     const pos=(v)=> padX + ((v-start)/range)*lineW;
@@ -328,14 +331,44 @@ window.MathVisualV5 = {
     let body='', formula='';
     if(shape==='rectangle'){
       const {length,width}=p;
+      if(p.scale!=null && p.originalLength!=null){
+        // 图形的放大与缩小：原长 originalLength，按 scale:1 放大
+        const sc0=16, ol=p.originalLength*sc0, nl=p.originalLength*p.scale*sc0;
+        const oh=Math.round(ol*0.6), nh=Math.round(nl*0.6);
+        const yA=H/2-30, yB=H/2+8;
+        body=`<rect x="${40}" y="${yA-oh}" width="${ol}" height="${oh}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>
+          <text x="${40+ol/2}" y="${yA-oh-8}" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">原：长${p.originalLength}cm</text>
+          <rect x="${W-40-nl-60}" y="${yB-nh-30}" width="${nl}" height="${nh}" fill="rgba(245,184,0,0.12)" stroke="#F5B800" stroke-width="2.5"/>
+          <text x="${W-40-nl/2-60}" y="${yB-nh-38}" text-anchor="middle" font-size="12" font-weight="700" fill="#AC7E00">放大后：长${p.originalLength*p.scale}cm</text>
+          <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="13" font-weight="800" fill="#FB923C">按 ${p.scale}:1 放大——边长 ×${p.scale}，形状不变</text>`;
+        formula=`放大后长 = ${p.originalLength}×${p.scale} = ${p.originalLength*p.scale} cm`;
+      } else if(typeof length !== 'number' || typeof width !== 'number'){
+        // 字母表示数（如 长=a 宽=b）：画示意矩形 + 符号公式，不算数字
+        const rw=200, rh=120, x0=(W-rw)/2, y0=(H-56-rh)/2;
+        body=`<rect x="${x0}" y="${y0}" width="${rw}" height="${rh}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5" rx="3"/>
+          <text x="${x0+rw/2}" y="${y0-10}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">长 = ${length}</text>
+          <text x="${x0+rw+10}" y="${y0+rh/2+5}" font-size="14" font-weight="700" fill="#1E3A5F">宽 = ${width}</text>`;
+        formula=`周长 = 2×(${length}+${width})　面积 = ${length}×${width}`;
+      } else {
       const sc=15, rw=length*sc, rh=width*sc;
       const x0=(W-rw)/2, y0=(H-rh)/2;
       body=`<rect class="mv-geo-outline" x="${x0}" y="${y0}" width="${rw}" height="${rh}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5" rx="3"/>
         <text x="${x0+rw/2}" y="${y0-10}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">长 ${length}</text>
         <text x="${x0+rw+8}" y="${y0+rh/2+5}" font-size="13" font-weight="700" fill="#1E3A5F">宽 ${width}</text>`;
       formula=`周长 = (${length}+${width})×2 = ${2*(length+width)}　面积 = ${length}×${width} = ${length*width}`;
+      }
     } else if(shape==='triangle'){
-      const {base,height}=p;
+      if(p.base==null || p.height==null){
+        // 无尺寸参数：画通用三角形（认识三角形特征用），不编造面积
+        const cx2=W/2, baseY=H-60, bw=150, hh=120;
+        body=`<polygon points="${cx2-bw/2},${baseY} ${cx2+bw/2},${baseY} ${cx2},${baseY-hh}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>
+          <circle cx="${cx2}" cy="${baseY-hh}" r="4" fill="#FB923C"/>
+          <circle cx="${cx2-bw/2}" cy="${baseY}" r="4" fill="#FB923C"/>
+          <circle cx="${cx2+bw/2}" cy="${baseY}" r="4" fill="#FB923C"/>
+          <text x="${cx2}" y="${baseY+24}" text-anchor="middle" font-size="12" fill="#FB923C">3个顶点（橙点）</text>`;
+        formula='三角形：3条边、3个角、3个顶点，内角和 = 180°';
+      } else {
+      const base=p.base, height=p.height;
       const sc=13, bw=base*sc, hh=height*sc;
       const cx=W/2, baseY=H-44;
       body=`<polygon class="mv-geo-outline" points="${cx-bw/2},${baseY} ${cx+bw/2},${baseY} ${cx},${baseY-hh}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>
@@ -343,6 +376,7 @@ window.MathVisualV5 = {
         <text x="${cx+8}" y="${baseY-hh/2}" font-size="12" font-weight="700" fill="#FB923C">高 ${height}</text>
         <text x="${cx}" y="${baseY+22}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">底 ${base}</text>`;
       formula=`面积 = 底×高÷2 = ${base}×${height}÷2 = ${base*height/2}`;
+      }
     } else if(shape==='parallelogram'){
       const {base,height,side}=p;
       const sc=12, bw=base*sc, hh=height*sc, sl=(side||height)*sc;
@@ -354,7 +388,7 @@ window.MathVisualV5 = {
         <text x="${x0+bw/2}" y="${baseY+22}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">底 ${base}</text>`;
       formula=`面积 = 底×高 = ${base}×${height} = ${base*height}`;
     } else if(shape==='trapezoid'){
-      const {top,bottom,height}=p;
+      const top=(p.top!=null?p.top:(p.a!=null?p.a:8)), bottom=(p.bottom!=null?p.bottom:(p.b!=null?p.b:12)), height=(p.height!=null?p.height:(p.h!=null?p.h:5));
       const sc=12, tw=top*sc, bw=bottom*sc, hh=height*sc;
       const cx=W/2, baseY=H-50;
       body=`<polygon class="mv-geo-outline" points="${cx-bw/2},${baseY} ${cx+bw/2},${baseY} ${cx+tw/2},${baseY-hh} ${cx-tw/2},${baseY-hh}" fill="rgba(232,160,191,0.18)" stroke="#E8A0BF" stroke-width="2.5"/>
@@ -364,7 +398,8 @@ window.MathVisualV5 = {
         <text x="${cx}" y="${baseY+22}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">下底 ${bottom}</text>`;
       formula=`面积 = (上底+下底)×高÷2 = (${top}+${bottom})×${height}÷2 = ${(top+bottom)*height/2}`;
     } else if(shape==='circle'){
-      const {radius}=p;
+      const radius=(p.radius!=null?p.radius:(p.diameter!=null?p.diameter/2:5));
+      const dimLabel=(p.radius!=null)?('r='+radius):('d='+p.diameter);
       const sc=9, r=radius*sc, cx=W/2, cy=H/2;
       body=`<circle class="mv-geo-outline" cx="${cx}" cy="${cy}" r="${r}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5"/>
         <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
@@ -384,8 +419,26 @@ window.MathVisualV5 = {
         <text x="${cx+r/2}" y="${cy-8}" text-anchor="middle" font-size="12" font-weight="700" fill="#FB923C">r=${radius}</text>`;
       formula=`体积 = πr²h = 3.14×${radius}²×${height} = ${(radius*radius*height*3.14).toFixed(2)}`;
     } else if(shape==='balance'){
-      // 兼容旧题库 shape='balance'，路由到 balanceDecision
-      return this.balanceDecision(data);
+      // 方程天平：params {left:'x', right:50, balanced:true} → 简易天平；否则路由到 balanceDecision
+      if(p && (p.left != null || p.right != null) && !Array.isArray(p.left)){
+        const beamY=110, cx2=W/2;
+        const panL=String(p.left), panR=String(p.right);
+        const balanced=p.balanced!==false;
+        const tilt=balanced?0:(p.leftWeightRight?2:-3);
+        body=`<polygon points="${cx2},${beamY} ${cx2-26},${beamY+34} ${cx2+26},${beamY+34}" fill="#FB923C"/>
+          <rect x="${cx2-4}" y="${beamY-64}" width="8" height="64" fill="#1E3A5F"/>
+          <line x1="${cx2-130}" y1="${beamY-64+tilt}" x2="${cx2+130}" y2="${beamY-64-tilt}" stroke="#1E3A5F" stroke-width="4" stroke-linecap="round"/>
+          <line x1="${cx2-130}" y1="${beamY-64+tilt}" x2="${cx2-130}" y2="${beamY-34+tilt}" stroke="#1E3A5F" stroke-width="2"/>
+          <line x1="${cx2+130}" y1="${beamY-64-tilt}" x2="${cx2+130}" y2="${beamY-34-tilt}" stroke="#1E3A5F" stroke-width="2"/>
+          <path d="M ${cx2-172} ${beamY-30+tilt} A 42 26 0 0 0 ${cx2-88} ${beamY-30+tilt} Z" fill="rgba(0,168,150,0.20)" stroke="#00A896" stroke-width="2.5"/>
+          <path d="M ${cx2+88} ${beamY-30-tilt} A 42 26 0 0 0 ${cx2+172} ${beamY-30-tilt} Z" fill="rgba(245,184,0,0.20)" stroke="#F5B800" stroke-width="2.5"/>
+          <text x="${cx2-130}" y="${beamY-4+tilt}" text-anchor="middle" font-size="22" font-weight="800" fill="#006B5E">${panL}</text>
+          <text x="${cx2+130}" y="${beamY-4-tilt}" text-anchor="middle" font-size="22" font-weight="800" fill="#AC7E00">${panR}</text>
+          <text x="${cx2}" y="${beamY+62}" text-anchor="middle" font-size="14" font-weight="700" fill="${balanced?'#00A896':'#FB923C'}">${balanced?'天平平衡':'天平不平衡'}</text>`;
+        formula=balanced?`天平平衡 → ${panL} = ${panR}`:`左 ${panL} 与 右 ${panR} 不相等`;
+      } else {
+        return this.balanceDecision(data);
+      }
     } else if(shape==='quadrilateral'){
       const sides = p.sides || 4;
       const cx=W/2, cy=H/2, r=70;
@@ -490,6 +543,462 @@ window.MathVisualV5 = {
         <text x="${cx+r+4}" y="${baseY+4}" font-size="11" font-weight="700" fill="#1E3A5F">r=${radius}</text>`;
       const L=Math.sqrt(radius*radius+height*height).toFixed(1);
       formula=`母线长 = √(r²+h²) = ${L}　体积 = 1/3πr²h = ${(1/3*Math.PI*radius*radius*height).toFixed(1)}`;
+    } else if(shape==='compass'){
+      // 方向罗盘：上北下南左西右东，高亮 front/up/between 等
+      const p2=p||{};
+      const cx2=W/2, cy2=H/2, r2=70;
+      const dirPos={'北':[cx2,cy2-r2],'东':[cx2+r2,cy2],'南':[cx2,cy2+r2],'西':[cx2-r2,cy2]};
+      const dirVec={'北':[0,-1],'东':[1,0],'南':[0,1],'西':[-1,0]};
+      body=`<circle cx="${cx2}" cy="${cy2}" r="${r2+18}" fill="rgba(0,168,150,0.06)" stroke="#00A896" stroke-width="1.5"/>
+        <line x1="${cx2}" y1="${cy2-r2}" x2="${cx2}" y2="${cy2+r2}" stroke="#9aa5b1" stroke-width="2"/>
+        <line x1="${cx2-r2}" y1="${cy2}" x2="${cx2+r2}" y2="${cy2}" stroke="#9aa5b1" stroke-width="2"/>`;
+      for(const d of ['北','东','南','西']){
+        const [tx,ty]=dirPos[d];
+        body+=`<text x="${tx}" y="${ty+5}" text-anchor="middle" font-size="16" font-weight="800" fill="${d==='北'?'#e74c3c':'#1E3A5F'}">${d}</text>`;
+      }
+      formula='地图通常按"上北、下南、左西、右东"绘制';
+      if(p2.front){
+        const fv=dirVec[p2.front]||[0,-1];
+        const ax=cx2+fv[0]*r2*0.72, ay=cy2+fv[1]*r2*0.72;
+        body+=`<line x1="${cx2}" y1="${cy2}" x2="${ax}" y2="${ay}" stroke="#FB923C" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="${ax+fv[0]*10},${ay+fv[1]*10} ${ax-fv[1]*6-fv[0]*4},${ay+fv[0]*6-fv[1]*4} ${ax+fv[1]*6-fv[0]*4},${ay-fv[0]*6-fv[1]*4}" fill="#FB923C"/>`;
+        if(p2.back) formula=`面朝${p2.front}，背后是${p2.back}`;
+        else if(p2.left) formula=`面朝${p2.front}时，左手边是${p2.left}`;
+        else formula=`面朝${p2.front}`;
+      } else if(p2.up){
+        body+=`<circle cx="${cx2}" cy="${cy2-r2}" r="14" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="4,3"/>`;
+        formula=`地图上方是${p2.up}`;
+      } else if(p2.between){
+        body+=`<path d="M ${cx2+r2*0.75} ${cy2} A ${r2*0.75} ${r2*0.75} 0 0 1 ${cx2} ${cy2+r2*0.75}" fill="rgba(245,184,0,0.35)" stroke="#F5B800" stroke-width="2"/>`;
+        formula=`${p2.between} 在 东 和 南 之间`;
+      }
+    } else if(shape==='cuboid'){
+      if(p.view){
+        const L=p.length||6, Wd=p.width||4, Ht=p.height||3;
+        const dims={top:[L,Wd,'长','宽','从上面看'],front:[L,Ht,'长','高','从正面看'],side:[Wd,Ht,'宽','高','从侧面看']}[p.view]||[L,Ht,'长','高','从正面看'];
+        const sc=Math.min(26/Math.max(dims[0],1), 34/Math.max(dims[1],1));
+        const rw=dims[0]*sc, rh=dims[1]*sc, x0=(W-rw)/2, y0=(H-40-rh)/2;
+        body=`<rect x="${x0}" y="${y0}" width="${rw}" height="${rh}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5" rx="2"/>
+          <text x="${x0+rw/2}" y="${y0-10}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${dims[2]} ${dims[0]}</text>
+          <text x="${x0+rw+10}" y="${y0+rh/2+5}" font-size="13" font-weight="700" fill="#1E3A5F">${dims[3]} ${dims[1]}</text>
+          <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="13" font-weight="700" fill="#FB923C">${dims[4]}</text>`;
+        formula=`看到的是一个长方形（${dims[2]}×${dims[3]}）`;
+      } else {
+        const L=p.length||6, Wd=p.width||4, Ht=p.height||3;
+        const sc=Math.min(14, 120/Math.max(L,1), 60/Math.max(Ht,1));
+        const rw=L*sc, rh=Ht*sc, dp=Math.min(Wd*sc*0.5, 46);
+        const x0=(W-rw-dp)/2, y0=(H-30-rh)/2;
+        body=`<path d="M ${x0} ${y0} L ${x0+dp} ${y0-dp} L ${x0+rw+dp} ${y0-dp} L ${x0+rw} ${y0} Z" fill="rgba(0,168,150,0.15)" stroke="#00A896" stroke-width="2"/>
+          <rect x="${x0}" y="${y0}" width="${rw}" height="${rh}" fill="rgba(0,168,150,0.08)" stroke="#00A896" stroke-width="2.5"/>
+          <line x1="${x0+rw}" y1="${y0}" x2="${x0+rw+dp}" y2="${y0-dp}" stroke="#00A896" stroke-width="2"/>
+          <line x1="${x0+rw}" y1="${y0+rh}" x2="${x0+rw+dp}" y2="${y0+rh-dp}" stroke="#00A896" stroke-width="2"/>
+          <line x1="${x0+rw+dp}" y1="${y0-dp}" x2="${x0+rw+dp}" y2="${y0+rh-dp}" stroke="#00A896" stroke-width="2"/>
+          <text x="${x0+rw/2}" y="${y0+rh+18}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">长 ${L}</text>
+          <text x="${x0-10}" y="${y0+rh/2}" text-anchor="end" font-size="13" font-weight="700" fill="#1E3A5F">高 ${Ht}</text>
+          <text x="${x0+rw+dp/2+6}" y="${y0-dp/2}" font-size="12" font-weight="700" fill="#FB923C">宽 ${Wd}</text>`;
+        formula=`长方体有 12 条棱、6 个面、8 个顶点`;
+      }
+    } else if(shape==='square'){
+      const sd=p.side||5, unit=p.unit||'';
+      const sc=Math.min(14, 170/Math.max(sd,1));
+      const rw=Math.max(sd*sc, 60), x0=(W-rw)/2, y0=(H-46-rw)/2;
+      body=`<rect x="${x0}" y="${y0}" width="${rw}" height="${rw}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5" rx="2"/>
+        <text x="${x0+rw/2}" y="${y0-10}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${sd}${unit}</text>
+        <text x="${x0+rw+10}" y="${y0+rw/2+5}" font-size="13" font-weight="700" fill="#1E3A5F">${sd}${unit}</text>
+        <text x="${W/2}" y="${y0+rw+30}" text-anchor="middle" font-size="13" fill="#FB923C">${p.label||''}</text>`;
+      formula=`正方形四边相等：周长 = ${sd}×4 = ${sd*4}${unit}　面积 = ${sd}×${sd} = ${sd*sd}${unit}²`;
+    } else if(shape==='angle'){
+      const deg=(p.degree!=null)?p.degree:(p.angle!=null?p.angle:90);
+      const tname={'right':'直角','acute':'锐角','obtuse':'钝角','straight':'平角'}[p.type]||'角';
+      const rad=deg*Math.PI/180, rArm=100;
+      const vx=90, vy=H-56;
+      const x3=vx+rArm*Math.cos(-rad), y3=vy+rArm*Math.sin(-rad);
+      body=`<line x1="${vx}" y1="${vy}" x2="${vx+rArm}" y2="${vy}" stroke="#1E3A5F" stroke-width="3"/>
+        <line x1="${vx}" y1="${vy}" x2="${x3}" y2="${y3}" stroke="#1E3A5F" stroke-width="3"/>
+        <circle cx="${vx}" cy="${vy}" r="4" fill="#FB923C"/>`;
+      if(deg===90){
+        const s=18;
+        body+=`<path d="M ${vx+s} ${vy} L ${vx+s} ${vy-s} L ${vx} ${vy-s}" fill="none" stroke="#FB923C" stroke-width="2.5"/>`;
+      } else {
+        const arcR=34;
+        body+=`<path d="M ${vx+arcR} ${vy} A ${arcR} ${arcR} 0 0 0 ${vx+arcR*Math.cos(-rad)} ${vy+arcR*Math.sin(-rad)}" fill="none" stroke="#FB923C" stroke-width="2.5"/>`;
+      }
+      body+=`<text x="${vx+52}" y="${vy-16}" font-size="14" font-weight="800" fill="#FB923C">${deg}°</text>
+        <text x="${W/2+40}" y="${H-16}" text-anchor="middle" font-size="14" font-weight="800" fill="#1E3A5F">${tname}（${deg}°）</text>`;
+      if(p.complement!=null){
+        body+=`<line x1="${vx+rArm}" y1="${vy}" x2="${vx+rArm+50}" y2="${vy}" stroke="#1E3A5F" stroke-width="3" opacity="0.5"/>
+          <text x="${vx+90}" y="${vy-16}" font-size="12" font-weight="700" fill="#E8A0BF">∠2=${p.complement}°</text>`;
+        formula=`∠1 = ${deg}°，∠2 = ${p.complement}°，${deg} + ${p.complement} = 180°（组成平角）`;
+      } else { formula=`${tname}是 ${deg}°`; }
+    } else if(shape==='grid'){
+      if(p.point){
+        const pt2=p.point, col=pt2[0], row=pt2[1], N=6, cell=Math.min(30, 180/N);
+        const x0=(W-N*cell)/2, y0=(H-60-N*cell)/2;
+        for(let gi=0; gi<=N; gi++){
+          body+=`<line x1="${x0+gi*cell}" y1="${y0}" x2="${x0+gi*cell}" y2="${y0+N*cell}" stroke="#d5dbe3" stroke-width="1"/>
+            <line x1="${x0}" y1="${y0+gi*cell}" x2="${x0+N*cell}" y2="${y0+gi*cell}" stroke="#d5dbe3" stroke-width="1"/>`;
+        }
+        for(let gi=1; gi<=N; gi++){
+          body+=`<text x="${x0+gi*cell-cell/2}" y="${y0+N*cell+16}" text-anchor="middle" font-size="10" fill="#9aa5b1">${gi}</text>
+            <text x="${x0-12}" y="${y0+N*cell-gi*cell+cell/2+4}" text-anchor="middle" font-size="10" fill="#9aa5b1">${N+1-gi}</text>`;
+        }
+        const px=x0+(col-0.5)*cell, py=y0+(N-row)*cell+cell/2;
+        body+=`<circle cx="${px}" cy="${py}" r="8" fill="#FB923C"/>
+          <text x="${px+14}" y="${py+5}" font-size="13" font-weight="800" fill="#FB923C">(${col},${row})</text>`;
+        formula=`数对 (列,行) = (${col},${row})：先列后行`;
+      } else if(p.fullCells!=null){
+        const full=p.fullCells, half=p.halfCells||0, N=6, cell=Math.min(26, 170/N);
+        const x0=(W-N*cell)/2, y0=(H-56-N*cell)/2;
+        for(let gi=0; gi<=N; gi++){
+          body+=`<line x1="${x0+gi*cell}" y1="${y0}" x2="${x0+gi*cell}" y2="${y0+N*cell}" stroke="#d5dbe3" stroke-width="1"/>
+            <line x1="${x0}" y1="${y0+gi*cell}" x2="${x0+N*cell}" y2="${y0+gi*cell}" stroke="#d5dbe3" stroke-width="1"/>`;
+        }
+        let fi=0, hi=0;
+        for(let rI=0; rI<N && (fi<full||hi<half); rI++){
+          for(let cI=0; cI<N && (fi<full||hi<half); cI++){
+            const gx=x0+cI*cell, gy=y0+rI*cell;
+            if(fi<full){ body+=`<rect x="${gx}" y="${gy}" width="${cell}" height="${cell}" fill="rgba(0,168,150,0.45)"/>`; fi++; }
+            else if(hi<half){ body+=`<path d="M ${gx} ${gy} L ${gx+cell} ${gy} L ${gx} ${gy+cell} Z" fill="rgba(245,184,0,0.5)"/>`; hi++; }
+          }
+        }
+        formula=`整格 ${full} 个 + 半格 ${half} 个 ≈ ${full}+${half}/2 = ${full+half/2} 格`;
+      }
+    } else if(shape==='cube'){
+      const sd=p.side||'', unit=p.unit||'';
+      const s=64, x0=(W-s-30)/2, y0=(H-34-s)/2, dp=26;
+      body=`<path d="M ${x0} ${y0} L ${x0+dp} ${y0-dp} L ${x0+s+dp} ${y0-dp} L ${x0+s} ${y0} Z" fill="rgba(0,168,150,0.15)" stroke="#00A896" stroke-width="2"/>
+        <rect x="${x0}" y="${y0}" width="${s}" height="${s}" fill="rgba(0,168,150,0.08)" stroke="#00A896" stroke-width="2.5"/>
+        <line x1="${x0+s}" y1="${y0}" x2="${x0+s+dp}" y2="${y0-dp}" stroke="#00A896" stroke-width="2"/>
+        <line x1="${x0+s}" y1="${y0+s}" x2="${x0+s+dp}" y2="${y0+s-dp}" stroke="#00A896" stroke-width="2"/>
+        <line x1="${x0+s+dp}" y1="${y0-dp}" x2="${x0+s+dp}" y2="${y0+s-dp}" stroke="#00A896" stroke-width="2"/>
+        <text x="${x0+s/2}" y="${y0+s+20}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">棱长 ${sd||'a'} ${unit}</text>
+        <text x="${W/2+70}" y="${H/2}" font-size="13" fill="#FB923C">${p.label||''}</text>`;
+      formula=`正方体 12 条棱都相等${sd?`：棱长总和 = ${sd}×12 = ${sd*12}${unit}`:''}`;
+    } else if(shape==='line'){
+      const y=H/2;
+      if(p.type==='segment'){
+        body=`<line x1="80" y1="${y}" x2="${W-80}" y2="${y}" stroke="#00A896" stroke-width="3.5"/>
+          <circle cx="80" cy="${y}" r="6" fill="#1E3A5F"/><circle cx="${W-80}" cy="${y}" r="6" fill="#1E3A5F"/>`;
+        formula='线段：2 个端点，长度可以测量';
+      } else if(p.type==='ray'){
+        body=`<line x1="110" y1="${y}" x2="${W-60}" y2="${y}" stroke="#00A896" stroke-width="3.5"/>
+          <polygon points="${W-40},${y} ${W-64},${y-9} ${W-64},${y+9}" fill="#00A896"/>
+          <circle cx="110" cy="${y}" r="6" fill="#1E3A5F"/>`;
+        formula='射线：1 个端点，向一端无限延伸';
+      } else {
+        body=`<line x1="50" y1="${y}" x2="${W-90}" y2="${y}" stroke="#00A896" stroke-width="3.5"/>
+          <polygon points="${W-70},${y} ${W-94},${y-9} ${W-94},${y+9}" fill="#00A896"/>
+          <polygon points="70,${y} 94,${y-9} 94,${y+9}" fill="#00A896"/>`;
+        formula='直线：没有端点，向两端无限延伸';
+      }
+    } else if(shape==='lines'){
+      const y1=H/2-26, y2=H/2+26;
+      if(p.type==='intersect'){
+        body=`<line x1="70" y1="${y1}" x2="${W-70}" y2="${y1}" stroke="#00A896" stroke-width="3"/>
+          <line x1="120" y1="${y1-18}" x2="${W-130}" y2="${y2+18}" stroke="#F5B800" stroke-width="3"/>
+          <circle cx="${(120+W-130)/2}" cy="${y1}" r="4" fill="#FB923C"/>`;
+        formula='相交：两条直线有一个交点';
+      } else {
+        body=`<line x1="70" y1="${y1}" x2="${W-110}" y2="${y1}" stroke="#00A896" stroke-width="3"/>
+          <line x1="70" y1="${y2}" x2="${W-110}" y2="${y2}" stroke="#00A896" stroke-width="3"/>
+          <path d="M 100 ${y1-8} l 16 8 l -16 8" fill="none" stroke="#FB923C" stroke-width="2"/>
+          <path d="M 100 ${y2-8} l 16 8 l -16 8" fill="none" stroke="#FB923C" stroke-width="2"/>
+          <path d="M ${W-140} ${y1+8} l -16 -8 l 16 -8" fill="none" stroke="#FB923C" stroke-width="2"/>
+          <path d="M ${W-140} ${y2+8} l -16 -8 l 16 -8" fill="none" stroke="#FB923C" stroke-width="2"/>`;
+        formula='平行：同一平面内永不相交';
+      }
+    } else if(shape==='perpendicular'){
+      const ly=H-70, px=W/2, py=70;
+      body=`<line x1="60" y1="${ly}" x2="${W-60}" y2="${ly}" stroke="#00A896" stroke-width="3"/>
+        <circle cx="${px}" cy="${py}" r="6" fill="#1E3A5F"/>
+        <text x="${px+10}" y="${py-6}" font-size="13" font-weight="700" fill="#1E3A5F">点A</text>
+        <line x1="${px}" y1="${py}" x2="${px}" y2="${ly}" stroke="#FB923C" stroke-width="3"/>
+        <path d="M ${px} ${ly-16} L ${px+16} ${ly-16} L ${px+16} ${ly}" fill="none" stroke="#E8A0BF" stroke-width="2.5"/>
+        <circle cx="${px}" cy="${ly}" r="5" fill="#FB923C"/>
+        <text x="${px+24}" y="${ly-8}" font-size="13" font-weight="700" fill="#FB923C">垂足</text>
+        <text x="${px+34}" y="${(py+ly)/2}" font-size="12" font-weight="700" fill="#E8A0BF">垂直线段</text>`;
+      formula='从直线外一点到直线的所有线段中，垂直线段最短';
+    } else if(shape==='symmetry'){
+      const ax=W/2;
+      body=`<line x1="${ax}" y1="40" x2="${ax}" y2="${H-46}" stroke="#FB923C" stroke-width="2.5" stroke-dasharray="7,5"/>
+        <path d="M ${ax-20} ${H-46} L ${ax-95} ${H-70} L ${ax-78} 130 L ${ax-38} 96 L ${ax-20} 118 Z" fill="rgba(0,168,150,0.25)" stroke="#00A896" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M ${ax+20} ${H-46} L ${ax+95} ${H-70} L ${ax+78} 130 L ${ax+38} 96 L ${ax+20} 118 Z" fill="rgba(245,184,0,0.22)" stroke="#F5B800" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,4"/>
+        <text x="${ax+8}" y="52" font-size="12" font-weight="700" fill="#FB923C">对称轴</text>
+        <text x="${ax-60}" y="${H-28}" font-size="12" fill="#00A896">左 = 右（沿轴对折完全重合）</text>`;
+      formula='轴对称图形：沿对称轴对折，两边完全重合';
+    } else if(shape==='translation'){
+      const d=p.direction||'right', dist=p.distance||3, cell=24;
+      const tri=[[0,0],[52,26],[0,52]];
+      const x0=80, y0=H/2-26;
+      const mv={right:[dist*cell,0],left:[-dist*cell,0],up:[0,-dist*cell],down:[0,dist*cell]}[d]||[dist*cell,0];
+      const pts1=tri.map(pt=>`${x0+pt[0]},${y0+pt[1]}`).join(' ');
+      const pts2=tri.map(pt=>`${x0+pt[0]+mv[0]},${y0+pt[1]+mv[1]}`).join(' ');
+      const dirName={right:'右',left:'左',up:'上',down:'下'}[d]||d;
+      body=`<polygon points="${pts1}" fill="rgba(0,168,150,0.30)" stroke="#00A896" stroke-width="2.5"/>
+        <polygon points="${pts2}" fill="none" stroke="#F5B800" stroke-width="2.5" stroke-dasharray="6,4"/>
+        <line x1="${x0+56}" y1="${y0+26}" x2="${x0+mv[0]-6}" y2="${y0+26}" stroke="#FB923C" stroke-width="3" stroke-dasharray="5,4"/>
+        <polygon points="${x0+mv[0]},${y0+26} ${x0+mv[0]-12},${y0+20} ${x0+mv[0]-12},${y0+32}" fill="#FB923C"/>
+        <text x="${x0+56+(mv[0]-56)/2}" y="${y0+16}" text-anchor="middle" font-size="12" font-weight="700" fill="#FB923C">${dist} 格</text>
+        <text x="${W/2}" y="${H-16}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">向${dirName}平移 ${dist} 格（形状、大小、方向都不变，只是位置变了）</text>`;
+      formula=`平移三要素：方向（${dirName}）、距离（${dist} 格）、形状不变`;
+    } else if(shape==='composite'){
+      if(p.parts && p.parts.length){
+        const parts=p.parts;
+        const scale=Math.min(22/Math.max(...parts.map(q=>q.l||1)), 20/Math.max(...parts.map(q=>q.w||1)), 30);
+        let yy=52, x0=W/2-40, areaSum=0;
+        body='';
+        parts.forEach((q,i2)=>{
+          const rw=(q.l||1)*scale, rh=(q.w||1)*scale, gx=x0+(i2%2===0?0:30), gy=yy;
+          const col=['#00A896','#F5B800','#FB923C','#E8A0BF'][i2%4];
+          body+=`<rect x="${gx}" y="${gy}" width="${rw}" height="${rh}" fill="${col}22" stroke="${col}" stroke-width="2.5"/>
+            <text x="${gx+rw/2}" y="${gy-6}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${q.l}×${q.w}</text>`;
+          yy+=rh; areaSum+=(q.l||0)*(q.w||0);
+        });
+        formula=`组合图形面积 = ${parts.map(q=>`${q.l}×${q.w}`).join(' + ')} = ${areaSum}`;
+      } else if(p.outer==='square'){
+        const sd=p.side||4, sc=Math.min(24, 150/sd), rw=sd*sc, x0=(W-rw)/2-30, y0=(H-50-rw)/2;
+        body=`<rect x="${x0}" y="${y0}" width="${rw}" height="${rw}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5"/>
+          <circle cx="${x0+rw/2}" cy="${y0+rw/2}" r="${rw/2}" fill="rgba(245,184,0,0.25)" stroke="#F5B800" stroke-width="2.5"/>
+          <text x="${x0+rw/2}" y="${y0-10}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">边长 ${sd}</text>
+          <text x="${x0+rw/2}" y="${y0+rw/2+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#B8860B">r = ${sd/2}</text>`;
+        formula=`正方形内最大的圆：直径 = 边长 = ${sd}，r = ${sd/2}`;
+      } else { body=''; formula='组合图形'; }
+    } else if(shape==='cubes'){
+      const tv=p.topView||[1,1,1];
+      const n=tv.length, cs=Math.min(46, (W-100)/(n+0.6));
+      const x0=(W-n*cs)/2, y0=H/2-cs/2;
+      body='';
+      tv.forEach((hgt,i2)=>{
+        const gx=x0+i2*cs, gy=y0-(hgt-1)*cs*0.4;
+        for(let k2=0;k2<hgt;k2++){
+          const by=gy;
+          body+=`<rect x="${gx}" y="${by}" width="${cs}" height="${cs}" fill="rgba(0,168,150,${0.25+k2*0.18})" stroke="#00A896" stroke-width="2"/>
+            <path d="M ${gx} ${by} L ${gx+cs*0.3} ${by-cs*0.3} L ${gx+cs+cs*0.3} ${by-cs*0.3} L ${gx+cs} ${by} Z" fill="rgba(0,168,150,0.35)" stroke="#00A896" stroke-width="1.5"/>
+            <path d="M ${gx+cs} ${by} L ${gx+cs+cs*0.3} ${by-cs*0.3} L ${gx+cs+cs*0.3} ${by+cs-cs*0.3} L ${gx+cs} ${by+cs} Z" fill="rgba(0,120,110,0.35)" stroke="#00A896" stroke-width="1.5"/>`;
+        }
+      });
+      const tot2=tv.reduce((a,b)=>a+b,0);
+      formula=`从正面看 ${n} 列，各列 ${tv.join('、')} 个，共 ${tot2} 个小正方体`;
+    } else if(shape==='rotation'){
+      const ang=p.angle||90, cw=(p.direction||'clockwise')==='clockwise';
+      const tri=[[0,-40],[36,26],[-36,26]];
+      const cxr=W/2-60, cyr=H/2+6;
+      const rad=ang*Math.PI/180*(cw?1:-1);
+      const rot=tri.map(pt=>[pt[0]*Math.cos(rad)-pt[1]*Math.sin(rad), pt[0]*Math.sin(rad)+pt[1]*Math.cos(rad)]);
+      const p1=tri.map(pt=>`${cxr+pt[0]},${cyr+pt[1]}`).join(' ');
+      const p2r=rot.map(pt=>`${cxr+120+pt[0]},${cyr+pt[1]}`).join(' ');
+      body=`<polygon points="${p1}" fill="rgba(0,168,150,0.30)" stroke="#00A896" stroke-width="2.5"/>
+        <polygon points="${p2r}" fill="none" stroke="#F5B800" stroke-width="2.5" stroke-dasharray="6,4"/>
+        <path d="M ${cxr+10} ${cyr-58} A 62 62 0 0 ${cw?1:0} ${cxr+110} ${cyr-20}" fill="none" stroke="#FB923C" stroke-width="2.5" stroke-dasharray="5,4"/>
+        <polygon points="${cxr+118},${cyr-24} ${cxr+104},${cyr-26} ${cxr+110},${cyr-12}" fill="#FB923C"/>
+        <text x="${cxr+60}" y="${cyr-64}" text-anchor="middle" font-size="12" font-weight="700" fill="#FB923C">${cw?'顺':'逆'}时针 ${ang}°</text>
+        <text x="${W/2}" y="${H-14}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">绕中心点${cw?'顺':'逆'}时针旋转 ${ang}°（形状大小不变，方向变了）</text>`;
+      formula=`旋转三要素：中心点、方向（${cw?'顺时针':'逆时针'}）、角度（${ang}°）`;
+    } else if(shape==='pattern'){
+      const items=[];
+      for(let k2=0;k2<5;k2++){
+        const rotA=(k2%4)*90, col=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F'][k2];
+        const cxp=60+k2*80, cyp=H/2-8;
+        if(k2===4){
+          items.push(`<rect x="${cxp-26}" y="${cyp-26}" width="52" height="52" rx="6" fill="rgba(245,184,0,0.12)" stroke="#F5B800" stroke-width="2" stroke-dasharray="5,4"/>
+            <text x="${cxp}" y="${cyp+9}" text-anchor="middle" font-size="26" font-weight="800" fill="#F5B800">?</text>`);
+        } else {
+          const rr=rotA*Math.PI/180;
+          const tri=[[0,-20],[19,14],[-19,14]];
+          const pts=tri.map(pt=>{ const x3=pt[0]*Math.cos(rr)-pt[1]*Math.sin(rr), y3=pt[0]*Math.sin(rr)+pt[1]*Math.cos(rr); return `${cxp+x3},${cyp+y3}`; }).join(' ');
+          items.push(`<polygon points="${pts}" fill="${col}33" stroke="${col}" stroke-width="2.5"/>
+            <text x="${cxp}" y="${cyp+42}" text-anchor="middle" font-size="11" fill="#9aa5b1">${k2+1}</text>`);
+        }
+      }
+      body=items.join('');
+      formula='观察：图形每次顺时针旋转 90°——下一个是？';
+    } else if(shape==='direction'){
+      // 位置与方向：东偏北30°、距离300米
+      const ang=(p.angle||30)*Math.PI/180, dist=p.distance||0, dn=p.dir||'东偏北';
+      const cx2=W/2-20, cy2=H/2+40, r2=100;
+      const base={东:[1,0],南:[0,1],西:[-1,0],北:[0,-1]}[dn[0]]||[1,0];
+      const toward={东:[1,0],南:[0,1],西:[-1,0],北:[0,-1]}[dn[dn.length-1]]||[0,-1];
+      const sgn=(base[0]!==0)?-Math.sign(toward[1]||1):-Math.sign(toward[0]||1);
+      const vx=base[0]*Math.cos(ang)+toward[0]*Math.sin(ang)*(base[0]!==0?1:-1);
+      const vy=base[1]*Math.cos(ang)+toward[1]*Math.sin(ang)*(base[0]!==0?1:-1);
+      const vl=Math.hypot(vx,vy)||1;
+      const ux=vx/vl, uy=vy/vl;
+      const ax=cx2+ux*r2, ay=cy2+uy*r2;
+      const off={东:[0,-1],西:[0,-1],南:[1,0],北:[1,0]}[dn[0]]||[0,-1];
+      body=`<circle cx="${cx2}" cy="${cy2}" r="5" fill="#1E3A5F"/>
+        <text x="${cx2-14}" y="${cy2+18}" font-size="12" font-weight="700" fill="#1E3A5F">观测点</text>
+        <line x1="${cx2}" y1="${cy2}" x2="${cx2+120}" y2="${cy2}" stroke="#9aa5b1" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="${cx2}" y1="${cy2}" x2="${cx2}" y2="${cy2-120}" stroke="#9aa5b1" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="${cx2+128}" y="${cy2+4}" font-size="12" font-weight="700" fill="#e74c3c">东</text>
+        <text x="${cx2-4}" y="${cy2-126}" text-anchor="end" font-size="12" font-weight="700" fill="#e74c3c">北</text>
+        <line x1="${cx2}" y1="${cy2}" x2="${ax}" y2="${ay}" stroke="#FB923C" stroke-width="4" stroke-linecap="round"/>
+        <polygon points="${ax+ux*10},${ay+uy*10} ${ax-uy*6-ux*4},${ay+ux*6-uy*4} ${ax+uy*6-ux*4},${ay-ux*6-uy*4}" fill="#FB923C"/>
+        <text x="${cx2+ux*r2/2+10}" y="${cy2+uy*r2/2-10}" font-size="13" font-weight="800" fill="#FB923C">${dn}${p.angle||30}°${dist?`，距离 ${dist} 米`:''}</text>`;
+      formula=`方向：${dn}${p.angle||30}°${dist?`　距离：${dist} 米`:''}（先说偏向的基准方向，再说偏转角度）`;
+    } else if(shape==='route'){
+      // 路线图：segments [{dir:南,dist:200},...]
+      const segs=p.segments||[];
+      const dirV={南:[0,1],北:[0,-1],东:[1,0],西:[-1,0]};
+      const maxDist=Math.max(...segs.map(s2=>s2.dist||1));
+      const scale=Math.min(0.35, 150/maxDist);
+      let px2=W/2-90, py2=H-56;
+      body=`<circle cx="${px2}" cy="${py2}" r="6" fill="#1E3A5F"/><text x="${px2-8}" y="${py2+20}" font-size="12" font-weight="700" fill="#1E3A5F">出发点</text>`;
+      let endName='终点';
+      segs.forEach((s2,i2)=>{
+        const v=dirV[s2.dir]||[1,0];
+        const nx=px2+v[0]*(s2.dist||0)*scale, ny=py2+v[1]*(s2.dist||0)*scale;
+        body+=`<line x1="${px2}" y1="${py2}" x2="${nx}" y2="${ny}" stroke="#FB923C" stroke-width="4" stroke-linecap="round"/>
+          <text x="${(px2+nx)/2+v[1]*14}" y="${(py2+ny)/2-v[0]*14+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#FB923C">${s2.dir} ${s2.dist}米</text>`;
+        px2=nx; py2=ny;
+        if(i2===segs.length-1){
+          body+=`<circle cx="${px2}" cy="${py2}" r="6" fill="#00A896"/><text x="${px2+10}" y="${py2-8}" font-size="12" font-weight="700" fill="#006B5E">${p.endName||endName}</text>`;
+        }
+      });
+      formula='按方向和距离逐段画出路线';
+    } else if(shape==='ring' || shape==='annulus'){
+      const rO=p.outerRadius||p.outerR||12, rI=p.innerRadius||p.innerR||10;
+      const sc=Math.min(9, 88/Math.max(rO,1));
+      body=`<circle cx="${W/2}" cy="${H/2-10}" r="${rO*sc}" fill="rgba(245,184,0,0.25)" stroke="#F5B800" stroke-width="2.5"/>
+        <circle cx="${W/2}" cy="${H/2-10}" r="${rI*sc}" fill="#fff" stroke="#00A896" stroke-width="2.5"/>
+        <line x1="${W/2}" y1="${H/2-10}" x2="${W/2+rI*sc}" y2="${H/2-10}" stroke="#00A896" stroke-width="2"/>
+        <line x1="${W/2}" y1="${H/2-10}" x2="${W/2+rO*sc}" y2="${H/2-26}" stroke="#F5B800" stroke-width="2"/>
+        <text x="${W/2+rI*sc/2}" y="${H/2-16}" font-size="12" font-weight="700" fill="#006B5E">r=${rI}</text>
+        <text x="${W/2+rO*sc/2}" y="${H/2-38}" font-size="12" font-weight="700" fill="#AC7E00">R=${rO}</text>`;
+      formula=`圆环面积 = πR² - πr² = 3.14×(${rO}² - ${rI}²) = ${(3.14*(rO*rO-rI*rI)).toFixed(2)}`;
+    } else if(shape==='pie'){
+      const cx2=W/2, cy2=H/2-8, r2=80;
+      let segs=[];
+      if(p.segments && p.segments.length){
+        segs=p.segments.map(s2=>({label:s2.label, frac:(s2.percent!=null?s2.percent/100:(s2.angle||0)/360), color:s2.color}));
+      } else if(p.angle!=null){
+        segs=[{label:`${p.angle}°`, frac:p.angle/360, color:'#F5B800'},{label:'', frac:1-p.angle/360, color:'#00A896'}];
+      }
+      let startA=-Math.PI/2;
+      segs.forEach(s2=>{
+        const endA=startA+s2.frac*2*Math.PI;
+        const x1=cx2+r2*Math.cos(startA), y1=cy2+r2*Math.sin(startA);
+        const x2=cx2+r2*Math.cos(endA), y2=cy2+r2*Math.sin(endA);
+        const large=s2.frac>0.5?1:0;
+        body+=`<path d="M ${cx2} ${cy2} L ${x1} ${y1} A ${r2} ${r2} 0 ${large} 1 ${x2} ${y2} Z" fill="${s2.color}33" stroke="${s2.color}" stroke-width="2"/>
+          <text x="${cx2+r2*0.6*Math.cos((startA+endA)/2)}" y="${cy2+r2*0.6*Math.sin((startA+endA)/2)+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${s2.label}${s2.frac<1?Math.round(s2.frac*360):''}</text>`;
+        startA=endA;
+      });
+      formula=`整个圆 = 360° = 100%`;
+    } else if(shape==='dotArray'){
+      const layers=p.layers||4, n2=layers;
+      const cs=Math.min(150/n2, 34), x0=W/2-n2*cs/2, y0=H/2-n2*cs/2-6;
+      const cols=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F'];
+      // 点阵按 L 形分层着色：第 k 层有 2k-1 个点
+      body='';
+      for(let rI=0;rI<n2;rI++){
+        for(let cI=0;cI<n2;cI++){
+          const layer=Math.max(rI,cI)+1;
+          const col=cols[(layer-1)%5];
+          body+=`<circle cx="${x0+cI*cs+cs/2}" cy="${y0+rI*cs+cs/2}" r="${Math.min(cs*0.32,9)}" fill="${col}77" stroke="${col}" stroke-width="1.5"/>`;
+        }
+      }
+      let expr=[]; for(let k2=1;k2<=n2;k2++) expr.push(2*k2-1);
+      formula=`每层是奇数：${expr.join('+')} = ${n2*n2} = ${n2}²（正方形点阵）`;
+    } else if(shape==='pigeonhole'){
+      const pigeons=p.pigeons||4, holes=p.holes||3;
+      const bw=Math.min(90, (W-80)/holes), bh=54, x0=(W-holes*bw)/2, y0=H/2;
+      body='';
+      for(let k2=0;k2<holes;k2++){
+        body+=`<rect x="${x0+k2*bw+6}" y="${y0}" width="${bw-12}" height="${bh}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2" rx="6"/>
+          <text x="${x0+k2*bw+bw/2}" y="${y0+bh+18}" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">巢${k2+1}</text>`;
+      }
+      for(let k2=0;k2<pigeons;k2++){
+        const gx=x0+(k2%holes)*bw+bw/2, gy=y0+14+Math.floor(k2/holes)*(-22);
+        body+=`<text x="${gx}" y="${gy}" text-anchor="middle" font-size="16">🕊️</text>`;
+      }
+      const q=Math.floor(pigeons/holes), rem=pigeons%holes;
+      formula=`${pigeons}÷${holes}=${q}……${rem}，至少数 = ${q}+1 = ${q+1} 只`;
+    } else if(shape==='knowledgeTree'){
+      const branches=p.branches||[];
+      const cx2=W/2, cy2=H/2-20;
+      body=`<rect x="${cx2-36}" y="${cy2-18}" width="72" height="36" rx="8" fill="#1E3A5F"/>
+        <text x="${cx2}" y="${cy2+6}" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">数</text>`;
+      const spread=Math.min(160, (branches.length-1)*44+40);
+      branches.forEach((b2,i2)=>{
+        const bx=cx2-spread/2+(spread/(Math.max(branches.length-1,1)))*i2;
+        const by=cy2+58;
+        body+=`<line x1="${cx2}" y1="${cy2+18}" x2="${bx}" y2="${by}" stroke="#9aa5b1" stroke-width="1.8"/>
+          <rect x="${bx-30}" y="${by-2}" width="60" height="26" rx="6" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="1.8"/>
+          <text x="${bx}" y="${by+16}" text-anchor="middle" font-size="11" font-weight="700" fill="#006B5E">${b2}</text>`;
+      });
+      formula=(p.type==='number_system')?'数系：整数、小数、分数、百分数、负数构成完整的数体系':'知识结构树';
+    } else if(shape==='parallel'){
+      const a1=p.angle1||65, a2=p.angle2||115;
+      const y1=70, y2=H-64;
+      body=`<line x1="50" y1="${y1}" x2="${W-50}" y2="${y1}" stroke="#00A896" stroke-width="3"/>
+        <line x1="50" y1="${y2}" x2="${W-50}" y2="${y2}" stroke="#00A896" stroke-width="3"/>
+        <line x1="100" y1="${y2+16}" x2="${W-130}" y2="${y1-16}" stroke="#F5B800" stroke-width="3"/>
+        <path d="M 60 ${y1-8} l 14 0" fill="none" stroke="#00A896" stroke-width="2.5"/>
+        <path d="M 60 ${y2-8} l 14 0" fill="none" stroke="#00A896" stroke-width="2.5"/>
+        <text x="${W-190}" y="${y1-14}" font-size="13" font-weight="800" fill="#FB923C">∠1=${a1}°</text>
+        <text x="${W-190}" y="${y2+24}" font-size="13" font-weight="800" fill="#E8A0BF">∠2=${a2}°</text>
+        <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">两条平行线被第三条直线所截，同旁内角互补</text>`;
+      formula=`${a1}° + ${a2}° = ${a1+a2}° = 180°`;
+    } else if(shape==='polygon'){
+      const sides=p.sides||8;
+      const cx2=W/2, cy2=H/2-10, r2=78;
+      const pts=Array.from({length:sides},(_,i2)=>{
+        const a=-Math.PI/2+i2*2*Math.PI/sides;
+        return `${cx2+r2*Math.cos(a)},${cy2+r2*Math.sin(a)}`;
+      }).join(' ');
+      body=`<polygon points="${pts}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>
+        <text x="${cx2}" y="${cy2+5}" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F">${sides}边形</text>`;
+      formula=`内角和 = (${sides}-2)×180° = ${(sides-2)*180}°`;
+    } else if(shape==='parabola'){
+      const cx2=W/2, cy2=H/2, half=160;
+      const sx=(x)=>cx2+x*12;
+      const sy=(y)=>cy2-y*12;
+      let curve='';
+      const hasRoots=p.roots && p.roots.length===2;
+      let vx2=p.vertex?p.vertex[0]:0, vy2=p.vertex?p.vertex[1]:0;
+      let aCoef=1;
+      if(hasRoots && vy2<0){ aCoef=1; }
+      if(p.width){ aCoef=-(vy2)/Math.pow((p.width/2),2)*(p.width?1:1)*(-1); }
+      const fx=(x)=>{
+        if(hasRoots){ return aCoef*(x-p.roots[0])*(x-p.roots[1]); }
+        if(p.width){ const halfW=p.width/2; return vy2*(1-Math.pow((x-vx2)/halfW,2)); }
+        return (x-vx2)*(x-vx2)+vy2;
+      };
+      const xmin=p.width? (vx2-p.width/2-2) : (hasRoots? Math.min(p.roots[0],vx2)-2 : vx2-3);
+      const xmax=p.width? (vx2+p.width/2+2) : (hasRoots? Math.max(p.roots[1],vx2)+2 : vx2+3);
+      const flip=(vy2>0&&!p.width&&hasRoots)?-1:1;
+      for(let xx=xmin; xx<=xmax; xx+=0.15){
+        const yy=fx(xx)*(p.width?1:(vy2>0?-1:1));
+        curve+=`${sx(xx)},${sy(yy*(p.width?1:1))} `;
+      }
+      body=`<line x1="${sx(vx2-6)}" y1="${cy2}" x2="${sx(vx2+6)}" y2="${cy2}" stroke="#475569" stroke-width="1.5"/>
+        <line x1="${sx(vx2)}" y1="${sy(vy2+3*(p.width?1:1))}" x2="${sx(vx2)}" y2="${sy(vy2-3*(p.width?1:1))}" stroke="#475569" stroke-width="1.5"/>
+        <polyline points="${curve}" fill="none" stroke="#00A896" stroke-width="3"/>`;
+      if(hasRoots){
+        body+=`<circle cx="${sx(p.roots[0])}" cy="${sy(0)}" r="5" fill="#FB923C"/>
+          <circle cx="${sx(p.roots[1])}" cy="${sy(0)}" r="5" fill="#FB923C"/>
+          <text x="${sx(p.roots[0])}" y="${sy(0)+20}" text-anchor="middle" font-size="12" font-weight="700" fill="#FB923C">(${p.roots[0]},0)</text>
+          <text x="${sx(p.roots[1])}" y="${sy(0)+20}" text-anchor="middle" font-size="12" font-weight="700" fill="#FB923C">(${p.roots[1]},0)</text>`;
+      }
+      if(p.vertex){
+        body+=`<circle cx="${sx(vx2)}" cy="${sy(vy2)}" r="5" fill="#E8A0BF"/>
+          <text x="${sx(vx2)+10}" y="${sy(vy2)-6}" font-size="12" font-weight="700" fill="#E8A0BF">顶点(${vx2},${vy2})</text>`;
+      }
+      formula=hasRoots?`与 x 轴的交点：x = ${p.roots[0]} 和 x = ${p.roots[1]}（令 y=0）`:'抛物线：顶点式 y=a(x-h)²+k';
+    } else if(shape==='coordinate'){
+      const cx2=W/2, cy2=H/2, half=150;
+      body=`<line x1="${cx2-half}" y1="${cy2}" x2="${cx2+half}" y2="${cy2}" stroke="#475569" stroke-width="2"/>
+        <line x1="${cx2}" y1="${cy2-half*0.7}" x2="${cx2}" y2="${cy2+half*0.7}" stroke="#475569" stroke-width="2"/>
+        <text x="${cx2+half-4}" y="${cy2+18}" font-size="12" fill="#475569">x</text>
+        <text x="${cx2+10}" y="${cy2-half*0.7+8}" font-size="12" fill="#475569">y</text>`;
+      const pts=p.points||[];
+      pts.forEach((pt,i2)=>{
+        const px2=cx2+pt[0]*16, py2=cy2-pt[1]*16;
+        body+=`<circle cx="${px2}" cy="${py2}" r="6" fill="${i2===0?'#00A896':'#FB923C'}"/>
+          <line x1="${cx2}" y1="${cy2}" x2="${px2}" y2="${py2}" stroke="${i2===0?'#00A896':'#FB923C'}" stroke-width="2" stroke-dasharray="4,3"/>
+          <text x="${px2+10}" y="${py2-6}" font-size="13" font-weight="800" fill="${i2===0?'#006B5E':'#FB923C'}">(${pt[0]},${pt[1]})</text>`;
+      });
+      formula=(pts.length===2 && pts[0][0]===-pts[1][0] && pts[0][1]===-pts[1][1])?'两点关于原点对称（横纵坐标都互为相反数）':'坐标系中的点';
     } else {
       return '<div class="mv-empty">未知图形类型</div>';
     }
