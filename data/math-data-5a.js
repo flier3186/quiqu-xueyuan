@@ -3997,7 +3997,7 @@ window.MATH_BY_GRADE["5a"] = {
             "answer": 4,
             "choices": [
                 4,
-                4,
+                3,
                 8,
                 2
             ],
@@ -4488,12 +4488,12 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "妈妈买4.4千克油，每个瓶子最多装0.8千克。需要几个瓶子？",
             "question": "需要多少个瓶子？(进一法)",
             "formula": "4.4 ÷ 0.8 = ? (个)",
-            "answer": 4,
+            "answer": 6,
             "choices": [
-                4,
-                4,
+                6,
+                5,
                 4.375,
-                6
+                4
             ],
             "visualType": "barModel",
             "visualData": {
@@ -4513,7 +4513,7 @@ window.MATH_BY_GRADE["5a"] = {
             },
             "knowledge": "小数除法解决问题",
             "difficulty": 3,
-            "hint": "4.4÷0.8=4余0.4进一法需4瓶",
+            "hint": "4.4÷0.8=5.5，进一法需6瓶",
             "variants": [
                 {
                     "question": "2.4千克每瓶0.4需几瓶？",
@@ -5797,7 +5797,7 @@ window.MATH_BY_GRADE["5a"] = {
             "choices": [
                 10,
                 13,
-                13,
+                16,
                 3
             ],
             "visualType": "geometry",
@@ -5991,7 +5991,7 @@ window.MATH_BY_GRADE["5a"] = {
             "choices": [
                 35,
                 55,
-                55,
+                45,
                 20
             ],
             "visualType": "geometry",
@@ -6589,7 +6589,7 @@ window.MATH_BY_GRADE["5a"] = {
             "choices": [
                 2.5,
                 3,
-                3,
+                2.6,
                 7
             ],
             "visualType": "barModel",
@@ -7478,7 +7478,7 @@ window.MATH_BY_GRADE["5a"] = {
             "choices": [
                 16,
                 20,
-                16,
+                23,
                 7
             ],
             "visualType": "geometry",

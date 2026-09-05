@@ -5429,7 +5429,7 @@ window.MATH_BY_GRADE["3a"] = {
             "choices": [
                 408,
                 108,
-                408,
+                404,
                 48
             ],
             "visualType": "areaModel",

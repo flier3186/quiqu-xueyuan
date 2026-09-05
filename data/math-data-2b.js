@@ -6043,12 +6043,12 @@ window.MATH_BY_GRADE["2b"] = {
             "scene": "37个小朋友，每条船坐5人。",
             "question": "需要几条船？",
             "formula": "37÷5=?",
-            "answer": 7,
+            "answer": 8,
             "choices": [
                 10,
                 9,
-                7,
-                11
+                8,
+                7
             ],
             "visualType": "numberBond",
             "visualData": {

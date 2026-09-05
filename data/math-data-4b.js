@@ -477,7 +477,7 @@ window.MATH_BY_GRADE["4b"] = {
             "scene": "全班38人去划船，大船坐6人每条30元，小船坐4人每条20元。小红先算都坐大船需几条。",
             "question": "38人都坐大船需要多少条？(填条数,38÷6)",
             "formula": "38 ÷ 6 = ? (条)",
-            "answer": 6,
+            "answer": 7,
             "choices": [
                 6,
                 5,
@@ -502,7 +502,7 @@ window.MATH_BY_GRADE["4b"] = {
             },
             "knowledge": "租船问题",
             "difficulty": 3,
-            "hint": "38÷6=6条余2人",
+            "hint": "38÷6=6条余2人，进一法需7条",
             "variants": [
                 {
                     "question": "42人都坐大船需几条？",
@@ -563,7 +563,7 @@ window.MATH_BY_GRADE["4b"] = {
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "38÷6=6余2，6条船坐满36人，剩2人。本题按整除取6条",
+                    "text": "38÷6=6余2，坐满6条后还剩2人，剩下的人也要上船，用进一法需7条",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3789,32 +3789,27 @@ window.MATH_BY_GRADE["4b"] = {
             "scene": "全班60人去划船，大船坐5人每条33元，小船坐6人每条26元。小红先算都坐大船需几条。",
             "question": "60人都坐大船需要多少条？(填条数,60÷5)",
             "formula": "60 ÷ 5 = ? (条)",
-            "answer": 5,
+            "answer": 12,
             "choices": [
-                5,
-                5,
-                7,
+                12,
+                10,
+                13,
                 6
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 40,
+                "total": 60,
                 "parts": [
                     {
-                        "label": "6条坐36人",
-                        "val": 38,
+                        "label": "12条坐60人",
+                        "val": 60,
                         "color": "#00A896"
-                    },
-                    {
-                        "label": "余2人",
-                        "val": 2,
-                        "color": "#F5B800"
                     }
                 ]
             },
             "knowledge": "租船问题",
             "difficulty": 3,
-            "hint": "60÷5=5条余2人",
+            "hint": "60÷5=12条，正好坐满",
             "variants": [
                 {
                     "question": "62人都坐大船需几条？",
