@@ -3495,17 +3495,24 @@ function renderMathStageProgress(){
   const sess = (window.MathFlowV5 && MathFlowV5._sess) || {};
   const cur = sess.stage || 'warmup';
   const curIdx = Math.max(0, stages.findIndex(s=>s.key===cur));
+  const visited = Array.isArray(sess.visited) ? sess.visited : [];   // 真实经过的阶段列表（跳过的环节由引擎 _applyStudyMode 标记）
   return `<div id="mathStageProgress" style="display:flex;align-items:center;gap:4px;background:white;border-radius:var(--radius-md);padding:12px 14px;box-shadow:0 2px 12px rgba(30,58,95,.05);margin-bottom:16px;flex-wrap:wrap">
     ${stages.map((s,i)=>{
-      const done = i<curIdx, active = i===curIdx;
-      const bg = done ? 'var(--teal-soft)' : active ? 'var(--teal)' : 'var(--ink-100)';
-      const col = done ? 'var(--teal)' : active ? 'white' : 'var(--text-3)';
+      const reallyDone = visited.indexOf(s.key) >= 0;
+      const active = i===curIdx;
+      const skipped = !reallyDone && i<curIdx;   // 进度已越过但从未真正经过 → 被跳过
+      const bg = reallyDone ? 'var(--teal-soft)' : active ? 'var(--teal)' : 'var(--ink-100)';
+      const col = reallyDone ? 'var(--teal)' : active ? 'white' : 'var(--text-3)';
       const shadow = active ? 'box-shadow:0 4px 12px rgba(0,168,150,.3)' : '';
+      // 跳过的环节用虚线框弱化，打勾只给真完成的
+      const border = skipped ? 'border:1.5px dashed var(--ink-300);' : '';
+      const label = reallyDone ? '✓' : skipped ? '⤼' : (i+1);
+      const tip = skipped ? `title="${s.name}·已跳过"` : '';
       return `<div style="display:flex;align-items:center;gap:4px">
-        <div style="display:flex;align-items:center;gap:6px;padding:6px 11px;border-radius:18px;font-size:12.5px;font-weight:700;background:${bg};color:${col};${shadow}">
-          <span>${done?'✓':s.icon}</span><span>${s.name}</span>
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 11px;border-radius:18px;font-size:12.5px;font-weight:700;background:${bg};color:${col};${shadow}${border}" ${tip}>
+          <span>${label==='✓'?'✓':label==='⤼'?'⤼':s.icon}</span><span>${s.name}</span>
         </div>
-        ${i<stages.length-1?`<div style="width:14px;height:2px;background:${done?'var(--teal)':'var(--ink-100)'}"></div>`:''}
+        ${i<stages.length-1?`<div style="width:14px;height:2px;background:${reallyDone?'var(--teal)':'var(--ink-100)'}"></div>`:''}
       </div>`;
     }).join('')}
   </div>`;
@@ -6242,7 +6249,6 @@ function openParentPanel(){
       <input type="password" id="parentPwd" placeholder="••••" maxlength="4">
       <div><button onclick="checkParentPwd()">进入</button></div>
       <div class="pwd-error" id="pwdError" style="display:none">密码错误，请重试</div>
-      <div style="font-size:11px;color:var(--text-3);margin-top:8px">默认密码：1234</div>
     </div>`;
   $('#parentPwd').focus();
   $('#parentPwd').addEventListener('keydown',e=>{if(e.key==='Enter')checkParentPwd()});
@@ -6872,13 +6878,13 @@ function downloadCSV(csv,filename){
 const STORAGE_KEY='ququxv4_state_v1';
 const PROFILE_META_KEY='quiqu_profiles_meta';
 const defaultState={
-  overview:{stars:42,streak:7,weekGoal:6,weekDone:3,totalMin:486,avgAccuracy:87},
-  math:{grade:'3',wrongProblems:[],moduleProgress:{cpa:65,bar:45,area:35,fract:25,wp:50,kg:30},mastery:{}},
-  eng:{grade:'3',sub:'vocab',favoriteWords:[],learnedWords:128,phonicsStage:2},
-  pet:{idx:0,level:5,exp:210,hunger:85,mood:92,clean:76,coins:138},
+  overview:{stars:0,streak:0,weekGoal:6,weekDone:0,totalMin:0,avgAccuracy:0},
+  math:{grade:'3',wrongProblems:[],moduleProgress:{cpa:0,bar:0,area:0,fract:0,wp:0,kg:0},mastery:{}},
+  eng:{grade:'3',sub:'vocab',favoriteWords:[],learnedWords:0,phonicsStage:1},
+  pet:{idx:0,level:1,exp:0,hunger:85,mood:92,clean:76,coins:0},
   speak:{teacher:'Emma',topic:'daily'},
   badges:[],
-  streakHistory:Array(30).fill(0).map((_,i)=>i<7?1:Math.random()>.4?1:0),
+  streakHistory:Array(30).fill(0),
   // ===== 学习引擎扩展（v4 新增，不破坏原有字段） =====
   study:{lastDate:'',todayTime:0,totalTime:0,sessions:[],dailyRecords:{},weeklyPlans:{}},
   answerLog:[],
