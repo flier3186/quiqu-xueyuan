@@ -151,16 +151,21 @@ window.MathFlowV5 = {
   _applyStudyMode(mode){
     if(!this._sess) return;
     this._sess.studyMode = mode;
+    if(!this._sess.visited) this._sess.visited = [];
+    const mark = st => { if(this._sess.visited.indexOf(st) < 0) this._sess.visited.push(st); };
     // 根据模式调整初始阶段
     if(mode === 'intermediate'){
       // 学过但卡住：跳过RME，从引导发现开始
       this._sess.stage = 'discover';
+      mark('discover');
     } else if(mode === 'advanced'){
       // 已熟练：跳过RME+引导发现，直接从Neriage开始
       this._sess.stage = 'neriage';
+      mark('neriage');
     } else {
       // 刚学：完整路径
       this._sess.stage = 'warmup';
+      mark('warmup');
     }
   },
 
@@ -189,6 +194,9 @@ window.MathFlowV5 = {
   advance(stage){
     if(!this._sess) return;
     this._sess.stage = stage;
+    // 记录"真实经过"的阶段，进度条只给真正走过的环节打勾（跳过的不算完成）
+    if(!this._sess.visited) this._sess.visited = [];
+    if(this._sess.visited.indexOf(stage) < 0) this._sess.visited.push(stage);
     // 进入新阶段重置相关子状态
     if(stage==='solve'){ this._sess.hintUsed=false; this._sess.solveAttempts=0; this._sess.startTs=Date.now(); }
     if(stage==='practice'){ this._sess.practiceLevel=1; this._sess.practiceVisualShown=false; this._sess.socraticStep=0; }
@@ -520,12 +528,28 @@ window.MathFlowV5 = {
   renderSolve(problem){
     const showHint = this._sess.hintUsed;
     const correctIdx = problem.choices.indexOf(problem.answer);
+    // CPA 前移：先看图再解题——形象模型是通往抽象的脚手架，不是事后的图解。
+    // 有可视化数据的题，在选项之前先给一个静态图形支架。
+    let pictorialScaffold = '';
+    if(problem.visualType && problem.visualData && typeof MathVisualV5 !== 'undefined' && MathVisualV5.render){
+      try{
+        const svg = MathVisualV5.render(problem.visualType, problem.visualData, problem);
+        if(svg && svg.indexOf('mv-empty') < 0){
+          pictorialScaffold = `
+          <div style="margin-top:12px;padding:10px 14px;background:var(--teal-soft);border-radius:12px;border:1px solid rgba(0,168,150,.2)">
+            <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">👀 先看图，再解题 —— 图形会告诉你数字之间的关系</div>
+            <div style="background:#fff;border-radius:10px;padding:6px">${svg}</div>
+          </div>`;
+        }
+      }catch(e){}
+    }
     return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 3 · 正式解题</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📝 5 分钟 · 用刚才发现的方法解决这道题</div>
       <div style="font-size:16px;color:var(--navy);font-weight:700;line-height:1.7;padding:16px 18px;background:linear-gradient(135deg,#FFE9D6,#fff);border-radius:12px;border:1px solid rgba(251,146,60,.2)">
         ${this._escape(problem.question)}
       </div>
+      ${pictorialScaffold}
       <div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(problem.formula)}</span></div>
       <div style="margin-top:8px;font-size:12px;color:var(--text-3)">选择正确的答案：</div>
       <div class="wp-choices" id="v5SolveChoices" style="grid-template-columns:repeat(${Math.min(problem.choices.length,4)},1fr);margin-top:8px">
@@ -559,7 +583,7 @@ window.MathFlowV5 = {
       if(fb){
         fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>`;
       }
-      setTimeout(()=>{ this.advance('explain'); if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 1100);
+      setTimeout(()=>{ this.advance('explain'); if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 1800);
     }else{
       this._sess.hintUsed = true;
       this._sess.solveAttempts = (this._sess.solveAttempts||0) + 1;
@@ -798,14 +822,18 @@ window.MathFlowV5 = {
   // ============================================================
   renderAskChild(problem){
     // 给一个变式场景，孩子自己提出数学问题
+    // 修复：变体场景的数字直接取自变体算式（不再盲改 ±2/+3），
+    // 保证展示的故事、预设问题 2 里的数字三者一致。
     const variant = (problem.variants && problem.variants[0]) || {};
-    const variantScene = variant.question ? problem.scene.replace(/\d+/g, m=>{
-      const idx = parseInt(m);
-      return idx > 5 ? Math.max(2, idx-2) : idx+3;
-    }) : problem.scene;
+    const variantScene = variant.question
+      ? (this._reScene(problem.scene, problem.formula, variant.formula || variant.question) || problem.scene)
+      : problem.scene;
     // 3 个选项 + 1 个自由输入
     const q1 = problem.question;
-    const q2 = variant.question || '如果是原来的 2 倍呢？';
+    // 只有当变体问题的数字能和展示场景对上时才用它，否则用与场景无关的通用追问
+    const q2 = (variant.question && this._reScene(problem.scene, problem.formula, variant.formula || variant.question))
+      ? variant.question
+      : '如果是原来的 2 倍呢？';
     const q3 = '还剩多少？';
     return `<div class="cpa-layer" style="border-left-color:var(--pink);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--pink);color:#fff">STAGE 5 · 你来提问</span>
@@ -989,23 +1017,45 @@ window.MathFlowV5 = {
     </div>`;
   },
   // L3 进阶题：应用题（结合生活场景）
+  // 修复：变体没有自己的 scene 时，用变体算式的数字改写母题场景，
+  // 保证一张屏只有一道题——绝不再出现"旧故事 + 新题目"叠在一起让孩子无法作答。
   _renderL3(problem){
     const variant = problem.variants && problem.variants[1] || {};
-    const scene = variant.scene || problem.scene;
+    const scene = variant.scene || this._reScene(problem.scene, problem.formula, variant.formula || variant.question);
     const question = variant.question || '如果情况变化，结果会怎样？';
     const {ans, choices, correctIdx} = this._safeChoices(variant, problem);
-    
+
     return `<div class="cpa-layer" style="border-left-color:var(--pink);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--pink);color:#fff">STAGE 6 · 阶梯练习 · L3 进阶</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📝 进阶挑战 · 第 ${this._sess.practiceIndex + 1} / ${this._sess.practiceTotal} 题</div>
       <div style="font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;padding:16px 18px;background:linear-gradient(135deg,#FCE7F3,#fff);border-radius:12px;border:1px solid rgba(232,160,191,.3)">
-        ${this._escape(scene)}<br>${this._escape(question)}
+        ${scene ? this._escape(scene) + '<br>' : ''}${this._escape(question)}
       </div>
       <div class="wp-choices" id="v5PracticeChoices" style="grid-template-columns:repeat(2,1fr);margin-top:12px">
         ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._practiceAnswer(this,${i},${correctIdx},3)">${this._escape(String(c))}</div>`).join('')}
       </div>
       <div id="v5PracticeFeedback" style="margin-top:12px"></div>
     </div>`;
+  },
+  // 用新算式的数字按出现顺序改写场景文本，得到数字一致的新场景。
+  // 例：scene"…原有386本…新买进247本…" + 旧式"386 + 247 = ?" + 新式"295+156=?"
+  //  →  "…原有295本…新买进156本…"。任何一步对不上就返回 ''，由调用方降级为只显示题目。
+  _reScene(scene, oldFormula, newFormula){
+    try{
+      if(!scene || !oldFormula || !newFormula) return '';
+      const oldNums = (String(oldFormula).match(/\d+/g) || []).map(Number);
+      const newNums = (String(newFormula).match(/\d+/g) || []).map(Number);
+      // 数字个数不一致：放弃改写（宁可不出场景，也不出数字互相矛盾的场景）
+      if(!oldNums.length || newNums.length !== oldNums.length) return '';
+      let replaced = 0;
+      const out = String(scene).replace(/\d+/g, m => {
+        const v = parseInt(m, 10);
+        const i = oldNums.indexOf(v, replaced);
+        if(i >= 0){ replaced = i + 1; return String(newNums[i]); }
+        return m;
+      });
+      return replaced >= oldNums.length ? out : '';
+    }catch(e){ return ''; }
   },
   // L4 陷阱题：含干扰信息或易错点，做错触发苏格拉底追问
   _renderL4(problem){
@@ -1477,7 +1527,8 @@ window.MathFlowV5 = {
     return 'linear-gradient(135deg,var(--teal),#14C3B2)';
   },
 
-  // 小口诀
+  // 小口诀：优先用本题 hint（数据里每题都有针对性提示，如"连续进位要细心"），
+  // 再查知识点口诀表，最后才落到通用句——口诀必须承载这道题的特定结构，不能是"放之四海皆准"的空话。
   _rhyme(problem, methodName){
     const k = problem.knowledge || '';
     const rhymes = {
@@ -1491,8 +1542,16 @@ window.MathFlowV5 = {
       '周长':'周长就是走一圈，长加宽来乘以二',
       '面积':'面积就是铺满它，长乘宽来顶呱呱',
       '分数':'分数分数，分母分母在下，分子分子在上',
+      '进位加法':'个位满十向前进，十位百位一样行',
+      '退位减法':'不够减就借一当十，高位借了要记实',
+      '万以内':'数位对齐再动笔，进位退位别忘记',
+      '时分秒':'秒针走一小格是一秒，六十秒是一分跑不了',
+      '乘法':'相同加数用乘法，几个几相加就是它',
+      '倍':'求几倍就是几个几，乘一乘来就到底',
     };
     for(const key in rhymes){ if(k.indexOf(key)>=0) return rhymes[key]; }
+    // 本题自带针对性提示时，把它编进口诀（比通用句有信息量）
+    if(problem.hint) return `${problem.hint}；做完记得验一遍`;
     return `${methodName}题要细心，看清数字和符号，做完记得验一遍`;
   },
 
