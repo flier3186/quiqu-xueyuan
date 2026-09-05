@@ -16,15 +16,17 @@ const PetCompanion = (() => {
 
   const STORAGE_KEY = 'quiqu_pet_v1';
   const DEFAULT_ASSET_ROOT = 'assets/pet3d';
-  const SPRITES = {
-    idle: 'dragon-idle.png',
-    celebrate: 'dragon-celebrate.png',
-    comfort: 'dragon-comfort.png',
-    eat: 'dragon-eat.png',
-    sleep: 'dragon-sleep.png'
+  // 五只 3D 伙伴注册表：每只 5 个情绪状态
+  const PET_REGISTRY = {
+    dragon: { name: '小星', idle: 'dragon-idle.png', celebrate: 'dragon-celebrate.png', comfort: 'dragon-comfort.png', eat: 'dragon-eat.png', sleep: 'dragon-sleep.png' },
+    cat:    { name: '极光', idle: 'cat-idle.png',    celebrate: 'cat-celebrate.png',    comfort: 'cat-comfort.png',    eat: 'cat-eat.png',    sleep: 'cat-sleep.png' },
+    bunny:  { name: '量子', idle: 'bunny-idle.png',  celebrate: 'bunny-celebrate.png',  comfort: 'bunny-comfort.png',  eat: 'bunny-eat.png',  sleep: 'bunny-sleep.png' },
+    fox:    { name: '银宝', idle: 'fox-idle.png',    celebrate: 'fox-celebrate.png',    comfort: 'fox-comfort.png',    eat: 'fox-eat.png',    sleep: 'fox-sleep.png' },
+    whale:  { name: '深海', idle: 'whale-idle.png',  celebrate: 'whale-celebrate.png',  comfort: 'whale-comfort.png',  eat: 'whale-eat.png',  sleep: 'whale-sleep.png' }
   };
+  const DEFAULT_PET = 'dragon';
   const MOODS = ['idle', 'celebrate', 'comfort', 'eat', 'sleep'];
-  const STAGE_NAMES = { 1: '幼龙', 2: '少年', 3: '成年' };
+  const STAGE_NAMES = { 1: '幼年', 2: '少年', 3: '成年' };
   const GROWTH_PER_LEVEL = 100;   // 每 100 成长值升 1 级
   const MAX_LEVEL = 3;            // 幼龙 / 少年 / 成年
   const SLEEP_AFTER_MS = 30000;   // 30s 无操作进入睡眠
@@ -33,7 +35,7 @@ const PetCompanion = (() => {
   const FEED_GROWTH = 5;          // 喂食给予的成长值
 
   // ---- 内部状态 ----
-  let state = { growth: 0, level: 1, mood: 'idle' };
+  let state = { growth: 0, level: 1, mood: 'idle', petId: DEFAULT_PET };
   let cfg = {
     target: null,
     assetsRoot: DEFAULT_ASSET_ROOT,
@@ -60,6 +62,7 @@ const PetCompanion = (() => {
         if (typeof o.growth === 'number' && o.growth >= 0) state.growth = o.growth;
         if (typeof o.level === 'number') state.level = clampLevel(o.level);
         if (MOODS.includes(o.mood)) state.mood = o.mood;
+        if (typeof o.petId === 'string' && PET_REGISTRY[o.petId]) state.petId = o.petId;
       }
     } catch (e) { /* 忽略损坏数据 */ }
     // 瞬时情绪不应跨刷新保留
@@ -79,7 +82,7 @@ const PetCompanion = (() => {
   function injectStyles() {
     if (styleInjected) return;
     const css = `
-.pc-host{position:relative;width:100%;height:100%;}
+.pc-host{position:relative;width:100%;height:100%;min-height:280px;}
 .pc-stage-3d{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;perspective:720px;}
 .pc-parallax{position:relative;width:80%;height:80%;transform-style:preserve-3d;transition:transform .25s ease-out;will-change:transform;}
 .pc-pet-wrap{position:relative;width:100%;height:100%;transform:scale(var(--pc-scale,1));transform-origin:50% 92%;transition:transform .55s cubic-bezier(.34,1.4,.64,1);}
@@ -182,9 +185,26 @@ const PetCompanion = (() => {
   // ================= 精灵切换（交叉淡入，无硬切） =================
   function spriteUrl(mood) {
     if (cfg.assets && cfg.assets[mood]) return cfg.assets[mood];
+    const pet = PET_REGISTRY[state.petId] || PET_REGISTRY[DEFAULT_PET];
     const root = cfg.assetsRoot || DEFAULT_ASSET_ROOT;
-    return root + '/' + (SPRITES[mood] || SPRITES.idle);
+    return root + '/' + (pet[mood] || pet.idle);
   }
+
+  // 切换伙伴形象（保持成长值/等级/当前情绪）
+  function setPet(petId) {
+    if (!PET_REGISTRY[petId]) petId = DEFAULT_PET;
+    const changed = state.petId !== petId;
+    state.petId = petId;
+    save();
+    if (changed && dom.imgBox) {
+      swapSprite(state.mood);           // 交叉淡入新形象
+      dom.wrap.classList.add('pc-enter'); // 弹性入场
+      setTimeout(() => dom.wrap.classList.remove('pc-enter'), 950);
+    }
+    return state.petId;
+  }
+  function getPet() { return state.petId; }
+  function petName() { return (PET_REGISTRY[state.petId] || {}).name || '伙伴'; }
 
   function showFallback(badImg) {
     if (badImg && badImg.parentNode) badImg.style.display = 'none';
@@ -195,7 +215,7 @@ const PetCompanion = (() => {
     const url = spriteUrl(mood);
     const next = document.createElement('img');
     next.className = 'pc-sprite';
-    next.alt = '宠物小绿龙';
+    next.alt = '宠物伙伴';
     next.setAttribute('role', 'img');
     next.style.opacity = '0';
     let ok = false;
@@ -224,7 +244,7 @@ const PetCompanion = (() => {
     const lvl = clampLevel(state.level);
     const stars = '★'.repeat(lvl);
     dom.badge.innerHTML =
-      `<span class="pc-badge-stage">${STAGE_NAMES[lvl] || '幼龙'}</span>` +
+      `<span class="pc-badge-stage">${STAGE_NAMES[lvl] || '幼年'}</span>` +
       `<span class="pc-badge-stars">${stars}</span>`;
   }
   function updateScale() {
@@ -246,9 +266,14 @@ const PetCompanion = (() => {
     if (!MOODS.includes(mood)) mood = 'idle';
     if (moodTimer) { clearTimeout(moodTimer); moodTimer = null; }
     state.mood = mood;
+    save();
+    // 未挂载时（如页面首屏答题先于 mount）仅记录状态，挂载后会自动渲染
+    if (!dom.stage || !dom.imgBox) {
+      if (!opts.silent && typeof cfg.onMoodChange === 'function') cfg.onMoodChange(mood);
+      return;
+    }
     swapSprite(mood);
     updateZzz();
-    save();
     restartMood();
     if (!opts.silent && typeof cfg.onMoodChange === 'function') cfg.onMoodChange(mood);
     const back = MOOD_RETURN_MS[mood];
@@ -262,7 +287,7 @@ const PetCompanion = (() => {
   // ================= 闲置监测（30s → sleep） =================
   function resetIdle() {
     if (idleTimer) clearTimeout(idleTimer);
-    if (!cfg.autoSleep) return;
+    if (!cfg.autoSleep || !dom.stage) return;
     idleTimer = setTimeout(() => {
       if (state.mood !== 'sleep') setMood('sleep');
     }, cfg.sleepAfterMs);
@@ -371,9 +396,9 @@ const PetCompanion = (() => {
     const newLevel = clampLevel(Math.floor(state.growth / GROWTH_PER_LEVEL) + 1);
     if (newLevel > from) {
       state.level = newLevel;
-      updateBadge();
-      updateScale();          // 体型放大（带过渡）
-      applyMood('celebrate'); // 升级庆祝
+      if (dom.badge) updateBadge();
+      if (dom.wrap) updateScale();   // 体型放大（带过渡）
+      applyMood('celebrate');        // 升级庆祝
       if (typeof cfg.onLevelUp === 'function') cfg.onLevelUp(state.level, from);
     }
     save();
@@ -386,7 +411,7 @@ const PetCompanion = (() => {
   function getMood() { return state.mood; }
 
   function reset() {
-    state = { growth: 0, level: 1, mood: 'idle' };
+    state = { growth: 0, level: 1, mood: 'idle', petId: state.petId || DEFAULT_PET };
     try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
     updateBadge();
     updateScale();
@@ -397,7 +422,8 @@ const PetCompanion = (() => {
   const api = {
     mount, setMood, feed, addGrowth,
     getGrowth, getLevel, getMood, reset,
-    version: '1.0.0'
+    setPet, getPet, petName,
+    version: '1.1.0'
   };
   return api;
 })();

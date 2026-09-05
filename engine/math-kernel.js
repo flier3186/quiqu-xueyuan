@@ -532,6 +532,7 @@
     op: 'add',
     build: function (lv, bias) {
       var L = GL('fraction-same');
+      if (!L.den || !L.den.length) L = { den: [2, 3, 4, 5, 6, 8], numMax: 3 }; // 边界表缺失时兜底
       var den = L.den[rint(0, L.den.length - 1)];
       var n1 = srange(1, Math.min(L.numMax, den - 1), bias);
       var n2 = srange(1, Math.min(L.numMax, den - 1), bias);

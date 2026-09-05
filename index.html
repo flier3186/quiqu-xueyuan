@@ -1184,7 +1184,7 @@ if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
   document.documentElement.classList.add('mobile-mode');
 }
 // === 数据 & 工具 ===
-const ASSETS = {petDragon:'assets/pet-dragon.jpg',petFox:'assets/pet-fox.jpg',petCat:'assets/pet-cat.jpg',petBunny:'assets/pet-bunny.jpg',petWhale:'assets/pet-whale.jpg',teacherEmma:'assets/teacher-emma.jpg',teacherLeo:'assets/teacher-leo.jpg',teacherAria:'assets/teacher-aria.jpg',mouthChart:'assets/mouth-chart-all.jpg'};
+const ASSETS = {petDragon:'assets/pet3d/dragon-idle.png',petFox:'assets/pet3d/fox-idle.png',petCat:'assets/pet3d/cat-idle.png',petBunny:'assets/pet3d/bunny-idle.png',petWhale:'assets/pet3d/whale-idle.png',teacherEmma:'assets/teacher-emma.jpg',teacherLeo:'assets/teacher-leo.jpg',teacherAria:'assets/teacher-aria.jpg',mouthChart:'assets/mouth-chart-all.jpg'};
 
 // === 严谨词汇字典（5要素） ===
 const WORD_DICT = {
@@ -5527,6 +5527,8 @@ function switchPet(i){
   currentPetIdx=i;
   S.pet.idx=i;
   saveState();
+  // PM接线：3D 伙伴形象同步切换（交叉淡入+弹性入场）
+  try{ if(window.PetCompanion) PetCompanion.setPet(PETS[i].id); }catch(e){}
   const fpImg = document.querySelector('#floatingPet img');
   if(fpImg) fpImg.setAttribute('src', PETS[i].avatar);
   const fpLv = document.querySelector('#floatingPet [style*="Lv"]');
@@ -7353,6 +7355,8 @@ function renderTextbookProgress(){
 }
 
 function switchView(view){
+  // 切换板块时关闭听算弹层（模态不跨板块残留）
+  try{ const _lm=document.getElementById('lmOverlay'); if(_lm) _lm.remove(); }catch(e){}
   if(!document.startViewTransition){
     currentView=view;S[view==='math'?'math':view==='english'?'eng':'pet']=S[view==='math'?'math':view==='english'?'eng':'pet'];
     $$('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
@@ -7556,6 +7560,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/russian-questioning.js"></script>
 <script src="engine/parent-panel.js"></script>
 <script src="engine/neural-tts.js"></script>
+<script src="data/grade-limits.js"></script>
 <script src="engine/math-kernel.js"></script>
 <script src="engine/listening-math.js"></script>
 <script type="module" src="engine/pet-companion.js"></script>
@@ -7682,13 +7687,14 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   function mountPet(){
     if(!window.PetCompanion || !document.querySelector('#petDisplay')) return;
     try{
+      try{ if(window.PetCompanion && typeof S!=='undefined' && S.pet && PETS && PETS[S.pet.idx]) PetCompanion.setPet(PETS[S.pet.idx].id); }catch(e){}
       PetCompanion.mount({
         target: '#petDisplay',
         assetsRoot: 'assets/pet3d',
         sleepAfterMs: 30000,
         feedCost: 5,
         onConsume: function(cost){ try{ if(typeof S!=='undefined' && S.pet && S.pet.coins>=cost){ S.pet.coins-=cost; saveState(); return true; } return false; }catch(e){ return false; } },
-        onLevelUp: function(lvl){ try{ toast('🎉 小绿龙进化到 '+['幼龙','少年','成年'][lvl-1]+'阶段！'); }catch(e){} }
+        onLevelUp: function(lvl){ try{ toast('🎉 你的伙伴进化到 '+['幼年','少年','成年'][lvl-1]+'阶段！'); }catch(e){} }
       });
     }catch(e){}
   }
