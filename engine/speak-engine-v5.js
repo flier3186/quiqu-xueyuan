@@ -357,26 +357,49 @@ window.SpeakEngineV5 = {
       }
       return followups[variant];
     }
-    // 当前轮数决定期望回答
-    const turn = teacherTurns;
-    const exp = sc.studentExpected[Math.min(turn, sc.studentExpected.length - 1)];
+    // 当前行号：重试不前进，只有"确认听过/放行"才前进，行号与 studentExpected 严格对应
+    const lineIdx = (typeof S.speakV5.fallbackLine === 'number') ? S.speakV5.fallbackLine : Math.max(teacherTurns - 1, 0);
+    const exp = sc.studentExpected[Math.min(lineIdx, sc.studentExpected.length - 1)];
     let matched = false;
     if(exp && userText){
       matched = exp.keywords.some(k => ut.includes(k));
     }
     const goodList = teacherGood[tId] || teacherGood.emma;
     const badList = teacherBad[tId] || teacherBad.emma;
+
+    // ===== 修复"答非所问"：没听懂就承认没听懂，绝不硬着头皮换话题 =====
+    // 孩子的回答没命中关键词时：停在当前这句话，给一个示范句让他再试；
+    // 连续 2 次都没命中才温和放行（不把孩子卡死在一句话上）。
+    if(!matched){
+      S.speakV5.fallbackMisses = (S.speakV5.fallbackMisses || 0) + 1;
+      if(S.speakV5.fallbackMisses < 2){
+        const sugg = exp && exp.suggestions && exp.suggestions.length ? exp.suggestions[0] : '';
+        const retryText = sugg
+          ? 'Hmm, I didn\'t quite get that. You can say: "' + sugg + '".'
+          : 'Sorry, I don\'t understand. Can you say it again?';
+        const retryCn = sugg
+          ? '我没太听清。你可以这样说：「' + sugg + '」'
+          : '我没听懂，可以再说一遍吗？';
+        return { text: retryText, cn: retryCn, line: lineIdx };
+      }
+      // 第二次仍未命中：放行到下一句，但诚实地说"没关系"，不假装听懂了
+      S.speakV5.fallbackMisses = 0;
+      const nextIdxGrace = lineIdx + 1;
+      if(sc.teacherLines && sc.teacherLines[nextIdxGrace]){
+        const nl = sc.teacherLines[nextIdxGrace];
+        S.speakV5.fallbackLine = nextIdxGrace;
+        return { text: 'That\'s okay, let\'s move on! ' + nl.text, cn: '没关系，我们继续！' + nl.cn, line: nextIdxGrace };
+      }
+      return { text: 'That\'s okay! You tried your best. See you next time!', cn: '没关系，你已经很努力了！下次见！', line: sc.teacherLines ? sc.teacherLines.length : lineIdx + 1 };
+    }
+    S.speakV5.fallbackMisses = 0;
     // 更自然的鼓励语选择：避免连续重复
     const lastReply = teacherTurns > 0 ? (history[history.length-1].text || '') : '';
     let enc;
-    if(matched){
-      // 匹配时：从不重复上一条鼓励语，优先选择新的
-      const remaining = goodList.filter(g => !lastReply.startsWith(g.trim()));
-      enc = remaining.length > 0 ? remaining[studentTurns % remaining.length] : goodList[studentTurns % goodList.length];
-    } else {
-      enc = badList[studentTurns % badList.length];
-    }
-    const nextIdx = turn + 1;
+    // 匹配时：从不重复上一条鼓励语，优先选择新的
+    const remaining = goodList.filter(g => !lastReply.startsWith(g.trim()));
+    enc = remaining.length > 0 ? remaining[studentTurns % remaining.length] : goodList[studentTurns % goodList.length];
+    const nextIdx = lineIdx + 1;
     // 如果对话接近结束（超过总行数 70%），切换到结束语
     const totalLines = sc.teacherLines ? sc.teacherLines.length : 0;
     if(totalLines > 0 && nextIdx >= Math.ceil(totalLines * 0.7)){
@@ -402,17 +425,20 @@ window.SpeakEngineV5 = {
       };
       const endList = endings[tId] || endings.emma;
       const endVariant = studentTurns % endList.length;
-      return endList[endVariant];
+      return { text: endList[endVariant], cn: '你表现得太棒了！下次见！', line: sc.teacherLines ? sc.teacherLines.length : nextIdx };
     }
     if(sc.teacherLines && sc.teacherLines[nextIdx]){
-      let reply = enc + sc.teacherLines[nextIdx].text;
+      const nl = sc.teacherLines[nextIdx];
+      let reply = enc + nl.text;
+      let replyCn = nl.cn || '';
       // 输入长度策略：短回复时追加追问
-      if(inputStrategy === 'short' && utLen < 10 && !(sc.teacherLines[nextIdx].text.endsWith('?'))){
+      if(inputStrategy === 'short' && utLen < 10 && !(nl.text.endsWith('?'))){
         const followups = teacherFollowups[tId] || teacherFollowups.emma;
         const fv = (studentTurns + 1) % followups.length;
         reply += ' ' + followups[fv];
       }
-      return reply;
+      S.speakV5.fallbackLine = nextIdx;
+      return { text: reply, cn: replyCn, line: nextIdx };
     }
     // 对话结束时的个性化结束语
     const endings = {
@@ -420,7 +446,7 @@ window.SpeakEngineV5 = {
       leo: 'That was awesome! You are my star student! Catch you later!',
       aria: 'You did a great job today! I am very proud of you. See you next time!'
     };
-    return endings[tId] || endings.emma;
+    return { text: endings[tId] || endings.emma, cn: '你表现得太棒了！下次见！', line: sc.teacherLines ? sc.teacherLines.length : lineIdx + 1 };
   },
 
   // ===== 开始对话 =====
@@ -430,6 +456,8 @@ window.SpeakEngineV5 = {
     S.speakV5.scenario = scenarioId;
     S.speakV5.history = [];
     S.speakV5.completed = false;
+    S.speakV5.fallbackLine = 0;   // 降级模式当前台词行号（重试不前进）
+    S.speakV5.fallbackMisses = 0;
     const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
     const sc = scenarios.find(s => s.id === scenarioId);
     const opener = sc ? sc.teacherLines[0].text : ('Hi! I am ' + this.getTeacher(teacherId).name + '. Let us start!');
@@ -456,13 +484,18 @@ window.SpeakEngineV5 = {
     if(!reply){
       reply = this._fallback(S.speakV5.scenario, userText, teacherId);
     }
-    S.speakV5.history.push({ role: 'teacher', text: reply, ts: Date.now() });
-    // 判断是否到达场景末尾（降级模式下）
+    // 兼容两种返回：字符串（旧）或 {text, cn} 对象（新，降级模式带中文译文）
+    const replyText = (typeof reply === 'string') ? reply : (reply && reply.text) || '';
+    const replyCn = (typeof reply === 'string') ? '' : ((reply && reply.cn) || '');
+    S.speakV5.history.push({ role: 'teacher', text: replyText, cn: replyCn, ts: Date.now() });
+    // 判断是否到达场景末尾（降级模式带 line 进度；AI 模式沿用学生轮数）
     const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
     const sc = scenarios.find(s => s.id === S.speakV5.scenario);
     if(sc){
-      const studentTurns = S.speakV5.history.filter(h => h.role === 'student').length;
-      if(studentTurns >= sc.teacherLines.length){
+      const prog = (typeof reply === 'object' && reply && typeof reply.line === 'number')
+        ? reply.line
+        : S.speakV5.history.filter(h => h.role === 'student').length;
+      if(prog >= sc.teacherLines.length){
         S.speakV5.completed = true;
         if(typeof setStar === 'function') setStar(5, '完成口语对话');
       }
@@ -470,8 +503,8 @@ window.SpeakEngineV5 = {
     this._save();
     // 3. TTS 朗读回复
     const self = this;
-    setTimeout(function(){ self.speak(reply, teacherId); }, 400);
-    return reply;
+    setTimeout(function(){ self.speak(replyText, teacherId); }, 400);
+    return replyText;
   },
 
   // ===== 语音识别 =====
@@ -506,11 +539,13 @@ window.SpeakEngineV5 = {
       self.isListening = false;
       const err = ev.error || '';
       if(typeof toast === 'function'){
-        if(err === 'not-allowed') toast('🔇 麦克风权限被拒绝，请检查浏览器设置');
+        if(err === 'not-allowed') toast('🔇 麦克风权限被拒绝，可以用打字继续哦 ✍️');
         else if(err === 'no-speech') toast('🤫 没有检测到语音，请再试一次');
-        else if(err === 'network') toast('🌐 网络错误，请检查网络连接');
-        else toast('识别出错：' + err);
+        else if(err === 'network') toast('🌐 网络不通，语音用不了 —— 用打字继续也可以哦 ✍️');
+        else toast('识别出错：' + err + ' —— 可以用打字继续 ✍️');
       }
+      // 识别失败后把光标放回输入框，给孩子一个明确的"下一步"
+      try{ const inp = document.getElementById('seV5Input'); if(inp) inp.focus(); }catch(e2){}
     };
     this.recognition.onend = function(){ self.isListening = false; };
     this.recognition.start();
