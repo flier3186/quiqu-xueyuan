@@ -14,65 +14,10 @@
 <link rel="preconnect" href="https://cdn.bootcdn.net">
 <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- 儿童友好设计系统：核心 token 已迁移至 assets/theme.css（Aria · V6），必须在本 inline <style> 之前加载 -->
+<link rel="stylesheet" href="assets/theme.css">
 <style>
-:root{
-  /* ===== 核心主色（孔雀绿 + 玉子黄） ===== */
-  --teal-50:#EFFBF8;--teal-100:#CFF6EE;--teal-200:#9FEDDB;--teal-300:#5FE0C5;
-  --teal-400:#2FD1AE;--teal:#00A896;--teal-600:#008C7A;--teal-700:#006B5E;--teal-800:#005047;
-  --yellow-50:#FFF8E6;--yellow-100:#FFEDB3;--yellow-200:#FFE180;--yellow-300:#FFD54D;
-  --yellow:#F5B800;--yellow-600:#D19B00;--yellow-700:#AC7E00;--yellow-800:#886100;
-  /* 辅助色 */
-  --navy-50:#EEF3FA;--navy:#1E3A5F;--navy-700:#152A44;--navy-800:#0D1A2B;
-  --coral:#FB923C;--coral-600:#F27C1A;
-  --pink:#E8A0BF;--purple:#8B5CF6;
-  /* 中性色 */
-  --ink-900:#0F172A;--ink-800:#1E293B;--ink-700:#334155;--ink-600:#475569;--ink-500:#64748B;
-  --ink-400:#94A3B8;--ink-300:#CBD5E1;--ink-200:#E2E8F0;--ink-100:#F1F5F9;--ink-50:#F8FAFC;
-  /* 语义别名 */
-  --text-1:var(--ink-900);--text-2:var(--ink-600);--text-3:var(--ink-400);--text-invert:#fff;
-  --surface:#fff;--surface-card:#fff;
-  /* 背景（Mesh 渐变 + 噪点覆盖层） */
-  --bg-grad:
-    radial-gradient(at 20% 10%, #CFF6EE 0px, transparent 55%),
-    radial-gradient(at 85% 20%, #FFE180 0px, transparent 50%),
-    radial-gradient(at 70% 90%, #DCE8F5 0px, transparent 55%),
-    radial-gradient(at 10% 80%, #F0EAF8 0px, transparent 50%),
-    linear-gradient(180deg, #F8FAFC 0%, #EFF6FB 100%);
-  --bg-noise:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  /* 阴影：多层叠加更真实 */
-  --shadow-xs:0 1px 2px rgba(15,23,42,.04);
-  --shadow-sm:0 2px 8px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.03);
-  --shadow-md:0 6px 20px rgba(30,58,95,.08),0 2px 8px rgba(30,58,95,.04);
-  --shadow-lg:0 12px 36px rgba(30,58,95,.12),0 4px 12px rgba(30,58,95,.06);
-  --shadow-xl:0 24px 60px rgba(30,58,95,.16),0 8px 20px rgba(30,58,95,.08);
-  --shadow-teal:0 8px 28px rgba(0,168,150,.28);
-  --shadow-yellow:0 8px 28px rgba(245,184,0,.28);
-  --card-shadow:var(--shadow-md);--card-shadow-hover:var(--shadow-lg);
-  /* 玻璃态 */
-  --glass-bg:rgba(255,255,255,.72);
-  --glass-bg-strong:rgba(255,255,255,.9);
-  --glass-blur:saturate(140%) blur(14px);
-  --glass-border:rgba(255,255,255,.8);
-  /* 圆角：多级体系 */
-  --radius-2xs:4px;--radius-xs:8px;--radius-sm:10px;--radius-md:14px;
-  --radius-lg:18px;--radius-xl:24px;--radius-2xl:32px;--radius-full:999px;
-  /* 动画曲线 */
-  --ease-spring:cubic-bezier(.34,1.56,.64,1);
-  --ease-smooth:cubic-bezier(.4,0,.2,1);
-  --ease-emphasis:cubic-bezier(.16,1,.3,1);
-  --dur-fast:160ms;--dur-base:260ms;--dur-slow:420ms;--dur-xl:700ms;
-}
-@media (prefers-color-scheme: light){
-  :root{--bg-grad:
-    radial-gradient(at 20% 10%, rgba(207,246,238,.55) 0, transparent 55%),
-    radial-gradient(at 85% 20%, rgba(255,225,128,.45) 0, transparent 50%),
-    radial-gradient(at 70% 90%, rgba(220,232,245,.55) 0, transparent 55%),
-    radial-gradient(at 10% 80%, rgba(240,234,248,.45) 0, transparent 50%),
-    linear-gradient(180deg, #F8FAFC 0%, #EFF6FB 100%);}
-}
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
-}
+/* 注：:root tokens / 柔色辅助 / 响应式降级 已迁移至 assets/theme.css */
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden}
 html{scroll-behavior:smooth}
@@ -944,6 +889,33 @@ input,textarea{font-family:inherit}
 .weakness-tag.high{background:var(--coral-soft);color:var(--coral)}
 .weakness-tag.mid{background:var(--yellow-soft);color:#B58200}
 .weakness-tag.low{background:var(--teal-soft);color:var(--teal)}
+
+/* ============================================================
+   儿童友好增强（Aria · V6）：放大字号/按钮/卡片、降噪留白、统一层级
+   插入于响应式断点之前，确保移动端断点仍优先生效
+   ============================================================ */
+body{font-size:var(--fs-base);line-height:1.62}
+body::before{opacity:.28}                 /* 降噪：减轻玻璃拟态颗粒感 */
+.content-area{padding:34px 40px 90px}
+.top-bar{height:78px;padding:0 32px}
+.top-bar .logo-mark{width:46px;height:46px;border-radius:14px}
+.top-bar .logo-text{font-size:20px}
+.nav-tab{padding:14px 22px;font-size:17px;border-radius:14px;gap:10px}
+.nav-tab svg{width:26px;height:26px}
+.btn{font-size:var(--fs-base);min-height:var(--touch);padding:14px 24px;border-radius:16px}
+.btn svg{width:20px;height:20px}
+.card{border-radius:var(--radius-xl);padding:28px}
+.card-title{font-size:18px}
+.grade-bar,.sub-tabs{border-radius:var(--radius-md)}
+.grade-pill,.sub-tab{padding:10px 20px;font-size:15px;border-radius:14px}
+.task-card-title,.cpa-title,.vocab-word,.math-banner h2,.eng-banner h2{font-size:19px}
+.task-title,.tree-node{font-size:15px}
+.greeting-text h1{font-size:30px}
+.math-banner,.eng-banner{border-radius:var(--radius-2xl)}
+.bento-grid{gap:24px}                      /* 首页卡片间距放大，降低密度 */
+.kid-hero{box-shadow:var(--shadow-xl);border-radius:var(--radius-2xl) !important}
+.kid-hero h1{font-size:32px;line-height:1.12}
+h1,h2,h3{letter-spacing:-.01em}
 
 /* 响应式 */
 @media (max-width:1200px){
@@ -2818,8 +2790,18 @@ window.ENG_PHOTO_MAP = ENG_PHOTO_MAP;
 let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
 function speak(text){
-  if(!('speechSynthesis' in window)) return;
   if(!text) return;
+  // PM接线：优先 Edge 神经语音（Echo 修复版），失败 speakSafe 自动降级浏览器 TTS
+  try{
+    if(window.NeuralTTS && !window.NeuralTTS.isDisabled()){
+      unlockAudio();
+      try{ window.NeuralTTS.stop && window.NeuralTTS.stop(); }catch(e){}
+      const opts = /[\u4e00-\u9fa5]/.test(text) ? {lang:'zh-CN'} : {lang:'en-US'};
+      Promise.resolve(window.NeuralTTS.speakSafe(text, opts)).catch(function(){});
+      return;
+    }
+  }catch(e){}
+  if(!('speechSynthesis' in window)) return;
   unlockAudio();
   speechSynthesis.cancel();
   // 确保语音列表已加载（部分浏览器需等待voiceschanged事件）
@@ -3171,7 +3153,7 @@ function renderOverview(){
     <div class="layout-with-side">
       <div style="flex:1;min-width:0">
         <!-- 顶部欢迎条 · 学习驾驶舱 -->
-        <div class="tilt-card" style="position:relative;overflow:hidden;border-radius:var(--radius-2xl);padding:22px 28px;margin-bottom:16px;background:linear-gradient(135deg,var(--navy) 0%,var(--teal-700) 50%,var(--teal) 100%);color:#fff;box-shadow:var(--shadow-xl)">
+        <div class="tilt-card kid-hero" style="position:relative;overflow:hidden;border-radius:var(--radius-2xl);padding:28px 32px;margin-bottom:20px;background:linear-gradient(135deg,var(--navy) 0%,var(--teal-700) 50%,var(--teal) 100%);color:#fff;box-shadow:var(--shadow-xl)">
           <div style="position:absolute;right:-30px;top:-30px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,184,0,.22),transparent 60%);filter:blur(8px)"></div>
           <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
             <div style="flex:1;min-width:260px">
@@ -3184,6 +3166,30 @@ function renderOverview(){
               <button class="btn" onclick="switchView('english')" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);font-weight:700;padding:10px 18px;font-size:14px">📖 学英语</button>
             </div>
           </div>
+        </div>
+
+        <!-- 大大的开始入口：10 秒找到想玩什么（图标 + 文字，儿童友好） -->
+        <div class="kid-start">
+          <button class="kid-entry kid-entry--math" onclick="switchView('math')">
+            <span class="kid-entry__icon">📐</span>
+            <span class="kid-entry__title">数学星球</span>
+            <span class="kid-entry__sub">闯关练计算</span>
+          </button>
+          <button class="kid-entry kid-entry--eng" onclick="switchView('english')">
+            <span class="kid-entry__icon">📖</span>
+            <span class="kid-entry__title">英语世界</span>
+            <span class="kid-entry__sub">读词学对话</span>
+          </button>
+          <button class="kid-entry kid-entry--speak" onclick="switchView('speak')">
+            <span class="kid-entry__icon">🎤</span>
+            <span class="kid-entry__title">口语伙伴</span>
+            <span class="kid-entry__sub">跟读练发音</span>
+          </button>
+          <button class="kid-entry kid-entry--pet" onclick="switchView('pet')">
+            <span class="kid-entry__icon">🐲</span>
+            <span class="kid-entry__title">元宇宙宠物</span>
+            <span class="kid-entry__sub">陪我一起玩</span>
+          </button>
         </div>
 
         <!-- Bento Grid 学习驾驶舱 -->
@@ -4015,6 +4021,7 @@ function checkMathAnswer(el,val,answer){
   const problem = window.CURRENT_MATH_PROBLEM || {};
   const bm = problem.barModel || {};
   const isCorrect = val===answer;
+  try{ window.QuizMood && window.QuizMood[isCorrect?'right':'wrong'](); }catch(e){}
 
   if(isCorrect){
     el.classList.add('correct');
@@ -5545,8 +5552,11 @@ function petAction(action){
     setTimeout(()=>tip.remove(),1200);
   };
   if(action==='feed'){
-    S.pet.hunger=Math.min(100,S.pet.hunger+10);
-    showTip('🍖 +10 饱食');toast('🍗 喂食成功！饱食+10');
+    // PM接线：喂食走 PetCompanion（扣金币+进食动画+成长值）
+    const _cost=5; let _ate=true;
+    if(window.PetCompanion){ _ate = PetCompanion.feed(_cost,function(c){ if(S.pet.coins>=c){S.pet.coins-=c;return true;} return false;}); }
+    if(_ate){ S.pet.hunger=Math.min(100,S.pet.hunger+10); showTip('🍖 +10 饱食');toast('🍗 喂食成功！饱食+10'); }
+    else { toast('💰 金币不足，先去做题赚金币吧！'); }
   }else if(action==='play'){
     S.pet.mood=Math.min(100,S.pet.mood+15);S.pet.exp+=8;
     showTip('🎮 +15 心情');toast('🎮 玩耍开心！心情+15 经验+8');
@@ -7546,6 +7556,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/russian-questioning.js"></script>
 <script src="engine/parent-panel.js"></script>
 <script src="engine/neural-tts.js"></script>
+<script src="engine/math-kernel.js"></script>
+<script src="engine/listening-math.js"></script>
+<script type="module" src="engine/pet-companion.js"></script>
 <script src="engine/math-flow-v5.js?v=20260806e"></script>
 <script src="engine/speak-engine-v5.js"></script>
 <script src="engine/english-flow-v5.js"></script>
@@ -7655,6 +7668,71 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   if (document.readyState === 'complete') {
     checkReady();
   }
+})();
+</script>
+<script>
+// ===== PM 集成接线：3D宠物伙伴 + 答题情绪钩子 + 听算挑战入口 =====
+(function(){
+  // 答题情绪钩子（checkMathAnswer / math-flow-v5 各判定点已埋）
+  window.QuizMood = {
+    right: function(){ try{ if(window.PetCompanion){ PetCompanion.setMood('celebrate'); PetCompanion.addGrowth(5); } }catch(e){} },
+    wrong: function(){ try{ if(window.PetCompanion) PetCompanion.setMood('comfort'); }catch(e){} }
+  };
+  // 宠物舞台接管：每次 renderPet 渲染后重新挂载 3D 伙伴
+  function mountPet(){
+    if(!window.PetCompanion || !document.querySelector('#petDisplay')) return;
+    try{
+      PetCompanion.mount({
+        target: '#petDisplay',
+        assetsRoot: 'assets/pet3d',
+        sleepAfterMs: 30000,
+        feedCost: 5,
+        onConsume: function(cost){ try{ if(typeof S!=='undefined' && S.pet && S.pet.coins>=cost){ S.pet.coins-=cost; saveState(); return true; } return false; }catch(e){ return false; } },
+        onLevelUp: function(lvl){ try{ toast('🎉 小绿龙进化到 '+['幼龙','少年','成年'][lvl-1]+'阶段！'); }catch(e){} }
+      });
+    }catch(e){}
+  }
+  function patchRenderPet(){
+    if(typeof window.renderPet!=='function'){ setTimeout(patchRenderPet,300); return; }
+    if(window.__petPatchDone) return; window.__petPatchDone=true;
+    const orig = window.renderPet;
+    window.renderPet = function(){ const r = orig.apply(this,arguments); setTimeout(mountPet,80); return r; };
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', patchRenderPet); else patchRenderPet();
+  // 听算挑战：浮动入口 + 弹层挂载 ListeningMath（题目源接 MathKernel）
+  function openListening(){
+    const old=document.getElementById('lmOverlay');
+    if(old){ old.remove(); return; }
+    const ov=document.createElement('div'); ov.id='lmOverlay';
+    ov.style.cssText='position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px';
+    const box=document.createElement('div');
+    box.style.cssText='background:#fff;border-radius:24px;padding:20px 20px 24px;max-width:480px;width:100%;max-height:86vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)';
+    ov.appendChild(box);
+    ov.addEventListener('click',function(e){ if(e.target===ov) ov.remove(); });
+    document.body.appendChild(ov);
+    try{
+      ListeningMath.mount(box,{total:10,speed:1.0});
+      if(window.MathKernel){
+        ListeningMath.setQuestionSource(function(){
+          const inst = MathKernel.generate();
+          // 书面题面 → 口语读题文本（符号转中文读法）
+          const oral = (inst.question||inst.formula||'')
+            .replace(/^算一算（注意进位）：|^算一算（注意退位）：|^算一算（写出商和余数）：|^算一算：|^想一想问号是多少：/,'')
+            .replace(/×/g,' 乘 ').replace(/÷/g,' 除以 ').replace(/\+/g,' 加 ').replace(/-/g,' 减 ')
+            .replace(/=/g,' 等于 ').replace(/\?/g,' 多少 ').replace(/\s+/g,' ').trim();
+          return { prompt: oral, answer: inst.answer };
+        });
+      }
+    }catch(err){ box.innerHTML='<p style="padding:20px;text-align:center">听算模块加载失败：'+err.message+'</p>'; }
+  }
+  function addEntry(){
+    const btn=document.createElement('button');
+    btn.textContent='🎧 听算挑战';
+    btn.style.cssText='position:fixed;right:16px;bottom:88px;z-index:9000;border:none;cursor:pointer;background:linear-gradient(135deg,#00A896,#0F6E56);color:#fff;font-size:15px;font-weight:700;padding:12px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(0,168,150,.35);font-family:inherit';
+    btn.onclick=openListening;
+    document.body.appendChild(btn);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', addEntry); else addEntry();
 })();
 </script>
 </body>

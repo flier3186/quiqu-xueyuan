@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuralTTS 诊断探针 · 奇趣学园</title>
+<style>
+  :root{ --bg:#0f172a; --panel:#1e293b; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444; --txt:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);padding:18px;line-height:1.5}
+  h1{font-size:18px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  button{background:var(--accent);color:#04263a;border:none;padding:9px 14px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px}
+  button.ghost{background:var(--panel);color:var(--txt);border:1px solid #334155}
+  input{background:var(--panel);border:1px solid #334155;color:var(--txt);border-radius:8px;padding:8px 10px;font-size:13px;flex:1;min-width:220px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid #334155;border-radius:12px;padding:12px}
+  .card h2{font-size:13px;margin:0 0 8px;color:var(--accent);letter-spacing:.5px}
+  pre{margin:0;white-space:pre-wrap;word-break:break-word;font-size:12px;max-height:300px;overflow:auto;font-family:ui-monospace,Consolas,monospace}
+  .log{font-family:ui-monospace,Consolas,monospace;font-size:12px;max-height:360px;overflow:auto;background:#0b1220;border-radius:8px;padding:10px}
+  .log .e{color:var(--err)} .log .w{color:var(--warn)} .log .i{color:var(--accent)} .log .d{color:var(--muted)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;margin-left:6px}
+  .pill.ok{background:rgba(34,197,94,.18);color:var(--ok)} .pill.bad{background:rgba(239,68,68,.18);color:var(--err)} .pill.warn{background:rgba(245,158,11,.18);color:var(--warn)}
+  code{background:#0b1220;padding:1px 5px;border-radius:5px;font-size:12px}
+</style>
+</head>
+<body>
+  <h1>NeuralTTS 诊断探针</h1>
+  <div class="sub">本地最小测试页 · 验证 Edge 神经语音 WebSocket 合成链路 · 必须在 <code>http://localhost</code> 或 <code>https</code> 下打开（file:// 无 crypto.subtle）</div>
+
+  <div class="row">
+    <input id="txt" value="Hello, this is a pronunciation test.">
+    <button id="btnProbe">① 完整探针（合成+播放）</button>
+    <button id="btnNet" class="ghost">② 仅测网络连通</button>
+    <button id="btnToken" class="ghost">③ 预览令牌/状态</button>
+    <button id="btnBrowser" class="ghost">④ 浏览器 TTS 降级</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>状态 / Status <span id="statusPill" class="pill warn">—</span></h2>
+      <pre id="status">点击「③ 预览令牌/状态」</pre>
+    </div>
+    <div class="card">
+      <h2>最近一次合成结果</h2>
+      <pre id="result">尚未运行</pre>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>实时日志（分级）</h2>
+    <div id="log" class="log">…</div>
+  </div>
+
+  <div class="card" style="margin-top:12px;font-size:12px;color:var(--muted)">
+    <h2>诊断判读指南</h2>
+    <div>• <b>1006 / ws close</b>：连接被重置。多为①沙箱/国内网络对 <code>wss://speech.platform.bing.com</code> 的 WS upgrade 被阻断；②<code>Sec-MS-GEC</code> 令牌或 <code>Sec-MS-GEC-Version</code> 过期被服务端拒绝。本机属①（HTTPS GET 通但 WSS 被 reset）。</div>
+    <div>• <b>crypto.subtle 不可用</b>：页面非安全上下文（file:// 或非 localhost http）。需经本地服务或 https 打开。</div>
+    <div>• <b>turn.end 但音频为空</b>：令牌/版本不匹配，服务端返回空音频。</div>
+    <div>• 最佳降级：若云 TTS 长期不可达，建议走 <code>NeuralTTS.speakSafe()</code>（自动回退浏览器 TTS）或预生成音频 + 服务端代理（见 docs/voice-integration.md）。</div>
+  </div>
+
+  <script src="../engine/neural-tts.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const logEl = $('log');
+    function emit(level, msg, data){
+      const cls = {error:'e',warn:'w',info:'i',debug:'d'}[level]||'d';
+      const line = document.createElement('div');
+      line.className = cls;
+      line.textContent = '['+level+'] ' + msg + (data!==undefined ? ' ' + (typeof data==='string'?data:JSON.stringify(data)) : '');
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    if(window.NeuralTTS){ NeuralTTS.setLogLevel(4); NeuralTTS.onLog(emit); }
+
+    function showStatus(){
+      const s = NeuralTTS.status();
+      $('status').textContent = JSON.stringify(s, null, 2);
+      const pill = $('statusPill');
+      if(!s.cryptoOk){ pill.className='pill bad'; pill.textContent='无 crypto'; }
+      else if(s.disabled){ pill.className='pill warn'; pill.textContent='已禁用'; }
+      else { pill.className='pill ok'; pill.textContent='就绪'; }
+    }
+
+    $('btnToken').onclick = ()=>{ showStatus(); emit('info','已刷新状态面板'); };
+
+    $('btnNet').onclick = async ()=>{
+      emit('info','测试到 speech.platform.bing.com 的连通性…');
+      // 1) HTTPS GET（端点存在应 404）
+      try{
+        const ctrl = new AbortController(); const t=setTimeout(()=>ctrl.abort(),6000);
+        const r = await fetch('https://'+'speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1',{method:'GET',signal:ctrl.signal});
+        clearTimeout(t);
+        emit('info','HTTPS GET 状态', r.status);
+      }catch(e){ emit('warn','HTTPS GET 失败', e.message); }
+      // 2) WSS 直连（浏览器自动带 Origin/UA）
+      try{
+        const ws = new WebSocket('wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=test');
+        const to = setTimeout(()=>{ try{ws.close();}catch(e){} }, 6000);
+        ws.onopen = ()=>{ clearTimeout(to); emit('ok'?'info':'info','WSS 握手成功（少见）'); ws.close(); };
+        ws.onerror = ()=>{ clearTimeout(to); emit('warn','WSS 握手错误/被重置（典型 1006）'); };
+        ws.onclose = (e)=>{ clearTimeout(to); emit('warn','WSS 关闭', 'code='+(e&&e.code)); };
+      }catch(e){ emit('error','WSS 构造失败', e.message); }
+    };
+
+    $('btnProbe').onclick = async ()=>{
+      const text = $('txt').value || 'Hello, this is a pronunciation test.';
+      emit('info','开始完整探针：', text);
+      const rep = await NeuralTTS._probe(text);
+      $('result').textContent = JSON.stringify(rep, null, 2);
+      showStatus();
+      emit(rep.result && rep.result==='OK' ? 'info':'warn','探针结论', rep.result);
+    };
+
+    $('btnBrowser').onclick = async ()=>{
+      const text = $('txt').value || 'Hello, this is a pronunciation test.';
+      emit('info','测试浏览器 TTS 降级：', text);
+      const r = await NeuralTTS.speakSafe(text, {voice: NeuralTTS.VOICES.emma, lang:'en-US', rate:0.9, pitch:1.0});
+      emit('info','speakSafe 返回', r);
+    };
+
+    showStatus();
+  </script>
+</body>
+</html>

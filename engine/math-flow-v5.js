@@ -430,6 +430,7 @@ window.MathFlowV5 = {
     correctIdx = parseInt(correctIdx);
     stepIdx = parseInt(stepIdx);
     const isCorrect = chosenIdx === correctIdx;
+    try{ if(window.QuizMood) window.QuizMood[isCorrect?'right':'wrong'](); }catch(e){}
     const container = el.parentElement;
     if(container){
       container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
@@ -564,6 +565,7 @@ window.MathFlowV5 = {
     chosenIdx = parseInt(chosenIdx);
     correctIdx = parseInt(correctIdx);
     const isCorrect = chosenIdx === correctIdx;
+    try{ if(window.QuizMood) window.QuizMood[isCorrect?'right':'wrong'](); }catch(e){}
     const container = el.parentElement;
     const problem = this._sess.problem || {};
     const timeUsed = Math.max(1, Math.round((Date.now() - (this._sess.startTs||Date.now()))/1000));
@@ -1337,6 +1339,7 @@ window.MathFlowV5 = {
     correctIdx = parseInt(correctIdx);
     level = parseInt(level);
     const isCorrect = chosenIdx === correctIdx;
+    try{ if(window.QuizMood) window.QuizMood[isCorrect?'right':'wrong'](); }catch(e){}
     const container = el.parentElement;
     if(container){
       container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
@@ -1557,6 +1560,7 @@ window.MathFlowV5 = {
     chosenIdx = parseInt(chosenIdx);
     correctIdx = parseInt(correctIdx);
     const isCorrect = chosenIdx === correctIdx;
+    try{ if(window.QuizMood) window.QuizMood[isCorrect?'right':'wrong'](); }catch(e){}
     const container = el.parentElement;
     container.querySelectorAll('.wp-choice').forEach(c=>c.classList.remove('correct','wrong'));
     el.classList.add(isCorrect?'correct':'wrong');

@@ -1,0 +1,129 @@
+/* ============================================================
+   奇趣学园 · 儿童友好设计系统（Aria · V6）
+   核心 token 来源唯一处：index.html 的旧 :root 已迁移至此。
+   纯前端零构建，由 index.html <link> 引入（必须在 inline <style> 之前）。
+   品牌色 --teal #00A896 保留不动。
+   ============================================================ */
+:root{
+  /* ===== 核心主色（孔雀绿 + 玉子黄） ===== */
+  --teal-50:#EFFBF8;--teal-100:#CFF6EE;--teal-200:#9FEDDB;--teal-300:#5FE0C5;
+  --teal-400:#2FD1AE;--teal:#00A896;--teal-600:#008C7A;--teal-700:#006B5E;--teal-800:#005047;
+  --yellow-50:#FFF8E6;--yellow-100:#FFEDB3;--yellow-200:#FFE180;--yellow-300:#FFD54D;
+  --yellow:#F5B800;--yellow-600:#D19B00;--yellow-700:#AC7E00;--yellow-800:#886100;
+  /* 辅助色 */
+  --navy-50:#EEF3FA;--navy:#1E3A5F;--navy-700:#152A44;--navy-800:#0D1A2B;
+  --coral:#FB923C;--coral-600:#F27C1A;
+  --pink:#E8A0BF;--purple:#8B5CF6;
+  /* 中性色 */
+  --ink-900:#0F172A;--ink-800:#1E293B;--ink-700:#334155;--ink-600:#475569;--ink-500:#64748B;
+  --ink-400:#94A3B8;--ink-300:#CBD5E1;--ink-200:#E2E8F0;--ink-100:#F1F5F9;--ink-50:#F8FAFC;
+  /* 语义别名 */
+  --text-1:var(--ink-900);--text-2:var(--ink-600);--text-3:var(--ink-400);--text-invert:#fff;
+  --surface:#fff;--surface-card:#fff;
+
+  /* ===== 柔色/浅色辅助 token（旧站遗漏定义，导致大量背景透明失效，此处补齐） ===== */
+  --teal-light:#33E0C0;       /* 主色悬停/高亮 */
+  --teal-soft:#E6F7F3;       /* 浅青底：芯片/悬停/hover 容器 */
+  --teal-soft-2:#D6F2EC;
+  --yellow-soft:#FFF6DD;      /* 浅黄底 */
+  --yellow-soft-2:#FFEFC2;
+  --coral-soft:#FFEFE3;       /* 浅橙底 */
+  --coral-soft-2:#FFE3D2;
+  --pink-soft:#FBE7F0;
+  --purple-soft:#F1ECFE;
+  --navy-light:#2E4D73;
+
+  /* 背景（Mesh 渐变 + 噪点覆盖层，已调柔） */
+  --bg-grad:
+    radial-gradient(at 20% 10%, #CFF6EE 0px, transparent 55%),
+    radial-gradient(at 85% 20%, #FFE180 0px, transparent 50%),
+    radial-gradient(at 70% 90%, #DCE8F5 0px, transparent 55%),
+    radial-gradient(at 10% 80%, #F0EAF8 0px, transparent 50%),
+    linear-gradient(180deg, #F8FAFC 0%, #EFF6FB 100%);
+  --bg-noise:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
+  /* 阴影：多层叠加更真实 */
+  --shadow-xs:0 1px 2px rgba(15,23,42,.04);
+  --shadow-sm:0 2px 8px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.03);
+  --shadow-md:0 6px 20px rgba(30,58,95,.08),0 2px 8px rgba(30,58,95,.04);
+  --shadow-lg:0 12px 36px rgba(30,58,95,.12),0 4px 12px rgba(30,58,95,.06);
+  --shadow-xl:0 24px 60px rgba(30,58,95,.16),0 8px 20px rgba(30,58,95,.08);
+  --shadow-teal:0 8px 28px rgba(0,168,150,.28);
+  --shadow-yellow:0 8px 28px rgba(245,184,0,.28);
+  --card-shadow:var(--shadow-md);--card-shadow-hover:var(--shadow-lg);
+  /* 玻璃态 */
+  --glass-bg:rgba(255,255,255,.72);
+  --glass-bg-strong:rgba(255,255,255,.9);
+  --glass-blur:saturate(140%) blur(14px);
+  --glass-border:rgba(255,255,255,.8);
+  /* 圆角：多级体系（偏柔和童趣） */
+  --radius-2xs:6px;--radius-xs:10px;--radius-sm:12px;--radius-md:16px;
+  --radius-lg:20px;--radius-xl:26px;--radius-2xl:34px;--radius-full:999px;
+  /* 动画曲线 */
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+  --ease-smooth:cubic-bezier(.4,0,.2,1);
+  --ease-emphasis:cubic-bezier(.16,1,.3,1);
+  --dur-fast:160ms;--dur-base:260ms;--dur-slow:420ms;--dur-xl:700ms;
+
+  /* ===== 儿童友好新增 tokens ===== */
+  --space-1:6px;--space-2:10px;--space-3:16px;--space-4:24px;--space-5:32px;--space-6:44px;
+  --fs-xs:13px;--fs-sm:15px;--fs-base:16px;--fs-md:18px;--fs-lg:22px;--fs-xl:28px;--fs-2xl:34px;--fs-3xl:42px;
+  --touch:52px; /* 最小触控高度 */
+}
+@media (prefers-color-scheme: light){
+  :root{--bg-grad:
+    radial-gradient(at 20% 10%, rgba(207,246,238,.55) 0, transparent 55%),
+    radial-gradient(at 85% 20%, rgba(255,225,128,.45) 0, transparent 50%),
+    radial-gradient(at 70% 90%, rgba(220,232,245,.55) 0, transparent 55%),
+    radial-gradient(at 10% 80%, rgba(240,234,248,.45) 0, transparent 50%),
+    linear-gradient(180deg, #F8FAFC 0%, #EFF6FB 100%);}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+}
+
+/* ============================================================
+   首页「大大的开始入口」组件（图标 + 文字，10 秒找到开始）
+   新增类名，不与旧样式冲突
+   ============================================================ */
+.kid-start{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:0 0 var(--space-4)}
+.kid-entry{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  padding:28px 16px;border:none;border-radius:var(--radius-2xl);cursor:pointer;
+  transition:transform var(--dur-base) var(--ease-spring),box-shadow var(--dur-base);
+  box-shadow:var(--shadow-md);text-align:center;color:#fff;position:relative;overflow:hidden;
+}
+.kid-entry:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-lg)}
+.kid-entry:active{transform:translateY(-1px) scale(.99)}
+.kid-entry__icon{font-size:48px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.18))}
+.kid-entry__title{font-size:21px;font-weight:900}
+.kid-entry__sub{font-size:13px;opacity:.92;font-weight:600;letter-spacing:.01em}
+.kid-entry--math{background:linear-gradient(150deg,var(--teal),var(--teal-700))}
+.kid-entry--eng{background:linear-gradient(150deg,var(--yellow),#FFB300);color:var(--navy-800)}
+.kid-entry--speak{background:linear-gradient(150deg,var(--coral),#FB7185)}
+.kid-entry--pet{background:linear-gradient(150deg,var(--navy),var(--teal-700))}
+@media (max-width:980px){.kid-start{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){
+  .kid-start{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:var(--space-3)}
+  .kid-entry{padding:20px 10px}
+  .kid-entry__icon{font-size:40px}
+  .kid-entry__title{font-size:18px}
+  .kid-entry__sub{font-size:11px}
+}
+
+/* ============================================================
+   宠物 3D 新形象舞台（预留钩子，由 PM 接线时添加 .pet-stage--3d
+   并替换 img src 为 assets/pet3d/*.png；此处不硬编码任何 pet3d 路径）
+   ============================================================ */
+.pet-display img{
+  max-width:100%;max-height:100%;object-fit:contain;
+  filter:drop-shadow(0 14px 26px rgba(0,0,0,.28));
+  transition:transform var(--dur-slow) var(--ease-spring);
+}
+.pet-stage--3d{
+  background:radial-gradient(circle at 50% 32%, #163452 0%, #0F172A 72%);
+}
+.pet-stage--3d .pet-display{
+  width:min(440px,82%);height:auto;aspect-ratio:1;
+}
+.pet-stage--3d .pet-display img{transform:translateY(-6px)}
