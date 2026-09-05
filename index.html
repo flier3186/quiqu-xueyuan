@@ -2787,8 +2787,17 @@ const ENG_PHOTO_MAP={
 };
 function engPhotoUrl(word){
   if(!word) return '';
-  var w=word.toLowerCase().replace(/'/g,'').replace(/ /g,'+');
-  // 优先使用本地 emoji 占位图，避免依赖外部API
+  var w=word.toLowerCase().replace(/'/g,'').trim();
+  // 关键词：优先用 ENG_PHOTO_MAP 的精准关键词（逗号分隔取第一个）
+  var key=w;
+  if(typeof ENG_PHOTO_MAP!=='undefined' && ENG_PHOTO_MAP[w]) key=ENG_PHOTO_MAP[w].split(',')[0].trim();
+  // 真实摄影照片（LoremFlickr 免费按关键词取图，国内可达）；加载失败由 onerror 退回 emoji 卡
+  return 'https://loremflickr.com/480/320/'+encodeURIComponent(key);
+}
+function engEmojiFallback(word){
+  // 照片加载失败时的 emoji 占位卡
+  if(!word) return '';
+  var w=word.toLowerCase().replace(/'/g,'').trim();
   var emojiMap={
     apple:'🍎',banana:'🍌',cat:'🐱',dog:'🐕',fish:'🐟',bird:'🐦',
     book:'📚',pen:'🖊️',pencil:'✏️',bag:'🎒',school:'🏫',teacher:'👩‍🏫',
@@ -2796,17 +2805,14 @@ function engPhotoUrl(word){
     sun:'☀️',moon:'🌙',star:'⭐',flower:'🌸',tree:'🌳',grass:'🌿',
     rain:'🌧️',snow:'❄️',cloud:'☁️',wind:'💨',
     egg:'🥚',bread:'🍞',rice:'🍚',milk:'🥛',water:'💧',
-    apple:'🍎',orange:'🍊',pear:'🍐',grape:'🍇',peach:'🍑',
+    orange:'🍊',pear:'🍐',grape:'🍇',peach:'🍑',
     one:'1️⃣',two:'2️⃣',three:'3️⃣',four:'4️⃣',five:'5️⃣',
-    six:'6️⃣',seven:'7️⃣',eight:'8️⃣',nine:'9️⃣',ten:'🔟',
+    six:'6️⃣',seven:'7️⃣',eight:'8️⃣',nine:'9️⃣',ten:'🔟'
   };
-  var em=emojiMap[w]||null;
-  if(em){
-    return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f0fdf9" rx="12"/><text x="50" y="62" text-anchor="middle" font-size="48">'+em+'</text><text x="50" y="90" text-anchor="middle" font-size="11" fill="#047857" font-family="sans-serif">'+w+'</text></svg>');
-  }
-  // fallback: 返回空让 onerror 处理
-  return '';
+  var em=emojiMap[w]||'📷';
+  return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f0fdf9" rx="12"/><text x="50" y="62" text-anchor="middle" font-size="48">'+em+'</text><text x="50" y="90" text-anchor="middle" font-size="11" fill="#047857" font-family="sans-serif">'+w+'</text></svg>');
 }
+window.engEmojiFallback = engEmojiFallback;
 window.engPhotoUrl = engPhotoUrl;
 window.ENG_PHOTO_MAP = ENG_PHOTO_MAP;
 let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
@@ -2844,10 +2850,11 @@ function _doSpeak(text, voices){
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
   u.volume = 1; u.rate = 0.85; u.pitch = 1.1;
-  // 优先选择英文女声
-  const preferred = voices.find(v=>/en[-_]US/i.test(v.lang) && /female|samantha|victoria|zira|woman|girl|google|microsoft/i.test(v.name))
-    || voices.find(v=>/en[-_]US/i.test(v.lang))
-    || voices.find(v=>/^en/i.test(v.lang));
+  // 优先级：自然神经语音(Natural/Online) > Google 英声 > 英文女声 > 任意英文
+  const score = v => (/natural/i.test(v.name) ? 100 : /online/i.test(v.name) ? 80 : /google/i.test(v.name) && /en/i.test(v.lang) ? 60 : 0);
+  const preferred = voices.filter(v=>/en[-_]US/i.test(v.lang) && /female|samantha|victoria|zira|aria|jenny|woman|girl/i.test(v.name)).sort((a,b)=>score(b)-score(a))[0]
+    || voices.filter(v=>/en[-_]US/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0]
+    || voices.filter(v=>/^en/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
   if(preferred){ try{ u.voice = preferred; }catch(e){} }
   // 解决部分浏览器暂停后无法继续的问题
   try{ speechSynthesis.resume(); }catch(e){}
@@ -4348,10 +4355,10 @@ function renderEngSub(subtab,grade){
         ${flashWords.map((w,i)=>`<div class="flash-card" id="flashCard${i}" onclick="flipFlash(${i})">
           <div class="flash-inner">
             <div class="flash-face flash-front">
-              ${engPhotoUrl(w.w)?`<img src="${engPhotoUrl(w.w)}" class="flash-photo" alt="${w.w}" loading="lazy">`:`<div class="flash-emoji-fallback" style="display:block;font-size:48px;text-align:center;line-height:120px">${w.emoji||'📚'}</div>`}
+              <img src="${engPhotoUrl(w.w)}" class="flash-photo" alt="${w.w}" loading="lazy" onerror="this.onerror=null;this.src=engEmojiFallback('${escapeAttr(w.w)}')">
               <div class="flash-word">${w.emoji||'📚'} ${w.w}</div>
               <div class="flash-speak" onclick="event.stopPropagation();speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
-              <div style="font-size:11px;color:var(--ink-400);margin-top:auto">👆 点击翻面</div>
+              <div style="font-size:11px;color:var(--ink-400);margin-top:auto">👆 点击翻面听发音</div>
             </div>
             <div class="flash-face flash-back">
               <div class="flash-pos">${w.pos}</div>
@@ -7025,7 +7032,13 @@ function vocabPageChange(delta){
 }
 function flipFlash(i){
   const c=$('#flashCard'+i);
-  if(c&&!c.classList.contains('known'))c.classList.toggle('flipped');
+  if(c&&!c.classList.contains('known')){
+    c.classList.toggle('flipped');
+    // 点卡即听：每次点击都发音
+    if(flashWords&&flashWords[i]){
+      setTimeout(function(){ try{ speak(flashWords[i].w); }catch(e){} }, 250);
+    }
+  }
 }
 function unflipFlash(i){
   const c=$('#flashCard'+i);
@@ -7532,6 +7545,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/math-visual-v5.js?v=20260806b"></script>
 <script src="engine/russian-questioning.js"></script>
 <script src="engine/parent-panel.js"></script>
+<script src="engine/neural-tts.js"></script>
 <script src="engine/math-flow-v5.js?v=20260806e"></script>
 <script src="engine/speak-engine-v5.js"></script>
 <script src="engine/english-flow-v5.js"></script>

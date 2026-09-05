@@ -71,7 +71,7 @@ window.SpeakEngineV5 = {
     }catch(e){ return false; }
   },
 
-  // ===== 选择最优 TTS voice =====
+  // ===== 选择最优 TTS voice（神经/自然语音优先）=====
   _selectVoice(preferGender){
     if(!('speechSynthesis' in window)) return null;
     const cacheKey = preferGender || 'female';
@@ -79,22 +79,47 @@ window.SpeakEngineV5 = {
     let voices = [];
     try{ voices = speechSynthesis.getVoices() || []; }catch(e){ return null; }
     if(!voices.length) return null;
+    // 自然度打分：Natural 神经语音 > Online 在线语音 > Google 品质 > 普通
+    const naturalScore = v => (/natural/i.test(v.name) ? 100 : /online/i.test(v.name) ? 80 : /google/i.test(v.name) ? 60 : 0);
     const genderRe = preferGender === 'male'
-      ? /male|man|boy|david|mark|alex|daniel|fred|george/i
-      : /female|woman|girl|samantha|victoria|zira|susan|karen|moira|tessa/i;
-    // 优先 en-US 匹配性别 → en-GB → 任意 en
-    let v = voices.find(v => /en[-_]US/i.test(v.lang) && genderRe.test(v.name));
-    if(!v) v = voices.find(v => /en[-_]GB/i.test(v.lang) && genderRe.test(v.name));
-    if(!v) v = voices.find(v => /en[-_]US/i.test(v.lang));
-    if(!v) v = voices.find(v => /^en/i.test(v.lang));
+      ? /male|man|boy|david|mark|alex|daniel|fred|george|andrew|guy/i
+      : /female|woman|girl|samantha|victoria|zira|susan|karen|moira|tessa|aria|jenny|emma|ava/i;
+    // 优先 en-US 匹配性别（自然度排序）→ en-GB → 任意 en
+    let v = voices.filter(v => /en[-_]US/i.test(v.lang) && genderRe.test(v.name)).sort((a,b)=>naturalScore(b)-naturalScore(a))[0];
+    if(!v) v = voices.filter(v => /en[-_]GB/i.test(v.lang) && genderRe.test(v.name)).sort((a,b)=>naturalScore(b)-naturalScore(a))[0];
+    if(!v) v = voices.filter(v => /en[-_]US/i.test(v.lang)).sort((a,b)=>naturalScore(b)-naturalScore(a))[0];
+    if(!v) v = voices.filter(v => /^en/i.test(v.lang)).sort((a,b)=>naturalScore(b)-naturalScore(a))[0];
     if(v) this._voiceCache[cacheKey] = v;
     return v || null;
   },
 
-  // ===== TTS 朗读（带语调模拟 + 情绪标记 + 移动端重试）=====
+  // ===== TTS 朗读：优先微软神经语音（真人级），失败降级浏览器内置语音 =====
   speak(text, teacherId){
-    if(!('speechSynthesis' in window) || !text) return;
+    if(!text) return;
+    if(typeof speechSynthesis === 'undefined' || !('speechSynthesis' in window)) return;
     const teacher = this.getTeacher(teacherId);
+    speechSynthesis.cancel();
+    // —— 第一优先：NeuralTTS（微软神经语音，真人级）——
+    if(typeof NeuralTTS !== 'undefined' && NeuralTTS && !NeuralTTS.isDisabled()){
+      const voiceMap = { emma: NeuralTTS.VOICES.emma, aria: NeuralTTS.VOICES.aria, leo: NeuralTTS.VOICES.leo };
+      const nv = voiceMap[(teacherId || S.speakV5.teacher || 'emma').toLowerCase()] || NeuralTTS.VOICES.female;
+      // 语速/音调映射：teacher.voice.rate(0.8~1.2) → 百分比；emma +2Hz 明亮、leo -3Hz 低沉
+      const ratePct = Math.round((teacher.voice.rate - 1) * 100);
+      const tKey = (teacherId || '').toLowerCase();
+      const pitchHz = tKey === 'emma' ? 2 : (tKey === 'leo' ? -3 : 0);
+      NeuralTTS.stop();
+      NeuralTTS.speak(text, { voice: nv, ratePct, pitchHz }).catch(() => {
+        // 神经语音失败（网络等）→ 本句降级浏览器 TTS
+        this._speakBrowser(text, teacherId, teacher);
+      });
+      return;
+    }
+    this._speakBrowser(text, teacherId, teacher);
+  },
+
+  // 浏览器内置 speechSynthesis 路径（降级用，原逻辑搬移至此）
+  _speakBrowser(text, teacherId, teacher){
+    if(!('speechSynthesis' in window) || !text) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US';

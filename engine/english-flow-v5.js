@@ -411,24 +411,26 @@ window.EnglishFlowV5 = {
 
   // ===== 5. 图片词汇库（4分钟）=====
   _renderVocab(scene){
-    // 场景核心词配图+发音（用 emoji 作为图片替代，纯前端无外部资源）
-    const emojiMap = { apple: '🍎', bread: '🍞', milk: '🥛', egg: '🥚', rice: '🍚', book: '📕', pen: '🖊️', desk: '🪑', chair: '🪑', teacher: '👩‍🏫', tree: '🌳', flower: '🌸', bird: '🐦', dog: '🐶', run: '🏃', sun: '☀️', rain: '🌧️', cloud: '☁️', wind: '💨', hot: '🥵', shirt: '👕', pants: '👖', shoes: '👟', hat: '🎩', dress: '👗', elephant: '🐘', lion: '🦁', monkey: '🐵', rabbit: '🐰', tiger: '🐯', cake: '🎂', candle: '🕯️', gift: '🎁', song: '🎵', party: '🎉' };
+    // 真实照片配图（LoremFlickr 按关键词取摄影图），加载失败退回 emoji 卡
     return '<div style="padding:16px">' +
       '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
         '<span style="font-size:24px">🖼️</span>' +
         '<div><div style="font-size:16px;font-weight:800;color:var(--navy)">图片词汇库</div>' +
-        '<div style="font-size:12px;color:var(--text-2)">点击图片听发音，认识点 ✓</div></div></div>' +
+        '<div style="font-size:12px;color:var(--text-2)">点击卡片听发音，认识点 ✓</div></div></div>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px">' +
         scene.words.map((w) => {
           const info = this._wordInfo(w);
-          const emoji = emojiMap[w] || '📷';
-          return '<div style="background:white;border-radius:12px;padding:14px;box-shadow:var(--shadow-sm);text-align:center">' +
-            '<div style="font-size:40px;margin-bottom:6px">' + emoji + '</div>' +
+          const photo = (typeof engPhotoUrl === 'function') ? engPhotoUrl(w) : '';
+          const emojiCard = (typeof engEmojiFallback === 'function') ? engEmojiFallback(w) : '';
+          return '<div style="background:white;border-radius:12px;padding:8px;box-shadow:var(--shadow-sm);text-align:center;cursor:pointer" onclick="speak(\'' + w + '\')">' +
+            '<div style="width:100%;height:96px;border-radius:8px;overflow:hidden;margin-bottom:6px;background:var(--teal-soft)">' +
+            (photo ? '<img src="' + photo + '" alt="' + w + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.onerror=null;this.src=\'' + emojiCard + '\'">' : '') +
+            '</div>' +
             '<div style="font-size:15px;font-weight:800;color:var(--navy)">' + w + '</div>' +
             '<div style="font-size:11px;color:var(--text-2);margin-top:2px">' + ((info.def || '').split('。')[0].slice(0, 16)) + '</div>' +
             '<div style="display:flex;gap:6px;justify-content:center;margin-top:8px">' +
-              '<button onclick="speak(\'' + w + '\')" style="background:var(--teal-soft);border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:14px">🔊</button>' +
-              '<button onclick="EnglishFlowV5._vocabKnow(\'' + w + '\',this)" style="background:var(--teal);color:white;border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px">✓ 认识</button>' +
+              '<button onclick="event.stopPropagation();speak(\'' + w + '\')" style="background:var(--teal-soft);border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:14px">🔊</button>' +
+              '<button onclick="event.stopPropagation();EnglishFlowV5._vocabKnow(\'' + w + '\',this)" style="background:var(--teal);color:white;border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px">✓ 认识</button>' +
             '</div></div>';
         }).join('') +
       '</div>' +
@@ -690,9 +692,13 @@ window.EnglishFlowV5 = {
     const emojiMap = { apple: '🍎', bread: '🍞', milk: '🥛', egg: '🥚', rice: '🍚', book: '📕', pen: '🖊️', tree: '🌳', flower: '🌸', bird: '🐦', dog: '🐶', sun: '☀️', rain: '🌧️', shirt: '👕', shoes: '👟', elephant: '🐘', lion: '🦁', cake: '🎂' };
     box.innerHTML = this._nbPicked.map((w, i) => {
       const info = this._wordInfo(w);
+      const photo = (typeof engPhotoUrl === 'function') ? engPhotoUrl(w) : '';
+      const emojiCard = (typeof engEmojiFallback === 'function') ? engEmojiFallback(w) : '';
       return '<div style="background:white;border-radius:12px;padding:14px;box-shadow:var(--shadow-sm)">' +
         '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">' +
-          '<span style="font-size:32px">' + (emojiMap[w] || '📷') + '</span>' +
+          '<span style="width:52px;height:52px;border-radius:10px;overflow:hidden;background:var(--teal-soft);display:inline-block;flex:none">' +
+          (photo ? '<img src="' + photo + '" alt="' + w + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.onerror=null;this.src=\'' + emojiCard + '\'">' : '') +
+          '</span>' +
           '<div><div style="font-size:18px;font-weight:800;color:var(--teal)">' + w + '</div>' +
           '<div style="font-size:11px;color:var(--text-2)">' + (info.pos || '') + '</div></div>' +
           '<button onclick="speak(\'' + w + '\')" style="margin-left:auto;background:var(--teal-soft);border:none;border-radius:8px;padding:6px 10px;cursor:pointer">🔊</button>' +
