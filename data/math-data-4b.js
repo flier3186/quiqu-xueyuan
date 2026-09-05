@@ -4863,15 +4863,15 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-047"
         },
         {
-            "scene": "小红把一个正方形平均分成100份，涂了其中的3份。老师问涂色部分用小数表示是多少。",
-            "question": "3/100用小数表示是多少？",
-            "formula": "3/100 = ?",
-            "answer": 0.03,
+            "scene": "小红把一个正方形平均分成100份，涂了其中的17份。老师问涂色部分用小数表示是多少。",
+            "question": "17/100用小数表示是多少？",
+            "formula": "17/100=?",
+            "answer": 0.17,
             "choices": [
-                0.03,
-                0.3,
-                0.003,
-                4
+                0.17,
+                1.7,
+                0.017,
+                17
             ],
             "visualType": "fractionStrip",
             "visualData": {
@@ -4957,15 +4957,15 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-048"
         },
         {
-            "scene": "小红把一个正方形平均分成100份，涂了其中的3份。老师问涂色部分用小数表示是多少。",
-            "question": "3/100用小数表示是多少？",
-            "formula": "3/100 = ?",
-            "answer": 0.03,
+            "scene": "小亮把一个正方形平均分成100份，涂了其中的9份。老师问涂色部分用小数表示是多少。",
+            "question": "9/100用小数表示是多少？",
+            "formula": "9/100=?",
+            "answer": 0.09,
             "choices": [
-                0.03,
-                0.3,
-                0.003,
-                4
+                0.09,
+                0.9,
+                0.009,
+                9
             ],
             "visualType": "fractionStrip",
             "visualData": {
@@ -5239,15 +5239,15 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-051"
         },
         {
-            "scene": "小红用三根小棒围成一个三角形。老师问三角形有几条边。",
-            "question": "三角形有几条边？",
-            "formula": "三角形边数 = ?",
-            "answer": 3,
+            "scene": "小红观察教室里的窗户，它是长方形的。老师问长方形有几条边。",
+            "question": "长方形有几条边？",
+            "formula": "长方形边数=?",
+            "answer": 4,
             "choices": [
-                3,
                 4,
+                3,
                 2,
-                5
+                6
             ],
             "visualType": "geometry",
             "visualData": {
@@ -5332,15 +5332,15 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-052"
         },
         {
-            "scene": "小红用三根小棒围成一个三角形。老师问三角形有几条边。",
-            "question": "三角形有几条边？",
-            "formula": "三角形边数 = ?",
-            "answer": 3,
+            "scene": "小亮数一数停车场标志牌，它是一个五边形。老师问五边形有几条边。",
+            "question": "五边形有几条边？",
+            "formula": "五边形边数=?",
+            "answer": 5,
             "choices": [
-                3,
+                5,
                 4,
-                2,
-                5
+                3,
+                6
             ],
             "visualType": "geometry",
             "visualData": {
@@ -5615,13 +5615,13 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-055"
         },
         {
-            "scene": "小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。",
-            "question": "三角形内角和等于多少度？",
-            "formula": "三角形内角和 = ?°",
-            "answer": 180,
+            "scene": "两个完全一样的三角形可以拼成一个平行四边形。每个三角形内角和是180度。",
+            "question": "平行四边形的内角和是多少度？",
+            "formula": "180×2=?",
+            "answer": 360,
             "choices": [
-                180,
                 360,
+                180,
                 90,
                 270
             ],
@@ -5710,15 +5710,15 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-056"
         },
         {
-            "scene": "小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。",
-            "question": "三角形内角和等于多少度？",
-            "formula": "三角形内角和 = ?°",
-            "answer": 180,
+            "scene": "一个直角三角形里有一个直角（90度），另外两个角都是锐角。",
+            "question": "直角三角形中两个锐角的和是多少度？",
+            "formula": "180-90=?",
+            "answer": 90,
             "choices": [
-                180,
-                360,
                 90,
-                270
+                180,
+                45,
+                60
             ],
             "visualType": "geometry",
             "visualData": {
@@ -6893,15 +6893,15 @@ window.MATH_BY_GRADE["4b"] = {
             "id": "4B-PROB-068"
         },
         {
-            "scene": "小红遇到一个不规则图形，她通过平移把它变成一个长7宽3的长方形。",
+            "scene": "小刚遇到一个不规则图形，他通过平移把它变成一个长6宽4的长方形。",
             "question": "平移后长方形的面积是多少？",
-            "formula": "7 × 3 = ?",
-            "answer": 21,
+            "formula": "6×4=?",
+            "answer": 24,
             "choices": [
-                21,
-                8,
-                12,
-                16
+                24,
+                10,
+                20,
+                18
             ],
             "visualType": "geometry",
             "visualData": {

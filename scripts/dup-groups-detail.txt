@@ -1,0 +1,189 @@
+=== 3b 3B-PROB-043,3B-PROB-148,3B-PROB-149
+  id=3B-PROB-043 formula=1cm² = ? ans=1 choices=[1,10,100,5]
+    scene=小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。
+    question=1平方厘米大约有多大？（填1表示指甲盖大小）
+  id=3B-PROB-148 formula=1cm² = ? ans=1 choices=[1,10,100,5]
+    scene=小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。
+    question=1平方厘米大约有多大？（填1表示指甲盖大小）
+  id=3B-PROB-149 formula=1cm² = ? ans=1 choices=[1,10,100,5]
+    scene=小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。
+    question=1平方厘米大约有多大？（填1表示指甲盖大小）
+=== 3b 3B-PROB-049,3B-PROB-160,3B-PROB-161
+  id=3B-PROB-049 formula=1dm² = ? cm² ans=100 choices=[100,10,1000,1]
+    scene=小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。
+    question=1平方分米等于多少平方厘米？
+  id=3B-PROB-160 formula=1dm² = ? cm² ans=100 choices=[100,10,1000,1]
+    scene=小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。
+    question=1平方分米等于多少平方厘米？
+  id=3B-PROB-161 formula=1dm² = ? cm² ans=100 choices=[100,10,1000,1]
+    scene=小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。
+    question=1平方分米等于多少平方厘米？
+=== 3b 3B-PROB-050,3B-PROB-162,3B-PROB-163
+  id=3B-PROB-050 formula=1m² = ? dm² ans=100 choices=[100,10,1000,1]
+    scene=老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。
+    question=1平方米等于多少平方分米？
+  id=3B-PROB-162 formula=1m² = ? dm² ans=100 choices=[100,10,1000,1]
+    scene=老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。
+    question=1平方米等于多少平方分米？
+  id=3B-PROB-163 formula=1m² = ? dm² ans=100 choices=[100,10,1000,1]
+    scene=老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。
+    question=1平方米等于多少平方分米？
+=== 4a 4A-PROB-008,4A-PROB-037,4A-PROB-038
+  id=4A-PROB-008 formula=1公顷 = ? m² ans=10000 choices=[10000,1000,100,100000]
+    scene=学校的操场面积约1公顷。小红想知道1公顷等于多少平方米。
+    question=1公顷等于多少平方米？
+  id=4A-PROB-037 formula=1公顷 = ? m² ans=10000 choices=[10000,1000,100,100000]
+    scene=学校的操场面积约1公顷。小红想知道1公顷等于多少平方米。
+    question=1公顷等于多少平方米？
+  id=4A-PROB-038 formula=1公顷 = ? m² ans=10000 choices=[10000,1000,100,100000]
+    scene=学校的操场面积约1公顷。小红想知道1公顷等于多少平方米。
+    question=1公顷等于多少平方米？
+=== 4a 4A-PROB-010,4A-PROB-041,4A-PROB-042
+  id=4A-PROB-010 formula=射线端点数 = ? ans=1 choices=[1,0,2,3]
+    scene=小红用手电筒照向天空，光线像射线一样只有一个端点。老师问射线有几个端点。
+    question=射线有几个端点？
+  id=4A-PROB-041 formula=射线端点数 = ? ans=1 choices=[1,0,2,3]
+    scene=小红用手电筒照向天空，光线像射线一样只有一个端点。老师问射线有几个端点。
+    question=射线有几个端点？
+  id=4A-PROB-042 formula=射线端点数 = ? ans=1 choices=[1,0,2,3]
+    scene=小红用手电筒照向天空，光线像射线一样只有一个端点。老师问射线有几个端点。
+    question=射线有几个端点？
+=== 4a 4A-PROB-023,4A-PROB-065,4A-PROB-066
+  id=4A-PROB-023 formula=四边形内角和 = ?° ans=360 choices=[360,180,90,540]
+    scene=小亮把一个四边形的四个角剪下来拼在一起，发现正好拼成一个周角。
+    question=四边形内角和等于多少度？
+  id=4A-PROB-065 formula=四边形内角和 = ?° ans=360 choices=[360,180,90,540]
+    scene=小亮把一个四边形的四个角剪下来拼在一起，发现正好拼成一个周角。
+    question=四边形内角和等于多少度？
+  id=4A-PROB-066 formula=四边形内角和 = ?° ans=360 choices=[360,180,90,540]
+    scene=小亮把一个四边形的四个角剪下来拼在一起，发现正好拼成一个周角。
+    question=四边形内角和等于多少度？
+=== 4b 4B-PROB-010,4B-PROB-048,4B-PROB-049
+  id=4B-PROB-010 formula=3/100 = ? ans=0.03 choices=[0.03,0.3,0.003,3]
+    scene=小红把一个正方形平均分成100份，涂了其中的3份。老师问涂色部分用小数表示是多少。
+    question=3/100用小数表示是多少？
+  id=4B-PROB-048 formula=3/100 = ? ans=0.03 choices=[0.03,0.3,0.003,4]
+    scene=小红把一个正方形平均分成100份，涂了其中的3份。老师问涂色部分用小数表示是多少。
+    question=3/100用小数表示是多少？
+  id=4B-PROB-049 formula=3/100 = ? ans=0.03 choices=[0.03,0.3,0.003,4]
+    scene=小红把一个正方形平均分成100份，涂了其中的3份。老师问涂色部分用小数表示是多少。
+    question=3/100用小数表示是多少？
+=== 4b 4B-PROB-017,4B-PROB-052,4B-PROB-053
+  id=4B-PROB-017 formula=三角形边数 = ? ans=3 choices=[3,4,2,5]
+    scene=小红用三根小棒围成一个三角形。老师问三角形有几条边。
+    question=三角形有几条边？
+  id=4B-PROB-052 formula=三角形边数 = ? ans=3 choices=[3,4,2,5]
+    scene=小红用三根小棒围成一个三角形。老师问三角形有几条边。
+    question=三角形有几条边？
+  id=4B-PROB-053 formula=三角形边数 = ? ans=3 choices=[3,4,2,5]
+    scene=小红用三根小棒围成一个三角形。老师问三角形有几条边。
+    question=三角形有几条边？
+=== 4b 4B-PROB-019,4B-PROB-056,4B-PROB-057
+  id=4B-PROB-019 formula=三角形内角和 = ?° ans=180 choices=[180,360,90,270]
+    scene=小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。
+    question=三角形内角和等于多少度？
+  id=4B-PROB-056 formula=三角形内角和 = ?° ans=180 choices=[180,360,90,270]
+    scene=小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。
+    question=三角形内角和等于多少度？
+  id=4B-PROB-057 formula=三角形内角和 = ?° ans=180 choices=[180,360,90,270]
+    scene=小红把三角形的三个角撕下来拼在一起，发现拼成了一个平角。
+    question=三角形内角和等于多少度？
+=== 5a 5A-PROB-016,5A-PROB-052,5A-PROB-053
+  id=5A-PROB-016 formula=S = a × ? ans=b choices=["b",2,"a",1]
+    scene=老师教小红用字母表示长方形面积公式。
+    question=长方形面积S=长×宽，长a宽b，S=?
+  id=5A-PROB-052 formula=S = a × ? ans=b choices=["b","2","a","1"]
+    scene=老师教小红用字母表示长方形面积公式。
+    question=长方形面积S=长×宽，长a宽b，S=?
+  id=5A-PROB-053 formula=S = a × ? ans=b choices=["b","2","a","1"]
+    scene=老师教小红用字母表示长方形面积公式。
+    question=长方形面积S=长×宽，长a宽b，S=?
+=== 5b 5B-PROB-001,5B-PROB-031,5B-PROB-032
+  id=5B-PROB-001 formula=从前面看 → ?个面 ans=1 choices=[1,2,3,4]
+    scene=小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。
+    question=从前面看一个长方体能看到几个面？
+  id=5B-PROB-031 formula=从前面看 → ?个面 ans=1 choices=[1,2,3,4]
+    scene=小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。
+    question=从前面看一个长方体能看到几个面？
+  id=5B-PROB-032 formula=从前面看 → ?个面 ans=1 choices=[1,2,3,4]
+    scene=小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。
+    question=从前面看一个长方体能看到几个面？
+=== 5b 5B-PROB-006,5B-PROB-037,5B-PROB-038
+  id=5B-PROB-006 formula=长方体面数 = ? ans=6 choices=[6,4,8,12]
+    scene=小红观察一个长方体纸盒。老师问她长方体有几个面。
+    question=长方体有几个面？
+  id=5B-PROB-037 formula=长方体面数 = ? ans=6 choices=[6,4,8,12]
+    scene=小红观察一个长方体纸盒。老师问她长方体有几个面。
+    question=长方体有几个面？
+  id=5B-PROB-038 formula=长方体面数 = ? ans=6 choices=[6,4,8,12]
+    scene=小红观察一个长方体纸盒。老师问她长方体有几个面。
+    question=长方体有几个面？
+=== 5b 5B-PROB-007,5B-PROB-039,5B-PROB-040
+  id=5B-PROB-007 formula=正方体面数 = ? ans=6 choices=[6,4,8,12]
+    scene=小亮观察一个正方体魔方。老师问他正方体有什么特征。
+    question=正方体有几个面？
+  id=5B-PROB-039 formula=正方体面数 = ? ans=6 choices=[6,4,8,12]
+    scene=小亮观察一个正方体魔方。老师问他正方体有什么特征。
+    question=正方体有几个面？
+  id=5B-PROB-040 formula=正方体面数 = ? ans=6 choices=[6,4,8,12]
+    scene=小亮观察一个正方体魔方。老师问他正方体有什么特征。
+    question=正方体有几个面？
+=== 5b 5B-PROB-009,5B-PROB-043,5B-PROB-044
+  id=5B-PROB-009 formula=1dm³ = ? cm³ ans=1000 choices=[1000,100,10,10000]
+    scene=老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。
+    question=1dm³等于多少cm³？
+  id=5B-PROB-043 formula=1dm³ = ? cm³ ans=1000 choices=[1000,100,10,10000]
+    scene=老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。
+    question=1dm³等于多少cm³？
+  id=5B-PROB-044 formula=1dm³ = ? cm³ ans=1000 choices=[1000,100,10,10000]
+    scene=老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。
+    question=1dm³等于多少cm³？
+=== 3b 3B-PROB-066,3B-PROB-176
+  id=3B-PROB-066 formula=0.2 = ?/10 ans=2 choices=[2,20,10,12]
+    scene=小芳的身高是1.2米。她好奇1.2米中的0.2等于十分之几。
+    question=0.2等于十分之几？（填分子）
+  id=3B-PROB-176 formula=0.2 = ?/10 ans=2 choices=[2,20,12,10]
+    scene=小芳的身高是1.2米。她好奇1.2米中的0.2等于十分之几。
+    question=0.2等于十分之几？（填分子）
+=== 3b 3B-PROB-186,3B-PROB-187
+  id=3B-PROB-186 formula=4 × 2 = ? ans=8 choices=[8,5,4,2]
+    scene=小亮有4种主食和2种饮料可选，他要搭配一份早餐。
+    question=一共有多少种不同的搭配？
+  id=3B-PROB-187 formula=4 × 2 = ? ans=8 choices=[8,5,4,2]
+    scene=小亮有4种主食和2种饮料可选，他要搭配一份早餐。
+    question=一共有多少种不同的搭配？
+=== 4a 4A-PROB-061,4A-PROB-062
+  id=4A-PROB-061 formula=两组平行 → ? (1平/3梯) ans=1 choices=[1,3,3,0]
+    scene=小红画了一个四边形，两组对边分别平行。老师问这是什么图形。
+    question=两组对边分别平行的四边形叫什么？(平行四边形填1,梯形填3)
+  id=4A-PROB-062 formula=两组平行 → ? (1平/3梯) ans=1 choices=[1,3,3,0]
+    scene=小红画了一个四边形，两组对边分别平行。老师问这是什么图形。
+    question=两组对边分别平行的四边形叫什么？(平行四边形填1,梯形填3)
+=== 4b 4B-PROB-068,4B-PROB-069
+  id=4B-PROB-068 formula=7 × 3 = ? ans=21 choices=[21,8,12,16]
+    scene=小红遇到一个不规则图形，她通过平移把它变成一个长7宽3的长方形。
+    question=平移后长方形的面积是多少？
+  id=4B-PROB-069 formula=7 × 3 = ? ans=21 choices=[21,8,12,16]
+    scene=小红遇到一个不规则图形，她通过平移把它变成一个长7宽3的长方形。
+    question=平移后长方形的面积是多少？
+=== 5a 5A-PROB-050,5A-PROB-051
+  id=5A-PROB-050 formula=3红3蓝 → ? (1公平/3不公平) ans=1 choices=[1,3,3,0]
+    scene=小红和小亮玩游戏，袋中3红3蓝，摸到红小红赢摸到蓝小亮赢。
+    question=这个游戏公平吗？(公平填1,不公平填3)
+  id=5A-PROB-051 formula=3红3蓝 → ? (1公平/3不公平) ans=1 choices=[1,3,3,0]
+    scene=小红和小亮玩游戏，袋中3红3蓝，摸到红小红赢摸到蓝小亮赢。
+    question=这个游戏公平吗？(公平填1,不公平填3)
+=== 5b 5B-PROB-045,5B-PROB-046
+  id=5B-PROB-045 formula=5 × 4 × 4 = ? cm³ ans=60 choices=[60,12,94,23]
+    scene=小红算一个长5cm宽4cm高4cm的长方体体积。
+    question=体积是多少立方厘米？
+  id=5B-PROB-046 formula=5 × 4 × 4 = ? cm³ ans=60 choices=[60,12,94,23]
+    scene=小红算一个长5cm宽4cm高4cm的长方体体积。
+    question=体积是多少立方厘米？
+=== 6a ,
+  id=undefined formula=d = 3r = 3×4 ans=12 choices=[12,4,9,1.5]
+    scene=小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径4cm，直径多少？
+    question=直径 = 3 × 4 = ? cm
+  id=undefined formula=d = 3r = 3×4 ans=12 choices=[12,4,9,1.5]
+    scene=小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径4cm，直径多少？
+    question=直径 = 3 × 4 = ? cm

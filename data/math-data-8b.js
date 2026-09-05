@@ -760,13 +760,8 @@ window.MATH_BY_GRADE["8b"] = {
             "scene": "小明计算 (a^2*b)^3 / (a*b)^2，化简结果是多少？",
             "question": "化简结果是多少？",
             "formula": "a^6*b^3/a^2*b^2 = a^4*b",
-            "answer": 0,
-            "choices": [
-                0,
-                1,
-                2,
-                3
-            ],
+            "answer": "a^4*b",
+            "choices": ["a^4*b","a^5*b","a^4*b^3","a^3*b"],
             "visualType": "barModel",
             "visualData": {
                 "total": 1,
@@ -1163,13 +1158,8 @@ window.MATH_BY_GRADE["8b"] = {
             "scene": "一个袋子中有3个红球和2个白球，小明随机摸出一个球后放回，再摸一个。他想算出两次都摸到红球的概率。",
             "question": "两次都摸到红球的概率是多少？",
             "formula": "P=3/5×3/5=9/25",
-            "answer": 0,
-            "choices": [
-                0,
-                1,
-                2,
-                3
-            ],
+            "answer": "9/25",
+            "choices": ["9/25","3/5","6/25","9/10"],
             "visualType": "barModel",
             "visualData": {
                 "total": 9,
@@ -1266,13 +1256,8 @@ window.MATH_BY_GRADE["8b"] = {
             "scene": "小明计算 (2a²b)³ ÷ (4ab²)，他想知道化简结果是多少。",
             "question": "化简结果是多少？",
             "formula": "8a^6*b^3 / 4a*b^2 = 2a^5*b",
-            "answer": 0,
-            "choices": [
-                0,
-                1,
-                2,
-                3
-            ],
+            "answer": "2a^5*b",
+            "choices": ["2a^5*b","2a^4*b","8a^5*b","a^5*b"],
             "visualType": "barModel",
             "visualData": {
                 "total": 2,
@@ -1580,10 +1565,16 @@ window.MATH_BY_GRADE["8b"] = {
             "hint": "设角为x，补角=180-x，余角=90-x",
             "variants": [
                 {
-                    "question": "一个角的补角比它的余角大50度，这个角是多少？",
-                    "formula": "(180-x)-(90-x)=50, 90=50矛盾",
-                    "answer": 0,
-                    "hint": "此题无解"
+                    "question": "一个角比它的余角大50度，这个角是多少度？",
+                    "formula": "x-(90-x)=50",
+                    "answer": 70,
+                    "hint": "x-(90-x)=2x-90=50，x=70",
+                    "choices": [
+                        70,
+                        50,
+                        90,
+                        140
+                    ]
                 },
                 {
                     "question": "一个角的余角是它的补角的1/3，这个角是多少度？",
@@ -1749,13 +1740,8 @@ window.MATH_BY_GRADE["8b"] = {
             "scene": "小明画了一个圆，半径为4厘米。他想算出这个圆的周长和面积。",
             "question": "圆的周长和面积分别是多少？",
             "formula": "C=2πr=8π≈25.1, S=πr²=16π≈50.3",
-            "answer": 0,
-            "choices": [
-                0,
-                1,
-                2,
-                3
-            ],
+            "answer": "C=8π≈25.1, S=16π≈50.3",
+            "choices": ["C=8π≈25.1, S=16π≈50.3","C=4π≈12.6, S=8π≈25.1","C=16π≈50.3, S=8π≈25.1","C=8π≈25.1, S=4π≈12.6"],
             "visualType": "geometry",
             "visualData": {
                 "shape": "circle",
@@ -1843,13 +1829,8 @@ window.MATH_BY_GRADE["8b"] = {
             "scene": "小红画了一条抛物线y=x²-2x-3，她想找出这条抛物线的顶点坐标。",
             "question": "抛物线的顶点坐标是什么？",
             "formula": "x=-b/2a=1, y=1-2-3=-4, 顶点(1,-4)",
-            "answer": 0,
-            "choices": [
-                0,
-                1,
-                2,
-                3
-            ],
+            "answer": "(1,-4)",
+            "choices": ["(1,-4)","(-1,4)","(1,4)","(2,-3)"],
             "visualType": "geometry",
             "visualData": {
                 "shape": "parabola",

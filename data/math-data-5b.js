@@ -3200,9 +3200,9 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-030"
         },
         {
-            "scene": "小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。",
-            "question": "从前面看一个长方体能看到几个面？",
-            "formula": "从前面看 → ?个面",
+            "scene": "小红换了一个方向观察同一个长方体纸盒，这次她从上面往下看。",
+            "question": "从上面看一个长方体能看到几个面？",
+            "formula": "从上面看 → ?个面",
             "answer": 1,
             "choices": [
                 1,
@@ -3295,13 +3295,13 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-031"
         },
         {
-            "scene": "小红从前面、上面、左面看一个由小正方体搭成的立体图形。她好奇从不同方向看会看到什么形状。",
-            "question": "从前面看一个长方体能看到几个面？",
-            "formula": "从前面看 → ?个面",
-            "answer": 1,
+            "scene": "小红先从前面看了一次长方体，又从上面看了一次。她把两次看到的面合起来数。",
+            "question": "从前面和上面两个方向看长方体，一共能看到几个不同的面？",
+            "formula": "前面+上面 → ?个面",
+            "answer": 2,
             "choices": [
-                1,
                 2,
+                1,
                 3,
                 4
             ],
@@ -3806,15 +3806,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-036"
         },
         {
-            "scene": "小红观察一个长方体纸盒。老师问她长方体有几个面。",
-            "question": "长方体有几个面？",
-            "formula": "长方体面数 = ?",
-            "answer": 6,
+            "scene": "小红观察一个长方体纸盒，数完了面，老师又让她数棱。",
+            "question": "长方体有多少条棱？",
+            "formula": "长方体棱数=?",
+            "answer": 12,
             "choices": [
+                12,
                 6,
-                4,
                 8,
-                12
+                4
             ],
             "visualType": "geometry",
             "visualData": {
@@ -3899,15 +3899,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-037"
         },
         {
-            "scene": "小红观察一个长方体纸盒。老师问她长方体有几个面。",
-            "question": "长方体有几个面？",
-            "formula": "长方体面数 = ?",
-            "answer": 6,
+            "scene": "小红继续观察长方体纸盒，这一次数顶点。",
+            "question": "长方体有多少个顶点？",
+            "formula": "长方体顶点数=?",
+            "answer": 8,
             "choices": [
-                6,
-                4,
                 8,
-                12
+                6,
+                12,
+                4
             ],
             "visualType": "geometry",
             "visualData": {
@@ -3992,15 +3992,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-038"
         },
         {
-            "scene": "小亮观察一个正方体魔方。老师问他正方体有什么特征。",
-            "question": "正方体有几个面？",
-            "formula": "正方体面数 = ?",
-            "answer": 6,
+            "scene": "小亮观察正方体魔方，数完了面，他又开始数棱。",
+            "question": "正方体有多少条棱？",
+            "formula": "正方体棱数=?",
+            "answer": 12,
             "choices": [
+                12,
                 6,
-                4,
                 8,
-                12
+                4
             ],
             "visualType": "geometry",
             "visualData": {
@@ -4085,15 +4085,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-039"
         },
         {
-            "scene": "小亮观察一个正方体魔方。老师问他正方体有什么特征。",
-            "question": "正方体有几个面？",
-            "formula": "正方体面数 = ?",
-            "answer": 6,
+            "scene": "小亮观察正方体魔方，最后来数顶点。",
+            "question": "正方体有多少个顶点？",
+            "formula": "正方体顶点数=?",
+            "answer": 8,
             "choices": [
-                6,
-                4,
                 8,
-                12
+                6,
+                12,
+                4
             ],
             "visualType": "geometry",
             "visualData": {
@@ -4372,15 +4372,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-042"
         },
         {
-            "scene": "老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。",
-            "question": "1dm³等于多少cm³？",
-            "formula": "1dm³ = ? cm³",
-            "answer": 1000,
+            "scene": "老师拿出一个棱长3dm的正方体盒子。小红想知道它的体积是多少立方厘米。",
+            "question": "3dm³等于多少cm³？",
+            "formula": "3dm³=?cm³",
+            "answer": 3000,
             "choices": [
-                1000,
-                100,
-                10,
-                10000
+                3000,
+                300,
+                30,
+                30000
             ],
             "visualType": "geometry",
             "visualData": {
@@ -4469,15 +4469,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-043"
         },
         {
-            "scene": "老师拿出一个棱长1cm的正方体，告诉同学们它的体积是1cm³。小红想知道1dm³等于多少cm³。",
-            "question": "1dm³等于多少cm³？",
-            "formula": "1dm³ = ? cm³",
-            "answer": 1000,
+            "scene": "一个奶箱的容积大约是2dm³。小亮想知道相当于多少立方厘米。",
+            "question": "2dm³等于多少cm³？",
+            "formula": "2dm³=?cm³",
+            "answer": 2000,
             "choices": [
-                1000,
-                100,
-                10,
-                10000
+                2000,
+                200,
+                20,
+                20000
             ],
             "visualType": "geometry",
             "visualData": {
@@ -4663,15 +4663,15 @@ window.MATH_BY_GRADE["5b"] = {
             "id": "5B-PROB-045"
         },
         {
-            "scene": "小红算一个长5cm宽4cm高4cm的长方体体积。",
+            "scene": "小刚算一个长6cm宽3cm高2cm的长方体体积。",
             "question": "体积是多少立方厘米？",
-            "formula": "5 × 4 × 4 = ? cm³",
-            "answer": 60,
+            "formula": "6×3×2=?cm³",
+            "answer": 36,
             "choices": [
-                60,
-                12,
-                94,
-                23
+                36,
+                11,
+                18,
+                30
             ],
             "visualType": "geometry",
             "visualData": {

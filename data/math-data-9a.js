@@ -360,13 +360,8 @@ window.MATH_BY_GRADE['9a'] = {
         "scene": "小明解方程 x^2 - 5x + 6 = 0，想知道两个根分别是多少。",
         "question": "方程的两个根是多少？",
         "formula": "(x-2)(x-3)=0, x1=2 x2=3",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "x1=2, x2=3",
+        "choices": ["x1=2, x2=3","x1=-2, x2=-3","x1=1, x2=6","x1=3, x2=-2"],
         "visualType": "numberLine",
         "visualData": {
           "start": 0,
@@ -464,13 +459,8 @@ window.MATH_BY_GRADE['9a'] = {
         "scene": "一个抛物线形拱桥，跨度20米，最高点离水面8米。小红想建立坐标系求抛物线方程。",
         "question": "抛物线顶点坐标是多少？",
         "formula": "顶点=(10,8)",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "(10,8)",
+        "choices": ["(10,8)","(8,10)","(10,-8)","(20,8)"],
         "visualType": "geometry",
         "visualData": {
           "shape": "parabola",
@@ -751,13 +741,8 @@ window.MATH_BY_GRADE['9a'] = {
         "scene": "小明将点A(2,3)绕原点顺时针旋转90度，想知道旋转后的坐标。",
         "question": "旋转后的坐标是多少？",
         "formula": "(x,y)->(y,-x), (2,3)->(3,-2)",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "(3,-2)",
+        "choices": ["(3,-2)","(-3,2)","(2,-3)","(-2,-3)"],
         "visualType": "numberLine",
         "visualData": {
           "start": 0,
@@ -959,13 +944,8 @@ window.MATH_BY_GRADE['9a'] = {
         "scene": "抛物线y=x²-4x+3与x轴的交点坐标是多少？小红想知道这两个交点。",
         "question": "抛物线与x轴的交点横坐标分别是多少？",
         "formula": "x²-4x+3=0, (x-1)(x-3)=0",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "x1=1, x2=3",
+        "choices": ["x1=1, x2=3","x1=-1, x2=-3","x1=1, x2=-3","x1=-1, x2=3"],
         "visualType": "geometry",
         "visualData": {
           "shape": "parabola",
@@ -1060,13 +1040,8 @@ window.MATH_BY_GRADE['9a'] = {
         "scene": "一个矩形花园长20米宽15米，小红想围绕花园修一条宽度相同的小路，使花园加小路总面积为450平方米。她想算出小路的宽度。",
         "question": "小路宽度是多少米？",
         "formula": "(20+2x)(15+2x)=450",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": 2.5,
+        "choices": [2.5,5,2,3],
         "visualType": "geometry",
         "visualData": {
           "shape": "rectangle",
@@ -1451,13 +1426,8 @@ window.MATH_BY_GRADE['9a'] = {
         "scene": "小明解不等式组，已知2x-3<5且x+2≥1，他想找出x的取值范围。",
         "question": "不等式组的解集是什么？",
         "formula": "x<4且x≥-1, 解集-1≤x<4",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "-1≤x<4",
+        "choices": ["-1≤x<4","-1<x≤4","x<-1或x≥4","x<4"],
         "visualType": "numberLine",
         "visualData": {
           "start": -2,

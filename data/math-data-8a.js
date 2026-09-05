@@ -555,13 +555,8 @@ window.MATH_BY_GRADE['8a'] = {
         "scene": "小明计算sqrt(50)+sqrt(8)-sqrt(18)，想知道结果是多少。",
         "question": "sqrt(50)+sqrt(8)-sqrt(18) = ?",
         "formula": "5sqrt(2)+2sqrt(2)-3sqrt(2)=4sqrt(2)",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "4sqrt(2)",
+        "choices": ["4sqrt(2)","sqrt(2)","3sqrt(2)","5sqrt(2)"],
         "visualType": "barModel",
         "visualData": {
           "total": 4,
@@ -1060,13 +1055,8 @@ window.MATH_BY_GRADE['8a'] = {
         "scene": "小明化简sqrt(72)，他想知道结果是多少。",
         "question": "sqrt(72)化简结果是多少？",
         "formula": "sqrt(36*2) = 6*sqrt(2)",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "6sqrt(2)",
+        "choices": ["6sqrt(2)","2sqrt(6)","3sqrt(8)","8sqrt(2)"],
         "visualType": "barModel",
         "visualData": {
           "total": 6,
@@ -1266,13 +1256,8 @@ window.MATH_BY_GRADE['8a'] = {
         "scene": "一个直角三角形的两条直角边分别是5厘米和12厘米。小明想算出斜边上的高。",
         "question": "斜边上的高是多少厘米？",
         "formula": "h=5*12/13",
-        "answer": 0,
-        "choices": [
-          0,
-          1,
-          2,
-          3
-        ],
+        "answer": "60/13",
+        "choices": ["60/13","30/13","13/5","65/12"],
         "visualType": "geometry",
         "visualData": {
           "shape": "triangle",

@@ -15439,15 +15439,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-147"
         },
         {
-            "scene": "小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。",
-            "question": "1平方厘米大约有多大？（填1表示指甲盖大小）",
-            "formula": "1cm² = ?",
-            "answer": 1,
+            "scene": "小红想知道邮票有多大，她用1平方厘米的小正方形去铺，正好铺满一层。",
+            "question": "一张邮票的面积大约是6平方厘米，要摆几个1平方厘米的小正方形？",
+            "formula": "6÷1=?",
+            "answer": 6,
             "choices": [
-                1,
-                10,
-                100,
-                5
+                6,
+                3,
+                12,
+                8
             ],
             "visualType": "geometry",
             "visualData": {
@@ -15535,15 +15535,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-148"
         },
         {
-            "scene": "小红用1平方厘米的小正方形量指甲盖，大约能放1个。她好奇1平方厘米有多大。",
-            "question": "1平方厘米大约有多大？（填1表示指甲盖大小）",
-            "formula": "1cm² = ?",
-            "answer": 1,
+            "scene": "小亮拿出一块橡皮，他想用1平方厘米的小正方形量一量橡皮的面。",
+            "question": "一块橡皮的面积大约是4平方厘米，要用几个1平方厘米的小正方形铺满？",
+            "formula": "4÷1=?",
+            "answer": 4,
             "choices": [
-                1,
-                10,
-                100,
-                5
+                4,
+                2,
+                8,
+                6
             ],
             "visualType": "geometry",
             "visualData": {
@@ -16627,15 +16627,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-159"
         },
         {
-            "scene": "小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。",
-            "question": "1平方分米等于多少平方厘米？",
-            "formula": "1dm² = ? cm²",
-            "answer": 100,
+            "scene": "小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她想铺满5个这样的大正方形。",
+            "question": "5平方分米等于多少平方厘米？",
+            "formula": "5dm²=?cm²",
+            "answer": 500,
             "choices": [
-                100,
-                10,
-                1000,
-                1
+                500,
+                50,
+                5000,
+                100
             ],
             "visualType": "areaModel",
             "visualData": {
@@ -16724,15 +16724,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-160"
         },
         {
-            "scene": "小红用1平方厘米的小正方形铺满了一个1平方分米的大正方形。她好奇一共用了多少个小正方形。",
-            "question": "1平方分米等于多少平方厘米？",
-            "formula": "1dm² = ? cm²",
-            "answer": 100,
+            "scene": "一张课桌的桌面面积大约是24平方分米。小亮想知道这相当于多少平方厘米。",
+            "question": "24平方分米等于多少平方厘米？",
+            "formula": "24dm²=?cm²",
+            "answer": 2400,
             "choices": [
-                100,
-                10,
-                1000,
-                1
+                2400,
+                240,
+                24000,
+                100
             ],
             "visualType": "areaModel",
             "visualData": {
@@ -16821,15 +16821,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-161"
         },
         {
-            "scene": "老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。",
-            "question": "1平方米等于多少平方分米？",
-            "formula": "1m² = ? dm²",
-            "answer": 100,
+            "scene": "教室的黑板面积大约是4平方米。小红想知道相当于多少平方分米。",
+            "question": "4平方米等于多少平方分米？",
+            "formula": "4m²=?dm²",
+            "answer": 400,
             "choices": [
-                100,
-                10,
-                1000,
-                1
+                400,
+                40,
+                4000,
+                100
             ],
             "visualType": "areaModel",
             "visualData": {
@@ -16918,15 +16918,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-162"
         },
         {
-            "scene": "老师让同学们算1平方米等于多少平方分米。小亮用1平方分米的正方形去铺。",
-            "question": "1平方米等于多少平方分米？",
-            "formula": "1m² = ? dm²",
-            "answer": 100,
+            "scene": "家里的方桌桌面大约是2平方米。小亮想知道相当于多少平方分米。",
+            "question": "2平方米等于多少平方分米？",
+            "formula": "2m²=?dm²",
+            "answer": 200,
             "choices": [
-                100,
-                10,
-                1000,
-                1
+                200,
+                20,
+                2000,
+                100
             ],
             "visualType": "areaModel",
             "visualData": {
@@ -18205,15 +18205,15 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-175"
         },
         {
-            "scene": "小芳的身高是1.2米。她好奇1.2米中的0.2等于十分之几。",
-            "question": "0.2等于十分之几？（填分子）",
-            "formula": "0.2 = ?/10",
-            "answer": 2,
+            "scene": "小明一步跳了1.7米远。他好奇1.7米中的0.7等于十分之几。",
+            "question": "0.7等于十分之几？（填分子）",
+            "formula": "0.7=?/10",
+            "answer": 7,
             "choices": [
-                2,
-                20,
-                12,
-                10
+                7,
+                70,
+                10,
+                17
             ],
             "visualType": "fractionStrip",
             "visualData": {
@@ -19330,14 +19330,14 @@ window.MATH_BY_GRADE["3b"] = {
             "id": "3B-PROB-186"
         },
         {
-            "scene": "小亮有4种主食和2种饮料可选，他要搭配一份早餐。",
+            "scene": "小美有3件上衣和2条裙子，她要搭配出一套穿搭。",
             "question": "一共有多少种不同的搭配？",
-            "formula": "4 × 2 = ?",
-            "answer": 8,
+            "formula": "3×2=?",
+            "answer": 6,
             "choices": [
-                8,
+                6,
                 5,
-                4,
+                3,
                 2
             ],
             "visualType": "barModel",

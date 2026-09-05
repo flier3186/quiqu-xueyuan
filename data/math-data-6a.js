@@ -7538,14 +7538,14 @@ window.MATH_BY_GRADE["6a"] = {
         },
         {
             "scene": "小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径4cm，直径多少？",
-            "question": "直径 = 3 × 4 = ? cm",
-            "formula": "d = 3r = 3×4",
-            "answer": 12,
+            "question": "直径 = 2 × 4 = ? cm",
+            "formula": "d = 2r = 2×4",
+            "answer": 8,
             "choices": [
-                12,
+                8,
                 4,
-                9,
-                1.5
+                12,
+                6
             ],
             "visualType": "geometry",
             "visualData": {
@@ -7631,15 +7631,15 @@ window.MATH_BY_GRADE["6a"] = {
             ]
         },
         {
-            "scene": "小红画了一个圆。老师告诉她圆心到圆上任意一点的线段叫半径。如果半径4cm，直径多少？",
-            "question": "直径 = 3 × 4 = ? cm",
-            "formula": "d = 3r = 3×4",
-            "answer": 12,
+            "scene": "小亮画了一个圆。老师告诉他圆心到圆上任意一点的线段叫半径。如果半径5cm，直径多少？",
+            "question": "直径 = 2 × 5 = ? cm",
+            "formula": "d = 2r = 2×5",
+            "answer": 10,
             "choices": [
-                12,
-                4,
-                9,
-                1.5
+                10,
+                5,
+                25,
+                20
             ],
             "visualType": "geometry",
             "visualData": {

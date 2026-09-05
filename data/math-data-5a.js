@@ -1612,10 +1612,16 @@ window.MATH_BY_GRADE["5a"] = {
             "hint": "a+25表示妈妈年龄",
             "variants": [
                 {
-                    "question": "小红a岁妈妈b岁妈妈比小红大几岁？",
+                    "question": "小红a岁，妈妈b岁，妈妈比小红大几岁？（用含a、b的式子表示）",
                     "formula": "b-a=?",
-                    "answer": 0,
-                    "hint": "b-a"
+                    "answer": "b-a",
+                    "hint": "妈妈比小红大的部分 = 妈妈年龄 - 小红年龄 = b-a",
+                    "choices": [
+                        "b-a",
+                        "a-b",
+                        "a+b",
+                        "ab"
+                    ]
                 },
                 {
                     "question": "每支x元买5支共多少元？",
@@ -5203,15 +5209,15 @@ window.MATH_BY_GRADE["5a"] = {
             "id": "5A-PROB-050"
         },
         {
-            "scene": "小红和小亮玩游戏，袋中3红3蓝，摸到红小红赢摸到蓝小亮赢。",
+            "scene": "小红和小亮玩游戏，袋中4红2蓝，摸到红小红赢摸到蓝小亮赢。",
             "question": "这个游戏公平吗？(公平填1,不公平填3)",
-            "formula": "3红3蓝 → ? (1公平/3不公平)",
-            "answer": 1,
+            "formula": "4红2蓝→? (1公平/3不公平)",
+            "answer": 3,
             "choices": [
+                3,
                 1,
-                3,
-                3,
-                0
+                0,
+                2
             ],
             "visualType": "barModel",
             "visualData": {
@@ -5307,15 +5313,15 @@ window.MATH_BY_GRADE["5a"] = {
             "id": "5A-PROB-051"
         },
         {
-            "scene": "老师教小红用字母表示长方形面积公式。",
-            "question": "长方形面积S=长×宽，长a宽b，S=?",
-            "formula": "S = a × ?",
-            "answer": "b",
+            "scene": "老师问小红：正方形的边长是a，怎样用字母表示它的周长C？",
+            "question": "正方形周长C=a×?（填数）",
+            "formula": "C = a × ?",
+            "answer": 4,
             "choices": [
-                "b",
-                "2",
+                4,
+                2,
                 "a",
-                "1"
+                1
             ],
             "visualType": "geometry",
             "visualData": {
@@ -5403,15 +5409,15 @@ window.MATH_BY_GRADE["5a"] = {
             "id": "5A-PROB-052"
         },
         {
-            "scene": "老师教小红用字母表示长方形面积公式。",
-            "question": "长方形面积S=长×宽，长a宽b，S=?",
-            "formula": "S = a × ?",
-            "answer": "b",
+            "scene": "老师教小亮用字母表示长方体体积公式：V=长×宽×高。",
+            "question": "长方体长a宽b高c，体积V=?（用字母式子表示）",
+            "formula": "V = ?",
+            "answer": "abc",
             "choices": [
-                "b",
-                "2",
-                "a",
-                "1"
+                "abc",
+                "a+b+c",
+                "3abc",
+                "ab"
             ],
             "visualType": "geometry",
             "visualData": {

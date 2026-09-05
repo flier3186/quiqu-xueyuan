@@ -2113,13 +2113,8 @@ window.MATH_BY_GRADE["7a"] = {
             "scene": "小明用尺规作图画一个直角，他想验证这个直角是否为90度。他用量角器测量，发现两条边互相垂直。",
             "question": "互相垂直的两条线形成的角是多少度？",
             "formula": "90°",
-            "answer": 0,
-            "choices": [
-                0,
-                1,
-                2,
-                3
-            ],
+            "answer": "90°",
+            "choices": ["90°","45°","60°","180°"],
             "visualType": "geometry",
             "visualData": {
                 "shape": "angle",
@@ -2134,14 +2129,26 @@ window.MATH_BY_GRADE["7a"] = {
                 {
                     "question": "两条线相交成90度，它们的关系是什么？",
                     "formula": "互相垂直",
-                    "answer": 0,
-                    "hint": "垂直定义"
+                    "answer": "互相垂直",
+                    "hint": "垂直定义",
+                    "choices": [
+                        "互相垂直",
+                        "互相平行",
+                        "相交但不垂直",
+                        "互相重合"
+                    ]
                 },
                 {
                     "question": "直角三角形的直角是多少度？",
                     "formula": "90°",
-                    "answer": 0,
-                    "hint": "直角定义"
+                    "answer": "90°",
+                    "hint": "直角定义",
+                    "choices": [
+                        "90°",
+                        "60°",
+                        "45°",
+                        "180°"
+                    ]
                 }
             ],
             "discoverySteps": [
