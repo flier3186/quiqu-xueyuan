@@ -52,13 +52,14 @@ for (const f of files) {
     if (/元/.test(qall) && Number.isFinite(ans) && ans < 0) issues.negative.push(`${grade} ${id} 钱=${ans}`);
     if (/岁/.test(qall) && Number.isFinite(ans) && (ans > 120 || ans <= 0)) issues.unit.push(`${grade} ${id} 年龄=${ans}`);
     if (/时/.test(formula) && Number.isFinite(ans) && (ans > 24 || ans < 0)) issues.unit.push(`${grade} ${id} 时间=${ans}时`);
-    // 3. 选项质量：重复/超远干扰项/不足4个
+    // 3. 选项质量：重复/超远干扰项/不足4个（仅数值题；文本题的选项是词语，数值比较无意义）
     if (Array.isArray(q.choices)) {
-      const cs = q.choices.map(Number);
-      if (new Set(cs).size !== cs.length) issues.choices.push(`${grade} ${id} 选项重复: ${cs}`);
-      if (Number.isFinite(ans)) {
-        const far = cs.filter(c => Math.abs(c - ans) > Math.max(50, ans));
-        if (far.length >= 2 && ans > 0) issues.choices.push(`${grade} ${id} 干扰项过远: 答案${ans} 选项${cs}`);
+      const csNums = q.choices.map(Number);
+      const numericChoices = q.choices.every(c => Number.isFinite(Number(c)));
+      if (numericChoices && new Set(csNums).size !== csNums.length) issues.choices.push(`${grade} ${id} 选项重复: ${csNums}`);
+      if (numericChoices && Number.isFinite(ans)) {
+        const far = csNums.filter(c => Math.abs(c - ans) > Math.max(50, ans));
+        if (far.length >= 2 && ans > 0) issues.choices.push(`${grade} ${id} 干扰项过远: 答案${ans} 选项${csNums}`);
       }
     }
     // 4. 场景数字 vs 算式数字：scene 里有具体数量但 formula 里一个都对不上
@@ -70,9 +71,13 @@ for (const f of files) {
         if (overlap === 0) issues.sceneMismatch.push(`${grade} ${id} 场景数字[${sNums}] 与算式[${fNums}]完全对不上`);
       }
     }
-    // 5. 重复题（同 formula + 同 answer）
-    const key = formula.replace(/\s/g, '') + '=' + ans;
-    if (seen.has(key)) issues.dup.push(`${grade} ${id} 重复: ${formula}=${ans}`);
+    // 5. 重复题（完全同文：算式+场景+问题，同年级内完全一致才算真冗余；
+    //    同算式不同场景是"变式练习"，同算式同答案但场景为空的低年级口算按算式+答案计）
+    const textKey = String(q.scene || '') + '|' + String(q.question || '');
+    const key = formula.replace(/\s/g, '') + '=' + ans + (textKey !== '|'
+      ? '#' + textKey
+      : '');
+    if (seen.has(key)) issues.dup.push(`${grade} ${id} 重复: ${formula}=${ans} ${textKey.slice(0, 40)}`);
     seen.add(key);
     allQ.push({ grade, id, formula, ans });
   }
