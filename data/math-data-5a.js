@@ -3317,7 +3317,7 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "visualType": "areaModel",
             "visualData": {
-                "rows": 4.5,
+                "rows": 3.6,
                 "cols": 3.2,
                 "color": "#00A896"
             },

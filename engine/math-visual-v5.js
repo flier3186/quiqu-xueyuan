@@ -163,10 +163,13 @@ window.MathVisualV5 = {
     const segs = parts.map((p,i)=>{
       const w = total>0 ? Math.max((p.val/total)*usable, 2) : 0;
       const color = this._hex(p.color) || this._palette(i);
+      // 数值字号随段宽自适应：窄段缩小字号，绝不溢出
+      const vfs = Math.max(8, Math.min(15, Math.floor((w-4)/Math.max(1,String(p.val).length)*1.6)));
+      const lfs = Math.max(8, Math.min(12, Math.floor((w-4)/Math.max(1,String(p.label||'').length)*1.7)));
       const g = `<g transform="translate(${x},0)">
         <rect class="mv-bar-rect" x="0" y="${barY}" width="${w}" height="${barH}" fill="${color}" rx="5" style="animation-delay:${delay}s"/>
-        <text class="mv-bar-text" x="${w/2}" y="${barY+barH/2+5}" text-anchor="middle" font-size="15" font-weight="700" fill="${this._textColor(color)}" style="animation-delay:${delay+0.45}s">${p.val}</text>
-        <text x="${w/2}" y="${barY-10}" text-anchor="middle" font-size="12" fill="#475569" font-weight="600">${p.label||''}</text>
+        <text class="mv-bar-text" x="${w/2}" y="${barY+barH/2+vfs*0.35}" text-anchor="middle" font-size="${vfs}" font-weight="700" fill="${this._textColor(color)}" style="animation-delay:${delay+0.45}s">${p.val}</text>
+        <text x="${w/2}" y="${barY-10}" text-anchor="middle" font-size="${lfs}" fill="#475569" font-weight="600">${p.label||''}</text>
       </g>`;
       x += w; delay += 0.18;
       return g;
@@ -181,8 +184,13 @@ window.MathVisualV5 = {
 
   // 2. 面积模型 —— 两位数乘法
   // data: {a, b, parts:[4个部分值], result} 或 {parts:[{val},{val}]}
+  // 兼容 rows/cols 网格格式（{rows,cols}）：自动换算 a/b；小数时画简化网格
   areaModel(data){
     let {a,b,parts,result} = data;
+    // 兼容 rows/cols 格式（如 {rows:40,cols:38}）
+    if((a == null || b == null) && data.rows != null && data.cols != null){
+      a = data.rows; b = data.cols;
+    }
     // 兼容 parts 格式：从 parts 数组提取 a, b
     if((a == null || b == null) && data.parts && data.parts.length >= 2){
       a = data.parts[0].val;
@@ -190,6 +198,22 @@ window.MathVisualV5 = {
     }
     if(a == null) a = 23;
     if(b == null) b = 15;
+    // 小数乘法（如 4.5×3.2）：分解模型无意义，画简化示意图
+    if(!Number.isInteger(a) || !Number.isInteger(b)){
+      const W=560, H=190;
+      const recW=W*0.5, recH=H*0.55, x0=(W-recW)/2, y0=30;
+      return `<div class="mv-wrap mv-area-model">
+        <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+          <rect x="${x0}" y="${y0}" width="${recW}" height="${recH}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5" rx="6"/>
+          <rect x="${x0}" y="${y0+recH}" width="${recW/3}" height="26" fill="none" stroke="#F5B800" stroke-width="2"/>
+          <rect x="${x0+recW*2/3}" y="${y0+recH}" width="${recW/3}" height="26" fill="none" stroke="#F5B800" stroke-width="2"/>
+          <text x="${x0}" y="${y0-10}" font-size="14" font-weight="700" fill="#00A896">${a}</text>
+          <text x="${x0+recW+12}" y="${y0+recH/2}" font-size="14" font-weight="700" fill="#F5B800">${b}</text>
+          <text x="${W/2}" y="${y0+recH/2}" text-anchor="middle" font-size="16" font-weight="800" fill="#1E3A5F">${a} × ${b}</text>
+          <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">长 ${a}、宽 ${b} 的面积</text>
+        </svg>
+      </div>`;
+    }
     const aT=Math.floor(a/10)*10, aO=a%10;
     const bT=Math.floor(b/10)*10, bO=b%10;
     const sc=13;
@@ -219,11 +243,26 @@ window.MathVisualV5 = {
 
   // 3. 数字 Bond —— 数的分解 / 加减法关系
   // data: {total, parts:[{val,color}]}
+  // 修复：圆半径与字号按文本长度自适应，七位数（如 3050000）也完整显示不裁剪
   numberBond(data){
     const parts=(data && data.parts) || [];
     const total=data.total;
     const n=parts.length;
-    const W=340, H=210, topX=W/2, topY=44, bottomY=158, spread=220;
+    // 自适应：数字越长字号越小、圆越大，保证文本永远在圆内
+    const fit=(t,baseR,baseF)=>{
+      const s=String(t==null?'':t);
+      const f=Math.max(9, baseF - Math.max(0, s.length-3)*2);
+      const r=Math.max(baseR, Math.ceil(s.length*f*0.34)+7);
+      return {r,f};
+    };
+    const tot=fit(total,30,20);
+    const pFits=parts.map(p=>fit(p.val!=null?p.val:p.value,26,18));
+    const maxPartR=Math.max(26, ...pFits.map(x=>x.r));
+    const maxR=Math.max(tot.r, maxPartR);
+    const spread=Math.max(220, pFits.reduce((s,x)=>s+x.r*2,0) + Math.max(0,n-1)*16 + 24);
+    const W=Math.max(340, spread + maxR*2 + 44);
+    const H=Math.max(210, tot.r + maxPartR + 92);
+    const topX=W/2, topY=tot.r+14, bottomY=H-maxPartR-14;
     const pos=(i)=> n<=1 ? W/2 : (W/2 - spread/2 + (spread/(n-1))*i);
     const lines=parts.map((p,i)=>{
       const bx=pos(i);
@@ -233,17 +272,18 @@ window.MathVisualV5 = {
     const pCircles=parts.map((p,i)=>{
       const bx=pos(i);
       const color=this._hex(p.color)||this._palette(i);
+      const ft=pFits[i];
       return `<g class="mv-bond-part" style="animation-delay:${0.55+i*0.2}s">
-        <circle cx="${bx}" cy="${bottomY}" r="26" fill="${color}"/>
-        <text x="${bx}" y="${bottomY+6}" text-anchor="middle" font-size="18" font-weight="700" fill="${this._textColor(color)}">${p.val != null ? p.val : p.value}</text>
+        <circle cx="${bx}" cy="${bottomY}" r="${ft.r}" fill="${color}"/>
+        <text x="${bx}" y="${bottomY+ft.f*0.35}" text-anchor="middle" font-size="${ft.f}" font-weight="700" fill="${this._textColor(color)}">${p.val != null ? p.val : p.value}</text>
       </g>`;
     }).join('');
     return `<div class="mv-wrap mv-number-bond">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
         ${lines}
         <g class="mv-bond-total">
-          <circle cx="${topX}" cy="${topY}" r="30" fill="#1E3A5F"/>
-          <text x="${topX}" y="${topY+7}" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">${total}</text>
+          <circle cx="${topX}" cy="${topY}" r="${tot.r}" fill="#1E3A5F"/>
+          <text x="${topX}" y="${topY+tot.f*0.35}" text-anchor="middle" font-size="${tot.f}" font-weight="700" fill="#fff">${total}</text>
         </g>
         ${pCircles}
       </svg>

@@ -3616,7 +3616,7 @@ window.MATH_BY_GRADE["4a"] = {
             "visualType": "areaModel",
             "visualData": {
                 "rows": 40,
-                "cols": 38,
+                "cols": 40,
                 "color": "#00A896"
             },
             "knowledge": "计算器使用",
@@ -4959,7 +4959,7 @@ window.MATH_BY_GRADE["4a"] = {
             ],
             "visualType": "areaModel",
             "visualData": {
-                "rows": 123,
+                "rows": 133,
                 "cols": 13,
                 "color": "#00A896"
             },

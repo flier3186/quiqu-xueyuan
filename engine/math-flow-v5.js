@@ -907,10 +907,258 @@ window.MathFlowV5 = {
   // ============================================================
   renderPractice(problem){
     const level = this._sess.practiceLevels[this._sess.practiceIndex] || 1;
+    // 每次渲染注入随机新数字的同类变体——翻页永远是新题，不再"翻来覆去就那两道"
+    this._sess.levelVar = this._freshProblem(problem, level);
     if(level === 1) return this._renderL1(problem);
     if(level === 2) return this._renderL2(problem);
     if(level === 3) return this._renderL3(problem);  // 新增 L3
     return this._renderL4(problem);
+  },
+
+  // ============================================================
+  // 数字变异引擎：从基准题生成"同结构新数字"的变体
+  // 保证图文一致、难度一致（同位数）、运算可行（整除/非负），失败则原样返回
+  // ============================================================
+  _freshProblem(problem, level){
+    try{
+      if(problem.visualType === 'fractionStrip') return problem; // 分数概念题不变异（怕破坏图形语义）
+      const hasVariants = problem.variants && problem.variants.length;
+      const useVisual = level === 2 && problem.visualType && problem.visualData;
+      // L1/L4 用变体0做模板，L3 用变体1；L2 用母题（文字与图必须同源）
+      const base = useVisual ? problem
+        : (hasVariants ? (problem.variants[(level === 1 || level === 4) ? 0 : 1] || problem.variants[0]) : problem);
+      if(!base || !base.formula) return problem;
+      // 带图约束：除数（份数语义）/括号后乘数（周长×2语义）不可变，只变异其余数字
+      let keepIdx = null;
+      if(useVisual){
+        const fm = String(problem.formula).replace(/\s/g, '');
+        if(fm.indexOf('÷') >= 0 || fm.indexOf('/') >= 0) keepIdx = [1];
+        else if(/\)[×x]\d+$/.test(fm)) keepIdx = ['last'];
+      }
+      const m = this._mutateFormula(base.formula, keepIdx);
+      if(!m) return problem;
+      const q = this._mutQuestion(base, m.formula);
+      if(!q) return problem;
+      const out = Object.assign({}, base, {
+        formula: m.formula, answer: m.answer, question: q,
+        choices: undefined   // 让 _safeChoices 围绕新答案生成干扰项
+      });
+      if(useVisual){
+        const vd = this._mutateVisual(problem, m.oldNums, m.newNums, m.answer);
+        if(!vd) return problem;   // 图改不了就整题不变异，绝不图文不符
+        out.visualData = vd;
+        out.visualType = problem.visualType;
+        const sc = this._reScene(problem.scene || '', problem.formula, m.formula);
+        if(sc) out.scene = sc;
+      } else if(level === 3){
+        const sc = this._reScene(base.scene || problem.scene || '', base.formula, m.formula);
+        if(sc) out.scene = sc;
+      }
+      return out;
+    }catch(e){ return problem; }
+  },
+
+  // 纯算术式数字变异（拒绝采样 + 逐步求值校验）；keepIdx: 不可变异的数字序号（'last'=最后一个）
+  _mutateFormula(formula, keepIdx){
+    const f = String(formula);
+    const eqM = f.match(/=\s*\?/);
+    if(!eqM) return null;   // 没有 =? 结果占位的不处理
+    const head = f.slice(0, f.indexOf('=')).trim();
+    if(!head) return null;
+    if(/\d\.\d/.test(head)) return null;  // 小数不安全（正则会拆坏），不处理
+    if(!/^[\d\s+\-×x÷*/()]+$/.test(head)) return null;
+    const oldNums = head.match(/\d+/g).map(Number);
+    if(!oldNums.length || oldNums.length > 4) return null;
+    const keepSet = new Set();
+    if(Array.isArray(keepIdx)){
+      keepIdx.forEach(i => keepSet.add(i === 'last' ? oldNums.length - 1 : i));
+    }
+    const oldAns = this._evalArith(head);
+    if(oldAns == null) return null;
+    for(let t = 0; t < 60; t++){
+      const pairs = oldNums.map((n, idx) => {
+        if(keepSet.has(idx) || n === 1) return { o: n, w: n };   // 1 是常量因子（×1），不变异
+        let nv = this._rndSameDigit(n);
+        let guard = 0;
+        while(nv === n && guard++ < 9) nv = this._rndSameDigit(n);
+        return { o: n, w: nv };
+      });
+      // 按出现顺序替换（第 k 个数字 → pairs[k].w），同值数字也能各自独立变异
+      let occ = 0;
+      const newHead = head.replace(/\d+/g, () => String(pairs[occ++] ? pairs[occ - 1].w : pairs[pairs.length - 1].w));
+      const ans = this._evalArith(newHead);
+      // 约束：可求值、非负、非退化（结果≠0且≠1，除非原题就是）、至少有一个数变了
+      if(ans == null || ans < 0 || (ans !== oldAns && (ans === 0 || ans === 1))) continue;
+      if(pairs.every(p => p.w === p.o)) continue;
+      // 除法题结果位数明显膨胀时放弃（如 96÷4 变 97÷4 不整除会被 eval 拦住；此处防商过大）
+      return {
+        formula: newHead + ' = ?',
+        answer: ans,
+        oldNums: oldNums,
+        newNums: pairs.map(p => p.w)
+      };
+    }
+    return null;
+  },
+
+  // 同位数随机数（保持难度一致）
+  _rndSameDigit(n){
+    const s = String(Math.abs(Math.floor(n)));
+    const d = s.length;
+    const min = d === 1 ? 2 : Math.pow(10, d - 1);
+    const max = d === 1 ? 9 : Math.pow(10, d) - 1;
+    return min + Math.floor(Math.random() * (max - min + 1));
+  },
+
+  // 安全算术求值：仅数字与 + - * / ( )；要求每个除法步骤整除、除数非零
+  _evalArith(expr){
+    try{
+      const toks = String(expr).replace(/×/g, '*').replace(/x/g, '*').replace(/÷/g, '/').match(/\d+|[+\-*/()]/g);
+      if(!toks) return null;
+      let pos = 0;
+      const peek = () => toks[pos];
+      function factor(){
+        const t = toks[pos++];
+        if(t === '('){
+          const v = expr0();
+          if(toks[pos++] !== ')') return NaN;
+          return v;
+        }
+        if(/^\d+$/.test(t)) return parseInt(t, 10);
+        return NaN;
+      }
+      function term(){
+        let v = factor();
+        while(peek() === '*' || peek() === '/'){
+          const op = toks[pos++];
+          const r = factor();
+          if(op === '/'){
+            if(r === 0) return NaN;
+            v = v / r;
+            if(!Number.isInteger(v)) return NaN;   // 除法必须整除
+          } else v = v * r;
+        }
+        return v;
+      }
+      function expr0(){
+        let v = term();
+        while(peek() === '+' || peek() === '-'){
+          const op = toks[pos++];
+          const r = term();
+          v = op === '+' ? v + r : v - r;
+        }
+        return v;
+      }
+      const val = expr0();
+      if(pos !== toks.length || !Number.isFinite(val) || Number.isNaN(val)) return null;
+      return val;
+    }catch(e){ return null; }
+  },
+
+  // 用新算式的数字改写题干（数字个数对不上或题干无数字则返回原文/空）
+  _mutQuestion(base, newFormula){
+    const q = String(base.question || '');
+    if(!/\d/.test(q)) return q;   // 纯文字题干（"一共能坐多少人？"）直接沿用
+    const rewritten = this._reScene(q, base.formula, newFormula);
+    return rewritten || '';   // 改写失败返回空，调用方放弃变异
+  },
+
+  // visualData 数字同步变异（按运算语义），失败返回 null（宁可不变异）
+  _mutateVisual(problem, oldNums, newNums, answer){
+    const vt = problem.visualType;
+    const src = problem.visualData || {};
+    const vd = JSON.parse(JSON.stringify(src));
+    const f = String(problem.formula).replace(/\s/g, '');
+    // 主运算符 = 表达式中第一个出现的运算符（"20-3×4" 是减法图，不能因含×误判为乘法图）
+    const firstOp = (f.match(/[+×*\-÷/]/) || [''])[0];
+    const isDiv = firstOp === '÷' || firstOp === '/';
+    const isMul = firstOp === '×' || firstOp === '*';
+    const isSub = firstOp === '-';
+    const A = newNums[0], B = newNums[1];
+    const parts = Array.isArray(vd.parts) ? vd.parts : null;
+    if(vt === 'barModel' || vt === 'numberBond'){
+      const bars = parts || (Array.isArray(vd.bars) ? vd.bars.map(b => ({ val: b.value, label: b.label, color: b.color })) : null);
+      if(!bars) return null;
+      if(isDiv){
+        const nParts = bars.length;
+        if(oldNums[1] !== nParts) return null;   // 原图份数≠除数，语义未知，不动
+        if(A % B !== 0) return null;
+        const q = A / B;
+        if(answer !== q) return null;   // 算式含其他因子（图只表示除法部分），语义对不上就不动
+        bars.forEach(p => { p.val = q; p.value = q; });   // 双字段都写，兼容 val/value 两种原始格式
+        vd.total = A;
+        return vd;
+      }
+      if(isMul){
+        const nParts = bars.length;
+        if(oldNums[1] !== nParts) return null;
+        bars.forEach(p => { p.val = A; p.value = A; });
+        vd.total = A * B;
+        return vd;
+      }
+      if(isSub){
+        if(bars.length !== 2) return null;
+        // 通用减法语义：parts=[被减掉总量, 剩余]；对 125-(38+62) 复合式同样成立
+        vd.total = A;
+        bars[0].val = A - answer; bars[0].value = A - answer;
+        bars[1].val = answer; bars[1].value = answer;
+        return vd;
+      }
+      // 容斥原理图（a+b-c，三段=只A/交集/只B）
+      if(isAdd && !isSub && bars.length === 3 && newNums.length === 3 && /^\d+\+\d+-\d+=/.test(f)){
+        const C = newNums[2];
+        if(A >= C && B >= C){
+          bars[0].val = A - C; bars[0].value = A - C;   // 只A
+          bars[1].val = C; bars[1].value = C;           // 交集
+          bars[2].val = B - C; bars[2].value = B - C;   // 只B
+          vd.total = answer;
+          return vd;
+        }
+        return null;
+      }
+      // 加法：parts 对应操作数
+      if(bars.length === newNums.length){
+        bars.forEach((p, i) => { p.val = newNums[i]; p.value = newNums[i]; });
+        vd.total = newNums.reduce((s, x) => s + x, 0);
+        return vd;
+      }
+      return null;
+    }
+    if(vt === 'areaModel'){
+      if(newNums.length < 2) return null;
+      const a = A, b = B;
+      const aT = Math.floor(a / 10) * 10, aO = a % 10, bT = Math.floor(b / 10) * 10, bO = b % 10;
+      vd.a = a; vd.b = b;
+      vd.parts = [aT * bT, aT * bO, aO * bT, aO * bO];
+      vd.result = a * b;
+      return vd;
+    }
+    if(vt === 'numberLine'){
+      const oldA = oldNums[0];
+      const delta = A - oldA;
+      const shift = v => v + delta;
+      if(vd.start != null) vd.start = shift(vd.start);
+      if(vd.min != null) vd.min = shift(vd.min);
+      if(vd.end != null) vd.end = shift(vd.end);
+      if(vd.max != null) vd.max = shift(vd.max);
+      (vd.points || []).forEach(p => { p.pos = shift(p.pos); });
+      (vd.highlight || []).forEach((v, i, arr) => { arr[i] = shift(v); });
+      return vd;
+    }
+    if(vt === 'geometry'){
+      const pm = vd.params || {};
+      const keys = ['length', 'width', 'base', 'height', 'side', 'radius', 'diameter', 'top', 'bottom'];
+      // 旧参数按公式数字顺序映射（前 n 个数字）
+      const geomOld = keys.filter(k => pm[k] != null);
+      if(geomOld.length > newNums.length) return null;
+      for(let i = 0; i < geomOld.length; i++){
+        const nv = newNums[i];
+        if(nv == null || nv < 1) return null;
+        pm[geomOld[i]] = nv;
+      }
+      return vd;
+    }
+    return null;
   },
   // ===== 工具：为 variants 生成安全选项（确保正确答案在选项中） =====
   _safeChoices(v, problem){
@@ -1059,8 +1307,8 @@ window.MathFlowV5 = {
   },
   // L4 陷阱题：含干扰信息或易错点，做错触发苏格拉底追问
   _renderL4(problem){
-    // 用第 2 个变式或构造陷阱题
-    const v = (problem.variants && problem.variants[1]) || (problem.variants && problem.variants[0]) || problem;
+    // 用第 2 个变式或构造陷阱题——数字来自变异引擎，每次全新
+    const v = this._sess.levelVar || (problem.variants && problem.variants[1]) || (problem.variants && problem.variants[0]) || problem;
     const {ans, choices} = this._safeChoices(v, problem);
     // 构造陷阱选项：把正确答案和易错答案都放进去
     const trap = choices.length > 1 ? choices.find(c => c !== ans) : (ans + 2);

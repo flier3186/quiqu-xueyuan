@@ -1,0 +1,62 @@
+visual 题总数: 898
+发现问题: 397
+  math-data-2b.js 2B-29 [barModel] parts和=7000 ≠ total=3500（减法应为 结果+减数） | formula=3500-800=?
+  math-data-2b.js 2B-30 [barModel] total=4300 ≠ parts和=8600 | formula=2800+1500=?
+  math-data-2b.js 2B-31 [barModel] total=2900 ≠ parts和=5800 | formula=2100+800=?
+  math-data-2b.js 2B-32 [barModel] parts和=1000 ≠ total=500（减法应为 结果+减数） | formula=500-280=?
+  math-data-2b.js 2B-33 [barModel] total=570 ≠ parts和=1140 | formula=450+120=?
+  math-data-2b.js 2B-34 [barModel] total=440 ≠ parts和=880 | formula=180+260=?
+  math-data-2b.js 2B-35 [barModel] total=4800 ≠ parts和=9600 | formula=1600+3200=?
+  math-data-2b.js 2B-36 [barModel] total=230 ≠ parts和=460 | formula=180+50=?
+  math-data-2b.js 2B-38 [barModel] total=4000 ≠ 被减数=2000 | formula=2000-800=?
+  math-data-2b.js 2B-41 [barModel] total=10 ≠ 被减数=5 | formula=5-2=?
+  math-data-2b.js 2B-42 [barModel] 份数=5 ≠ 除数=200 | formula=1000÷200=?
+  math-data-2b.js 2B-42 [barModel] 每份=200 ≠ 商=5 | formula=1000÷200=?
+  math-data-2b.js 2B-43 [barModel] parts和=40 ≠ total=20（减法应为 结果+减数） | formula=20-3×4=?
+  math-data-2b.js 2B-45 [barModel] parts和=70 ≠ total=30（减法应为 结果+减数） | formula=30-8+5=?
+  math-data-2b.js 2B-47 [barModel] total=42 ≠ parts和=84 | formula=6×5+12=?
+  math-data-2b.js 2B-48 [barModel] parts和=200 ≠ total=100（减法应为 结果+减数） | formula=100-50=?
+  math-data-2b.js 2B-50 [barModel] parts和=56 ≠ total=28（减法应为 结果+减数） | formula=28-3×8=?
+  math-data-2b.js 2B-52 [barModel] parts和=90 ≠ total=45（减法应为 结果+减数） | formula=45-28=?
+  math-data-2b.js 2B-53 [numberBond] 除法题各份不等: 5,5,5,5,3 | formula=23÷4=？...
+  math-data-2b.js 2B-54 [numberBond] 除法题各份不等: 5,5,5,5,5,5,1 | formula=31÷6=？...
+  math-data-2b.js 2B-56 [numberBond] 除法题各份不等: 7,7,7,7,7,7,7,1 | formula=50÷7=？...
+  math-data-2b.js 2B-57 [numberBond] 除法题各份不等: 5,5,5,5,5,5,5,2 | formula=37÷5=?
+  math-data-3a.js 3A-TIME-03 [barModel] total=80 ≠ parts和=160 | formula=60 + 20 = ?
+  math-data-3a.js 3A-TIME-07 [barModel] total=62 ≠ parts和=124 | formula=35 + 27 = ?
+  math-data-3a.js 3A-TIME-08 [barModel] total=84 ≠ parts和=168 | formula=48 + 36 = ?
+  math-data-3a.js 3A-TIME-09 [barModel] total=72 ≠ parts和=144 | formula=23 + 49 = ?
+  math-data-3a.js 3A-TIME-13 [barModel] total=470 ≠ parts和=940 | formula=320 + 150 = ?
+  math-data-3a.js 3A-TIME-15 [barModel] total=840 ≠ parts和=1680 | formula=460 + 380 = ?
+  math-data-3a.js 3A-TIME-38 [barModel] 份数=3 ≠ 除数=2 | formula=6 ÷ 2 = ?
+  math-data-3a.js 3A-TIME-38 [barModel] 每份=2 ≠ 商=3 | formula=6 ÷ 2 = ?
+  math-data-3a.js 3A-TIME-69 [geometry] 几何参数 width 非正数 | formula=10 + 10 + 6 = ?
+  math-data-3a.js 3A-TIME-70 [geometry] 几何参数 #00A896 非正数 | formula=1 / ?
+  math-data-3a.js 3A-TIME-73 [fractionStrip] num/total=1/5 ≠ 算式=1/3 | formula=1/3 > 1/?
+  math-data-3a.js 3A-TIME-76 [fractionStrip] num/total=3/5 ≠ 算式=1/5 | formula=1/5 + 2/5 = ?/5
+  math-data-3a.js 3A-TIME-77 [fractionStrip] num/total=4/7 ≠ 算式=5/7 | formula=5/7 - 1/7 = ?/7
+  math-data-3a.js 3A-TIME-78 [fractionStrip] num/total=5/9 ≠ 算式=2/9 | formula=2/9 + 3/9 = ?/9
+  math-data-3a.js 3A-TIME-80 [barModel] 除法题各份不等: 6,6,12,6 | formula=30 ÷ 5 × 2 = ?
+  math-data-3a.js 3A-TIME-80 [barModel] 份数=4 ≠ 除数=5 | formula=30 ÷ 5 × 2 = ?
+  math-data-3a.js 3A-TIME-81 [barModel] 除法题各份不等: 15,5 | formula=20 ÷ 4 × 3 = ?
+  math-data-3a.js 3A-TIME-81 [barModel] 份数=2 ≠ 除数=4 | formula=20 ÷ 4 × 3 = ?
+  math-data-3a.js 3A-TIME-81 [barModel] 每份=15 ≠ 商=5 | formula=20 ÷ 4 × 3 = ?
+  math-data-3b.js 3B-PROB-001 [geometry] 几何参数 东 非正数 | formula=相对方向 = ?
+  math-data-3b.js 3B-PROB-001 [geometry] 几何参数 西 非正数 | formula=相对方向 = ?
+  math-data-3b.js 3B-PROB-002 [geometry] 几何参数 北 非正数 | formula=上方方向 = ?
+  math-data-3b.js 3B-PROB-003 [geometry] 几何参数 西 非正数 | formula=左手方向 = ?
+  math-data-3b.js 3B-PROB-003 [geometry] 几何参数 南 非正数 | formula=左手方向 = ?
+  math-data-3b.js 3B-PROB-004 [geometry] 几何参数 东南 非正数 | formula=东和南之间 = ?
+  math-data-3b.js 3B-PROB-005 [geometry] 几何参数 西北 非正数 | formula=西北 = ?
+  math-data-3b.js 3B-PROB-006 [geometry] 几何参数 西南 非正数 | formula=西南 = ?
+  math-data-3b.js 3B-PROB-019 [areaModel] a,b=25,6 ≠ 算式数=24,4 | formula=24 × 4 = ?
+  math-data-3b.js 3B-PROB-034 [areaModel] parts=100,40,20,8 ≠ 拆分应为100,20,40,8 (a=14,b=12) | formula=14 × 12 = ?
+  math-data-3b.js 3B-PROB-035 [areaModel] parts=200,10,60,3 ≠ 拆分应为200,60,10,3 (a=21,b=13) | formula=21 × 13 = ?
+  math-data-3b.js 3B-PROB-036 [areaModel] parts=300,20,60,4 ≠ 拆分应为300,60,20,4 (a=32,b=12) | formula=32 × 12 = ?
+  math-data-3b.js 3B-PROB-037 [areaModel] parts=800,100,160,20 ≠ 拆分应为800,160,100,20 (a=45,b=24) | formula=45 × 24 = ?
+  math-data-3b.js 3B-PROB-038 [areaModel] parts=600,120,300,0 ≠ 拆分应为600,150,120,30 (a=36,b=25) | formula=36 × 25 = ?
+  math-data-3b.js 3B-PROB-039 [areaModel] parts=400,80,200,40 ≠ 拆分应为400,200,80,40 (a=48,b=15) | formula=48 × 15 = ?
+  math-data-3b.js 3B-PROB-041 [barModel] 份数=3 ≠ 除数=5 | formula=60 ÷ 5 ÷ 4 = ?
+  math-data-3b.js 3B-PROB-041 [barModel] 每份=20 ≠ 商=12 | formula=60 ÷ 5 ÷ 4 = ?
+  math-data-3b.js 3B-PROB-043 [geometry] 几何参数 cm 非正数 | formula=1cm² = ?
+  math-data-3b.js 3B-PROB-064 [fractionStrip] num/total=3/10 ≠ 算式=0/3 | formula=0.3 = ?/10
