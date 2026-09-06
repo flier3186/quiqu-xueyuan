@@ -1219,6 +1219,24 @@ body::before{opacity:.35;mix-blend-mode:multiply}
 @media (min-width:761px) and (max-width:980px){
   .overview-grid{grid-template-columns:1fr 1fr}
 }
+
+/* ---- emoji icon system（替代 SVG 界面图标） ---- */
+.em{display:inline-block;line-height:1;font-style:normal;vertical-align:middle}
+.logo-mark .em{font-size:22px}
+.icon-btn .em{font-size:15px}
+.parent-btn .em{font-size:20px}
+.nav-tab .nav-ico{font-size:19px}
+.star-count .em{font-size:22px}
+.task-thumb .em{font-size:19px}
+.quick-item .em{font-size:19px}
+.vocab-speak .em,.mp-speak .em{font-size:13px}
+.letter-speak .em,.flash-speak .em{font-size:12px}
+.scene-word-item button .em{font-size:10px}
+.achv-item .em{font-size:18px}
+.timer-display .em{font-size:18px}
+.se-replay .em{font-size:12px}
+#toast .em{font-size:15px;margin-right:4px;vertical-align:-3px}
+.wt-actions .em{font-size:13px}
 </style>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 </head>
@@ -1234,20 +1252,20 @@ body::before{opacity:.35;mix-blend-mode:multiply}
   <div class="main-area">
     <header class="top-bar">
       <div class="logo">
-        <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="logo-mark"><span class="em">🎓</span></div>
         <div class="logo-text">奇趣<span>学园</span></div>
       </div>
       <nav class="nav-tabs" id="navTabs">
-        <div class="nav-tab active" data-view="overview"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9v9a2 2 0 01-2 2h-4v-7h-6v7H5a2 2 0 01-2-2v-9z"/></svg><span>总览</span><div class="underline"></div></div>
-        <div class="nav-tab" data-view="math"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg><span>数学星球</span><div class="underline"></div></div>
-        <div class="nav-tab" data-view="english"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2c1.66 0 3 2.69 3 6h-6c0-3.31 1.34-6 3-6zm-3 8h6c0 3.31-1.34 6-3 6s-3-2.69-3-6zm-7-2c0-3.31 1.34-6 3-6 .69 0 1.35.27 1.93.74C8.32 7.45 8 9.65 8 12s.32 4.55.93 6.26C8.35 18.73 7.69 19 7 19c-1.66 0-3-2.69-3-6zm16 6c-.69 0-1.35-.27-1.93-.74.61-1.71.93-3.91.93-6.26s-.32-4.55-.93-6.26C16.65 4.27 17.31 4 18 4c1.66 0 3 2.69 3 6s-1.34 6-3 6z"/></svg><span>英语世界</span><div class="underline"></div></div>
-        <div class="nav-tab" data-view="speak"><svg class="icon" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg><span>口语伙伴</span><div class="underline"></div></div>
-        <div class="nav-tab" data-view="game"><svg class="icon" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg><span>闯关游戏</span><div class="underline"></div></div>
-        <div class="nav-tab" data-view="pet"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9.5c0 .83-.67 1.5-1.5 1.5S7 11.33 7 10.5 7.67 9 8.5 9s1.5.67 1.5 1.5zm7 0c0 .83-.67 1.5-1.5 1.5S14 11.33 14 10.5 14.67 9 15.5 9s1.5.67 1.5 1.5zM12 17.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg><span>元宇宙宠物</span><div class="underline"></div></div>
+        <div class="nav-tab active" data-view="overview"><span class="em nav-ico">🏠</span><span>总览</span><div class="underline"></div></div>
+        <div class="nav-tab" data-view="math"><span class="em nav-ico">🪐</span><span>数学星球</span><div class="underline"></div></div>
+        <div class="nav-tab" data-view="english"><span class="em nav-ico">🌍</span><span>英语世界</span><div class="underline"></div></div>
+        <div class="nav-tab" data-view="speak"><span class="em nav-ico">🎤</span><span>口语伙伴</span><div class="underline"></div></div>
+        <div class="nav-tab" data-view="game"><span class="em nav-ico">🎮</span><span>闯关游戏</span><div class="underline"></div></div>
+        <div class="nav-tab" data-view="pet"><span class="em nav-ico">🐾</span><span>元宇宙宠物</span><div class="underline"></div></div>
       </nav>
       <div class="top-bar-right">
-        <button class="icon-btn mic" id="micToggle" title="语音开关"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button>
-        <button class="parent-btn" id="parentBtn"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg><span>家长面板</span></button>
+        <button class="icon-btn mic" id="micToggle" title="语音开关"><span class="em">🎙️</span></button>
+        <button class="parent-btn" id="parentBtn"><span class="em">👪</span><span>家长面板</span></button>
       </div>
     </header>
     <main class="content-area" id="contentArea"></main>
@@ -2762,7 +2780,7 @@ const PETS = [
 // === 工具函数 ===
 function $(s){return document.querySelector(s)}
 function $$(s){return Array.from(document.querySelectorAll(s))}
-function toast(msg){const t=$('#toast');t.innerHTML=`<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function toast(msg){const t=$('#toast');t.innerHTML=`<span class="em">✅</span>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 // 英语单词照片映射：单词→Unsplash真实照片查询词
 // 抽象词/功能词/动作/形容词——照片无法准确表达，直接走 emoji 插画卡，杜绝随机错图
 const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting']);
@@ -3179,9 +3197,9 @@ function showWordTooltip(word,x,y){
   const w=word.toLowerCase();
   const data=WORD_DICT[w];
   if(!data){
-    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-def" style="color:var(--text-2)">该词暂未收录详细释义，可点击下方按钮听发音。</div><div class="wt-actions"><button onclick="speak('${escapeAttr(word)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听发音</button></div>`;
+    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-def" style="color:var(--text-2)">该词暂未收录详细释义，可点击下方按钮听发音。</div><div class="wt-actions"><button onclick="speak('${escapeAttr(word)}')"><span class="em em-spk">🔊</span>听发音</button></div>`;
   }else{
-    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-pos">${data.pos}</div><div class="wt-def">${data.def}</div><div class="wt-example">例：${data.example||''}</div><div class="wt-coll"><strong>常见搭配：</strong>${(data.coll||[]).join(' · ')}</div><div class="wt-syn"><strong>近义：</strong>${data.syn||'—'}　<strong>反义：</strong>${data.ant||'—'}</div><div class="wt-actions"><button onclick="speak('${escapeAttr(word)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听发音</button><button class="yellow" onclick="speak('${escapeAttr(data.example||word)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>听例句</button></div>`;
+    tip.innerHTML=`<div class="wt-head"><div class="wt-word">${word}</div><div class="wt-close">×</div></div><div class="wt-pos">${data.pos}</div><div class="wt-def">${data.def}</div><div class="wt-example">例：${data.example||''}</div><div class="wt-coll"><strong>常见搭配：</strong>${(data.coll||[]).join(' · ')}</div><div class="wt-syn"><strong>近义：</strong>${data.syn||'—'}　<strong>反义：</strong>${data.ant||'—'}</div><div class="wt-actions"><button onclick="speak('${escapeAttr(word)}')"><span class="em em-spk">🔊</span>听发音</button><button class="yellow" onclick="speak('${escapeAttr(data.example||word)}')"><span class="em em-spk">🔊</span>听例句</button></div>`;
   }
   tip.style.left=Math.min(x,window.innerWidth-320)+'px';
   tip.style.top=Math.max(80,y-20)+'px';
@@ -3209,7 +3227,7 @@ function renderSidePanel(){
       <div class="panel-card">
         <h3>⭐ 星星银行 ${badgeDots()}</h3>
         <div class="star-bank">
-          <div class="star-count"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7z"/></svg><span class="mono">${S.overview.stars}</span></div>
+          <div class="star-count"><span class="em">⭐</span><span class="mono">${S.overview.stars}</span></div>
           <div class="star-sub">可用</div>
         </div>
         <div class="streak-row">${Array(7).fill(0).map((_,i)=>`<div class="streak-cell ${i<streak?'done':''}"></div>`).join('')}</div>
@@ -3233,15 +3251,15 @@ function renderSidePanel(){
         <h3>📋 今日任务</h3>
         <div class="task-list">
           <div class="task-item" onclick="switchView('math')">
-            <div class="task-thumb"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg></div>
+            <div class="task-thumb"><span class="em">🧮</span></div>
             <div class="task-info"><div class="task-title">数学 · 多位数乘法</div><div class="task-meta">3道 · 15分钟 · <span style="color:var(--teal)">待开始</span></div></div>
           </div>
           <div class="task-item" onclick="switchView('english')">
-            <div class="task-thumb"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div>
+            <div class="task-thumb"><span class="em">🌍</span></div>
             <div class="task-info"><div class="task-title">英语 · SH拼读</div><div class="task-meta">5个词 · 10分钟 · <span style="color:var(--yellow-700)">3/5</span></div></div>
           </div>
           <div class="task-item" onclick="switchView('speak')">
-            <div class="task-thumb"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/></svg></div>
+            <div class="task-thumb"><span class="em">🎤</span></div>
             <div class="task-info"><div class="task-title">口语 · 咖啡店</div><div class="task-meta">3轮 · 8分钟 · <span style="color:var(--ink-400)">未开始</span></div></div>
           </div>
         </div>
@@ -3249,12 +3267,12 @@ function renderSidePanel(){
       <div class="panel-card">
         <h3>⚡ 快速入口</h3>
         <div class="quick-grid">
-          <div class="quick-item" onclick="switchView('math')"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg><span>训练营</span></div>
-          <div class="quick-item" onclick="switchView('math')"><svg viewBox="0 0 24 24"><path d="M3 3v18h18v-2H5V3H3zm14 12V8h-2v7h-2v-4h-2v4H9V6H7v9h10z"/></svg><span>几何</span></div>
-          <div class="quick-item" onclick="toast('错题本：'+S.math.wrongProblems.length+' 道')"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg><span>错题</span></div>
-          <div class="quick-item" onclick="switchView('english')"><svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11z"/></svg><span>进阶</span></div>
-          <div class="quick-item" onclick="switchView('pet')"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg><span>宠物</span></div>
-          <div class="quick-item" onclick="setStar(10,'签到成功');this.style.background='var(--teal-soft)';this.querySelector('span').style.color='var(--teal)'"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>签到</span></div>
+          <div class="quick-item" onclick="switchView('math')"><span class="em">🏋️</span><span>训练营</span></div>
+          <div class="quick-item" onclick="switchView('math')"><span class="em">📐</span><span>几何</span></div>
+          <div class="quick-item" onclick="toast('错题本：'+S.math.wrongProblems.length+' 道')"><span class="em">📕</span><span>错题</span></div>
+          <div class="quick-item" onclick="switchView('english')"><span class="em">🚀</span><span>进阶</span></div>
+          <div class="quick-item" onclick="switchView('pet')"><span class="em">🐾</span><span>宠物</span></div>
+          <div class="quick-item" onclick="setStar(10,'签到成功');this.style.background='var(--teal-soft)';this.querySelector('span').style.color='var(--teal)'"><span class="em">✅</span><span>签到</span></div>
         </div>
       </div>
 
@@ -4621,9 +4639,9 @@ function renderEngSub(subtab,grade){
           <div class="vocab-word">${w.w}</div>
           <div style="display:flex;gap:6px;align-items:center">
             <div class="vocab-fav" onclick="toggleFav('${w.w}',this)" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--dur-base);background:${isFav?'var(--yellow-100)':'var(--ink-50)'}">
-              <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:${isFav?'var(--yellow)':'var(--ink-300)'}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span class="em" style="font-size:15px;filter:${isFav?'none':'grayscale(1) opacity(.45)'}">⭐</span>
             </div>
-            <div class="vocab-speak" onclick="speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+            <div class="vocab-speak" onclick="speak('${escapeAttr(w.w)}')"><span class="em em-spk">🔊</span></div>
           </div>
         </div>
         <div class="vocab-pos">${w.pos}</div>
@@ -4654,7 +4672,7 @@ function renderEngSub(subtab,grade){
             <div class="flash-face flash-front">
               <img src="${engPhotoUrl(w.w)}" class="flash-photo" alt="${w.w}" loading="lazy" onerror="this.onerror=null;this.src=engEmojiFallback('${escapeAttr(w.w)}')">
               <div class="flash-word">${w.emoji||'📚'} ${w.w}</div>
-              <div class="flash-speak" onclick="event.stopPropagation();speak('${escapeAttr(w.w)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+              <div class="flash-speak" onclick="event.stopPropagation();speak('${escapeAttr(w.w)}')"><span class="em em-spk">🔊</span></div>
               <div style="font-size:11px;color:var(--ink-400);margin-top:auto">👆 点击翻面听发音</div>
             </div>
             <div class="flash-face flash-back">
@@ -4710,7 +4728,7 @@ function renderEngSub(subtab,grade){
         ${showLetters.map(L=>`<div class="letter-card">
           <div class="letter-card-head">
             <div class="letter-big">${L.l}</div>
-            <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+            <div class="letter-speak" onclick="speak('${escapeAttr(L.sound.split(',')[0].trim())}')"><span class="em em-spk">🔊</span></div>
           </div>
           <div style="font-size:11px;color:var(--text-2);line-height:1.5;padding:6px 8px;background:var(--teal-soft);border-radius:6px;margin:6px 0">👄 ${L.mouth}</div>
           <div class="letter-words">
@@ -4739,26 +4757,26 @@ function renderEngSub(subtab,grade){
             <div class="mp-word-text">ship</div>
             <div class="mp-word-meaning">船 🚢 - 短元音 /ɪ/</div>
           </div>
-          <div class="mp-speak" onclick="speak('ship')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+          <div class="mp-speak" onclick="speak('ship')"><span class="em em-spk">🔊</span></div>
           <div class="mp-vs">vs</div>
           <div class="mp-word">
             <div class="mp-word-text">sheep</div>
             <div class="mp-word-meaning">绵羊 🐑 - 长元音 /iː/</div>
           </div>
-          <div class="mp-speak" onclick="speak('sheep')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+          <div class="mp-speak" onclick="speak('sheep')"><span class="em em-spk">🔊</span></div>
         </div>
         <div class="mp-pair">
           <div class="mp-word">
             <div class="mp-word-text">bat</div>
             <div class="mp-word-meaning">蝙蝠/球棒 🦇 - 短 /æ/</div>
           </div>
-          <div class="mp-speak" onclick="speak('bat')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+          <div class="mp-speak" onclick="speak('bat')"><span class="em em-spk">🔊</span></div>
           <div class="mp-vs">vs</div>
           <div class="mp-word">
             <div class="mp-word-text">bake</div>
             <div class="mp-word-meaning">烘焙 🍞 - 长魔法e /eɪ/</div>
           </div>
-          <div class="mp-speak" onclick="speak('bake')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></div>
+          <div class="mp-speak" onclick="speak('bake')"><span class="em em-spk">🔊</span></div>
         </div>
       </div>`;
   }
@@ -4861,7 +4879,7 @@ function renderPhraseCard(p){
     <div class="phrase-def">📖 ${p.def}</div>
     <div class="phrase-variations">🔄 变体：${p.vars.map(v=>`<span class="v-tag">${v}</span>`).join('')}</div>
     <div class="phrase-actions">
-      <button onclick="speak('${escapeAttr(p.en)}')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读</button>
+      <button onclick="speak('${escapeAttr(p.en)}')"><span class="em em-spk">🔊</span>朗读</button>
     </div>
   </div>`;
 }
@@ -5489,7 +5507,7 @@ const SpeakEngine = {
           '<div>'+
             '<div class="msg-bubble">'+makeClickableSentence(m.text)+'</div>'+
             cn+
-            '<div class="se-replay" onclick="SpeakEngine.replay('+i+')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg> 再听一遍</div>'+
+            '<div class="se-replay" onclick="SpeakEngine.replay('+i+')"><span class="em em-spk">🔊</span> 再听一遍</div>'+
           '</div>'+
         '</div>';
       } else {
@@ -5524,7 +5542,7 @@ const SpeakEngine = {
     if(vocab){
       vocab.innerHTML = sc ? sc.vocabulary.map(w=>{
         const d = WORD_DICT[w]; const zh = d ? d.pos.split(' ')[0] : '';
-        return '<div class="scene-word-item" onclick="SpeakEngine.wordClick(\''+w+'\')"><div><div class="scene-word-en">'+w+'</div><div class="scene-word-zh">'+(zh||'点击听发音')+'</div></div><button><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></button></div>';
+        return '<div class="scene-word-item" onclick="SpeakEngine.wordClick(\''+w+'\')"><div><div class="scene-word-en">'+w+'</div><div class="scene-word-zh">'+(zh||'点击听发音')+'</div></div><button><span class="em em-spk">🔊</span></button></div>';
       }).join('') : '<div style="font-size:12px;color:var(--text-2);padding:8px 4px">选择场景后显示词汇</div>';
     }
     const tip = $('#seTips');
@@ -5634,7 +5652,7 @@ function renderSpeak(){
           <div class="scene-word-list" id="seVocab">
             ${sc ? sc.vocabulary.map(w=>{
               const d=(typeof WORD_DICT!=='undefined'&&WORD_DICT[w])||null; const zh=d?d.pos.split(' ')[0]:'';
-              return `<div class="scene-word-item" onclick="wordClickV5('${w}')"><div><div class="scene-word-en">${w}</div><div class="scene-word-zh">${zh||'点击听发音'}</div></div><button><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></button></div>`;
+              return `<div class="scene-word-item" onclick="wordClickV5('${w}')"><div><div class="scene-word-en">${w}</div><div class="scene-word-zh">${zh||'点击听发音'}</div></div><button><span class="em em-spk">🔊</span></button></div>`;
             }).join('') : '<div style="font-size:12px;color:var(--text-2);padding:8px 4px">选择场景后显示词汇</div>'}
           </div>
         </div>
@@ -5806,7 +5824,7 @@ function renderPet(){
         <div class="pet-stats-card">
           <h4>🏆 成就墙</h4>
           <div class="achievement-wall">
-            ${[['连续7天',true],['100词汇',true],['计算达人',true],['首个满分',true],['1000星',true],['口语王者',false],['SSR进化',false],['满级毕业',false]].map(([n,u])=>`<div class="achv-item ${u?'unlocked':'locked'}"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7z"/></svg><div>${n}</div></div>`).join('')}
+            ${[['连续7天',true],['100词汇',true],['计算达人',true],['首个满分',true],['1000星',true],['口语王者',false],['SSR进化',false],['满级毕业',false]].map(([n,u])=>`<div class="achv-item ${u?'unlocked':'locked'}"><span class="em">⭐</span><div>${n}</div></div>`).join('')}
           </div>
         </div>
       </div>
@@ -6433,7 +6451,7 @@ function renderChallengeQuestion(){
         <div>
           <div style="font-size:13px;color:var(--text-2)">🧮 数学闯关赛 · ${S.math&&S.math.grade||'3'}年级</div>
           <div class="timer-display" id="challengeTimer">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <span class="em">⏱️</span>
             ${challengeTimeLeft}s
           </div>
         </div>
@@ -7455,14 +7473,14 @@ const GRAMMAR_PILLS={
 
 function toggleFav(w,el){
   const added=markWordFav(w);
-  const svg=el.querySelector('svg');
+  const ico=el.querySelector('.em');
   if(added){
     el.style.background='var(--yellow-100)';
-    svg.style.fill='var(--yellow)';
+    if(ico) ico.style.filter='none';
     toast(`已收藏 ${w} ⭐`);
   }else{
     el.style.background='var(--ink-50)';
-    svg.style.fill='var(--ink-300)';
+    if(ico) ico.style.filter='grayscale(1) opacity(.45)';
     toast(`已取消收藏 ${w}`);
   }
   renderSidePanel&&render('english');
