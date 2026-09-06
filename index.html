@@ -2909,6 +2909,16 @@ let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
 function speak(text){
   if(!text) return;
+  // 三级语音链最高级：云端情感语音(CosyVoice2, 有感情起伏) → VoiceCore(Edge Online Natural) → 系统音
+  try{
+    if(window.CloudTTS && window.CloudTTS.isReady()){
+      unlockAudio();
+      window.CloudTTS.speak(text, { emotion: 'lively' }).then(function(ok){
+        if(!ok){ try{ if(window.VoiceCore) VoiceCore.speak(text); }catch(e){} }
+      });
+      return;
+    }
+  }catch(e){}
   // Echo 统一语音层：严格优先级选神经音（P0 Online Natural > 微软Online > Google > lang匹配），
   // 失败自动用系统 voice（speechSynthesis 自带兜底），不再走被 Origin 限制永久不可达的 Bing WS。
   try{
@@ -2928,6 +2938,64 @@ function speak(text){
   try{ speechSynthesis.resume(); }catch(e){}
   speechSynthesis.speak(u);
 }
+// ===== CloudTTS 高级语音设置面板 =====
+const CloudTTSPanel = {
+  toggle(){
+    const p = document.getElementById('cloudTtsPanel');
+    if(!p) return;
+    p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    if(p.style.display === 'block') CloudTTSPanel.refresh();
+  },
+  refresh(){
+    try{
+      const cfg = window.CloudTTS ? CloudTTS.getConfig() : null;
+      const st = document.getElementById('cttsStatus');
+      if(cfg && st){
+        document.getElementById('cttsVoiceZh').value = cfg.voiceZh;
+        document.getElementById('cttsVoiceEn').value = cfg.voiceEn;
+        document.getElementById('cttsEmotion').checked = !!cfg.emotion;
+        st.textContent = cfg.apiKey ? ('✅ 已配置（' + cfg.apiKey + '）' + (CloudTTS.status().lastError ? ' · 最近异常: ' + CloudTTS.status().lastError : '')) : '未配置——当前使用 Edge 内置语音（用 Edge 浏览器可获得神经音质）';
+      }
+    }catch(e){}
+  },
+  save(){
+    try{
+      const key = document.getElementById('cttsKey').value.trim();
+      if(window.CloudTTS){
+        const patch = {
+          voiceZh: document.getElementById('cttsVoiceZh').value,
+          voiceEn: document.getElementById('cttsVoiceEn').value,
+          emotion: document.getElementById('cttsEmotion').checked
+        };
+        if(key) patch.apiKey = key;
+        CloudTTS.saveConfig(patch);
+        document.getElementById('cttsKey').value = '';
+        CloudTTSPanel.refresh();
+        toast('☁️ 云端语音已保存');
+      }
+    }catch(e){ toast('保存失败: ' + e.message); }
+  },
+  clearKey(){
+    try{
+      if(window.CloudTTS){ CloudTTS.saveConfig({ apiKey: '' }); CloudTTSPanel.refresh(); toast('已清除 Key，回落到 Edge 内置语音'); }
+    }catch(e){}
+  },
+  test(){
+    try{
+      if(window.CloudTTS && CloudTTS.isReady()){
+        const st = document.getElementById('cttsStatus');
+        st.textContent = '⏳ 云端合成中…';
+        CloudTTS.test().then(function(ok){
+          st.textContent = ok ? '✅ 云端情感语音播放成功——这就是孩子的最新音色！' : ('❌ 云端失败已回落: ' + (CloudTTS.status().lastError || '未知原因') + '（检查 Key 是否正确）');
+          CloudTTSPanel.refresh();
+        });
+      }else{
+        toast('请先粘贴并保存 API Key');
+      }
+    }catch(e){ toast('测试失败: ' + e.message); }
+  }
+};
+
 function _doSpeak(text, voices){
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
@@ -3295,7 +3363,32 @@ function renderOverview(){
         <!-- 🔊 发音体检入口（Echo）：一键播中/英各一句并显示命中 voice 名与等级 -->
         <div style="margin:14px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
           <button onclick="VoiceCore.runCheck('efVoiceCheckOut')" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔊 发音体检</button>
+          <button onclick="CloudTTSPanel.toggle()" style="background:linear-gradient(135deg,#7C5CFF,#2F6BFF);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔑 高级语音设置</button>
           <span id="efVoiceCheckOut" style="font-size:12px;color:var(--text-2);line-height:1.6"></span>
+          <div id="cloudTtsPanel" style="display:none;margin-top:10px;padding:14px 16px;background:#fff;border:1.5px solid rgba(124,92,255,.35);border-radius:14px;max-width:520px;box-shadow:var(--shadow-md)">
+            <div style="font-size:14px;font-weight:800;color:#7C5CFF;margin-bottom:6px">☁️ 云端情感语音（消灭机械音）</div>
+            <div style="font-size:12px;color:var(--text-2);line-height:1.7;margin-bottom:8px">粘贴 SiliconFlow API Key（<a href="https://cloud.siliconflow.cn/account/ak" target="_blank" rel="noopener">cloud.siliconflow.cn</a> 免费注册送额度），孩子所有发音立即变成有感情起伏的高级 AI 语音。Key 只存在本机浏览器。</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+              <input id="cttsKey" type="password" placeholder="sk-..." style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #d8e0ee;border-radius:10px;font-size:13px">
+              <button onclick="CloudTTSPanel.save()" style="background:#7C5CFF;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer">保存</button>
+              <button onclick="CloudTTSPanel.clearKey()" style="background:#eef2f9;color:#5a6a8a;border:none;border-radius:10px;padding:9px 12px;cursor:pointer">清除</button>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--text-2)">
+              <label>中文音色 <select id="cttsVoiceZh" style="padding:6px;border:1px solid #d8e0ee;border-radius:8px">
+                <option value="FunAudioLLM/CosyVoice2-0.5B:diana">晓晓(女·活泼)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:wenjie">文杰(女·温柔)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男)</option>
+              </select></label>
+              <label>英文音色 <select id="cttsVoiceEn" style="padding:6px;border:1px solid #d8e0ee;border-radius:8px">
+                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·友好)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:benjy">Benjy(男)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:clara">Clara(女)</option>
+              </select></label>
+              <label><input type="checkbox" id="cttsEmotion" checked> 情感语气</label>
+              <button onclick="CloudTTSPanel.test()" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:8px;padding:6px 14px;font-weight:800;cursor:pointer">▶ 试听</button>
+            </div>
+            <div id="cttsStatus" style="font-size:12px;color:var(--text-2);margin-top:8px;line-height:1.6"></div>
+          </div>
         </div>
 
         <!-- Bento Grid 学习驾驶舱 -->
@@ -7698,6 +7791,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/math-visual-v5.js?v=20260806b"></script>
 <script src="engine/russian-questioning.js"></script>
 <script src="engine/parent-panel.js"></script>
+<script src="engine/cloud-tts.js"></script>
 <script src="engine/neural-tts.js"></script>
 <script src="data/grade-limits.js"></script>
 <script src="engine/math-kernel.js"></script>

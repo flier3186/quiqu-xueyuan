@@ -92,6 +92,17 @@
     opts = opts || {};
     const spoken = spellDigits(text);
     const ratePct = opts.ratePct != null ? opts.ratePct : 0;
+    // 最高级：云端情感语音（配置了 Key 即生效），失败回落 VoiceCore
+    if (global.CloudTTS && global.CloudTTS.isReady && global.CloudTTS.isReady()) {
+      return global.CloudTTS.speak(spoken, { lang: 'zh', emotion: 'calm', speed: 1 + ratePct / 100 })
+        .then(function (ok) {
+          if (ok) return 'cloud';
+          if (global.VoiceCore && typeof global.VoiceCore.speak === 'function') {
+            return global.VoiceCore.speak(spoken, { lang: 'zh-CN', rate: 1 + ratePct / 100, pitch: 1.05 });
+          }
+          return 'fallback';
+        });
+    }
     // Echo 统一语音层：严格优先级选神经音（中文 Xiaoxiao/Yunyang 优先）
     if (global.VoiceCore && typeof global.VoiceCore.speak === 'function') {
       return global.VoiceCore.speak(spoken, { lang: 'zh-CN', rate: 1 + ratePct / 100, pitch: 1.05 });
