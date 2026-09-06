@@ -4,7 +4,7 @@ const { chromium } = require('playwright-core');
   const page = await browser.newPage({ viewport: { width: 900, height: 1400 } });
   const errs = [];
   page.on('pageerror', e => errs.push(e.message));
-  await page.goto('http://127.0.0.1:8131/index.html', { waitUntil: 'load' });
+  await page.goto('http://127.0.0.1:8141/index.html', { waitUntil: 'load' });
   await page.waitForTimeout(2500);
 
   // 1. QuizMood 钩子连通性（答对→庆祝+成长，答错→陪伴）

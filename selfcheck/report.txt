@@ -1,0 +1,13 @@
+PASS | 首页加载 | 
+PASS | 首页无 pet3d 404 | 
+PASS | 进入数学板块 | 
+PASS | 进入宠物板块 | 
+PASS | 3D伙伴舞台挂载 | 
+PASS | 伙伴精灵加载 | dragon-idle.png
+PASS | 五宠物切换 | dragon:dragon-idle.png | fox:fox-idle.png | cat:cat-idle.png | bunny:bunny-idle.png | whale:whale-idle.png
+PASS | 喂食动作 | true
+PASS | 进入英语板块 | 
+PASS | 进入口语板块 | 
+PASS | 听算挑战弹层 | fab=true overlay=true
+
+JS_ERRORS:

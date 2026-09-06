@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宠物引擎本地验证 · pet-demo</title>
+<script type="module" src="engine/pet-companion.js"></script>
+<style>
+  body{margin:0;font-family:system-ui,'Microsoft YaHei',sans-serif;background:#0F172A;color:#fff;
+       display:flex;flex-direction:column;align-items:center;gap:18px;padding:24px;}
+  .pet-stage{background:linear-gradient(160deg,#0F172A,#2D4A70);border-radius:24px;padding:24px;
+             width:320px;height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .pet-display{position:relative;width:280px;height:280px;}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+  button{padding:8px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);
+         background:rgba(255,255,255,.1);color:#fff;font-size:13px;cursor:pointer;}
+  button:hover{background:#00A896;}
+  #state{font-size:13px;color:#9fe;min-height:20px;}
+</style>
+</head>
+<body>
+  <h2>🐲 3D 小绿龙 · 本地验证</h2>
+  <div class="pet-stage">
+    <div class="pet-display" id="petDisplay"></div>
+  </div>
+  <div class="bar">
+    <button onclick="PetCompanion.setMood('idle')">idle</button>
+    <button onclick="PetCompanion.setMood('celebrate')">celebrate</button>
+    <button onclick="PetCompanion.setMood('comfort')">comfort</button>
+    <button onclick="PetCompanion.setMood('eat')">eat</button>
+    <button onclick="PetCompanion.setMood('sleep')">sleep</button>
+    <button onclick="PetCompanion.addGrowth(45)">+45成长</button>
+    <button onclick="PetCompanion.addGrowth(100)">升级+100</button>
+    <button onclick="PetCompanion.feed(5, c=>{ if(coins>=c){coins-=c;return true} return false })">喂食(扣5金币)</button>
+    <button onclick="PetCompanion.reset()">reset</button>
+  </div>
+  <div id="state"></div>
+  <script>
+    let coins = 20;
+    window.addEventListener('DOMContentLoaded', ()=>{
+      PetCompanion.mount({
+        target:'#petDisplay',
+        onLevelUp:(lvl)=>{ document.getElementById('state').textContent='🎉 升级到 '+lvl+' 级'; },
+        onMoodChange:(m)=>{ document.getElementById('state').textContent='情绪: '+m+' | 成长:'+PetCompanion.getGrowth()+' | 等级:'+PetCompanion.getLevel()+' | 金币:'+coins; }
+      });
+    });
+  </script>
+</body>
+</html>

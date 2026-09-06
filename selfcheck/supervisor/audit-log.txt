@@ -1,0 +1,10 @@
+[清单5-UI] body背景=linear-gradient(rgb(244, 247, 252) 0%, rgb(236, 241, 248) 100%) / rgba(0, 0, 0,  | 正文字号=16px
+[清单3-语音] 本机Edge枚举voices(3): Microsoft Huihui - Chinese (Simplified, PRC) | Microsoft Kangkang - Chinese (Simplified, PRC) | Microsoft Yaoyao - Chinese (Simplified, PRC)
+[清单3-语音] zh命中={"name":"Microsoft Huihui - Chinese (Simplified, PRC)","tier":"basic","lang":"zh-CN"} | en命中={"name":"Microsoft Huihui - Chinese (Simplified, PRC)","tier":"basic","lang":"zh-CN"}
+[清单3-语音] 体检按钮=true 输出=🩺 发音体检中…🔊 中文：命中 Microsoft Huihui - Chinese (Simplified, PRC)（等级 basic）
+[清单1-题1] answer=null formula="" 图形文本数=0 泄漏文本=无
+[清单1-题2] answer=null formula="" 图形文本数=0 泄漏文本=无
+[清单1-题3] answer=null formula="" 图形文本数=0 泄漏文本=无
+[清单1-题4] answer=null formula="" 图形文本数=0 泄漏文本=无
+[清单1-题5] answer=null formula="" 图形文本数=0 泄漏文本=无
+[回归] pageerror=0

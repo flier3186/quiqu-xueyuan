@@ -1599,7 +1599,7 @@ var MATH_BY_GRADE = {
       {scene:'老师在黑板上写了一个数12，让同学们找出它所有的因数。小红把因数都写在卡片上，又好奇这些因数加起来和是多少。',question:'12的所有因数的和是多少？',formula:'1+2+3+4+6+12 = ?',answer:28,choices:[28,18,12,24],visualType:'numberBond',visualData:{total:28,parts:[{val:12,color:'#00A896'},{val:6,color:'#F5B800'},{val:4,color:'#FB923C'},{val:3,color:'#E8A0BF'},{val:2,color:'#1E3A5F'},{val:1,color:'#00A896'}]},knowledge:'因数与倍数',difficulty:3,hint:'12的因数有1,2,3,4,6,12',variants:[{question:'6的因数和？',formula:'1+2+3+6=?',answer:12,hint:'1+2+3+6'},{question:'8的因数和？',formula:'1+2+4+8=?',answer:15,hint:'8的因数1,2,4,8'}]},
       {scene:'爸爸买了一个长方体鱼缸，长5分米、宽4分米、高3分米。他想往鱼缸里放满水养金鱼，要算算能装多少升水。',question:'鱼缸能装多少升水？',formula:'5 × 4 × 3 = ?',answer:60,choices:[60,12,20,40],visualType:'barModel',visualData:{total:60,parts:[{label:'第1层(5×4)',val:20,color:'#00A896'},{label:'第2层',val:20,color:'#F5B800'},{label:'第3层',val:20,color:'#FB923C'}]},knowledge:'长方体体积',difficulty:3,hint:'体积=长×宽×高',variants:[{question:'长4宽3高2体积？',formula:'4×3×2=?',answer:24,hint:'长乘宽乘高'},{question:'长6宽5高2体积？',formula:'6×5×2=?',answer:60,hint:'长乘宽乘高'}]},
       {scene:'妈妈把一根彩带平均分成4份，取其中3份用来包装礼物。小芳想知道这3份是整根彩带的几分之几。',question:'3份是整根彩带的几分之几？（填分子）',formula:'3 / 4',answer:3,choices:[3,4,1,2],visualType:'fractionStrip',visualData:{num:3,total:4,color:'#00A896'},knowledge:'分数的意义',difficulty:2,hint:'取3份就是四分之三',variants:[{question:'分5份取2份是几分之几（填分子）？',formula:'2/5',answer:2,hint:'2/5'},{question:'分6份取5份是几分之几（填分子）？',formula:'5/6',answer:5,hint:'5/6'}]},
-      {scene:'小红做手工，第一次用了1/3米的丝带，第二次用了1/6米的丝带。她想知道两次一共用了多少米丝带。',question:'两次一共用了多少米丝带？（结果填分子，化为最简分数）',formula:'1/3 + 1/6 = ?',answer:3,choices:[1,2,3,6],visualType:'numberLine',visualData:{start:0,end:1,points:[{pos:0.33,label:'1/3',color:'#00A896'},{pos:0.5,label:'3/6=1/2',color:'#F5B800'},{pos:0.67,label:'2/3',color:'#FB923C'}],highlight:[0,0.5]},knowledge:'异分母分数加减法',difficulty:3,hint:'先通分1/3=2/6',variants:[{question:'1/4+1/2=?（填分子，最简）',formula:'1/4+2/4=?',answer:3,hint:'通分后3/4'},{question:'2/3+1/6=?（填分子，最简）',formula:'4/6+1/6=?',answer:5,hint:'通分后5/6'}]},
+      {scene:'小红做手工，第一次用了1/3米的丝带，第二次用了1/6米的丝带。她想知道两次一共用了多少米丝带。',question:'两次一共用了多少米丝带？（结果填分子，化为最简分数）',formula:'1/3 + 1/6 = ?',answer:1,choices:[1,2,3,6],visualType:'numberLine',visualData:{start:0,end:1,points:[{pos:0.33,label:'1/3',color:'#00A896'},{pos:0.5,label:'3/6=1/2',color:'#F5B800'},{pos:0.67,label:'2/3',color:'#FB923C'}],highlight:[0,0.5]},knowledge:'异分母分数加减法',difficulty:3,hint:'先通分1/3=2/6，3/6约分得1/2',variants:[{question:'1/4+1/2=?（填分子，最简）',formula:'1/4+2/4=?',answer:3,hint:'通分后3/4'},{question:'2/3+1/6=?（填分子，最简）',formula:'4/6+1/6=?',answer:5,hint:'通分后5/6'}]},
       {scene:'小亮这一周每天早晨测量体温，分别是36.5℃、37℃、38℃、37.5℃、36.8℃。妈妈看记录找出他体温最高的一天。',question:'哪一天体温最高？最高是多少℃？',formula:'最高体温 = ?',answer:38,choices:[38,37,36.8,37.5],visualType:'numberLine',visualData:{start:36,end:39,points:[{pos:36.5,label:'周一',color:'#00A896'},{pos:37,label:'周二',color:'#F5B800'},{pos:38,label:'周三',color:'#FB923C'},{pos:37.5,label:'周四',color:'#E8A0BF'},{pos:36.8,label:'周五',color:'#1E3A5F'}],highlight:[36,38]},knowledge:'折线统计图与比较',difficulty:2,hint:'比较整数部分再比小数',variants:[{question:'36.2、37.1、36.8最高？',formula:'比较大小',answer:37.1,hint:'比较整数部分'},{question:'36.5、37、38.2最高？',formula:'比较大小',answer:38.2,hint:'先比整数再比小数'}]},
       {scene:'工厂生产的9个零件里有1个次品（较轻）。质检员用天平称，要找出次品，他想知道至少称几次能保证找到。',question:'至少称几次能找出次品？',formula:'9 → 3,3,3 至少 ? 次',answer:2,choices:[1,2,3,4],visualType:'numberBond',visualData:{total:9,parts:[{val:3,color:'#00A896'},{val:3,color:'#F5B800'},{val:3,color:'#FB923C'}]},knowledge:'找次品',difficulty:4,hint:'9个分3,3,3称两次',variants:[{question:'27个里1个次品至少称几次？',formula:'27→3,3,3',answer:3,hint:'3的3次方=27'},{question:'3个里1个次品至少称几次？',formula:'3→1,1,1',answer:1,hint:'称1次即可'}]},
     ],
@@ -2720,7 +2720,7 @@ const VOCAB_BY_GRADE = {
   ],
   '5':[
     {w:'weekend',pos:'n. 名词',def:'周末。星期六和星期日。',ex:'I play on weekends.',coll:['on the weekend 在周末','at weekends 在周末（英式）'],syn:'—',ant:'weekday'},
-    {w:'sometimes',pos:'adv. 副词',def:'有时。表示偶尔发生。',ex:'I sometimes go swimming.',coll:['sometimes often sometimes 有时常常有时'],syn:'occasionally',ant:'always / never'},
+    {w:'sometimes',pos:'adv. 副词',def:'有时。表示偶尔发生。',ex:'I sometimes go swimming.',coll:['sometimes go 有时去','not always 不总是'],syn:'occasionally',ant:'always / never'},
     {w:'often',pos:'adv. 副词',def:'经常。表示频繁发生。',ex:'I often read books.',coll:['how often 多久一次','often go 经常去'],syn:'frequently',ant:'seldom / rarely'},
     {w:'always',pos:'adv. 副词',def:'总是。表示每次都发生。',ex:'I always brush my teeth.',coll:['always early 总是早','always happy 总是开心'],syn:'—',ant:'never'},
   ],
@@ -2783,7 +2783,7 @@ function $$(s){return Array.from(document.querySelectorAll(s))}
 function toast(msg){const t=$('#toast');t.innerHTML=`<span class="em">✅</span>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 // 英语单词照片映射：单词→Unsplash真实照片查询词
 // 抽象词/功能词/动作/形容词——照片无法准确表达，直接走 emoji 插画卡，杜绝随机错图
-const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting']);
+const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','morning','afternoon','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting']);
 const ENG_PHOTO_MAP={
   'notebook':'notebook,paper,stationery','candy':'candy,sweets,confectionery','key':'key,lock,vintage',
   'toy':'toy,children,playground','schoolbag':'schoolbag,backpack,education','snack':'snack,cookies',
@@ -2900,6 +2900,8 @@ const ENG_PHOTO_MAP={
   'desk':'desk,study','ruler':'ruler,measure','eraser':'eraser,rubber',
   'backpack':'backpack,schoolbag','weekend':'celebration',
   // 默认
+  'teacher':'teacher,classroom,teaching','pencil':'pencil,stationery,wood','school':'school,building,classroom',
+  'student':'student,learning,children','friend':'friends,children,playing','travel':'travel,vacation,journey',
   'default':'education,kids,learning'
 };
 function engPhotoUrl(word){
@@ -2931,6 +2933,7 @@ function engEmojiFallback(word){
     hello:'👋',hi:'👋',goodbye:'👋',bye:'👋',name:'🏷️',
     what:'❓',where:'📍',who:'🧑',weekend:'🎉',
     sometimes:'🎲',often:'🔁',always:'💯',future:'🚀',dream:'💭',
+    morning:'🌅',afternoon:'☀️',in:'📥',on:'🔛',
     run:'🏃',hot:'🥵',song:'🎵',lost:'🧭',found:'🔍',favourite:'💖',
     early:'🌅',late:'🌜',hungry:'🍽️',thirsty:'🥤',tired:'😴',
     thin:'🪶',long:'📏',big:'🐘',small:'🐭',heavy:'🏋️',light:'🪶',
@@ -7934,7 +7937,10 @@ function playEngSceneAudio(){
   try{
     const scene=typeof SceneManager!=='undefined'&&SceneManager.getToday?SceneManager.getToday(S.currentProfileId||'default'):null;
     if(!scene)return;
-    const text=(scene.phrases||[]).join('. ')+'. '+scene.grammar;
+    // 语法模板 ___ 占位符朗读为 something，避免 TTS 读出下划线；短语间用空格连接避免 "?."
+    const parts=[...(scene.phrases||[])];
+    if(scene.grammar) parts.push(String(scene.grammar).replace(/_{2,}/g,'something'));
+    const text=parts.join(' ');
     speak(text);
     toast('🔊 播放场景对话...');
   }catch(e){toast('音频播放失败');}
