@@ -121,8 +121,11 @@
   }
   // 读题两遍（首遍 + 间隔 + 第二遍）
   async function _readTwice(text, ratePct) {
+    if (state.stopped) return;
     await _speak(text, { ratePct });
+    if (state.stopped) return;
     await new Promise(r => setTimeout(r, 650));
+    if (state.stopped) return;
     await _speak(text, { ratePct });
   }
 
@@ -166,8 +169,21 @@
 
   function start() {
     state.current = 0; state.correct = 0; state.phase = 'playing';
+    state.stopped = false; state.gen = (state.gen || 0) + 1;
     _renderShell();
     next();
+  }
+
+  // 停止会话：立即静音 + 中断后续读题链（供 ✕ 关闭按钮/蒙层点击调用）
+  function stop() {
+    state.stopped = true; state.gen = (state.gen || 0) + 1; state.phase = 'stopped';
+    try { if (global.CloudTTS) global.CloudTTS.cancel(); } catch (e) {}
+    try { if (global.speechSynthesis) global.speechSynthesis.cancel(); } catch (e) {}
+    try {
+      const ov = document.getElementById('lmOverlay');
+      if (ov) ov.remove();
+    } catch (e) {}
+    emit('stop', {});
   }
 
   function _renderShell() {
@@ -175,13 +191,19 @@
     c.innerHTML = `<div class="listen-math">
       <div class="lm-head">
         <div class="lm-title"><span class="dot"></span>听算小挑战</div>
-        <div class="lm-progress" id="lmProg">第 0 / ${state.total} 题</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="lm-progress" id="lmProg">第 0 / ${state.total} 题</div>
+          <button id="lmClose" title="结束本次挑战" style="border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;background:#F1F5F9;color:#475569;font-size:16px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center">✕</button>
+        </div>
       </div>
       <div class="lm-card" id="lmCard"></div>
     </div>`;
+    const closeBtn = document.getElementById('lmClose');
+    if (closeBtn) closeBtn.onclick = function () { stop(); };
   }
 
   function next() {
+    if (state.stopped) return;
     if (state.current >= state.total) { _renderDone(); return; }
     state.question = state.source();
     state.phase = 'playing';
@@ -233,11 +255,12 @@
   }
 
   function replay() {
+    if (state.stopped) return;
     if (state.question) _readTwice(state.question.prompt, ratePctFor());
   }
 
   async function submit() {
-    if (state.phase !== 'playing' || !state.question) return;
+    if (state.stopped || state.phase !== 'playing' || !state.question) return;
     const input = document.getElementById('lmAns');
     const raw = (input.value || '').trim();
     if (raw === '') { input.focus(); return; }
@@ -302,7 +325,7 @@
   }
 
   global.ListeningMath = {
-    mount, start, next, submit, replay,
+    mount, start, next, submit, replay, stop,
     setQuestionSource, setSpeed, setTotal, on,
     get state() { return { total: state.total, current: state.current, correct: state.correct, speed: state.speed, phase: state.phase }; }
   };

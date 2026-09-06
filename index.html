@@ -2764,6 +2764,8 @@ function $(s){return document.querySelector(s)}
 function $$(s){return Array.from(document.querySelectorAll(s))}
 function toast(msg){const t=$('#toast');t.innerHTML=`<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 // 英语单词照片映射：单词→Unsplash真实照片查询词
+// 抽象词/功能词/动作/形容词——照片无法准确表达，直接走 emoji 插画卡，杜绝随机错图
+const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting']);
 const ENG_PHOTO_MAP={
   'notebook':'notebook,paper,stationery','candy':'candy,sweets,confectionery','key':'key,lock,vintage',
   'toy':'toy,children,playground','schoolbag':'schoolbag,backpack,education','snack':'snack,cookies',
@@ -2872,12 +2874,21 @@ const ENG_PHOTO_MAP={
   'carrying':'carrying,hold,moving','lifting':'lifting,raise,up','dropping':'dropping,fall,down',
   'catching':'catching,grab,ball','throwing':'throwing,toss,away','kicking':'kicking,sport,foot',
   'hitting':'hitting,strike,ball',
+  // 词汇库/场景词补充（精准单标签，保证 Flickr 命中率）
+  'crayon':'crayon,wax','classroom':'classroom,school','blackboard':'blackboard,chalkboard',
+  'picture':'painting,frame','candle':'candle,birthday','gift':'gift,present',
+  'party':'party,birthday','noodle':'noodles,ramen','soup':'soup,bowl',
+  'chicken':'chicken,poultry','shoes':'shoes,sneakers','pants':'trousers,jeans',
+  'desk':'desk,study','ruler':'ruler,measure','eraser':'eraser,rubber',
+  'backpack':'backpack,schoolbag','weekend':'celebration',
   // 默认
   'default':'education,kids,learning'
 };
 function engPhotoUrl(word){
   if(!word) return '';
   var w=word.toLowerCase().replace(/'/g,'').trim();
+  // 抽象词直接出 emoji 插画卡（照片无法准确表达这些词）
+  if(typeof ENG_ABSTRACT_WORDS!=='undefined' && ENG_ABSTRACT_WORDS.has(w)) return engEmojiFallback(word);
   // 关键词：优先用 ENG_PHOTO_MAP 的精准关键词（逗号分隔取第一个）
   var key=w;
   if(typeof ENG_PHOTO_MAP!=='undefined' && ENG_PHOTO_MAP[w]) key=ENG_PHOTO_MAP[w].split(',')[0].trim();
@@ -2897,7 +2908,34 @@ function engEmojiFallback(word){
     egg:'🥚',bread:'🍞',rice:'🍚',milk:'🥛',water:'💧',
     orange:'🍊',pear:'🍐',grape:'🍇',peach:'🍑',
     one:'1️⃣',two:'2️⃣',three:'3️⃣',four:'4️⃣',five:'5️⃣',
-    six:'6️⃣',seven:'7️⃣',eight:'8️⃣',nine:'9️⃣',ten:'🔟'
+    six:'6️⃣',seven:'7️⃣',eight:'8️⃣',nine:'9️⃣',ten:'🔟',
+    // 抽象词/动作/形容词（强制走 emoji，见 ENG_ABSTRACT_WORDS）
+    hello:'👋',hi:'👋',goodbye:'👋',bye:'👋',name:'🏷️',
+    what:'❓',where:'📍',who:'🧑',weekend:'🎉',
+    sometimes:'🎲',often:'🔁',always:'💯',future:'🚀',dream:'💭',
+    run:'🏃',hot:'🥵',song:'🎵',lost:'🧭',found:'🔍',favourite:'💖',
+    early:'🌅',late:'🌜',hungry:'🍽️',thirsty:'🥤',tired:'😴',
+    thin:'🪶',long:'📏',big:'🐘',small:'🐭',heavy:'🏋️',light:'🪶',
+    new:'✨',old:'🕰️',high:'⛰️',low:'🪨',far:'🗺️',near:'📍',
+    behind:'🙈',between:'↔️',over:'⬆️',next:'➡️',front:'😃',
+    inside:'🏠',outside:'🌤️','in':'📥','on':'📤',under:'⬇️',
+    waking:'⏰',getting:'🛏️',going:'🚶',coming:'👋',seeing:'👀',
+    looking:'👀',finding:'🔍',making:'🛠️',breaking:'💔',opening:'🔓',
+    closing:'🔒',starting:'🏁',finishing:'🚩',beginning:'🌱',ending:'🍂',
+    growing:'📈',changing:'🔄',moving:'📦',staying:'🧍',leaving:'🚪',
+    arriving:'🛬',returning:'🔙',entering:'🚪',exiting:'🚪',joining:'🤝',
+    waiting:'⏳',trying:'💪',asking:'🙋',answering:'💬',thinking:'🤔',
+    wondering:'❓',knowing:'💡',remembering:'🧠',forgetting:'🌫️',
+    believing:'🙏',hoping:'🌟',wanting:'🙋',needing:'❗',liking:'👍',
+    loving:'❤️',enjoying:'😄',feeling:'🫶',sensing:'✨',hearing:'👂',
+    listening:'👂',speaking:'🗣️',talking:'💬',saying:'💬',telling:'🗣️',
+    explaining:'📢',describing:'🎨',showing:'👉',calling:'📞',
+    screaming:'😱',whispering:'🤫',shouting:'📢',yelling:'📣',
+    laughing:'😂',crying:'😢',smiling:'😊',frowning:'🙁',
+    waving:'👋',pointing:'👉',nodding:'🙆',shaking:'🙅',
+    holding:'🤲',grabbing:'🫳',pulling:'🫴',pushing:'💪',
+    carrying:'📦',lifting:'🏋️',dropping:'⬇️',catching:'🧤',
+    throwing:'🎯',kicking:'⚽',hitting:'🥊'
   };
   var em=emojiMap[w]||'📷';
   return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f0fdf9" rx="12"/><text x="50" y="62" text-anchor="middle" font-size="48">'+em+'</text><text x="50" y="90" text-anchor="middle" font-size="11" fill="#047857" font-family="sans-serif">'+w+'</text></svg>');
@@ -2954,7 +2992,12 @@ const CloudTTSPanel = {
         document.getElementById('cttsVoiceZh').value = cfg.voiceZh;
         document.getElementById('cttsVoiceEn').value = cfg.voiceEn;
         document.getElementById('cttsEmotion').checked = !!cfg.emotion;
-        st.textContent = cfg.apiKey ? ('✅ 已配置（' + cfg.apiKey + '）' + (CloudTTS.status().lastError ? ' · 最近异常: ' + CloudTTS.status().lastError : '')) : '未配置——当前使用 Edge 内置语音（用 Edge 浏览器可获得神经音质）';
+        const le = CloudTTS.status().lastError;
+        if(cfg.apiKey){
+          st.textContent = '✅ 已配置（' + cfg.apiKey + '）' + (le ? ' · 最近异常: ' + le : '');
+        }else{
+          st.textContent = le ? ('❌ 配置被拒绝：' + le) : '未配置——当前使用 Edge 内置语音（用 Edge 浏览器可获得神经音质）';
+        }
       }
     }catch(e){}
   },
@@ -2969,9 +3012,16 @@ const CloudTTSPanel = {
         };
         if(key) patch.apiKey = key;
         CloudTTS.saveConfig(patch);
+        const saved = CloudTTS.getConfig().apiKey;
         document.getElementById('cttsKey').value = '';
         CloudTTSPanel.refresh();
-        toast('☁️ 云端语音已保存');
+        if(key && !saved){
+          // 引擎拒绝了无效 Key（网址/格式错误等），给出明确原因
+          const le = (CloudTTS.status()||{}).lastError || 'Key 格式不正确';
+          toast('❌ 保存被拒绝：' + le);
+        }else{
+          toast('☁️ 云端语音已保存');
+        }
       }
     }catch(e){ toast('保存失败: ' + e.message); }
   },
@@ -3375,14 +3425,22 @@ function renderOverview(){
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--text-2)">
               <label>中文音色 <select id="cttsVoiceZh" style="padding:6px;border:1px solid #d8e0ee;border-radius:8px">
-                <option value="FunAudioLLM/CosyVoice2-0.5B:diana">晓晓(女·活泼)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:wenjie">文杰(女·温柔)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:diana">Diana(女·欢快)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:claire">Claire(女·温柔)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:bella">Bella(女·激情)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:anna">Anna(女·沉稳)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:david">David(男·欢快)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·沉稳)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:charles">Charles(男·磁性)</option>
               </select></label>
               <label>英文音色 <select id="cttsVoiceEn" style="padding:6px;border:1px solid #d8e0ee;border-radius:8px">
-                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·友好)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:benjy">Benjy(男)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:clara">Clara(女)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:anna">Anna(女·沉稳)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:diana">Diana(女·欢快)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:claire">Claire(女·温柔)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:bella">Bella(女·激情)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·沉稳)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:david">David(男·欢快)</option>
+                <option value="FunAudioLLM/CosyVoice2-0.5B:benjamin">Benjamin(男·低沉)</option>
               </select></label>
               <label><input type="checkbox" id="cttsEmotion" checked> 情感语气</label>
               <button onclick="CloudTTSPanel.test()" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:8px;padding:6px 14px;font-weight:800;cursor:pointer">▶ 试听</button>
@@ -6839,6 +6897,68 @@ function renderParentDashboard(pt){
             </div>
           </div>
         </div>
+
+        <div class="report-card" style="margin-bottom:16px">
+          <div style="position:relative;z-index:2;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.2em;opacity:.8;margin-bottom:4px">VOICE TTS</div>
+            <h3 style="margin:0">🔊 高级语音（有感情 AI 配音）</h3>
+            <p style="font-size:12px;color:var(--text-2);margin:6px 0 0">配置 SiliconFlow API Key 后，全站发音（口语伙伴、单词、听算）升级为有感情起伏的云端 AI 语音。与上方 DeepSeek 是两个不同的 Key，各管各的。</p>
+          </div>
+
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:14px">
+            <div>
+              <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px">SiliconFlow API Key（语音专用）</label>
+              <div style="display:flex;gap:8px;align-items:center">
+                <input type="password" id="cttsPKey" placeholder="sk-...（来自 cloud.siliconflow.cn）" style="flex:1;padding:10px 12px;border:1.5px solid var(--ink-200);border-radius:10px;font-size:13px;font-family:monospace;background:white;color:var(--navy);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--ink-200)'">
+                <button class="btn btn-ghost" id="cttsPToggle" style="padding:10px 12px;font-size:12px;white-space:nowrap">👁 显示</button>
+              </div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:6px">🔒 Key 仅保存在本机浏览器 localStorage，不会上传任何服务器</div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <label style="font-size:11px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px">中文音色</label>
+                <select id="cttsPVoiceZh" style="width:100%;padding:8px 10px;border:1.5px solid var(--ink-200);border-radius:8px;font-size:12px;background:white;color:var(--navy)">
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:diana">Diana(女·欢快)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:claire">Claire(女·温柔)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:bella">Bella(女·激情)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:anna">Anna(女·沉稳)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:david">David(男·欢快)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·沉稳)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:charles">Charles(男·磁性)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:11px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px">英语音色</label>
+                <select id="cttsPVoiceEn" style="width:100%;padding:8px 10px;border:1.5px solid var(--ink-200);border-radius:8px;font-size:12px;background:white;color:var(--navy)">
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:anna">Anna(女·沉稳)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:diana">Diana(女·欢快)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:claire">Claire(女·温柔)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:bella">Bella(女·激情)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·沉稳)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:david">David(男·欢快)</option>
+                  <option value="FunAudioLLM/CosyVoice2-0.5B:benjamin">Benjamin(男·低沉)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button class="btn btn-yellow" id="cttsPTest" style="padding:10px 16px;font-size:13px;font-weight:700">🔌 试听效果</button>
+              <button class="btn" id="cttsPSave" style="padding:10px 16px;font-size:13px;font-weight:700;background:var(--yellow);color:var(--navy-800)">💾 保存</button>
+              <button class="btn btn-ghost" id="cttsPClear" style="padding:10px 16px;font-size:13px;font-weight:700">🗑 清除</button>
+            </div>
+
+            <div id="cttsPStatus" style="display:none;padding:12px 14px;border-radius:10px;font-size:12px;font-weight:600;line-height:1.6"></div>
+
+            <div style="background:#FEF3C7;border-radius:10px;padding:12px 14px;font-size:11px;color:var(--navy);line-height:1.7">
+              <div style="font-weight:800;margin-bottom:6px">📌 如何获取 SiliconFlow API Key（注册送免费额度）</div>
+              <div>① 访问 <a href="https://cloud.siliconflow.cn/account/ak" target="_blank" style="color:#D97706;font-weight:700">cloud.siliconflow.cn</a>（手机号/微信注册）</div>
+              <div>② 左侧"API 密钥"→ 新建 API 密钥 → 复制</div>
+              <div>③ 粘贴到上方输入框，点"试听效果"验证后保存</div>
+              <div style="margin-top:6px;color:var(--text-2)">注意：这里的 Key 用于<b>发音</b>，上方 DeepSeek Key 用于<b>口语对话</b>，互不通用。</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="parent-section" data-psec="errors">
@@ -6935,6 +7055,80 @@ function bindAiConfigEvents(){
     if(inp) inp.value='';
     showDeepseekTestResult('error','已清除 API Key。口语伙伴将使用降级模式。');
   };
+  // ---- 高级语音（SiliconFlow TTS）卡片绑定 ----
+  bindParentTtsEvents();
+}
+function showParentTtsResult(type,msg){
+  const el=$('#cttsPStatus');
+  if(!el) return;
+  el.style.display='block';
+  if(type==='ok'){
+    el.style.background='rgba(0,168,150,.12)';
+    el.style.color='var(--teal)';
+    el.style.border='1px solid rgba(0,168,150,.3)';
+  }else if(type==='error'){
+    el.style.background='rgba(220,38,38,.08)';
+    el.style.color='#DC2626';
+    el.style.border='1px solid rgba(220,38,38,.2)';
+  }else{
+    el.style.background='rgba(245,184,0,.12)';
+    el.style.color='var(--yellow)';
+    el.style.border='1px solid rgba(245,184,0,.3)';
+  }
+  el.innerHTML=msg;
+}
+function bindParentTtsEvents(){
+  if(!window.CloudTTS) return;
+  const keyInp=$('#cttsPKey');
+  const tgl=$('#cttsPToggle');
+  if(tgl && keyInp) tgl.onclick=function(){
+    if(keyInp.type==='password'){keyInp.type='text';this.textContent='🙈 隐藏';}
+    else{keyInp.type='password';this.textContent='👁 显示';}
+  };
+  // 回显已有配置
+  try{
+    const cfg=CloudTTS.getConfig();
+    if(cfg){
+      if(cfg.apiKey && keyInp) keyInp.placeholder='已配置（'+cfg.apiKey+'）——输入新值可更换';
+      const vz=$('#cttsPVoiceZh'); if(vz && cfg.voiceZh) vz.value=cfg.voiceZh;
+      const ve=$('#cttsPVoiceEn'); if(ve && cfg.voiceEn) ve.value=cfg.voiceEn;
+    }
+  }catch(e){}
+  const saveBtn=$('#cttsPSave');
+  if(saveBtn) saveBtn.onclick=function(){
+    try{
+      const key=keyInp?keyInp.value.trim():'';
+      if(!key){ showParentTtsResult('error','⚠️ 请先粘贴 SiliconFlow API Key（cloud.siliconflow.cn 获取）'); return; }
+      if(!key.startsWith('sk-')){ showParentTtsResult('error','⚠️ SiliconFlow Key 以 sk- 开头，请检查是否复制完整'); return; }
+      CloudTTS.saveConfig({
+        apiKey:key,
+        voiceZh:($('#cttsPVoiceZh')||{}).value||undefined,
+        voiceEn:($('#cttsPVoiceEn')||{}).value||undefined
+      });
+      if(keyInp){ keyInp.value=''; keyInp.placeholder='已配置（'+key+'）——输入新值可更换'; }
+      showParentTtsResult('ok','✅ 已保存！全站发音（口语伙伴/单词/听算）已升级为云端情感语音。');
+      toast('☁️ 高级语音已保存');
+    }catch(e){ showParentTtsResult('error','❌ 保存失败：'+(e.message||e)); }
+  };
+  const testBtn=$('#cttsPTest');
+  if(testBtn) testBtn.onclick=function(){
+    try{
+      const key=keyInp?keyInp.value.trim():'';
+      if(!key && !(CloudTTS.getConfig()||{}).apiKey){ showParentTtsResult('error','⚠️ 请先粘贴并保存 API Key'); return; }
+      // 输入框有新 Key 未保存时，先临时保存再试听
+      if(key){ CloudTTS.saveConfig({ apiKey:key, voiceZh:($('#cttsPVoiceZh')||{}).value||undefined, voiceEn:($('#cttsPVoiceEn')||{}).value||undefined }); }
+      showParentTtsResult('loading','⏳ 云端合成中…（首次约 1-3 秒）');
+      CloudTTS.test().then(function(ok){
+        if(ok){ showParentTtsResult('ok','✅ 试听成功！这就是孩子将听到的有感情 AI 语音。点击"保存"完成配置。'); if(key){ if(keyInp){ keyInp.value=''; keyInp.placeholder='已配置（'+key+'）——输入新值可更换'; } toast('☁️ 试听通过，配置已生效'); } }
+        else{ showParentTtsResult('error','❌ 试听失败：'+((CloudTTS.status()||{}).lastError||'Key 无效或网络异常')+'<br>请确认 Key 来自 cloud.siliconflow.cn（DeepSeek 的 Key 不适用于语音）'); }
+      });
+    }catch(e){ showParentTtsResult('error','❌ 试听异常：'+(e.message||e)); }
+  };
+  const clrBtn=$('#cttsPClear');
+  if(clrBtn) clrBtn.onclick=function(){
+    if(!confirm('确定清除语音 Key 吗？发音将回落到 Edge 内置语音。')) return;
+    try{ CloudTTS.saveConfig({apiKey:''}); if(keyInp){ keyInp.value=''; keyInp.placeholder='sk-...（来自 cloud.siliconflow.cn）'; } showParentTtsResult('error','已清除语音 Key，回落到 Edge 内置语音。'); }catch(e){}
+  };
 }
 function showDeepseekTestResult(type,msg){
   const el=$('#deepseekTestResult');
@@ -7001,7 +7195,7 @@ async function testDeepseekKey(){
       showDeepseekTestResult('ok','✅ 连接成功！AI 回复：<b>'+(reply||'OK')+'</b><br>点击"保存"即可启用 AI 自由对话。');
       speak(reply||'OK');
     }else if(resp.status===401){
-      showDeepseekTestResult('error','❌ 认证失败：API Key 无效或已过期，请重新获取');
+      showDeepseekTestResult('error','❌ 认证失败：这不是有效的 DeepSeek Key<br><span style="font-weight:400">· 如果你想配置的是<b>发音</b>（SiliconFlow Key），请滚动到下方"🔊 高级语音"卡片粘贴<br>· 如果是 DeepSeek Key，请到 <a href="https://platform.deepseek.com" target="_blank" style="color:inherit;text-decoration:underline">platform.deepseek.com</a> 重新生成</span>');
     }else if(resp.status===429){
       showDeepseekTestResult('error','⚠️ 请求过于频繁或额度已用完，请稍后再试');
     }else{
@@ -7947,7 +8141,7 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
     const box=document.createElement('div');
     box.style.cssText='background:#fff;border-radius:24px;padding:20px 20px 24px;max-width:480px;width:100%;max-height:86vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)';
     ov.appendChild(box);
-    ov.addEventListener('click',function(e){ if(e.target===ov) ov.remove(); });
+    ov.addEventListener('click',function(e){ if(e.target===ov){ try{ ListeningMath.stop(); }catch(err){} } });
     document.body.appendChild(ov);
     try{
       ListeningMath.mount(box,{total:10,speed:1.0});

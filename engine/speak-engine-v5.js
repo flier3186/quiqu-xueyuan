@@ -96,16 +96,29 @@ window.SpeakEngineV5 = {
   // ===== TTS 朗读：云端情感语音(CosyVoice2) → VoiceCore(神经音) → 浏览器内置 =====
   speak(text, teacherId){
     if(!text) return;
-    if(typeof speechSynthesis === 'undefined' || !('speechSynthesis' in window)) return;
     const teacher = this.getTeacher(teacherId);
-    // 最高级：云端情感语音——口语对话主音色（配置 Key 即生效），失败回落 VoiceCore
+    // 最高级：云端情感语音——口语对话主音色（配置 Key 即生效），失败必回落 VoiceCore
     if(window.CloudTTS && typeof window.CloudTTS.isReady === 'function' && window.CloudTTS.isReady()){
-      speechSynthesis.cancel();
+      try{ speechSynthesis.cancel(); }catch(e){}
       // 情绪联动：感叹号多→开心雀跃，问句多→活泼，默认温和
       const excl = (text.match(/!/g) || []).length;
       const ques = (text.match(/\?/g) || []).length;
       const emotion = excl > ques ? 'happy' : (ques > excl ? 'lively' : 'warm');
-      window.CloudTTS.speak(text, { lang: 'en', emotion: emotion });
+      window.CloudTTS.speak(text, { lang: 'en', emotion: emotion }).then(function(ok){
+        if(!ok){
+          // 云端失败（网络/鉴权/自动播放策略）→ 立即回落神经音，绝不静音；错误只提示一次
+          try{
+            var le = (window.CloudTTS.status && window.CloudTTS.status().lastError) || '';
+            if(le && !window.__cttsWarned){ window.__cttsWarned = true; if(typeof toast === 'function') toast('⚠️ 云端语音暂不可用：' + le + '（已自动切换本地语音）'); }
+          }catch(e){}
+          try{ speechSynthesis.cancel(); }catch(e){}
+          if(window.VoiceCore && typeof window.VoiceCore.speak === 'function'){
+            window.VoiceCore.speak(text, { lang: 'en-US', rate: 0.9, pitch: 1.05 });
+          }else{
+            SpeakEngineV5._speakBrowser(text, teacherId, teacher);
+          }
+        }
+      });
       return;
     }
     // 统一语音选择层（Echo）：严格优先级选神经音，按老师人设调语速/音调

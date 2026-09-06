@@ -58,7 +58,31 @@
       var raw = global.localStorage && global.localStorage.getItem(STORE_KEY);
       cfg = raw ? Object.assign({}, DEFAULT_CFG, JSON.parse(raw)) : Object.assign({}, DEFAULT_CFG);
     } catch (e) { cfg = Object.assign({}, DEFAULT_CFG); }
+    // 自愈：清理历史误存的无效 Key（网址/名称/残缺串）
+    if (cfg.apiKey && !/^sk-[A-Za-z0-9]{20,}$/.test(String(cfg.apiKey).trim())) {
+      cfg.apiKey = '';
+      save();
+    }
+    // 自愈：非法音色名（官方仅支持 8 个预置 + speech: 开头的自定义）回默认
+    cfg = sanitizeVoices(cfg);
     return cfg;
+  }
+
+  // 官方预置音色白名单（docs.siliconflow.cn TTS 文档）：男 alex/benjamin/charles/david，女 anna/bella/claire/diana
+  var PRESET_VOICES = ['alex', 'benjamin', 'charles', 'david', 'anna', 'bella', 'claire', 'diana'];
+  function voiceValid(v) {
+    if (!v) return false;
+    if (v.indexOf('speech:') === 0) return true; // 用户自定义音色
+    var m = v.match(/^[^:]+:([a-zA-Z]+)$/);
+    if (!m) return false;
+    return PRESET_VOICES.indexOf(m[1].toLowerCase()) >= 0;
+  }
+  function sanitizeVoices(c) {
+    var changed = false;
+    if (!voiceValid(c.voiceZh)) { c.voiceZh = DEFAULT_CFG.voiceZh; changed = true; }
+    if (!voiceValid(c.voiceEn)) { c.voiceEn = DEFAULT_CFG.voiceEn; changed = true; }
+    if (changed) save();
+    return c;
   }
   function save() {
     try { global.localStorage && global.localStorage.setItem(STORE_KEY, JSON.stringify(cfg)); } catch (e) {}
@@ -92,6 +116,24 @@
 
   function saveConfig(patch) {
     cfg = Object.assign(load(), patch || {});
+    // ---- 防呆：Key 规范化与校验 ----
+    if (typeof cfg.apiKey === 'string') {
+      cfg.apiKey = cfg.apiKey.trim().replace(/[\r\n\t]/g, '');
+      if (cfg.apiKey && !/^sk-[A-Za-z0-9]{20,}$/.test(cfg.apiKey)) {
+        if (/cloud\.siliconflow|^https?:/i.test(cfg.apiKey)) {
+          lastError = '粘进去的是网址，不是密钥。请到 cloud.siliconflow.cn 「API 密钥」页新建并复制 sk- 开头的密钥';
+        } else if (/^sk-/.test(cfg.apiKey)) {
+          lastError = '密钥长度不完整，请重新完整复制';
+        } else {
+          lastError = '这不是有效的 SiliconFlow 密钥（应以 sk- 开头）';
+        }
+        cfg.apiKey = ''; // 拒绝保存错误内容
+      } else if (cfg.apiKey) {
+        lastError = null; // 合法 Key，清除历史错误
+      }
+    }
+    // 音色白名单校验（非法音色是"机器味/失声"的历史根因）
+    cfg = sanitizeVoices(cfg);
     save();
     return getConfig();
   }
@@ -137,7 +179,18 @@
       }).then(function (res) {
         if (!res.ok) {
           return res.text().then(function (t) {
-            throw new Error('HTTP ' + res.status + ' ' + String(t).slice(0, 120));
+            var human;
+            if (res.status === 401) {
+              human = '密钥无效（HTTP 401）——请确认复制的是 cloud.siliconflow.cn 「API 密钥」页生成的 sk- 开头密钥，不是网址或密钥名称';
+            } else if (res.status === 429) {
+              human = '请求太频繁或免费额度用尽（HTTP 429），稍后再试';
+            } else if (res.status === 403) {
+              human = '该模型未开通或账户受限（HTTP 403），请在 SiliconFlow 控制台确认 CosyVoice2 可用';
+            } else {
+              human = 'HTTP ' + res.status + ' ' + String(t).slice(0, 120);
+            }
+            lastError = human;
+            throw new Error(human);
           });
         }
         return res.blob();
