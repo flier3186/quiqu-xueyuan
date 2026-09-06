@@ -19,7 +19,7 @@ const PetCompanion = (() => {
   // 五只 3D 伙伴注册表：每只 5 个情绪状态
   const PET_REGISTRY = {
     dragon: { name: '小星', idle: 'dragon-idle.png', celebrate: 'dragon-celebrate.png', comfort: 'dragon-comfort.png', eat: 'dragon-eat.png', sleep: 'dragon-sleep.png' },
-    cat:    { name: '小黑', idle: 'cat-idle.png',    celebrate: 'cat-celebrate.png',    comfort: 'cat-comfort.png',    eat: 'cat-eat.png',    sleep: 'cat-sleep.png' },
+    cat:    { name: '小黑', idle: 'cat-idle.png',    celebrate: 'cat-celebrate.png',    comfort: 'cat-comfort.png',    eat: 'cat-eat.png',    sleep: 'cat-sleep.png', rigTail: 'cat-tail.png', rigPivot: '65.2% 83%' },
     bunny:  { name: '量子', idle: 'bunny-idle.png',  celebrate: 'bunny-celebrate.png',  comfort: 'bunny-comfort.png',  eat: 'bunny-eat.png',  sleep: 'bunny-sleep.png' },
     fox:    { name: '银宝', idle: 'fox-idle.png',    celebrate: 'fox-celebrate.png',    comfort: 'fox-comfort.png',    eat: 'fox-eat.png',    sleep: 'fox-sleep.png' },
     whale:  { name: '深海', idle: 'whale-idle.png',  celebrate: 'whale-celebrate.png',  comfort: 'whale-comfort.png',  eat: 'whale-eat.png',  sleep: 'whale-sleep.png' }
@@ -85,7 +85,7 @@ const PetCompanion = (() => {
 .pc-host{position:relative;width:100%;height:100%;min-height:280px;}
 .pc-stage-3d{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;perspective:720px;}
 .pc-parallax{position:relative;width:80%;height:80%;transform-style:preserve-3d;transition:transform .25s ease-out;will-change:transform;}
-.pc-pet-wrap{position:relative;width:100%;height:100%;transform:scale(var(--pc-scale,1));transform-origin:50% 92%;transition:transform .55s cubic-bezier(.34,1.4,.64,1);}
+.pc-pet-wrap{position:relative;width:100%;height:100%;transform:translateX(var(--pc-stroll-x,0px)) scale(var(--pc-scale,1));transform-origin:50% 92%;transition:transform .55s cubic-bezier(.34,1.4,.64,1);}
 .pc-pet-wrap.pc-enter{animation:pc-enter .9s cubic-bezier(.34,1.56,.64,1) both;}
 .pc-breath{position:relative;width:100%;height:100%;transform-origin:50% 100%;}
 .pc-imgbox{position:relative;width:100%;height:100%;}
@@ -117,9 +117,18 @@ const PetCompanion = (() => {
 @keyframes pc-sway{0%,100%{transform:rotate(-4deg) translateY(3%);}50%{transform:rotate(4deg) translateY(3%);}}
 @keyframes pc-zzz{0%{transform:translateY(0) scale(.8);opacity:0;}30%{opacity:.95;}100%{transform:translateY(-22px) scale(1.1);opacity:0;}}
 
+/* 骨骼动画：尾巴关节旋转层（仅 idle 挂载，情绪图自带尾巴时隐藏） */
+.pc-rig-tail{z-index:2;will-change:transform;}
+.pc-stage-3d[data-mood="idle"] .pc-rig-tail{animation:pc-tail-sway 3.6s ease-in-out infinite;}
+@keyframes pc-tail-sway{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
+/* 散步动作：步行摆动（叠加在 .pc-breath 上，须晚于 mood 规则以覆盖） */
+.pc-breath.pc-walking{animation:pc-walk-bob .62s ease-in-out infinite!important;}
+@keyframes pc-walk-bob{0%,100%{transform:translateY(0) rotate(-2deg);}25%{transform:translateY(-4.5%) rotate(0deg);}50%{transform:translateY(0) rotate(2deg);}75%{transform:translateY(-4.5%) rotate(0deg);}}
+
 /* 无障碍：尊重「减少动态效果」 */
 .pc-reduced .pc-breath,.pc-reduced .pc-shadow,.pc-reduced .pc-zzz,.pc-reduced .pc-fallback-circle{animation:none!important;}
 .pc-reduced .pc-parallax{transition:none!important;}
+.pc-reduced .pc-rig-tail{animation:none!important;}
 `;
     const style = document.createElement('style');
     style.id = 'pc-styles';
@@ -179,7 +188,7 @@ const PetCompanion = (() => {
 
     target.appendChild(stage);
 
-    dom = { target, stage, parallax, wrap, breath, imgBox, fallback, shadow, badge, zzz, tip, currentImg: null };
+    dom = { target, stage, parallax, wrap, breath, imgBox, fallback, shadow, badge, zzz, tip, currentImg: null, rigTail: null };
   }
 
   // ================= 精灵切换（交叉淡入，无硬切） =================
@@ -230,6 +239,7 @@ const PetCompanion = (() => {
       next.style.opacity = '1';
       dom.currentImg = next;
       dom.fallback.style.display = 'none';
+      syncRigTail(mood);
     };
     next.src = url;
     dom.imgBox.appendChild(next);
@@ -237,6 +247,63 @@ const PetCompanion = (() => {
     setTimeout(() => {
       if (!ok && next.parentNode && next.naturalWidth === 0) showFallback(next);
     }, 5000);
+  }
+
+  // ================= 骨骼动画层：尾巴（仅 idle；情绪图自带尾巴时淡出） =================
+  function syncRigTail(mood) {
+    if (!dom.imgBox) return;
+    const pet = PET_REGISTRY[state.petId];
+    if (pet && pet.rigTail && mood === 'idle') {
+      if (dom.rigTail && dom.rigTail._mood === 'idle') return;
+      if (dom.rigTail && dom.rigTail.parentNode) dom.rigTail.parentNode.removeChild(dom.rigTail);
+      const t = document.createElement('img');
+      t.className = 'pc-sprite pc-rig-tail';
+      t.alt = '';
+      t.draggable = false;
+      t.style.transformOrigin = pet.rigPivot || '65% 83%';
+      t.style.opacity = '0';
+      t.onload = () => { t.style.opacity = '1'; };
+      t.onerror = () => { if (t.parentNode) t.parentNode.removeChild(t); };
+      t._mood = 'idle';
+      t.src = (cfg.assetsRoot || DEFAULT_ASSET_ROOT) + '/' + pet.rigTail;
+      dom.imgBox.appendChild(t);
+      dom.rigTail = t;
+    } else if (dom.rigTail) {
+      const t = dom.rigTail;
+      dom.rigTail = null;
+      t.style.opacity = '0';
+      setTimeout(() => { if (t.parentNode) t.parentNode.removeChild(t); }, 360);
+    }
+  }
+
+  // ================= 散步动作（随机溜达，方向翻转 + 步行摆动） =================
+  let walkTimer = null;
+  let strolling = false;
+  function scheduleStroll() {
+    if (walkTimer) clearTimeout(walkTimer);
+    if (reduced) return;
+    walkTimer = setTimeout(stroll, 15000 + Math.random() * 18000);
+  }
+  function stroll() {
+    walkTimer = null;
+    if (document.hidden || state.mood !== 'idle' || !dom.stage || !dom.imgBox) { scheduleStroll(); return; }
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    const dist = 34 + Math.random() * 42;
+    strolling = true;
+    dom.imgBox.style.transition = 'transform .3s ease';
+    dom.imgBox.style.transform = dir < 0 ? 'scaleX(-1)' : 'scaleX(1)';
+    dom.wrap.style.transition = 'transform 2.4s ease-in-out';
+    dom.wrap.style.setProperty('--pc-stroll-x', (dir * dist) + 'px');
+    dom.breath.classList.add('pc-walking');
+    setTimeout(endStroll, 2600 + Math.random() * 1800);
+  }
+  function endStroll() {
+    if (!strolling) return;
+    strolling = false;
+    if (dom.imgBox) dom.imgBox.style.transform = 'scaleX(1)';
+    if (dom.wrap) { dom.wrap.style.transition = ''; dom.wrap.style.setProperty('--pc-stroll-x', '0px'); }
+    if (dom.breath) dom.breath.classList.remove('pc-walking');
+    scheduleStroll();
   }
 
   // ================= 徽章 / 体型 =================
@@ -272,6 +339,7 @@ const PetCompanion = (() => {
       if (!opts.silent && typeof cfg.onMoodChange === 'function') cfg.onMoodChange(mood);
       return;
     }
+    endStroll();
     swapSprite(mood);
     updateZzz();
     restartMood();
@@ -356,6 +424,7 @@ const PetCompanion = (() => {
     applyMood(state.mood, { silent: true });
     bindEvents();
     resetIdle();
+    scheduleStroll();
     return api;
   }
 
