@@ -19,7 +19,7 @@ const PetCompanion = (() => {
   // 五只 3D 伙伴注册表：每只 5 个情绪状态
   const PET_REGISTRY = {
     dragon: { name: '小星', idle: 'dragon-idle.png', celebrate: 'dragon-celebrate.png', comfort: 'dragon-comfort.png', eat: 'dragon-eat.png', sleep: 'dragon-sleep.png' },
-    cat:    { name: '极光', idle: 'cat-idle.png',    celebrate: 'cat-celebrate.png',    comfort: 'cat-comfort.png',    eat: 'cat-eat.png',    sleep: 'cat-sleep.png' },
+    cat:    { name: '小黑', idle: 'cat-idle.png',    celebrate: 'cat-celebrate.png',    comfort: 'cat-comfort.png',    eat: 'cat-eat.png',    sleep: 'cat-sleep.png' },
     bunny:  { name: '量子', idle: 'bunny-idle.png',  celebrate: 'bunny-celebrate.png',  comfort: 'bunny-comfort.png',  eat: 'bunny-eat.png',  sleep: 'bunny-sleep.png' },
     fox:    { name: '银宝', idle: 'fox-idle.png',    celebrate: 'fox-celebrate.png',    comfort: 'fox-comfort.png',    eat: 'fox-eat.png',    sleep: 'fox-sleep.png' },
     whale:  { name: '深海', idle: 'whale-idle.png',  celebrate: 'whale-celebrate.png',  comfort: 'whale-comfort.png',  eat: 'whale-eat.png',  sleep: 'whale-sleep.png' }
