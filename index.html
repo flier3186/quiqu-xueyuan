@@ -7120,7 +7120,12 @@ function bindParentTtsEvents(){
       showParentTtsResult('loading','⏳ 云端合成中…（首次约 1-3 秒）');
       CloudTTS.test().then(function(ok){
         if(ok){ showParentTtsResult('ok','✅ 试听成功！这就是孩子将听到的有感情 AI 语音。点击"保存"完成配置。'); if(key){ if(keyInp){ keyInp.value=''; keyInp.placeholder='已配置（'+key+'）——输入新值可更换'; } toast('☁️ 试听通过，配置已生效'); } }
-        else{ showParentTtsResult('error','❌ 试听失败：'+((CloudTTS.status()||{}).lastError||'Key 无效或网络异常')+'<br>请确认 Key 来自 cloud.siliconflow.cn（DeepSeek 的 Key 不适用于语音）'); }
+        else{
+          const le=((CloudTTS.status()||{}).lastError)||'Key 无效或网络异常';
+          // 仅在密钥本身无效(401)时才提示 Key 来源；余额不足等场景追加该提示纯属误导
+          const hint=/401|密钥无效/.test(le) ? '<br>请确认 Key 来自 cloud.siliconflow.cn（DeepSeek 的 Key 不适用于语音）' : '';
+          showParentTtsResult('error','❌ 试听失败：'+le+hint);
+        }
       });
     }catch(e){ showParentTtsResult('error','❌ 试听异常：'+(e.message||e)); }
   };

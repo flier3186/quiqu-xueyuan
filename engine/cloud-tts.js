@@ -182,6 +182,8 @@
             var human;
             if (res.status === 401) {
               human = '密钥无效（HTTP 401）——请确认复制的是 cloud.siliconflow.cn 「API 密钥」页生成的 sk- 开头密钥，不是网址或密钥名称';
+            } else if (res.status === 402) {
+              human = '✅ Key 有效，但账户余额不足（HTTP 402）——CosyVoice2 语音是付费模型，请到 cloud.siliconflow.cn 「充值」页充值后重试；不充值也可继续用，发音会回落到本地语音';
             } else if (res.status === 429) {
               human = '请求太频繁或免费额度用尽（HTTP 429），稍后再试';
             } else if (res.status === 403) {
