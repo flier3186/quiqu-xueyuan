@@ -86,17 +86,17 @@
     return String(text).replace(/\d+/g, m => m.split('').join(' '));
   }
 
-  // ---------- TTS 封装（优先 NeuralTTS，否则内置 speechSynthesis）----------
+  // ---------- TTS 封装（统一走 VoiceCore 选择层，中文神经音优先）----------
   let _voice = 'zh-CN-XiaoxiaoNeural';
   function _speak(text, opts) {
     opts = opts || {};
     const spoken = spellDigits(text);
     const ratePct = opts.ratePct != null ? opts.ratePct : 0;
-    if (global.NeuralTTS && typeof global.NeuralTTS.speakSafe === 'function') {
-      const v = (global.NeuralTTS.VOICES && global.NeuralTTS.VOICES.zh) || _voice;
-      return global.NeuralTTS.speakSafe(spoken, { voice: v, ratePct: ratePct, lang: 'zh-CN' });
+    // Echo 统一语音层：严格优先级选神经音（中文 Xiaoxiao/Yunyang 优先）
+    if (global.VoiceCore && typeof global.VoiceCore.speak === 'function') {
+      return global.VoiceCore.speak(spoken, { lang: 'zh-CN', rate: 1 + ratePct / 100, pitch: 1.05 });
     }
-    // 回退：内置 speechSynthesis
+    // 极旧兜底：内置 speechSynthesis
     return new Promise((resolve) => {
       try {
         if (!('speechSynthesis' in window)) return resolve('none');

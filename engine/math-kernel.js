@@ -508,13 +508,8 @@
         knowledge: '长方形周长',
         scene: '一个长方形，长是 ' + a + '，宽是 ' + b + '。',
         question: '它的周长是多少？',
-        visualType: 'barModel',
-        visualData: { type: 'bar', bars: [
-          { label: '长', value: a, color: COL[0] },
-          { label: '宽', value: b, color: COL[1] },
-          { label: '长', value: a, color: COL[0] },
-          { label: '宽', value: b, color: COL[1] }
-        ], total: ans },
+        visualType: 'geometry',
+        visualData: { shape: 'rectangle', params: { length: a, width: b } },
         _operands: [a, b], _result: ans, _op: 'mul', _fp: [a, b], choices: makeChoices(ans)
       };
     },
@@ -545,10 +540,12 @@
         scene: '一个披萨平均分成 ' + den + ' 份。',
         question: '吃了 ' + n1 + '/' + den + ' 个披萨，又吃了 ' + n2 + '/' + den + ' 个，一共吃了几分之几？',
         visualType: 'barModel',
-        visualData: { type: 'bar', bars: [
+        visualData: { type: 'bar', bars: (den - ans) > 0 ? [
           { label: '已吃', value: ans, color: COL[0] },
           { label: '未吃', value: den - ans, color: COL[4] }
-        ], total: den },
+        ] : [
+          { label: '已吃', value: ans, color: COL[0] }
+        ] },
         _operands: [n1, n2], _result: ans, _op: 'add', _fp: [n1, n2, den], _skipEval: true, choices: makeChoices(ans)
       };
     },

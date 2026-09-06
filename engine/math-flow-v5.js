@@ -691,7 +691,7 @@ window.MathFlowV5 = {
       ? MathVisualV5._resolveModelFamily(problem)
       : (problem.modelFamily || problem.visualType);
     if(!MathVisualV5._getStepRenderer(modelFamily)) return;
-    const stepVisual = MathVisualV5.renderStep(modelFamily, problem.visualData, this._currentStep);
+    const stepVisual = MathVisualV5.renderStep(modelFamily, problem.visualData, this._currentStep, problem);
     // 更新可视化区域
     const wrap = document.querySelector('.mv-wrap');
     if(wrap){

@@ -265,7 +265,7 @@
     _gen++;
     if (_currentAudio) { try { _currentAudio.pause(); } catch (e) {} _currentAudio = null; }
   }
-  function isDisabled() { return _disabled; }
+  function isDisabled() { return _wsDisabled || _disabled; }
   function reset() { _disabled = false; _consecFails = 0; _lastError = null; _lastPath = ''; }
   function status() {
     return {
@@ -312,4 +312,129 @@
   }
 
   global.NeuralTTS = { speak, speakSafe, stop, isDisabled, reset, status, configure, syncClock, setLogLevel, onLog, VOICES, _probe };
+
+  // ============================================================
+  // VoiceCore —— 统一语音选择层（Echo 重写，替代 WebSocket 神经语音方案）
+  // 纯前端无法设置 Origin 头，浏览器直连 speech.platform.bing.com 永远被拒，
+  // 故彻底放弃 WebSocket，改走 speechSynthesis + 严格 voice 优先级选择。
+  // 优先级：P0 Online (Natural)（Edge 内置微软神经音）> P1 Microsoft Online > P2 Google > P3 lang 匹配
+  // 暴露 getActiveVoice() 供监督员验收；ensureVoices() 正确等待 voiceschanged（修复历史 dead-wait）。
+  // ============================================================
+  global.VoiceCore = (function () {
+    'use strict';
+
+    // 等级判定：natural / microsoft / google / basic
+    function tierOf(name) {
+      const n = name || '';
+      if (/Online\s*\(Natural\)/i.test(n)) return 'natural';
+      if (/microsoft/i.test(n) && /online/i.test(n)) return 'microsoft';
+      if (/google/i.test(n)) return 'google';
+      return 'basic';
+    }
+
+    // 语言首选音色名（同等级内优先）：中文 Xiaoxiao/Yunyang，英文 Aria/Jenny
+    function preferredName(lang) {
+      const base = (lang || '').split('-')[0].toLowerCase();
+      if (base === 'zh') return /(xiaoxiao|yunyang|huihui|yunxi)/i;
+      return /(aria|jenny|emma|guy|andrew|zira|david|ava)/i;
+    }
+
+    const TIERS = ['natural', 'microsoft', 'google', 'basic'];
+
+    // 等待语音列表就绪（修复历史 dead-wait：voiceschanged 可能不触发，加超时兜底）
+    function ensureVoices() {
+      return new Promise(function (resolve) {
+        try {
+          const existing = (typeof speechSynthesis !== 'undefined') ? speechSynthesis.getVoices() : [];
+          if (existing && existing.length) { resolve(existing); return; }
+        } catch (e) {}
+        let done = false;
+        const finish = function () {
+          if (done) return; done = true;
+          try { speechSynthesis.removeEventListener('voiceschanged', finish); } catch (e) {}
+          let vs = [];
+          try { vs = speechSynthesis.getVoices() || []; } catch (e) {}
+          resolve(vs);
+        };
+        try {
+          speechSynthesis.addEventListener('voiceschanged', finish);
+          setTimeout(finish, 3000); // 兜底：3s 后即便无 voices 也放行，避免静默卡死
+        } catch (e) { finish(); }
+      });
+    }
+
+    // 选择最优 voice（返回 {voice,name,lang,tier} 或 null）
+    function selectVoice(lang) {
+      const base = (lang || 'zh-CN').split('-')[0].toLowerCase();
+      let voices = [];
+      try { voices = speechSynthesis.getVoices() || []; } catch (e) {}
+      if (!voices.length) return null;
+      // 同语言前缀优先，否则退回全部语音
+      let pool = voices.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(base) === 0; });
+      if (!pool.length) pool = voices;
+      const prefRe = preferredName(lang);
+      for (let i = 0; i < TIERS.length; i++) {
+        const tier = TIERS[i];
+        const cands = pool.filter(function (v) { return tierOf(v.name) === tier; });
+        if (!cands.length) continue;
+        const pref = cands.filter(function (v) { return prefRe.test(v.name); });
+        const pick = (pref.length ? pref : cands)[0];
+        return { voice: pick, name: pick.name, lang: pick.lang, tier: tier };
+      }
+      return null;
+    }
+
+    // 监督员验收接口：返回当前命中 voice 名与等级
+    function getActiveVoice(lang) {
+      const r = selectVoice(lang);
+      if (r) return { name: r.name, tier: r.tier, lang: r.lang };
+      return { name: null, tier: 'none', lang: lang || 'zh-CN' };
+    }
+
+    // 朗读：自动选 voice，resolves 为命中的 tier 或 'none'
+    function speak(text, opts) {
+      opts = opts || {};
+      return new Promise(function (resolve) {
+        if (!text || typeof speechSynthesis === 'undefined' || !('speechSynthesis' in window)) { resolve('none'); return; }
+        const hasCJK = /[\u4e00-\u9fa5]/.test(text);
+        const lang = opts.lang || (hasCJK ? 'zh-CN' : 'en-US');
+        ensureVoices().then(function () {
+          speechSynthesis.cancel();
+          const sel = selectVoice(lang);
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = lang;
+          u.rate = (opts.rate != null) ? opts.rate : 1.0;
+          u.pitch = (opts.pitch != null) ? opts.pitch : 1.0;
+          if (sel) { try { u.voice = sel.voice; } catch (e) {} }
+          u.onend = function () { resolve(sel ? sel.tier : 'browser'); };
+          u.onerror = function () { resolve(sel ? sel.tier : 'browser'); };
+          try { speechSynthesis.resume(); } catch (e) {}
+          speechSynthesis.speak(u);
+        });
+      });
+    }
+
+    // 发音体检：依次播放中/英各一句，把命中 voice 名+等级写进 outId 元素
+    function runCheck(outId) {
+      const out = outId ? document.getElementById(outId) : null;
+      function step(lang, text) {
+        return ensureVoices().then(function () {
+          const sel = selectVoice(lang);
+          if (out) {
+            out.innerHTML = (out.innerHTML || '') +
+              '🔊 ' + (lang === 'zh-CN' ? '中文' : '英文') + '：命中 <b>' + (sel ? sel.name : '系统默认') + '</b>（等级 <b>' + (sel ? sel.tier : 'basic') + '</b>）<br>';
+          }
+          return speak(text, { lang: lang, rate: 0.95, pitch: 1.0 });
+        });
+      }
+      if (out) out.innerHTML = '<span style="color:var(--teal);font-weight:700">🩺 发音体检中…</span><br>';
+      return step('zh-CN', '你好呀，我是奇趣学园的小老师，跟着我一起读一读吧！')
+        .then(function () { return step('en-US', 'Hello! I am your English teacher. Let us read together!'); })
+        .then(function () {
+          if (out) out.innerHTML += '<span style="color:var(--teal)">✅ 体检完成，上面就是当前命中的语音。</span>';
+        });
+    }
+
+    return { ensureVoices: ensureVoices, selectVoice: selectVoice, getActiveVoice: getActiveVoice, speak: speak, runCheck: runCheck };
+  })();
 })(window);

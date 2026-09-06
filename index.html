@@ -13,8 +13,8 @@
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
 <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js" defer></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- 儿童友好设计系统：核心 token 已迁移至 assets/theme.css（Aria · V6），必须在本 inline <style> 之前加载 -->
+<!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
+     不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
 <style>
 /* 注：:root tokens / 柔色辅助 / 响应式降级 已迁移至 assets/theme.css */
@@ -22,15 +22,20 @@
 html,body{height:100%;overflow-x:hidden}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Noto Sans SC','Inter',-apple-system,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC","Segoe UI",sans-serif;
   background:var(--bg-grad);
   background-attachment:fixed;
   color:var(--text-1);
   min-height:100vh;
-  font-size:14px;
-  line-height:1.55;
+  font-size:16px;
+  line-height:1.7;
   position:relative;
   -webkit-font-smoothing:antialiased;
+}
+/* 标题统一圆体感：系统圆体字栈 + 加粗，不引外部字体 */
+h1,h2,h3,h4,.logo-text,.kid-entry__title,.nav-tab,.panel-card h3,.card-title{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-weight:800;letter-spacing:-.01em;
 }
 body::before{
   content:'';position:fixed;inset:0;z-index:-1;
@@ -1131,6 +1136,89 @@ h1,h2,h3{letter-spacing:-.01em}
 @keyframes mvFaceIn{from{opacity:0;transform:rotate(-10deg) scale(0.8)}to{opacity:1;transform:rotate(0) scale(1)}}
 .mv-part{transform-box:fill-box}
 @keyframes mvCutFill{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+
+/* ============================================================
+   Aria · V7 重设计覆盖块（纯 CSS，不改动任何 id / 函数 / onclick）
+   目标：9-12 岁少年感 · 高对比清晰分层 · 统一圆角 12-16 · 干净阴影 · 按压反馈
+   ============================================================ */
+
+/* 1) 卡片底色补齐 + 圆角统一 + hover 微动效 */
+.card{background:var(--card-bg);border-radius:var(--radius-lg);border:1px solid rgba(30,58,95,.06)}
+.card.hoverable:hover{transform:translateY(-3px)}
+.panel-card{background:var(--card-bg);border-radius:var(--radius-md);border:1px solid rgba(30,58,95,.06)}
+.panel-card h3{font-size:15px;letter-spacing:0}
+
+/* 2) 按钮按压态（明确反馈）+ 圆角统一 */
+.btn{border-radius:var(--radius-sm);min-height:var(--touch)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.97)}
+.btn-primary{background:var(--teal)}
+.btn-primary:hover{background:var(--teal-600);box-shadow:var(--shadow-teal)}
+.btn-yellow{background:var(--yellow);color:var(--navy-800)}
+.btn-yellow:hover{background:var(--yellow-600);color:#fff}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.icon-btn:hover{transform:translateY(-2px)}
+.icon-btn:active{transform:scale(.92)}
+.btn-record:hover{transform:scale(1.06)}
+.btn-record:active{transform:scale(.94)}
+.btn-send:hover{background:var(--teal-600)}
+.btn-send:active{transform:scale(.97)}
+.btn-listen:hover,.btn-know:hover{transform:translateY(-1px)}
+
+/* 3) 任务/快捷条目 hover/active 微动效 */
+.task-item{border-radius:var(--radius-sm)}
+.task-item:hover{transform:translateY(-1px)}
+.task-item:active{transform:scale(.99)}
+.quick-item{transition:all .2s}
+.quick-item:hover{transform:translateY(-2px)}
+
+/* 4) 数形结合容器外框翻新（SVG 由 engine 渲染，仅改容器/留白/边框） */
+.mv-wrap{
+  padding:18px;background:var(--card-bg);
+  border:1px solid var(--ink-200);border-radius:var(--radius-md);
+  box-shadow:var(--shadow-sm);position:relative;
+}
+.mv-wrap svg{width:100%;height:auto;display:block;max-height:320px;animation-play-state:running}
+.mv-geo-formula{background:var(--teal-soft);border-radius:var(--radius-xs);color:var(--teal-700)}
+.mv-empty{color:var(--text-3)}
+
+/* 5) 背景噪点克制，去发闷 */
+body::before{opacity:.35;mix-blend-mode:multiply}
+
+/* 6) 移动优先：主导航改为底部 tab（顶栏保留 logo + 语音 + 家长） */
+@media (max-width:760px){
+  .top-bar{height:60px;padding:0 14px}
+  .top-bar .logo{margin-right:0}
+  .top-bar .logo-mark{width:38px;height:38px;border-radius:11px}
+  .top-bar .logo-text{font-size:17px}
+  .nav-tabs{
+    position:fixed;left:0;right:0;bottom:0;top:auto;z-index:300;
+    flex:initial;gap:0;justify-content:space-around;align-items:stretch;
+    height:60px;padding-bottom:env(safe-area-inset-bottom);
+    background:var(--glass-bg-strong);backdrop-filter:var(--glass-blur);
+    -webkit-backdrop-filter:var(--glass-blur);
+    border-top:1px solid var(--ink-200);box-shadow:0 -6px 20px rgba(14,23,38,.08);
+  }
+  .nav-tab{
+    flex:1;flex-direction:column;justify-content:center;gap:3px;
+    padding:8px 4px;border-radius:0;font-size:11px;font-weight:700;
+    color:var(--text-3);min-height:var(--touch);
+  }
+  .nav-tab .underline{display:none}
+  .nav-tab svg{width:24px;height:24px;fill:var(--text-3)}
+  .nav-tab:hover{background:transparent;color:var(--text-2)}
+  .nav-tab.active{background:transparent;color:var(--teal)}
+  .nav-tab.active svg{fill:var(--teal)}
+  .nav-tab.active::before{
+    content:'';position:absolute;top:6px;width:30px;height:4px;border-radius:4px;
+    background:linear-gradient(90deg,var(--teal),var(--teal-light));
+  }
+  .content-area{padding:18px 16px calc(96px + env(safe-area-inset-bottom))}
+  .overview-grid{grid-template-columns:1fr}
+}
+@media (min-width:761px) and (max-width:980px){
+  .overview-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 </head>
@@ -1549,9 +1637,39 @@ var MATH_BY_GRADE = {
 // 所有渲染器返回 HTML 字符串（含 SVG 与 CSS 动画），供插入到题目讲解区
 const MathVisual = {
   // 总入口：根据 type 调用对应渲染器，未知类型回退到 barModel
-  render(type, data){
+  render(type, data, problem){
+    // 字段归一化：内核用 {value,label}，渲染器读 {val} —— 入口统一兼容，杜绝 "undefined" 上屏
+    if (data && Array.isArray(data.parts)) {
+      data = Object.assign({}, data, { parts: data.parts.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
+    }
+    if (data && Array.isArray(data.bars)) {
+      data = Object.assign({}, data, { bars: data.bars.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
+    }
     const fn = this[type];
-    return (typeof fn === 'function') ? fn.call(this, data) : this.barModel.call(this, data);
+    const html = (typeof fn === 'function') ? fn.call(this, data) : this.barModel.call(this, data);
+    return this._scrubAnswer(html, problem);
+  },
+  // 答案零泄漏：SVG <text> 中等于答案的独立数字一律掩码为 "?"（揭示区豁免）
+  _scrubAnswer(html, problem){
+    if(html == null) return html;
+    const ansNum = problem ? Number(problem.answer) : NaN;
+    if(isNaN(ansNum)) return html;
+    const tokens = [String(ansNum)];
+    const ansStr = String(problem.answer);
+    if(ansStr !== tokens[0] && /^\d+(\/\d+)?$/.test(ansStr)){
+      tokens.push(ansStr);
+      ansStr.split('/').forEach(t => { if(tokens.indexOf(t) < 0) tokens.push(t); });
+    }
+    const testers = tokens.filter(t => t !== '').map(t => ({
+      t,
+      re: new RegExp('(^|[^0-9.])' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=[^0-9.]|$)', 'g')
+    }));
+    return String(html).replace(/(<text[^>]*>)([\s\S]*?)(<\/text>)/g, (m, open, body, close) => {
+      if(/class="[^"]*(mv-reveal|mv-bar-sum|mv-bond-total|mv-result|mv-formula)[^"]*"/.test(open)) return m;
+      let out = body;
+      testers.forEach(function(p){ out = out.replace(p.re, '$1?'); });
+      return open + out + close;
+    });
   },
   // 颜色名 → hex（用于 SVG fill/stroke），支持 --teal/--yellow/--coral/--pink/--navy
   _hex(c){
@@ -1577,7 +1695,8 @@ const MathVisual = {
     }
     const parts = (data && data.parts) || [];
     if(!parts.length) return '<div class="mv-empty">暂无条形数据</div>';
-    const total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
+    let total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
+    if(!(total > 0)) total = parts.reduce((s,p)=>s+(p.val||0),0) || 1;
     const W=560, H=170, padX=24, barY=66, barH=58;
     const usable = W - padX*2;
     let x = padX, delay = 0;
@@ -1595,7 +1714,6 @@ const MathVisual = {
     return `<div class="mv-wrap mv-bar-model">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
         ${segs}
-        <text x="${W-padX}" y="${barY+barH+30}" text-anchor="end" font-size="14" font-weight="700" fill="#1E3A5F">（合计 = ${total}）</text>
       </svg>
     </div>`;
   },
@@ -1628,7 +1746,7 @@ const MathVisual = {
     return `<div class="mv-wrap mv-area-model">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
         ${blks}
-        <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${parts.join(' + ')} = ${result}</text>
+        <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${parts.join(' + ')}</text>
       </svg>
     </div>`;
   },
@@ -2791,42 +2909,24 @@ let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
 function speak(text){
   if(!text) return;
-  // PM接线：优先 Edge 神经语音（Echo 修复版），失败 speakSafe 自动降级浏览器 TTS
+  // Echo 统一语音层：严格优先级选神经音（P0 Online Natural > 微软Online > Google > lang匹配），
+  // 失败自动用系统 voice（speechSynthesis 自带兜底），不再走被 Origin 限制永久不可达的 Bing WS。
   try{
-    if(window.NeuralTTS && !window.NeuralTTS.isDisabled()){
+    if(window.VoiceCore && typeof window.VoiceCore.speak === 'function'){
       unlockAudio();
-      try{ window.NeuralTTS.stop && window.NeuralTTS.stop(); }catch(e){}
-      const opts = /[\u4e00-\u9fa5]/.test(text) ? {lang:'zh-CN'} : {lang:'en-US'};
-      Promise.resolve(window.NeuralTTS.speakSafe(text, opts)).catch(function(){});
+      window.VoiceCore.speak(text);
       return;
     }
   }catch(e){}
+  // 极旧兜底（VoiceCore 未加载）
   if(!('speechSynthesis' in window)) return;
   unlockAudio();
   speechSynthesis.cancel();
-  // 确保语音列表已加载（部分浏览器需等待voiceschanged事件）
-  let voices = [];
-  try{ voices = speechSynthesis.getVoices() || []; }catch(e){}
-  if(!voices.length || !voices.some(v=>/en/i.test(v.lang))){
-    // 语音列表未就绪或没有英语语音，等待事件
-    try{
-      speechSynthesis.addEventListener('voiceschanged', function handler(){
-        speechSynthesis.removeEventListener('voiceschanged', handler);
-        voices = speechSynthesis.getVoices() || [];
-        _speakVoicesReady = true;
-        if(_pendingSpeak){
-          const pending = _pendingSpeak;
-          _pendingSpeak = null;
-          _doSpeak(pending.text, pending.voices);
-        } else {
-          _doSpeak(text, voices);
-        }
-      });
-      _pendingSpeak = { text, voices: [] };
-      return;
-    }catch(e){}
-  }
-  _doSpeak(text, voices);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = /[\u4e00-\u9fa5]/.test(text) ? 'zh-CN' : 'en-US';
+  u.volume = 1; u.rate = 0.9; u.pitch = 1.0;
+  try{ speechSynthesis.resume(); }catch(e){}
+  speechSynthesis.speak(u);
 }
 function _doSpeak(text, voices){
   const u = new SpeechSynthesisUtterance(text);
@@ -3192,6 +3292,12 @@ function renderOverview(){
           </button>
         </div>
 
+        <!-- 🔊 发音体检入口（Echo）：一键播中/英各一句并显示命中 voice 名与等级 -->
+        <div style="margin:14px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <button onclick="VoiceCore.runCheck('efVoiceCheckOut')" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔊 发音体检</button>
+          <span id="efVoiceCheckOut" style="font-size:12px;color:var(--text-2);line-height:1.6"></span>
+        </div>
+
         <!-- Bento Grid 学习驾驶舱 -->
         <div class="bento-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch;margin-bottom:20px">
 
@@ -3433,6 +3539,31 @@ function initOverviewCharts(){
    整合：MathVisual / LearningPath / WeaknessDetector / TimeController
    说明：保留年级选择 + 单元知识树，仅重写题目练习部分
 ============================================================ */
+// 出题适配器：MathKernel 动态生成 → 适配 MathFlowV5 所需字段
+// 关键保证：题面(formula/question)与提示阶梯 hints[0..1]（L1/L2）永不含答案；
+// 答案仅在 hints[2]（L3 揭示步）与提交反馈中才出现。旧渲染器(MathVisualV5)作 visual 兜底。
+function _genMathProblemKernel(){
+  const inst = MathKernel.generate();           // 随机题型 + 难度自适应
+  return {
+    topic: inst.topic,
+    formula: inst.formula,
+    answer: inst.answer,
+    question: inst.question || inst.formula,
+    scene: inst.scene || '',
+    knowledge: inst.knowledge || inst.topic,
+    visualType: inst.visualType,
+    visualData: inst.visualData,
+    choices: inst.choices || [],
+    hints: inst.hints || [],
+    hint: (inst.hints && inst.hints[0]) || '',     // 提示阶梯 L1（无答案）
+    hintL2: (inst.hints && inst.hints[1]) || '',    // L2（无答案）
+    reveal: (inst.hints && inst.hints[2]) || '',    // L3 揭示（含答案，仅提交后展示）
+    difficulty: ['easy','medium','hard'][(inst.level||1)-1] || 'medium',
+    // 以下为 MathFlowV5 各阶段的可选项，缺省安全兜底
+    variants: [], russianQuestions: [], neriage: null, neriageErrors: null, barTranslateLine: null
+  };
+}
+
 function renderMath(grade='3'){
   // 进入数学板块：启动计时会话（仅当未在 math 计时中时启动，避免每次重渲染重置）
   try{
@@ -3454,7 +3585,15 @@ function renderMath(grade='3'){
       divergentIdx:0, divergentNotes:[], startTs:Date.now()
     };
   }
-  const problem = data.problems[window.MATH_SESSION.problemIdx] || data.problems[0];
+  // 出题链路：优先 MathKernel 动态出题（题面/提示 L1-L2 永不含答案），
+  // 旧 MATH_BY_GRADE 静态数据作为兜底（MathKernel 不可用时仍可用）。
+  let problem;
+  if (window.MathKernel && typeof window.MathKernel.generate === 'function') {
+    try { problem = _genMathProblemKernel(); }
+    catch (e) { problem = data.problems[window.MATH_SESSION.problemIdx] || data.problems[0]; }
+  } else {
+    problem = data.problems[window.MATH_SESSION.problemIdx] || data.problems[0];
+  }
   window.CURRENT_MATH_PROBLEM = problem;
 
   return `
@@ -3706,7 +3845,7 @@ function renderMathSolve(problem){
 // ===== 阶段 4：数形结合讲解（Visual Explain）—— 核心 =====
 function renderMathExplain(problem){
   const visual = (typeof MathVisual!=='undefined' && MathVisual.render)
-    ? MathVisual.render(problem.visualType, problem.visualData)
+    ? MathVisual.render(problem.visualType, problem.visualData, problem)
     : '<div class="mv-empty">可视化引擎不可用</div>';
   const layers = _mathExplainLayers(problem);
   return `<div class="cpa-layer pictorial" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
@@ -3884,7 +4023,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
     if(fb){
       // 数形结合预览：答对后立即展示小图，引导用户进入阶段4看完整动画
       const previewVisual = (typeof MathVisual!=='undefined' && MathVisual.render && problem.visualType)
-        ? `<div style="margin-top:12px;max-height:130px;overflow:hidden;border-radius:10px;border:1px dashed var(--teal);opacity:.9;pointer-events:none">${MathVisual.render(problem.visualType, problem.visualData)}</div>`
+        ? `<div style="margin-top:12px;max-height:130px;overflow:hidden;border-radius:10px;border:1px dashed var(--teal);opacity:.9;pointer-events:none">${MathVisual.render(problem.visualType, problem.visualData, problem)}</div>`
         : '';
       fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>${previewVisual}<div style="margin-top:8px;text-align:center;font-size:12px;color:var(--teal-700);font-weight:700">⬇️ 数形结合预览 · 即将进入阶段4查看完整动画</div>`;
     }

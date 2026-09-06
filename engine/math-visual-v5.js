@@ -7,14 +7,48 @@
 window.MathVisualV5 = {
 
   // ===== 总入口：根据 type 调用对应渲染器；problem 可选，用于智能路由 =====
+  // problem 始终透传给渲染器：渲染器据此把“等于答案”的段值/整体/差值显示为“?”（答案零泄漏）
   render(type, data, problem){
+    // 字段归一化：内核 {value} → 渲染器 {val}，杜绝 "undefined" 上屏
+    if (data && Array.isArray(data.parts)) {
+      data = Object.assign({}, data, { parts: data.parts.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
+    }
+    if (data && Array.isArray(data.bars)) {
+      data = Object.assign({}, data, { bars: data.bars.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
+    }
     const resolved = this._resolveType(type, data, problem);
     const fn = this[resolved];
     if(typeof fn === 'function'){
-      // 优化渲染器需要 problem 参数；基础渲染器只取 data
-      return resolved === type ? fn.call(this, data) : fn.call(this, data, problem);
+      return this._scrubAnswer(fn.call(this, data, problem), problem);
     }
-    return this.barModel.call(this, data);
+    return this._scrubAnswer(this.barModel.call(this, data, problem), problem);
+  },
+
+  // ===== 答案零泄漏：中心化掩码层 =====
+  // 所有 SVG <text> 输出前统一过滤：内容中等于答案的独立数字 token 一律替换为 "?"
+  // 教学揭示区（class 含 mv-reveal/mv-bar-sum/mv-bond-total/mv-result/mv-formula）豁免。
+  // 宁可多掩不漏答：已知信息恰好等于答案时显示 "?"，由图形结构传达数量关系。
+  _scrubAnswer(html, problem){
+    if(html == null) return html;
+    const ansNum = problem ? Number(problem.answer) : NaN;
+    if(isNaN(ansNum)) return html;
+    const tokens = [String(ansNum)];
+    const ansStr = String(problem.answer);
+    if(ansStr !== tokens[0] && /^\d+(\/\d+)?$/.test(ansStr)){
+      // 分数形态答案（如 "3/4"）：整体与分子分母都参与匹配
+      tokens.push(ansStr);
+      ansStr.split('/').forEach(t => { if(!tokens.includes(t)) tokens.push(t); });
+    }
+    const testers = tokens.filter(t => t !== '').map(t => ({
+      t,
+      re: new RegExp('(^|[^0-9.])' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=[^0-9.]|$)', 'g')
+    }));
+    return String(html).replace(/(<text[^>]*>)([\s\S]*?)(<\/text>)/g, (m, open, body, close) => {
+      if(/class="[^"]*(mv-reveal|mv-bar-sum|mv-bond-total|mv-result|mv-formula)[^"]*"/.test(open)) return m;
+      let out = body;
+      testers.forEach(({re}) => { out = out.replace(re, '$1?'); });
+      return open + out + close;
+    });
   },
 
   // ===== 智能路由：根据知识点/图形形状选择优化渲染器 =====
@@ -104,13 +138,16 @@ window.MathVisualV5 = {
   // modelFamily: 模型家族名称
   // data: 渲染数据
   // step: 当前步数（1-3）
-  renderStep(modelFamily, data, step){
+  renderStep(modelFamily, data, step, problem){
     const renderer = this._getStepRenderer(modelFamily);
     if(!renderer || typeof this[renderer] !== 'function'){
       return `<div style="padding:20px;text-align:center;color:var(--text-2)">该模型暂不支持分步演示</div>`;
     }
     this._injectStepStyles();
-    return this[renderer].call(this, data, step || 1);
+    const s = step || 1;
+    const html = this[renderer].call(this, data, s);
+    // 答案零泄漏：第 1/2 步掩码，第 3/3 步为教学揭示步允许出现等式
+    return s >= 3 ? html : this._scrubAnswer(html, problem);
   },
 
   // ===== 颜色工具 =====
@@ -148,7 +185,7 @@ window.MathVisualV5 = {
 
   // 1. 条形模型 —— 加减法 / 部分整体关系
   // data: {total, parts:[{label,val,color}]}
-  barModel(data){
+  barModel(data, problem){
     // 兼容 bars 格式（{type:"bar", bars:[{label,value,color}], total}）
     if(data && data.bars && !data.parts){
       data.parts = data.bars.map(b => ({label: b.label, val: b.value, color: b.color}));
@@ -156,19 +193,24 @@ window.MathVisualV5 = {
     }
     const parts = (data && data.parts) || [];
     if(!parts.length) return '<div class="mv-empty">暂无条形数据</div>';
-    const total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
+    let total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
+    // 鲁棒性：total 缺失/非法时回退为各段之和，避免条形被压成等宽 0/2px
+    if(!(total > 0)) total = parts.reduce((s,p)=>s+(p.val||0),0) || 1;
+    // 答案零泄漏：某段值恰为答案（如“求差/求部分”的待求段）时，标签显示为“?”，宽度仍按比例
+    const ans = (problem && problem.answer != null) ? problem.answer : null;
     const W=560, H=170, padX=24, barY=66, barH=58;
     const usable = W - padX*2;
     let x = padX, delay = 0;
     const segs = parts.map((p,i)=>{
       const w = total>0 ? Math.max((p.val/total)*usable, 2) : 0;
       const color = this._hex(p.color) || this._palette(i);
+      const valLabel = (ans != null && p.val === ans) ? '?' : p.val;   // 待求段不印答案
       // 数值字号随段宽自适应：窄段缩小字号，绝不溢出
-      const vfs = Math.max(8, Math.min(15, Math.floor((w-4)/Math.max(1,String(p.val).length)*1.6)));
+      const vfs = Math.max(8, Math.min(15, Math.floor((w-4)/Math.max(1,String(valLabel).length)*1.6)));
       const lfs = Math.max(8, Math.min(12, Math.floor((w-4)/Math.max(1,String(p.label||'').length)*1.7)));
       const g = `<g transform="translate(${x},0)">
         <rect class="mv-bar-rect" x="0" y="${barY}" width="${w}" height="${barH}" fill="${color}" rx="5" style="animation-delay:${delay}s"/>
-        <text class="mv-bar-text" x="${w/2}" y="${barY+barH/2+vfs*0.35}" text-anchor="middle" font-size="${vfs}" font-weight="700" fill="${this._textColor(color)}" style="animation-delay:${delay+0.45}s">${p.val}</text>
+        <text class="mv-bar-text" x="${w/2}" y="${barY+barH/2+vfs*0.35}" text-anchor="middle" font-size="${vfs}" font-weight="700" fill="${this._textColor(color)}" style="animation-delay:${delay+0.45}s">${valLabel}</text>
         <text x="${w/2}" y="${barY-10}" text-anchor="middle" font-size="${lfs}" fill="#475569" font-weight="600">${p.label||''}</text>
       </g>`;
       x += w; delay += 0.18;
@@ -177,7 +219,6 @@ window.MathVisualV5 = {
     return `<div class="mv-wrap mv-bar-model">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
         ${segs}
-        <text x="${W-padX}" y="${barY+barH+30}" text-anchor="end" font-size="14" font-weight="700" fill="#1E3A5F">（合计 = ${total}）</text>
       </svg>
     </div>`;
   },
@@ -1728,7 +1769,7 @@ window.MathVisualV5 = {
     const W=480, H=280;
     const ox=60, oy=40, cellW=25, cellH=20;
     const gW=a*cellW, gH=b*cellH;
-    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${a} × ${b} = ${total}</text>`;
+    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${a} × ${b}</text>`;
     // 大矩形
     svg+=`<rect x="${ox}" y="${oy}" width="${gW}" height="${gH}" fill="rgba(0,168,150,.08)" stroke="#1E3A5F" stroke-width="1.5" rx="2"/>`;
     // 切分线
@@ -1748,7 +1789,7 @@ window.MathVisualV5 = {
     });
     // 总和
     svg+=`<rect x="50" y="${H-30}" width="${W-100}" height="22" fill="#1E3A5F" rx="11"/>`;
-    svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">总面积 = ${parts.map(p=>p.label).join(' + ')} = ${total}</text>`;
+    svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">总面积 = ${parts.map(p=>p.label).join(' + ')}</text>`;
     return `<div class="mv-wrap mv-area-anim">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
     </div>`;
@@ -1776,7 +1817,8 @@ window.MathVisualV5 = {
     const diff = Math.abs(a - b);
     const diffW = diff * scale;
     const isLarge = total > 99;
-    const title = isLarge ? `条形模型 · 第${step}/3步（${a} + ${b} = ${total}）` : `条形模型 · 第${step}/3步`;
+    // 答案零泄漏：分步标题一律只标步序，等式（a + b = total）仅在第 3/3 步揭示区出现
+    const title = `条形模型 · 第${step}/3步`;
     // 渐变定义必须放在最前面
     const defsSvg = `<defs><linearGradient id="mvGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00A896"/><stop offset="100%" stop-color="#F5B800"/></linearGradient></defs>`;
     let svg=defsSvg+`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">${title}</text>`;
@@ -1834,7 +1876,7 @@ window.MathVisualV5 = {
     const gH=(bTens*10+bOnes)*cellH;
     const cutX=ox+aTens*10*cellW;
     const cutY=oy+bTens*10*cellH;
-    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">面积模型 · 第${step}/3步（${a}×${b}=${total}）</text>`;
+    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">面积模型 · 第${step}/3步</text>`;
     // 第1步：整体矩形
     if(step>=1){
       svg+=`<rect x="${ox}" y="${oy}" width="${gW}" height="${gH}" fill="rgba(30,58,95,.06)" stroke="#1E3A5F" stroke-width="2" rx="2" class="mv-total" style="animation:mvFadeIn .5s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
@@ -2190,7 +2232,8 @@ window.MathVisualV5 = {
   _injectStepStyles(){
     if(document.getElementById('mvStepStyles')) return;
     const css = `<style id="mvStepStyles">
-      @keyframes mvBarIn{from{width:0;opacity:.3}to{width:var(--w,100%);opacity:1}}
+      /* 关键修复：用 transform:scaleX 做生长动画，绝不能用 width——CSS width 会覆盖 SVG rect 的 width 属性，导致所有条形被拉成满宽等宽（--w 未定义时回退 100%） */
+      @keyframes mvBarIn{from{transform:scaleX(0);opacity:.3}to{transform:scaleX(1);opacity:1}}
       @keyframes mvBarGrow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1)}}
       @keyframes mvFadeIn{from{opacity:0}to{opacity:1}}
       @keyframes mvLineIn{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}

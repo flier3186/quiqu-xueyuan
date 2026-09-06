@@ -93,25 +93,24 @@ window.SpeakEngineV5 = {
     return v || null;
   },
 
-  // ===== TTS 朗读：优先微软神经语音（真人级），失败降级浏览器内置语音 =====
+  // ===== TTS 朗读：统一走 VoiceCore 选择层（神经音优先），不再各自持有旧 voice 逻辑 =====
   speak(text, teacherId){
     if(!text) return;
     if(typeof speechSynthesis === 'undefined' || !('speechSynthesis' in window)) return;
     const teacher = this.getTeacher(teacherId);
-    speechSynthesis.cancel();
-    // —— 第一优先：NeuralTTS（微软神经语音，真人级）——
-    if(typeof NeuralTTS !== 'undefined' && NeuralTTS && !NeuralTTS.isDisabled()){
-      const voiceMap = { emma: NeuralTTS.VOICES.emma, aria: NeuralTTS.VOICES.aria, leo: NeuralTTS.VOICES.leo };
-      const nv = voiceMap[(teacherId || S.speakV5.teacher || 'emma').toLowerCase()] || NeuralTTS.VOICES.female;
-      // 语速/音调映射：teacher.voice.rate(0.8~1.2) → 百分比；emma +2Hz 明亮、leo -3Hz 低沉
-      const ratePct = Math.round((teacher.voice.rate - 1) * 100);
-      const tKey = (teacherId || '').toLowerCase();
-      const pitchHz = tKey === 'emma' ? 2 : (tKey === 'leo' ? -3 : 0);
-      NeuralTTS.stop();
-      NeuralTTS.speak(text, { voice: nv, ratePct, pitchHz }).catch(() => {
-        // 神经语音失败（网络等）→ 本句降级浏览器 TTS
-        this._speakBrowser(text, teacherId, teacher);
-      });
+    // 统一语音选择层（Echo）：严格优先级选神经音，按老师人设调语速/音调
+    if(window.VoiceCore && typeof window.VoiceCore.speak === 'function'){
+      speechSynthesis.cancel();
+      let rate = teacher.voice.rate;
+      // 情绪标记：开心（感叹号多）+10%，疑惑（问句多）-15%
+      const excl = (text.match(/!/g) || []).length;
+      const ques = (text.match(/\?/g) || []).length;
+      if(excl > ques) rate *= 1.10; else if(ques > excl) rate *= 0.85;
+      let pitch; const tKey = (teacherId || '').toLowerCase();
+      if(tKey === 'emma'){ pitch = 1.25; rate *= 0.95; }    // 女声：高频、稍慢、清晰热情
+      else if(tKey === 'leo'){ pitch = 0.75; rate *= 1.10; }  // 男声：低频、稍快、活泼
+      else { pitch = 1.0; }                                    // aria：中性
+      window.VoiceCore.speak(text, { lang: 'en-US', rate: Math.max(0.6, Math.min(1.4, rate)), pitch: pitch });
       return;
     }
     this._speakBrowser(text, teacherId, teacher);

@@ -1,107 +1,115 @@
 /* ============================================================
-   奇趣学园 · 儿童友好设计系统（Aria · V6）
-   核心 token 来源唯一处：index.html 的旧 :root 已迁移至此。
-   纯前端零构建，由 index.html <link> 引入（必须在 inline <style> 之前）。
-   品牌色 --teal #00A896 保留不动。
+   奇趣学园 · 少年感设计系统（Aria · V7）
+   全站推倒重设计：9-12 岁大孩子审美
+   核心 token 来源唯一处，由 index.html <link> 在 inline <style> 之前引入。
+   品牌锚点 --teal #00A896 保留不动；整体改为高对比、清晰分层的少年感体系，
+   去掉上一版大量浅绿浅黄糊在一起的发闷感。
    ============================================================ */
 :root{
-  /* ===== 核心主色（孔雀绿 + 玉子黄） ===== */
-  --teal-50:#EFFBF8;--teal-100:#CFF6EE;--teal-200:#9FEDDB;--teal-300:#5FE0C5;
-  --teal-400:#2FD1AE;--teal:#00A896;--teal-600:#008C7A;--teal-700:#006B5E;--teal-800:#005047;
-  --yellow-50:#FFF8E6;--yellow-100:#FFEDB3;--yellow-200:#FFE180;--yellow-300:#FFD54D;
-  --yellow:#F5B800;--yellow-600:#D19B00;--yellow-700:#AC7E00;--yellow-800:#886100;
-  /* 辅助色 */
-  --navy-50:#EEF3FA;--navy:#1E3A5F;--navy-700:#152A44;--navy-800:#0D1A2B;
-  --coral:#FB923C;--coral-600:#F27C1A;
-  --pink:#E8A0BF;--purple:#8B5CF6;
-  /* 中性色 */
-  --ink-900:#0F172A;--ink-800:#1E293B;--ink-700:#334155;--ink-600:#475569;--ink-500:#64748B;
-  --ink-400:#94A3B8;--ink-300:#CBD5E1;--ink-200:#E2E8F0;--ink-100:#F1F5F9;--ink-50:#F8FAFC;
+  /* ===== 品牌主色：孔雀绿（保留为锚点，不刺眼但有活力） ===== */
+  --teal-50:#E6FBF7;--teal-100:#C7F4EA;--teal-200:#94EAD7;--teal-300:#52DDC2;
+  --teal-400:#1FCFA8;--teal:#00A896;--teal-600:#00937F;--teal-700:#007064;--teal-800:#005147;
+
+  /* ===== 少年感辅色：高对比蓝 / 紫 / 珊瑚（双色+三色辅助） ===== */
+  --blue-50:#EAF1FF;--blue-100:#D2E1FF;--blue:#2F6BFF;--blue-600:#1E54E0;--blue-700:#1640B0;
+  --violet-50:#F0ECFF;--violet-100:#E0D7FF;--violet:#7C5CFF;--violet-600:#6A45F0;--violet-700:#5532C7;
+  --yellow:#FFC300;--yellow-600:#E0A800;--yellow-700:#B58600;--yellow-50:#FFF8E6;--yellow-100:#FFEFC2;--yellow-200:#FFE180;--yellow-300:#FFD54D;
+  --coral:#FF7A45;--coral-600:#F2612A;--coral-700:#D44A22;
+  --navy:#16335C;--navy-700:#102747;--navy-800:#0B1A30;--navy-light:#2E4D73;
+  --pink:#E8A0BF;--purple:#8B5CF6;--purple-soft:#F1ECFE;
+
+  /* 中性色（偏冷灰蓝，清晰不脏） */
+  --ink-900:#0E1726;--ink-800:#1D2A3A;--ink-700:#33425A;--ink-600:#5A6B82;--ink-500:#7A8AA0;
+  --ink-400:#9AAAbe;--ink-300:#C8D2DE;--ink-200:#E3E9F0;--ink-100:#EFF3F8;--ink-50:#F6F8FB;
+
   /* 语义别名 */
   --text-1:var(--ink-900);--text-2:var(--ink-600);--text-3:var(--ink-400);--text-invert:#fff;
   --surface:#fff;--surface-card:#fff;
+  --card-bg:#ffffff;          /* 上版漏定义导致卡片透明发闷，此处补齐 */
+  --card-bg-soft:#F7FAFD;     /* 次级卡片底，与纯白拉开层次 */
 
-  /* ===== 柔色/浅色辅助 token（旧站遗漏定义，导致大量背景透明失效，此处补齐） ===== */
+  /* ===== 柔色底（清晰分层，不再糊成一团） ===== */
   --teal-light:#33E0C0;       /* 主色悬停/高亮 */
-  --teal-soft:#E6F7F3;       /* 浅青底：芯片/悬停/hover 容器 */
+  --teal-soft:#E6FBF7;        /* 浅青底 */
   --teal-soft-2:#D6F2EC;
-  --yellow-soft:#FFF6DD;      /* 浅黄底 */
-  --yellow-soft-2:#FFEFC2;
-  --coral-soft:#FFEFE3;       /* 浅橙底 */
-  --coral-soft-2:#FFE3D2;
+  --blue-soft:#EAF1FF;        /* 英语区浅蓝底 */
+  --violet-soft:#F0ECFF;      /* 口语区浅紫底 */
+  --yellow-soft:#FFF6DD;      /* 浅黄底（小面积点缀，不铺大面） */
+  --coral-soft:#FFEDE6;       /* 宠物/奖励浅橙底 */
+  --coral-soft-2:#FFE0D4;
   --pink-soft:#FBE7F0;
-  --purple-soft:#F1ECFE;
-  --navy-light:#2E4D73;
 
-  /* 背景（Mesh 渐变 + 噪点覆盖层，已调柔） */
-  --bg-grad:
-    radial-gradient(at 20% 10%, #CFF6EE 0px, transparent 55%),
-    radial-gradient(at 85% 20%, #FFE180 0px, transparent 50%),
-    radial-gradient(at 70% 90%, #DCE8F5 0px, transparent 55%),
-    radial-gradient(at 10% 80%, #F0EAF8 0px, transparent 50%),
-    linear-gradient(180deg, #F8FAFC 0%, #EFF6FB 100%);
+  /* 背景：干净冷灰蓝，去掉多色 mesh 堆砌的发闷感；保留极淡噪点 */
+  --bg-grad:linear-gradient(180deg,#F4F7FC 0%,#ECF1F8 100%);
   --bg-noise:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 
-  /* 阴影：多层叠加更真实 */
-  --shadow-xs:0 1px 2px rgba(15,23,42,.04);
-  --shadow-sm:0 2px 8px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.03);
-  --shadow-md:0 6px 20px rgba(30,58,95,.08),0 2px 8px rgba(30,58,95,.04);
-  --shadow-lg:0 12px 36px rgba(30,58,95,.12),0 4px 12px rgba(30,58,95,.06);
-  --shadow-xl:0 24px 60px rgba(30,58,95,.16),0 8px 20px rgba(30,58,95,.08);
-  --shadow-teal:0 8px 28px rgba(0,168,150,.28);
-  --shadow-yellow:0 8px 28px rgba(245,184,0,.28);
-  --card-shadow:var(--shadow-md);--card-shadow-hover:var(--shadow-lg);
+  /* 阴影：轻而干净（多层但更克制） */
+  --shadow-xs:0 1px 2px rgba(14,23,38,.05);
+  --shadow-sm:0 2px 8px rgba(30,58,95,.06),0 1px 3px rgba(30,58,95,.04);
+  --shadow-md:0 6px 18px rgba(30,58,95,.08),0 2px 6px rgba(30,58,95,.04);
+  --shadow-lg:0 14px 34px rgba(30,58,95,.12),0 4px 12px rgba(30,58,95,.06);
+  --shadow-xl:0 24px 60px rgba(30,58,95,.14),0 8px 20px rgba(30,58,95,.08);
+  --shadow-teal:0 8px 24px rgba(0,168,150,.26);
+  --shadow-blue:0 8px 24px rgba(47,107,255,.28);
+  --shadow-violet:0 8px 24px rgba(124,92,255,.28);
+  --card-shadow:var(--shadow-sm);--card-shadow-hover:var(--shadow-md);
   /* 玻璃态 */
-  --glass-bg:rgba(255,255,255,.72);
-  --glass-bg-strong:rgba(255,255,255,.9);
-  --glass-blur:saturate(140%) blur(14px);
-  --glass-border:rgba(255,255,255,.8);
-  /* 圆角：多级体系（偏柔和童趣） */
-  --radius-2xs:6px;--radius-xs:10px;--radius-sm:12px;--radius-md:16px;
-  --radius-lg:20px;--radius-xl:26px;--radius-2xl:34px;--radius-full:999px;
+  --glass-bg:rgba(255,255,255,.8);
+  --glass-bg-strong:rgba(255,255,255,.94);
+  --glass-blur:saturate(150%) blur(14px);
+  --glass-border:rgba(255,255,255,.7);
+  /* 圆角：统一 12-16px 为主，大卡 18-22px */
+  --radius-2xs:8px;--radius-xs:10px;--radius-sm:12px;--radius-md:16px;
+  --radius-lg:18px;--radius-xl:22px;--radius-2xl:28px;--radius-full:999px;
   /* 动画曲线 */
   --ease-spring:cubic-bezier(.34,1.56,.64,1);
   --ease-smooth:cubic-bezier(.4,0,.2,1);
   --ease-emphasis:cubic-bezier(.16,1,.3,1);
-  --dur-fast:160ms;--dur-base:260ms;--dur-slow:420ms;--dur-xl:700ms;
+  --dur-fast:160ms;--dur-base:240ms;--dur-slow:420ms;--dur-xl:700ms;
 
-  /* ===== 儿童友好新增 tokens ===== */
+  /* ===== 间距 / 字号 / 触控 ===== */
   --space-1:6px;--space-2:10px;--space-3:16px;--space-4:24px;--space-5:32px;--space-6:44px;
-  --fs-xs:13px;--fs-sm:15px;--fs-base:16px;--fs-md:18px;--fs-lg:22px;--fs-xl:28px;--fs-2xl:34px;--fs-3xl:42px;
+  --fs-xs:13px;--fs-sm:15px;--fs-base:16px;--fs-md:18px;--fs-lg:22px;--fs-xl:26px;--fs-2xl:32px;--fs-3xl:40px;
   --touch:52px; /* 最小触控高度 */
 }
 @media (prefers-color-scheme: light){
-  :root{--bg-grad:
-    radial-gradient(at 20% 10%, rgba(207,246,238,.55) 0, transparent 55%),
-    radial-gradient(at 85% 20%, rgba(255,225,128,.45) 0, transparent 50%),
-    radial-gradient(at 70% 90%, rgba(220,232,245,.55) 0, transparent 55%),
-    radial-gradient(at 10% 80%, rgba(240,234,248,.45) 0, transparent 50%),
-    linear-gradient(180deg, #F8FAFC 0%, #EFF6FB 100%);}
+  :root{--bg-grad:linear-gradient(180deg,#F4F7FC 0%,#ECF1F8 100%);}
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg-grad:linear-gradient(180deg,#0F1622 0%,#0B111B 100%);
+    --card-bg:#16202E;--card-bg-soft:#1A2535;
+    --text-1:#EAF0F8;--text-2:#A9B6C8;--text-3:#6F7E92;
+    --glass-bg:rgba(22,32,46,.8);--glass-border:rgba(255,255,255,.08);
+    --ink-200:#26313F;--ink-100:#1C2735;
+  }
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
 }
 
 /* ============================================================
-   首页「大大的开始入口」组件（图标 + 文字，10 秒找到开始）
-   新增类名，不与旧样式冲突
+   首页「课程地图」入口卡（数学 / 英语 / 口语 / 宠物 四大区）
+   大而易点，颜色对应少年感四色体系
    ============================================================ */
 .kid-start{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:0 0 var(--space-4)}
 .kid-entry{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  padding:28px 16px;border:none;border-radius:var(--radius-2xl);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  padding:30px 16px;border:none;border-radius:var(--radius-md);cursor:pointer;
   transition:transform var(--dur-base) var(--ease-spring),box-shadow var(--dur-base);
   box-shadow:var(--shadow-md);text-align:center;color:#fff;position:relative;overflow:hidden;
+  outline:2px solid rgba(255,255,255,.0);
 }
 .kid-entry:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-lg)}
-.kid-entry:active{transform:translateY(-1px) scale(.99)}
-.kid-entry__icon{font-size:48px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.18))}
+.kid-entry:active{transform:translateY(-1px) scale(.98);box-shadow:var(--shadow-sm)}
+.kid-entry:focus-visible{outline-color:rgba(255,255,255,.7)}
+.kid-entry__icon{font-size:50px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.18))}
 .kid-entry__title{font-size:21px;font-weight:900}
-.kid-entry__sub{font-size:13px;opacity:.92;font-weight:600;letter-spacing:.01em}
+.kid-entry__sub{font-size:13px;opacity:.94;font-weight:600;letter-spacing:.01em}
 .kid-entry--math{background:linear-gradient(150deg,var(--teal),var(--teal-700))}
-.kid-entry--eng{background:linear-gradient(150deg,var(--yellow),#FFB300);color:var(--navy-800)}
-.kid-entry--speak{background:linear-gradient(150deg,var(--coral),#FB7185)}
-.kid-entry--pet{background:linear-gradient(150deg,var(--navy),var(--teal-700))}
+.kid-entry--eng{background:linear-gradient(150deg,var(--blue),var(--blue-600));color:#fff}
+.kid-entry--speak{background:linear-gradient(150deg,var(--violet),var(--violet-600));color:#fff}
+.kid-entry--pet{background:linear-gradient(150deg,var(--coral),var(--coral-700));color:#fff}
 @media (max-width:980px){.kid-start{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){
   .kid-start{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:var(--space-3)}
@@ -112,8 +120,7 @@
 }
 
 /* ============================================================
-   宠物 3D 新形象舞台（预留钩子，由 PM 接线时添加 .pet-stage--3d
-   并替换 img src 为 assets/pet3d/*.png；此处不硬编码任何 pet3d 路径）
+   宠物舞台（3D 形象预留钩子，由 PM 接线）
    ============================================================ */
 .pet-display img{
   max-width:100%;max-height:100%;object-fit:contain;
