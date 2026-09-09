@@ -1,0 +1,119 @@
+## 3a（三上）主题 6 题，变式 12 题
+教材单元(units): [{"name":"观察物体","level":"current","children":[{"name":"从不同位置观察物体","level":"done"},{"name":"立体图形与平面图形","level":"current"},{"name":"搭一搭、看一看","level":"locked"}]},{"name":"混合运算","level":"current","children":[{"name":"乘加、乘减两步式题","level":"done"},{"name":"除加、除减两步式题","level":"current"},{"name":"带小括号的两步式题","level":"locked"}]},{"name":"毫米、分米和千米","level":"locked","children":[{"name":"毫米的认识","level":"current"},{"name":"分米的认识","level":"locked"},{"name":"千米与米的换算","level":"locked"}]},{"name":"曹冲称象的故事（综合实践）","level":"locked","children":[{"name":"克、千克、吨","level":"locked"},{"name":"等量代换的思想","level":"locked"}]},{"name":"多位数乘一位数","level":"locked","children":[{"name":"口算乘法","level":"locked"},{"name":"笔算乘法（连续进位）","level":"locked"},{"name":"估算与笔算结合","level":"locked"}]},{"name":"数字编码（综合实践）","level":"locked","children":[{"name":"生活中的编码","level":"locked"},{"name":"设计编码方案","level":"locked"}]},{"name":"线和角","level":"locked","children":[{"name":"线段、直线、射线","level":"locked"},{"name":"直角、锐角、钝角","level":"locked"},{"name":"平角与周角","level":"locked"}]},{"name":"分数的初步认识","level":"locked","children":[{"name":"几分之一","level":"locked"},{"name":"几分之几","level":"locked"},{"name":"同分母分数比大小","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"图形的认识与测量","level":"locked"}]}]
+  #1 [混合运算（乘加两步） | 难2 | barModel] 一共要付多少元？
+       情境: 文具店里一支钢笔6元，一个笔记本4元。小明要买3支钢笔和1个笔记本，他先在心里算  算式: 3 × 6 + 4 = ?
+  #2 [多位数乘一位数 | 难3 | barModel] 这批新书一共有多少本？
+       情境: 学校图书室新购进一批科普书，每包213本，一共进了4包。图书管理员要登记这批新书  算式: 213 × 4 = ?
+  #3 [毫米、分米和千米 | 难2 | numberLine] 3千米合多少米？
+       情境: 周末全家去郊外游玩，导航显示从家到目的地有3千米。爸爸问小明：你知道3千米是多少  算式: 3 × 1000 = ? (米)
+  #4 [线和角 | 难2 | numberLine] 平角是多少度？
+       情境: 数学课上老师用活动角演示：把角的一条边绕着顶点旋转，转出的角越来越大。转到半圈时  算式: 360 ÷ 2 = ?（平角）
+  #5 [曹冲称象的故事（质量单位） | 难3 | barModel] 这头大象重多少千克？
+       情境: 课堂上老师讲曹冲称象的故事：把大象赶上船，看船下沉到画线处；再往船上装石头，装到  算式: 500 × 6 = ?（千克）
+  #6 [分数的初步认识 | 难2 | fractionStrip] 小明吃了这块蛋糕的几分之几？（填分子）
+       情境: 妈妈把一个圆形大蛋糕平均切成8块，分给小朋友们吃。小明吃了其中3块，他想知道自己  算式: 3 / 8
+
+## 3b（三下）主题 6 题，变式 12 题
+教材单元(units): [{"name":"生活中的运动现象","level":"current","children":[{"name":"平移与旋转","level":"current"},{"name":"生活中的运动实例","level":"locked"}]},{"name":"除数是一位数的除法","level":"current","children":[{"name":"口算除法","level":"done"},{"name":"笔算除法","level":"current"},{"name":"商的位数与验算","level":"locked"}]},{"name":"长方形和正方形","level":"current","children":[{"name":"四边形与长、正方形特征","level":"done"},{"name":"周长的含义与计算","level":"current"},{"name":"周长的应用","level":"locked"}]},{"name":"图形的面积","level":"locked","children":[{"name":"面积与面积单位","level":"locked"},{"name":"长方形、正方形面积","level":"locked"},{"name":"面积单位间的进率","level":"locked"}]},{"name":"数据的收集与整理","level":"locked","children":[{"name":"收集数据","level":"locked"},{"name":"整理成统计表","level":"locked"},{"name":"分析数据","level":"locked"}]},{"name":"年、月、日的秘密（综合实践）","level":"locked","children":[{"name":"年、月、日的认识","level":"locked"},{"name":"制作活动日历","level":"locked"}]},{"name":"小数的初步认识","level":"locked","children":[{"name":"认识小数","level":"locked"},{"name":"简单的小数加减法","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"图形的认识与测量","level":"locked"}]}]
+  #1 [除数是一位数的除法 | 难2 | barModel] 每个盒子装几颗草莓？
+       情境: 妈妈买了96颗新鲜的草莓，要平均装进4个盒子里，准备送给邻居品尝。小红帮忙分装，  算式: 96 ÷ 4 = ?
+  #2 [长方形和正方形的周长 | 难2 | geometry] 花坛的周长是多少米？
+       情境: 社区要在花园里修一个长方形花坛，长8米、宽5米。工人师傅要在花坛四周围上一圈栅栏  算式: (8 + 5) × 2 = ?
+  #3 [小数的初步认识 | 难2 | numberLine] 买铅笔和橡皮一共多少元？
+       情境: 文具店里一支铅笔2.5元，一块橡皮1.3元。小亮想买这两样文具，他从存钱罐取出零  算式: 2.5 + 1.3 = ?
+  #4 [图形的面积 | 难2 | geometry] 菜地的面积是多少平方米？
+       情境: 爷爷在院子里开垦了一块长方形菜地，长6米、宽4米。他要在菜地里种上青菜，想先算算  算式: 6 × 4 = ?
+  #5 [年、月、日的秘密 | 难2 | numberBond] 每个季节大约有几个月？
+       情境: 一年有12个月，分成了春、夏、秋、冬四个季节。老师让同学们算一算每个季节大约有几  算式: 12 ÷ 4 = ?
+  #6 [数据的收集与整理 | 难2 | barModel] 喜欢读书和画画的共有多少人？
+       情境: 老师调查了三(1)班同学最喜欢的课外活动，把结果整理成统计表：读书14人、踢球9  算式: 14 + 12 = ?
+
+## 4a（四上）主题 6 题，变式 12 题
+教材单元(units): [{"name":"万以上数的认识","level":"current","children":[{"name":"亿以内数的认识","level":"done"},{"name":"亿以上数的认识","level":"done"},{"name":"大小比较、改写与近似数","level":"current"}]},{"name":"1亿有多大（综合实践）","level":"locked","children":[{"name":"猜想—实验—推理","level":"current"},{"name":"大数的实际感受","level":"locked"}]},{"name":"角的度量","level":"locked","children":[{"name":"线段、直线、射线","level":"current"},{"name":"角的分类（旋转定义）","level":"current"},{"name":"量角与画角","level":"locked"}]},{"name":"多位数乘两位数","level":"locked","children":[{"name":"口算乘法","level":"locked"},{"name":"笔算乘法（106×63 型）","level":"locked"},{"name":"积的变化规律","level":"locked"}]},{"name":"加法模型和乘法模型","level":"locked","children":[{"name":"加法模型：总量=分量+分量","level":"locked"},{"name":"乘法模型：单价×数量=总价","level":"locked"},{"name":"乘法模型：速度×时间=路程","level":"locked"}]},{"name":"平行四边形和梯形","level":"locked","children":[{"name":"平行与垂直","level":"locked"},{"name":"平行四边形与梯形的特征","level":"locked"},{"name":"四边形的关系","level":"locked"}]},{"name":"条形统计图","level":"locked","children":[{"name":"单式条形统计图","level":"locked"},{"name":"复式条形统计图","level":"locked"},{"name":"数据分析与预测","level":"locked"}]},{"name":"寻找宝藏（综合实践）","level":"locked","children":[{"name":"方向与位置","level":"locked"},{"name":"绘制藏宝图","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"数量关系","level":"locked"},{"name":"图形的认识与测量","level":"locked"},{"name":"数学广角：鸡兔同笼","level":"locked"}]}]
+  #1 [万以上数的认识 | 难3 | numberBond] 这个数是多少？
+       情境: 老师在课堂上讲大数：有一个数由3个百万和5个万组成。同学们在数位表上摆一摆，想弄  算式: 3000000 + 50000 = ?
+  #2 [多位数乘两位数 | 难3 | barModel] 一共需要多少元？
+       情境: 学校要为图书馆配一批新书，每套书106元。教务处王老师要购进63套，需要先算出总  算式: 106 × 63 = ?
+  #3 [乘法模型（单价×数量=总价） | 难2 | barModel] 一共要花多少元？（单价 × 数量 = 总价）
+       情境: 超市里每盒牛奶售价12元，妈妈买了8盒。收银员阿姨说，像"每件多少元、买了几件、  算式: 12 × 8 = ?
+  #4 [角的度量 | 难2 | numberLine] 直角是多少度？
+       情境: 数学课上老师讲到角的认识：把一根细棒绕端点旋转，转出不同的角。同学们要记住几种特  算式: 直角 = ?
+  #5 [平行四边形和梯形的特征 | 难2 | geometry] 这个平行四边形的周长是多少厘米？
+       情境: 数学课上老师拿出一个平行四边形框架，让同学们量一量边的长度：相邻的两条边分别是8  算式: (8 + 5) × 2 = ?
+  #6 [数学广角：鸡兔同笼 | 难4 | barModel] 兔子有多少只？
+       情境: 农场里有鸡和兔子关在一起，数一数头共有10个，脚共有28只。饲养员想算出鸡和兔子  算式: (28 - 10×2) ÷ (4 - 2) = ?
+
+## 4b（四下）主题 6 题，变式 12 题
+教材单元(units): [{"name":"除数是两位数的除法","level":"current","children":[{"name":"口算除法","level":"current"},{"name":"笔算除法与试商","level":"current"},{"name":"商的变化规律","level":"locked"}]},{"name":"混合运算和运算律","level":"current","children":[{"name":"四则混合运算顺序","level":"done"},{"name":"加法、乘法运算律","level":"current"},{"name":"简便运算","level":"locked"}]},{"name":"三角形","level":"locked","children":[{"name":"三角形的特性","level":"locked"},{"name":"三角形的分类","level":"locked"},{"name":"三角形的内角和","level":"locked"}]},{"name":"小数的认识","level":"locked","children":[{"name":"小数的意义","level":"locked"},{"name":"小数的性质","level":"locked"},{"name":"小数点移动与单位换算","level":"locked"}]},{"name":"小数的加法和减法","level":"locked","children":[{"name":"小数加减法","level":"locked"},{"name":"小数加减混合运算","level":"locked"}]},{"name":"平均数","level":"locked","children":[{"name":"平均数的意义","level":"locked"},{"name":"求平均数","level":"locked"},{"name":"用平均数分析数据","level":"locked"}]},{"name":"制订旅游计划（综合实践）","level":"locked","children":[{"name":"收集信息与预算","level":"locked"},{"name":"方案设计与优化","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"数量关系","level":"locked"},{"name":"图形的认识与测量","level":"locked"}]}]
+  #1 [混合运算和运算律 | 难3 | barModel] 25×37×4简便计算的结果是多少？
+       情境: 老师带同学们用简便方法算乘法：25×37×4这道题，聪明的小美发现先算哪两个数会  算式: 25 × 4 × 37 = ?
+  #2 [小数的认识 | 难2 | fractionStrip] 3段是整根彩带的几分之几？也就是零点几？
+       情境: 小红用一根1米长的彩带做手工，她把彩带平均剪成10段，取其中3段来折花。她想知道  算式: 3 / 10 = 0.?
+  #3 [三角形的内角和 | 难2 | numberBond] 第三个内角是多少度？
+       情境: 美术课上同学们量出一个三角形的两个内角分别是50°和60°。老师说，无论什么形状  算式: 180 - 50 - 60 = ?
+  #4 [小数的加法和减法 | 难2 | numberLine] 爸爸的身高是多少米？
+       情境: 小亮的身高是1.45米，爸爸比他高0.35米。爸爸常说"你要多吃蔬菜才能长高"，  算式: 1.45 + 0.35 = ?
+  #5 [平均数 | 难3 | numberBond] 小刚5次小测的平均分是多少？
+       情境: 小刚这学期参加了5次数学小测，成绩分别是28、30、32、29、31分。妈妈问他  算式: (28+30+32+29+31) ÷ 5 = ?
+  #6 [除数是两位数的除法 | 难3 | barModel] 每个班分到多少本？
+       情境: 学校买来576本练习本，要平均分给18个班。后勤老师要先算出每班分到多少本，再安  算式: 576 ÷ 18 = ?
+
+## 5a（五上）主题 6 题，变式 12 题
+教材单元(units): [{"name":"观察简单组合体","level":"current","children":[{"name":"从不同方向观察组合体","level":"current"},{"name":"根据视图搭立体图形","level":"locked"}]},{"name":"小数乘法","level":"current","children":[{"name":"小数乘整数","level":"done"},{"name":"小数乘小数","level":"current"},{"name":"积的近似数与估算","level":"locked"}]},{"name":"小数除法","level":"locked","children":[{"name":"除数是整数的小数除法","level":"locked"},{"name":"一个数除以小数","level":"locked"},{"name":"循环小数与近似商","level":"locked"}]},{"name":"图形的运动","level":"locked","children":[{"name":"轴对称","level":"locked"},{"name":"平移","level":"locked"},{"name":"旋转","level":"locked"}]},{"name":"用字母表示数和数量关系","level":"locked","children":[{"name":"用字母表示数","level":"locked"},{"name":"表示数量关系","level":"locked"},{"name":"代入求值","level":"locked"}]},{"name":"多边形的面积","level":"locked","children":[{"name":"底和高的认识","level":"locked"},{"name":"平行四边形、三角形、梯形的面积","level":"locked"},{"name":"组合图形的面积","level":"locked"}]},{"name":"有趣的密铺（综合实践）","level":"locked","children":[{"name":"密铺的条件","level":"locked"},{"name":"设计密铺图案","level":"locked"}]},{"name":"可能性","level":"locked","children":[{"name":"可能性的大小","level":"locked"},{"name":"游戏公平性","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"数量关系","level":"locked"},{"name":"图形的位置与测量","level":"locked"},{"name":"数学广角：植树问题","level":"locked"}]}]
+  #1 [小数乘法 | 难2 | barModel] 买4瓶牛奶共多少元？
+       情境: 超市里一瓶牛奶售价2.5元，小明帮家里买4瓶。他从钱包里拿出零钱，想先算算一共要  算式: 2.5 × 4 = ?
+  #2 [小数除法 | 难2 | numberLine] 每段绳子长多少米？
+       情境: 一根绳子长7.5米，小红要把它平均剪成3段，用来扎3束花。她拿出剪刀前先算每段应  算式: 7.5 ÷ 3 = ?
+  #3 [用字母表示数和数量关系 | 难3 | barModel] 当 a = 12 时，一共要付多少元？
+       情境: 文具店里的笔记本每本 a 元，小明买了5本。老师说：总价可以用 a×5 来表示，  算式: 5a = 5 × 12 = ?
+  #4 [多边形的面积·三角形 | 难3 | geometry] 三角形花圃的面积是多少平方米？
+       情境: 学校有一块三角形花圃，底是10米，高是6米。园丁要在花圃里种月季花，需要先算花圃  算式: 10 × 6 ÷ 2 = ?
+  #5 [多边形的面积·平行四边形 | 难2 | geometry] 平行四边形草坪的面积是多少平方米？
+       情境: 社区有一块平行四边形草坪，底是8米，高是5米。物业要在草坪周围修小路，先要算草坪  算式: 8 × 5 = ?
+  #6 [数学广角：植树问题 | 难3 | numberLine] 一共要栽多少棵树？
+       情境: 园林工人要在一条长20米的小路一侧植树，每隔5米栽一棵，两端都要栽树。小明帮工人  算式: 20 ÷ 5 + 1 = ?
+
+## 5b（五下）主题 6 题，变式 12 题
+教材单元(units): [{"name":"因数和倍数","level":"current","children":[{"name":"因数与倍数","level":"done"},{"name":"2、5、3 的倍数特征","level":"current"},{"name":"质数与合数","level":"locked"}]},{"name":"分数的认识","level":"locked","children":[{"name":"分数的意义","level":"locked"},{"name":"分数与除法","level":"locked"},{"name":"分数的基本性质","level":"locked"}]},{"name":"分数的加法和减法","level":"locked","children":[{"name":"同分母分数加减","level":"locked"},{"name":"异分母分数加减","level":"locked"},{"name":"分数加减混合","level":"locked"}]},{"name":"长方体和正方体","level":"locked","children":[{"name":"长方体的认识","level":"locked"},{"name":"表面积","level":"locked"},{"name":"体积与容积","level":"locked"}]},{"name":"度量衡的故事（综合实践）","level":"locked","children":[{"name":"古代长度、容量、质量单位","level":"locked"},{"name":"单位换算与换算思想","level":"locked"}]},{"name":"折线统计图","level":"locked","children":[{"name":"单式折线统计图","level":"locked"},{"name":"复式折线统计图","level":"locked"},{"name":"数据分析与预测","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"图形的认识与测量","level":"locked"},{"name":"数据的收集与表达","level":"locked"}]}]
+  #1 [因数和倍数 | 难3 | numberBond] 12的所有因数的和是多少？
+       情境: 老师在黑板上写了一个数12，让同学们找出它所有的因数。小红把因数都写在卡片上，又  算式: 1+2+3+4+6+12 = ?
+  #2 [长方体和正方体的体积 | 难3 | barModel] 鱼缸能装多少升水？
+       情境: 爸爸买了一个长方体鱼缸，长5分米、宽4分米、高3分米。他想往鱼缸里放满水养金鱼，  算式: 5 × 4 × 3 = ?
+  #3 [分数的认识 | 难2 | fractionStrip] 3份是整根彩带的几分之几？（填分子）
+       情境: 妈妈把一根彩带平均分成4份，取其中3份用来包装礼物。小芳想知道这3份是整根彩带的  算式: 3 / 4
+  #4 [分数的加法和减法 | 难3 | numberLine] 两次一共用了多少米丝带？（结果填分子，化为最简分数）
+       情境: 小红做手工，第一次用了1/3米的丝带，第二次用了1/6米的丝带。她想知道两次一共  算式: 1/3 + 1/6 = ?
+  #5 [折线统计图 | 难2 | numberLine] 哪一天体温最高？最高是多少℃？
+       情境: 小亮这一周每天早晨测量体温，分别是36.5℃、37℃、38℃、37.5℃、36.  算式: 最高体温 = ?
+  #6 [度量衡的故事（单位换算） | 难2 | numberLine] 3尺大约是多少厘米？
+       情境: "度量衡的故事"课堂上，老师讲古代的长度单位：一尺大约相当于现在的23厘米。同学  算式: 23 × 3 = ?
+
+## 6a（六上）主题 6 题，变式 12 题
+教材单元(units): [{"name":"确定位置","level":"current","children":[{"name":"用有序数对确定位置","level":"current"},{"name":"用方向和距离确定位置","level":"current"},{"name":"生活中的定位应用","level":"locked"}]},{"name":"分数乘法","level":"current","children":[{"name":"分数乘整数","level":"done"},{"name":"分数乘分数","level":"current"},{"name":"分数、小数混合与运算律","level":"locked"}]},{"name":"分数除法","level":"locked","children":[{"name":"倒数的认识","level":"locked"},{"name":"分数除以整数、除以分数","level":"locked"},{"name":"利用抽象\"1\"解决问题","level":"locked"}]},{"name":"生活中的负数（综合实践）","level":"locked","children":[{"name":"寻找负数","level":"locked"},{"name":"认识负数","level":"locked"},{"name":"应用负数","level":"locked"}]},{"name":"圆","level":"locked","children":[{"name":"圆和扇形的认识","level":"locked"},{"name":"圆的周长","level":"locked"},{"name":"圆的面积（数格子推导）","level":"locked"}]},{"name":"体育中的数学（综合实践）","level":"locked","children":[{"name":"选择体育问题","level":"locked"},{"name":"收集分析数据","level":"locked"},{"name":"交流分享","level":"locked"}]},{"name":"百分数","level":"locked","children":[{"name":"百分数的意义","level":"locked"},{"name":"百分数与分数、小数的互化","level":"locked"},{"name":"求百分率、折扣与利率","level":"locked"}]},{"name":"水是生命之源（综合实践）","level":"locked","children":[{"name":"状况调查","level":"locked"},{"name":"方案设计","level":"locked"},{"name":"交流展示","level":"locked"}]},{"name":"复习与关联","level":"locked","children":[{"name":"数与运算","level":"locked"},{"name":"图形的认识与测量","level":"locked"},{"name":"数据的收集与表达","level":"locked"},{"name":"数学广角：鸽巢问题","level":"locked"}]}]
+  #1 [分数乘法 | 难3 | fractionStrip] 小明家一共喝了多少瓶果汁？
+       情境: 超市促销，一箱果汁有8瓶。小明家喝了这箱果汁的3/4，他想算一算一共喝了多少瓶。  算式: 8 × 3/4 = ?
+  #2 [分数除法 | 难3 | numberLine] 这根绳子全长多少米？
+       情境: 一根绳子的1/3是2米。小红好奇这根绳子原来全长是多少米，她想用除法算出来。  算式: 2 ÷ 1/3 = ?
+  #3 [确定位置（有序数对） | 难2 | numberBond] 小亮的座位用数对表示，列数是几？
+       情境: 电影院里的座位用有序数对表示，(3,5) 表示第3列第5行。小红坐在 (4,2)  算式: 4 + 3 = ?（列）
+  #4 [圆的周长 | 难3 | geometry] 花坛的周长是多少米？
+       情境: 公园里有一个圆形花坛，半径是5米。园丁要在花坛边缘围上一圈彩灯，要算彩灯有多长。  算式: 2 × 3.14 × 5 = ?
+  #5 [百分数 | 难3 | barModel] 打折后现价多少元？
+       情境: 商场里一件衣服原价200元，国庆节打八折出售。妈妈想给小亮买这件衣服，要算算打折  算式: 200 × 80% = ?
+  #6 [生活中的负数 | 难2 | numberLine] 这一天的温差是多少℃？
+       情境: 冬天北方很冷，某天的最低气温降到零下5℃，最高气温是3℃。小红看天气预报，想知道  算式: 3 - (-5) = ?
+
+## 6b（六下）主题 6 题，变式 12 题
+教材单元(units): [{"name":"比和比例关系","level":"current","children":[{"name":"比的意义与基本性质","level":"current"},{"name":"比例的意义与基本性质","level":"current"},{"name":"正反比例、比例尺","level":"locked"}]},{"name":"扇形统计图","level":"locked","children":[{"name":"扇形统计图的认识","level":"locked"},{"name":"从扇形图读信息与决策","level":"locked"}]},{"name":"圆柱和圆锥","level":"locked","children":[{"name":"圆柱的认识与表面积","level":"locked"},{"name":"圆柱的体积","level":"locked"},{"name":"圆锥的体积","level":"locked"}]},{"name":"有趣的平衡（综合实践）","level":"locked","children":[{"name":"杠杆平衡的条件","level":"locked"},{"name":"反比例关系的初步体验","level":"locked"}]},{"name":"校园平面图（综合实践）","level":"locked","children":[{"name":"测量与比例尺应用","level":"locked"},{"name":"绘制平面图","level":"locked"}]},{"name":"营养午餐（综合实践）","level":"locked","children":[{"name":"热量与营养搭配","level":"locked"},{"name":"方案设计","level":"locked"}]},{"name":"总复习","level":"locked","children":[{"name":"数与代数","level":"locked"},{"name":"图形与几何","level":"locked"},{"name":"统计与概率","level":"locked"},{"name":"综合与实践","level":"locked"}]}]
+  #1 [比和比例关系 | 难3 | numberBond] 男女生人数比化简后，前项与后项之和是多少？
+       情境: 六(1)班男生12人，女生18人。老师让同学们写出男女生人数比，并化成最简整数比  算式: 12 : 18 = 2 : 3，2 + 3 = ?
+  #2 [圆柱的体积 | 难4 | geometry] 水杯的体积是多少立方厘米？
+       情境: 小亮有一个圆柱形水杯，底面半径3厘米，高10厘米。他想知道这个水杯能装多少毫升水  算式: 3.14 × 3² × 10 = ?
+  #3 [圆锥的体积 | 难4 | geometry] 圆锥的体积是多少立方厘米？
+       情境: 手工课上，小芳用橡皮泥捏了一个圆锥，底面半径3厘米，高10厘米。她想知道这个圆锥  算式: 3.14 × 3² × 10 ÷ 3 = ?
+  #4 [比例尺 | 难3 | numberLine] 两地实际距离是多少千米？
+       情境: 地图上比例尺是1:100000，小红量得地图上两地的距离是3厘米。她想算出实际距  算式: 3 × 100000 = ? (cm) = ? km
+  #5 [扇形统计图 | 难2 | barModel] 喜欢足球的比篮球多几人？
+       情境: 老师调查了40名同学最喜欢的运动：足球12人，篮球10人，乒乓球8人，其他10人  算式: 12 - 10 = ?
+  #6 [有趣的平衡（反比例） | 难4 | numberBond] 右边距离支点3格处应挂几个钩码？
+       情境: 科学课上做杠杆平衡实验：左边距离支点2格处挂3个钩码。老师说，要让杠杆平衡，两边  算式: 3 × 2 ÷ 3 = ?

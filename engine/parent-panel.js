@@ -46,7 +46,7 @@ window.ParentPanel = {
         </div>
       </div>
       <div style="text-align:center;margin-top:18px">
-        <button onclick="ParentPanel._save()" style="padding:12px 32px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:#fff;border:none;border-radius:22px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(0,168,150,.3)">保存设置</button>
+        <button onclick="ParentPanel._save()" style="padding:12px 32px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:#fff;border:none;border-radius:22px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(37,112,232,.3)">保存设置</button>
       </div>
     </div>`;
   },

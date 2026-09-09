@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#00A896">
+<meta name="theme-color" content="#2570E8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="奇趣学园">
@@ -42,12 +42,12 @@ body::before{
   background-image:var(--bg-noise);
   background-size:200px 200px;
   mix-blend-mode:multiply;
-  opacity:.6;pointer-events:none;
+  opacity:.3;pointer-events:none;
 }
 /* 流动的高光装饰 */
 body::after{
   content:'';position:fixed;top:-20%;left:40%;width:60vw;height:60vw;z-index:-1;pointer-events:none;
-  background:radial-gradient(circle,rgba(47,209,174,.09) 0%,transparent 60%);
+  background:radial-gradient(circle,rgba(37,112,232,.10) 0%,transparent 60%);
   animation:bgFloat 18s var(--ease-smooth) infinite alternate;
   filter:blur(40px);
 }
@@ -66,7 +66,7 @@ input,textarea{font-family:inherit}
 /* 顶部导航 */
 .top-bar{position:sticky;top:0;z-index:100;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid rgba(30,58,95,.08);padding:0 28px;display:flex;align-items:center;height:72px}
 .logo{display:flex;align-items:center;gap:12px;margin-right:32px;flex-shrink:0}
-.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,168,150,.32)}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(37,112,232,.32)}
 .logo-mark svg{width:24px;height:24px;fill:white}
 .logo-text{font-weight:900;font-size:18px;color:var(--navy);letter-spacing:-.4px}
 .logo-text span{color:var(--teal)}
@@ -99,7 +99,7 @@ input,textarea{font-family:inherit}
 .card.hoverable:hover{box-shadow:var(--card-shadow-hover);transform:translateY(-2px)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;font-weight:600;font-size:14px;transition:all .2s;border:1px solid transparent}
 .btn-primary{background:var(--teal);color:white}
-.btn-primary:hover{background:var(--teal-light);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,168,150,.3)}
+.btn-primary:hover{background:var(--teal-light);transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,112,232,.3)}
 .btn-yellow{background:var(--yellow);color:var(--navy)}
 .btn-ghost{background:white;color:var(--navy);border-color:rgba(30,58,95,.12)}
 .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
@@ -112,7 +112,7 @@ input,textarea{font-family:inherit}
 .grade-pills{display:flex;gap:8px;flex-wrap:wrap}
 .grade-pill{padding:8px 18px;border-radius:20px;background:white;border:1.5px solid rgba(30,58,95,.12);font-size:14px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .2s}
 .grade-pill:hover{border-color:var(--teal);color:var(--teal)}
-.grade-pill.active{background:var(--teal);color:white;border-color:var(--teal);box-shadow:0 4px 12px rgba(0,168,150,.25)}
+.grade-pill.active{background:var(--teal);color:white;border-color:var(--teal);box-shadow:0 4px 12px rgba(37,112,232,.25)}
 
 /* 子Tab */
 .sub-tabs{display:flex;gap:6px;margin-bottom:20px;background:white;border-radius:var(--radius-md);padding:6px;box-shadow:0 2px 12px rgba(30,58,95,.05);overflow-x:auto}
@@ -134,7 +134,7 @@ input,textarea{font-family:inherit}
 .streak-cell{flex:1;height:6px;border-radius:3px;background:#E5E7EB}
 .streak-cell.done{background:var(--yellow)}
 .pet-status-area{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.pet-mini{width:88px;height:88px;border-radius:50%;overflow:hidden;border:3px solid var(--teal);box-shadow:0 4px 12px rgba(0,168,150,.2)}
+.pet-mini{width:88px;height:88px;border-radius:50%;overflow:hidden;border:3px solid var(--teal);box-shadow:0 4px 12px rgba(37,112,232,.2)}
 .pet-mini img{width:100%;height:100%;object-fit:cover}
 .status-rings{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ring-stat{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--teal-soft);border-radius:10px;padding:6px}
@@ -142,7 +142,7 @@ input,textarea{font-family:inherit}
 .ring-stat-val{font-size:16px;font-weight:800;color:var(--teal)}
 .task-list{display:flex;flex-direction:column;gap:8px}
 .task-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:var(--teal-soft);cursor:pointer;transition:all .2s;border:1px solid transparent}
-.task-item:hover{background:rgba(0,168,150,.12);border-color:rgba(0,168,150,.25)}
+.task-item:hover{background:rgba(37,112,232,.12);border-color:rgba(37,112,232,.25)}
 .task-thumb{width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:white}
 .task-thumb svg{width:22px;height:22px;fill:var(--teal)}
 .task-info{flex:1;min-width:0}
@@ -170,7 +170,7 @@ input,textarea{font-family:inherit}
 .tasks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .task-card{background:white;border-radius:var(--radius-lg);padding:18px;box-shadow:var(--card-shadow);display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:all .25s;border:2px solid transparent}
 .task-card:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover);border-color:var(--teal-soft)}
-.task-card.done{border-color:rgba(0,168,150,.3);background:linear-gradient(135deg,#fff,rgba(0,168,150,.03))}
+.task-card.done{border-color:rgba(37,112,232,.3);background:linear-gradient(135deg,#fff,rgba(37,112,232,.03))}
 .task-card-thumb{width:64px;height:64px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .task-card-thumb.math{background:linear-gradient(135deg,#00A896,#14C3B2)}
 .task-card-thumb.eng{background:linear-gradient(135deg,#F5B800,#FFD14D)}
@@ -206,7 +206,7 @@ input,textarea{font-family:inherit}
 .cpa-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px}
 .cpa-desc{font-size:13px;color:var(--text-2);margin-bottom:16px;line-height:1.7}
 
-.concrete-demo{display:flex;align-items:center;justify-content:center;gap:24px;padding:20px;background:linear-gradient(135deg,rgba(0,168,150,.04),rgba(245,184,0,.04));border-radius:14px;flex-wrap:wrap}
+.concrete-demo{display:flex;align-items:center;justify-content:center;gap:24px;padding:20px;background:linear-gradient(135deg,rgba(37,112,232,.04),rgba(245,184,0,.04));border-radius:14px;flex-wrap:wrap}
 .apple-group{display:flex;flex-direction:column;align-items:center;gap:8px}
 .apples{display:flex;gap:6px;min-height:60px;align-items:center;flex-wrap:wrap;justify-content:center;min-width:80px}
 .apple{width:36px;height:36px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
@@ -215,7 +215,7 @@ input,textarea{font-family:inherit}
 .apple-controls{display:flex;gap:8px;margin-top:8px}
 .apple-controls button{padding:6px 10px;font-size:12px;background:var(--teal);color:white;border-radius:8px}
 
-.bar-model{padding:18px;background:linear-gradient(135deg,rgba(0,168,150,.05),rgba(245,184,0,.05));border-radius:14px}
+.bar-model{padding:18px;background:linear-gradient(135deg,rgba(37,112,232,.05),rgba(245,184,0,.05));border-radius:14px}
 .bar-model-q{font-size:14px;color:var(--navy);margin-bottom:14px;font-weight:600;line-height:1.6}
 .bm-row{display:flex;align-items:center;gap:6px;margin-bottom:10px}
 .bm-label{width:70px;font-size:12px;color:var(--text-2);font-weight:600;flex-shrink:0}
@@ -230,7 +230,7 @@ input,textarea{font-family:inherit}
 .bond-demo{display:flex;justify-content:center;padding:20px}
 .bond-svg{max-width:280px}
 
-.area-model{padding:18px;background:linear-gradient(135deg,rgba(0,168,150,.05),rgba(245,184,0,.05));border-radius:14px}
+.area-model{padding:18px;background:linear-gradient(135deg,rgba(37,112,232,.05),rgba(245,184,0,.05));border-radius:14px}
 .area-q{font-size:14px;color:var(--navy);margin-bottom:14px;font-weight:600}
 .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;max-width:300px;margin:0 auto 12px}
 .area-cell{padding:16px 10px;border-radius:8px;color:white;font-weight:700;text-align:center;font-size:13px}
@@ -250,7 +250,7 @@ input,textarea{font-family:inherit}
 .frac-seg.c3{background:#E8A0BF}
 .frac-seg.c4{background:#FB923C}
 
-.word-problem{padding:18px;background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(0,168,150,.05));border-radius:14px}
+.word-problem{padding:18px;background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(37,112,232,.05));border-radius:14px}
 .wp-q{font-size:14px;color:var(--navy);font-weight:600;margin-bottom:14px;line-height:1.7}
 .wp-visual{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;padding:14px;background:white;border-radius:10px}
 .wp-step{display:flex;flex-direction:column;align-items:center;gap:4px}
@@ -279,7 +279,7 @@ input,textarea{font-family:inherit}
 .tree-dot.gray{background:#D1D5DB}
 
 /* 英语板块 */
-.eng-banner{background:linear-gradient(135deg,#F5B800 0%,#FFD14D 60%,#00A896 140%);border-radius:var(--radius-xl);padding:18px 22px;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
+.eng-banner{background:linear-gradient(135deg,#F5B800 0%,#FFD14D 60%,#2570E8 140%);border-radius:var(--radius-xl);padding:18px 22px;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
 .eng-banner h2{font-size:18px;font-weight:900;margin-bottom:4px}
 .eng-banner p{font-size:13px;opacity:.85}
 .eng-banner .progress{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.4);padding:10px 16px;border-radius:14px}
@@ -301,7 +301,7 @@ input,textarea{font-family:inherit}
 .vocab-def strong{color:var(--navy)}
 .vocab-example{font-size:12px;color:var(--text-2);background:rgba(245,184,0,.06);padding:8px 10px;border-radius:8px;border-left:3px solid var(--yellow);margin-bottom:6px;font-style:italic}
 .vocab-collocations{font-size:11px;color:var(--text-2);line-height:1.6}
-.vocab-collocations .tag{display:inline-block;background:rgba(0,168,150,.08);color:var(--teal);padding:2px 6px;border-radius:4px;margin:2px 2px 0 0;font-weight:600}
+.vocab-collocations .tag{display:inline-block;background:rgba(37,112,232,.08);color:var(--teal);padding:2px 6px;border-radius:4px;margin:2px 2px 0 0;font-weight:600}
 .vocab-syn{font-size:11px;color:var(--text-2);margin-top:6px}
 .vocab-syn strong{color:var(--coral)}
 
@@ -491,10 +491,10 @@ input,textarea{font-family:inherit}
 .letter-word{padding:2px 6px;background:var(--teal-soft);color:var(--teal);border-radius:5px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
 .letter-word:hover{background:var(--teal);color:white}
 
-.blending-box{background:linear-gradient(135deg,rgba(0,168,150,.06),rgba(245,184,0,.06));border-radius:14px;padding:20px;margin-top:16px}
+.blending-box{background:linear-gradient(135deg,rgba(37,112,232,.06),rgba(245,184,0,.06));border-radius:14px;padding:20px;margin-top:16px}
 .blending-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .blending-stage{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.blend-tile{width:60px;height:60px;border-radius:14px;background:white;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:var(--teal);font-family:'Inter',sans-serif;box-shadow:0 4px 12px rgba(0,168,150,.15);cursor:pointer;transition:all .25s}
+.blend-tile{width:60px;height:60px;border-radius:14px;background:white;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:var(--teal);font-family:'Inter',sans-serif;box-shadow:0 4px 12px rgba(37,112,232,.15);cursor:pointer;transition:all .25s}
 .blend-tile:hover{transform:scale(1.1);background:var(--teal);color:white}
 .blend-result{font-size:18px;font-weight:800;color:var(--navy);text-align:center;margin-top:8px}
 .blend-result span{color:var(--coral)}
@@ -532,7 +532,7 @@ input,textarea{font-family:inherit}
 .persona-list{display:flex;flex-direction:column;gap:12px}
 .persona-card{background:white;border-radius:var(--radius-md);padding:14px;box-shadow:var(--card-shadow);cursor:pointer;transition:all .25s;border:2px solid transparent;display:flex;gap:12px;align-items:center}
 .persona-card:hover{transform:translateY(-2px);border-color:var(--teal-soft)}
-.persona-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(0,168,150,.04))}
+.persona-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(37,112,232,.04))}
 .persona-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--teal)}
 .persona-avatar img{width:100%;height:100%;object-fit:cover}
 .persona-info{flex:1;min-width:0}
@@ -604,7 +604,7 @@ input,textarea{font-family:inherit}
 .scene-words h4{font-size:13px;color:var(--navy);font-weight:700;margin-bottom:10px}
 .scene-word-list{display:flex;flex-direction:column;gap:6px}
 .scene-word-item{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:var(--teal-soft);border-radius:8px;cursor:pointer;transition:all .15s}
-.scene-word-item:hover{background:rgba(0,168,150,.15)}
+.scene-word-item:hover{background:rgba(37,112,232,.15)}
 .scene-word-en{font-size:13px;font-weight:700;color:var(--navy);font-family:'Inter',sans-serif}
 .scene-word-zh{font-size:11px;color:var(--text-2)}
 .scene-word-item button{width:24px;height:24px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -626,7 +626,7 @@ input,textarea{font-family:inherit}
 /* 宠物 */
 .pet-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
 .pet-stage{background:linear-gradient(160deg,#0F172A 0%,#1E3A5F 50%,#2D4A70 100%);border-radius:var(--radius-xl);padding:24px;position:relative;overflow:hidden;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.pet-stage::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(0,168,150,.15),transparent 60%)}
+.pet-stage::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(37,112,232,.15),transparent 60%)}
 .pet-stage::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,white,transparent),radial-gradient(1px 1px at 80% 20%,white,transparent),radial-gradient(1px 1px at 50% 60%,white,transparent),radial-gradient(1.5px 1.5px at 30% 70%,white,transparent),radial-gradient(1px 1px at 70% 50%,white,transparent),radial-gradient(1px 1px at 10% 80%,white,transparent),radial-gradient(1px 1px at 90% 90%,white,transparent),radial-gradient(1.5px 1.5px at 60% 10%,white,transparent),radial-gradient(1px 1px at 40% 40%,white,transparent),radial-gradient(1px 1px at 85% 65%,white,transparent);background-size:200% 200%;animation:twinkle 4s ease-in-out infinite alternate;opacity:.6}
 @keyframes twinkle{from{opacity:.3}to{opacity:.7}}
 .pet-selector{position:relative;z-index:2;display:flex;gap:10px;margin-bottom:20px;background:rgba(255,255,255,.08);padding:6px;border-radius:50px;backdrop-filter:blur(10px)}
@@ -672,7 +672,7 @@ input,textarea{font-family:inherit}
 
 .achievement-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
 .achv-item{aspect-ratio:1;border-radius:10px;background:#F9FAFB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--text-2);font-weight:600;text-align:center;padding:4px}
-.achv-item.unlocked{background:linear-gradient(135deg,rgba(0,168,150,.1),rgba(245,184,0,.1));color:var(--navy)}
+.achv-item.unlocked{background:linear-gradient(135deg,rgba(37,112,232,.1),rgba(245,184,0,.1));color:var(--navy)}
 .achv-item svg{width:20px;height:20px}
 .achv-item.unlocked svg{fill:var(--yellow)}
 .achv-item.locked svg{fill:#D1D5DB}
@@ -699,7 +699,7 @@ input,textarea{font-family:inherit}
 .spell-word-display{display:flex;gap:8px;justify-content:center;align-items:center;min-height:64px;margin:24px 0;flex-wrap:wrap}
 .spell-slot{width:44px;height:52px;border:2px dashed var(--ink-200);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--navy);font-family:'Inter',sans-serif;transition:all .2s;cursor:pointer}
 .spell-slot.filled{border-style:solid;border-color:var(--teal);background:var(--teal-soft);animation:slotPop .2s ease}
-.spell-slot.correct{border-color:var(--teal);background:rgba(0,168,150,.2);color:var(--teal)}
+.spell-slot.correct{border-color:var(--teal);background:rgba(37,112,232,.2);color:var(--teal)}
 .spell-slot.wrong{border-color:#EF4444;background:rgba(239,68,68,.1);color:#EF4444}
 @keyframes slotPop{0%{transform:scale(.8)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
 .spell-letters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px 0}
@@ -721,7 +721,7 @@ input,textarea{font-family:inherit}
 .challenge-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
 .challenge-opt{padding:16px;border-radius:14px;border:2px solid var(--ink-200);background:white;cursor:pointer;font-size:16px;font-weight:700;color:var(--navy);transition:all .2s;text-align:center}
 .challenge-opt:hover{border-color:var(--teal);background:var(--teal-soft)}
-.challenge-opt.correct{border-color:var(--teal);background:rgba(0,168,150,.15);color:var(--teal)}
+.challenge-opt.correct{border-color:var(--teal);background:rgba(37,112,232,.15);color:var(--teal)}
 .challenge-opt.wrong{border-color:#EF4444;background:rgba(239,68,68,.1);color:#EF4444}
 .challenge-opt.disabled{pointer-events:none;opacity:.6}
 .challenge-progress{display:flex;gap:4px;margin-bottom:16px}
@@ -812,7 +812,7 @@ input,textarea{font-family:inherit}
 .listen-input input:focus{border-color:var(--teal)}
 .answer-wrap{margin-top:16px;padding:14px;border-radius:10px;display:none}
 .answer-wrap.show{display:block}
-.answer-wrap.correct{background:rgba(0,168,150,.1);border:1px solid var(--teal)}
+.answer-wrap.correct{background:rgba(37,112,232,.1);border:1px solid var(--teal)}
 .answer-wrap.wrong{background:rgba(239,68,68,.1);border:1px solid #EF4444}
 .answer-wrap p{font-size:13px;color:var(--navy);line-height:1.6}
 .math-stage-host{background:white;border-radius:var(--radius-xl);padding:24px;box-shadow:var(--card-shadow);margin-bottom:16px;min-height:200px}
@@ -823,7 +823,7 @@ input,textarea{font-family:inherit}
 .stage-choice{padding:14px 18px;border:2px solid var(--ink-200);border-radius:12px;cursor:pointer;font-size:15px;font-weight:600;color:var(--navy);transition:all .2s;background:white;text-align:left;display:flex;align-items:center;gap:10px}
 .stage-choice:hover{border-color:var(--teal);background:var(--teal-soft)}
 .stage-choice .choice-letter{width:28px;height:28px;border-radius:50%;background:var(--ink-100);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--ink-600);flex-shrink:0}
-.stage-choice.correct{border-color:var(--teal);background:rgba(0,168,150,.1);color:var(--teal)}
+.stage-choice.correct{border-color:var(--teal);background:rgba(37,112,232,.1);color:var(--teal)}
 .stage-choice.correct .choice-letter{background:var(--teal);color:white}
 .stage-choice.wrong{border-color:#EF4444;background:rgba(239,68,68,.1);color:#EF4444}
 .stage-choice.wrong .choice-letter{background:#EF4444;color:white}
@@ -1256,7 +1256,7 @@ body::before{opacity:.35;mix-blend-mode:multiply}
 <div id="loading-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;">
   <div style="font-size:18px;font-weight:700;color:#1E3A5F;margin-bottom:20px;">🦉 奇趣学园加载中...</div>
   <div style="width:300px;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;">
-    <div id="loading-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#00A896,#F5B800);transition:width 0.3s;"></div>
+    <div id="loading-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#2570E8,#F5B800);transition:width 0.3s;"></div>
   </div>
   <div id="loading-status" style="margin-top:12px;font-size:13px;color:#64748b;">初始化中...</div>
 </div>
@@ -1277,6 +1277,7 @@ body::before{opacity:.35;mix-blend-mode:multiply}
       </nav>
       <div class="top-bar-right">
         <button class="icon-btn mic" id="micToggle" title="语音开关"><span class="em">🎙️</span></button>
+        <button class="parent-btn" id="installBtn" title="安装到桌面 / 平板，离线也能用" style="display:none"><span class="em">📲</span><span>安装</span></button>
         <button class="parent-btn" id="parentBtn"><span class="em">👪</span><span>家长面板</span></button>
       </div>
     </header>
@@ -1515,7 +1516,7 @@ var MATH_CHAINS = [
 // === 数学CPA数据 ===
 var MATH_BY_GRADE = {
   "3a": {
-    "title": "三年级上册·万以内加减法与时分秒",
+    "title": "三年级上册·混合运算与多位数乘一位数",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 72,
     "units": [
@@ -1949,7 +1950,7 @@ var MATH_BY_GRADE = {
     ]
   },
   "3b": {
-    "title": "三年级下册·除法与两位数乘法",
+    "title": "三年级下册·除数是一位数的除法与面积",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 65,
     "units": [
@@ -2361,7 +2362,7 @@ var MATH_BY_GRADE = {
     ]
   },
   "4a": {
-    "title": "四年级上册·大数认识与三位数乘两位数",
+    "title": "四年级上册·万以上数的认识与多位数乘两位数",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 55,
     "units": [
@@ -2799,7 +2800,7 @@ var MATH_BY_GRADE = {
     ]
   },
   "4b": {
-    "title": "四年级下册·运算定律与小数加减法",
+    "title": "四年级下册·运算律与小数加减法",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 48,
     "units": [
@@ -3234,7 +3235,7 @@ var MATH_BY_GRADE = {
     ]
   },
   "5a": {
-    "title": "五年级上册·小数乘除法与多边形面积",
+    "title": "五年级上册·小数乘除法与多边形的面积",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 42,
     "units": [
@@ -4137,7 +4138,7 @@ var MATH_BY_GRADE = {
     ]
   },
   "6a": {
-    "title": "六年级上册·分数乘除法与圆",
+    "title": "六年级上册·分数乘除法、百分数与圆",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 30,
     "units": [
@@ -4578,7 +4579,7 @@ var MATH_BY_GRADE = {
     ]
   },
   "6b": {
-    "title": "六年级下册·比例与圆柱圆锥",
+    "title": "六年级下册·比和比例关系与圆柱圆锥",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 25,
     "units": [
@@ -5878,7 +5879,7 @@ const ProgressTracker = {
           <div style="font-size:12px">${repeatedHtml}</div>
         </div>
       </div>
-      ${r.engV5Stats ? '<div style="background:linear-gradient(135deg,rgba(0,168,150,.06),rgba(245,184,0,.06));border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px"><div style="font-size:12px;color:var(--text-3);margin-bottom:8px">📚 英语 V5 板块进度</div><div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text-2)"><span>板块完成 <b style="color:var(--teal)">' + r.engV5Stats.completed + '/' + r.engV5Stats.totalBoards + '</b></span><span>🎧 听力⭐' + r.engV5Stats.listenStars + '</span><span>🏃 TPR ' + r.engV5Stats.tprLevels + '</span><span>📖 绘本 ' + r.engV5Stats.booksRead + '</span><span>📝 句型 ' + r.engV5Stats.sentencePatterns + '</span><span>📓 生词本 ' + r.engV5Stats.notebookSize + '</span>' + (r.engV5Stats.repeatAvg ? '<span>🎤 跟读均分 ' + r.engV5Stats.repeatAvg + '</span>' : '') + '</div></div>' : ''}
+      ${r.engV5Stats ? '<div style="background:linear-gradient(135deg,rgba(37,112,232,.06),rgba(245,184,0,.06));border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px"><div style="font-size:12px;color:var(--text-3);margin-bottom:8px">📚 英语 V5 板块进度</div><div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text-2)"><span>板块完成 <b style="color:var(--teal)">' + r.engV5Stats.completed + '/' + r.engV5Stats.totalBoards + '</b></span><span>🎧 听力⭐' + r.engV5Stats.listenStars + '</span><span>🏃 TPR ' + r.engV5Stats.tprLevels + '</span><span>📖 绘本 ' + r.engV5Stats.booksRead + '</span><span>📝 句型 ' + r.engV5Stats.sentencePatterns + '</span><span>📓 生词本 ' + r.engV5Stats.notebookSize + '</span>' + (r.engV5Stats.repeatAvg ? '<span>🎤 跟读均分 ' + r.engV5Stats.repeatAvg + '</span>' : '') + '</div></div>' : ''}
       <div style="background:linear-gradient(135deg,var(--navy-50),var(--teal-50));border-radius:var(--radius-md);padding:12px 14px">
         <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px">🎯 下周建议</div>
         <ul style="margin:0;padding-left:18px">${suggestHtml}</ul>
@@ -7018,12 +7019,12 @@ function initOverviewCharts(){
           radius:'62%', center:['50%','55%'],
           axisName:{color:'#64748B',fontSize:9.5},
           splitLine:{lineStyle:{color:'#E2E8F0'}},
-          splitArea:{areaStyle:{color:['rgba(0,168,150,0.04)','rgba(0,168,150,0.02)']}},
+          splitArea:{areaStyle:{color:['rgba(37,112,232,0.04)','rgba(37,112,232,0.02)']}},
           axisLine:{lineStyle:{color:'#E2E8F0'}}
         },
         series:[{
           type:'radar',
-          data:[{value:rVals, name:'掌握度', areaStyle:{color:'rgba(0,168,150,0.25)'}, lineStyle:{color:'#00A896',width:2}, itemStyle:{color:'#00A896'}}]
+          data:[{value:rVals, name:'掌握度', areaStyle:{color:'rgba(37,112,232,0.25)'}, lineStyle:{color:'#00A896',width:2}, itemStyle:{color:'#00A896'}}]
         }]
       });
     }
@@ -7044,7 +7045,11 @@ function initOverviewCharts(){
 // 出题适配器：MathKernel 动态生成 → 适配 MathFlowV5 所需字段
 // 关键保证：题面(formula/question)与提示阶梯 hints[0..1]（L1/L2）永不含答案；
 // 答案仅在 hints[2]（L3 揭示步）与提交反馈中才出现。旧渲染器(MathVisualV5)作 visual 兜底。
-function _genMathProblemKernel(){
+// 2026-09 修复：旧版不传年级，内核内部硬编码 '3a' → 2–6 年级拿到同一套三年级题。
+function _genMathProblemKernel(semKey){
+  if(semKey && window.MathKernel && typeof window.MathKernel.setGrade==='function'){
+    try{ window.MathKernel.setGrade(semKey); }catch(e){}
+  }
   const inst = MathKernel.generate();           // 随机题型 + 难度自适应
   return {
     topic: inst.topic,
@@ -7061,20 +7066,118 @@ function _genMathProblemKernel(){
     hintL2: (inst.hints && inst.hints[1]) || '',    // L2（无答案）
     reveal: (inst.hints && inst.hints[2]) || '',    // L3 揭示（含答案，仅提交后展示）
     difficulty: ['easy','medium','hard'][(inst.level||1)-1] || 'medium',
+    source: 'kernel',
     // 以下为 MathFlowV5 各阶段的可选项，缺省安全兜底
     variants: [], russianQuestions: [], neriage: null, neriageErrors: null, barTranslateLine: null
   };
 }
 
+// ===== 教材对齐题适配器（主链路）=====
+// MATH_BY_GRADE 里的 113+ 道主题题是按 2024 版人教教材逐册对齐写的，带真实情境、
+// 变式、visualData。旧代码把它们当"兜底"，实际练习全走内核 → 教材题库等于没用。
+// 现改为主链路：按 problemIdx 依次取用，内核降级为"补给/口算"。
+function _adaptStaticProblem(p, semKey){
+  if(!p) return null;
+  const safe = (typeof _safeMathChoices==='function') ? _safeMathChoices(p) : {choices:p.choices||[], correctIdx:0};
+  const strat = _preSolvePrompt(p);
+  return {
+    topic: p.knowledge || 'math',
+    formula: p.formula || '',
+    answer: p.answer,
+    question: p.question || p.formula || '',
+    scene: p.scene || '',
+    knowledge: p.knowledge || '',
+    visualType: p.visualType || null,
+    visualData: p.visualData || null,
+    choices: safe.choices,
+    hints: [strat, p.hintL2 || '把题目里的关键数量找出来，先想清楚先算哪一步。', p.hint || ''],
+    hint: strat,                    // L1：解题前展示，不含答案
+    hintL2: p.hintL2 || '',
+    reveal: p.hint || '',           // L3：含完整解析，仅提交后展示
+    difficulty: ['easy','medium','hard'][(Number(p.difficulty)||2)-1] || 'medium',
+    variants: p.variants || [],
+    source: 'bank',
+    semester: semKey || ''
+  };
+}
+
+// 解题前的"策略提示"：只给方向不给结果（静态题的 hint 字段常含完整答案，不能直接前置展示）
+function _preSolvePrompt(p){
+  const f = String(p.formula||'');
+  if(!f) return '先把题目读两遍，圈出里面的关键数量。';
+  if(/[×x\*]/.test(f) && /[+\-]/.test(f)) return '这道题里既有乘法（或除法）又有加减法，先想想应该先算哪一步？';
+  if(/[×x\*]/.test(f)) return '想一想：这是"几个几"，还是"每份是多少"？';
+  if(/÷/.test(f))      return '想一想：这是平均分，还是求里面有几个几？';
+  if(/%|百/.test(f))   return '先找准"单位1"，再想百分数的意义。';
+  if(/\//.test(f))     return '先看清分母是不是相同，再决定分子怎么算。';
+  return '先找出题目里的两个关键数量，想清楚它们是"合起来"还是"相差多少"。';
+}
+
 // ===== 跨册知识关联链：把本册内容放进"知识从哪里来、到哪里去"的主线里 =====
+// 2026-09 增强：打通学习进度。每做完一道题给该题 knowledge 记一次"学过"，
+// 累计 ≥3 次标"已掌握"；0 次为"未学"。数据持久化到 localStorage，
+// 孩子切回页面也能看到自己走到哪一步。
+// knowledge 规范化（Q6-7）：题库中同一知识点存在"加法（把两个数合起来）"和"加法"
+// 两种表述，按原文计数会漏。统一去掉括号注释后再计数；匹配时同时兼容旧原始 key。
+function _normK(k){ return String(k||'').replace(/（[^）]*）/g,'').replace(/\([^)]*\)/g,'').replace(/\s+/g,'').trim(); }
+function _getMathProgress(){
+  try{
+    var raw = (typeof localStorage!=='undefined') && localStorage.getItem('quiqu_math_progress_v1');
+    var p;
+    if(raw){ p = JSON.parse(raw); }
+    else if(S.math && S.math.kgProgress){ p = JSON.parse(JSON.stringify(S.math.kgProgress)); } // localStorage 被清后从 S 恢复（Q6-1）
+    else p = {touched:{}, mastered:[]};
+    p.touched = p.touched || {}; p.mastered = p.mastered || [];
+    return p;
+  }catch(e){ return {touched:{}, mastered:[]}; }
+}
+function _saveMathProgress(p){
+  // 双写（Q6-1）：localStorage 快照 + S.math.kgProgress 随 saveState 统一持久化，
+  // 家长清浏览器缓存后从 S 恢复，不再丢知识链进度。
+  try{ if(typeof localStorage!=='undefined') localStorage.setItem('quiqu_math_progress_v1', JSON.stringify(p)); }catch(e){}
+  try{ S.math.kgProgress = p; if(typeof saveState==='function') saveState(); }catch(e){}
+}
+function _bumpMathProgress(knowledge){
+  if(!knowledge) return;
+  var k = _normK(knowledge); if(!k) return;
+  var p = _getMathProgress();
+  p.touched[k] = (p.touched[k] || 0) + 1;
+  if(p.touched[k] >= 3 && p.mastered.indexOf(k) < 0) p.mastered.push(k);
+  _saveMathProgress(p);
+  _logToday(true, knowledge);
+}
+// 今日做题画像（Q6-9）：家长面板展示"今天做了几道、对错、练了哪些知识点"
+function _logToday(correct, knowledge){
+  try{
+    var d = new Date();
+    var ds = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    var t = (S.math.today && S.math.today.date===ds) ? S.math.today : (S.math.today={date:ds,count:0,ok:0,bad:0,kmap:{}});
+    var k = _normK(knowledge)||'其他';
+    t.count++; if(correct) t.ok++; else t.bad++;
+    if(correct){ t.kmap[k]=(t.kmap[k]||0)+1; }
+    if(typeof saveState==='function') saveState();
+  }catch(e){}
+}
+function _mathStepStatus(t){
+  var p = _getMathProgress(); var k = _normK(t);
+  if(p.mastered.indexOf(k) >= 0 || p.mastered.indexOf(t) >= 0) return 'mastered';
+  if(p.touched[k] || p.touched[t]) return 'learning';
+  return 'none';
+}
 function renderMathChains(semKey){
   if(typeof MATH_CHAINS==='undefined') return '';
   const G={'1a':'一上','1b':'一下','2a':'二上','2b':'二下','3a':'三上','3b':'三下','4a':'四上','4b':'四下','5a':'五上','5b':'五下','6a':'六上','6b':'六下'};
+  const STATUS_ICON={mastered:'✅ 已掌握', learning:'📖 在学', none:'○ 未学'};
+  const STATUS_BG={mastered:'#E6F7F4', learning:'#FFF8E6', none:'transparent'};
+  const STATUS_BORDER={mastered:'#00A896', learning:'#F5B800', none:'#C9D6DE'};
   const rows=(MATH_CHAINS||[]).map(function(ch){
     const hit=(ch.steps||[]).some(function(s){return s.g===semKey;});
     const steps=(ch.steps||[]).map(function(s){
       const on=s.g===semKey;
-      return '<span class="mc-step'+(on?' on':'')+'"><b>'+(G[s.g]||s.g)+'</b>'+s.t+'</span>';
+      const st=_mathStepStatus(s.t);
+      const bg=STATUS_BG[st]; const bd=STATUS_BORDER[st];
+      return '<span class="mc-step'+(on?' on':'')+'" style="background:'+bg+';border:1.5px solid '+bd+';border-radius:10px;padding:5px 9px"><b>'+(G[s.g]||s.g)+'</b>'+s.t+
+        '<span style="display:block;font-size:10.5px;font-weight:700;color:'+(st==='mastered'?'#006B5E':st==='learning'?'#AC7E00':'#8A9BB0')+'">'+STATUS_ICON[st]+'</span></span>';
     }).join('<span class="mc-arrow">→</span>');
     return '<div class="mc-chain'+(hit?' hit':'')+'">'+
       '<div class="mc-head">'+ch.icon+' <b>'+ch.name+'</b>'+(hit?'<span class="mc-tag">本册在学</span>':'')+'</div>'+
@@ -7083,7 +7186,7 @@ function renderMathChains(semKey){
     '</div>';
   }).join('');
   return '<div class="knowledge-tree" style="margin-top:16px">'+
-    '<div class="card-title" style="margin-bottom:6px">🔗 知识关联链</div>'+
+    '<div class="card-title" style="margin-bottom:6px">🔗 知识关联链 <span style="font-size:11px;font-weight:600;color:var(--text-3)">做完一道题自动点亮</span></div>'+
     '<div style="font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:14px">2024 版新教材按「知识结构系统化」编排，下面这些主线贯穿多个年级——看清知识的来龙去脉，学得更牢。</div>'+
     rows+
   '</div>';
@@ -7102,34 +7205,54 @@ function renderMath(grade='3'){
   const semKey = g + (S.math.semester || 'a');
   const data = MATH_BY_GRADE[semKey] || MATH_BY_GRADE[g+'a'] || MATH_BY_GRADE['3a'];
 
+  // 出题主链路（2026-09 重构）：
+  //   ① MATH_BY_GRADE 教材对齐题库按 problemIdx 依次取用（113+ 题，含情境/变式/图形）
+  //   ② 题库缺失或取不到时，回落到 MathKernel 动态出题（口算补给，同年级边界）
+  //   ③ 再不行才用题库第 1 题
+  // 旧版无条件走 MathKernel，导致教材题库只用于显示标题，年级切换对题目毫无影响。
+  const bank = (data && Array.isArray(data.problems) && data.problems.length) ? data.problems : null;
+  const bankTotal = bank ? bank.length : 0;
   // 初始化本节学习会话（年级切换或首次进入时重置）
-  if(!window.MATH_SESSION || window.MATH_SESSION.grade !== g || window.MATH_SESSION.problemIdx == null){
+  // Q6-6：题号按"学期+册"分桶持久化，孩子做完别的册再回来，接着上次的位置继续
+  if(!window.MATH_SESSION || window.MATH_SESSION.grade !== g || window.MATH_SESSION.semKey !== semKey || window.MATH_SESSION.problemIdx == null){
+    S.math.idxBySem = S.math.idxBySem || {};
     window.MATH_SESSION = {
-      grade:g, problemIdx:0, stage:'scene',
+      grade:g, semKey:semKey, problemIdx:(S.math.idxBySem[semKey]||0) % (bankTotal||1), stage:'scene',
       discoveryStep:0, hintUsed:false, solveAttempts:0,
       divergentIdx:0, divergentNotes:[], startTs:Date.now()
     };
   }
-  // 出题链路：优先 MathKernel 动态出题（题面/提示 L1-L2 永不含答案），
-  // 旧 MATH_BY_GRADE 静态数据作为兜底（MathKernel 不可用时仍可用）。
-  let problem;
-  if (window.MathKernel && typeof window.MathKernel.generate === 'function') {
-    try { problem = _genMathProblemKernel(); }
-    catch (e) { problem = data.problems[window.MATH_SESSION.problemIdx] || data.problems[0]; }
-  } else {
-    problem = data.problems[window.MATH_SESSION.problemIdx] || data.problems[0];
+  // 重做本册（Q6-6）
+  window._resetSemIdx = function(){
+    try{
+      S.math.idxBySem = S.math.idxBySem || {};
+      S.math.idxBySem[semKey] = 0; saveState();
+      window.MATH_SESSION.problemIdx = 0;
+      if(window.MathFlowV5) MathFlowV5._sess = null;
+      toast('🔄 从第 1 题重新开始！');
+      render();
+    }catch(e){}
+  };
+  const pIdx = bank ? (window.MATH_SESSION.problemIdx % bankTotal) : 0;
+  let problem = null;
+  if (bank) { try { problem = _adaptStaticProblem(bank[pIdx], semKey); } catch (e) { problem = null; } }
+  if (!problem && window.MathKernel && typeof window.MathKernel.generate === 'function') {
+    try { problem = _genMathProblemKernel(semKey); } catch (e) { problem = null; }
   }
+  if (!problem && bank) problem = _adaptStaticProblem(bank[0], semKey);
   window.CURRENT_MATH_PROBLEM = problem;
+  window.MATH_BANK_TOTAL = bankTotal;
 
   return `
-    <div class="layout-with-side">
+    <div class="layout-with-side math-scope">
       <div style="flex:1;min-width:0">
         <div class="grade-bar">
           <span class="grade-label">年级：</span>
           <div class="grade-pills" id="mathGrades">
             ${['2','3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
           </div>
-          <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">第 ${Math.min(window.MATH_SESSION.problemIdx+1,data.problems.length)} / ${data.problems.length} 题</span>
+          <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">第 ${Math.min((window.MATH_SESSION.problemIdx||0)+1, bankTotal||1)} / ${bankTotal||1} 题 · ${data.title}</span>
+          <button onclick="_resetSemIdx()" title="从第 1 题重新开始本册" style="padding:4px 10px;border-radius:10px;border:1px solid var(--ink-200);background:white;font-size:12px;cursor:pointer;color:var(--text-2);font-weight:600">🔄 重做本册</button>
         </div>
         <div class="math-banner">
           <div>
@@ -7181,7 +7304,7 @@ function renderMathStageProgress(){
       const skipped = !reallyDone && i<curIdx;   // 进度已越过但从未真正经过 → 被跳过
       const bg = reallyDone ? 'var(--teal-soft)' : active ? 'var(--teal)' : 'var(--ink-100)';
       const col = reallyDone ? 'var(--teal)' : active ? 'white' : 'var(--text-3)';
-      const shadow = active ? 'box-shadow:0 4px 12px rgba(0,168,150,.3)' : '';
+      const shadow = active ? 'box-shadow:0 4px 12px rgba(37,112,232,.3)' : '';
       // 跳过的环节用虚线框弱化，打勾只给真完成的
       const border = skipped ? 'border:1.5px dashed var(--ink-300);' : '';
       const label = reallyDone ? '✓' : skipped ? '⤼' : (i+1);
@@ -7228,6 +7351,7 @@ function updateMathStageV5(){
   if(!window.MathFlowV5 || !MathFlowV5._sess) return;
   host.style.animation = 'none';
   host.innerHTML = MathFlowV5.renderCurrent();
+  try{ if(window.MathManipulative) MathManipulative.init(host); }catch(e){}
   void host.offsetWidth;
   host.style.animation = 'fadeIn .45s ease';
   const prog = document.getElementById('mathStageProgress');
@@ -7261,10 +7385,12 @@ function mathNextProblem(){
   const data = MATH_BY_GRADE[semKey] || MATH_BY_GRADE['3a'];
   const total = data.problems.length;
   window.MATH_SESSION = {
-    grade:g, problemIdx:(window.MATH_SESSION.problemIdx+1)%total, stage:'scene',
+    grade:g, semKey:semKey, problemIdx:((window.MATH_SESSION.problemIdx+1)%total), stage:'scene',
     discoveryStep:0, hintUsed:false, solveAttempts:0,
     divergentIdx:0, divergentNotes:[], startTs:Date.now()
   };
+  // Q6-6：题号分桶持久化
+  try{ S.math.idxBySem = S.math.idxBySem||{}; S.math.idxBySem[semKey]=window.MATH_SESSION.problemIdx; saveState(); }catch(e){}
   if(window.MathFlowV5) MathFlowV5._sess = null; // 重置 V5 会话
   setStar(2,'完成一题');
   render();
@@ -7277,19 +7403,20 @@ function renderMathScene(problem){
   return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
     <span class="cpa-tag concrete">STAGE 1 · 场景导入</span>
     <div style="text-align:center;padding:12px 8px 4px">
-      <div style="width:140px;height:140px;margin:0 auto 18px;border-radius:50%;background:${grad};display:flex;align-items:center;justify-content:center;font-size:74px;box-shadow:0 14px 34px rgba(0,168,150,.22);animation:fadeIn .6s ease">
+      <div style="width:140px;height:140px;margin:0 auto 18px;border-radius:50%;background:${grad};display:flex;align-items:center;justify-content:center;font-size:74px;box-shadow:0 14px 34px rgba(37,112,232,.22);animation:fadeIn .6s ease">
         ${emoji}
       </div>
       <div style="font-size:12px;color:var(--text-3);font-weight:700;letter-spacing:2px;margin-bottom:12px">📖 故事场景</div>
-      <div style="font-size:16px;line-height:1.85;color:var(--ink-700);max-width:580px;margin:0 auto;padding:20px 24px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-radius:16px;border:1px solid rgba(0,168,150,.15)">
-        ${problem.scene}
+      <div style="font-size:16px;line-height:1.85;color:var(--ink-700);max-width:580px;margin:0 auto;padding:20px 24px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-radius:16px;border:1px solid rgba(37,112,232,.15);text-align:left">
+        ${_sceneLines(problem.scene)}
       </div>
+      ${(function(){ try{ return (window.MathManipulative&&window.MathManipulative.scene)?(MathManipulative.scene(problem)||''):''; }catch(e){ return ''; } })()}
       <div style="margin-top:18px;padding:12px 18px;background:white;border:2px dashed var(--yellow);border-radius:12px;display:inline-block;font-size:15px;color:var(--navy);font-weight:700;max-width:560px">
         🤔 引导思考：${_mathSceneLead(problem)}
       </div>
     </div>
     <div style="text-align:center;margin-top:18px">
-      <button onclick="mathAdvance('discovery')" style="padding:13px 32px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(0,168,150,.35);transition:transform .2s">
+      <button onclick="mathAdvance('discovery')" style="padding:13px 32px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,112,232,.35);transition:transform .2s">
         🚀 开始探索 →
       </button>
     </div>
@@ -7377,11 +7504,11 @@ function renderMathExplain(problem){
   return `<div class="cpa-layer pictorial" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
     <span class="cpa-tag pictorial">STAGE 4 · 数形结合讲解</span>
     <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 用图形看清这道题的内在结构（动画播放中）</div>
-    <div style="background:white;border-radius:14px;padding:8px;border:1px solid rgba(0,168,150,.15);box-shadow:0 6px 18px rgba(0,168,150,.08)">
+    <div style="background:white;border-radius:14px;padding:8px;border:1px solid rgba(37,112,232,.15);box-shadow:0 6px 18px rgba(37,112,232,.08)">
       ${visual}
     </div>
     <div style="text-align:center;margin-top:8px">
-      <button onclick="replayMathVisual()" style="padding:8px 18px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(0,168,150,.3);border-radius:18px;font-size:12px;font-weight:700;cursor:pointer">🎬 重新播放动画</button>
+      <button onclick="replayMathVisual()" style="padding:8px 18px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(37,112,232,.3);border-radius:18px;font-size:12px;font-weight:700;cursor:pointer">🎬 重新播放动画</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
       ${layers.map(l=>`
@@ -7419,7 +7546,7 @@ function renderMathDivergent(problem){
       <span class="cpa-tag" style="background:var(--pink);color:white">STAGE 5 · 发散思维</span>
       <div style="text-align:center;padding:30px 16px;color:var(--text-2);font-size:14px">本题暂无变式题，直接挑战下一题</div>
       <div style="text-align:center">
-        <button onclick="mathNextProblem()" style="padding:12px 28px;background:var(--teal);color:white;border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,168,150,.3)">挑战下一题 →</button>
+        <button onclick="mathNextProblem()" style="padding:12px 28px;background:var(--teal);color:white;border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(37,112,232,.3)">挑战下一题 →</button>
       </div>
     </div>`;
   }
@@ -7473,7 +7600,7 @@ function _mathDivergentSummary(problem, variants){
   const method = _mathMethodName(problem);
   return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .5s ease">
     <span class="cpa-tag concrete">🎉 举一反三 · 总结</span>
-    <div style="margin:16px 0;padding:18px 20px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-radius:14px;border:1px solid rgba(0,168,150,.18)">
+    <div style="margin:16px 0;padding:18px 20px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-radius:14px;border:1px solid rgba(37,112,232,.18)">
       <div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:10px">🌟 你发现了什么？</div>
       <div style="font-size:14px;color:var(--ink-700);line-height:1.85">
         原题考的是 <b style="color:var(--teal)">${problem.knowledge}</b>，核心方法是 <b style="color:var(--coral)">${method}</b>。<br>
@@ -7488,7 +7615,7 @@ function _mathDivergentSummary(problem, variants){
       </div>
     `:''}
     <div style="text-align:center;margin-top:18px">
-      <button onclick="mathNextProblem()" style="padding:13px 34px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(0,168,150,.35)">
+      <button onclick="mathNextProblem()" style="padding:13px 34px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,112,232,.35)">
         🚀 挑战下一题 →
       </button>
     </div>
@@ -7546,6 +7673,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
     // 记录答题到漏洞检测引擎
     try{ WeaknessDetector.recordAnswer(S, wdQuestion, window.MATH_SESSION.hintUsed ? 'hint' : 'correct', timeUsed); }catch(e){}
     setStar(3, '数学场景题');
+    try{ if(typeof _bumpMathProgress==='function') _bumpMathProgress(problem.knowledge); }catch(e){}
     if(fb){
       // 数形结合预览：答对后立即展示小图，引导用户进入阶段4看完整动画
       const previewVisual = (typeof MathVisual!=='undefined' && MathVisual.render && problem.visualType)
@@ -7559,10 +7687,11 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
     window.MATH_SESSION.solveAttempts = (window.MATH_SESSION.solveAttempts||0) + 1;
     // 记录错误（每次错误都记录，供掌握度计算）
     try{ WeaknessDetector.recordAnswer(S, wdQuestion, 'wrong', timeUsed); }catch(e){}
-    // 错题本去重后加入
+    // 错题本去重后加入（Q6-5：带 knowledge，错题本按知识点聚合复习）
+    try{ _logToday(false, problem.knowledge); }catch(e){}
     S.math.wrongProblems = S.math.wrongProblems || [];
     if(!S.math.wrongProblems.some(w=>w.q===problem.question)){
-      S.math.wrongProblems.push({q:problem.question, a:String(problem.answer)});
+      S.math.wrongProblems.push({q:problem.question, a:String(problem.answer), k:_normK(problem.knowledge)||'', t:Date.now()});
       saveState();
     }
     try{ SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e){}
@@ -7573,6 +7702,20 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
 }
 
 // ===== 辅助：场景 emoji =====
+// ===== 应用题故事化拆解（Q6-3）=====
+// 长场景按句号等标点切成"一句一行"，数字高亮，读题压力从"一坨散文"变成"三小句"。
+// 全局可用（flow-v5 的 renderWarmup 也调用）：window._sceneLines(sc)
+function _sceneLines(sc){
+  const raw = String(sc||'').trim();
+  if(!raw) return '';
+  const parts = raw.split(/(?<=[。！？；])/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length < 2) return raw;  // 已经很短，不必拆
+  const marks = ['📖','🔢','❓','🧩','✏️'];
+  return parts.map((s,i)=>`<span style="display:block;padding:6px 0;${i?'border-top:1px dashed rgba(37,112,232,.14)':''}">
+    <span style="margin-right:6px">${marks[i]||'▪'}</span>${s.replace(/([0-9０-９]+(?:\.[0-9]+)?\s*(?:个|只|元|分|米|厘米|千克|克|升|毫升|时|秒|块|本|支|颗|朵|箱|人|天|岁|份|角|分米|千米|km|m|dm|cm)?)/g,'<b style="color:var(--teal-600);font-weight:800">$1</b>')}</span>`).join('');
+}
+window._sceneLines = _sceneLines;
+
 function _mathSceneEmoji(problem){
   const t = problem.visualType;
   const m = { barModel:'📊', areaModel:'⬛', numberBond:'🔗', fractionStrip:'🍰', numberLine:'📏', geometry:'📐' };
@@ -8922,7 +9065,7 @@ function renderSpeak(){
       .se-scenarios{display:flex;flex-direction:column;gap:8px}
       .se-scenario-card{display:flex;gap:10px;align-items:center;background:white;border-radius:12px;padding:10px 12px;box-shadow:var(--card-shadow);cursor:pointer;transition:all .2s;border:2px solid transparent}
       .se-scenario-card:hover{transform:translateY(-1px);border-color:var(--teal-soft)}
-      .se-scenario-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(0,168,150,.06))}
+      .se-scenario-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(37,112,232,.06))}
       .se-sc-icon{font-size:20px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--teal-soft);border-radius:10px;flex-shrink:0}
       .se-sc-body{flex:1;min-width:0}
       .se-sc-title{font-size:13px;font-weight:700;color:var(--navy)}
@@ -8931,7 +9074,7 @@ function renderSpeak(){
       .se-teachers{display:flex;flex-direction:column;gap:8px}
       .se-teacher-card{display:flex;gap:10px;align-items:center;background:white;border-radius:12px;padding:8px 10px;box-shadow:var(--card-shadow);cursor:pointer;transition:all .2s;border:2px solid transparent}
       .se-teacher-card:hover{border-color:var(--teal-soft)}
-      .se-teacher-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(0,168,150,.05))}
+      .se-teacher-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(37,112,232,.05))}
       .se-t-info{flex:1;min-width:0}
       .se-t-name{font-size:13px;font-weight:700;color:var(--navy)}
       .se-t-desc{font-size:10px;color:var(--text-2);margin-top:1px}
@@ -8940,11 +9083,11 @@ function renderSpeak(){
       .se-empty-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
       .se-empty-sub{font-size:12px}
       .se-cn{font-size:11px;color:var(--text-2);margin-top:4px;padding-left:2px}
-      .se-replay{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;color:var(--teal);cursor:pointer;font-weight:600;padding:3px 8px;border-radius:8px;background:rgba(0,168,150,.08)}
-      .se-replay:hover{background:rgba(0,168,150,.16)}
+      .se-replay{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;color:var(--teal);cursor:pointer;font-weight:600;padding:3px 8px;border-radius:8px;background:rgba(37,112,232,.08)}
+      .se-replay:hover{background:rgba(37,112,232,.16)}
       .se-replay svg{width:12px;height:12px;fill:var(--teal)}
       .se-score{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600}
-      .se-score.ok{background:rgba(0,168,150,.12);color:var(--teal)}
+      .se-score.ok{background:rgba(37,112,232,.12);color:var(--teal)}
       .se-score.low{background:rgba(245,184,0,.14);color:var(--yellow-600)}
       .se-score-num{font-size:14px;font-weight:900}
       .se-score-fb{color:var(--text-2);font-weight:500}
@@ -9213,7 +9356,7 @@ function petAction(action){
   const stage=document.querySelector('.pet-stage');
   const showTip=(text)=>{
     const tip=document.createElement('div');
-    tip.style.cssText='position:absolute;top:35%;left:50%;transform:translateX(-50%);padding:8px 18px;border-radius:20px;background:rgba(0,168,150,0.9);color:white;font-size:14px;font-weight:700;pointer-events:none;z-index:10;animation:floatTipUp 1.2s ease forwards;';
+    tip.style.cssText='position:absolute;top:35%;left:50%;transform:translateX(-50%);padding:8px 18px;border-radius:20px;background:rgba(37,112,232,0.9);color:white;font-size:14px;font-weight:700;pointer-events:none;z-index:10;animation:floatTipUp 1.2s ease forwards;';
     tip.textContent=text;
     stage.appendChild(tip);
     setTimeout(()=>tip.remove(),1200);
@@ -9783,11 +9926,28 @@ function endSpellingGame(){
 function startMathChallenge(){
   challengeIdx=0;challengeScore=0;challengeTimeLeft=60;challengeTotal=10;
   challengeQuestions=[];
-  const grade=S.math&&S.math.grade||'3';
-  const variants=(MATH_BY_GRADE&&MATH_BY_GRADE[grade]&&MATH_BY_GRADE[grade].variants)||[];
-  if(variants.length===0){toast('暂无题目，先去数学星球学习吧！');return;}
-  for(let i=variants.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[variants[i],variants[j]]=[variants[j],variants[i]];}
-  challengeQuestions=variants.slice(0,challengeTotal);
+  const grade=String((S.math&&S.math.grade)||'3');
+  const sem=(S.math&&S.math.semester)||'a';
+  const data=MATH_BY_GRADE&&(MATH_BY_GRADE[grade+sem]||MATH_BY_GRADE[grade+'a']);
+  // 2026-09 修复：旧版读 MATH_BY_GRADE[grade].variants，而年级对象根本没有 variants 字段
+  // （且 grade 是 '3' 而非 '3a'）→ 变体恒为空，闯关 100% 提示"暂无题目，先去数学星球学习吧"。
+  // 变式题真实挂在每道主题题的 variants 下，这里汇总；不足时补主题题本身与内核题。
+  let pool=[];
+  if(data&&Array.isArray(data.problems)){
+    data.problems.forEach(function(p){
+      (p.variants||[]).forEach(function(v){ pool.push(Object.assign({knowledge:p.knowledge},v)); });
+      pool.push({question:p.question,answer:p.answer,hint:p.hint,knowledge:p.knowledge});
+    });
+  }
+  if(pool.length<10 && window.MathKernel && typeof window.MathKernel.generate==='function'){
+    try{
+      window.MathKernel.setGrade(grade+sem);
+      for(let i=pool.length;i<14;i++){const it=window.MathKernel.generate();pool.push({question:it.question,answer:it.answer,hint:(it.hints&&it.hints[0])||''});}
+    }catch(e){}
+  }
+  if(pool.length===0){toast('暂无题目，先去数学星球学习吧！');return;}
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  challengeQuestions=pool.slice(0,challengeTotal);
   renderChallengeQuestion();
   challengeTimer=setInterval(()=>{
     challengeTimeLeft--;
@@ -9803,7 +9963,7 @@ function renderChallengeQuestion(){
   // 必须用安全选项，防止变体的正确答案不在choices中
   const {choices} = _safeMathChoices(q);
   $('#contentArea').innerHTML=`
-    <div style="flex:1;min-width:0">
+    <div style="flex:1;min-width:0" class="math-scope">
       <div class="math-challenge-header">
         <div>
           <div style="font-size:13px;color:var(--text-2)">🧮 数学闯关赛 · ${S.math&&S.math.grade||'3'}年级</div>
@@ -9895,7 +10055,7 @@ function initParentCharts(){
       xAxis:{type:'category',data:days,axisLine:{lineStyle:{color:'#E2E8F0'}},axisLabel:{color:'#64748B',fontSize:11},axisTick:{show:false}},
       yAxis:{type:'value',name:'分钟',nameTextStyle:{color:'#94A3B8',fontSize:10,padding:[0,30,0,0]},axisLine:{show:false},axisTick:{show:false},splitLine:{lineStyle:{color:'#F1F5F9',type:'dashed'}},axisLabel:{color:'#94A3B8',fontSize:10}},
       series:[
-        {name:'数学',type:'line',smooth:true,symbol:'circle',symbolSize:6,data:mathData,lineStyle:{color:'#00A896',width:3},itemStyle:{color:'#00A896',borderWidth:2,borderColor:'#fff'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(0,168,150,0.25)'},{offset:1,color:'rgba(0,168,150,0.02)'}]}}},
+        {name:'数学',type:'line',smooth:true,symbol:'circle',symbolSize:6,data:mathData,lineStyle:{color:'#00A896',width:3},itemStyle:{color:'#00A896',borderWidth:2,borderColor:'#fff'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(37,112,232,0.25)'},{offset:1,color:'rgba(37,112,232,0.02)'}]}}},
         {name:'英语',type:'line',smooth:true,symbol:'circle',symbolSize:6,data:engData,lineStyle:{color:'#F5B800',width:3},itemStyle:{color:'#F5B800',borderWidth:2,borderColor:'#fff'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(245,184,0,0.25)'},{offset:1,color:'rgba(245,184,0,0.02)'}]}}}
       ]
     });
@@ -10053,7 +10213,7 @@ function renderParentDashboard(pt){
 
       <div class="parent-section active" data-psec="overview">
         <div class="card" style="margin-bottom:16px;display:flex;align-items:center;gap:18px;padding:18px 22px">
-          <div style="width:64px;height:64px;border-radius:20px;overflow:hidden;border:3px solid var(--teal);box-shadow:0 4px 12px rgba(0,168,150,.2);flex-shrink:0">
+          <div style="width:64px;height:64px;border-radius:20px;overflow:hidden;border:3px solid var(--teal);box-shadow:0 4px 12px rgba(37,112,232,.2);flex-shrink:0">
             <img src="${petAvatar}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.background='var(--teal-100)';this.style.display='none'">
           </div>
           <div style="flex:1;min-width:0">
@@ -10077,6 +10237,21 @@ function renderParentDashboard(pt){
             <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">📚 教材进度同步</div>
             <div id="textbookProgress" style="font-size:13px;color:var(--navy);line-height:1.7"></div>
           </div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;border-top:3px solid var(--violet)" id="todayMathProfile">
+          <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">🧮 今日做题画像（数学）</div>
+          ${(()=>{ const t=S.math&&S.math.today; if(!t||!t.count) return '<div style="font-size:13px;color:var(--text-3)">今天还没做题，让孩子去数学星球练一练吧 🚀</div>';
+            const acc=Math.round(t.ok/t.count*100);
+            const kmax=Object.entries(t.kmap||{}).sort((a,b)=>b[1]-a[1]).slice(0,5);
+            return `<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
+              <div style="padding:10px 16px;background:var(--teal-soft);border-radius:12px;text-align:center"><div style="font-size:22px;font-weight:900;color:var(--teal)">${t.count}</div><div style="font-size:11px;color:var(--ink-600)">今日做题</div></div>
+              <div style="padding:10px 16px;background:var(--success-soft);border-radius:12px;text-align:center"><div style="font-size:22px;font-weight:900;color:var(--success)">${t.ok}</div><div style="font-size:11px;color:var(--ink-600)">答对</div></div>
+              <div style="padding:10px 16px;background:var(--coral-soft);border-radius:12px;text-align:center"><div style="font-size:22px;font-weight:900;color:var(--coral-600)">${t.bad}</div><div style="font-size:11px;color:var(--ink-600)">需订正</div></div>
+              <div style="padding:10px 16px;background:var(--yellow-soft);border-radius:12px;text-align:center"><div style="font-size:22px;font-weight:900;color:var(--yellow-700)">${acc}%</div><div style="font-size:11px;color:var(--ink-600)">正确率</div></div>
+            </div>
+            ${kmax.length?`<div style="font-size:12px;color:var(--text-3);margin-bottom:6px;font-weight:600">今天练过的知识点：</div><div style="display:flex;flex-wrap:wrap;gap:6px">${kmax.map(([k,n])=>`<span style="padding:4px 12px;border-radius:999px;background:var(--teal-soft);color:var(--teal-700);font-size:12px;font-weight:700">${k} ×${n}</span>`).join('')}</div>`:''}`;
+          })()}
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
@@ -10438,9 +10613,9 @@ function showParentTtsResult(type,msg){
   if(!el) return;
   el.style.display='block';
   if(type==='ok'){
-    el.style.background='rgba(0,168,150,.12)';
+    el.style.background='rgba(37,112,232,.12)';
     el.style.color='var(--teal)';
-    el.style.border='1px solid rgba(0,168,150,.3)';
+    el.style.border='1px solid rgba(37,112,232,.3)';
   }else if(type==='error'){
     el.style.background='rgba(220,38,38,.08)';
     el.style.color='#DC2626';
@@ -10515,9 +10690,9 @@ function showDeepseekTestResult(type,msg){
   if(!el) return;
   el.style.display='block';
   if(type==='ok'){
-    el.style.background='rgba(0,168,150,.12)';
+    el.style.background='rgba(37,112,232,.12)';
     el.style.color='var(--teal)';
-    el.style.border='1px solid rgba(0,168,150,.3)';
+    el.style.border='1px solid rgba(37,112,232,.3)';
   }else if(type==='error'){
     el.style.background='rgba(220,38,38,.08)';
     el.style.color='#DC2626';
@@ -10619,7 +10794,13 @@ function renderWrongProblems(){
   if(!el)return;
   const wrong=(S.math&&S.math.wrongProblems)||[];
   if(!wrong.length){el.innerHTML='<div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">暂无错题记录 ✅</div>';return;}
-  el.innerHTML='<table class="error-log-table"><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody>'+wrong.slice(-20).reverse().map((w,i)=>`<tr><td class="err-time">${wrong.length-i}</td><td class="err-msg">${(w.q||'').replace(/</g,'&lt;').slice(0,100)}</td><td>${w.a||'?'}</td></tr>`).join('')+'</tbody></table>';
+  // Q6-5：按知识点聚合（优先新字段 k；旧记录无 k 归入"待归类"），孩子复习时先过薄弱知识点
+  const byK={};
+  wrong.forEach(w=>{const k=(w.k||'').trim()||'待归类';(byK[k]=byK[k]||[]).push(w);});
+  const summary=Object.entries(byK).sort((a,b)=>b[1].length-a[1].length)
+    .map(([k,list])=>`<span style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--coral-soft);color:var(--coral-700);font-size:12px;font-weight:700">${k} <b style="background:var(--coral);color:#fff;border-radius:999px;padding:0 7px;font-size:11px">${list.length}</b></span>`).join(' ');
+  el.innerHTML='<div style="margin-bottom:12px"><div style="font-size:12px;color:var(--text-3);font-weight:600;margin-bottom:8px">📚 按知识点复习（点知识点的错题更集中）</div><div style="display:flex;flex-wrap:wrap;gap:6px">'+summary+'</div></div>'+
+    '<table class="error-log-table"><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody>'+wrong.slice(-20).reverse().map((w,i)=>`<tr><td class="err-time">${wrong.length-i}</td><td class="err-msg">${(w.q||'').replace(/</g,'&lt;').slice(0,100)}</td><td>${w.a||'?'}</td></tr>`).join('')+'</tbody></table>';
 }
 
 function renderProfiles(){
@@ -11011,7 +11192,7 @@ function checkListenBlank(i,ans){
   btn.textContent=correct?'✓ 正确':'✗ 再想想';
   if(correct){
     inp.style.borderColor='var(--teal)';
-    inp.style.background='rgba(0,168,150,.25)';
+    inp.style.background='rgba(37,112,232,.25)';
     setStar(1,'听力答对');
     toast(`✅ 太棒了！正确答案：${ans}`);
   }else{
@@ -11080,7 +11261,7 @@ function selectListenOpt(qi,oi,correctIdx){
   opts[oi].dataset.answered='1';
   const isCorrect=oi===correctIdx;
   opts[oi].style.borderColor=isCorrect?'var(--teal)':'#EF4444';
-  opts[oi].style.background=isCorrect?'rgba(0,168,150,.15)':'rgba(239,68,68,.15)';
+  opts[oi].style.background=isCorrect?'rgba(37,112,232,.15)':'rgba(239,68,68,.15)';
   opts[oi].style.color=isCorrect?'var(--teal)':'#EF4444';
   const expl=document.getElementById('listenExplain_'+qi);
   if(expl){
@@ -11088,7 +11269,7 @@ function selectListenOpt(qi,oi,correctIdx){
     const q=item.questions[qi];
     expl.textContent='💡 '+q.cn;
     expl.style.display='block';
-    expl.style.background=isCorrect?'rgba(0,168,150,.1)':'rgba(239,68,68,.1)';
+    expl.style.background=isCorrect?'rgba(37,112,232,.1)':'rgba(239,68,68,.1)';
     expl.style.color=isCorrect?'var(--teal)':'#EF4444';
   }
   opts.forEach((o,i)=>{if(i!==oi){o.style.opacity='0.4';o.style.cursor='default';}});
@@ -11163,6 +11344,15 @@ function renderTextbookProgress(){
 function switchView(view){
   // 切换板块时关闭听算弹层（模态不跨板块残留）
   try{ const _lm=document.getElementById('lmOverlay'); if(_lm) _lm.remove(); }catch(e){}
+  // Q6-4：进入数学板块时，把内核年级与当前选择重新对齐（防系统级返回/跳转丢年级）
+  if(view==='math'){
+    try{
+      if(window.MathKernel && MathKernel.setGrade){
+        MathKernel.setGrade((currentMathGrade||'3')+(S.math.semester||'a'));
+        if(MathKernel.reset) MathKernel.reset();
+      }
+    }catch(e){}
+  }
   if(!document.startViewTransition){
     currentView=view;S[view==='math'?'math':view==='english'?'eng':'pet']=S[view==='math'?'math':view==='english'?'eng':'pet'];
     $$('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
@@ -11202,6 +11392,10 @@ function bindDynamicEvents(){
   $$('#mathGrades .grade-pill').forEach(p=>p.onclick=async()=>{
     const grade=p.dataset.grade;
     currentMathGrade=grade;S.math.grade=grade;
+    // 2026-09：年级切换必须同步给出题内核，否则内核仍按旧年级边界出题
+    if(window.MathKernel && typeof window.MathKernel.setGrade==='function'){
+      try{ window.MathKernel.setGrade(grade + ((S.math&&S.math.semester)||'a')); }catch(e){}
+    }
     // 同步到当前档案
     if(S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId].grade=grade;
     saveState();
@@ -11307,6 +11501,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   if('serviceWorker' in navigator){
     try{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }catch(e){}
   }
+  // PWA 安装提示（Q6-11）：浏览器判定可安装时亮出"📲 安装"按钮，点了直接弹安装框
+  (function(){
+    let deferred=null;
+    window.addEventListener('beforeinstallprompt',e=>{
+      e.preventDefault(); deferred=e;
+      const b=document.getElementById('installBtn'); if(b) b.style.display='flex';
+    });
+    document.addEventListener('click',e=>{
+      const b=e.target.closest&&e.target.closest('#installBtn');
+      if(b&&deferred){ deferred.prompt(); deferred.userChoice.finally(()=>{deferred=null; b.style.display='none';}); }
+    });
+    // 已安装则不再显示
+    if(window.matchMedia&&(window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone)){
+      const b=document.getElementById('installBtn'); if(b) b.style.display='none';
+    }
+  })();
   // 解锁音频引擎：监听首次用户手势（click/touchstart），触发空 utterance 解锁移动端音频
   const _unlockOnce = ()=>{ unlockAudio(); document.removeEventListener('click',_unlockOnce); document.removeEventListener('touchstart',_unlockOnce); };
   document.addEventListener('click',_unlockOnce);
@@ -11366,6 +11576,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/mic-permission.js"></script>
 <script src="engine/scene-manager.js"></script>
 <script src="engine/math-visual-v5.js?v=20260806b"></script>
+<script src="engine/math-manipulative.js?v=20260909a"></script>
+<script src="engine/math-geometry-3d.js?v=20260909a"></script>
 <script src="engine/russian-questioning.js"></script>
 <script src="engine/parent-panel.js"></script>
 <script src="engine/cloud-tts.js"></script>
@@ -11530,6 +11742,9 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
       ListeningMath.mount(box,{total:10,speed:1.0});
       if(window.MathKernel){
         ListeningMath.setQuestionSource(function(){
+          // 2026-09：按当前年级出题（旧版不传年级 → 六年级也听"3×4"）
+          const sem=(S.math&&S.math.semester)||'a';
+          try{ MathKernel.setGrade(String((S.math&&S.math.grade)||'3')+sem); }catch(e){}
           const inst = MathKernel.generate();
           // 书面题面 → 口语读题文本（符号转中文读法）
           const oral = (inst.question||inst.formula||'')
@@ -11544,7 +11759,7 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   function addEntry(){
     const btn=document.createElement('button');
     btn.textContent='🎧 听算挑战';
-    btn.style.cssText='position:fixed;right:16px;bottom:88px;z-index:9000;border:none;cursor:pointer;background:linear-gradient(135deg,#00A896,#0F6E56);color:#fff;font-size:15px;font-weight:700;padding:12px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(0,168,150,.35);font-family:inherit';
+    btn.style.cssText='position:fixed;right:16px;bottom:88px;z-index:9000;border:none;cursor:pointer;background:linear-gradient(135deg,#00A896,#0F6E56);color:#fff;font-size:15px;font-weight:700;padding:12px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(37,112,232,.35);font-family:inherit';
     btn.onclick=openListening;
     document.body.appendChild(btn);
   }

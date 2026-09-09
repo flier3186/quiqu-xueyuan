@@ -142,7 +142,10 @@ window.MathFlowV5 = {
     try{
       if(typeof updateMathStageV5==='function'){ updateMathStageV5(); return; }
       const container = document.getElementById('mathStage');
-      if(container) container.innerHTML = this.renderCurrent();
+      if(container){
+        container.innerHTML = this.renderCurrent();
+        try{ if(window.MathManipulative) MathManipulative.init(container); }catch(e){}
+      }
     }catch(e){
       this.advance(this._sess.stage);
     }
@@ -278,6 +281,28 @@ window.MathFlowV5 = {
   // ============================================================
   // 阶段 1：数学阅读 + 数感预热（3 分钟）
   // ============================================================
+  // CPA 具象层（2026-09）：旧版场景阶段只有一个静态 emoji，孩子看不到"数量是怎么形成的"。
+  // 这里把题里的数量变成逐个入场的实物并按组呈现 —— 具象阶段要能看、能动，不是插图。
+  _concrete(problem){
+    try{
+      if(typeof window.MathManipulative === 'undefined' || !window.MathManipulative.scene) return '';
+      const h = window.MathManipulative.scene(problem);
+      return h || '';
+    }catch(e){ return ''; }
+  },
+  // 可拖曳教具（探索用，不显示答案）
+  _tool(problem){
+    try{
+      // 3D 几何教具优先（Q6-2）：长方体/正方体/圆柱/圆锥/圆 → 可拖拽旋转的立体教具
+      if(typeof window.MathGeo3D !== 'undefined' && window.MathGeo3D.render){
+        const g = window.MathGeo3D.render(problem);
+        if(g) return g;
+      }
+      if(typeof window.MathManipulative === 'undefined' || !window.MathManipulative.render) return '';
+      return window.MathManipulative.render(problem) || '';
+    }catch(e){ return ''; }
+  },
+
   renderWarmup(problem){
     const emoji = this._sceneEmoji(problem);
     const gradient = this._sceneGradient(problem);
@@ -287,8 +312,10 @@ window.MathFlowV5 = {
       <!-- 1a 阅读小故事（纯文字，培养读题能力） -->
       <div style="padding:18px 20px;background:linear-gradient(135deg,#FFF8E6,#fff);border-radius:14px;border:1px solid rgba(245,184,0,.25);margin-bottom:12px">
         <div style="font-size:12px;color:var(--yellow-700);font-weight:700;margin-bottom:8px">📖 1 分钟 · 读一读这个小故事</div>
-        <div style="font-size:15px;color:var(--ink-700);line-height:1.85">${emoji} ${this._escape(problem.scene)}</div>
+        <div style="font-size:15px;color:var(--ink-700);line-height:1.85">${emoji} ${(typeof window!=='undefined'&&window._sceneLines)?window._sceneLines(problem.scene):this._escape(problem.scene)}</div>
       </div>
+      <!-- 1a+ CPA 具象层：让数量动起来 -->
+      ${this._concrete(problem)}
       <!-- 1b 场景图观察 + 开放提问 -->
       <div style="padding:16px 18px;background:var(--teal-soft);border-radius:12px;margin-bottom:12px">
         <div style="font-size:12px;color:var(--teal-700);font-weight:700;margin-bottom:8px">👀 1 分钟 · 你从故事里发现了什么？</div>
@@ -301,12 +328,25 @@ window.MathFlowV5 = {
       <div style="padding:14px 16px;background:${gradient};border-radius:12px;color:#fff">
         <div style="font-size:12px;opacity:.9;font-weight:600;margin-bottom:4px">🌟 1 分钟 · 今天要学</div>
         <div style="font-size:16px;font-weight:800">${this._escape(problem.knowledge || '新知识')}</div>
-        <div style="font-size:12px;opacity:.9;margin-top:4px">💡 提示：${this._escape(problem.hint || '')}</div>
+        <div style="font-size:12px;opacity:.9;margin-top:4px">💡 学法提示：${this._escape(this._preHint(problem))}</div>
       </div>
       <div style="text-align:center;margin-top:16px">
         <button onclick="MathFlowV5.advance('rme')" style="padding:12px 28px;background:linear-gradient(135deg,var(--yellow),#FFD45E);color:var(--navy);border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(245,184,0,.35)">一起来发现 →</button>
       </div>
     </div>`;
+  },
+  // 解题前的"学法提示"：只给方向不给结果。
+  // 2026-09 修复：旧版直接展示 problem.hint，而教材题库的 hint 字段写的是完整解析
+  // （如「先算 3×6=18，再算 18+4=22」），等于在孩子作答前就把答案摊开了。
+  _preHint(problem){
+    if(!problem) return '先把题目读两遍，圈出关键数量。';
+    if(typeof window._preSolvePrompt === 'function') return window._preSolvePrompt(problem);
+    const f = String(problem.formula || '');
+    if(!f) return '先把题目读两遍，圈出里面的关键数量。';
+    if(/[×x*]/.test(f) && /[+\-]/.test(f)) return '这道题里既有乘法（或除法）又有加减法，先想想应该先算哪一步？';
+    if(/[×x*]/.test(f)) return '想一想：这是"几个几"，还是"每份是多少"？';
+    if(/÷/.test(f))     return '想一想：这是平均分，还是求里面有几个几？';
+    return '先找出题目里的两个关键数量，想清楚它们是"合起来"还是"相差多少"。';
   },
   // 预热阶段：从场景提取关键数词，做成可点击小标签
   _warmupChips(problem){
@@ -540,6 +580,7 @@ window.MathFlowV5 = {
           <div style="margin-top:12px;padding:10px 14px;background:var(--teal-soft);border-radius:12px;border:1px solid rgba(0,168,150,.2)">
             <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">👀 先看图，再解题 —— 图形会告诉你数字之间的关系</div>
             <div style="background:#fff;border-radius:10px;padding:6px">${svg}</div>
+            ${this._tool(problem)}
           </div>`;
         }
       }catch(e){}
@@ -582,6 +623,8 @@ window.MathFlowV5 = {
     if(isCorrect){
       try{ if(typeof WeaknessDetector!=='undefined') WeaknessDetector.recordAnswer(S, wdQ, this._sess.hintUsed?'hint':'correct', timeUsed); }catch(e){}
       try{ if(typeof setStar==='function') setStar(3, '数学场景题'); }catch(e){}
+      // 2026-09：知识链打通进度——答对给本题 knowledge 记一次"学过"
+      try{ if(typeof _bumpMathProgress==='function') _bumpMathProgress(problem.knowledge); }catch(e){}
       if(fb){
         fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>`;
       }
@@ -639,6 +682,8 @@ window.MathFlowV5 = {
       <div style="text-align:center;margin-top:8px">
         <button onclick="MathFlowV5._replayVisual()" style="padding:8px 18px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(0,168,150,.3);border-radius:18px;font-size:12px;font-weight:700;cursor:pointer">🎬 重新播放动画</button>
       </div>
+      <!-- 可拖曳教具：数形结合从"看"升级为"做" -->
+      ${this._tool(problem)}
       ${stepControls}
       ${problem.barTranslateLine && problem.barTranslateLine.items ? `
       <div style="margin-top:14px;padding:14px 18px;background:var(--yellow-soft);border-radius:12px;border-left:4px solid var(--yellow)">

@@ -97,7 +97,7 @@ const PetCompanion = (() => {
 .pc-badge-stage{color:#FFE9A8;}
 .pc-badge-stars{color:#FFD24A;letter-spacing:1px;}
 .pc-zzz{position:absolute;top:8%;right:14%;font-size:22px;color:#fff;opacity:.9;animation:pc-zzz 2.4s ease-in-out infinite;z-index:3;}
-.pc-tip{position:absolute;top:34%;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:18px;background:rgba(0,168,150,.92);color:#fff;font-size:13px;font-weight:800;white-space:nowrap;opacity:0;transition:opacity .25s,transform .25s;z-index:4;pointer-events:none;}
+.pc-tip{position:absolute;top:34%;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:18px;background:rgba(37,112,232,.92);color:#fff;font-size:13px;font-weight:800;white-space:nowrap;opacity:0;transition:opacity .25s,transform .25s;z-index:4;pointer-events:none;}
 .pc-tip.pc-show{opacity:1;transform:translateX(-50%) translateY(-6px);}
 
 /* 情绪驱动的动画（位于不同的嵌套层，互不冲突） */

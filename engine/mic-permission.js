@@ -48,7 +48,7 @@ window.MicPermission = (function(){
   <h3 style="color:var(--navy,#1E3A5F);margin:0 0 6px;font-size:20px">我们来测试一下麦克风吧！</h3>
   <p style="color:var(--ink-300,#6b7280);margin:0 0 18px;font-size:14px">和老师对话需要用到麦克风哦</p>
   <button class="mic-start-btn" data-act="start"
-    style="background:var(--teal,#00A896);color:#fff;border:none;border-radius:999px;padding:12px 28px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(0,168,150,.3)">
+    style="background:var(--teal,#00A896);color:#fff;border:none;border-radius:999px;padding:12px 28px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(37,112,232,.3)">
     开始测试 🎙️
   </button>
   <div class="mic-status" data-role="status" style="margin-top:16px;min-height:24px;font-size:14px;color:var(--ink-400,#475569)"></div>

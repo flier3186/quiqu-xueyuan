@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const { chromium } = require('playwright-core');
 
-const BASE = 'http://127.0.0.1:8141/index.html';
+const BASE = 'http://127.0.0.1:8147/index.html';
 const OUT = path.join(__dirname, '..', 'selfcheck');
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
 

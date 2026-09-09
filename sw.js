@@ -1,14 +1,72 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260802b';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260909a';
 const ASSETS = [
   '/',
   '/index.html',
-  '/assets/icons/icon.svg'
+  '/assets/theme.css',
+  '/assets/icons/icon.svg',
+  '/manifest.json',
+  'data/english-grammar.js',
+  'data/english-listening.js',
+  'data/english-phonics.js',
+  'data/english-scenarios.js',
+  'data/english-vocab.js',
+  'data/grade-limits.js',
+  'data/listening-radio.js',
+  'data/math-2a-2b.js',
+  'data/math-3-6-extend.js',
+  'data/math-data-2b.js',
+  'data/math-data-3a.js',
+  'data/math-data-3b.js',
+  'data/math-data-4a.js',
+  'data/math-data-4b.js',
+  'data/math-data-5a.js',
+  'data/math-data-5b.js',
+  'data/math-data-6a.js',
+  'data/math-data-6b.js',
+  'data/math-data-7a.js',
+  'data/math-data-7b.js',
+  'data/math-data-8a.js',
+  'data/math-data-8b.js',
+  'data/math-data-9a.js',
+  'data/math-data-9b.js',
+  'data/math-data-core.js',
+  'data/math-data.js',
+  'data/speak-8-new.js',
+  'data/storybooks.js',
+  'data/tpr-action-house.js',
+  'data/vocab-themes.js',
+  'data/word-dict.js',
+  'engine/achievements.js',
+  'engine/cloud-tts.js',
+  'engine/english-flow-v5.js',
+  'engine/listening-math.js',
+  'engine/math-flow-v5.js',
+  'engine/math-geometry-3d.js',
+  'engine/math-kernel.js',
+  'engine/math-manipulative.js',
+  'engine/math-visual-v5.js',
+  'engine/mic-permission.js',
+  'engine/neural-tts.js',
+  'engine/parent-panel.js',
+  'engine/pet-companion.js',
+  'engine/progress-tracker-v5.js',
+  'engine/russian-questioning.js',
+  'engine/scene-manager.js',
+  'engine/spaced-review-v5.js',
+  'engine/spaced-review.js',
+  'engine/speak-engine-v5.js',
+  'engine/weakness-detector-v5.js'
 ];
 
 // 安装：预缓存核心文件
 self.addEventListener('install', event => {
+  // 逐个预缓存（allSettled：单个 404 不拖垮整体安装）
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(() => {})
+    caches.open(CACHE_NAME).then(cache =>
+      Promise.allSettled(ASSETS.map(a =>
+        cache.add(a).catch(()=>{})
+      ))
+    ).catch(()=>{})
   );
   self.skipWaiting();
 });

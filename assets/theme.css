@@ -1,60 +1,77 @@
 /* ============================================================
-   奇趣学园 · 少年感设计系统（Aria · V7）
-   全站推倒重设计：9-12 岁大孩子审美
-   核心 token 来源唯一处，由 index.html <link> 在 inline <style> 之前引入。
-   品牌锚点 --teal #00A896 保留不动；整体改为高对比、清晰分层的少年感体系，
-   去掉上一版大量浅绿浅黄糊在一起的发闷感。
+   奇趣学园 · 少年感设计系统（Aria · V8 · 蓝色主题）
+   使用者画像：8.5 岁男孩，偏好蓝色。
+   参考头部产品：
+     · 作业帮   —— 白底 + 浅蓝清爽主调，蓝 #2B6AFD 作交互主色
+     · Duolingo —— 高饱和主色 + 厚底 3D 按钮 + 圆角 16-20px + 语义色（绿对/红错）
+     · 学而思   —— 低饱和蓝 + 青绿强调，护眼低刺激
+     · Khan Kids—— 大面积留白、高对比、少噪点
+   本版要点：
+     1) 全局交互主色 = 少年蓝 #2570E8（白字对比 4.6:1，达 WCAG AA）
+     2) 数学区保留青绿（.math-scope 作用域变量覆盖），与蓝同属冷色系，不刺眼
+     3) 去掉发闷的多色 mesh，背景改为极浅蓝白，噪点降到 .3
+     4) 语义色与 Duolingo 对齐：绿=答对、红=答错、黄=成就
    ============================================================ */
 :root{
-  /* ===== 品牌主色：孔雀绿（保留为锚点，不刺眼但有活力） ===== */
-  --teal-50:#E6FBF7;--teal-100:#C7F4EA;--teal-200:#94EAD7;--teal-300:#52DDC2;
-  --teal-400:#1FCFA8;--teal:#00A896;--teal-600:#00937F;--teal-700:#007064;--teal-800:#005147;
+  /* ===== 品牌主色：少年蓝（全站 chrome / 按钮 / 导航 / 链接） ===== */
+  --teal-50:#F3F8FF;--teal-100:#E4EDFF;--teal-200:#C9DCFF;--teal-300:#9DC0FF;
+  --teal-400:#5B95FF;--teal:#2570E8;--teal-600:#1B5FD0;--teal-700:#1349A6;--teal-800:#0E3680;
 
-  /* ===== 少年感辅色：高对比蓝 / 紫 / 珊瑚（双色+三色辅助） ===== */
-  --blue-50:#EAF1FF;--blue-100:#D2E1FF;--blue:#2F6BFF;--blue-600:#1E54E0;--blue-700:#1640B0;
-  --violet-50:#F0ECFF;--violet-100:#E0D7FF;--violet:#7C5CFF;--violet-600:#6A45F0;--violet-700:#5532C7;
-  --yellow:#FFC300;--yellow-600:#E0A800;--yellow-700:#B58600;--yellow-50:#FFF8E6;--yellow-100:#FFEFC2;--yellow-200:#FFE180;--yellow-300:#FFD54D;
-  --coral:#FF7A45;--coral-600:#F2612A;--coral-700:#D44A22;
+  /* ===== 分区色 ===== */
+  --blue-50:#EAF2FF;--blue-100:#D5E4FF;--blue:#2F6BFF;--blue-600:#1E54E0;--blue-700:#1640B0;
+  --violet-50:#F1ECFE;--violet-100:#E3D9FF;--violet:#7C4DEF;--violet-600:#6739D6;--violet-700:#5229AE;
+  --yellow:#FFC53D;--yellow-600:#E0A800;--yellow-700:#A16207;--yellow-50:#FFF8E6;--yellow-100:#FFEFC2;--yellow-200:#FFE180;--yellow-300:#FFD54D;
+  --coral:#FF7A45;--coral-600:#F2612A;--coral-700:#C2410C;
   --navy:#16335C;--navy-700:#102747;--navy-800:#0B1A30;--navy-light:#2E4D73;
   --pink:#E8A0BF;--purple:#8B5CF6;--purple-soft:#F1ECFE;
 
+  /* ===== 数学区青绿（供 .math-scope 作用域覆盖使用） ===== */
+  --green-50:#E9FBF6;--green-100:#C7F4EA;--green-200:#94EAD7;--green-300:#52DDC2;
+  --green-400:#1FCFA8;--green:#00806E;--green-600:#00715F;--green-700:#00594B;--green-800:#003D33;
+  --green-light:#00A896;--green-soft:#E9FBF6;--green-soft-2:#D6F2EC;
+
+  /* ===== 语义色（Duolingo 语义体系：绿=答对 / 红=答错 / 黄=成就） ===== */
+  --success:#16A34A;--success-700:#15803D;--success-soft:#E7F8EE;
+  --danger:#DC2626;--danger-700:#B91C1C;--danger-soft:#FEE9E9;
+  --warn:#F59E0B;--warn-soft:#FFF6E5;
+
   /* 中性色（偏冷灰蓝，清晰不脏） */
   --ink-900:#0E1726;--ink-800:#1D2A3A;--ink-700:#33425A;--ink-600:#5A6B82;--ink-500:#7A8AA0;
-  --ink-400:#9AAAbe;--ink-300:#C8D2DE;--ink-200:#E3E9F0;--ink-100:#EFF3F8;--ink-50:#F6F8FB;
+  --ink-400:#8C9BB0;--ink-300:#C8D2DE;--ink-200:#E3E9F0;--ink-100:#EFF3F8;--ink-50:#F6F8FB;
 
   /* 语义别名 */
   --text-1:var(--ink-900);--text-2:var(--ink-600);--text-3:var(--ink-400);--text-invert:#fff;
   --surface:#fff;--surface-card:#fff;
-  --card-bg:#ffffff;          /* 上版漏定义导致卡片透明发闷，此处补齐 */
-  --card-bg-soft:#F7FAFD;     /* 次级卡片底，与纯白拉开层次 */
+  --card-bg:#ffffff;
+  --card-bg-soft:#F7FAFF;
 
-  /* ===== 柔色底（清晰分层，不再糊成一团） ===== */
-  --teal-light:#33E0C0;       /* 主色悬停/高亮 */
-  --teal-soft:#E6FBF7;        /* 浅青底 */
-  --teal-soft-2:#D6F2EC;
-  --blue-soft:#EAF1FF;        /* 英语区浅蓝底 */
-  --violet-soft:#F0ECFF;      /* 口语区浅紫底 */
-  --yellow-soft:#FFF6DD;      /* 浅黄底（小面积点缀，不铺大面） */
-  --coral-soft:#FFEDE6;       /* 宠物/奖励浅橙底 */
+  /* ===== 柔色底 ===== */
+  --teal-light:#4A8DFF;                       /* 主色悬停 / 渐变浅端 */
+  --teal-soft:#EAF2FF;                        /* 主色浅底（取代原浅青） */
+  --teal-soft-2:#DCE8FF;
+  --blue-soft:#EAF2FF;
+  --violet-soft:#F1ECFE;
+  --yellow-soft:#FFF6DD;
+  --coral-soft:#FFEDE6;
   --coral-soft-2:#FFE0D4;
   --pink-soft:#FBE7F0;
 
-  /* 背景：干净冷灰蓝，去掉多色 mesh 堆砌的发闷感；保留极淡噪点 */
-  --bg-grad:linear-gradient(180deg,#F4F7FC 0%,#ECF1F8 100%);
+  /* 背景：极浅蓝白（Khan Kids 式留白 + 作业帮冷调），噪点更淡更干净 */
+  --bg-grad:linear-gradient(180deg,#F6FAFF 0%,#EDF3FC 100%);
   --bg-noise:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 
-  /* 阴影：轻而干净（多层但更克制） */
+  /* 阴影：轻而干净（蓝色调阴影，不再是灰蓝） */
   --shadow-xs:0 1px 2px rgba(14,23,38,.05);
-  --shadow-sm:0 2px 8px rgba(30,58,95,.06),0 1px 3px rgba(30,58,95,.04);
-  --shadow-md:0 6px 18px rgba(30,58,95,.08),0 2px 6px rgba(30,58,95,.04);
-  --shadow-lg:0 14px 34px rgba(30,58,95,.12),0 4px 12px rgba(30,58,95,.06);
-  --shadow-xl:0 24px 60px rgba(30,58,95,.14),0 8px 20px rgba(30,58,95,.08);
-  --shadow-teal:0 8px 24px rgba(0,168,150,.26);
+  --shadow-sm:0 2px 8px rgba(19,73,166,.06),0 1px 3px rgba(19,73,166,.04);
+  --shadow-md:0 6px 18px rgba(19,73,166,.09),0 2px 6px rgba(19,73,166,.05);
+  --shadow-lg:0 14px 34px rgba(19,73,166,.13),0 4px 12px rgba(19,73,166,.06);
+  --shadow-xl:0 24px 60px rgba(19,73,166,.15),0 8px 20px rgba(19,73,166,.08);
+  --shadow-teal:0 8px 24px rgba(37,112,232,.28);
   --shadow-blue:0 8px 24px rgba(47,107,255,.28);
-  --shadow-violet:0 8px 24px rgba(124,92,255,.28);
+  --shadow-violet:0 8px 24px rgba(124,77,239,.28);
   --card-shadow:var(--shadow-sm);--card-shadow-hover:var(--shadow-md);
   /* 玻璃态 */
-  --glass-bg:rgba(255,255,255,.8);
+  --glass-bg:rgba(255,255,255,.82);
   --glass-bg-strong:rgba(255,255,255,.94);
   --glass-blur:saturate(150%) blur(14px);
   --glass-border:rgba(255,255,255,.7);
@@ -72,17 +89,62 @@
   --fs-xs:13px;--fs-sm:15px;--fs-base:16px;--fs-md:18px;--fs-lg:22px;--fs-xl:26px;--fs-2xl:32px;--fs-3xl:40px;
   --touch:52px; /* 最小触控高度 */
 }
+
+/* ============================================================
+   数学区作用域：把主色变量局部重映射为青绿。
+   数学区内部所有 var(--teal*) 自动变青绿，无需逐处改代码；
+   与全局蓝同属冷色系，换科目有色彩区分但不刺眼。
+   ============================================================ */
+.math-scope,.math-scope *{
+  --teal:var(--green);--teal-light:var(--green-light);--teal-600:var(--green-600);
+  --teal-700:var(--green-700);--teal-800:var(--green-800);
+  --teal-50:var(--green-50);--teal-100:var(--green-100);--teal-200:var(--green-200);
+  --teal-300:var(--green-300);--teal-400:var(--green-400);
+  --teal-soft:var(--green-soft);--teal-soft-2:var(--green-soft-2);
+  --shadow-teal:0 8px 24px rgba(0,128,110,.26);
+}
+
+/* ============================================================
+   Duolingo 式「厚底按压按钮」：8-10 岁孩子最爱"能按下去"的手感。
+   只作用于主按钮，避免全站浮夸。
+   ============================================================ */
+.btn-primary,.btn-yellow{
+  box-shadow:0 4px 0 rgba(14,23,38,.14);
+  transition:transform var(--dur-fast) var(--ease-spring),box-shadow var(--dur-fast),background var(--dur-fast);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(14,23,38,.14),0 8px 18px rgba(37,112,232,.28)}
+.btn-primary:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(14,23,38,.14)}
+.btn-yellow:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(14,23,38,.12),0 8px 18px rgba(255,197,61,.32)}
+.btn-yellow:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(14,23,38,.12)}
+.button-3d{box-shadow:0 4px 0 rgba(14,23,38,.15);transition:transform var(--dur-fast) var(--ease-spring),box-shadow var(--dur-fast)}
+.button-3d:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(14,23,38,.15)}
+.button-3d:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(14,23,38,.15)}
+
+/* 统一的键盘可达焦点环（Q6-10 可访问性） */
+:where(button,[onclick],a,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid var(--teal-400);outline-offset:2px;border-radius:8px;
+}
+.math-scope :where(button,[onclick],[tabindex]):focus-visible{outline-color:var(--green-400)}
+
 @media (prefers-color-scheme: light){
-  :root{--bg-grad:linear-gradient(180deg,#F4F7FC 0%,#ECF1F8 100%);}
+  :root{--bg-grad:linear-gradient(180deg,#F6FAFF 0%,#EDF3FC 100%);}
 }
 @media (prefers-color-scheme: dark){
   :root{
     --bg-grad:linear-gradient(180deg,#0F1622 0%,#0B111B 100%);
     --card-bg:#16202E;--card-bg-soft:#1A2535;
-    --text-1:#EAF0F8;--text-2:#A9B6C8;--text-3:#6F7E92;
+    --text-1:#EAF0F8;--text-2:#A9B6C8;--text-3:#8A99AE;
     --glass-bg:rgba(22,32,46,.8);--glass-border:rgba(255,255,255,.08);
     --ink-200:#26313F;--ink-100:#1C2735;
+    /* 深色模式下蓝需提亮才够对比（#6FA5FF 在 #16202E 上 6.6:1） */
+    --teal:#6FA5FF;--teal-400:#8FB8FF;--teal-600:#5B95FF;--teal-700:#4A85F5;--teal-800:#8FB8FF;
+    --teal-soft:rgba(37,112,232,.22);--teal-soft-2:rgba(37,112,232,.32);--teal-light:#8FB8FF;
+    --teal-50:rgba(37,112,232,.14);--teal-100:rgba(37,112,232,.20);--teal-200:rgba(37,112,232,.30);
+    --green:#2DD4BF;--green-light:#5EEAD4;--green-soft:rgba(0,168,150,.18);--green-soft-2:rgba(0,168,150,.28);
+    --green-700:#99F6E4;--green-800:#CCFBF1;--green-600:#14B8A6;--green-400:#5EEAD4;
+    --success:#4ADE80;--danger:#F87171;--warn:#FBBF24;--yellow:#FFD54D;
   }
+  .math-scope,.math-scope *{--teal:#2DD4BF;--teal-700:#99F6E4;--teal-soft:rgba(0,168,150,.18)}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
@@ -90,7 +152,6 @@
 
 /* ============================================================
    首页「课程地图」入口卡（数学 / 英语 / 口语 / 宠物 四大区）
-   大而易点，颜色对应少年感四色体系
    ============================================================ */
 .kid-start{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:0 0 var(--space-4)}
 .kid-entry{
@@ -106,9 +167,10 @@
 .kid-entry__icon{font-size:50px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.18))}
 .kid-entry__title{font-size:21px;font-weight:900}
 .kid-entry__sub{font-size:13px;opacity:.94;font-weight:600;letter-spacing:.01em}
-.kid-entry--math{background:linear-gradient(150deg,var(--teal),var(--teal-700))}
-.kid-entry--eng{background:linear-gradient(150deg,var(--blue),var(--blue-600));color:#fff}
-.kid-entry--speak{background:linear-gradient(150deg,var(--violet),var(--violet-600));color:#fff}
+/* 数学=青绿（成长色），英语=少年蓝（孩子最爱），口语=紫，宠物=橙 */
+.kid-entry--math{background:linear-gradient(150deg,var(--green-light),var(--green-700))}
+.kid-entry--eng{background:linear-gradient(150deg,#4A8DFF,#1349A6);color:#fff}
+.kid-entry--speak{background:linear-gradient(150deg,var(--violet),var(--violet-700));color:#fff}
 .kid-entry--pet{background:linear-gradient(150deg,var(--coral),var(--coral-700));color:#fff}
 @media (max-width:980px){.kid-start{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){
@@ -120,17 +182,27 @@
 }
 
 /* ============================================================
-   宠物舞台（3D 形象预留钩子，由 PM 接线）
+   MathGeo3D · 空间几何可拖拽教具（Q6-2）
+   ============================================================ */
+.mgeo-obj{width:0;height:0}
+.mgeo-f{
+  position:absolute;transform-style:preserve-3d;
+  display:flex;align-items:center;justify-content:center;border-radius:6px;
+}
+.mgeo-f i{font-style:normal;font-size:14px;font-weight:900;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4);letter-spacing:.04em}
+@keyframes mgeoSpin{
+  from{transform:rotateX(-18deg) rotateY(0deg)}
+  to{transform:rotateX(-18deg) rotateY(360deg)}
+}
+
+/* ============================================================
+   宠物舞台
    ============================================================ */
 .pet-display img{
   max-width:100%;max-height:100%;object-fit:contain;
   filter:drop-shadow(0 14px 26px rgba(0,0,0,.28));
   transition:transform var(--dur-slow) var(--ease-spring);
 }
-.pet-stage--3d{
-  background:radial-gradient(circle at 50% 32%, #163452 0%, #0F172A 72%);
-}
-.pet-stage--3d .pet-display{
-  width:min(440px,82%);height:auto;aspect-ratio:1;
-}
+.pet-stage--3d{background:radial-gradient(circle at 50% 32%, #163452 0%, #0F172A 72%);}
+.pet-stage--3d .pet-display{width:min(440px,82%);height:auto;aspect-ratio:1;}
 .pet-stage--3d .pet-display img{transform:translateY(-6px)}
