@@ -633,12 +633,13 @@ window.MathFlowV5 = {
       this._sess.hintUsed = true;
       this._sess.solveAttempts = (this._sess.solveAttempts||0) + 1;
       try{ if(typeof WeaknessDetector!=='undefined') WeaknessDetector.recordAnswer(S, wdQ, 'wrong', timeUsed); }catch(e){}
-      // 错题本
+      // 错题本（Q6-5：带 knowledge 供按知识点聚合；Q6-9：答错也记入今日画像）
       try{
         S.math = S.math || {};
+        if(typeof _logToday==='function') _logToday(false, problem.knowledge);
         S.math.wrongProblems = S.math.wrongProblems || [];
         if(!S.math.wrongProblems.some(w=>w.q===problem.question)){
-          S.math.wrongProblems.push({q:problem.question, a:String(problem.answer)});
+          S.math.wrongProblems.push({q:problem.question, a:String(problem.answer), k:(typeof _normK==='function'?_normK(problem.knowledge):'')||'', t:Date.now()});
           if(typeof saveState==='function') saveState();
         }
       }catch(e){}
