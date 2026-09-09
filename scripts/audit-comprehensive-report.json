@@ -1,0 +1,2438 @@
+{
+  "summary": {
+    "mathTotal": 113,
+    "high": 0,
+    "mid": 0,
+    "low": 280,
+    "english": 0
+  },
+  "mathIssues": [
+    {
+      "severity": "低",
+      "src": "主库:3a#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#3 变式1",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "周末全家去郊外游玩，导航显示从家到目的地有3千米。爸爸问小明：你知道3千米是多少米吗？小明想起数学课上学的长度单位换算。 5千米合多少米？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#3 变式2",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "周末全家去郊外游玩，导航显示从家到目的地有3千米。爸爸问小明：你知道3千米是多少米吗？小明想起数学课上学的长度单位换算。 4000米合多少千米？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#6",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "3 / 8"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#6 变式1",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "5/9"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3a#6 变式2",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "3/6"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#5 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3"
+        ],
+        "formula": "12÷3=?",
+        "text": "一年有几个季度？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:3b#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3000000",
+          "50000"
+        ],
+        "formula": "3000000 + 50000 = ?",
+        "text": "这个数是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4a#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#2 变式1",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "7/10"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#2 变式2",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "5/10"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:4b#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#6",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1"
+        ],
+        "formula": "20 ÷ 5 + 1 = ?",
+        "text": "一共要栽多少棵树？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#6 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1"
+        ],
+        "formula": "30÷5+1=?",
+        "text": "30米路每5米栽树两端栽几棵？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5a#6 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1"
+        ],
+        "formula": "40÷8+1=?",
+        "text": "40米路每8米栽树两端栽几棵？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1",
+          "3",
+          "6"
+        ],
+        "formula": "1+2+3+4+6+12 = ?",
+        "text": "12的所有因数的和是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#1 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1",
+          "3"
+        ],
+        "formula": "1+2+3+6=?",
+        "text": "6的因数和？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#1 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1"
+        ],
+        "formula": "1+2+4+8=?",
+        "text": "8的因数和？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#3",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "3 / 4"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#3 变式1",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "2/5"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#3 变式2",
+      "type": "分数认读算式即答案（运行时已门控隐藏）",
+      "detail": {
+        "formula": "5/6"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:5b#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#5 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "0.7"
+        ],
+        "formula": "300×0.7=?",
+        "text": "300×70%=?"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#5 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "0.6"
+        ],
+        "formula": "500×0.6=?",
+        "text": "500×60%=?"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6a#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3",
+          "3"
+        ],
+        "formula": "12 : 18 = 2 : 3，2 + 3 = ?",
+        "text": "男女生人数比化简后，前项与后项之和是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#1 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "7",
+          "7"
+        ],
+        "formula": "20 : 35 = 4 : 7，4 + 7 = ?",
+        "text": "20:35 化成最简比，前项与后项之和是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#1 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3",
+          "3"
+        ],
+        "formula": "16 : 24 = 2 : 3，2 + 3 = ?",
+        "text": "甲数16、乙数24，它们最简整数比的前项与后项之和是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#3 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "36"
+        ],
+        "formula": "3.14×36×10÷3=?",
+        "text": "r=6,h=10圆锥体积？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#3 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "9"
+        ],
+        "formula": "3.14×9×5÷3=?",
+        "text": "r=3,h=5圆锥体积？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "主库:6b#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#5",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "200"
+        ],
+        "formula": "200 × 4 = ?",
+        "text": "大约需要多少盆花？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#5 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "400"
+        ],
+        "formula": "400 × 3 = ?",
+        "text": "每排摆389盆，摆3排，大约多少盆？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#5 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "200"
+        ],
+        "formula": "200 × 5 = ?",
+        "text": "每箱198本，买5箱，大约多少本？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#7 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#7 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#7 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3000"
+        ],
+        "formula": "3000 ÷ 50 = ?",
+        "text": "大象重3吨，每袋石头50千克，需要几袋？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#8 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#8 变式1",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "学校花圃种了4排月季花，每排15株。又种了2排牡丹花，每排12株。一共种了多少株花？ 教室有5排课桌，每排8张。又摆了3排椅子，每排6把。一共多少张桌椅？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#8 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3a_e#8 变式2",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "学校花圃种了4排月季花，每排15株。又种了2排牡丹花，每排12株。一共种了多少株花？ 苹果树有6行，每行10棵。梨树有4行，每行8棵。一共多少棵果树？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#5 变式1",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "妈妈买了3千克苹果，每千克8元；又买了2千克香蕉，每千克6元。一共花了多少元？ 买了4千克橘子每千克5元，3千克橙子每千克7元，一共多少元？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:3b_e#5 变式2",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "妈妈买了3千克苹果，每千克8元；又买了2千克香蕉，每千克6元。一共花了多少元？ 买了6支铅笔每支2元，4支钢笔每支5元，一共多少元？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4a_e#5 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "86400"
+        ],
+        "formula": "100000000 ÷ 86400 ≈ ?（天）",
+        "text": "1亿秒大约是多少天？（保留整数）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:4b_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#3 变式1",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "盒子里有6个红球和4个白球，老师让小红闭眼摸一个。老师问：要让摸到红球和白球的可能性一样大，至少要再放入几个白球？ 8红5白要使可能性相同再放几个白？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#3 变式2",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "盒子里有6个红球和4个白球，老师让小红闭眼摸一个。老师问：要让摸到红球和白球的可能性一样大，至少要再放入几个白球？ 7红3白要使可能性相同再放几个白？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#5",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "1"
+        ],
+        "formula": "120 ÷ (3 + 1) × 3 = ?",
+        "text": "故事书有多少本？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#5 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "80",
+          "1"
+        ],
+        "formula": "80 ÷ (3 + 1) × 3 = ?",
+        "text": "苹果有多少千克？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5a_e#5 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "45",
+          "1"
+        ],
+        "formula": "45 ÷ (2 + 1) × 2 = ?",
+        "text": "男生有多少人？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3",
+          "5",
+          "7"
+        ],
+        "formula": "2 + 3 + 5 + 7 = ?",
+        "text": "10以内所有质数的和是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#1 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3",
+          "5",
+          "7",
+          "11",
+          "13",
+          "17",
+          "19"
+        ],
+        "formula": "2+3+5+7+11+13+17+19=?",
+        "text": "20以内所有质数的和？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#1 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3",
+          "5",
+          "7",
+          "11",
+          "13"
+        ],
+        "formula": "2+3+5+7+11+13=?",
+        "text": "15以内所有质数的和？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#5 变式1",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "妈妈买了一些苹果，如果每袋装6个，还剩4个；如果每袋装8个，差6个。妈妈买了多少个苹果？ 一些学生排队，每行8人多5人，每行10人少3人，一共有多少学生？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:5b_e#5 变式2",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "妈妈买了一些苹果，如果每袋装6个，还剩4个；如果每袋装8个，差6个。妈妈买了多少个苹果？ 发糖果，每人3颗多2颗，每人5颗少4颗，一共有多少颗糖果？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6a_e#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#2 变式1",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "美术课上调制颜料，黄色颜料和蓝色颜料按 3:5 调配。老师问：如果黄色颜料用了9份，蓝色颜料应该用多少份？ 按 2:7 调配，第一种用了6份，第二种用多少份？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#2 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "8"
+        ],
+        "formula": "24 × 5 ÷ 8 = ?",
+        "text": "按 3:5 调配，一共用了24份，蓝色占多少份？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#2 变式2",
+      "type": "文本拼接（运行时已防：变式自成一体）",
+      "detail": {
+        "sceneQ": 1,
+        "variantQ": 1,
+        "text": "美术课上调制颜料，黄色颜料和蓝色颜料按 3:5 调配。老师问：如果黄色颜料用了9份，蓝色颜料应该用多少份？ 按 3:5 调配，一共用了24份，蓝色占多少份？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "扩展:6b_e#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#7 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#7 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#8 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#8 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#9 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#9 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#10 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#10 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#11 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#11 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#12 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2a#12 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#1 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#1 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#2 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#2 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#3 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#3 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#4 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#4 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#5 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#5 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#6 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#6 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#7",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3000",
+          "200"
+        ],
+        "formula": "3000 + 200 + 5 = ?",
+        "text": "3个千、2个百、5个一合起来是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#7 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#7 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "2000",
+          "400"
+        ],
+        "formula": "2000 + 400 + 3 = ?",
+        "text": "2个千、4个百、3个一合起来是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#7 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#7 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "5000"
+        ],
+        "formula": "5000 + 100 + 60 = ?",
+        "text": "5个千、1个百、6个十合起来是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#8 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#8 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#9 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#9 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#10 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#10 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#11 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#11 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "3"
+        ],
+        "formula": "38 ÷ 5 = ?（盒）余3",
+        "text": "38块糖每盒装5块，最多装满几盒？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#11 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#11 变式2",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "5",
+          "3"
+        ],
+        "formula": "23 ÷ 4 = 5 余3，至少 ? 条",
+        "text": "23人坐船，每条船坐4人，至少要几条船？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#12",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "5000",
+          "300"
+        ],
+        "formula": "5000 + 300 = ?",
+        "text": "这个数是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#12 变式1",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#12 变式1",
+      "type": "算式前置泄漏（运行时已门控隐藏）",
+      "detail": {
+        "leaked": [
+          "7000",
+          "20"
+        ],
+        "formula": "7000 + 20 = ?",
+        "text": "由7个千、2个十组成的数是多少？"
+      }
+    },
+    {
+      "severity": "低",
+      "src": "二年级:2b#12 变式2",
+      "type": "选项为空",
+      "detail": {
+        "note": "由 _safeChoices 生成（模拟验证：无重复、含正确答案）"
+      }
+    }
+  ],
+  "englishIssues": []
+}

@@ -592,7 +592,9 @@ window.MathFlowV5 = {
         ${this._escape(problem.question)}
       </div>
       ${pictorialScaffold}
-      <div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(problem.formula)}</span></div>
+      ${(typeof window._formulaLeaksPreAnswer==='function' && window._formulaLeaksPreAnswer(problem))
+        ? `<div style="margin-top:12px;font-size:13px;color:var(--text-3);padding:10px 14px;background:var(--teal-soft);border-radius:10px">🤫 这道题的算式要<b>自己列</b>——先想清楚用哪几个数、怎么算，答完会揭晓完整算式</div>`
+        : `<div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(problem.formula)}</span></div>`}
       <div style="margin-top:8px;font-size:12px;color:var(--text-3)">选择正确的答案：</div>
       <div class="wp-choices" id="v5SolveChoices" style="grid-template-columns:repeat(${Math.min(problem.choices.length,4)},1fr);margin-top:8px">
         ${problem.choices.map((c,i)=>`<div class="wp-choice" data-idx="${i}" data-val="${c}" onclick="MathFlowV5._solveAnswer(this,${i},${correctIdx})">${this._escape(String(c))}</div>`).join('')}
@@ -626,7 +628,7 @@ window.MathFlowV5 = {
       // 2026-09：知识链打通进度——答对给本题 knowledge 记一次"学过"
       try{ if(typeof _bumpMathProgress==='function') _bumpMathProgress(problem.knowledge); }catch(e){}
       if(fb){
-        fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>`;
+        fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐${problem.formula?`<br><span style="font-size:13px;font-weight:600;color:var(--text-2)">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${this._escape(String(problem.formula))}</b></span>`:''}<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>`;
       }
       setTimeout(()=>{ this.advance('explain'); if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 1800);
     }else{
@@ -644,7 +646,7 @@ window.MathFlowV5 = {
         }
       }catch(e){}
       try{ if(typeof SpacedReview!=='undefined') SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e2){}
-      if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。<b>看看下面的提示再试一次</b></div>`;
+      if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${this._escape(String(problem.formula))}</b></span>`:''}<br><b>看看下面的提示再试一次</b></div>`;
       setTimeout(()=>{ if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 900);
     }
   },
@@ -1208,18 +1210,24 @@ window.MathFlowV5 = {
     }
     return null;
   },
-  // ===== 工具：为 variants 生成安全选项（确保正确答案在选项中） =====
+  // ===== 工具：为 variants 生成安全选项（确保正确答案在选项中且无重复） =====
   _safeChoices(v, problem){
     let ans = v.answer != null ? v.answer : problem.answer;
     let choices = (v.choices && v.choices.length) ? v.choices : problem.choices;
+    // 去重输入选项（避免母题/变体自带重复项）
+    if(choices && choices.length){
+      const seen = new Set();
+      choices = choices.filter(c => { const k = String(c); if(seen.has(k)) return false; seen.add(k); return true; });
+    }
     // 如果正确答案不在选项中，自动生成干扰选项
-    if(choices.indexOf(ans) === -1){
+    if(!choices || choices.indexOf(ans) === -1){
       const a = Number(ans);
       const base = isNaN(a) ? ans : a;
       const distractors = [];
       if(typeof base === 'number'){
         // 数字题：围绕正确答案生成 ±10、±20、±50、位数错位等干扰项
         const step = Math.max(1, Math.pow(10, Math.max(0, String(Math.floor(Math.abs(base))).length-2)));
+        const seen = new Set([String(base)]);
         const pool = [
           base + step, base - step,
           base + step*2, base - step*2,
@@ -1228,14 +1236,37 @@ window.MathFlowV5 = {
           // 易错：位数交换（如 683→638, 863）
           (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[0]+s[2]+s[1])*(base<0?-1:1):base+10;})(),
           (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[1]+s[0]+s[2])*(base<0?-1:1):base-10;})()
-        ].filter(x => x !== base && !distractors.includes(x));
+        ].filter(x => {
+          if(x === base || x < 0) return false;
+          const k = String(x);
+          if(seen.has(k)) return false;
+          seen.add(k);
+          return true;
+        });
         // 选取3个最接近的干扰项
         pool.sort((x,y)=>Math.abs(x-base)-Math.abs(y-base));
         distractors.push(...pool.slice(0,3));
+        // 兜底：若上述策略不足3个，用 +1/+2/+3 补齐
+        let guard = 1;
+        while(distractors.length < 3 && guard < 100){
+          const cand = base + guard;
+          const k = String(cand);
+          if(!seen.has(k) && cand >= 0){ seen.add(k); distractors.push(cand); }
+          guard++;
+        }
       }else{
         // 非数字题：用原题选项去掉重复后 + 正确答案
-        problem.choices.forEach(c => { if(c !== ans && !distractors.includes(c)) distractors.push(c); });
-        while(distractors.length < 3) distractors.push(ans + '？');
+        const seen = new Set([String(base)]);
+        (problem.choices || []).forEach(c => {
+          const k = String(c);
+          if(c !== ans && !seen.has(k)){ seen.add(k); distractors.push(c); }
+        });
+        while(distractors.length < 3){
+          const fill = base + '？' + (distractors.length + 1);
+          const k = String(fill);
+          if(!seen.has(k)){ seen.add(k); distractors.push(fill); }
+          else { distractors.push(base + '？' + Math.random().toString(36).slice(2,5)); }
+        }
         distractors.length = Math.min(3, distractors.length);
       }
       // 打乱顺序插入正确答案
@@ -1243,7 +1274,15 @@ window.MathFlowV5 = {
       for(let i=merged.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[merged[i],merged[j]]=[merged[j],merged[i]];}
       choices = merged;
     }
-    return {ans, choices, correctIdx: choices.indexOf(ans)};
+    // 再次去重并确保答案在选项中
+    const finalSeen = new Set();
+    const finalChoices = [];
+    choices.forEach(c => {
+      const k = String(c);
+      if(!finalSeen.has(k) && finalChoices.length < 4){ finalSeen.add(k); finalChoices.push(c); }
+    });
+    if(finalChoices.indexOf(ans) < 0) finalChoices.unshift(ans);
+    return {ans, choices: finalChoices.slice(0,4), correctIdx: finalChoices.indexOf(ans)};
   },
 
   // L1 基础：原题换数字（巩固）
@@ -1282,7 +1321,9 @@ window.MathFlowV5 = {
         <div style="padding:14px 16px;background:#FFF8E6;border-radius:12px;font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;margin-bottom:10px">
           📖 ${this._escape(v.question || problem.question)}
         </div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:6px">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(v.formula || problem.formula)}</span></div>
+        ${(typeof window._formulaLeaksPreAnswer==='function' && window._formulaLeaksPreAnswer({formula:(v.formula||problem.formula), question:(v.question||problem.question), scene:v.scene||''}))
+          ? `<div style="font-size:13px;color:var(--text-3);padding:8px 12px;background:var(--teal-soft);border-radius:8px;margin-bottom:6px">🤫 算式要自己列，答完再揭晓</div>`
+          : `<div style="font-size:14px;color:var(--text-2);margin-bottom:6px">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(v.formula || problem.formula)}</span></div>`}
         <div class="wp-choices" style="grid-template-columns:repeat(${Math.min(choices.length,4)},1fr)">
           ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._practiceAnswer(this,${i},${correctIdx},2)">${this._escape(String(c))}</div>`).join('')}
         </div>
@@ -1313,12 +1354,19 @@ window.MathFlowV5 = {
     </div>`;
   },
   // L3 进阶题：应用题（结合生活场景）
-  // 修复：变体没有自己的 scene 时，用变体算式的数字改写母题场景，
-  // 保证一张屏只有一道题——绝不再出现"旧故事 + 新题目"叠在一起让孩子无法作答。
+  // 修复：变体没有自己的 scene 时，必须保证“一屏一题”，绝不再把母题场景和变体问题生硬拼接。
+  // 策略：
+  //   1) 变体自带 scene → 直接用；
+  //   2) 变体 question 含数字（自成一道完整题）→ 只用 question；
+  //   3) 否则才尝试 _reScene，且改写后仍要语义一致：question 里的关键名词必须在改写后的 scene 中出现。
   _renderL3(problem){
     const variant = problem.variants && problem.variants[1] || {};
-    const scene = variant.scene || this._reScene(problem.scene, problem.formula, variant.formula || variant.question);
     const question = variant.question || '如果情况变化，结果会怎样？';
+    let scene = variant.scene || '';
+    if(!scene && !(/\d/.test(question))){
+      scene = this._reScene(problem.scene, problem.formula, variant.formula || variant.question);
+      if(scene && !this._sceneQuestionConsistent(scene, question)) scene = '';
+    }
     const {ans, choices, correctIdx} = this._safeChoices(variant, problem);
 
     return `<div class="cpa-layer" style="border-left-color:var(--pink);animation:fadeIn .45s ease">
@@ -1332,6 +1380,17 @@ window.MathFlowV5 = {
       </div>
       <div id="v5PracticeFeedback" style="margin-top:12px"></div>
     </div>`;
+  },
+  // scene 与 question 语义一致性检查：question 中的实词名词应在 scene 中出现。
+  _sceneQuestionConsistent(scene, question){
+    if(!scene || !question) return false;
+    // 提取 question 中的名词候选（2字及以上连续中文字符）
+    const qNouns = (String(question).match(/[\u4e00-\u9fa5]{2,}/g) || []);
+    if(!qNouns.length) return true;
+    const s = String(scene);
+    const matched = qNouns.filter(n => s.indexOf(n) >= 0);
+    // 至少 50% 的名词在 scene 中出现，或核心疑问词一致（多少/几/多少元等）
+    return matched.length / qNouns.length >= 0.5;
   },
   // 用新算式的数字按出现顺序改写场景文本，得到数字一致的新场景。
   // 例：scene"…原有386本…新买进247本…" + 旧式"386 + 247 = ?" + 新式"295+156=?"

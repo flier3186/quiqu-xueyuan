@@ -26,7 +26,8 @@ window.MathVisualV5 = {
 
   // ===== 答案零泄漏：中心化掩码层 =====
   // 所有 SVG <text> 输出前统一过滤：内容中等于答案的独立数字 token 一律替换为 "?"
-  // 教学揭示区（class 含 mv-reveal/mv-bar-sum/mv-bond-total/mv-result/mv-formula）豁免。
+  // 教学揭示区（class 含 mv-reveal/mv-bar-sum/mv-result/mv-formula）豁免；
+  // mv-bond-total 不再豁免：数字 bond 的“总数”若恰好等于答案会泄漏。
   // 宁可多掩不漏答：已知信息恰好等于答案时显示 "?"，由图形结构传达数量关系。
   _scrubAnswer(html, problem){
     if(html == null) return html;
@@ -44,7 +45,7 @@ window.MathVisualV5 = {
       re: new RegExp('(^|[^0-9.])' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=[^0-9.]|$)', 'g')
     }));
     return String(html).replace(/(<text[^>]*>)([\s\S]*?)(<\/text>)/g, (m, open, body, close) => {
-      if(/class="[^"]*(mv-reveal|mv-bar-sum|mv-bond-total|mv-result|mv-formula)[^"]*"/.test(open)) return m;
+      if(/class="[^"]*(mv-reveal|mv-bar-sum|mv-result|mv-formula)[^"]*"/.test(open)) return m;
       let out = body;
       testers.forEach(({re}) => { out = out.replace(re, '$1?'); });
       return open + out + close;

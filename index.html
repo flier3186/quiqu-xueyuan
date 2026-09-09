@@ -4999,6 +4999,7 @@ const MathVisual = {
     return this._scrubAnswer(html, problem);
   },
   // 答案零泄漏：SVG <text> 中等于答案的独立数字一律掩码为 "?"（揭示区豁免）
+  // 注：mv-bond-total 不再豁免，数字 bond 的“总数”等于答案时会泄漏。
   _scrubAnswer(html, problem){
     if(html == null) return html;
     const ansNum = problem ? Number(problem.answer) : NaN;
@@ -5014,7 +5015,7 @@ const MathVisual = {
       re: new RegExp('(^|[^0-9.])' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=[^0-9.]|$)', 'g')
     }));
     return String(html).replace(/(<text[^>]*>)([\s\S]*?)(<\/text>)/g, (m, open, body, close) => {
-      if(/class="[^"]*(mv-reveal|mv-bar-sum|mv-bond-total|mv-result|mv-formula)[^"]*"/.test(open)) return m;
+      if(/class="[^"]*(mv-reveal|mv-bar-sum|mv-result|mv-formula)[^"]*"/.test(open)) return m;
       let out = body;
       testers.forEach(function(p){ out = out.replace(p.re, '$1?'); });
       return open + out + close;
@@ -6114,7 +6115,10 @@ function $$(s){return Array.from(document.querySelectorAll(s))}
 function toast(msg){const t=$('#toast');t.innerHTML=`<span class="em">✅</span>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 // 英语单词照片映射：单词→Unsplash真实照片查询词
 // 抽象词/功能词/动作/形容词——照片无法准确表达，直接走 emoji 插画卡，杜绝随机错图
-const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','morning','afternoon','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting']);
+const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','morning','afternoon','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting',
+  // 具体小物件：随机照片极易错配，强制走 emoji 插画卡
+  'ruler','pencil','eraser','crayon','bag','pen','book','notebook','storybook','schoolbag','pencil case','pencil box','lunchbox','snack','toy','key','candy'
+]);
 const ENG_PHOTO_MAP={
   'notebook':'notebook,paper,stationery','candy':'candy,sweets,confectionery','key':'key,lock,vintage',
   'toy':'toy,children,playground','schoolbag':'schoolbag,backpack,education','snack':'snack,cookies',
@@ -6173,8 +6177,7 @@ const ENG_PHOTO_MAP={
   'snow':'snow,winter,white','wind':'wind,weather,breeze','fire':'fire,flame,hot',
   'earth':'earth,planet,world','sky':'sky,blue,clouds','sea':'sea,ocean,water',
   'sand':'sand,beach,desert','stone':'stone,rock,pebble','wood':'wood,tree,forest',
-  'paper':'paper,notebook,white','pen':'pen,writing,ink','book':'book,reading',
-  'eraser':'eraser,school,stationery','ruler':'ruler,measure,school','bag':'bag,carry',
+  'paper':'paper,notebook,white',
   'ball':'ball,sport,round','kite':'kite,fly,wind','flag':'flag,country,color',
   'map':'map,travel,world','wall':'wall,house,room','floor':'floor,ground,room',
   'roof':'roof,house,top','garden':'garden,flowers,green','bridge':'bridge,river',
@@ -6224,14 +6227,14 @@ const ENG_PHOTO_MAP={
   'catching':'catching,grab,ball','throwing':'throwing,toss,away','kicking':'kicking,sport,foot',
   'hitting':'hitting,strike,ball',
   // 词汇库/场景词补充（精准单标签，保证 Flickr 命中率）
-  'crayon':'crayon,wax','classroom':'classroom,school','blackboard':'blackboard,chalkboard',
+  'classroom':'classroom,school','blackboard':'blackboard,chalkboard',
   'picture':'painting,frame','candle':'candle,birthday','gift':'gift,present',
   'party':'party,birthday','noodle':'noodles,ramen','soup':'soup,bowl',
   'chicken':'chicken,poultry','shoes':'shoes,sneakers','pants':'trousers,jeans',
-  'desk':'desk,study','ruler':'ruler,measure','eraser':'eraser,rubber',
-  'backpack':'backpack,schoolbag','weekend':'celebration',
+  'desk':'desk,study',
+  'backpack':'backpack,schoolbag',
   // 默认
-  'teacher':'teacher,classroom,teaching','pencil':'pencil,stationery,wood','school':'school,building,classroom',
+  'teacher':'teacher,classroom,teaching','school':'school,building,classroom',
   'student':'student,learning,children','friend':'friends,children,playing','travel':'travel,vacation,journey',
   'default':'education,kids,learning'
 };
@@ -6253,6 +6256,8 @@ function engEmojiFallback(word){
   var emojiMap={
     apple:'🍎',banana:'🍌',cat:'🐱',dog:'🐕',fish:'🐟',bird:'🐦',
     book:'📚',pen:'🖊️',pencil:'✏️',bag:'🎒',school:'🏫',teacher:'👩‍🏫',
+    ruler:'📏',eraser:'🧼',crayon:'🖍️',notebook:'📓',storybook:'📖',schoolbag:'🎒',
+    'pencil case':'✏️','pencil box':'🖊️',lunchbox:'🍱',snack:'🍪',toy:'🧸',key:'🔑',candy:'🍬',
     student:'👦',friend:'👫',family:'👨‍👩‍👧',mother:'👩',father:'👨',
     sun:'☀️',moon:'🌙',star:'⭐',flower:'🌸',tree:'🌳',grass:'🌿',
     rain:'🌧️',snow:'❄️',cloud:'☁️',wind:'💨',
@@ -7113,6 +7118,32 @@ function _preSolvePrompt(p){
   return '先找出题目里的两个关键数量，想清楚它们是"合起来"还是"相差多少"。';
 }
 
+// ===== 作答前算式防泄漏门（2026-09-09 全量审计修复） =====
+// 判断"算式"能否在孩子作答前展示。以下两类必须隐藏，答完再揭示：
+//  1) 算式里出现题干没有的数字 —— 算式本身就是考点（质数和、数位展开、植树+1、
+//     八折→80%、一年12个月÷3……），孩子照着算式按计算器就行，等于泄题；
+//  2) 分数认读题（填分子/填分母/几分之几）—— 算式 "3 / 8" 直接把分子答案摆出来了。
+// 常见结构常量（π、进率、周长系数等）不算泄漏，保留"解方程式"脚手架。
+function _formulaLeaksPreAnswer(p){
+  const f = String(p.formula||'').trim();
+  if(!f) return false;
+  const q = String(p.scene||'') + ' ' + String(p.question||'');
+  // 分数认读：算式即答案
+  if(/填分子|填分母|几分之几/.test(q) && /^\d+\s*\/\s*\d+$/.test(f)) return true;
+  // 非算式型（图例/文字说明），不按算式处理
+  if(!/[+\-×÷x*]/.test(f)) return false;
+  const CONST = new Set(['2','3.14','4','10','12','24','60','90','100','180','360',
+                         '1000','10000','100000','1000000','100000000']);
+  const fNums = f.match(/\d+(?:\.\d+)?/g) || [];
+  const qNums = new Set(q.match(/\d+(?:\.\d+)?/g) || []);
+  // 题干里"八折/九折"等中文数字也能推导百分数，视为已知
+  const cnKnown = /八折|九折|七折|六折|五折|对折/.test(q);
+  const leaked = fNums.filter(n => !CONST.has(n) && !qNums.has(n)
+    && !(cnKnown && (Number(n)===80||Number(n)===90||Number(n)===70||Number(n)===60||Number(n)===50)
+        && /%|0\./.test(f)));
+  return leaked.length > 0;
+}
+
 // ===== 跨册知识关联链：把本册内容放进"知识从哪里来、到哪里去"的主线里 =====
 // 2026-09 增强：打通学习进度。每做完一道题给该题 knowledge 记一次"学过"，
 // 累计 ≥3 次标"已掌握"；0 次为"未学"。数据持久化到 localStorage，
@@ -7446,13 +7477,17 @@ function renderMathDiscovery(problem){
 // ===== 安全选项生成器（确保正确答案永远在选项中） =====
 function _safeMathChoices(problem){
   const ans = problem.answer;
-  let choices = problem.choices || [];
+  let choices = (problem.choices || []).slice();
+  // 去重输入选项
+  const seenInput = new Set();
+  choices = choices.filter(c => { const k = String(c); if(seenInput.has(k)) return false; seenInput.add(k); return true; });
   if(choices.indexOf(ans) !== -1) return {choices, correctIdx: choices.indexOf(ans)};
   const a = Number(ans);
   const base = isNaN(a) ? ans : a;
   const distractors = [];
   if(typeof base === 'number'){
     const step = Math.max(1, Math.pow(10, Math.max(0, String(Math.floor(Math.abs(base))).length-2)));
+    const seen = new Set([String(base)]);
     const pool = [
       base + step, base - step,
       base + step*2, base - step*2,
@@ -7460,19 +7495,45 @@ function _safeMathChoices(problem){
       base + 50, base - 50,
       (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[0]+s[2]+s[1])*(base<0?-1:1):base+10;})(),
       (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[1]+s[0]+s[2])*(base<0?-1:1):base-10;})()
-    ].filter(x => x !== base && !distractors.includes(x) && !choices.includes(x));
+    ].filter(x => {
+      if(x === base || x < 0) return false;
+      const k = String(x);
+      if(seen.has(k) || seenInput.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
     pool.sort((x,y)=>Math.abs(x-base)-Math.abs(y-base));
-    distractors.push(...pool.slice(0, Math.max(0, 4 - choices.length - 1)));
-    choices.forEach(c => { if(c !== ans && !distractors.includes(c)) distractors.push(c); });
+    distractors.push(...pool.slice(0, Math.max(0, 3 - choices.length)));
+    choices.forEach(c => {
+      const k = String(c);
+      if(c !== ans && !distractors.includes(c) && !seen.has(k)){ seen.add(k); distractors.push(c); }
+    });
+    // 兜底补齐 3 个干扰项
+    let guard = 1;
+    while(distractors.length < 3 && guard < 100){
+      const cand = base + guard;
+      const k = String(cand);
+      if(!seen.has(k) && cand >= 0){ seen.add(k); distractors.push(cand); }
+      guard++;
+    }
     distractors.length = Math.min(3, distractors.length);
   } else {
-    choices.forEach(c => { if(c !== ans && !distractors.includes(c)) distractors.push(c); });
-    while(distractors.length < 3) distractors.push(ans + '？');
+    const seen = new Set([String(base)]);
+    choices.forEach(c => {
+      const k = String(c);
+      if(c !== ans && !distractors.includes(c) && !seen.has(k)){ seen.add(k); distractors.push(c); }
+    });
+    while(distractors.length < 3){
+      const fill = base + '？' + (distractors.length + 1);
+      const k = String(fill);
+      if(!seen.has(k)){ seen.add(k); distractors.push(fill); }
+      else { distractors.push(base + '？' + Math.random().toString(36).slice(2,5)); }
+    }
     distractors.length = 3;
   }
   const merged = [ans, ...distractors];
   for(let i=merged.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[merged[i],merged[j]]=[merged[j],merged[i]];}
-  return {choices: merged, correctIdx: merged.indexOf(ans)};
+  return {choices: merged.slice(0,4), correctIdx: merged.indexOf(ans)};
 }
 
 // ===== 阶段 3：正式解题（Solve） =====
@@ -7485,7 +7546,9 @@ function renderMathSolve(problem){
     <div style="font-size:16px;color:var(--navy);font-weight:700;line-height:1.7;padding:16px 18px;background:linear-gradient(135deg,var(--coral-soft),white);border-radius:12px;border:1px solid rgba(251,146,60,.2)">
       ${problem.question}
     </div>
-    <div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${problem.formula}</span></div>
+    ${_formulaLeaksPreAnswer(problem)
+      ? `<div style="margin-top:12px;font-size:13px;color:var(--text-3);padding:10px 14px;background:var(--teal-soft);border-radius:10px">🤫 这道题的算式要<b>自己列</b>——先想清楚用哪几个数、怎么算，答完会揭晓完整算式</div>`
+      : `<div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${problem.formula}</span></div>`}
     <div style="margin-top:8px;font-size:12px;color:var(--text-3)">选择正确的答案：</div>
     <div class="wp-choices" id="mathSolveChoices" style="grid-template-columns:repeat(${Math.min(choices.length,4)},1fr);margin-top:8px">
       ${choices.map((c,i)=>`<div class="wp-choice" data-idx="${i}" data-val="${c}" onclick="mathAnswer(this,${i},${correctIdx},'solve',0)">${c}</div>`).join('')}
@@ -7679,7 +7742,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
       const previewVisual = (typeof MathVisual!=='undefined' && MathVisual.render && problem.visualType)
         ? `<div style="margin-top:12px;max-height:130px;overflow:hidden;border-radius:10px;border:1px dashed var(--teal);opacity:.9;pointer-events:none">${MathVisual.render(problem.visualType, problem.visualData, problem)}</div>`
         : '';
-      fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>${previewVisual}<div style="margin-top:8px;text-align:center;font-size:12px;color:var(--teal-700);font-weight:700">⬇️ 数形结合预览 · 即将进入阶段4查看完整动画</div>`;
+      fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐${problem.formula?`<br><span style="font-size:13px;font-weight:600;color:var(--text-2)">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>${previewVisual}<div style="margin-top:8px;text-align:center;font-size:12px;color:var(--teal-700);font-weight:700">⬇️ 数形结合预览 · 即将进入阶段4查看完整动画</div>`;
     }
     setTimeout(()=>mathAdvance('explain'), 1100);
   }else{
@@ -7695,7 +7758,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
       saveState();
     }
     try{ SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e){}
-    if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。<b>看看下面的提示再试一次</b></div>`;
+    if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><b>看看下面的提示再试一次</b></div>`;
     // 重新渲染 solve 阶段，展示提示
     setTimeout(()=>updateMathStage(), 900);
   }
