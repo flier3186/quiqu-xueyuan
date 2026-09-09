@@ -3162,7 +3162,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：21是? (1加数/2和)=1"
                 }
             ],
@@ -3198,7 +3198,6 @@ window.MATH_BY_GRADE["4b"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -3266,7 +3265,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：33是? (1加数/3和)=1"
                 }
             ],
@@ -3360,7 +3359,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：31是? (1积/2因数)=1"
                 }
             ],
@@ -3454,7 +3453,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：44是? (1积/3因数)=1"
                 }
             ],
@@ -3950,7 +3949,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：从上看 → ? (1长方/11三角)=1"
                 }
             ],
@@ -3986,7 +3985,6 @@ window.MATH_BY_GRADE["4b"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -4045,7 +4043,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：从上看 → ? (1长方/3三角)=1"
                 }
             ],
@@ -5115,7 +5113,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：0.3 ? 0.31 → (0等/1前/2后)=0"
                 }
             ],
@@ -5209,7 +5207,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：0.3 ? 0.35 → (0等/1前/2后)=0"
                 }
             ],
@@ -5300,7 +5298,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：三角形边数 = ?=3"
@@ -5393,7 +5391,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：三角形边数 = ?=3"
@@ -5490,7 +5488,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：三锐角 → ? (1锐/2直/4钝)=1"
                 }
             ],
@@ -5585,7 +5583,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：三锐角 → ? (1锐/3直/4钝)=1"
                 }
             ],
@@ -5680,7 +5678,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：三角形内角和 = ?°=180"
                 }
             ],
@@ -5775,7 +5773,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "减法",
                     "explain": "计算：三角形内角和 = ?°=180"
                 }
             ],
@@ -5811,7 +5809,6 @@ window.MATH_BY_GRADE["4b"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -6426,7 +6423,6 @@ window.MATH_BY_GRADE["4b"] = {
             "choices": [
                 1,
                 3,
-                3,
                 0
             ],
             "visualType": "geometry",
@@ -6482,7 +6478,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：对折重合 → ? (1轴对称/3平移)=1"
                 }
             ],
@@ -6575,7 +6571,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：对折重合 → ? (1轴对称/4平移)=1"
                 }
             ],
@@ -6671,7 +6667,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：平移不变 → ? (1形状/6位置)=1"
                 }
             ],
@@ -6707,7 +6703,6 @@ window.MATH_BY_GRADE["4b"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -6767,7 +6762,7 @@ window.MATH_BY_GRADE["4b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：平移不变 → ? (1形状/3位置)=1"
                 }
             ],

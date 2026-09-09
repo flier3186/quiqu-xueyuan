@@ -3263,7 +3263,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：从前面看 → ?个面=1"
@@ -3360,7 +3360,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "加法",
                     "explain": "计算：从前面看 → ?个面=1"
                 }
             ],
@@ -3457,7 +3457,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：至少 ? 个=9"
@@ -3556,7 +3556,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：至少 ? 个=11"
@@ -3667,7 +3667,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：15的因数个数 = ?=6"
                 }
             ],
@@ -3776,7 +3776,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：15的因数个数 = ?=6"
                 }
             ],
@@ -3867,7 +3867,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：长方体面数 = ?=6"
@@ -3960,7 +3960,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：长方体面数 = ?=6"
@@ -4053,7 +4053,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：正方体面数 = ?=6"
@@ -4146,7 +4146,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：正方体面数 = ?=6"
@@ -4439,7 +4439,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1dm³ = ? cm³=1000"
                 }
             ],
@@ -4536,7 +4536,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1dm³ = ? cm³=1000"
                 }
             ],
@@ -5143,7 +5143,6 @@ window.MATH_BY_GRADE["5b"] = {
             "choices": [
                 1,
                 3,
-                3,
                 0
             ],
             "visualType": "fractionStrip",
@@ -5582,7 +5581,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：gcd(12,21) = ?=6"
@@ -5684,7 +5683,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：gcd(13,24) = ?=6"
@@ -6346,7 +6345,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：旋转不变 → ? (1形状/2位置)=1"
                 }
             ],
@@ -6442,7 +6441,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：旋转不变 → ? (1形状/2位置)=1"
                 }
             ],
@@ -6573,7 +6572,6 @@ window.MATH_BY_GRADE["5b"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -7291,7 +7289,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "减法",
                     "explain": "计算：7瓶 → 至少 ? 次=2"
                 }
             ],
@@ -7386,7 +7384,7 @@ window.MATH_BY_GRADE["5b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "减法",
                     "explain": "计算：4瓶 → 至少 ? 次=2"
                 }
             ],

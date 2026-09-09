@@ -2114,7 +2114,12 @@ window.MATH_BY_GRADE["7a"] = {
             "question": "互相垂直的两条线形成的角是多少度？",
             "formula": "90°",
             "answer": "90°",
-            "choices": ["90°","45°","60°","180°"],
+            "choices": [
+                "90°",
+                "45°",
+                "60°",
+                "180°"
+            ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "angle",

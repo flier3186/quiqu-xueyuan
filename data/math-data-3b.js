@@ -4587,7 +4587,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：1cm² = ?=1"
@@ -5184,7 +5184,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1dm² = ? cm²=100"
                 }
             ],
@@ -5281,7 +5281,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1m² = ? dm²=100"
                 }
             ],
@@ -5795,7 +5795,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：一年 = ? 月=12"
@@ -5899,7 +5899,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：大月 = ? 天=31"
@@ -6008,7 +6008,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：平年二月 = ? 天=28"
@@ -6119,7 +6119,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "加法",
                     "explain": "计算：下午3时 = ? 时=15"
                 }
             ],
@@ -6228,7 +6228,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "加法",
                     "explain": "计算：晚上8时 = ? 时=20"
                 }
             ],
@@ -6337,7 +6337,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "加法",
                     "explain": "计算：下午5时 = ? 时=17"
                 }
             ],
@@ -7053,7 +7053,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：0.8 > 0.?=6"
@@ -7162,7 +7162,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：1.2 > 0.?=9"
@@ -7271,7 +7271,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：0.5 > 0.?=3"
@@ -7999,7 +7999,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：相对方向 = ?=4"
@@ -8038,7 +8038,6 @@ window.MATH_BY_GRADE["3b"] = {
             "choices": [
                 2,
                 4,
-                2,
                 1
             ],
             "visualType": "geometry",
@@ -8095,7 +8094,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：相对方向 = ?=2"
@@ -8190,7 +8189,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：上方方向 = ?=6"
@@ -8228,7 +8227,6 @@ window.MATH_BY_GRADE["3b"] = {
             "answer": 5,
             "choices": [
                 5,
-                3,
                 3,
                 1
             ],
@@ -8285,7 +8283,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：上方方向 = ?=5"
@@ -8324,8 +8322,7 @@ window.MATH_BY_GRADE["3b"] = {
             "choices": [
                 2,
                 4,
-                1,
-                4
+                1
             ],
             "visualType": "geometry",
             "visualData": {
@@ -8381,7 +8378,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：左手方向 = ?=2"
@@ -8477,7 +8474,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：左手方向 = ?=2"
@@ -8572,7 +8569,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：东和南之间 = ?=1"
@@ -8610,7 +8607,6 @@ window.MATH_BY_GRADE["3b"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 4
             ],
@@ -8667,7 +8663,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：东和南之间 = ?=1"
@@ -8762,7 +8758,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：西北 = ?=6"
@@ -8857,7 +8853,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：西北 = ?=5"
@@ -8952,7 +8948,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：西南 = ?=3"
@@ -9047,7 +9043,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：西南 = ?=3"
@@ -15505,7 +15501,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：1cm² = ?=1"
                 }
             ],
@@ -15601,7 +15597,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：1cm² = ?=1"
                 }
             ],
@@ -16694,7 +16690,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1dm² = ? cm²=100"
                 }
             ],
@@ -16791,7 +16787,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1dm² = ? cm²=100"
                 }
             ],
@@ -16888,7 +16884,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1m² = ? dm²=100"
                 }
             ],
@@ -16985,7 +16981,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "乘法",
                     "explain": "计算：1m² = ? dm²=100"
                 }
             ],

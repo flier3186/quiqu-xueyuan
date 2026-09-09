@@ -427,7 +427,7 @@ window.MATH_BY_GRADE["8b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "减法",
                     "explain": "计算：2(x-3) = x, x = ?=6"
                 }
             ],
@@ -625,7 +625,7 @@ window.MATH_BY_GRADE["8b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "加法",
                     "explain": "计算：原面积=40, 增加=10=40"
                 }
             ],
@@ -728,7 +728,7 @@ window.MATH_BY_GRADE["8b"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：平均数=18, 中位数=18=18"
                 }
             ],
@@ -761,7 +761,12 @@ window.MATH_BY_GRADE["8b"] = {
             "question": "化简结果是多少？",
             "formula": "a^6*b^3/a^2*b^2 = a^4*b",
             "answer": "a^4*b",
-            "choices": ["a^4*b","a^5*b","a^4*b^3","a^3*b"],
+            "choices": [
+                "a^4*b",
+                "a^5*b",
+                "a^4*b^3",
+                "a^3*b"
+            ],
             "visualType": "barModel",
             "visualData": {
                 "total": 1,
@@ -1159,7 +1164,12 @@ window.MATH_BY_GRADE["8b"] = {
             "question": "两次都摸到红球的概率是多少？",
             "formula": "P=3/5×3/5=9/25",
             "answer": "9/25",
-            "choices": ["9/25","3/5","6/25","9/10"],
+            "choices": [
+                "9/25",
+                "3/5",
+                "6/25",
+                "9/10"
+            ],
             "visualType": "barModel",
             "visualData": {
                 "total": 9,
@@ -1257,7 +1267,12 @@ window.MATH_BY_GRADE["8b"] = {
             "question": "化简结果是多少？",
             "formula": "8a^6*b^3 / 4a*b^2 = 2a^5*b",
             "answer": "2a^5*b",
-            "choices": ["2a^5*b","2a^4*b","8a^5*b","a^5*b"],
+            "choices": [
+                "2a^5*b",
+                "2a^4*b",
+                "8a^5*b",
+                "a^5*b"
+            ],
             "visualType": "barModel",
             "visualData": {
                 "total": 2,
@@ -1741,7 +1756,12 @@ window.MATH_BY_GRADE["8b"] = {
             "question": "圆的周长和面积分别是多少？",
             "formula": "C=2πr=8π≈25.1, S=πr²=16π≈50.3",
             "answer": "C=8π≈25.1, S=16π≈50.3",
-            "choices": ["C=8π≈25.1, S=16π≈50.3","C=4π≈12.6, S=8π≈25.1","C=16π≈50.3, S=8π≈25.1","C=8π≈25.1, S=4π≈12.6"],
+            "choices": [
+                "C=8π≈25.1, S=16π≈50.3",
+                "C=4π≈12.6, S=8π≈25.1",
+                "C=16π≈50.3, S=8π≈25.1",
+                "C=8π≈25.1, S=4π≈12.6"
+            ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "circle",
@@ -1830,7 +1850,12 @@ window.MATH_BY_GRADE["8b"] = {
             "question": "抛物线的顶点坐标是什么？",
             "formula": "x=-b/2a=1, y=1-2-3=-4, 顶点(1,-4)",
             "answer": "(1,-4)",
-            "choices": ["(1,-4)","(-1,4)","(1,4)","(2,-3)"],
+            "choices": [
+                "(1,-4)",
+                "(-1,4)",
+                "(1,4)",
+                "(2,-3)"
+            ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "parabola",

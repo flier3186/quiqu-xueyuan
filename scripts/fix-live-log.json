@@ -1,0 +1,1077 @@
+[
+  {
+    "grade": "3b",
+    "id": "3B-PROB-043.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-049.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-050.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-055.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-056.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-057.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-058.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "加法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-059.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "加法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-060.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "加法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-067.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-068.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-069.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-076.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-077.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-078.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-079.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-080.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-081.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-082.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-083.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-084.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-085.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-086.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-087.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-160.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-161.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-162.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "3b",
+    "id": "3B-PROB-163.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-030.disc1",
+    "type": "探索步骤待人工",
+    "detail": {
+      "answer": "洗壶1分、烧水8分、洗茶杯2分、接茶1分",
+      "inferred": "加法",
+      "choices": [
+        "洗壶1分、烧水8分、洗杯2分、接茶1分",
+        "烧水8分、接茶1分",
+        "洗壶1分、烧水8分",
+        "只有烧水8分"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-037.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-038.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-039.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-040.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-041.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-042.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-043.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4a",
+    "id": "4A-PROB-044.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4b",
+    "id": "4B-PROB-052.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "4b",
+    "id": "4B-PROB-053.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5a",
+    "id": "5A-PROB-038.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5a",
+    "id": "5A-PROB-039.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5a",
+    "id": "5A-PROB-060.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "除法"
+    }
+  },
+  {
+    "grade": "5a",
+    "id": "5A-PROB-061.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "除法"
+    }
+  },
+  {
+    "grade": "5a",
+    "id": "5A-PROB-064.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "减法"
+    }
+  },
+  {
+    "grade": "5a",
+    "id": "5A-PROB-065.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "减法"
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-031.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-033.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-034.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-035.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "除法"
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-036.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "除法"
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-037.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-038.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-039.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-040.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-043.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-044.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "乘法"
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-055.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-056.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-073.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "减法"
+    }
+  },
+  {
+    "grade": "5b",
+    "id": "5B-PROB-074.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "减法"
+    }
+  },
+  {
+    "grade": "7b",
+    "id": "7b#0.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "8a",
+    "id": "8a#4.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "8b",
+    "id": "8b#3.disc2",
+    "type": "探索步骤答案修正",
+    "detail": {
+      "before": "计算",
+      "after": "除法"
+    }
+  },
+  {
+    "grade": "9a",
+    "id": "9a#1.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  },
+  {
+    "grade": "9a",
+    "id": "9a#2.disc2",
+    "type": "探索步骤答案置为计算并补选项",
+    "detail": {
+      "before": "计算",
+      "choicesBefore": [
+        "乘法",
+        "加法",
+        "减法",
+        "除法"
+      ],
+      "choicesAfter": [
+        "乘法",
+        "加法",
+        "减法",
+        "计算"
+      ]
+    }
+  }
+]

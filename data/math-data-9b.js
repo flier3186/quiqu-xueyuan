@@ -1,5 +1,5 @@
 window.MATH_BY_GRADE = window.MATH_BY_GRADE || {};
-window.MATH_BY_GRADE['9b'] = {
+window.MATH_BY_GRADE["9b"] = {
     "title": "九年级下册·反比例函数综合·锐角三角函数",
     "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
     "progress": 0,

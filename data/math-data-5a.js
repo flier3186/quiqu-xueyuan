@@ -3965,7 +3965,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：(4,7) → 第?列=4"
@@ -4063,7 +4063,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "乘法",
                         "加法",
                         "减法",
-                        "除法"
+                        "计算"
                     ],
                     "answer": "计算",
                     "explain": "计算：(4,4) → 第?列=4"
@@ -4706,7 +4706,6 @@ window.MATH_BY_GRADE["5a"] = {
             "choices": [
                 1,
                 3,
-                3,
                 0
             ],
             "visualType": "barModel",
@@ -4768,7 +4767,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：全红 → 摸红 ? (1一定/3不可能/3可能)=1"
                 }
             ],
@@ -4867,7 +4866,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：全红 → 摸红 ? (1一定/2不可能/3可能)=1"
                 }
             ],
@@ -4971,7 +4970,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：3红1蓝 → 摸?可能性大 (1红/11蓝)=1"
                 }
             ],
@@ -5075,7 +5074,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：3红1蓝 → 摸?可能性大 (1红/7蓝)=1"
                 }
             ],
@@ -5111,7 +5110,6 @@ window.MATH_BY_GRADE["5a"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -5179,7 +5177,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：3红3蓝 → ? (1公平/3不公平)=1"
                 }
             ],
@@ -5283,7 +5281,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：3红3蓝 → ? (1公平/3不公平)=1"
                 }
             ],
@@ -5572,7 +5570,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：x=71 → ? (1方程/2不等式)=1"
                 }
             ],
@@ -5608,7 +5606,6 @@ window.MATH_BY_GRADE["5a"] = {
             "answer": 1,
             "choices": [
                 1,
-                3,
                 3,
                 0
             ],
@@ -5669,7 +5666,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：x=41 → ? (1方程/3不等式)=1"
                 }
             ],
@@ -6154,7 +6151,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：2x = 22 → x = ?=6"
                 }
             ],
@@ -6251,7 +6248,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：3x = 25 → x = ?=6"
                 }
             ],
@@ -6558,7 +6555,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "减法",
                     "explain": "计算：3x = 7... → x ≈ ?=2.5"
                 }
             ],
@@ -6657,7 +6654,7 @@ window.MATH_BY_GRADE["5a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "减法",
                     "explain": "计算：3x = 7... → x ≈ ?=2.5"
                 }
             ],

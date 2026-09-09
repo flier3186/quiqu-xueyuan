@@ -7199,7 +7199,7 @@ window.MATH_BY_GRADE["6a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：17:9 = 3:?=2"
                 }
             ],
@@ -7302,7 +7302,7 @@ window.MATH_BY_GRADE["6a"] = {
                         "减法",
                         "除法"
                     ],
-                    "answer": "计算",
+                    "answer": "除法",
                     "explain": "计算：10:10 = 4:?=2"
                 }
             ],
