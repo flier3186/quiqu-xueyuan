@@ -172,7 +172,7 @@ input,textarea{font-family:inherit}
 .task-card:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover);border-color:var(--teal-soft)}
 .task-card.done{border-color:rgba(37,112,232,.3);background:linear-gradient(135deg,#fff,rgba(37,112,232,.03))}
 .task-card-thumb{width:64px;height:64px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.task-card-thumb.math{background:linear-gradient(135deg,#00A896,#14C3B2)}
+.task-card-thumb.math{background:linear-gradient(135deg,#2570E8,#4A8DFF)}
 .task-card-thumb.eng{background:linear-gradient(135deg,#F5B800,#FFD14D)}
 .task-card-thumb.speak{background:linear-gradient(135deg,#FB923C,#FFB572)}
 .task-card-thumb svg{width:32px;height:32px;fill:white}
@@ -188,7 +188,7 @@ input,textarea{font-family:inherit}
 .task-card-progress .fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:3px}
 
 /* 数学板块 */
-.math-banner{background:linear-gradient(135deg,#00A896 0%,#14C3B2 60%,#F5B800 140%);border-radius:var(--radius-xl);padding:24px 28px;color:white;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
+.math-banner{background:linear-gradient(135deg,#2570E8 0%,#4A8DFF 60%,#F5B800 140%);border-radius:var(--radius-xl);padding:24px 28px;color:white;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
 .math-banner::before{content:'';position:absolute;right:-20px;top:-30px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.1)}
 .math-banner h2{font-size:22px;font-weight:900;margin-bottom:6px;position:relative;z-index:1}
 .math-banner p{font-size:13px;opacity:.95;position:relative;z-index:1}
@@ -245,7 +245,7 @@ input,textarea{font-family:inherit}
 .frac-bar{display:flex;height:40px;border-radius:8px;overflow:hidden;border:2px solid white;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .frac-seg{flex:1;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-right:2px solid white}
 .frac-seg:last-child{border-right:none}
-.frac-seg.c1{background:#00A896}
+.frac-seg.c1{background:#2570E8}
 .frac-seg.c2{background:#F5B800;color:var(--navy)}
 .frac-seg.c3{background:#E8A0BF}
 .frac-seg.c4{background:#FB923C}
@@ -1087,7 +1087,7 @@ h1,h2,h3{letter-spacing:-.01em}
 .suggest-card p{font-size:12px;color:var(--ink-500);line-height:1.7}
 
 /* ===== MathVisual 动态数形结合可视化引擎 ===== */
-.mv-wrap{padding:14px;background:linear-gradient(135deg,rgba(0,168,150,.05),rgba(245,184,0,.05));border-radius:14px}
+.mv-wrap{padding:14px;background:linear-gradient(135deg,rgba(37,112,232,.05),rgba(245,184,0,.05));border-radius:14px}
 .mv-wrap svg{width:100%;height:auto;display:block;max-height:300px;animation-play-state:running}
 /* Safari/iOS 兼容：补齐 -webkit-transform-box 前缀，确保移动端 SVG 动画生效；强制动画播放 */
 .mv-bar-rect,.mv-area-block,.mv-bond-part,.mv-bond-total,.mv-frac-fill,.mv-nl-point{-webkit-transform-box:fill-box;animation-play-state:running}
@@ -1239,14 +1239,14 @@ body::before{opacity:.35;mix-blend-mode:multiply}
 .wt-actions .em{font-size:13px}
 /* 跨册知识关联链（新教材结构化主线） */
 .mc-chain{padding:12px 14px;border-radius:12px;background:var(--ink-50,#f6f8fb);margin-bottom:10px;border-left:3px solid #d8e0ee}
-.mc-chain.hit{background:linear-gradient(135deg,rgba(0,168,150,.10),rgba(245,184,0,.10));border-left-color:#00A896}
+.mc-chain.hit{background:linear-gradient(135deg,rgba(37,112,232,.10),rgba(245,184,0,.10));border-left-color:#2570E8}
 .mc-head{font-size:13px;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.mc-tag{font-size:10px;background:#00A896;color:#fff;padding:2px 7px;border-radius:999px;font-weight:700}
+.mc-tag{font-size:10px;background:#2570E8;color:#fff;padding:2px 7px;border-radius:999px;font-weight:700}
 .mc-desc{font-size:11.5px;color:var(--text-3);line-height:1.6;margin-bottom:8px}
 .mc-steps{display:flex;flex-wrap:wrap;align-items:center;gap:5px;font-size:11.5px}
 .mc-step{padding:3px 8px;border-radius:8px;background:#fff;border:1px solid #e2e8f0;color:var(--text-2);white-space:nowrap}
 .mc-step b{color:var(--text-3);font-weight:700;margin-right:4px;font-size:10.5px}
-.mc-step.on{background:#00A896;border-color:#00A896;color:#fff}
+.mc-step.on{background:#2570E8;border-color:#2570E8;color:#fff}
 .mc-step.on b{color:rgba(255,255,255,.85)}
 .mc-arrow{color:var(--text-3);font-size:11px}
 </style>
@@ -1483,6 +1483,11 @@ const PHRASE_BANK = {
   ],
 };
 
+// ===== 每日数学练习量（单一事实源）=====
+// 用户拍板：每日 14 题为一日练量。做完 14 题给"今日完成"小结，
+// 但指针不回到第 1 题——继续往下推进，做完本册才提示进入下一册。
+var MATH_DAILY_COUNT = 14;
+
 // ===== 跨册知识关联链（2024 版新教材"知识结构系统化"主线）=====
 // 新教材把零散知识点整合为更大的知识单元，强调知识之间的关联。
 // 这里给出 8 条贯穿多册的主线，让孩子看到"知识从哪里来、到哪里去"。
@@ -1689,7 +1694,7 @@ var MATH_BY_GRADE = {
             {
               "label": "3支钢笔",
               "val": 18,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "1个笔记本",
@@ -1734,7 +1739,7 @@ var MATH_BY_GRADE = {
             {
               "label": "前2包",
               "val": 426,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "后2包",
@@ -1781,7 +1786,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 1,
               "label": "1千米=1000米",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 3,
@@ -1831,7 +1836,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 0.25,
               "label": "直角90°",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 0.5,
@@ -1884,7 +1889,7 @@ var MATH_BY_GRADE = {
             {
               "label": "前3筐石头",
               "val": 1500,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "后3筐石头",
@@ -1927,7 +1932,7 @@ var MATH_BY_GRADE = {
         "visualData": {
           "num": 3,
           "total": 8,
-          "color": "#00A896"
+          "color": "#2570E8"
         },
         "knowledge": "分数的初步认识",
         "difficulty": 2,
@@ -2102,7 +2107,7 @@ var MATH_BY_GRADE = {
             {
               "label": "盒1",
               "val": 24,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "盒2",
@@ -2195,7 +2200,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 2.5,
               "label": "铅笔",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 3.8,
@@ -2280,7 +2285,7 @@ var MATH_BY_GRADE = {
           "parts": [
             {
               "val": 3,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "val": 3,
@@ -2331,7 +2336,7 @@ var MATH_BY_GRADE = {
             {
               "label": "读书",
               "val": 14,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "画画",
@@ -2543,7 +2548,7 @@ var MATH_BY_GRADE = {
           "parts": [
             {
               "val": 3000000,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "val": 50000,
@@ -2586,7 +2591,7 @@ var MATH_BY_GRADE = {
             {
               "label": "60套",
               "val": 6360,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "3套",
@@ -2631,7 +2636,7 @@ var MATH_BY_GRADE = {
             {
               "label": "5盒",
               "val": 60,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "3盒",
@@ -2678,7 +2683,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 90,
               "label": "直角",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 180,
@@ -2769,7 +2774,7 @@ var MATH_BY_GRADE = {
             {
               "label": "鸡的脚数",
               "val": 12,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "兔的脚数",
@@ -2960,7 +2965,7 @@ var MATH_BY_GRADE = {
             {
               "label": "25×1",
               "val": 25,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "25×2",
@@ -3012,7 +3017,7 @@ var MATH_BY_GRADE = {
         "visualData": {
           "num": 3,
           "total": 10,
-          "color": "#00A896"
+          "color": "#2570E8"
         },
         "knowledge": "小数的认识",
         "difficulty": 2,
@@ -3049,7 +3054,7 @@ var MATH_BY_GRADE = {
             {
               "label": "∠1",
               "val": 50,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "∠2",
@@ -3101,7 +3106,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 1.45,
               "label": "小亮",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 1.8,
@@ -3149,7 +3154,7 @@ var MATH_BY_GRADE = {
           "parts": [
             {
               "val": 30,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "val": 30,
@@ -3204,7 +3209,7 @@ var MATH_BY_GRADE = {
             {
               "label": "10个班",
               "val": 320,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "8个班",
@@ -3413,7 +3418,7 @@ var MATH_BY_GRADE = {
             {
               "label": "瓶1",
               "val": 2.5,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "瓶2",
@@ -3469,7 +3474,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 2.5,
               "label": "第1段",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 5,
@@ -3522,7 +3527,7 @@ var MATH_BY_GRADE = {
             {
               "label": "2本",
               "val": 24,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "3本",
@@ -3644,7 +3649,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 0,
               "label": "第1棵",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 5,
@@ -3838,7 +3843,7 @@ var MATH_BY_GRADE = {
           "parts": [
             {
               "val": 12,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "val": 6,
@@ -3858,7 +3863,7 @@ var MATH_BY_GRADE = {
             },
             {
               "val": 1,
-              "color": "#00A896"
+              "color": "#2570E8"
             }
           ]
         },
@@ -3898,7 +3903,7 @@ var MATH_BY_GRADE = {
             {
               "label": "第1层(5×4)",
               "val": 20,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "第2层",
@@ -3945,7 +3950,7 @@ var MATH_BY_GRADE = {
         "visualData": {
           "num": 3,
           "total": 4,
-          "color": "#00A896"
+          "color": "#2570E8"
         },
         "knowledge": "分数的认识",
         "difficulty": 2,
@@ -3984,7 +3989,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 0.33,
               "label": "1/3",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 0.5,
@@ -4039,7 +4044,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 36.5,
               "label": "周一",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 37,
@@ -4104,7 +4109,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 1,
               "label": "1尺≈23厘米",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 3,
@@ -4325,7 +4330,7 @@ var MATH_BY_GRADE = {
         "visualData": {
           "num": 6,
           "total": 8,
-          "color": "#00A896"
+          "color": "#2570E8"
         },
         "knowledge": "分数乘法",
         "difficulty": 3,
@@ -4364,7 +4369,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 2,
               "label": "1/3段",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 4,
@@ -4417,7 +4422,7 @@ var MATH_BY_GRADE = {
             {
               "label": "小红的列",
               "val": 4,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "向右移",
@@ -4499,7 +4504,7 @@ var MATH_BY_GRADE = {
             {
               "label": "现价80%",
               "val": 160,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "优惠20%",
@@ -4545,7 +4550,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 0,
               "label": "-5℃（最低）",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 1,
@@ -4716,7 +4721,7 @@ var MATH_BY_GRADE = {
             {
               "label": "男生",
               "val": 12,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "女生",
@@ -4836,7 +4841,7 @@ var MATH_BY_GRADE = {
             {
               "pos": 2,
               "label": "2cm",
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "pos": 3,
@@ -4895,7 +4900,7 @@ var MATH_BY_GRADE = {
             {
               "label": "足球",
               "val": 12,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "篮球",
@@ -4949,7 +4954,7 @@ var MATH_BY_GRADE = {
             {
               "label": "左边：3×2",
               "val": 6,
-              "color": "#00A896"
+              "color": "#2570E8"
             },
             {
               "label": "右边：2×3",
@@ -5023,11 +5028,11 @@ const MathVisual = {
   },
   // 颜色名 → hex（用于 SVG fill/stroke），支持 --teal/--yellow/--coral/--pink/--navy
   _hex(c){
-    const m = {teal:'#00A896', yellow:'#F5B800', coral:'#FB923C', pink:'#E8A0BF', navy:'#1E3A5F'};
-    return m[c] || c || '#00A896';
+    const m = {teal:'#2570E8', yellow:'#F5B800', coral:'#FB923C', pink:'#E8A0BF', navy:'#1E3A5F'};
+    return m[c] || c || '#2570E8';
   },
   // 默认调色板（按索引循环）
-  _palette(i){ const p=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F']; return p[i%p.length]; },
+  _palette(i){ const p=['#2570E8','#F5B800','#FB923C','#E8A0BF','#1E3A5F']; return p[i%p.length]; },
   _textColor(hex){
     const c=hex.replace('#','');
     const r=parseInt(c.substr(0,2),16), g=parseInt(c.substr(2,2),16), b=parseInt(c.substr(4,2),16);
@@ -5082,7 +5087,7 @@ const MathVisual = {
     const W=totalW+padX*2, H=totalH+padY*2+56;
     // 网格：水平按 a 拆分（左=十位, 右=个位），垂直按 b 拆分（上=十位, 下=个位）
     const blocks=[
-      {x:padX,     y:padY,         w:aTw, h:bTh, val:parts[0], color:'#00A896', lab:`${aT}×${bT}`}, // 左上 a十×b十
+      {x:padX,     y:padY,         w:aTw, h:bTh, val:parts[0], color:'#2570E8', lab:`${aT}×${bT}`}, // 左上 a十×b十
       {x:padX+aTw, y:padY,         w:aOw, h:bTh, val:parts[2], color:'#F5B800', lab:`${aO}×${bT}`}, // 右上 a个×b十
       {x:padX,     y:padY+bTh,     w:aTw, h:bOh, val:parts[1], color:'#E8A0BF', lab:`${aT}×${bO}`}, // 左下 a十×b个
       {x:padX+aTw, y:padY+bTh,     w:aOw, h:bOh, val:parts[3], color:'#FB923C', lab:`${aO}×${bO}`}, // 右下 a个×b个
@@ -5214,7 +5219,7 @@ const MathVisual = {
       const {length,width}=p;
       const sc=15, rw=length*sc, rh=width*sc;
       const x0=(W-rw)/2, y0=(H-rh)/2;
-      body=`<rect class="mv-geo-outline" x="${x0}" y="${y0}" width="${rw}" height="${rh}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5" rx="3"/>
+      body=`<rect class="mv-geo-outline" x="${x0}" y="${y0}" width="${rw}" height="${rh}" fill="rgba(37,112,232,0.12)" stroke="#2570E8" stroke-width="2.5" rx="3"/>
         <text x="${x0+rw/2}" y="${y0-10}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">长 ${length}</text>
         <text x="${x0+rw+8}" y="${y0+rh/2+5}" font-size="13" font-weight="700" fill="#1E3A5F">宽 ${width}</text>`;
       formula=`周长 = (${length}+${width})×2 = ${2*(length+width)}　面积 = ${length}×${width} = ${length*width}`;
@@ -5222,7 +5227,7 @@ const MathVisual = {
       const {base,height}=p;
       const sc=13, bw=base*sc, hh=height*sc;
       const cx=W/2, baseY=H-44;
-      body=`<polygon class="mv-geo-outline" points="${cx-bw/2},${baseY} ${cx+bw/2},${baseY} ${cx},${baseY-hh}" fill="rgba(0,168,150,0.12)" stroke="#00A896" stroke-width="2.5"/>
+      body=`<polygon class="mv-geo-outline" points="${cx-bw/2},${baseY} ${cx+bw/2},${baseY} ${cx},${baseY-hh}" fill="rgba(37,112,232,0.12)" stroke="#2570E8" stroke-width="2.5"/>
         <line x1="${cx}" y1="${baseY-hh}" x2="${cx}" y2="${baseY}" stroke="#FB923C" stroke-width="2" stroke-dasharray="5,4"/>
         <text x="${cx+8}" y="${baseY-hh/2}" font-size="12" font-weight="700" fill="#FB923C">高 ${height}</text>
         <text x="${cx}" y="${baseY+22}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">底 ${base}</text>`;
@@ -5250,7 +5255,7 @@ const MathVisual = {
     } else if(shape==='circle'){
       const {radius}=p;
       const sc=9, r=radius*sc, cx=W/2, cy=H/2;
-      body=`<circle class="mv-geo-outline" cx="${cx}" cy="${cy}" r="${r}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5"/>
+      body=`<circle class="mv-geo-outline" cx="${cx}" cy="${cy}" r="${r}" fill="rgba(37,112,232,0.10)" stroke="#2570E8" stroke-width="2.5"/>
         <circle cx="${cx}" cy="${cy}" r="3" fill="#1E3A5F"/>
         <line class="mv-circle-radius" x1="${cx}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="#FB923C" stroke-width="2.5"/>
         <text x="${cx+r/2}" y="${cy-8}" text-anchor="middle" font-size="13" font-weight="700" fill="#FB923C">r=${radius}</text>`;
@@ -5259,9 +5264,9 @@ const MathVisual = {
     } else if(shape==='cylinder'){
       const {radius,height}=p;
       const sc=8, r=radius*sc, hh=height*sc, cx=W/2, cy=(H-hh)/2+6;
-      body=`<ellipse class="mv-geo-outline" cx="${cx}" cy="${cy}" rx="${r}" ry="${r*0.3}" fill="rgba(0,168,150,0.18)" stroke="#00A896" stroke-width="2.5"/>
-        <path class="mv-geo-outline" d="M ${cx-r} ${cy} L ${cx-r} ${cy+hh} A ${r} ${r*0.3} 0 0 0 ${cx+r} ${cy+hh} L ${cx+r} ${cy}" fill="rgba(0,168,150,0.10)" stroke="#00A896" stroke-width="2.5"/>
-        <ellipse cx="${cx}" cy="${cy+hh}" rx="${r}" ry="${r*0.3}" fill="none" stroke="#00A896" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.6"/>
+      body=`<ellipse class="mv-geo-outline" cx="${cx}" cy="${cy}" rx="${r}" ry="${r*0.3}" fill="rgba(37,112,232,0.18)" stroke="#2570E8" stroke-width="2.5"/>
+        <path class="mv-geo-outline" d="M ${cx-r} ${cy} L ${cx-r} ${cy+hh} A ${r} ${r*0.3} 0 0 0 ${cx+r} ${cy+hh} L ${cx+r} ${cy}" fill="rgba(37,112,232,0.10)" stroke="#2570E8" stroke-width="2.5"/>
+        <ellipse cx="${cx}" cy="${cy+hh}" rx="${r}" ry="${r*0.3}" fill="none" stroke="#2570E8" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.6"/>
         <line x1="${cx-r}" y1="${cy}" x2="${cx-r}" y2="${cy+hh}" stroke="#FB923C" stroke-width="2"/>
         <text x="${cx-r-8}" y="${cy+hh/2}" text-anchor="end" font-size="12" font-weight="700" fill="#FB923C">高 ${height}</text>
         <line class="mv-circle-radius" x1="${cx}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="#FB923C" stroke-width="2"/>
@@ -6589,7 +6594,7 @@ function renderSidePanel(){
       <div class="panel-card" onclick="switchView('pet')" style="cursor:pointer;transition:all var(--dur-base)">
         <h3>🐲 我的宠物</h3>
         <div class="pet-status-area">
-          <div class="pet-mini" style="border-color:${['#00A896','#8B5CF6','#FB923C','#F5B800','#E8A0BF'][S.pet.idx%5]}"><img src="${pet.avatar}" alt="宠物"></div>
+          <div class="pet-mini" style="border-color:${['#2570E8','#8B5CF6','#FB923C','#F5B800','#E8A0BF'][S.pet.idx%5]}"><img src="${pet.avatar}" alt="宠物"></div>
           <div style="font-size:13px;font-weight:700;color:var(--navy)">${pet.name}<span style="color:var(--teal)">·Lv${S.pet.level}</span></div>
           <div class="status-rings">
             <div class="ring-stat"><div class="ring-stat-val">${S.pet.hunger}</div><div class="ring-stat-label">饱食</div></div>
@@ -7042,7 +7047,7 @@ function initOverviewCharts(){
         },
         series:[{
           type:'radar',
-          data:[{value:rVals, name:'掌握度', areaStyle:{color:'rgba(37,112,232,0.25)'}, lineStyle:{color:'#00A896',width:2}, itemStyle:{color:'#00A896'}}]
+          data:[{value:rVals, name:'掌握度', areaStyle:{color:'rgba(37,112,232,0.25)'}, lineStyle:{color:'#2570E8',width:2}, itemStyle:{color:'#2570E8'}}]
         }]
       });
     }
@@ -7114,6 +7119,11 @@ function _adaptStaticProblem(p, semKey){
     reveal: p.hint || '',           // L3：含完整解析，仅提交后展示
     difficulty: ['easy','medium','hard'][(Number(p.difficulty)||2)-1] || 'medium',
     variants: p.variants || [],
+    // 2026-09-10：旧版适配器把这两个字段丢了，导致"发现式提问链"和"三层解释"
+    // 在解题/反馈阶段完全用不上（题库里最值钱的教学资产被扔掉）。
+    discoverySteps: p.discoverySteps || [],
+    explainLayers: p.explainLayers || [],
+    id: p.id || '',
     source: 'bank',
     semester: semKey || ''
   };
@@ -7212,8 +7222,8 @@ function renderMathChains(semKey){
   if(typeof MATH_CHAINS==='undefined') return '';
   const G={'1a':'一上','1b':'一下','2a':'二上','2b':'二下','3a':'三上','3b':'三下','4a':'四上','4b':'四下','5a':'五上','5b':'五下','6a':'六上','6b':'六下'};
   const STATUS_ICON={mastered:'✅ 已掌握', learning:'📖 在学', none:'○ 未学'};
-  const STATUS_BG={mastered:'#E6F7F4', learning:'#FFF8E6', none:'transparent'};
-  const STATUS_BORDER={mastered:'#00A896', learning:'#F5B800', none:'#C9D6DE'};
+  const STATUS_BG={mastered:'#EAF2FF', learning:'#FFF8E6', none:'transparent'};
+  const STATUS_BORDER={mastered:'#2570E8', learning:'#F5B800', none:'#C9D6DE'};
   const rows=(MATH_CHAINS||[]).map(function(ch){
     const hit=(ch.steps||[]).some(function(s){return s.g===semKey;});
     const steps=(ch.steps||[]).map(function(s){
@@ -7249,19 +7259,41 @@ function renderMath(grade='3'){
   const semKey = g + (S.math.semester || 'a');
   const data = MATH_BY_GRADE[semKey] || MATH_BY_GRADE[g+'a'] || MATH_BY_GRADE['3a'];
 
-  // 出题主链路（2026-09 重构）：
-  //   ① MATH_BY_GRADE 教材对齐题库按 problemIdx 依次取用（113+ 题，含情境/变式/图形）
-  //   ② 题库缺失或取不到时，回落到 MathKernel 动态出题（口算补给，同年级边界）
-  //   ③ 再不行才用题库第 1 题
-  // 旧版无条件走 MathKernel，导致教材题库只用于显示标题，年级切换对题目毫无影响。
-  const bank = (data && Array.isArray(data.problems) && data.problems.length) ? data.problems : null;
+  // 出题主链路（2026-09-10 二次重构）：
+  //   ① MathDailyBank 净化池优先——同一题干只保留一条（消灭"做着做着遇到一样的题"），
+  //      并做常量事实校验（直角/进率类自相矛盾题直接不进主线）
+  //   ② 净化池拿不到时回落到原始 MATH_BY_GRADE.problems（保持可用性）
+  //   ③ 再不行才用 MathKernel 动态出题
+  // 数据就绪保障（2026-09-10）：真实题库按册懒加载，若当前册还没真正加载过，
+  // 先加载再重渲染，避免一直用内联占位数据（每册 6 题）出题。
+  try{
+    if(window.GRADE_FILES && GRADE_FILES[semKey] && !(window.MATH_LOADED_GRADES||{})[semKey] && !window.__mathLoadingKick){
+      window.__mathLoadingKick = true;
+      loadGrade(semKey).then(ok => {
+        window.__mathLoadingKick = false;
+        if(ok){ window.MATH_SESSION = null; try{ render(); }catch(e){} }
+      });
+    }
+  }catch(e){}
+
+  const rawBank = (data && Array.isArray(data.problems) && data.problems.length) ? data.problems : null;
+  let daily = null;
+  try { if (window.MathDailyBank && window.MathDailyBank.build) daily = window.MathDailyBank.build(semKey); } catch (e) { daily = null; }
+  const dailyPool = (daily && Array.isArray(daily.list) && daily.list.length) ? daily.list : null;
+  const bank = dailyPool || rawBank;
   const bankTotal = bank ? bank.length : 0;
+  window.MATH_BANK_STATS = daily ? { kept: daily.kept, dup: daily.dropped.dup, bad: daily.dropped.constViolation, review: (daily.reviewPool || []).length } : null;
+
   // 初始化本节学习会话（年级切换或首次进入时重置）
   // Q6-6：题号按"学期+册"分桶持久化，孩子做完别的册再回来，接着上次的位置继续
   if(!window.MATH_SESSION || window.MATH_SESSION.grade !== g || window.MATH_SESSION.semKey !== semKey || window.MATH_SESSION.problemIdx == null){
     S.math.idxBySem = S.math.idxBySem || {};
+    let savedIdx = Number(S.math.idxBySem[semKey] || 0);
+    if(!isFinite(savedIdx) || savedIdx < 0) savedIdx = 0;
+    // 净化后池子变小：夹到末尾而不是回绕到第 1 题（用户反馈"做完又回到第一题"）
+    if(bankTotal && savedIdx > bankTotal - 1) savedIdx = bankTotal - 1;
     window.MATH_SESSION = {
-      grade:g, semKey:semKey, problemIdx:(S.math.idxBySem[semKey]||0) % (bankTotal||1), stage:'scene',
+      grade:g, semKey:semKey, problemIdx:savedIdx, stage:'scene',
       discoveryStep:0, hintUsed:false, solveAttempts:0,
       divergentIdx:0, divergentNotes:[], startTs:Date.now()
     };
@@ -7272,12 +7304,33 @@ function renderMath(grade='3'){
       S.math.idxBySem = S.math.idxBySem || {};
       S.math.idxBySem[semKey] = 0; saveState();
       window.MATH_SESSION.problemIdx = 0;
+      if(S.math.daily) S.math.daily = null;
       if(window.MathFlowV5) MathFlowV5._sess = null;
       toast('🔄 从第 1 题重新开始！');
       render();
     }catch(e){}
   };
-  const pIdx = bank ? (window.MATH_SESSION.problemIdx % bankTotal) : 0;
+  let pIdx = bankTotal ? Math.max(0, Math.min(window.MATH_SESSION.problemIdx || 0, bankTotal - 1)) : 0;
+
+  // 今日日练进度（按册分开计，跨天重置）——"每日 14 题"的单一事实源
+  const _todayKey = (function(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); })();
+  if(!S.math.daily || S.math.daily.date !== _todayKey || S.math.daily.semKey !== semKey){
+    S.math.daily = { date:_todayKey, semKey:semKey, done:0, round:1 };
+    try{ saveState(); }catch(e){}
+  }
+  window.MATH_DAILY = { count:MATH_DAILY_COUNT, done:S.math.daily.done, round:S.math.daily.round, date:_todayKey };
+
+  // 当前知识点段 / 下一段（单卡页显示"当前小节 → 下一小节"，替代原来的硬编码题号）
+  window.MATH_SEGMENT = null;
+  if(dailyPool && daily.segments && daily.segments.length){
+    let si = 0;
+    for(let s=0;s<daily.segments.length;s++){ if(pIdx >= daily.segments[s].from && pIdx <= daily.segments[s].to){ si = s; break; } }
+    const seg = daily.segments[si];
+    const nxt = daily.segments[si+1] || null;
+    window.MATH_SEGMENT = { idx:si, total:daily.segments.length, kp:seg.kp, n:seg.n, next:nxt?nxt.kp:null };
+  }
+  window.MATH_IS_BOOK_END = !!(bankTotal && pIdx >= bankTotal - 1);
+
   let problem = null;
   if (bank) { try { problem = _adaptStaticProblem(bank[pIdx], semKey); } catch (e) { problem = null; } }
   if (!problem && window.MathKernel && typeof window.MathKernel.generate === 'function') {
@@ -7295,7 +7348,11 @@ function renderMath(grade='3'){
           <div class="grade-pills" id="mathGrades">
             ${['2','3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
           </div>
-          <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">第 ${Math.min((window.MATH_SESSION.problemIdx||0)+1, bankTotal||1)} / ${bankTotal||1} 题 · ${data.title}</span>
+          <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">
+            本册 ${pIdx+1} / ${bankTotal||1} 题
+            ${window.MATH_SEGMENT?` · 当前「${window.MATH_SEGMENT.kp}」`:(data.title?'':': ')}
+            · 今日 <b style="color:${(window.MATH_DAILY&&window.MATH_DAILY.done>=MATH_DAILY_COUNT)?'var(--teal)':'var(--text-2)'}">${window.MATH_DAILY?window.MATH_DAILY.done:0}/${MATH_DAILY_COUNT}</b> 题
+          </span>
           <button onclick="_resetSemIdx()" title="从第 1 题重新开始本册" style="padding:4px 10px;border-radius:10px;border:1px solid var(--ink-200);background:white;font-size:12px;cursor:pointer;color:var(--text-2);font-weight:600">🔄 重做本册</button>
         </div>
         <div class="math-banner">
@@ -7305,6 +7362,27 @@ function renderMath(grade='3'){
           </div>
           <div class="progress"><span>掌握进度</span><span class="num">${data.progress}%</span></div>
         </div>
+        ${(window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT) ? `
+        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#E1F5EE,#E6F1FB);border-left:4px solid var(--teal);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+          <span style="font-size:24px">🎉</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:var(--teal-700)">今日 ${MATH_DAILY_COUNT} 题已完成</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:2px">
+              ${window.MATH_SEGMENT ? `当前「${window.MATH_SEGMENT.kp}」${window.MATH_SEGMENT.next?` · 下一节「${window.MATH_SEGMENT.next}」`:''}` : '可以收工，也可以继续往下挑战'}
+            </div>
+          </div>
+          <button onclick="mathNextProblem()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--teal);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">继续挑战下一单元 →</button>
+        </div>` : ''}
+        ${(bankTotal && pIdx >= bankTotal - 1) ? `
+        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FAEEDA,#FFF6E2);border-left:4px solid var(--yellow);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+          <span style="font-size:24px">🏆</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:var(--navy)">本册已全部学完</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:2px">${data.title} · 共 ${bankTotal} 题${_mathNextSemKey(semKey)?`，下一册：${(MATH_BY_GRADE[_mathNextSemKey(semKey)]||{}).title||''}`:'，已是最后一册'}</div>
+          </div>
+          ${_mathNextSemKey(semKey)?`<button onclick="mathAdvanceToNextSem()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--navy);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">进入下一册 →</button>`:''}
+          <button onclick="_resetSemIdx()" style="padding:9px 16px;border-radius:20px;border:1px solid var(--ink-200);background:white;color:var(--text-2);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">重做本册</button>
+        </div>` : ''}
         ${renderMathStageProgress()}
         <div id="mathStage" class="math-stage-host">${(window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))}</div>
         <div class="knowledge-tree">
@@ -7422,22 +7500,134 @@ function mathAdvance(stage){
   updateMathStage();
 }
 
-// ===== 进入下一题（重置会话） =====
+// ===== 进入下一题（指针单调推进，永不回绕到第 1 题）=====
+// 修复用户反馈：①日练题目重复 ②做完一轮回到第 1 题而不进下一单元
+const _MATH_SEM_ORDER = ['2a','2b','3a','3b','4a','4b','5a','5b','6a','6b','7a','7b','8a','8b','9a','9b'];
+function _mathNextSemKey(semKey){
+  const i = _MATH_SEM_ORDER.indexOf(semKey);
+  return (i >= 0 && i < _MATH_SEM_ORDER.length - 1) ? _MATH_SEM_ORDER[i+1] : null;
+}
+function _mathDailyPool(semKey){
+  try{ const r = window.MathDailyBank && window.MathDailyBank.build(semKey); if(r && r.list && r.list.length) return r.list; }catch(e){}
+  const d = MATH_BY_GRADE[semKey] || MATH_BY_GRADE['3a'];
+  return (d && d.problems) || [];
+}
+function _mathTodayKey(){
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+// ===== 分步解析（2026-09-10）=====
+// 借鉴猿辅导/作业帮：答错不只丢一个答案，而是把"怎么一步步想出来"摊开。
+// 题库里本来就有 discoverySteps（提问链 + explain）和 explainLayers（看图/理解/推广三层），
+// 旧版从未在解题阶段用过，属于白白浪费的资产。
+function _mathStepByStep(problem){
+  try{
+    if(!problem) return '';
+    const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const steps  = (Array.isArray(problem.discoverySteps)?problem.discoverySteps:[]).filter(s=>s && (s.explain || s.q));
+    const layers = (Array.isArray(problem.explainLayers)?problem.explainLayers:[]).filter(l=>l && l.text);
+    if(!steps.length && !layers.length) return '';
+    let h = `<div style="margin-top:10px;padding:14px 16px;background:#fff;border:1.5px solid var(--teal-100);border-radius:12px">
+      <div style="font-size:13px;font-weight:800;color:var(--teal-700);margin-bottom:10px">🧭 一步一步想清楚</div>`;
+    steps.forEach((s,i)=>{
+      h += `<div style="display:flex;gap:10px;margin-bottom:9px">
+        <span style="flex:0 0 20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">${i+1}</span>
+        <div style="flex:1;min-width:0">
+          ${s.q?`<div style="font-size:13px;color:var(--navy);font-weight:700;line-height:1.6">${esc(s.q)}</div>`:''}
+          ${s.explain?`<div style="font-size:12.5px;color:var(--text-2);line-height:1.7;margin-top:2px">${esc(s.explain)}</div>`:''}
+        </div></div>`;
+    });
+    if(layers.length){
+      h += `<div style="margin-top:10px;border-top:1px dashed var(--ink-200);padding-top:9px;display:flex;flex-direction:column;gap:6px">`;
+      layers.forEach(l=>{
+        h += `<div style="font-size:12.5px;line-height:1.7;color:var(--text-2)">
+          <b style="color:${l.color||'var(--teal-700)'}">${esc(l.icon||'')} ${esc(l.title||'')}</b> ${esc(l.text)}</div>`;
+      });
+      h += `</div>`;
+    }
+    h += `</div>`;
+    return h;
+  }catch(e){ return ''; }
+}
+window._mathStepByStep = _mathStepByStep;
+
 function mathNextProblem(){
   const g = window.MATH_SESSION.grade;
   const semKey = g + (S.math.semester || 'a');
-  const data = MATH_BY_GRADE[semKey] || MATH_BY_GRADE['3a'];
-  const total = data.problems.length;
+
+  // ① 日练计数（每日 14 题）
+  let milestone = false;
+  try{
+    const today = _mathTodayKey();
+    if(!S.math.daily || S.math.daily.date !== today || S.math.daily.semKey !== semKey){
+      S.math.daily = { date:today, semKey:semKey, done:0, round:1 };
+    }
+    S.math.daily.done++;
+    if(S.math.daily.done === MATH_DAILY_COUNT) milestone = true;
+  }catch(e){}
+
+  // ② 指针推进：到册末则进入下一册，绝不回绕
+  const total = _mathDailyPool(semKey).length || 1;
+  const prev = Number(window.MATH_SESSION.problemIdx || 0);
+  let nextSemKey = semKey, nextGrade = g, nextIdx = Math.min(prev + 1, total - 1), advanced = null;
+
+  if(prev >= total - 1){
+    const nk = _mathNextSemKey(semKey);
+    if(nk){
+      advanced = nk;
+      nextSemKey = nk;
+      nextGrade = nk.replace(/[ab]$/, '');
+      S.math.grade = nextGrade;
+      S.math.semester = nk.slice(-1);
+      nextIdx = 0;
+      try{ S.math.idxBySem = S.math.idxBySem || {}; S.math.idxBySem[nk] = 0; }catch(e){}
+    }
+  }
+
   window.MATH_SESSION = {
-    grade:g, semKey:semKey, problemIdx:((window.MATH_SESSION.problemIdx+1)%total), stage:'scene',
+    grade:nextGrade, semKey:nextSemKey, problemIdx:nextIdx, stage:'scene',
     discoveryStep:0, hintUsed:false, solveAttempts:0,
     divergentIdx:0, divergentNotes:[], startTs:Date.now()
   };
-  // Q6-6：题号分桶持久化
-  try{ S.math.idxBySem = S.math.idxBySem||{}; S.math.idxBySem[semKey]=window.MATH_SESSION.problemIdx; saveState(); }catch(e){}
-  if(window.MathFlowV5) MathFlowV5._sess = null; // 重置 V5 会话
+  try{ S.math.idxBySem = S.math.idxBySem||{}; S.math.idxBySem[nextSemKey]=nextIdx; saveState(); }catch(e){}
+  if(window.MathFlowV5) MathFlowV5._sess = null;
   setStar(2,'完成一题');
+
+  if(milestone){
+    const seg = window.MATH_SEGMENT;
+    toast(`🎉 今日 ${MATH_DAILY_COUNT} 题完成！${seg&&seg.next?`下一站「${seg.next}」`:''}`);
+  }
+  if(advanced){
+    const nd = MATH_BY_GRADE[advanced];
+    toast(`📚 本册完成，已进入下一册：${nd?nd.title:advanced}`);
+  }
   render();
+}
+
+// ===== 手动进入下一册（本册学完时的主动入口）=====
+function mathAdvanceToNextSem(){
+  try{
+    const cur = (window.MATH_SESSION && window.MATH_SESSION.semKey) || (String(S.math.grade||'3') + (S.math.semester || 'a'));
+    const nk = _mathNextSemKey(cur);
+    if(!nk){ toast('🏆 已经是最后一册啦'); return; }
+    const ng = nk.replace(/[ab]$/, '');
+    S.math.grade = ng;
+    S.math.semester = nk.slice(-1);
+    S.math.idxBySem = S.math.idxBySem || {};
+    const startIdx = Number(S.math.idxBySem[nk] || 0);
+    window.MATH_SESSION = {
+      grade:ng, semKey:nk, problemIdx:startIdx, stage:'scene',
+      discoveryStep:0, hintUsed:false, solveAttempts:0,
+      divergentIdx:0, divergentNotes:[], startTs:Date.now()
+    };
+    if(window.MathFlowV5) MathFlowV5._sess = null;
+    try{ if(window.MathKernel && MathKernel.setGrade) MathKernel.setGrade(nk); }catch(e){}
+    try{ saveState(); }catch(e){}
+    const nd = MATH_BY_GRADE[nk];
+    toast(`📚 进入下一册：${nd ? nd.title : nk}`);
+    render();
+  }catch(e){ if(typeof toast==='function') toast('切换失败，请重试'); }
 }
 
 // ===== 阶段 1：场景导入（Scene Hook） =====
@@ -7460,7 +7650,7 @@ function renderMathScene(problem){
       </div>
     </div>
     <div style="text-align:center;margin-top:18px">
-      <button onclick="mathAdvance('discovery')" style="padding:13px 32px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,112,232,.35);transition:transform .2s">
+      <button onclick="mathAdvance('discovery')" style="padding:13px 32px;background:linear-gradient(135deg,var(--teal),#4A8DFF);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,112,232,.35);transition:transform .2s">
         🚀 开始探索 →
       </button>
     </div>
@@ -7691,7 +7881,7 @@ function _mathDivergentSummary(problem, variants){
       </div>
     `:''}
     <div style="text-align:center;margin-top:18px">
-      <button onclick="mathNextProblem()" style="padding:13px 34px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,112,232,.35)">
+      <button onclick="mathNextProblem()" style="padding:13px 34px;background:linear-gradient(135deg,var(--teal),#4A8DFF);color:white;border:none;border-radius:24px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,112,232,.35)">
         🚀 挑战下一题 →
       </button>
     </div>
@@ -7771,7 +7961,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
       saveState();
     }
     try{ SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e){}
-    if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><b>看看下面的提示再试一次</b></div>`;
+    if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><b>别急，看下面的分步推理，再试一次</b></div>${_mathStepByStep(problem)}`;
     // 重新渲染 solve 阶段，展示提示
     setTimeout(()=>updateMathStage(), 900);
   }
@@ -7815,7 +8005,7 @@ function _mathSceneGradient(problem){
   if(t==='numberLine')   return 'linear-gradient(135deg,var(--yellow),var(--coral))';
   if(t==='numberBond')   return 'linear-gradient(135deg,var(--pink),var(--purple))';
   if(t==='areaModel')    return 'linear-gradient(135deg,var(--teal),var(--yellow))';
-  return 'linear-gradient(135deg,var(--teal),#14C3B2)';
+  return 'linear-gradient(135deg,var(--teal),#4A8DFF)';
 }
 
 // ===== 辅助：场景引导性问题 =====
@@ -7948,7 +8138,7 @@ function checkMathAnswer(el,val,answer){
             ${Array(rows).fill(0).map((_,r)=>`
               <g transform="translate(0,${r*18})">
                 ${Array(a).fill(0).slice(0,10).map((_,c)=>`
-                  <rect x="${c*16}" y="0" width="14" height="14" rx="3" fill="${['#00A896','#F5B800','#8B5CF6','#EF5350'][r%4]}" opacity="0.78"/>
+                  <rect x="${c*16}" y="0" width="14" height="14" rx="3" fill="${['#2570E8','#F5B800','#8B5CF6','#EF5350'][r%4]}" opacity="0.78"/>
                 `).join('')}
                 <text x="${Math.min(a,10)*16+4}" y="11" font-size="10" font-weight="700" fill="#12263F">${a} 个</text>
               </g>
@@ -7967,9 +8157,9 @@ function checkMathAnswer(el,val,answer){
           <g transform="translate(2,22)">
             ${Array(groups).fill(0).map((_,i)=>`
               <g transform="translate(${i*70},0)">
-                <rect x="0" y="0" width="64" height="40" rx="8" fill="${['#00A896','#F5B800','#8B5CF6','#EF5350','#06B6D4'][i]}" opacity="0.15" stroke="${['#00A896','#F5B800','#8B5CF6','#EF5350','#06B6D4'][i]}" stroke-width="1.5"/>
+                <rect x="0" y="0" width="64" height="40" rx="8" fill="${['#2570E8','#F5B800','#8B5CF6','#EF5350','#06B6D4'][i]}" opacity="0.15" stroke="${['#2570E8','#F5B800','#8B5CF6','#EF5350','#06B6D4'][i]}" stroke-width="1.5"/>
                 ${Array(Math.min(each,5)).fill(0).map((_,j)=>`
-                  <circle cx="${10+j*11}" cy="20" r="5" fill="${['#00A896','#F5B800','#8B5CF6','#EF5350','#06B6D4'][i]}" opacity="0.85"/>
+                  <circle cx="${10+j*11}" cy="20" r="5" fill="${['#2570E8','#F5B800','#8B5CF6','#EF5350','#06B6D4'][i]}" opacity="0.85"/>
                 `).join('')}
                 <text x="32" y="56" text-anchor="middle" font-size="10" font-weight="800" fill="#12263F">每组 ${each}</text>
               </g>
@@ -7987,7 +8177,7 @@ function checkMathAnswer(el,val,answer){
             <!-- 总条 -->
             <rect x="0" y="0" width="340" height="26" rx="5" fill="#F5F7FA" stroke="#12263F" stroke-width="1.2"/>
             <!-- 第一段 -->
-            <rect x="0" y="0" width="${Math.max(40,Math.round(a/(a+b)*340))}" height="26" rx="5" fill="#00A896" opacity="0.82"/>
+            <rect x="0" y="0" width="${Math.max(40,Math.round(a/(a+b)*340))}" height="26" rx="5" fill="#2570E8" opacity="0.82"/>
             <text x="${Math.max(20,Math.round(a/(a+b)*170))}" y="17" text-anchor="middle" font-size="11" font-weight="900" fill="#fff">${a}</text>
             <!-- 分割线 -->
             <line x1="${Math.max(40,Math.round(a/(a+b)*340))}" y1="-2" x2="${Math.max(40,Math.round(a/(a+b)*340))}" y2="28" stroke="#12263F" stroke-width="1.5" stroke-dasharray="4 2"/>
@@ -8002,7 +8192,7 @@ function checkMathAnswer(el,val,answer){
               <path d="M${Math.max(40,Math.round(a/(a+b)*340))+4} 4 L${336} 22 M${Math.max(40,Math.round(a/(a+b)*340))+4} 22 L${336} 4" stroke="#B91C1C" stroke-width="1.8" opacity="0.6"/>
             `}
             <!-- 大括号箭头 -->
-            <path d="M0 32 L0 42 L340 42 L340 32" fill="none" stroke="#00A896" stroke-width="1.8"/>
+            <path d="M0 32 L0 42 L340 42 L340 32" fill="none" stroke="#2570E8" stroke-width="1.8"/>
             <text x="170" y="58" text-anchor="middle" font-size="12" font-weight="900" fill="#005047">结果 = ${answer}</text>
           </g>
         </svg>`;
@@ -9580,7 +9770,7 @@ function showScoreCard(){
         <div class="score-ring">
           <svg viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="45" fill="none" stroke="#F3F4F6" stroke-width="8"/>
-            <circle cx="50" cy="50" r="45" fill="none" stroke="${grade==='a'?'#00A896':grade==='b'?'#F5B800':'#FB923C'}" 
+            <circle cx="50" cy="50" r="45" fill="none" stroke="${grade==='a'?'#2570E8':grade==='b'?'#F5B800':'#FB923C'}" 
                     stroke-width="8" stroke-linecap="round"
                     stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
                     transform="rotate(-90 50 50)" style="transition:stroke-dashoffset 1s ease"/>
@@ -10131,7 +10321,7 @@ function initParentCharts(){
       xAxis:{type:'category',data:days,axisLine:{lineStyle:{color:'#E2E8F0'}},axisLabel:{color:'#64748B',fontSize:11},axisTick:{show:false}},
       yAxis:{type:'value',name:'分钟',nameTextStyle:{color:'#94A3B8',fontSize:10,padding:[0,30,0,0]},axisLine:{show:false},axisTick:{show:false},splitLine:{lineStyle:{color:'#F1F5F9',type:'dashed'}},axisLabel:{color:'#94A3B8',fontSize:10}},
       series:[
-        {name:'数学',type:'line',smooth:true,symbol:'circle',symbolSize:6,data:mathData,lineStyle:{color:'#00A896',width:3},itemStyle:{color:'#00A896',borderWidth:2,borderColor:'#fff'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(37,112,232,0.25)'},{offset:1,color:'rgba(37,112,232,0.02)'}]}}},
+        {name:'数学',type:'line',smooth:true,symbol:'circle',symbolSize:6,data:mathData,lineStyle:{color:'#2570E8',width:3},itemStyle:{color:'#2570E8',borderWidth:2,borderColor:'#fff'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(37,112,232,0.25)'},{offset:1,color:'rgba(37,112,232,0.02)'}]}}},
         {name:'英语',type:'line',smooth:true,symbol:'circle',symbolSize:6,data:engData,lineStyle:{color:'#F5B800',width:3},itemStyle:{color:'#F5B800',borderWidth:2,borderColor:'#fff'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(245,184,0,0.25)'},{offset:1,color:'rgba(245,184,0,0.02)'}]}}}
       ]
     });
@@ -10150,7 +10340,7 @@ function initParentCharts(){
           value:v,
           itemStyle:{
             borderRadius:[6,6,0,0],
-            color:v>=80?'#00A896':v>=60?'#2FD1AE':v>=40?'#F5B800':'#FB923C'
+            color:v>=80?'#2570E8':v>=60?'#2FD1AE':v>=40?'#F5B800':'#FB923C'
           }
         })),
         label:{show:true,position:'top',color:'#1E3A5F',fontSize:10,fontWeight:800,formatter:'{c}%'}
@@ -10243,7 +10433,7 @@ function renderHeatmap(){
   });
   if(!allKPs.length) return '';
   weakPoints.sort(function(a,b){return a.mastery-b.mastery;});
-  var palette=['#CFF6EE','#5FE0C5','#00A896','#FB923C','#DC2626'];
+  var palette=['#CFF6EE','#5FE0C5','#2570E8','#FB923C','#DC2626'];
   var top3 = weakPoints.slice(0,3);
   var html='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px">';
   allKPs.forEach(function(kp){
@@ -10274,7 +10464,7 @@ function renderParentDashboard(pt){
       <div class="parent-head">
         <h2>👨‍👩‍👧 家长面板 <span>小探索家</span></h2>
         <div style="display:flex;align-items:center;gap:10px">
-          <span style="padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#00A896,#2FD1AE);color:white;font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px">🔥 连续 ${o.streak} 天</span>
+          <span style="padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#2570E8,#2FD1AE);color:white;font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px">🔥 连续 ${o.streak} 天</span>
         </div>
       </div>
       <div class="parent-tabs">
@@ -11475,11 +11665,16 @@ function bindDynamicEvents(){
     // 同步到当前档案
     if(S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId].grade=grade;
     saveState();
-    // 懒加载该年级数据
-    const targetGrade = grade + (grade==='2'?'b':(grade==='3'?'a':''));
-    if(targetGrade && !MATH_BY_GRADE[targetGrade]){
-      await loadGrade(targetGrade);
-    }
+    // 懒加载该年级数据（2026-09-10：以 MATH_LOADED_GRADES 为准，不再看键是否存在，
+    // 否则会被内联占位题库（每册 6 题）挡住真实教材题库的加载）
+    const sem = (S.math && S.math.semester) || (grade === '2' ? 'b' : 'a');
+    const targetGrade = grade + sem;
+    try{
+      if (window.GRADE_FILES && GRADE_FILES[targetGrade] && !(window.MATH_LOADED_GRADES || {})[targetGrade]) {
+        await loadGrade(targetGrade);
+        window.MATH_SESSION = null;   // 数据换了 → 重建会话，题池换成真实题库
+      }
+    }catch(e){}
     $$('#mathGrades .grade-pill').forEach(x=>x.classList.remove('active'));
     p.classList.add('active');
     render();
@@ -11642,6 +11837,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 <!-- === V5 数据文件 === -->
 <script src="data/math-data-core.js"></script>
+<script src="data/math-daily-bank.js"></script>
 <script src="data/english-vocab.js"></script>
 <script src="data/english-phonics.js"></script>
 <script src="data/english-listening.js"></script>
@@ -11728,7 +11924,7 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   // 加载超时处理（15秒）
   var timeoutTimer = setTimeout(function() {
     if (overlay.style.display !== 'none') {
-      status.innerHTML = '<span style="color:#dc2626;">加载时间较长，请稍候...</span><br><button onclick="location.reload()" style="margin-top:8px;padding:6px 16px;background:#00A896;color:#fff;border:none;border-radius:12px;cursor:pointer;">刷新页面</button>';
+      status.innerHTML = '<span style="color:#dc2626;">加载时间较长，请稍候...</span><br><button onclick="location.reload()" style="margin-top:8px;padding:6px 16px;background:#2570E8;color:#fff;border:none;border-radius:12px;cursor:pointer;">刷新页面</button>';
     }
   }, 15000);
 
@@ -11835,7 +12031,7 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   function addEntry(){
     const btn=document.createElement('button');
     btn.textContent='🎧 听算挑战';
-    btn.style.cssText='position:fixed;right:16px;bottom:88px;z-index:9000;border:none;cursor:pointer;background:linear-gradient(135deg,#00A896,#0F6E56);color:#fff;font-size:15px;font-weight:700;padding:12px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(37,112,232,.35);font-family:inherit';
+    btn.style.cssText='position:fixed;right:16px;bottom:88px;z-index:9000;border:none;cursor:pointer;background:linear-gradient(135deg,#2570E8,#1349A6);color:#fff;font-size:15px;font-weight:700;padding:12px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(37,112,232,.35);font-family:inherit';
     btn.onclick=openListening;
     document.body.appendChild(btn);
   }

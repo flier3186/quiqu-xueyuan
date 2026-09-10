@@ -302,6 +302,20 @@ window.MathFlowV5 = {
       return window.MathManipulative.render(problem) || '';
     }catch(e){ return ''; }
   },
+  // 作答前的教具（2026-09-10 新增）：
+  // 旧版在 STAGE 3 正式解题（作答前）也挂十进制位值板/点阵，会显示总数 = 直接泄题，
+  // 而且单步口算（3×6+4）挂方块等于"工具找题"。这里只放行不泄漏答案的形态：
+  // 3D 几何（旋转看形状）与分数条；其余一律不出现，等答后到数形结合阶段再给。
+  _solveTool(problem){
+    try{
+      if(typeof window.MathGeo3D !== 'undefined' && window.MathGeo3D.render){
+        const g = window.MathGeo3D.render(problem);
+        if(g) return g;
+      }
+      if(typeof window.MathManipulative === 'undefined' || !window.MathManipulative.renderSafe) return '';
+      return window.MathManipulative.renderSafe(problem) || '';
+    }catch(e){ return ''; }
+  },
 
   renderWarmup(problem){
     const emoji = this._sceneEmoji(problem);
@@ -580,7 +594,7 @@ window.MathFlowV5 = {
           <div style="margin-top:12px;padding:10px 14px;background:var(--teal-soft);border-radius:12px;border:1px solid rgba(0,168,150,.2)">
             <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">👀 先看图，再解题 —— 图形会告诉你数字之间的关系</div>
             <div style="background:#fff;border-radius:10px;padding:6px">${svg}</div>
-            ${this._tool(problem)}
+            ${this._solveTool(problem)}
           </div>`;
         }
       }catch(e){}
@@ -646,7 +660,7 @@ window.MathFlowV5 = {
         }
       }catch(e){}
       try{ if(typeof SpacedReview!=='undefined') SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e2){}
-      if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${this._escape(String(problem.formula))}</b></span>`:''}<br><b>看看下面的提示再试一次</b></div>`;
+      if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${this._escape(String(problem.formula))}</b></span>`:''}<br><b>别急，看下面的分步推理，再试一次</b></div>${(typeof window._mathStepByStep==='function'?window._mathStepByStep(problem):'')}`;
       setTimeout(()=>{ if(typeof updateMathStageV5==='function') updateMathStageV5(); }, 900);
     }
   },

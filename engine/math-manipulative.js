@@ -11,7 +11,7 @@
   'use strict';
 
   var UID = 0;
-  var COL = ['#00A896', '#F5B800', '#FB923C', '#E8A0BF', '#7AA5FF', '#9CCC65'];
+  var COL = ['#2570E8', '#F5B800', '#FB923C', '#E8A0BF', '#7AA5FF', '#9CCC65'];
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
   // ================= 一次性注入样式 =================
@@ -19,23 +19,23 @@
     if (root.__mpStyled) return '';
     root.__mpStyled = true;
     return '<style>' +
-      '.mp-wrap{background:#fff;border:1.5px solid rgba(0,168,150,.18);border-radius:14px;padding:12px 12px 10px;margin:10px 0;font-family:inherit;user-select:none;-webkit-user-select:none;touch-action:none}' +
-      '.mp-title{font-size:12.5px;font-weight:800;color:#006B5E;margin-bottom:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}' +
+      '.mp-wrap{background:#fff;border:1.5px solid rgba(37,112,232,.18);border-radius:14px;padding:12px 12px 10px;margin:10px 0;font-family:inherit;user-select:none;-webkit-user-select:none;touch-action:none}' +
+      '.mp-title{font-size:12.5px;font-weight:800;color:#1349A6;margin-bottom:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}' +
       '.mp-hint{font-size:11px;color:#8A9BB0;font-weight:600}' +
       '.mp-src{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;padding:8px;background:#F4F8F9;border-radius:10px}' +
       '.mp-block{display:flex;align-items:center;gap:4px;padding:7px 11px;border-radius:9px;font-size:13px;font-weight:800;color:#fff;cursor:grab;box-shadow:0 2px 6px rgba(30,58,95,.14);transition:transform .12s}' +
       '.mp-block:active{cursor:grabbing;transform:scale(.94)}' +
-      '.mp-b1000{background:#1E3A5F}.mp-b100{background:#00A896}.mp-b10{background:#F5B800;color:#4A3800}.mp-b1{background:#E8A0BF;color:#7A3350}' +
+      '.mp-b1000{background:#1E3A5F}.mp-b100{background:#2570E8}.mp-b10{background:#F5B800;color:#4A3800}.mp-b1{background:#E8A0BF;color:#7A3350}' +
       '.mp-places{display:flex;gap:6px;margin-bottom:10px}' +
       '.mp-place{flex:1;min-width:0;border:2px dashed #C9D6DE;border-radius:10px;padding:6px 4px;text-align:center;background:#FBFDFF;transition:all .15s}' +
-      '.mp-place.over{border-color:#00A896;background:#E6F7F4;transform:translateY(-2px)}' +
+      '.mp-place.over{border-color:#2570E8;background:#EAF2FF;transform:translateY(-2px)}' +
       '.mp-place-name{font-size:11px;font-weight:800;color:#5A6B7D;margin-bottom:4px}' +
       '.mp-place-box{min-height:26px;display:flex;flex-wrap:wrap;gap:2px;justify-content:center;align-items:center}' +
       '.mp-chip{width:9px;height:9px;border-radius:2px;animation:mpPop .28s ease both}' +
-      '.mp-c1000{background:#1E3A5F}.mp-c100{background:#00A896}.mp-c10{background:#F5B800}.mp-c1{background:#E8A0BF}' +
+      '.mp-c1000{background:#1E3A5F}.mp-c100{background:#2570E8}.mp-c10{background:#F5B800}.mp-c1{background:#E8A0BF}' +
       '.mp-place-num{font-size:17px;font-weight:900;color:#1E3A5F;margin-top:3px}' +
       '.mp-readout{font-size:13px;color:#1E3A5F;display:flex;align-items:center;gap:8px;flex-wrap:wrap}' +
-      '.mp-readout b{font-size:19px;color:#00A896;font-family:Inter,sans-serif}' +
+      '.mp-readout b{font-size:19px;color:#2570E8;font-family:Inter,sans-serif}' +
       '.mp-btn{padding:5px 11px;border:1px solid #C9D6DE;background:#fff;border-radius:14px;font-size:11.5px;font-weight:700;color:#5A6B7D;cursor:pointer}' +
       '.mp-btn:hover{background:#F4F8F9}' +
       '.mp-strip{display:flex;gap:3px;margin:6px 0 10px;flex-wrap:wrap}' +
@@ -46,7 +46,7 @@
       '.mp-piece{width:26px;height:26px;border-radius:5px;background:#FB923C;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:grab;box-shadow:0 2px 5px rgba(30,58,95,.14)}' +
       '.mp-bowls{display:flex;gap:8px;flex-wrap:wrap}' +
       '.mp-bowl{flex:1;min-width:74px;border:2px dashed #C9D6DE;border-radius:12px;padding:8px 4px;text-align:center;background:#FBFDFF;transition:all .15s}' +
-      '.mp-bowl.over{border-color:#00A896;background:#E6F7F4;transform:translateY(-2px)}' +
+      '.mp-bowl.over{border-color:#2570E8;background:#EAF2FF;transform:translateY(-2px)}' +
       '.mp-bowl-name{font-size:11px;font-weight:800;color:#5A6B7D}' +
       '.mp-bowl-items{min-height:30px;display:flex;flex-wrap:wrap;gap:2px;justify-content:center;align-items:center;margin:4px 0}' +
       '.mp-bowl-num{font-size:15px;font-weight:900;color:#1E3A5F}' +
@@ -57,7 +57,7 @@
       '.mp-group-label{font-size:12px;font-weight:800;color:#5A6B7D;background:#F4F8F9;padding:3px 9px;border-radius:10px}' +
       '.mp-item{font-size:24px;animation:mpDrop .5s cubic-bezier(.34,1.56,.64,1) both}' +
       '.mp-more{font-size:12px;font-weight:800;color:#8A9BB0}' +
-      '.mp-arrow{font-size:20px;color:#00A896;font-weight:900}' +
+      '.mp-arrow{font-size:20px;color:#2570E8;font-weight:900}' +
       '@keyframes mpPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}' +
       '@keyframes mpFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}' +
       '@keyframes mpDrop{from{opacity:0;transform:translateY(-18px) scale(.5)}to{opacity:1;transform:none}}' +
@@ -365,31 +365,90 @@
     return '🔵';
   }
 
+  // ================= 教具按需路由（2026-09-10） =================
+  // 用户反馈："1 种简单运算是否需要这样的拖曳功能？"——旧版见整数就算式就上十进制位值板，
+  // 单步口算（3×6+4）也挂方块，属于"工具找题"。改为按知识点类型按需唤起：
+  //   口算/一步运算 → 不出工具（防干扰）
+  //   进位/退位/多位数 → 十进制位值板
+  //   × → 点阵（行×列，看清乘法结构）
+  //   ÷ / 平均分 → 分一分
+  //   分数 → 分数条
+  function classify(p) {
+    if (!p) return 'none';
+    var f = String(p.formula || '');
+    var k = String(p.knowledge || '');
+    var q = String((p.question || '') + (p.scene || ''));
+    var vt = p.visualType || '';
+    var vd = p.visualData || {};
+    if (vt === 'fractionStrip' || (vd.den && vd.filled != null) || /分数/.test(k)) return 'fraction';
+    if (/÷/.test(f) || (vd.parts && vd.parts.length >= 2 && /每份|平均|分/.test(q))) return 'share';
+    var nums = (f.match(/\d+/g) || []).map(Number);
+    if (/[×]/.test(f) && nums.length >= 2) {
+      var a = nums[0], b = nums[1];
+      if (a >= 2 && a <= 10 && b >= 2 && b <= 10 && a * b <= 100) return 'array';
+      if (a * b >= 1000) return 'placeValue';
+      return 'none';
+    }
+    if (/[+\-]/.test(f)) {
+      if (/进位|退位|位值|数位|万以内|千以内|笔算/.test(k + q)) return 'placeValue';
+      if (nums.some(function (x) { return x >= 100; })) return 'placeValue';
+      return 'none';
+    }
+    return 'none';
+  }
+
+  // 乘法点阵：行 × 列，看清"几个几"。仅用于作答后（会显示总数，作答前属泄题）。
+  function arrayModel(rows, cols, emoji) {
+    rows = Math.max(1, Math.min(10, rows | 0));
+    cols = Math.max(1, Math.min(10, cols | 0));
+    var dot = emoji || '●';
+    var h = style() + '<div class="mp-wrap mp-array" style="display:inline-block;text-align:center">' +
+      '<div style="font-size:12px;font-weight:700;color:#1349A6;margin-bottom:6px">' + rows + ' 行 × ' + cols + ' 列</div>';
+    for (var r = 0; r < rows; r++) {
+      h += '<div style="line-height:1.35;font-size:15px;letter-spacing:3px">';
+      for (var c = 0; c < cols; c++) h += '<span style="color:#2570E8">' + dot + '</span>';
+      h += '</div>';
+    }
+    h += '<div style="font-size:11px;color:#5A6B82;margin-top:6px">每一行 ' + cols + ' 个，一共 ' + rows + ' 行</div></div>';
+    return h;
+  }
+
   // ================= 对外 API =================
   var MathManipulative = {
     install: install,
+    classify: classify,
 
     // 依据题目挑一个最合适的教具（不显示答案，纯探索）
     render: function (problem) {
       if (!problem) return '';
       install();
+      var mode = classify(problem);
       var vt = problem.visualType || '';
       var vd = problem.visualData || {};
       try {
-        if (vt === 'fractionStrip' || (vd.den && vd.filled != null)) return style() + frac(vd.den || 4);
-        // 除法 / 平均分 / 有余数：分一分
-        var f = String(problem.formula || '');
-        if (/÷/.test(f) || (vd.parts && vd.parts.length >= 2 && vd.total && /每份|平均|分/.test((problem.question || '') + (problem.scene || '')))) {
+        if (mode === 'fraction') return style() + frac(vd.den || 4);
+        if (mode === 'share') {
           var parts = vd.parts || [];
           var k = parts.length ? parts.length : 3;
           var tot = Number(vd.total) || parts.reduce(function (a, b) { return a + (Number(b.val != null ? b.val : b.value) || 0); }, 0);
           if (tot >= 2 && tot <= 40) return style() + share(tot, Math.min(k, 6), pickEmoji(problem));
         }
-        // 整数运算：十进制位值板
-        var ans = Number(problem.answer);
-        if (isFinite(ans) && /^[+\-×÷\d\s()?=．.]+$/.test(f) && ans >= 0 && ans <= 99999) return style() + baseTen();
+        if (mode === 'array') {
+          var n = (String(problem.formula || '').match(/\d+/g) || []).map(Number);
+          if (n.length >= 2) return arrayModel(n[0], n[1], '●');
+        }
+        if (mode === 'placeValue') return style() + baseTen();
       } catch (e) { /* 教具失败不影响主流程 */ }
       return '';
+    },
+
+    // 作答前专用：只返回"不泄漏答案"的教具（分数条 / 3D 几何由 _tool 处理）。
+    // 十进制位值板与点阵都会显示总数 = 答案，一律不在作答前出现。
+    renderSafe: function (problem) {
+      if (!problem) return '';
+      var mode = classify(problem);
+      if (mode !== 'fraction') return '';
+      try { install(); return style() + frac((problem.visualData || {}).den || 4); } catch (e) { return ''; }
     },
 
     // CPA 具象阶段：动态版场景

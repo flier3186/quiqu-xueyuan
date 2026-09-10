@@ -91,17 +91,13 @@
 }
 
 /* ============================================================
-   数学区作用域：把主色变量局部重映射为青绿。
-   数学区内部所有 var(--teal*) 自动变青绿，无需逐处改代码；
-   与全局蓝同属冷色系，换科目有色彩区分但不刺眼。
+   数学区作用域（2026-09-10 调整）
+   旧版把主色变量局部重映射为青绿；用户拍板"阶段 1 数学区配色统一少年蓝"，
+   故取消青绿重映射 —— 数学区直接沿用 :root 的少年蓝 #2570E8（白底 4.6:1，达 WCAG AA）。
+   保留 .math-scope 这个作用域钩子，便于后续按科目做差异化微调。
    ============================================================ */
-.math-scope,.math-scope *{
-  --teal:var(--green);--teal-light:var(--green-light);--teal-600:var(--green-600);
-  --teal-700:var(--green-700);--teal-800:var(--green-800);
-  --teal-50:var(--green-50);--teal-100:var(--green-100);--teal-200:var(--green-200);
-  --teal-300:var(--green-300);--teal-400:var(--green-400);
-  --teal-soft:var(--green-soft);--teal-soft-2:var(--green-soft-2);
-  --shadow-teal:0 8px 24px rgba(0,128,110,.26);
+.math-scope{
+  --math-accent:var(--teal);
 }
 
 /* ============================================================
@@ -124,7 +120,7 @@
 :where(button,[onclick],a,input,select,textarea,[tabindex]):focus-visible{
   outline:3px solid var(--teal-400);outline-offset:2px;border-radius:8px;
 }
-.math-scope :where(button,[onclick],[tabindex]):focus-visible{outline-color:var(--green-400)}
+.math-scope :where(button,[onclick],[tabindex]):focus-visible{outline-color:var(--teal-400)}
 
 @media (prefers-color-scheme: light){
   :root{--bg-grad:linear-gradient(180deg,#F6FAFF 0%,#EDF3FC 100%);}

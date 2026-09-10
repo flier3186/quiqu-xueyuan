@@ -26,14 +26,19 @@ const { chromium } = require(path.join('C:/Users/LEO/.workbuddy/binaries/node/wo
   });
 
   // ---- 2. 数学主链路：答题答错路径（Bug #1 验证）----
-  await p.evaluate(() => {
+  // 2026-09-10：改为走真实入口。旧版直接 contentArea.innerHTML = renderMath('3')，
+  // 而题库现在是懒加载的，renderMath 会异步补加载真实题库并重渲染，把注入的 DOM 冲掉。
+  await p.evaluate(async () => {
     localStorage.removeItem('quiqu_math_progress_v1');
     S.math = S.math || {};
     S.math.wrongProblems = [];
     S.math.today = null;
-    document.getElementById('contentArea').innerHTML = renderMath('3');
+    S.math.grade = '3';
+    try { if (typeof loadGrade === 'function') await loadGrade('3a'); } catch (e) {}
+    window.MATH_SESSION = null;
+    window.switchView('math');
   });
-  await p.waitForTimeout(300);
+  await p.waitForTimeout(600);
   await p.evaluate(() => { MathFlowV5._chooseStudyMode('beginner'); });
   await p.waitForTimeout(400);
   await p.evaluate(() => { MathFlowV5.advance('solve'); if (typeof updateMathStageV5 === 'function') updateMathStageV5(); });
