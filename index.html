@@ -7359,6 +7359,17 @@ function renderMath(grade='3'){
   }
   window._mathReviewList = window.MATH_IS_REVIEW ? null : _mathReviewCandidates();
 
+  // ===== 诊断定级：临时接管 mathStage（与错题再练同构，不动主进度指针）=====
+  window.__mathDiagPanel = '';
+  if(window.MATH_IS_DIAG && window.MathDiagnostic){
+    try{ window.__mathDiagPanel = MathDiagnostic.panelHTML() || ''; }catch(e){ window.__mathDiagPanel = ''; }
+  }
+  // 摸底入口卡：不在错题再练、不在诊断过程中时才展示（有结果时展示"已定级"卡）
+  var _diagEntry = '';
+  if(!window.MATH_IS_DIAG && !window.MATH_IS_REVIEW && window.MathDiagnostic && !window.MATH_IS_BOOK_END){
+    try{ _diagEntry = MathDiagnostic.renderEntryCard(semKey) || ''; }catch(e){ _diagEntry = ''; }
+  }
+
   return `
     <div class="layout-with-side math-scope">
       <div style="flex:1;min-width:0">
@@ -7400,6 +7411,7 @@ function renderMath(grade='3'){
           </div>
           <button onclick="mathStartReview()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--coral);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">开始再练 →</button>
         </div>` : '')}
+        ${_diagEntry}
         ${(window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT && !window.MATH_IS_REVIEW) ? `
         <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#E1F5EE,#E6F1FB);border-left:4px solid var(--teal);border-radius:12px;padding:14px 16px;margin-bottom:14px">
           <span style="font-size:24px">🎉</span>
@@ -7421,8 +7433,8 @@ function renderMath(grade='3'){
           ${_mathNextSemKey(semKey)?`<button onclick="mathAdvanceToNextSem()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--navy);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">进入下一册 →</button>`:''}
           <button onclick="_resetSemIdx()" style="padding:9px 16px;border-radius:20px;border:1px solid var(--ink-200);background:white;color:var(--text-2);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">重做本册</button>
         </div>` : ''}
-        ${renderMathStageProgress()}
-        <div id="mathStage" class="math-stage-host">${(window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))}</div>
+        ${window.__mathDiagPanel ? '' : renderMathStageProgress()}
+        <div id="mathStage" class="math-stage-host">${window.__mathDiagPanel || (window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))}</div>
         <div class="knowledge-tree">
           <div class="card-title" style="margin-bottom:14px">🌳 知识图谱</div>
           ${(data.units||[]).map(k=>`
@@ -11352,6 +11364,11 @@ function loadState(){
 }
 function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
 let S=loadState();
+// ⚠️ `let` 在经典脚本里不会挂到 window —— engine/*.js 里的 `root.S / window.S` 会一直读到 undefined。
+// （2026-09-10 发现：math-kernel.js 的 syncGradeFromState 因此从未生效，年级一直回退硬编码 '3a'。）
+// 这里用 getter 暴露，即使后续 S 被整体替换也保持同步。
+try{ Object.defineProperty(window,'S',{get:function(){return S;},configurable:true}); }
+catch(e){ try{ window.S = S; }catch(e2){} }
 
 // 多孩档案：保存档案元数据
 function saveProfileMeta(){
@@ -12013,6 +12030,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/listening-math.js"></script>
 <script type="module" src="engine/pet-companion.js"></script>
 <script src="engine/math-flow-v5.js?v=20260806e"></script>
+<script src="engine/math-diagram-master.js?v=20260910a"></script>
+<script src="engine/math-diagnostic.js?v=20260910a"></script>
 <script src="engine/speak-engine-v5.js"></script>
 <script src="engine/english-flow-v5.js"></script>
 <script src="engine/weakness-detector-v5.js"></script>

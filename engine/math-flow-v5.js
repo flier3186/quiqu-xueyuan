@@ -4,6 +4,27 @@
 // 附加：苏格拉底式追问（L4 做错触发）、教小伙伴（表达度判定）、单元挑战（单元完成触发）
 // 依赖全局：S / saveState / SpacedReview / MathVisualV5 / toast / setStar / WeaknessDetector（均做存在性兜底）
 // 颜色统一用 CSS 变量；SVG 动画带 -webkit-transform-box:fill-box 前缀
+
+// ===== 统一图形入口（2026-09-10 阶段 2）=====
+// 既有可视化引擎优先；返回空时由「课程图母版库」用参数派生图形兜底。
+// 目的：彻底消灭"教具/图形区整块空白"这一类问题，任何一道题都至少有图可看。
+function _mvHTML(problem){
+  if(!problem) return '';
+  try{
+    if(problem.visualType && problem.visualData && typeof MathVisualV5!=='undefined' && MathVisualV5.render){
+      const h = MathVisualV5.render(problem.visualType, problem.visualData, problem);
+      if(h && h.indexOf('mv-empty') < 0) return h;
+    }
+  }catch(e){}
+  try{
+    if(typeof MathDiagramMaster!=='undefined' && MathDiagramMaster.renderFor){
+      const r = MathDiagramMaster.renderFor(problem,{dynamic:false});
+      if(r && r.html) return r.html;
+    }
+  }catch(e){}
+  return '';
+}
+
 window.MathFlowV5 = {
 
   // ===== 会话状态（断点续学） =====
@@ -797,9 +818,9 @@ window.MathFlowV5 = {
     // CPA 前移：先看图再解题——形象模型是通往抽象的脚手架，不是事后的图解。
     // 有可视化数据的题，在选项之前先给一个静态图形支架。
     let pictorialScaffold = '';
-    if(problem.visualType && problem.visualData && typeof MathVisualV5 !== 'undefined' && MathVisualV5.render){
+    if(problem.visualType && problem.visualData){
       try{
-        const svg = MathVisualV5.render(problem.visualType, problem.visualData, problem);
+        const svg = _mvHTML(problem);
         if(svg && svg.indexOf('mv-empty') < 0){
           pictorialScaffold = `
           <div style="margin-top:12px;padding:10px 14px;background:var(--teal-soft);border-radius:12px;border:1px solid rgba(0,168,150,.2)">
@@ -897,9 +918,7 @@ window.MathFlowV5 = {
       ? !!MathVisualV5._getStepRenderer(modelFamily)
       : false;
     const hasModelFamily = hasStepRenderer;
-    const visual = (typeof MathVisualV5!=='undefined' && MathVisualV5.render)
-      ? MathVisualV5.render(problem.visualType, problem.visualData, problem)
-      : '<div class="mv-empty">可视化引擎不可用</div>';
+    const visual = _mvHTML(problem) || '<div class="mv-empty">可视化引擎不可用</div>';
     setTimeout(()=>this._initFractionWall(),50);
     const layers = this._explainLayers(problem);
     const methodName = this._methodName(problem);
@@ -1571,9 +1590,7 @@ window.MathFlowV5 = {
       </div>`;
     }
     // 2) 显示图形验证
-    const visual = (typeof MathVisualV5!=='undefined' && MathVisualV5.render)
-      ? MathVisualV5.render(problem.visualType, problem.visualData, problem)
-      : '<div class="mv-empty">可视化引擎不可用</div>';
+    const visual = _mvHTML(problem) || '<div class="mv-empty">可视化引擎不可用</div>';
     const {ans} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 8 · 阶梯练习 · L2 图形验证</span>

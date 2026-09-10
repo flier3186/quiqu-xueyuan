@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260910c';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260910d';
 const ASSETS = [
   '/',
   '/index.html',
@@ -41,6 +41,8 @@ const ASSETS = [
   'engine/english-flow-v5.js',
   'engine/listening-math.js',
   'engine/math-flow-v5.js',
+  'engine/math-diagram-master.js',
+  'engine/math-diagnostic.js',
   'engine/math-geometry-3d.js',
   'engine/math-kernel.js',
   'engine/math-manipulative.js',
