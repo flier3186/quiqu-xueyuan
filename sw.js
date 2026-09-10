@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260910b';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260910c';
 const ASSETS = [
   '/',
   '/index.html',

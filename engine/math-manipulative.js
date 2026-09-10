@@ -61,7 +61,21 @@
       '@keyframes mpPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}' +
       '@keyframes mpFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}' +
       '@keyframes mpDrop{from{opacity:0;transform:translateY(-18px) scale(.5)}to{opacity:1;transform:none}}' +
-      '@media (prefers-reduced-motion:reduce){.mp-item,.mp-group,.mp-chip{animation:none!important}}' +
+      /* ===== 条形模型 · 拖数字建模（2026-09-10） ===== */
+      '.mp-bnum{background:#2570E8}' +
+      '.mp-bd-rows{display:flex;flex-direction:column;gap:9px;margin:4px 0 10px}' +
+      '.mp-bd-row{display:flex;align-items:center;gap:8px}' +
+      '.mp-bd-label{flex:0 0 58px;font-size:11.5px;font-weight:800;color:#5A6B7D;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}' +
+      '.mp-bd-track{position:relative;flex:1;min-width:60px;height:34px;border:2px dashed #C9D6DE;border-radius:8px;background:#FBFDFF;overflow:hidden;transition:all .15s}' +
+      '.mp-bd-track.over{border-color:#2570E8;background:#EAF2FF;transform:translateY(-2px)}' +
+      '.mp-bd-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;transition:width .4s cubic-bezier(.34,1.3,.64,1)}' +
+      '.mp-bd-ph{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#8A9BB0;font-weight:700}' +
+      '.mp-bd-val{flex:0 0 36px;text-align:right;font-size:15px;font-weight:900;font-family:Inter,sans-serif;transition:opacity .2s}' +
+      '.mp-bd-total{display:flex;align-items:center;gap:8px;margin-top:2px}' +
+      '.mp-bd-total span{flex:0 0 58px;font-size:11.5px;font-weight:800;color:#5A6B7D}' +
+      '.mp-bd-brace{flex:1;height:9px;border-left:2px solid #1E3A5F;border-right:2px solid #1E3A5F;border-bottom:2px solid #1E3A5F;border-radius:0 0 7px 7px}' +
+      '.mp-bd-total b{font-size:16px;font-weight:900;color:#1E3A5F;font-family:Inter,sans-serif}' +
+      '@media (prefers-reduced-motion:reduce){.mp-item,.mp-group,.mp-chip,.mp-bd-fill{animation:none!important;transition:none!important}}' +
       '</style>';
   }
 
@@ -71,6 +85,18 @@
     if (root.__mpInstalled) return;
     root.__mpInstalled = true;
     document.addEventListener('pointerdown', function (e) {
+      // 条形模型点选模式：先点数字筹码，再点条形 —— 触摸板/鼠标都友好的兜底
+      var zsel = e.target && e.target.closest ? e.target.closest('.mp-wrap[data-mp-type="barDrop"] [data-mp-drop]') : null;
+      if (zsel) {
+        var w2 = zsel.closest('.mp-wrap');
+        if (w2 && w2.__mpSel != null) {
+          e.preventDefault();
+          H.barDrop.drop(w2, zsel, { getAttribute: function (n) { return n === 'data-v' ? String(w2.__mpSel) : null; } });
+          w2.__mpSel = null;
+          w2.querySelectorAll('.mp-src .mp-block').forEach(function (n) { n.style.outline = ''; });
+          return;
+        }
+      }
       var el = e.target && e.target.closest ? e.target.closest('[data-mp-drag]') : null;
       if (!el) return;
       var wrap = el.closest('.mp-wrap');
@@ -99,7 +125,16 @@
         if (d.ghost && d.ghost.parentNode) d.ghost.parentNode.removeChild(d.ghost);
         var z = zoneAt(ev.clientX, ev.clientY, d.wrap);
         d.wrap.querySelectorAll('[data-mp-drop]').forEach(function (n) { n.classList.remove('over'); });
-        if (!d.moved) z = z || matchZone(d.wrap, d.el) || firstZone(d.wrap);   // 没拖动 = 点击，落到同类区
+        if (!d.moved) {
+          // 条形模型：点一下数字 = 选中，再点条形才放（避免一点就塞进第一条）
+          if (d.wrap.getAttribute('data-mp-type') === 'barDrop' && d.el.classList && d.el.classList.contains('mp-block')) {
+            d.wrap.__mpSel = Number(d.el.getAttribute('data-v'));
+            d.wrap.querySelectorAll('.mp-src .mp-block').forEach(function (n) { n.style.outline = ''; });
+            d.el.style.outline = '3px solid #1349A6';
+            return;
+          }
+          z = z || matchZone(d.wrap, d.el) || firstZone(d.wrap);   // 没拖动 = 点击，落到同类区
+        }
         if (z) drop(d.wrap, z, d.el);
       };
       document.addEventListener('pointermove', move);
@@ -151,6 +186,24 @@
       paintBT(wrap, st);
     }
   };
+  // 条形模型 · 拖数字
+  H.barDrop = {
+    drop: function (wrap, zone, el) {
+      var st = wrap.__mp;
+      if (!st || !st.parts) return;
+      var i = Number(zone.getAttribute('data-i'));
+      var v = Number(el.getAttribute('data-v'));
+      if (!isFinite(i) || !isFinite(v)) return;
+      st.assigned[i] = v;
+      paintBD(wrap, st);
+    },
+    act: function (wrap, act) {
+      var st = wrap.__mp;
+      if (!st) return;
+      if (act === 'clear') { st.assigned = {}; paintBD(wrap, st); }
+    }
+  };
+
   function carry(wrap, st) {
     [1, 10, 100].forEach(function (p) {
       if (st[p] >= 10) { st[p] -= 10; st[p * 10] = (st[p * 10] || 0) + 1; }
@@ -308,6 +361,115 @@
     return h;
   }
 
+  // ================= 条形模型 · 拖数字建模（2026-09-10） =================
+  // 用户诉求：把新加坡建模从"看图"升级成"动手"。
+  // 旧的数形结合阶段只给一张静态条形图，孩子是被动看图；这里把题目里的数字做成
+  // 可拖拽筹码，孩子把数字拖到对应的部分上，条形按比例生长，"整体"括线同步显示。
+  // 孩子在拖的过程中亲眼看到"整体 = 部分 + 部分"，这才是 Bar Model 的教学价值。
+  // 仅用于作答后（作答前会显示待求段的值 = 泄题）。
+  function barDrop(problem) {
+    var vd = problem.visualData || {};
+    var raw = (vd.parts || vd.bars || []).filter(function (p) { return p && p.label; });
+    if (raw.length < 2 || raw.length > 5) return '';
+    var palette = ['#2570E8', '#F5B800', '#FB923C', '#E8A0BF', '#1349A6'];
+    var parts = raw.map(function (p, i) {
+      return {
+        label: String(p.label),
+        val: Number(p.val != null ? p.val : p.value),
+        color: p.color || palette[i % palette.length]
+      };
+    });
+    if (parts.some(function (p) { return !isFinite(p.val) || p.val <= 0; })) return '';
+    var total = Number(vd.total);
+    if (!isFinite(total) || total <= 0) total = parts.reduce(function (s, p) { return s + p.val; }, 0);
+    if (!(total > 0)) return '';
+
+    // 可拖数字筹码：题干出现过的数字 + 各段真实值（保证答案一定可选），去重升序
+    var src = String(problem.question || '') + ' ' + String(problem.scene || '') + ' ' + String(problem.formula || '');
+    var set = {};
+    (src.match(/\d+(?:\.\d+)?/g) || []).forEach(function (t) { var n = Number(t); if (n > 0 && n < 1e6) set[n] = 1; });
+    parts.forEach(function (p) { set[p.val] = 1; });
+    var nums = Object.keys(set).map(Number).sort(function (a, b) { return a - b; });
+    if (nums.length > 8) {
+      // 太多数字会变成干扰：保底留下各段真实值 + 最小的几个干扰项
+      var keep = {};
+      parts.forEach(function (p) { keep[p.val] = 1; });
+      nums.slice(0, 8 - parts.length).forEach(function (n) { keep[n] = 1; });
+      nums = Object.keys(keep).map(Number).sort(function (a, b) { return a - b; });
+    }
+    if (nums.length < 2) return '';
+
+    var id = 'mp-bd-' + (++UID);
+    var h = '<div class="mp-wrap" id="' + id + '" data-mp-type="barDrop">' +
+      '<div class="mp-title">📊 条形模型 · 把数字拖到对应的部分上' +
+      '<span class="mp-hint">（拖动，或点一下数字再点条形）</span></div>' +
+      '<div class="mp-src">' +
+      nums.map(function (n) {
+        return '<div class="mp-block mp-bnum" data-mp-drag data-v="' + n + '" data-i="' + n + '">' + n + '</div>';
+      }).join('') +
+      '</div>' +
+      '<div class="mp-bd-rows">';
+    parts.forEach(function (p, i) {
+      h += '<div class="mp-bd-row">' +
+        '<div class="mp-bd-label" title="' + p.label + '">' + p.label + '</div>' +
+        '<div class="mp-bd-track" data-mp-drop data-i="' + i + '" style="border-color:' + p.color + '55">' +
+        '<div class="mp-bd-fill" data-fill="' + i + '" style="background:' + p.color + '"></div>' +
+        '<div class="mp-bd-ph" data-ph="' + i + '">拖数字到这里</div>' +
+        '</div>' +
+        '<div class="mp-bd-val" data-val="' + i + '" style="color:' + p.color + ';opacity:.4">?</div>' +
+        '</div>';
+    });
+    h += '</div>' +
+      '<div class="mp-bd-total"><span>整体</span><div class="mp-bd-brace"></div><b data-total>?</b></div>' +
+      '<div class="mp-readout" data-eq>把数字摆上去，看看每条有多长</div>' +
+      '<div style="margin-top:8px"><button class="mp-btn" onclick="MathManipulative.act(this,\'clear\')">🔄 重新摆</button></div>' +
+      '</div>';
+    root.__mpPending = root.__mpPending || {};
+    root.__mpPending[id] = { parts: parts, total: total, assigned: {} };
+    return h;
+  }
+  function paintBD(wrap, st) {
+    if (!st || !st.parts) return;
+    var total = st.total || 1;
+    st.parts.forEach(function (p, i) {
+      var fill = wrap.querySelector('[data-fill="' + i + '"]');
+      var ph = wrap.querySelector('[data-ph="' + i + '"]');
+      var lab = wrap.querySelector('[data-val="' + i + '"]');
+      if (!fill || !ph || !lab) return;
+      var v = st.assigned[i];
+      if (v == null) {
+        fill.style.width = '0%';
+        ph.style.display = 'flex';
+        lab.textContent = '?';
+        lab.style.opacity = '.4';
+      } else {
+        // 最小 4% 保证很小的段也看得见；超过整体则封顶 100% 并提示
+        fill.style.width = Math.min(100, Math.max(4, (v / total) * 100)) + '%';
+        ph.style.display = 'none';
+        lab.textContent = String(v);
+        lab.style.opacity = '1';
+      }
+    });
+    var done = st.parts.every(function (p, i) { return st.assigned[i] != null; });
+    var sum = st.parts.reduce(function (s, p, i) { return s + (Number(st.assigned[i]) || 0); }, 0);
+    var t = wrap.querySelector('[data-total]');
+    if (t) t.textContent = done ? String(sum) : '?';
+    var eq = wrap.querySelector('[data-eq]');
+    if (eq) {
+      var shown = st.parts.map(function (p, i) { return st.assigned[i] == null ? '?' : st.assigned[i]; });
+      if (!done) {
+        eq.innerHTML = '已摆：' + shown.join(' + ') + '　<span class="mp-hint">还有 ' +
+          st.parts.filter(function (p, i) { return st.assigned[i] == null; }).length + ' 条没摆</span>';
+      } else if (Math.abs(sum - total) < 1e-6) {
+        eq.innerHTML = '整体 = ' + shown.join(' + ') + ' = <b>' + sum + '</b>　✅ 每条加起来正好是整体（条形一样长）';
+      } else {
+        eq.innerHTML = '整体 = ' + shown.join(' + ') + ' = <b>' + sum + '</b>　⚠️ 比整体' +
+          (sum > total ? '长' : '短') + '了，再调一调';
+      }
+    }
+  }
+
+
   // ================= CPA 动态具象：让场景"动起来" =================
   // 旧版场景阶段 = 一个静态 emoji + 一段文字；这里把题里的数量变成逐个入场的实物，
   // 并按"组"呈现（几个几 / 两部分合起来），孩子能亲眼看到数量关系形成的过程。
@@ -380,6 +542,10 @@
     var q = String((p.question || '') + (p.scene || ''));
     var vt = p.visualType || '';
     var vd = p.visualData || {};
+    // 备用形态：有具名部分的条形数据 → 可动手建模（作答后使用）
+    var canBar = !!(vd.parts && vd.parts.length >= 2 && vd.parts.length <= 5 &&
+      vd.parts.every(function (x) { return x && x.label && isFinite(Number(x.val != null ? x.val : x.value)); }));
+    var fallback = canBar ? 'barDrop' : 'none';
     if (vt === 'fractionStrip' || (vd.den && vd.filled != null) || /分数/.test(k)) return 'fraction';
     if (/÷/.test(f) || (vd.parts && vd.parts.length >= 2 && /每份|平均|分/.test(q))) return 'share';
     var nums = (f.match(/\d+/g) || []).map(Number);
@@ -387,14 +553,14 @@
       var a = nums[0], b = nums[1];
       if (a >= 2 && a <= 10 && b >= 2 && b <= 10 && a * b <= 100) return 'array';
       if (a * b >= 1000) return 'placeValue';
-      return 'none';
+      return fallback;
     }
     if (/[+\-]/.test(f)) {
       if (/进位|退位|位值|数位|万以内|千以内|笔算/.test(k + q)) return 'placeValue';
       if (nums.some(function (x) { return x >= 100; })) return 'placeValue';
-      return 'none';
+      return fallback;
     }
-    return 'none';
+    return fallback;
   }
 
   // 乘法点阵：行 × 列，看清"几个几"。仅用于作答后（会显示总数，作答前属泄题）。
@@ -423,23 +589,26 @@
       if (!problem) return '';
       install();
       var mode = classify(problem);
-      var vt = problem.visualType || '';
       var vd = problem.visualData || {};
+      var out = '';
       try {
-        if (mode === 'fraction') return style() + frac(vd.den || 4);
-        if (mode === 'share') {
+        if (mode === 'fraction') out = style() + frac(vd.den || 4);
+        else if (mode === 'share') {
           var parts = vd.parts || [];
           var k = parts.length ? parts.length : 3;
           var tot = Number(vd.total) || parts.reduce(function (a, b) { return a + (Number(b.val != null ? b.val : b.value) || 0); }, 0);
-          if (tot >= 2 && tot <= 40) return style() + share(tot, Math.min(k, 6), pickEmoji(problem));
+          if (tot >= 2 && tot <= 40) out = style() + share(tot, Math.min(k, 6), pickEmoji(problem));
         }
-        if (mode === 'array') {
+        else if (mode === 'array') {
           var n = (String(problem.formula || '').match(/\d+/g) || []).map(Number);
-          if (n.length >= 2) return arrayModel(n[0], n[1], '●');
+          if (n.length >= 2) out = arrayModel(n[0], n[1], '●');
         }
-        if (mode === 'placeValue') return style() + baseTen();
+        else if (mode === 'placeValue') out = style() + baseTen();
+        // 兜底（2026-09-10 修复）：首选形态不可用时要退到别的形态，不能直接空手而归。
+        // 曾经的 bug：60÷3 被判定为"分一分"，但 60 个超过盘子容量的上限 → 教具区整块空白。
+        if (!out) out = style() + barDrop(problem);
       } catch (e) { /* 教具失败不影响主流程 */ }
-      return '';
+      return out || '';
     },
 
     // 作答前专用：只返回"不泄漏答案"的教具（分数条 / 3D 几何由 _tool 处理）。
@@ -476,6 +645,11 @@
       st.on[i] = !st.on[i];
       paintFrac(wrap, st);
     },
+    // 测试钩子（不参与产品逻辑）：直接触发一次条形模型拖放，供端到端脚本验证
+    __testDrop: function (wrap, zone, val) {
+      if (!wrap || !zone) return;
+      H.barDrop.drop(wrap, zone, { getAttribute: function (n) { return n === 'data-v' ? String(val) : null; } });
+    },
     tapBowl: function (node) {
       var wrap = wrapOf(node); if (!wrap) return;
       var st = wrap.__mp; if (!st || st.pool <= 0) return;
@@ -508,10 +682,11 @@
         var id = w.id;
         if (root.__mpPending && root.__mpPending[id]) {
           var st = root.__mpPending[id];
-          st.total = st.pool;
           w.__mp = st;
           delete root.__mpPending[id];
-          paintShare(w, st);
+          var t = w.getAttribute('data-mp-type');
+          if (t === 'share') { st.total = st.pool; paintShare(w, st); }
+          else if (t === 'barDrop') { paintBD(w, st); }
         }
       });
     }

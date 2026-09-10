@@ -7309,6 +7309,7 @@ function renderMath(grade='3'){
       S.math.idxBySem[semKey] = 0; saveState();
       window.MATH_SESSION.problemIdx = 0;
       if(S.math.daily) S.math.daily = null;
+      window.MATH_REVIEW = null;
       if(window.MathFlowV5) MathFlowV5._sess = null;
       toast('🔄 从第 1 题重新开始！');
       render();
@@ -7344,6 +7345,20 @@ function renderMath(grade='3'){
   window.CURRENT_MATH_PROBLEM = problem;
   window.MATH_BANK_TOTAL = bankTotal;
 
+  // ===== 错题再练：临时接管当前题（不动主进度指针）=====
+  window.MATH_IS_REVIEW = false;
+  if(window.MATH_REVIEW && window.MATH_REVIEW.active && window.MATH_REVIEW.list.length){
+    const item = window.MATH_REVIEW.list[Math.min(window.MATH_REVIEW.idx, window.MATH_REVIEW.list.length-1)];
+    if(item && item.p){
+      try{
+        const rp = _adaptStaticProblem(item.p, item.semKey || semKey);
+        if(rp){ problem = rp; window.MATH_IS_REVIEW = true; window.CURRENT_MATH_PROBLEM = rp; }
+      }catch(e){}
+    }
+    if(!window.MATH_IS_REVIEW) window.MATH_REVIEW = null;   // 兜底：解析失败就退出，别卡死
+  }
+  window._mathReviewList = window.MATH_IS_REVIEW ? null : _mathReviewCandidates();
+
   return `
     <div class="layout-with-side math-scope">
       <div style="flex:1;min-width:0">
@@ -7353,9 +7368,10 @@ function renderMath(grade='3'){
             ${['2','3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
           </div>
           <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">
+            ${window.MATH_IS_REVIEW ? `📕 错题再练 <b style="color:var(--coral)">${(window.MATH_REVIEW.idx||0)+1}/${window.MATH_REVIEW.list.length}</b>` : `
             本册 ${pIdx+1} / ${bankTotal||1} 题
             ${window.MATH_SEGMENT?` · 当前「${window.MATH_SEGMENT.kp}」`:(data.title?'':': ')}
-            · 今日 <b style="color:${(window.MATH_DAILY&&window.MATH_DAILY.done>=MATH_DAILY_COUNT)?'var(--teal)':'var(--text-2)'}">${window.MATH_DAILY?window.MATH_DAILY.done:0}/${MATH_DAILY_COUNT}</b> 题
+            · 今日 <b style="color:${(window.MATH_DAILY&&window.MATH_DAILY.done>=MATH_DAILY_COUNT)?'var(--teal)':'var(--text-2)'}">${window.MATH_DAILY?window.MATH_DAILY.done:0}/${MATH_DAILY_COUNT}</b> 题`}
           </span>
           <button onclick="_resetSemIdx()" title="从第 1 题重新开始本册" style="padding:4px 10px;border-radius:10px;border:1px solid var(--ink-200);background:white;font-size:12px;cursor:pointer;color:var(--text-2);font-weight:600">🔄 重做本册</button>
         </div>
@@ -7366,7 +7382,25 @@ function renderMath(grade='3'){
           </div>
           <div class="progress"><span>掌握进度</span><span class="num">${data.progress}%</span></div>
         </div>
-        ${(window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT) ? `
+        ${(window.MATH_IS_REVIEW && window.MATH_REVIEW) ? `
+        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFE9D6,#FFF6E2);border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+          <span style="font-size:24px">📕</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:var(--coral)">错题再练 · 第 ${(window.MATH_REVIEW.idx||0)+1} / ${window.MATH_REVIEW.list.length} 题</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:2px">答对自动从错题本移除 · 主进度不受影响</div>
+          </div>
+          <button onclick="mathReviewNext()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--coral);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">下一题 →</button>
+          <button onclick="mathExitReview()" style="padding:9px 16px;border-radius:20px;border:1px solid var(--ink-200);background:white;color:var(--text-2);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">退出</button>
+        </div>` : ((window._mathReviewList && window._mathReviewList.length) ? `
+        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFE9D6,#fff);border-left:4px solid var(--coral);border-radius:12px;padding:12px 16px;margin-bottom:14px">
+          <span style="font-size:22px">📕</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13.5px;font-weight:800;color:var(--coral)">错题再练</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:2px">有 ${window._mathReviewList.length} 道题值得再练一遍（做错的题 + 同知识点变体）</div>
+          </div>
+          <button onclick="mathStartReview()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--coral);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">开始再练 →</button>
+        </div>` : '')}
+        ${(window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT && !window.MATH_IS_REVIEW) ? `
         <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#E1F5EE,#E6F1FB);border-left:4px solid var(--teal);border-radius:12px;padding:14px 16px;margin-bottom:14px">
           <span style="font-size:24px">🎉</span>
           <div style="flex:1;min-width:0">
@@ -7377,7 +7411,7 @@ function renderMath(grade='3'){
           </div>
           <button onclick="mathNextProblem()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--teal);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">继续挑战下一单元 →</button>
         </div>` : ''}
-        ${(bankTotal && pIdx >= bankTotal - 1) ? `
+        ${(bankTotal && pIdx >= bankTotal - 1 && !window.MATH_IS_REVIEW) ? `
         <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FAEEDA,#FFF6E2);border-left:4px solid var(--yellow);border-radius:12px;padding:14px 16px;margin-bottom:14px">
           <span style="font-size:24px">🏆</span>
           <div style="flex:1;min-width:0">
@@ -7409,6 +7443,7 @@ function renderMath(grade='3'){
 function renderMathStageProgress(){
   const stages = [
     {key:'review',   name:'昨日回顾', icon:'📚'},
+    {key:'microcard',name:'微课卡', icon:'🎬'},
     {key:'warmup',   name:'数感预热', icon:'📖'},
     {key:'rme',      name:'RME建模', icon:'✏️'},
     {key:'discover', name:'引导发现', icon:'🔍'},
@@ -7521,6 +7556,115 @@ function _mathTodayKey(){
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 
+// ===== 错题再练（2026-09-10）=====
+// 数据两级来源：
+//   ① 错题本里真实答错过的题 —— 按题干在已加载的册里找回原始题（保留图形/推理链/选项）
+//   ② 净化层收敛出的"同题干变体" reviewPool —— 同一知识点的另一版本，用于巩固
+// 设计原则：不动主进度指针（problemIdx 不受影响），临时接管 mathStage，做完自动回到原进度。
+function _mathFindProblem(q, semKey){
+  const want = String(q||'').trim();
+  if(!want) return null;
+  const keys = [];
+  if(semKey) keys.push(semKey);
+  Object.keys(window.MATH_BY_GRADE||{}).forEach(k=>{ if(keys.indexOf(k)<0) keys.push(k); });
+  for(const k of keys){
+    const d = window.MATH_BY_GRADE && window.MATH_BY_GRADE[k];
+    if(!d || !Array.isArray(d.problems)) continue;
+    const p = d.problems.find(x=>String(x.question||'').trim()===want);
+    if(p) return {p:p, semKey:k};
+  }
+  for(const k of keys){
+    try{
+      const r = window.MathDailyBank && window.MathDailyBank.build(k);
+      const p = ((r && r.reviewPool) || []).find(x=>String(x.question||'').trim()===want);
+      if(p) return {p:p, semKey:k};
+    }catch(e){}
+  }
+  return null;
+}
+
+window._mathReviewList = null;   // 预览缓存：渲染时算一次，点"开始再练"时复用
+function _mathReviewCandidates(){
+  const out = [], seen = {};
+  const semKey = (window.MATH_SESSION && window.MATH_SESSION.semKey) || (String(S.math.grade||'3') + (S.math.semester||'a'));
+  // ① 真实错题：最近 8 道（新的优先）
+  const wrong = (S.math && S.math.wrongProblems) || [];
+  wrong.slice(-12).reverse().forEach(w=>{
+    const q = String(w.q||'').trim();
+    if(!q || seen[q]) return;
+    if(out.filter(x=>x.from==='wrong').length >= 8) return;
+    const hit = _mathFindProblem(q, w.s);
+    if(hit){ seen[q]=1; out.push({p:hit.p, semKey:hit.semKey, from:'wrong', k:w.k||''}); }
+  });
+  // ② 同题干变体：当前册最多补 4 道
+  try{
+    const r = window.MathDailyBank && window.MathDailyBank.build(semKey);
+    const pool = (r && r.reviewPool) || [];
+    for(let i=0;i<pool.length && out.length<12;i++){
+      if(out.filter(x=>x.from==='pool').length >= 4) break;
+      const p = pool[i];
+      const q = String(p.question||'').trim();
+      if(!q || seen[q]) continue;
+      seen[q]=1; out.push({p:p, semKey:semKey, from:'pool', k:p.knowledge||''});
+    }
+  }catch(e){}
+  return out;
+}
+
+function mathStartReview(){
+  const list = (window._mathReviewList && window._mathReviewList.length) ? window._mathReviewList : _mathReviewCandidates();
+  if(!list.length){ toast('🎉 暂时没有需要再练的题'); return; }
+  window.MATH_REVIEW = { active:true, list:list, idx:0, correct:0, wrongCount:0, startTs:Date.now() };
+  if(window.MathFlowV5) MathFlowV5._sess = null;
+  render();
+  toast(`📕 错题再练开始 · 共 ${list.length} 题（答对即从错题本移除）`);
+}
+
+function mathReviewNext(){
+  const r = window.MATH_REVIEW;
+  if(!r || !r.active) return;
+  r.idx++;
+  if(window.MathFlowV5) MathFlowV5._sess = null;
+  if(r.idx >= r.list.length){
+    const done = r.correct||0, tot = r.list.length, miss = r.wrongCount||0;
+    window.MATH_REVIEW = null;
+    try{ saveState(); }catch(e){}
+    toast(`🎉 错题再练完成：答对 ${done}/${tot} 题${miss?`，还有 ${miss} 题要再看看`:''}`);
+  }
+  render();
+}
+
+function mathExitReview(){
+  window.MATH_REVIEW = null;
+  if(window.MathFlowV5) MathFlowV5._sess = null;
+  toast('已退出错题再练，回到正常进度');
+  render();
+}
+
+// 错题再练：答对即订正成功，从错题本移除
+function _mathReviewMarkCorrect(problem){
+  try{
+    const r = window.MATH_REVIEW;
+    if(!r || !r.active) return;
+    r.correct = (r.correct||0) + 1;
+    const cur = r.list[r.idx];
+    if(cur && cur.from === 'wrong' && S.math && S.math.wrongProblems){
+      const q = String(problem.question||'').trim();
+      const before = S.math.wrongProblems.length;
+      S.math.wrongProblems = S.math.wrongProblems.filter(w=>String(w.q||'').trim() !== q);
+      if(S.math.wrongProblems.length !== before) saveState();
+    }
+  }catch(e){}
+}
+function _mathReviewMarkWrong(){
+  try{ const r = window.MATH_REVIEW; if(r && r.active) r.wrongCount = (r.wrongCount||0)+1; }catch(e){}
+}
+window._mathReviewMarkCorrect = _mathReviewMarkCorrect;
+window._mathReviewMarkWrong = _mathReviewMarkWrong;
+window.mathStartReview = mathStartReview;
+window.mathReviewNext = mathReviewNext;
+window.mathExitReview = mathExitReview;
+
 // ===== 分步解析（2026-09-10）=====
 // 借鉴猿辅导/作业帮：答错不只丢一个答案，而是把"怎么一步步想出来"摊开。
 // 题库里本来就有 discoverySteps（提问链 + explain）和 explainLayers（看图/理解/推广三层），
@@ -7557,6 +7701,8 @@ function _mathStepByStep(problem){
 window._mathStepByStep = _mathStepByStep;
 
 function mathNextProblem(){
+  // 错题再练模式：下一题 = 复习队列里的下一道，不推进主进度
+  if(window.MATH_REVIEW && window.MATH_REVIEW.active){ mathReviewNext(); return; }
   const g = window.MATH_SESSION.grade;
   const semKey = g + (S.math.semester || 'a');
 
@@ -7944,6 +8090,8 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
     try{ WeaknessDetector.recordAnswer(S, wdQuestion, window.MATH_SESSION.hintUsed ? 'hint' : 'correct', timeUsed); }catch(e){}
     setStar(3, '数学场景题');
     try{ if(typeof _bumpMathProgress==='function') _bumpMathProgress(problem.knowledge); }catch(e){}
+    // 错题再练：答对即订正成功，从错题本移除
+    try{ if(window.MATH_REVIEW && window.MATH_REVIEW.active) _mathReviewMarkCorrect(problem); }catch(e){}
     if(fb){
       // 数形结合预览：答对后立即展示小图，引导用户进入阶段4看完整动画
       const previewVisual = (typeof MathVisual!=='undefined' && MathVisual.render && problem.visualType)
@@ -7957,11 +8105,13 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
     window.MATH_SESSION.solveAttempts = (window.MATH_SESSION.solveAttempts||0) + 1;
     // 记录错误（每次错误都记录，供掌握度计算）
     try{ WeaknessDetector.recordAnswer(S, wdQuestion, 'wrong', timeUsed); }catch(e){}
+    // 错题再练：记一次"仍需再练"
+    try{ if(window.MATH_REVIEW && window.MATH_REVIEW.active) _mathReviewMarkWrong(); }catch(e){}
     // 错题本去重后加入（Q6-5：带 knowledge，错题本按知识点聚合复习）
     try{ _logToday(false, problem.knowledge); }catch(e){}
     S.math.wrongProblems = S.math.wrongProblems || [];
     if(!S.math.wrongProblems.some(w=>w.q===problem.question)){
-      S.math.wrongProblems.push({q:problem.question, a:String(problem.answer), k:_normK(problem.knowledge)||'', t:Date.now()});
+      S.math.wrongProblems.push({q:problem.question, a:String(problem.answer), k:_normK(problem.knowledge)||'', s:problem.semester||((window.MATH_SESSION&&window.MATH_SESSION.semKey)||''), t:Date.now()});
       saveState();
     }
     try{ SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e){}

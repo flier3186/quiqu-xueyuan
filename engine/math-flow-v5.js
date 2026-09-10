@@ -87,11 +87,14 @@ window.MathFlowV5 = {
       studyMode: null,          // 学习模式：null=未选择, 'beginner'=刚学, 'intermediate'=学过但卡住, 'advanced'=已熟练
       rmeTimeoutTimer: null,    // RME超时定时器
     };
-    // 若有到期复习项，先进入昨日回顾
-    if(profileId && typeof SpacedReview!=='undefined' && SpacedReview.getDue){
-      const due = SpacedReview.getDue(profileId).filter(e=>e.type==='math');
-      if(due.length>0) this._sess.stage = 'review';
-    }
+    // 若有到期复习项，先进入昨日回顾（优先级：到期复习 > 微课卡 > 常规路径）
+    let forced = null;
+    try{
+      if(profileId && typeof SpacedReview!=='undefined' && SpacedReview.getDue){
+        const due = SpacedReview.getDue(profileId).filter(e=>e.type==='math');
+        if(due.length>0) forced = 'review';
+      }
+    }catch(e){}
     // 检查是否需要显示学习状态选择
     const mathProfile = (S && S.math && S.math.mathProfile) || null;
     if(!mathProfile){
@@ -100,6 +103,13 @@ window.MathFlowV5 = {
     }
     // 应用已保存的学习模式
     this._applyStudyMode(mathProfile.studyMode);
+    // 修复：_applyStudyMode 会无条件改写 stage，旧版因此把"到期复习"覆盖掉、永远进不去。
+    // 现在把复习/微课卡作为显式覆盖层，压在模式默认路径之上。
+    if(forced){
+      this._sess.stage = forced;
+    } else if(this.needsMicrocard(problem)){
+      this._sess.stage = 'microcard';
+    }
     this._saveProgress();
     return this.renderCurrent();
   },
@@ -179,6 +189,7 @@ window.MathFlowV5 = {
     const p = s.problem;
     switch(s.stage){
       case 'review':    return this.renderReview(s.profileId);
+      case 'microcard': return this.renderMicrocard(p);
       case 'warmup':    return this.renderWarmup(p);
       case 'rme':       return this.renderRMEChoice(p);
       case 'discover':  return this.renderDiscover(p);
@@ -244,7 +255,7 @@ window.MathFlowV5 = {
           <div style="font-size:13px;color:var(--text-2)">直接开始今天的新知识吧！</div>
         </div>
         <div style="text-align:center;margin-top:14px">
-          <button onclick="MathFlowV5.advance('warmup')" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,168,150,.3)">开始学习 →</button>
+          <button onclick="MathFlowV5._afterReview()" style="padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(37,112,232,.3)">开始学习 →</button>
         </div>
       </div>`;
     }
@@ -275,6 +286,206 @@ window.MathFlowV5 = {
       }
     }catch(e){}
     if(typeof toast==='function') toast(correct?'✅ 记得很牢！进入新课':'💪 忘了没关系，重新学一遍');
+    this._afterReview();
+  },
+  // 复习之后：新知识点先看微课卡，否则直接进预热
+  _afterReview(){
+    this.advance(this.needsMicrocard(this._sess && this._sess.problem) ? 'microcard' : 'warmup');
+  },
+
+  // ============================================================
+  // 阶段 0.5：微课卡（60-90 秒 · 新知识点首次出现前）
+  // ============================================================
+  // 设计依据（借鉴猿辅导/作业帮"先讲后练"）：新知识点直接上题，孩子手里没有可模仿的
+  // 心智模型，只能靠猜。所以第一次遇到某个知识点时先给一张引导卡：
+  //   ① 这个概念是什么、为什么值得学（knowledgeMap.concept / coreLiteracy）
+  //   ② 这类题用什么图形表示（visualStrategy + 一张条形图示例）
+  //   ③ 一道"同知识点的另一道题"的整题示范（含算式与推理步骤）
+  // 硬约束：卡里出现的图形与例题必须是"另一道题"或抽象示意，绝不展示今天这道题的算式/答案。
+  _MICRO_KEY(){ return 'quiqu_micro_seen_v1'; },
+  _microMap(){
+    try{ return JSON.parse(localStorage.getItem(this._MICRO_KEY())||'{}') || {}; }catch(e){ return {}; }
+  },
+  _microPid(){
+    return (this._sess && this._sess.profileId)
+      || (typeof S!=='undefined' && S && S.currentProfileId)
+      || 'default';
+  },
+  microSeen(kp){
+    if(!kp) return true;
+    const m = this._microMap();
+    return !!(m[this._microPid()] && m[this._microPid()][kp]);
+  },
+  _markMicroSeen(kp){
+    if(!kp) return;
+    try{
+      const m = this._microMap();
+      const pid = this._microPid();
+      m[pid] = m[pid] || {};
+      m[pid][kp] = Date.now();
+      localStorage.setItem(this._MICRO_KEY(), JSON.stringify(m));
+    }catch(e){}
+  },
+  // 是否需要微课卡：非"已熟练"模式 + 该知识点从未看过
+  needsMicrocard(problem){
+    try{
+      if(!problem || !problem.knowledge) return false;
+      const mode = (this._sess && this._sess.studyMode)
+        || (typeof S!=='undefined' && S.math && S.math.mathProfile && S.math.mathProfile.studyMode)
+        || 'beginner';
+      if(mode === 'advanced') return false;
+      return !this.microSeen(problem.knowledge);
+    }catch(e){ return false; }
+  },
+  // 知识点元数据：concept / visualStrategy / coreLiteracy / prerequisite / extends
+  _knowledgeMeta(problem){
+    try{
+      const sem = (problem && problem.semester) || (window.MATH_SESSION && window.MATH_SESSION.semKey) || '';
+      const d = window.MATH_BY_GRADE && window.MATH_BY_GRADE[sem];
+      const map = d && d.knowledgeMap;
+      if(!map) return null;
+      const k = String(problem.knowledge || '');
+      for(const key in map){ const v = map[key]; if(v && (v.name === k || v.id === k)) return v; }
+      // 退化匹配：名称互相包含（题库知识点名与知识图偶有措辞差异）
+      for(const key in map){ const v = map[key]; if(v && v.name && k && (v.name.indexOf(k)>=0 || k.indexOf(v.name)>=0)) return v; }
+      return null;
+    }catch(e){ return null; }
+  },
+  // 找一道"同知识点的另一道题"作为引导例（题干必须与今天这道不同）
+  _microSibling(problem){
+    try{
+      const sem = (problem && problem.semester) || (window.MATH_SESSION && window.MATH_SESSION.semKey) || '';
+      let pool = (typeof _mathDailyPool === 'function') ? _mathDailyPool(sem) : null;
+      if((!pool || !pool.length) && window.MATH_BY_GRADE && window.MATH_BY_GRADE[sem]) pool = window.MATH_BY_GRADE[sem].problems;
+      if(!pool || !pool.length) return null;
+      const k = problem.knowledge;
+      const cur = String(problem.question || '').trim();
+      let cands = pool.filter(p => p && p.knowledge === k
+        && String(p.question||'').trim()
+        && String(p.question||'').trim() !== cur);
+      if(!cands.length) return null;
+      // 关键防护：示范题不能把今天的答案说漏 —— 排除"答案相同""算式相同"，
+      // 以及图形数据里出现今天答案数字的候选。找不到安全候选就宁可不给示范。
+      const curAns = Number(problem.answer);
+      const curF = String(problem.formula || '');
+      const hitAns = x => {
+        if(!isFinite(curAns)) return false;
+        const vd = x.visualData || {};
+        const vals = [vd.total];
+        (vd.parts || vd.bars || []).forEach(q => { if(q) vals.push(q.val != null ? q.val : q.value); });
+        return vals.some(v => v != null && Number(v) === curAns);
+      };
+      const safe = cands.filter(p => String(p.answer) !== String(problem.answer)
+        && String(p.formula || '') !== curF && !hitAns(p));
+      if(!safe.length) return null;
+      cands = safe;
+      // 优先能给图形 + 有推理链的（示范效果最好），并且数字小一点更易看懂
+      const score = x => ((x.visualData && (x.visualData.parts || x.visualData.bars)) ? 4 : 0)
+        + ((Array.isArray(x.discoverySteps) && x.discoverySteps.length) ? 2 : 0)
+        + ((String(x.question||'').length <= 26) ? 1 : 0);
+      cands.sort((a,b)=> score(b) - score(a));
+      return cands[0];
+    }catch(e){ return null; }
+  },
+  // 示范图：用"另一道题"的图形数据，且不做答案掩码（整题示范是本意）
+  _microDemo(sib){
+    try{
+      if(!sib || !sib.visualData) return '';
+      if(typeof MathVisualV5 === 'undefined' || !MathVisualV5.render) return '';
+      const demo = Object.assign({}, sib, { answer: null });
+      const data = Object.assign({}, sib.visualData);
+      if(Array.isArray(data.parts)) data.parts = data.parts.map(p => Object.assign({}, p));
+      if(Array.isArray(data.bars))  data.bars  = data.bars.map(p => Object.assign({}, p));
+      const html = MathVisualV5.render(sib.visualType || 'barModel', data, demo);
+      if(!html || html.indexOf('mv-empty') >= 0) return '';
+      return html;
+    }catch(e){ return ''; }
+  },
+  // 没有同类题时退回一张抽象示意（自造数字，且主动避开今天的答案，零泄漏风险）
+  _microDemoGeneric(problem){
+    try{
+      if(typeof MathVisualV5 === 'undefined' || !MathVisualV5.render) return '';
+      const ans = Number(problem && problem.answer);
+      // 候选示意数字，逐个排除与今天答案相同的
+      let a = 20, b = 25;
+      if(isFinite(ans)){
+        if(a === ans) a = 24;
+        if(b === ans) b = 30;
+        if(!isFinite(a)) a = 20;
+        if(a + b === ans){ a += 4; b += 6; }
+        if(a === ans) a += 2;
+        if(b === ans) b += 2;
+      }
+      const html = MathVisualV5.render('barModel',
+        { total: a + b, parts: [{label:'部分 A', val:a, color:'#2570E8'}, {label:'部分 B', val:b, color:'#F5B800'}] },
+        { answer: null });
+      if(!html || html.indexOf('mv-empty') >= 0) return '';
+      return html;
+    }catch(e){ return ''; }
+  },
+  // 泄漏兜底：把 HTML 的可见文本抽出来，查今天的答案是否作为一个独立 token 出现。
+  // 用于拦"示范图里恰好标出了今天的答案"这类巧合（数字或中文答案都覆盖）。
+  _microLeaksAnswer(html, problem){
+    try{
+      const ans = String(problem && problem.answer == null ? '' : problem.answer).trim();
+      if(!ans || !html) return false;
+      const visible = String(html).replace(/<[^>]*>/g, ' ');
+      const re = new RegExp('(?<![0-9A-Za-z.])' + ans.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![0-9A-Za-z.])');
+      return re.test(visible);
+    }catch(e){ return false; }
+  },
+  renderMicrocard(problem){
+    const kp = problem.knowledge || '新知识';
+    try{ this._markMicroSeen(kp); }catch(e){}
+    const km = this._knowledgeMeta(problem) || {};
+    const sib = this._microSibling(problem);
+    // 示范图选型 + 泄漏兜底：渲染出来后按"可见文本 token"再查一遍今天的答案
+    // （数字答案由 _microSibling 的 hitAns 预过滤；文字答案如"西"在这里兜住）
+    let demo = this._microDemo(sib);
+    if(demo && this._microLeaksAnswer(demo, problem)) demo = '';
+    if(!demo) demo = this._microDemoGeneric(problem);
+    const steps = (sib && Array.isArray(sib.discoverySteps)) ? sib.discoverySteps.filter(s => s && (s.q || s.explain)).slice(0,4) : [];
+    const chip = (label, val) => `<div style="flex:1;min-width:150px;padding:10px 12px;background:var(--teal-soft);border-radius:10px;border:1px solid rgba(37,112,232,.14)">
+      <div style="font-size:11px;font-weight:800;color:var(--teal-700);margin-bottom:3px">${this._escape(label)}</div>
+      <div style="font-size:12.5px;color:var(--ink-700);line-height:1.6">${this._escape(val)}</div></div>`;
+    const example = sib ? `
+      <div style="margin-top:14px;padding:14px 16px;background:#fff;border:1.5px solid rgba(37,112,232,.2);border-radius:12px">
+        <div style="font-size:12px;font-weight:800;color:var(--teal-700);margin-bottom:8px">👀 跟着看一道同类题（这不是今天要做的题）</div>
+        <div style="font-size:14px;color:var(--navy);font-weight:700;line-height:1.7">${this._escape(sib.question)}</div>
+        ${sib.formula?`<div style="margin-top:8px;font-size:14px;color:var(--text-2)">算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${this._escape(String(sib.formula))}</b></div>`:''}
+        ${sib.answer!=null?`<div style="margin-top:4px;font-size:13px;color:var(--teal-700);font-weight:700">答：${this._escape(String(sib.answer))}</div>`:''}
+        ${steps.length?`<div style="margin-top:10px;border-top:1px dashed var(--ink-200);padding-top:9px;display:flex;flex-direction:column;gap:7px">
+          ${steps.map((s,i)=>`<div style="font-size:12.5px;color:var(--text-2);line-height:1.7"><b style="color:var(--teal-700)">${i+1}. </b>${this._escape(s.q||'')}${s.explain?` <span style="color:var(--text-3)">${this._escape(s.explain)}</span>`:''}</div>`).join('')}
+        </div>`:''}
+      </div>` : '';
+    return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
+      <span class="cpa-tag" style="background:var(--teal);color:#fff">微课卡 · 60 秒预习</span>
+      <div style="margin:14px 0 10px;font-size:13px;color:var(--text-3);font-weight:600">🌟 60 秒 · 先看懂今天要学什么，再动手</div>
+      <div style="padding:16px 18px;background:linear-gradient(135deg,var(--teal-soft),#fff);border-radius:14px;border:1px solid rgba(37,112,232,.16)">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:6px">今天的新知识</div>
+        <div style="font-size:19px;font-weight:800;color:var(--navy);line-height:1.5">${this._escape(kp)}</div>
+        ${km.concept?`<div style="margin-top:8px;font-size:14px;color:var(--ink-700);line-height:1.8">${this._escape(km.concept)}</div>`:''}
+      </div>
+      ${(km.visualStrategy||km.coreLiteracy||km.prerequisite)?`
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+        ${km.visualStrategy?chip('🧭 用什么图表示', km.visualStrategy):''}
+        ${km.coreLiteracy?chip('🎯 练的是什么能力', km.coreLiteracy):''}
+        ${km.prerequisite?chip('🔗 需要先会', km.prerequisite):''}
+      </div>`:''}
+      ${demo?`
+      <div style="margin-top:14px;font-size:12px;font-weight:800;color:var(--teal-700)">📊 这类题的图形长这样</div>
+      <div style="background:#fff;border-radius:12px;padding:6px;border:1px solid rgba(37,112,232,.14)">${demo}</div>
+      <div style="text-align:center;font-size:12px;color:var(--text-3);margin-top:4px">整体 = 部分 + 部分 · 每条加起来和整体一样长就对了</div>`:''}
+      ${example}
+      ${km.extends?`<div style="margin-top:12px;padding:10px 14px;background:var(--yellow-soft);border-radius:10px;border-left:4px solid var(--yellow);font-size:12.5px;color:var(--yellow-700);line-height:1.7">🚀 学好这个，接下来会学：${this._escape(km.extends)}</div>`:''}
+      <div style="text-align:center;margin-top:18px">
+        <button onclick="MathFlowV5._finishMicrocard()" style="padding:12px 30px;background:linear-gradient(135deg,var(--teal),#4A8DFF);color:#fff;border:none;border-radius:22px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(37,112,232,.3)">看懂了，开始今天的题 →</button>
+        <div style="font-size:11px;color:var(--text-3);margin-top:8px">🤫 今天的题要自己列算式，答完才会揭晓完整算式</div>
+      </div>
+    </div>`;
+  },
+  _finishMicrocard(){
+    try{ this._markMicroSeen(this._sess && this._sess.problem && this._sess.problem.knowledge); }catch(e){}
     this.advance('warmup');
   },
 
@@ -641,6 +852,8 @@ window.MathFlowV5 = {
       try{ if(typeof setStar==='function') setStar(3, '数学场景题'); }catch(e){}
       // 2026-09：知识链打通进度——答对给本题 knowledge 记一次"学过"
       try{ if(typeof _bumpMathProgress==='function') _bumpMathProgress(problem.knowledge); }catch(e){}
+      // 错题再练：答对即订正成功，从错题本移除（2026-09-10）
+      try{ if(typeof window._mathReviewMarkCorrect==='function' && window.MATH_REVIEW && window.MATH_REVIEW.active) window._mathReviewMarkCorrect(problem); }catch(e){}
       if(fb){
         fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐${problem.formula?`<br><span style="font-size:13px;font-weight:600;color:var(--text-2)">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${this._escape(String(problem.formula))}</b></span>`:''}<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>`;
       }
@@ -649,13 +862,20 @@ window.MathFlowV5 = {
       this._sess.hintUsed = true;
       this._sess.solveAttempts = (this._sess.solveAttempts||0) + 1;
       try{ if(typeof WeaknessDetector!=='undefined') WeaknessDetector.recordAnswer(S, wdQ, 'wrong', timeUsed); }catch(e){}
+      // 错题再练：记一次"仍需再练"
+      try{ if(typeof window._mathReviewMarkWrong==='function' && window.MATH_REVIEW && window.MATH_REVIEW.active) window._mathReviewMarkWrong(); }catch(e){}
       // 错题本（Q6-5：带 knowledge 供按知识点聚合；Q6-9：答错也记入今日画像）
       try{
         S.math = S.math || {};
         if(typeof _logToday==='function') _logToday(false, problem.knowledge);
         S.math.wrongProblems = S.math.wrongProblems || [];
         if(!S.math.wrongProblems.some(w=>w.q===problem.question)){
-          S.math.wrongProblems.push({q:problem.question, a:String(problem.answer), k:(typeof _normK==='function'?_normK(problem.knowledge):'')||'', t:Date.now()});
+          S.math.wrongProblems.push({
+            q:problem.question, a:String(problem.answer),
+            k:(typeof _normK==='function'?_normK(problem.knowledge):'')||'',
+            s:problem.semester || ((window.MATH_SESSION&&window.MATH_SESSION.semKey)||''),
+            t:Date.now()
+          });
           if(typeof saveState==='function') saveState();
         }
       }catch(e){}
