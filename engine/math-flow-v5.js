@@ -814,7 +814,19 @@ window.MathFlowV5 = {
   // ============================================================
   renderSolve(problem){
     const showHint = this._sess.hintUsed;
-    const correctIdx = problem.choices.indexOf(problem.answer);
+    let correctIdx = problem.choices.indexOf(problem.answer);
+    // 防御式兜底（问题1·2026-09-11）：题库里偶发「正确答案不在选项里」
+    // （数值型 vs 字符串型、带单位 vs 不带单位）。先做类型归一化再匹配；
+    // 若仍不匹配，强制把正确答案写进首选项位，确保孩子永远有正确选项可点。
+    if(correctIdx < 0){
+      const aStr = String(problem.answer);
+      correctIdx = (problem.choices || []).map(String).indexOf(aStr);
+    }
+    if(correctIdx < 0 && Array.isArray(problem.choices) && problem.choices.length){
+      problem = Object.assign({}, problem, { choices: problem.choices.slice() });
+      problem.choices[0] = problem.answer;
+      correctIdx = 0;
+    }
     // CPA 前移：先看图再解题——形象模型是通往抽象的脚手架，不是事后的图解。
     // 有可视化数据的题，在选项之前先给一个静态图形支架。
     let pictorialScaffold = '';
@@ -1380,7 +1392,7 @@ window.MathFlowV5 = {
     const A = newNums[0], B = newNums[1];
     const parts = Array.isArray(vd.parts) ? vd.parts : null;
     if(vt === 'barModel' || vt === 'numberBond'){
-      const bars = parts || (Array.isArray(vd.bars) ? vd.bars.map(b => ({ val: b.value, label: b.label, color: b.color })) : null);
+      const bars = parts || (Array.isArray(vd.bars) ? vd.bars.map(b => ({ val: (b.val != null ? b.val : b.value), label: b.label, color: b.color })) : null);
       if(!bars) return null;
       if(isDiv){
         const nParts = bars.length;
@@ -1388,14 +1400,14 @@ window.MathFlowV5 = {
         if(A % B !== 0) return null;
         const q = A / B;
         if(answer !== q) return null;   // 算式含其他因子（图只表示除法部分），语义对不上就不动
-        bars.forEach(p => { p.val = q; p.value = q; });   // 双字段都写，兼容 val/value 两种原始格式
+        bars.forEach(p => { p.val = q; });   // P2-8：统一只写 val
         vd.total = A;
         return vd;
       }
       if(isMul){
         const nParts = bars.length;
         if(oldNums[1] !== nParts) return null;
-        bars.forEach(p => { p.val = A; p.value = A; });
+        bars.forEach(p => { p.val = A; });
         vd.total = A * B;
         return vd;
       }
@@ -1403,17 +1415,17 @@ window.MathFlowV5 = {
         if(bars.length !== 2) return null;
         // 通用减法语义：parts=[被减掉总量, 剩余]；对 125-(38+62) 复合式同样成立
         vd.total = A;
-        bars[0].val = A - answer; bars[0].value = A - answer;
-        bars[1].val = answer; bars[1].value = answer;
+        bars[0].val = A - answer;
+        bars[1].val = answer;
         return vd;
       }
       // 容斥原理图（a+b-c，三段=只A/交集/只B）
       if(isAdd && !isSub && bars.length === 3 && newNums.length === 3 && /^\d+\+\d+-\d+=/.test(f)){
         const C = newNums[2];
         if(A >= C && B >= C){
-          bars[0].val = A - C; bars[0].value = A - C;   // 只A
-          bars[1].val = C; bars[1].value = C;           // 交集
-          bars[2].val = B - C; bars[2].value = B - C;   // 只B
+          bars[0].val = A - C;   // 只A
+          bars[1].val = C;           // 交集
+          bars[2].val = B - C;   // 只B
           vd.total = answer;
           return vd;
         }
@@ -1421,7 +1433,7 @@ window.MathFlowV5 = {
       }
       // 加法：parts 对应操作数
       if(bars.length === newNums.length){
-        bars.forEach((p, i) => { p.val = newNums[i]; p.value = newNums[i]; });
+        bars.forEach((p, i) => { p.val = newNums[i]; });
         vd.total = newNums.reduce((s, x) => s + x, 0);
         return vd;
       }

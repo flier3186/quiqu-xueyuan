@@ -11,3 +11,10 @@ docs/
 package.json
 package-lock.json
 .gitee/
+
+# 审计截图：体积大（约 10MB），本地留存证据即可，不入库
+audit-shots/
+
+# 临时调试脚本与运行日志
+scripts/_tmp_*
+scripts/*.log

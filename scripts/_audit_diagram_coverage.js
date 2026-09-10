@@ -52,8 +52,13 @@ const GRADES = (process.env.GRADES || '2a,2b,3a,3b,4a,4b,5a,5b,6a,6b').split(','
       perSem: au.perSem,
       conflicts: au.conflicts.slice(0, 20),
       conflictN: au.conflicts.length,
+      legacyConflicts: au.legacyConflicts ? au.legacyConflicts.slice(0, 10) : [],
+      legacyConflictN: au.legacyConflicts ? au.legacyConflicts.length : 0,
       nonParametric: au.nonParametric.slice(0, 25),
       nonParametricN: au.nonParametric.length,
+      hardcoded: au.hardcoded.slice(0, 20),
+      hardcodedN: au.hardcoded.length,
+      byMasterParametric: au.byMasterParametric,
       masters: window.MathDiagramMaster.list().map(m => m.id + ':' + m.stage),
       chain: { steps: steps.length, kpTotal: kpTotal, kpHit: kpHit, missTop: missTop }
     };
@@ -62,8 +67,17 @@ const GRADES = (process.env.GRADES || '2a,2b,3a,3b,4a,4b,5a,5b,6a,6b').split(','
   console.log('已加载册：', out.loaded.join(','));
   console.log('母版（id:阶段）：', out.masters.join('  '));
   console.log('\n总题数：', out.totals.problems);
-  console.log('可参数化判定的图：', out.totals.tested, ' 其中参数化：', out.totals.parametric,
-    ' 参数化率：', out.totals.tested ? Math.round(100 * out.totals.parametric / out.totals.tested) + '%' : 'n/a');
+  const pct = (a, b) => b ? Math.round(100 * a / b) + '%' : 'n/a';
+  console.log('可判定参数化的图：', out.totals.tested,
+    '| 数值绑定（换数值图会变）：', out.totals.valueBound, `(${pct(out.totals.valueBound, out.totals.tested)})`,
+    '| 几何随数值变：', out.totals.parametric, `(${pct(out.totals.parametric, out.totals.tested)})`);
+  console.log('硬编码风险（换数值图完全不变）：', out.hardcodedN);
+  out.hardcoded.slice(0, 8).forEach(c => console.log('  !', c.sem, c.master, c.kp, '|', c.question));
+  console.log('\n按母版的参数化情况（tested/几何变/数值绑定）：');
+  Object.keys(out.byMasterParametric || {}).forEach(k => {
+    const m = out.byMasterParametric[k];
+    console.log(`  ${k}: ${m.tested}/${m.parametric}/${m.valueBound}`);
+  });
   console.log('\n按母版分布：', JSON.stringify(out.byMaster));
   console.log('按能力档分布：', JSON.stringify(out.byStage));
   console.log('\n每册：');
@@ -71,8 +85,10 @@ const GRADES = (process.env.GRADES || '2a,2b,3a,3b,4a,4b,5a,5b,6a,6b').split(','
     const s = out.perSem[k];
     console.log(`  ${k}: 共${s.total}  可操作${s.byStage.operable || 0} 动效${s.byStage.animated || 0} 静态${s.byStage.static || 0}  参数化 ${s.parametric}/${s.tested}`);
   });
-  console.log('\n两条旧路由分歧数：', out.conflictN);
+  console.log('\n实际分歧数（应为 0）：', out.conflictN);
   out.conflicts.slice(0, 10).forEach(c => console.log('  ·', c.sem, c.kp, '| 静态图:', c.v5, '| 教具:', c.manip));
+  console.log('历史分歧取证（改造前存在的那 170 处，保留用于对比）：', out.legacyConflictN);
+  out.legacyConflicts.slice(0, 6).forEach(c => console.log('  ·', c.sem, c.kp, '| 旧静态图:', c.v5, '| 旧教具:', c.manip, '→ 现统一为', c.master));
   console.log('\n非参数化（图不随数字变）样例：', out.nonParametricN);
   out.nonParametric.slice(0, 12).forEach(c => console.log('  ·', c.sem, c.master, c.kp, '|', c.question, '|', c.reason));
   console.log('\n知识链：MATH_CHAINS 共', out.chain.steps, '步；题目知识点', out.chain.kpTotal,

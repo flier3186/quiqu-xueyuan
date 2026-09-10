@@ -12,7 +12,14 @@ const { chromium } = require(path.join('C:/Users/LEO/.workbuddy/binaries/node/wo
   p.on('pageerror', e => errs.push('PAGE ' + String(e).slice(0, 160)));
   const R = {};
   await p.goto('http://127.0.0.1:8147/index.html', { waitUntil: 'domcontentloaded' });
-  await p.waitForTimeout(3000);
+  await p.waitForTimeout(2000);
+  // P2-7 之后 index.html 不再内联占位题库 —— 必须先显式懒加载各册，否则 MATH_BY_GRADE[g] 为 undefined
+  await p.evaluate(async () => {
+    for (const g of ['2a','2b','3a','3b','4a','4b','5a','5b','6a','6b']) {
+      try { if (typeof loadGrade === 'function') await loadGrade(g); } catch (e) {}
+    }
+  });
+  await p.waitForTimeout(500);
 
   R.gateUnit = await p.evaluate(() => {
     const out = [];

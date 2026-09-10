@@ -70,7 +70,7 @@ for (const p of problems) {
         if (level === 2 && v.visualData) {
           const nums = (String(v.formula).match(/\d+/g) || []).map(Number);
           if (v.visualType === 'barModel' || v.visualType === 'numberBond') {
-            const parts = v.visualData.parts || (v.visualData.bars || []).map(b => ({ val: b.value }));
+            const parts = v.visualData.parts || (v.visualData.bars || []).map(b => ({ val: (b.val != null ? b.val : b.value) }));
             if (parts.length && /÷/.test(v.formula)) {
               const sum = parts.reduce((s, x) => s + (x.val || 0), 0);
               check(sum === v.visualData.total, p.id, `L2 除法图 parts和=${sum}≠total=${v.visualData.total}`);

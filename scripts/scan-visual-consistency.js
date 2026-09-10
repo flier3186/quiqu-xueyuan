@@ -24,7 +24,7 @@ function loadVisProblems(file) {
 
 function normParts(vd) {
   if (Array.isArray(vd.parts) && vd.parts.length) return vd.parts;
-  if (Array.isArray(vd.bars) && vd.bars.length) return vd.bars.map(b => ({ val: b.value, label: b.label }));
+  if (Array.isArray(vd.bars) && vd.bars.length) return vd.bars.map(b => ({ val: (b.val != null ? b.val : b.value), label: b.label }));
   return [];
 }
 

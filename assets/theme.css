@@ -202,3 +202,16 @@
 .pet-stage--3d{background:radial-gradient(circle at 50% 32%, #163452 0%, #0F172A 72%);}
 .pet-stage--3d .pet-display{width:min(440px,82%);height:auto;aspect-ratio:1;}
 .pet-stage--3d .pet-display img{transform:translateY(-6px)}
+
+/* ============================================================
+   P1-5 答对即时庆祝（数学板块）
+   "我做对了 → 世界立刻给了我反馈" 是孩子愿不愿意主动打开的分水岭。
+   ============================================================ */
+#mathCelebrateHost{position:fixed;left:0;right:0;top:16%;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;z-index:9999}
+.math-celebrate{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:rgba(37,112,232,.94);color:#fff;font-size:14px;font-weight:800;box-shadow:0 10px 26px rgba(19,73,166,.28);animation:mcIn .32s cubic-bezier(.2,1.2,.4,1) both}
+.math-celebrate.strong{background:linear-gradient(135deg,#FF9F1C,#FF6B35);box-shadow:0 12px 30px rgba(194,65,12,.35);font-size:16px}
+.math-celebrate .mc-emoji{font-size:19px}
+.math-celebrate.out{animation:mcOut .5s ease both}
+@keyframes mcIn{from{opacity:0;transform:translateY(14px) scale(.86)}to{opacity:1;transform:none}}
+@keyframes mcOut{to{opacity:0;transform:translateY(-16px) scale(.94)}}
+@media (prefers-reduced-motion: reduce){.math-celebrate{animation:none}}

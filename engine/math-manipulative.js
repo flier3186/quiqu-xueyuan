@@ -375,7 +375,7 @@
     var parts = raw.map(function (p, i) {
       return {
         label: String(p.label),
-        val: Number(p.val != null ? p.val : p.value),
+        val: Number(p.val),
         color: p.color || palette[i % palette.length]
       };
     });
@@ -483,7 +483,7 @@
 
     if (items.length) {
       items.forEach(function (b, i) {
-        var v = Number(b.value != null ? b.value : b.val) || 0;
+        var v = Number(b.val) || 0;
         groups.push({ label: b.label || ('第' + (i + 1) + '组'), v: v, color: b.color || COL[i % COL.length] });
       });
     } else {
@@ -535,7 +535,20 @@
   //   × → 点阵（行×列，看清乘法结构）
   //   ÷ / 平均分 → 分一分
   //   分数 → 分数条
+  // 唯一判定入口（P0-2）：静态图与动手教具同源于 MathDiagramMaster 的模型家族。
+  // 历史上这里与 math-visual-v5.js 的 _resolveType 是两条独立 if 链，
+  // 全册实测 170 处同一道题给出两套模型（条形 vs 点阵），认知是断裂的。
   function classify(p) {
+    if (!p) return 'none';
+    var M = (typeof MathDiagramMaster !== 'undefined') ? MathDiagramMaster : null;
+    if (M && M.manipModeFor && !M.__resolving) {
+      try { var m = M.manipModeFor(p); if (m) return m; } catch (e) {}
+    }
+    return classifyLegacy(p);
+  }
+
+  // 降级实现（原 classify）—— 仅在母版库不可用时使用
+  function classifyLegacy(p) {
     if (!p) return 'none';
     var f = String(p.formula || '');
     var k = String(p.knowledge || '');
@@ -583,11 +596,17 @@
   var MathManipulative = {
     install: install,
     classify: classify,
+    classifyLegacy: classifyLegacy,
 
     // 依据题目挑一个最合适的教具（不显示答案，纯探索）
+    // P2-8：入口统一字段（{value} → {val}），并把归一化后的 problem 往下传，
+    //       这样内部 helper（barDrop / 分组模型…）不必各自写双读兜底。
     render: function (problem) {
       if (!problem) return '';
       install();
+      if (typeof window.normVisualData === 'function' && problem.visualData) {
+        problem = Object.assign({}, problem, { visualData: window.normVisualData(problem.visualData) });
+      }
       var mode = classify(problem);
       var vd = problem.visualData || {};
       var out = '';
@@ -596,7 +615,7 @@
         else if (mode === 'share') {
           var parts = vd.parts || [];
           var k = parts.length ? parts.length : 3;
-          var tot = Number(vd.total) || parts.reduce(function (a, b) { return a + (Number(b.val != null ? b.val : b.value) || 0); }, 0);
+          var tot = Number(vd.total) || parts.reduce(function (a, b) { return a + (Number(b.val) || 0); }, 0);
           if (tot >= 2 && tot <= 40) out = style() + share(tot, Math.min(k, 6), pickEmoji(problem));
         }
         else if (mode === 'array') {

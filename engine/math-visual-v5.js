@@ -9,13 +9,9 @@ window.MathVisualV5 = {
   // ===== 总入口：根据 type 调用对应渲染器；problem 可选，用于智能路由 =====
   // problem 始终透传给渲染器：渲染器据此把“等于答案”的段值/整体/差值显示为“?”（答案零泄漏）
   render(type, data, problem){
-    // 字段归一化：内核 {value} → 渲染器 {val}，杜绝 "undefined" 上屏
-    if (data && Array.isArray(data.parts)) {
-      data = Object.assign({}, data, { parts: data.parts.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
-    }
-    if (data && Array.isArray(data.bars)) {
-      data = Object.assign({}, data, { bars: data.bars.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
-    }
+    // 字段归一化（P2-8）：统一在入口把 {value} 收敛为 {val}（实现见 data/math-data-core.js）。
+    // 下游只认 val，不再到处写 `p.val != null ? p.val : p.value` 的双读兜底。
+    if (typeof window.normVisualData === 'function') data = window.normVisualData(data);
     const resolved = this._resolveType(type, data, problem);
     const fn = this[resolved];
     if(typeof fn === 'function'){
@@ -52,8 +48,25 @@ window.MathVisualV5 = {
     });
   },
 
-  // ===== 智能路由：根据知识点/图形形状选择优化渲染器 =====
+  // ===== 智能路由：统一仲裁入口（P0-2）=====
+  // 静态图与动手教具必须来自同一个模型家族。历史上这里有两条独立 if 链
+  //（本文件的 _resolveType 与 math-manipulative.js 的 classify），
+  // 全册实测 170 处（26%）同一道题给出两套模型 → 认知断裂。
+  // 现在判定统一交给 MathDiagramMaster；本文件只保留 _resolveTypeLegacy
+  // 作为"教材对齐的静态语义"来源与降级实现。
   _resolveType(type, data, problem){
+    const M = (typeof MathDiagramMaster !== 'undefined') ? MathDiagramMaster : null;
+    if(M && M.v5RendererFor && !M.__resolving){
+      try{
+        const r = M.v5RendererFor(problem);
+        if(r) return r;
+      }catch(e){}
+    }
+    return this._resolveTypeLegacy(type, data, problem);
+  },
+
+  // 降级实现（原 _resolveType）—— 优先级顺序是本项目教材对齐工作的一部分，不要改动
+  _resolveTypeLegacy(type, data, problem){
     // 优先使用 modelFamily 字段（如果题目有明确指定）
     const modelFamily = (problem && problem.modelFamily) || '';
     if(modelFamily){
@@ -72,16 +85,34 @@ window.MathVisualV5 = {
     if(k.indexOf('集合') >= 0 || k.indexOf('韦恩') >= 0) return 'vennDiagram';
     if(k.indexOf('找次品') >= 0 || shape === 'balance') return 'balanceDecision';
     if(k.indexOf('圆的面积') >= 0 || k.indexOf('圆面积') >= 0) return 'circleArea';
+    // P0-2 新增：表内乘除（两个乘数均为一位数）→ 点子图。
+    // 这类题原本"静态图给条形、动手教具却给乘法点阵"，是 170 处分歧里最大的一类；
+    // 统一到点子图后，看到的图与动手的教具是同一个模型（人教版也用点子图讲乘法）。
+    if(/乘法|除法|口诀/.test(k)){
+      const f = String((problem && problem.formula) || '');
+      if(/[×x*÷]/.test(f)){
+        const fn = (f.match(/\d+/g) || []).map(Number);
+        if(fn.length >= 2 && fn[0] >= 1 && fn[0] <= 9 && fn[1] >= 1 && fn[1] <= 9) return 'dotArray';
+      }
+    }
     // 迭代2新增：课标打破点路由
     // baseTenBlocks 仅适合两位数加减法（≤99），三位数以上回退到原始类型
     if(k.indexOf('进位') >= 0 || k.indexOf('退位') >= 0 || k.indexOf('万以内') >= 0){
+      // 取"题目里最大的那个数"判断是否适合块演示。数源依次为 parts / bars / a·b / 公式。
+      // ⚠ 2026-09-10 修 P0 级数据错：旧版只看 data.parts，而题库大量用 data.bars，
+      // 于是 maxNum 恒为 0 → 三位数题也被判为"适合块演示" → baseTenBlocks 拿不到数，
+      // 用它内部兜底的 38/45 画图：孩子看到的是一张跟本题无关的图（可能含错误答案）。
       let maxNum = 0;
-      if(data && data.parts){
-        data.parts.forEach(p => { if(p.val > maxNum) maxNum = p.val; });
-      } else if(data && data.a){
-        maxNum = Math.max(data.a, data.b || 0);
+      const take = (n) => { const v = Number(n); if (isFinite(v) && Math.abs(v) > maxNum) maxNum = Math.abs(v); };
+      if(data && data.parts) data.parts.forEach(p => take(p && p.val));
+      if(data && data.bars) data.bars.forEach(p => take(p && p.val));
+      if(data && data.a != null) { take(data.a); take(data.b); }
+      if(maxNum === 0){
+        const ff = String((problem && problem.formula) || '');
+        (ff.match(/\d+/g) || []).forEach(take);
       }
-      if(maxNum > 99) return type; // 三位数以上，使用原始可视化类型
+      if(maxNum > 99) return type;   // 三位数以上，块演示不适用
+      if(maxNum === 0) return type;  // 一个数都取不到 → 不要瞎画
       return 'baseTenBlocks';
     }
     if(k.indexOf('分数墙') >= 0 || k.indexOf('等值分数') >= 0) return 'fractionWall';
@@ -117,6 +148,7 @@ window.MathVisualV5 = {
       'baseTenStep': 'baseTenBlocks',
       'barModelStep': 'barModel',
       'areaModelStep': 'areaModel',
+      'dotArray': 'areaModel',              // P0-2：点子图与点阵教具同族
       'numberBondStep': 'numberBond',
       'fractionStripStep': 'fractionModel',
       'numberLineStep': 'numberLine',
@@ -152,6 +184,13 @@ window.MathVisualV5 = {
   },
 
   // ===== 颜色工具 =====
+  // SVG 数值防御（问题3·2026-09-11）：width/height/r 等属性不允许负值。
+  // _nn：钳制为非负；_clampRect：高亮区间即使 a>b 也修正为「min(x), |w|」，避免负 width 报错。
+  _nn(n){ const v = Number(n); return isFinite(v) ? Math.max(0, v) : 0; },
+  _clampRect(x1, x2, y, h){
+    const x = Math.min(x1, x2), w = Math.abs(x2 - x1);
+    return { x, y, w, h: this._nn(h) };
+  },
   _hex(c){
     const m = {teal:'#00A896', yellow:'#F5B800', coral:'#FB923C', pink:'#E8A0BF', navy:'#1E3A5F'};
     return m[c] || c || '#00A896';
@@ -189,7 +228,8 @@ window.MathVisualV5 = {
   barModel(data, problem){
     // 兼容 bars 格式（{type:"bar", bars:[{label,value,color}], total}）
     if(data && data.bars && !data.parts){
-      data.parts = data.bars.map(b => ({label: b.label, val: b.value, color: b.color}));
+      // P2-8：入口已把字段统一为 val；兼容直接调用本函数（未过归一化层）的旧数据
+      data.parts = data.bars.map(b => ({label: b.label, val: (b.val != null ? b.val : b.value), color: b.color}));
       if(data.total == null) data.total = data.parts.reduce((s,p)=>s+(p.val||0),0);
     }
     const parts = (data && data.parts) || [];
@@ -224,19 +264,60 @@ window.MathVisualV5 = {
     </div>`;
   },
 
+  // 引擎·点子图（表内乘除专用，P0-2 新增）
+  // data: {rows, cols, a, b}；缺参数时从 problem.formula 推导。
+  // 只画结构、不印总数（总数常常就是答案，文字层还有 _scrubAnswer 兜底）
+  dotArray(data, problem){
+    const f = String((problem && problem.formula) || '');
+    const nums = (f.match(/\d+/g) || []).map(Number);
+    const isDiv = /÷/.test(f);
+    let cols = Number(data && (data.cols != null ? data.cols : (data.a != null ? data.a : NaN)));
+    let rows = Number(data && (data.rows != null ? data.rows : (data.b != null ? data.b : NaN)));
+    if(!isFinite(cols) || !isFinite(rows) || cols <= 0 || rows <= 0){
+      if(isDiv && nums.length >= 2 && nums[1] > 0){ rows = nums[1]; cols = nums[0] / nums[1]; }
+      else { cols = nums[0] || 4; rows = nums[1] || 3; }
+    }
+    cols = Math.max(1, Math.min(12, Math.round(cols)));
+    rows = Math.max(1, Math.min(12, Math.round(rows)));
+    const cell = cols > 9 ? 26 : 32;
+    const padX = 30, padY = 48;
+    const W = Math.max(300, padX * 2 + cols * cell);
+    const H = padY + rows * cell + 18;
+    const dotR = Math.max(4, Math.min(10, cell * 0.28));
+    let body = '';
+    for(let r = 0; r < rows; r++){
+      for(let c = 0; c < cols; c++){
+        const cx = (padX + cell / 2 + c * cell).toFixed(1);
+        const cy = (padY + cell / 2 + r * cell).toFixed(1);
+        const col = r % 2 === 0 ? '#2570E8' : '#F5B800';
+        body += `<circle class="mv-dot" cx="${cx}" cy="${cy}" r="${dotR}" fill="${col}" fill-opacity="0.9" style="animation:mvPop .3s ${((r * cols + c) * 0.02).toFixed(2)}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box;transform-origin:center"/>`;
+      }
+    }
+    const head = `<text x="${W / 2}" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">每行 ${cols} 个，共 ${rows} 行</text>`;
+    const marks = `<text x="${W - 8}" y="24" text-anchor="end" font-size="11" fill="#5A6B82">${rows} × ${cols}</text>`;
+    return `<div class="mv-wrap mv-dot-array">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${head}${marks}${body}</svg>
+    </div>`;
+  },
+
   // 2. 面积模型 —— 两位数乘法
   // data: {a, b, parts:[4个部分值], result} 或 {parts:[{val},{val}]}
   // 兼容 rows/cols 网格格式（{rows,cols}）：自动换算 a/b；小数时画简化网格
   areaModel(data){
     let {a,b,parts,result} = data;
+    // P2-8：兼容 parts 写成"纯数字数组"的历史数据（如 {a:312,b:3,parts:[900,30,6],result:936}）。
+    // 旧写法下 p.val 恒为 undefined → 图上印出 "undefined"。
+    if(Array.isArray(parts)){
+      parts = parts.map((p,i) => (p && typeof p === 'object') ? p : {val: Number(p), label: ''});
+    }
     // 兼容 rows/cols 格式（如 {rows:40,cols:38}）
     if((a == null || b == null) && data.rows != null && data.cols != null){
       a = data.rows; b = data.cols;
     }
     // 兼容 parts 格式：从 parts 数组提取 a, b
-    if((a == null || b == null) && data.parts && data.parts.length >= 2){
-      a = data.parts[0].val;
-      b = data.parts[1].val;
+    if((a == null || b == null) && parts && parts.length >= 2){
+      a = parts[0].val;
+      b = parts[1].val;
     }
     if(a == null) a = 23;
     if(b == null) b = 15;
@@ -258,6 +339,34 @@ window.MathVisualV5 = {
     }
     const aT=Math.floor(a/10)*10, aO=a%10;
     const bT=Math.floor(b/10)*10, bO=b%10;
+    // P2-8：四象限渲染只适用于"两位×两位"的拆解（parts 恰好 4 段）。
+    // 历史数据里有三分的写法，如 {a:312,b:3,parts:[900,30,6],result:936}
+    // → 旧代码硬取 parts[3] 得到 undefined，图上直接印出 "undefined"。
+    // 段数不是 4 时退化为"按 parts 逐条分段"的通用矩形，永远不印 undefined。
+    const _ps = Array.isArray(parts) ? parts.filter(x => x && isFinite(Number(x.val))) : [];
+    if(_ps.length !== 4){
+      const rows = _ps.length ? _ps : [{val:a,label:''},{val:b,label:''}];
+      const RW=520, RH=Math.max(80, rows.length*46), rpad=16;
+      const stripH=(RH-rpad*2)/rows.length;
+      const sum=rows.reduce((s,r)=>s+Number(r.val),0);
+      let strips='';
+      rows.forEach((r,i)=>{
+        const col=this._palette(i);
+        const wRatio = sum>0 ? Math.max(0.18, Number(r.val)/sum) : 1/rows.length;
+        const w=(RW-rpad*2)*Math.min(1,wRatio);
+        strips+=`<g class="mv-area-block" style="animation-delay:${i*0.3}s">
+          <rect x="${rpad}" y="${rpad+i*stripH}" width="${w}" height="${stripH-6}" fill="${col}" opacity="0.85" rx="4"/>
+          <text x="${rpad+w/2}" y="${rpad+i*stripH+stripH/2+1}" text-anchor="middle" font-size="14" font-weight="700" fill="${this._textColor(col)}">${r.val}</text>
+        </g>`;
+      });
+      const last = (result != null && isFinite(Number(result))) ? result : (b != null ? a*b : sum);
+      return `<div class="mv-wrap mv-area-model">
+        <svg viewBox="0 0 ${RW} ${RH+34}" preserveAspectRatio="xMidYMid meet">
+          ${strips}
+          <text x="${RW/2}" y="${RH+18}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${rows.map(r=>r.val).join(' + ')} = ${last}</text>
+        </svg>
+      </div>`;
+    }
     const sc=13;
     const aTw=aT*sc, aOw=aO*sc, bTh=bT*sc, bOh=bO*sc;
     const totalW=aTw+aOw, totalH=bTh+bOh;
@@ -298,7 +407,7 @@ window.MathVisualV5 = {
       return {r,f};
     };
     const tot=fit(total,30,20);
-    const pFits=parts.map(p=>fit(p.val!=null?p.val:p.value,26,18));
+    const pFits=parts.map(p=>fit(p.val,26,18));
     const maxPartR=Math.max(26, ...pFits.map(x=>x.r));
     const maxR=Math.max(tot.r, maxPartR);
     const spread=Math.max(220, pFits.reduce((s,x)=>s+x.r*2,0) + Math.max(0,n-1)*16 + 24);
@@ -317,7 +426,7 @@ window.MathVisualV5 = {
       const ft=pFits[i];
       return `<g class="mv-bond-part" style="animation-delay:${0.55+i*0.2}s">
         <circle cx="${bx}" cy="${bottomY}" r="${ft.r}" fill="${color}"/>
-        <text x="${bx}" y="${bottomY+ft.f*0.35}" text-anchor="middle" font-size="${ft.f}" font-weight="700" fill="${this._textColor(color)}">${p.val != null ? p.val : p.value}</text>
+        <text x="${bx}" y="${bottomY+ft.f*0.35}" text-anchor="middle" font-size="${ft.f}" font-weight="700" fill="${this._textColor(color)}">${p.val}</text>
       </g>`;
     }).join('');
     return `<div class="mv-wrap mv-number-bond">
@@ -382,15 +491,20 @@ window.MathVisualV5 = {
     }
     let hl='';
     if(Array.isArray(highlight) && highlight.length===2){
-      const x1=pos(highlight[0]), x2=pos(highlight[1]);
-      hl=`<rect x="${x1}" y="${padY-22}" width="${x2-x1}" height="44" fill="#F5B800" opacity="0.22" rx="4"/>`;
+      // 防御：highlight 端点顺序不定，用 _clampRect 保证 width 非负（问题3）
+      const rc = this._clampRect(pos(highlight[0]), pos(highlight[1]), padY-22, 44);
+      hl=`<rect x="${this._nn(rc.x)}" y="${this._nn(rc.y)}" width="${this._nn(rc.w)}" height="${this._nn(rc.h)}" fill="#F5B800" opacity="0.22" rx="4"/>`;
     }
     const pts=(points||[]).map((p,i)=>{
-      const x=pos(p.pos);
+      // P2-8：兼容用 val 记位置的旧数据（{val:22,label:'苹果总数'}）——旧写法 p.pos 缺失 → cx="NaN"
+      const raw = (p && p.pos != null) ? p.pos : (p && p.val != null ? p.val : null);
+      const v = Number(raw);
+      if(!isFinite(v)) return '';
+      const x=pos(v);
       const color=this._hex(p.color)||this._palette(i);
       return `<g class="mv-nl-point" style="animation-delay:${0.4+i*0.2}s">
         <circle cx="${x}" cy="${padY}" r="10" fill="${color}" stroke="#fff" stroke-width="2.5"/>
-        <text x="${x}" y="${padY-18}" text-anchor="middle" font-size="12" font-weight="700" fill="${color}">${p.label!=null?p.label:p.pos}</text>
+        <text x="${x}" y="${padY-18}" text-anchor="middle" font-size="12" font-weight="700" fill="${color}">${p.label!=null?p.label:v}</text>
       </g>`;
     }).join('');
     return `<div class="mv-wrap mv-number-line">
@@ -1281,47 +1395,37 @@ window.MathVisualV5 = {
     const onlyB = parts[2] || {val:0,color:'#FB923C'};
     const aColor=this._hex(onlyA.color), bColor=this._hex(onlyB.color), bothColor=this._hex(both.color);
     const total=(data && data.total) || (onlyA.val+both.val+onlyB.val);
-    // 用 HTML+CSS 画两个相交的圆，比 SVG 更易支持拖拽 drop 事件
-    // 元素用 span draggable，圆圈用 div（ondrop/ondragover）
-    // 生成可拖拽元素：把 onlyA/both/onlyB 的数值拆成小圆点
+    const W=560, H=300, cxA=215, cxB=345, cy=150, r=95, midX=(cxA+cxB)/2;
+    // 主体：SVG 韦恩图（两个相交圆 + 三段计数）。
+    // 旧版用 HTML+CSS 画圆（无 <svg>），被审计判定为「有图形数据却未渲染」(问题2·2026-09-11)。
+    // 现统一输出 <svg>，保证「有 visualData 必有图可看」；总数写在 <tspan> 内，
+    // 由 _scrubAnswer 中心化掩码，等于答案时显 ?，避免泄漏。
+    const svg = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+      <text x="${W/2}" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">集合关系 · 韦恩图（重叠部分只算一次）</text>
+      <circle cx="${cxA}" cy="${cy}" r="${r}" fill="${aColor}22" stroke="${aColor}" stroke-width="2.5"/>
+      <circle cx="${cxB}" cy="${cy}" r="${r}" fill="${bColor}22" stroke="${bColor}" stroke-width="2.5"/>
+      <text x="${cxA-12}" y="${cy-14}" text-anchor="middle" font-size="13" font-weight="800" fill="${aColor}">只参加 A</text>
+      <text x="${cxA-12}" y="${cy+12}" text-anchor="middle" font-size="20" font-weight="900" fill="${aColor}">${this._nn(onlyA.val)}</text>
+      <text x="${cxB+12}" y="${cy-14}" text-anchor="middle" font-size="13" font-weight="800" fill="${bColor}">只参加 B</text>
+      <text x="${cxB+12}" y="${cy+12}" text-anchor="middle" font-size="20" font-weight="900" fill="${bColor}">${this._nn(onlyB.val)}</text>
+      <text x="${midX}" y="${cy-12}" text-anchor="middle" font-size="12" font-weight="800" fill="${bothColor}">都参加</text>
+      <text x="${midX}" y="${cy+14}" text-anchor="middle" font-size="20" font-weight="900" fill="${bothColor}">${this._nn(both.val)}</text>
+      <text x="${W/2}" y="${H-16}" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">总数 = 只A + 只B + 都参加 = ${this._nn(onlyA.val)} + ${this._nn(onlyB.val)} + ${this._nn(both.val)} = <tspan class="mv-venn-total">${this._nn(total)}</tspan> 人</text>
+    </svg>`;
+    // 可拖拽元素池（保留「动手」体验，与静态韦恩图叠加；拖拽交互由 _vennDragStart/_vennDrop 承接）
     const makeTokens=(count,color,prefix)=>{
-      const n=Math.min(count,8); // 最多显示 8 个，避免过多
-      const realCount = count;
-      const tokens=[];
-      for(let i=0;i<n;i++){
-        tokens.push(`<span class="mv-venn-token" draggable="true" ondragstart="MathVisualV5._vennDragStart(event,'${prefix}',${i})" style="background:${color};color:${this._textColor(color)}">${prefix==='A'?'🍎':prefix==='B'?'🍌':'⭐'}${i+1}</span>`);
-      }
+      const n=Math.min(count,8), realCount=count, tokens=[];
+      for(let i=0;i<n;i++) tokens.push(`<span class="mv-venn-token" draggable="true" ondragstart="MathVisualV5._vennDragStart(event,'${prefix}',${i})" style="background:${color};color:${this._textColor(color)}">${prefix==='A'?'🍎':prefix==='B'?'🍌':'⭐'}${i+1}</span>`);
       if(realCount>n) tokens.push(`<span class="mv-venn-more">…共${realCount}个</span>`);
       return tokens.join('');
     };
-    const aTokens = makeTokens(onlyA.val, aColor, 'A');
-    const bTokens = makeTokens(onlyB.val, bColor, 'B');
-    const bothTokens = makeTokens(both.val, bothColor, 'X');
-    return `<div class="mv-wrap mv-venn">
-      <div class="mv-venn-stage">
-        <div class="mv-venn-circle mv-venn-a" style="border-color:${aColor};background:${aColor}22"
-             ondrop="MathVisualV5._vennDrop(event,'A')" ondragover="MathVisualV5._vennDragOver(event)">
-          <div class="mv-venn-label" style="color:${aColor}">只参加 A</div>
-          <div class="mv-venn-count" style="color:${aColor}">${onlyA.val} 人</div>
-          <div class="mv-venn-tokens">${aTokens}</div>
-        </div>
-        <div class="mv-venn-circle mv-venn-b" style="border-color:${bColor};background:${bColor}22"
-             ondrop="MathVisualV5._vennDrop(event,'B')" ondragover="MathVisualV5._vennDragOver(event)">
-          <div class="mv-venn-label" style="color:${bColor}">只参加 B</div>
-          <div class="mv-venn-count" style="color:${bColor}">${onlyB.val} 人</div>
-          <div class="mv-venn-tokens">${bTokens}</div>
-        </div>
-        <div class="mv-venn-overlap" style="background:${bothColor}44;border-color:${bothColor}"
-             ondrop="MathVisualV5._vennDrop(event,'X')" ondragover="MathVisualV5._vennDragOver(event)">
-          <div class="mv-venn-label" style="color:${bothColor}">都参加</div>
-          <div class="mv-venn-count" style="color:${bothColor}">${both.val} 人</div>
-          <div class="mv-venn-tokens">${bothTokens}</div>
-        </div>
-      </div>
-      <div class="mv-venn-formula">
-        总数 = 只A + 只B + 都参加 = ${onlyA.val} + ${onlyB.val} + ${both.val} = <b style="color:${aColor}">${total}</b> 人<br>
-        <span style="font-size:12px;color:#475569">💡 中间重叠的部分会被算两次，所以要单独算一次。试试把元素拖到不同区域！</span>
-      </div>
+    const pool = `<div class="mv-venn-pool" style="display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap;align-items:center">
+        <span style="font-size:12px;font-weight:700;color:${aColor}">A 组:</span>${makeTokens(onlyA.val,aColor,'A')}
+        <span style="font-size:12px;font-weight:700;color:${bothColor}">交集:</span>${makeTokens(both.val,bothColor,'X')}
+        <span style="font-size:12px;font-weight:700;color:${bColor}">B 组:</span>${makeTokens(onlyB.val,bColor,'B')}
+      </div>`;
+    return `<div class="mv-wrap mv-venn">${svg}${pool}
+      <div style="font-size:12px;color:#475569;text-align:center;margin-top:6px">💡 中间重叠的部分会被算两次，所以要单独算一次。把元素拖到不同区域试试！</div>
     </div>`;
   },
   // 韦恩图拖拽辅助方法
@@ -1463,12 +1567,21 @@ window.MathVisualV5 = {
   // ============================================================
 
   // 引擎7：数位条块进位动画（二下/三年级进位加减法）
-  baseTenBlocks(data){
+  baseTenBlocks(data, problem){
     // 兼容 parts 格式（从题库传入的 {total, parts:[{val},{val}]} ）
     let a = data.a, b = data.b;
     if((a == null || b == null) && data.parts && data.parts.length >= 2){
       a = data.parts[0].val;
       b = data.parts[1].val;
+    }
+    // ⚠ 2026-09-10：补 bars 与公式两条数源，堵住"拿不到数就画 38/45"的老问题
+    if((a == null || b == null) && data.bars && data.bars.length >= 2){
+      a = data.bars[0].val;
+      b = data.bars[1].val;
+    }
+    if((a == null || b == null) && problem){
+      const nums = (String(problem.formula || '').match(/\d+/g) || []).map(Number);
+      if(nums.length >= 2){ if(a == null) a = nums[0]; if(b == null) b = nums[1]; }
     }
     a = a || 38;
     b = b || 45;

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260910d';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260910g';
 const ASSETS = [
   '/',
   '/index.html',
@@ -14,6 +14,7 @@ const ASSETS = [
   'data/listening-radio.js',
   'data/math-2a-2b.js',
   'data/math-3-6-extend.js',
+  'data/math-data-2a.js',
   'data/math-data-2b.js',
   'data/math-data-3a.js',
   'data/math-data-3b.js',
@@ -31,6 +32,8 @@ const ASSETS = [
   'data/math-data-9b.js',
   'data/math-data-core.js',
   'data/math-daily-bank.js',
+  'data/math-chain-map.js',
+  'engine/usage-metrics.js',
   'data/speak-8-new.js',
   'data/storybooks.js',
   'data/tpr-action-house.js',

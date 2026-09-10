@@ -1523,3472 +1523,8 @@ var MATH_CHAINS = [
 // 真实教材题库在 data/math-data-<年级>.js（3a~6b 共 898 题），由 data/math-data-core.js
 // 的 loadGrade() 懒加载覆盖本对象。**不要再用「键是否存在」判断题库是否已加载**——
 // 那会让本占位数据把真实题库永远挡在门外（2026-09-10 修复的 P0 事故即此原因）。
-var MATH_BY_GRADE = {
-  "3a": {
-    "title": "三年级上册·混合运算与多位数乘一位数",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 72,
-    "units": [
-      {
-        "name": "观察物体",
-        "level": "current",
-        "children": [
-          {
-            "name": "从不同位置观察物体",
-            "level": "done"
-          },
-          {
-            "name": "立体图形与平面图形",
-            "level": "current"
-          },
-          {
-            "name": "搭一搭、看一看",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "混合运算",
-        "level": "current",
-        "children": [
-          {
-            "name": "乘加、乘减两步式题",
-            "level": "done"
-          },
-          {
-            "name": "除加、除减两步式题",
-            "level": "current"
-          },
-          {
-            "name": "带小括号的两步式题",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "毫米、分米和千米",
-        "level": "locked",
-        "children": [
-          {
-            "name": "毫米的认识",
-            "level": "current"
-          },
-          {
-            "name": "分米的认识",
-            "level": "locked"
-          },
-          {
-            "name": "千米与米的换算",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "曹冲称象的故事（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "克、千克、吨",
-            "level": "locked"
-          },
-          {
-            "name": "等量代换的思想",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "多位数乘一位数",
-        "level": "locked",
-        "children": [
-          {
-            "name": "口算乘法",
-            "level": "locked"
-          },
-          {
-            "name": "笔算乘法（连续进位）",
-            "level": "locked"
-          },
-          {
-            "name": "估算与笔算结合",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "数字编码（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "生活中的编码",
-            "level": "locked"
-          },
-          {
-            "name": "设计编码方案",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "线和角",
-        "level": "locked",
-        "children": [
-          {
-            "name": "线段、直线、射线",
-            "level": "locked"
-          },
-          {
-            "name": "直角、锐角、钝角",
-            "level": "locked"
-          },
-          {
-            "name": "平角与周角",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "分数的初步认识",
-        "level": "locked",
-        "children": [
-          {
-            "name": "几分之一",
-            "level": "locked"
-          },
-          {
-            "name": "几分之几",
-            "level": "locked"
-          },
-          {
-            "name": "同分母分数比大小",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "图形的认识与测量",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "文具店里一支钢笔6元，一个笔记本4元。小明要买3支钢笔和1个笔记本，他先在心里算一算一共要花多少钱，再决定带多少钱出门。",
-        "question": "一共要付多少元？",
-        "formula": "3 × 6 + 4 = ?",
-        "answer": 22,
-        "choices": [
-          18,
-          22,
-          24,
-          26
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "3支钢笔",
-              "val": 18,
-              "color": "#2570E8"
-            },
-            {
-              "label": "1个笔记本",
-              "val": 4,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 22
-        },
-        "knowledge": "混合运算（乘加两步）",
-        "difficulty": 2,
-        "hint": "先算乘法 3×6=18，再算加法 18+4=22（先乘除后加减）",
-        "variants": [
-          {
-            "question": "买5支铅笔（每支2元）和1块橡皮（3元），一共多少元？",
-            "formula": "5 × 2 + 3 = ?",
-            "answer": 13,
-            "hint": "先算 5×2=10，再算 10+3=13"
-          },
-          {
-            "question": "买4个面包（每个5元），付给售货员30元，应找回多少元？",
-            "formula": "30 - 4 × 5 = ?",
-            "answer": 10,
-            "hint": "先算 4×5=20，再算 30-20=10"
-          }
-        ]
-      },
-      {
-        "scene": "学校图书室新购进一批科普书，每包213本，一共进了4包。图书管理员要登记这批新书的总本数，再给它们编上架号。",
-        "question": "这批新书一共有多少本？",
-        "formula": "213 × 4 = ?",
-        "answer": 852,
-        "choices": [
-          842,
-          852,
-          862,
-          8052
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "前2包",
-              "val": 426,
-              "color": "#2570E8"
-            },
-            {
-              "label": "后2包",
-              "val": 426,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 852
-        },
-        "knowledge": "多位数乘一位数",
-        "difficulty": 3,
-        "hint": "拆开算：200×4=800，13×4=52，合起来 800+52=852",
-        "variants": [
-          {
-            "question": "每箱饮料128瓶，买了3箱，一共多少瓶？",
-            "formula": "128 × 3 = ?",
-            "answer": 384,
-            "hint": "100×3=300，28×3=84，300+84=384"
-          },
-          {
-            "question": "一台电风扇245元，买3台需要多少元？",
-            "formula": "245 × 3 = ?",
-            "answer": 735,
-            "hint": "200×3=600，45×3=135，600+135=735"
-          }
-        ]
-      },
-      {
-        "scene": "周末全家去郊外游玩，导航显示从家到目的地有3千米。爸爸问小明：你知道3千米是多少米吗？小明想起数学课上学的长度单位换算。",
-        "question": "3千米合多少米？",
-        "formula": "3 × 1000 = ? (米)",
-        "answer": 3000,
-        "choices": [
-          300,
-          3000,
-          30,
-          30000
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 3,
-          "points": [
-            {
-              "pos": 1,
-              "label": "1千米=1000米",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 3,
-              "label": "3千米",
-              "color": "#F5B800"
-            }
-          ],
-          "highlight": [
-            0,
-            3
-          ]
-        },
-        "knowledge": "毫米、分米和千米",
-        "difficulty": 2,
-        "hint": "1千米=1000米，3千米就是3个1000米，也就是3000米",
-        "variants": [
-          {
-            "question": "5千米合多少米？",
-            "formula": "5 × 1000 = ? (米)",
-            "answer": 5000,
-            "hint": "5×1000=5000"
-          },
-          {
-            "question": "4000米合多少千米？",
-            "formula": "4000 ÷ 1000 = ? (千米)",
-            "answer": 4,
-            "hint": "1000米=1千米，4000里有4个1000"
-          }
-        ]
-      },
-      {
-        "scene": "数学课上老师用活动角演示：把角的一条边绕着顶点旋转，转出的角越来越大。转到半圈时停下，老师说这时的角叫平角。",
-        "question": "平角是多少度？",
-        "formula": "360 ÷ 2 = ?（平角）",
-        "answer": 180,
-        "choices": [
-          90,
-          180,
-          360,
-          45
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 360,
-          "points": [
-            {
-              "pos": 0.25,
-              "label": "直角90°",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 0.5,
-              "label": "平角180°",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 1,
-              "label": "周角360°",
-              "color": "#FB923C"
-            }
-          ],
-          "highlight": [
-            0,
-            0.5
-          ]
-        },
-        "knowledge": "线和角",
-        "difficulty": 2,
-        "hint": "平角是周角的一半：360÷2=180（度）；平角也等于2个直角",
-        "variants": [
-          {
-            "question": "2个直角合起来是多少度？",
-            "formula": "90 × 2 = ?（度）",
-            "answer": 180,
-            "hint": "90×2=180，正好是一个平角"
-          },
-          {
-            "question": "周角360°是直角90°的几倍？",
-            "formula": "360 ÷ 90 = ?",
-            "answer": 4,
-            "hint": "360÷90=4"
-          }
-        ]
-      },
-      {
-        "scene": "课堂上老师讲曹冲称象的故事：把大象赶上船，看船下沉到画线处；再往船上装石头，装到船下沉到同一位置。每筐石头重500千克，一共装了6筐。",
-        "question": "这头大象重多少千克？",
-        "formula": "500 × 6 = ?（千克）",
-        "answer": 3000,
-        "choices": [
-          300,
-          3000,
-          3300,
-          600
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "前3筐石头",
-              "val": 1500,
-              "color": "#2570E8"
-            },
-            {
-              "label": "后3筐石头",
-              "val": 1500,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 3000
-        },
-        "knowledge": "曹冲称象的故事（质量单位）",
-        "difficulty": 3,
-        "hint": "石头的总质量就是大象的质量：500×6=3000（千克）",
-        "variants": [
-          {
-            "question": "每筐石头400千克，装了8筐，大象重多少千克？",
-            "formula": "400 × 8 = ?（千克）",
-            "answer": 3200,
-            "hint": "400×8=3200"
-          },
-          {
-            "question": "大象重2吨（2000千克），每筐石头500千克，需要几筐？",
-            "formula": "2000 ÷ 500 = ?（筐）",
-            "answer": 4,
-            "hint": "2000÷500=4"
-          }
-        ]
-      },
-      {
-        "scene": "妈妈把一个圆形大蛋糕平均切成8块，分给小朋友们吃。小明吃了其中3块，他想知道自己吃了这块蛋糕的几分之几。",
-        "question": "小明吃了这块蛋糕的几分之几？（填分子）",
-        "formula": "3 / 8",
-        "answer": 3,
-        "choices": [
-          3,
-          5,
-          8,
-          6
-        ],
-        "visualType": "fractionStrip",
-        "visualData": {
-          "num": 3,
-          "total": 8,
-          "color": "#2570E8"
-        },
-        "knowledge": "分数的初步认识",
-        "difficulty": 2,
-        "hint": "吃了3块就是八分之三",
-        "variants": [
-          {
-            "question": "蛋糕分9份吃5份吃了的占几分之几（填分子）？",
-            "formula": "5/9",
-            "answer": 5,
-            "hint": "吃了5份就是5/9"
-          },
-          {
-            "question": "分6份吃3份是几分之几（填分子）？",
-            "formula": "3/6",
-            "answer": 3,
-            "hint": "3/6等于1/2"
-          }
-        ]
-      }
-    ]
-  },
-  "3b": {
-    "title": "三年级下册·除数是一位数的除法与面积",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 65,
-    "units": [
-      {
-        "name": "生活中的运动现象",
-        "level": "current",
-        "children": [
-          {
-            "name": "平移与旋转",
-            "level": "current"
-          },
-          {
-            "name": "生活中的运动实例",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "除数是一位数的除法",
-        "level": "current",
-        "children": [
-          {
-            "name": "口算除法",
-            "level": "done"
-          },
-          {
-            "name": "笔算除法",
-            "level": "current"
-          },
-          {
-            "name": "商的位数与验算",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "长方形和正方形",
-        "level": "current",
-        "children": [
-          {
-            "name": "四边形与长、正方形特征",
-            "level": "done"
-          },
-          {
-            "name": "周长的含义与计算",
-            "level": "current"
-          },
-          {
-            "name": "周长的应用",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "图形的面积",
-        "level": "locked",
-        "children": [
-          {
-            "name": "面积与面积单位",
-            "level": "locked"
-          },
-          {
-            "name": "长方形、正方形面积",
-            "level": "locked"
-          },
-          {
-            "name": "面积单位间的进率",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "数据的收集与整理",
-        "level": "locked",
-        "children": [
-          {
-            "name": "收集数据",
-            "level": "locked"
-          },
-          {
-            "name": "整理成统计表",
-            "level": "locked"
-          },
-          {
-            "name": "分析数据",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "年、月、日的秘密（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "年、月、日的认识",
-            "level": "locked"
-          },
-          {
-            "name": "制作活动日历",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "小数的初步认识",
-        "level": "locked",
-        "children": [
-          {
-            "name": "认识小数",
-            "level": "locked"
-          },
-          {
-            "name": "简单的小数加减法",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "图形的认识与测量",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "妈妈买了96颗新鲜的草莓，要平均装进4个盒子里，准备送给邻居品尝。小红帮忙分装，她想知道每个盒子要装几颗。",
-        "question": "每个盒子装几颗草莓？",
-        "formula": "96 ÷ 4 = ?",
-        "answer": 24,
-        "choices": [
-          22,
-          24,
-          25,
-          23
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "total": 96,
-          "parts": [
-            {
-              "label": "盒1",
-              "val": 24,
-              "color": "#2570E8"
-            },
-            {
-              "label": "盒2",
-              "val": 24,
-              "color": "#F5B800"
-            },
-            {
-              "label": "盒3",
-              "val": 24,
-              "color": "#FB923C"
-            },
-            {
-              "label": "盒4",
-              "val": 24,
-              "color": "#E8A0BF"
-            }
-          ]
-        },
-        "knowledge": "除数是一位数的除法",
-        "difficulty": 2,
-        "hint": "90÷4加6÷4",
-        "variants": [
-          {
-            "question": "84÷4=?",
-            "formula": "84÷4=?",
-            "answer": 21,
-            "hint": "80÷4加4÷4"
-          },
-          {
-            "question": "108÷4=?",
-            "formula": "108÷4=?",
-            "answer": 27,
-            "hint": "100÷4加8÷4"
-          }
-        ]
-      },
-      {
-        "scene": "社区要在花园里修一个长方形花坛，长8米、宽5米。工人师傅要在花坛四周围上一圈栅栏，先要算一算需要多长的栅栏。",
-        "question": "花坛的周长是多少米？",
-        "formula": "(8 + 5) × 2 = ?",
-        "answer": 26,
-        "choices": [
-          13,
-          26,
-          40,
-          21
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "rectangle",
-          "params": {
-            "length": 8,
-            "width": 5
-          }
-        },
-        "knowledge": "长方形和正方形的周长",
-        "difficulty": 2,
-        "hint": "长方形周长 =（长+宽）×2 =（8+5）×2 = 26 米",
-        "variants": [
-          {
-            "question": "正方形花坛边长6米，周长是多少米？",
-            "formula": "6 × 4 = ?",
-            "answer": 24,
-            "hint": "正方形周长=边长×4"
-          },
-          {
-            "question": "长方形花坛长12米、宽7米，周长是多少米？",
-            "formula": "(12 + 7) × 2 = ?",
-            "answer": 38,
-            "hint": "（12+7）×2=38"
-          }
-        ]
-      },
-      {
-        "scene": "文具店里一支铅笔2.5元，一块橡皮1.3元。小亮想买这两样文具，他从存钱罐取出零花钱去结账。",
-        "question": "买铅笔和橡皮一共多少元？",
-        "formula": "2.5 + 1.3 = ?",
-        "answer": 3.8,
-        "choices": [
-          3.8,
-          3.7,
-          3.5,
-          4.8
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 5,
-          "points": [
-            {
-              "pos": 2.5,
-              "label": "铅笔",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 3.8,
-              "label": "合计",
-              "color": "#F5B800"
-            }
-          ],
-          "highlight": [
-            0,
-            3.8
-          ]
-        },
-        "knowledge": "小数的初步认识",
-        "difficulty": 2,
-        "hint": "小数点对齐再相加",
-        "variants": [
-          {
-            "question": "3.6+2.4=?",
-            "formula": "3.6+2.4=?",
-            "answer": 6,
-            "hint": "满十进一"
-          },
-          {
-            "question": "1.8+0.7=?",
-            "formula": "1.8+0.7=?",
-            "answer": 2.5,
-            "hint": "小数点对齐"
-          }
-        ]
-      },
-      {
-        "scene": "爷爷在院子里开垦了一块长方形菜地，长6米、宽4米。他要在菜地里种上青菜，想先算算这块地有多大。",
-        "question": "菜地的面积是多少平方米？",
-        "formula": "6 × 4 = ?",
-        "answer": 24,
-        "choices": [
-          20,
-          24,
-          28,
-          10
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "rectangle",
-          "params": {
-            "length": 6,
-            "width": 4
-          }
-        },
-        "knowledge": "图形的面积",
-        "difficulty": 2,
-        "hint": "面积=长×宽",
-        "variants": [
-          {
-            "question": "长8宽3面积？",
-            "formula": "8×3=?",
-            "answer": 24,
-            "hint": "长乘宽"
-          },
-          {
-            "question": "长9宽2面积？",
-            "formula": "9×2=?",
-            "answer": 18,
-            "hint": "长乘宽"
-          }
-        ]
-      },
-      {
-        "scene": "一年有12个月，分成了春、夏、秋、冬四个季节。老师让同学们算一算每个季节大约有几个月。",
-        "question": "每个季节大约有几个月？",
-        "formula": "12 ÷ 4 = ?",
-        "answer": 3,
-        "choices": [
-          3,
-          4,
-          12,
-          6
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "total": 12,
-          "parts": [
-            {
-              "val": 3,
-              "color": "#2570E8"
-            },
-            {
-              "val": 3,
-              "color": "#F5B800"
-            },
-            {
-              "val": 3,
-              "color": "#FB923C"
-            },
-            {
-              "val": 3,
-              "color": "#E8A0BF"
-            }
-          ]
-        },
-        "knowledge": "年、月、日的秘密",
-        "difficulty": 2,
-        "hint": "12个月平均分4份",
-        "variants": [
-          {
-            "question": "一年有几个季度？",
-            "formula": "12÷3=?",
-            "answer": 4,
-            "hint": "春夏秋冬四季"
-          },
-          {
-            "question": "一个季度几个月？",
-            "formula": "12÷4=?",
-            "answer": 3,
-            "hint": "12除4"
-          }
-        ]
-      },
-      {
-        "scene": "老师调查了三(1)班同学最喜欢的课外活动，把结果整理成统计表：读书14人、踢球9人、画画12人。",
-        "question": "喜欢读书和画画的共有多少人？",
-        "formula": "14 + 12 = ?",
-        "answer": 26,
-        "choices": [
-          23,
-          25,
-          26,
-          35
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "读书",
-              "val": 14,
-              "color": "#2570E8"
-            },
-            {
-              "label": "画画",
-              "val": 12,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 26
-        },
-        "knowledge": "数据的收集与整理",
-        "difficulty": 2,
-        "hint": "从统计表中找出读书14人、画画12人，合起来 14+12=26",
-        "variants": [
-          {
-            "question": "喜欢踢球和画画的相差多少人？",
-            "formula": "12 - 9 = ?",
-            "answer": 3,
-            "hint": "12-9=3"
-          },
-          {
-            "question": "喜欢这三项活动的共有多少人？",
-            "formula": "14 + 9 + 12 = ?",
-            "answer": 35,
-            "hint": "14+9+12=35"
-          }
-        ]
-      }
-    ]
-  },
-  "4a": {
-    "title": "四年级上册·万以上数的认识与多位数乘两位数",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 55,
-    "units": [
-      {
-        "name": "万以上数的认识",
-        "level": "current",
-        "children": [
-          {
-            "name": "亿以内数的认识",
-            "level": "done"
-          },
-          {
-            "name": "亿以上数的认识",
-            "level": "done"
-          },
-          {
-            "name": "大小比较、改写与近似数",
-            "level": "current"
-          }
-        ]
-      },
-      {
-        "name": "1亿有多大（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "猜想—实验—推理",
-            "level": "current"
-          },
-          {
-            "name": "大数的实际感受",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "角的度量",
-        "level": "locked",
-        "children": [
-          {
-            "name": "线段、直线、射线",
-            "level": "current"
-          },
-          {
-            "name": "角的分类（旋转定义）",
-            "level": "current"
-          },
-          {
-            "name": "量角与画角",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "多位数乘两位数",
-        "level": "locked",
-        "children": [
-          {
-            "name": "口算乘法",
-            "level": "locked"
-          },
-          {
-            "name": "笔算乘法（106×63 型）",
-            "level": "locked"
-          },
-          {
-            "name": "积的变化规律",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "加法模型和乘法模型",
-        "level": "locked",
-        "children": [
-          {
-            "name": "加法模型：总量=分量+分量",
-            "level": "locked"
-          },
-          {
-            "name": "乘法模型：单价×数量=总价",
-            "level": "locked"
-          },
-          {
-            "name": "乘法模型：速度×时间=路程",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "平行四边形和梯形",
-        "level": "locked",
-        "children": [
-          {
-            "name": "平行与垂直",
-            "level": "locked"
-          },
-          {
-            "name": "平行四边形与梯形的特征",
-            "level": "locked"
-          },
-          {
-            "name": "四边形的关系",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "条形统计图",
-        "level": "locked",
-        "children": [
-          {
-            "name": "单式条形统计图",
-            "level": "locked"
-          },
-          {
-            "name": "复式条形统计图",
-            "level": "locked"
-          },
-          {
-            "name": "数据分析与预测",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "寻找宝藏（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "方向与位置",
-            "level": "locked"
-          },
-          {
-            "name": "绘制藏宝图",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "数量关系",
-            "level": "locked"
-          },
-          {
-            "name": "图形的认识与测量",
-            "level": "locked"
-          },
-          {
-            "name": "数学广角：鸡兔同笼",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "老师在课堂上讲大数：有一个数由3个百万和5个万组成。同学们在数位表上摆一摆，想弄清楚这个数到底是多少。",
-        "question": "这个数是多少？",
-        "formula": "3000000 + 50000 = ?",
-        "answer": 3050000,
-        "choices": [
-          305000,
-          3500000,
-          3050000,
-          3005000
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "total": 3050000,
-          "parts": [
-            {
-              "val": 3000000,
-              "color": "#2570E8"
-            },
-            {
-              "val": 50000,
-              "color": "#F5B800"
-            }
-          ]
-        },
-        "knowledge": "万以上数的认识",
-        "difficulty": 3,
-        "hint": "百万位是3万位是5",
-        "variants": [
-          {
-            "question": "3个百万和5个万组成？",
-            "formula": "300万+5万",
-            "answer": 3050000,
-            "hint": "百万位3万位5"
-          },
-          {
-            "question": "2个千万和8个千组成？",
-            "formula": "2千万+8千",
-            "answer": 20008000,
-            "hint": "千万位2千位8"
-          }
-        ]
-      },
-      {
-        "scene": "学校要为图书馆配一批新书，每套书106元。教务处王老师要购进63套，需要先算出总金额再向财务报账。",
-        "question": "一共需要多少元？",
-        "formula": "106 × 63 = ?",
-        "answer": 6678,
-        "choices": [
-          6636,
-          6678,
-          6738,
-          6360
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "60套",
-              "val": 6360,
-              "color": "#2570E8"
-            },
-            {
-              "label": "3套",
-              "val": 318,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 6678
-        },
-        "knowledge": "多位数乘两位数",
-        "difficulty": 3,
-        "hint": "106×63 = 106×60 + 106×3 = 6360 + 318 = 6678；中间有0也要参与计算",
-        "variants": [
-          {
-            "question": "每套208元，买34套，一共多少元？",
-            "formula": "208 × 34 = ?",
-            "answer": 7072,
-            "hint": "208×30=6240，208×4=832，6240+832=7072"
-          },
-          {
-            "question": "每套校服125元，买24套，一共多少元？",
-            "formula": "125 × 24 = ?",
-            "answer": 3000,
-            "hint": "125×20=2500，125×4=500，2500+500=3000"
-          }
-        ]
-      },
-      {
-        "scene": "超市里每盒牛奶售价12元，妈妈买了8盒。收银员阿姨说，像\"每件多少元、买了几件、一共多少元\"这样的数量关系，可以用一个乘法模型来表示。",
-        "question": "一共要花多少元？（单价 × 数量 = 总价）",
-        "formula": "12 × 8 = ?",
-        "answer": 96,
-        "choices": [
-          20,
-          84,
-          96,
-          108
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "5盒",
-              "val": 60,
-              "color": "#2570E8"
-            },
-            {
-              "label": "3盒",
-              "val": 36,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 96
-        },
-        "knowledge": "乘法模型（单价×数量=总价）",
-        "difficulty": 2,
-        "hint": "乘法模型：每份数 × 份数 = 总数。这里 单价12 × 数量8 = 总价96",
-        "variants": [
-          {
-            "question": "汽车每小时行60千米，行了3小时，一共行了多少千米？（速度×时间=路程）",
-            "formula": "60 × 3 = ?",
-            "answer": 180,
-            "hint": "速度×时间=路程，60×3=180"
-          },
-          {
-            "question": "图书角男生捐书18本、女生捐书15本，一共捐了多少本？（总量=分量+分量）",
-            "formula": "18 + 15 = ?",
-            "answer": 33,
-            "hint": "加法模型：总量=分量+分量，18+15=33"
-          }
-        ]
-      },
-      {
-        "scene": "数学课上老师讲到角的认识：把一根细棒绕端点旋转，转出不同的角。同学们要记住几种特殊角的度数。",
-        "question": "直角是多少度？",
-        "formula": "直角 = ?",
-        "answer": 90,
-        "choices": [
-          80,
-          90,
-          180,
-          60
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 360,
-          "points": [
-            {
-              "pos": 90,
-              "label": "直角",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 180,
-              "label": "平角",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 360,
-              "label": "周角",
-              "color": "#FB923C"
-            }
-          ],
-          "highlight": [
-            0,
-            360
-          ]
-        },
-        "knowledge": "角的度量",
-        "difficulty": 2,
-        "hint": "直角是90度",
-        "variants": [
-          {
-            "question": "平角多少度？",
-            "formula": "平角=?",
-            "answer": 180,
-            "hint": "两个直角"
-          },
-          {
-            "question": "周角多少度？",
-            "formula": "周角=?",
-            "answer": 360,
-            "hint": "四个直角"
-          }
-        ]
-      },
-      {
-        "scene": "数学课上老师拿出一个平行四边形框架，让同学们量一量边的长度：相邻的两条边分别是8厘米和5厘米。老师说平行四边形对边相等，让大家算周长。",
-        "question": "这个平行四边形的周长是多少厘米？",
-        "formula": "(8 + 5) × 2 = ?",
-        "answer": 26,
-        "choices": [
-          13,
-          21,
-          26,
-          40
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "parallelogram",
-          "params": {
-            "base": 8,
-            "height": 4,
-            "side": 5
-          }
-        },
-        "knowledge": "平行四边形和梯形的特征",
-        "difficulty": 2,
-        "hint": "平行四边形对边相等，周长 =（8+5）×2 = 26 厘米",
-        "variants": [
-          {
-            "question": "等腰梯形上底6厘米、下底10厘米、两腰各5厘米，周长是多少厘米？",
-            "formula": "6 + 10 + 5 × 2 = ?",
-            "answer": 26,
-            "hint": "6+10+5+5=26"
-          },
-          {
-            "question": "平行四边形相邻两边分别是9厘米和7厘米，周长是多少厘米？",
-            "formula": "(9 + 7) × 2 = ?",
-            "answer": 32,
-            "hint": "（9+7）×2=32"
-          }
-        ]
-      },
-      {
-        "scene": "农场里有鸡和兔子关在一起，数一数头共有10个，脚共有28只。饲养员想算出鸡和兔子各有多少只，这是古代《孙子算经》里的名题。",
-        "question": "兔子有多少只？",
-        "formula": "(28 - 10×2) ÷ (4 - 2) = ?",
-        "answer": 4,
-        "choices": [
-          3,
-          4,
-          6,
-          8
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "鸡的脚数",
-              "val": 12,
-              "color": "#2570E8"
-            },
-            {
-              "label": "兔的脚数",
-              "val": 16,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 28
-        },
-        "knowledge": "数学广角：鸡兔同笼",
-        "difficulty": 4,
-        "hint": "假设都是鸡：10×2=20 只脚，多出 28-20=8 只脚，每把一只鸡换成兔多2只脚，8÷2=4 只兔",
-        "variants": [
-          {
-            "question": "头共8个，脚共26只，兔子有多少只？",
-            "formula": "(26 - 8×2) ÷ (4 - 2) = ?",
-            "answer": 5,
-            "hint": "26-16=10，10÷2=5"
-          },
-          {
-            "question": "鸡兔同笼，头共12个，脚共32只，鸡有多少只？",
-            "formula": "(12×4 - 32) ÷ (4 - 2) = ?",
-            "answer": 8,
-            "hint": "假设都是兔：48-32=16，16÷2=8只鸡"
-          }
-        ]
-      }
-    ]
-  },
-  "4b": {
-    "title": "四年级下册·运算律与小数加减法",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 48,
-    "units": [
-      {
-        "name": "除数是两位数的除法",
-        "level": "current",
-        "children": [
-          {
-            "name": "口算除法",
-            "level": "current"
-          },
-          {
-            "name": "笔算除法与试商",
-            "level": "current"
-          },
-          {
-            "name": "商的变化规律",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "混合运算和运算律",
-        "level": "current",
-        "children": [
-          {
-            "name": "四则混合运算顺序",
-            "level": "done"
-          },
-          {
-            "name": "加法、乘法运算律",
-            "level": "current"
-          },
-          {
-            "name": "简便运算",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "三角形",
-        "level": "locked",
-        "children": [
-          {
-            "name": "三角形的特性",
-            "level": "locked"
-          },
-          {
-            "name": "三角形的分类",
-            "level": "locked"
-          },
-          {
-            "name": "三角形的内角和",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "小数的认识",
-        "level": "locked",
-        "children": [
-          {
-            "name": "小数的意义",
-            "level": "locked"
-          },
-          {
-            "name": "小数的性质",
-            "level": "locked"
-          },
-          {
-            "name": "小数点移动与单位换算",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "小数的加法和减法",
-        "level": "locked",
-        "children": [
-          {
-            "name": "小数加减法",
-            "level": "locked"
-          },
-          {
-            "name": "小数加减混合运算",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "平均数",
-        "level": "locked",
-        "children": [
-          {
-            "name": "平均数的意义",
-            "level": "locked"
-          },
-          {
-            "name": "求平均数",
-            "level": "locked"
-          },
-          {
-            "name": "用平均数分析数据",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "制订旅游计划（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "收集信息与预算",
-            "level": "locked"
-          },
-          {
-            "name": "方案设计与优化",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "数量关系",
-            "level": "locked"
-          },
-          {
-            "name": "图形的认识与测量",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "老师带同学们用简便方法算乘法：25×37×4这道题，聪明的小美发现先算哪两个数会更简便。",
-        "question": "25×37×4简便计算的结果是多少？",
-        "formula": "25 × 4 × 37 = ?",
-        "answer": 3700,
-        "choices": [
-          370,
-          3700,
-          37000,
-          3704
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "total": 100,
-          "parts": [
-            {
-              "label": "25×1",
-              "val": 25,
-              "color": "#2570E8"
-            },
-            {
-              "label": "25×2",
-              "val": 25,
-              "color": "#F5B800"
-            },
-            {
-              "label": "25×3",
-              "val": 25,
-              "color": "#FB923C"
-            },
-            {
-              "label": "25×4",
-              "val": 25,
-              "color": "#E8A0BF"
-            }
-          ]
-        },
-        "knowledge": "混合运算和运算律",
-        "difficulty": 3,
-        "hint": "先算25×4=100",
-        "variants": [
-          {
-            "question": "25×8=?",
-            "formula": "25×8=?",
-            "answer": 200,
-            "hint": "25×4=100再乘2"
-          },
-          {
-            "question": "25×12=?",
-            "formula": "25×12=?",
-            "answer": 300,
-            "hint": "25×4×3"
-          }
-        ]
-      },
-      {
-        "scene": "小红用一根1米长的彩带做手工，她把彩带平均剪成10段，取其中3段来折花。她想知道这3段是整根彩带的多少。",
-        "question": "3段是整根彩带的几分之几？也就是零点几？",
-        "formula": "3 / 10 = 0.?",
-        "answer": 3,
-        "choices": [
-          3,
-          10,
-          7,
-          13
-        ],
-        "visualType": "fractionStrip",
-        "visualData": {
-          "num": 3,
-          "total": 10,
-          "color": "#2570E8"
-        },
-        "knowledge": "小数的认识",
-        "difficulty": 2,
-        "hint": "3/10就是0.3",
-        "variants": [
-          {
-            "question": "0.7是几分之几（填分子）？",
-            "formula": "7/10",
-            "answer": 7,
-            "hint": "7/10"
-          },
-          {
-            "question": "0.5是几分之几（填分子）？",
-            "formula": "5/10",
-            "answer": 5,
-            "hint": "5/10等于1/2"
-          }
-        ]
-      },
-      {
-        "scene": "美术课上同学们量出一个三角形的两个内角分别是50°和60°。老师说，无论什么形状的三角形，三个内角加起来都是一个固定的度数。",
-        "question": "第三个内角是多少度？",
-        "formula": "180 - 50 - 60 = ?",
-        "answer": 70,
-        "choices": [
-          60,
-          70,
-          80,
-          110
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "parts": [
-            {
-              "label": "∠1",
-              "val": 50,
-              "color": "#2570E8"
-            },
-            {
-              "label": "∠2",
-              "val": 60,
-              "color": "#F5B800"
-            },
-            {
-              "label": "∠3",
-              "val": 70,
-              "color": "#FB923C"
-            }
-          ],
-          "total": 180
-        },
-        "knowledge": "三角形的内角和",
-        "difficulty": 2,
-        "hint": "三角形内角和是180°，180-50-60=70（度）",
-        "variants": [
-          {
-            "question": "直角三角形的一个锐角是35°，另一个锐角是多少度？",
-            "formula": "180 - 90 - 35 = ?",
-            "answer": 55,
-            "hint": "直角90°，180-90-35=55"
-          },
-          {
-            "question": "等腰三角形的顶角是40°，一个底角是多少度？",
-            "formula": "(180 - 40) ÷ 2 = ?",
-            "answer": 70,
-            "hint": "两个底角相等：（180-40）÷2=70"
-          }
-        ]
-      },
-      {
-        "scene": "小亮的身高是1.45米，爸爸比他高0.35米。爸爸常说\"你要多吃蔬菜才能长高\"，小亮好奇爸爸有多高。",
-        "question": "爸爸的身高是多少米？",
-        "formula": "1.45 + 0.35 = ?",
-        "answer": 1.8,
-        "choices": [
-          1.8,
-          1.4,
-          1.5,
-          1.75
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 1,
-          "end": 2,
-          "points": [
-            {
-              "pos": 1.45,
-              "label": "小亮",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 1.8,
-              "label": "爸爸",
-              "color": "#F5B800"
-            }
-          ],
-          "highlight": [
-            1.45,
-            1.8
-          ]
-        },
-        "knowledge": "小数的加法和减法",
-        "difficulty": 2,
-        "hint": "小数点对齐再相加",
-        "variants": [
-          {
-            "question": "3.6+2.4=?",
-            "formula": "3.6+2.4=?",
-            "answer": 6,
-            "hint": "满十进一"
-          },
-          {
-            "question": "1.8+0.7=?",
-            "formula": "1.8+0.7=?",
-            "answer": 2.5,
-            "hint": "小数点对齐"
-          }
-        ]
-      },
-      {
-        "scene": "小刚这学期参加了5次数学小测，成绩分别是28、30、32、29、31分。妈妈问他这5次的平均分是多少。",
-        "question": "小刚5次小测的平均分是多少？",
-        "formula": "(28+30+32+29+31) ÷ 5 = ?",
-        "answer": 30,
-        "choices": [
-          25,
-          30,
-          35,
-          150
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "total": 150,
-          "parts": [
-            {
-              "val": 30,
-              "color": "#2570E8"
-            },
-            {
-              "val": 30,
-              "color": "#F5B800"
-            },
-            {
-              "val": 30,
-              "color": "#FB923C"
-            },
-            {
-              "val": 30,
-              "color": "#E8A0BF"
-            },
-            {
-              "val": 30,
-              "color": "#1E3A5F"
-            }
-          ]
-        },
-        "knowledge": "平均数",
-        "difficulty": 3,
-        "hint": "总和除以份数",
-        "variants": [
-          {
-            "question": "和120分4份平均？",
-            "formula": "120÷4=?",
-            "answer": 30,
-            "hint": "总和除份数"
-          },
-          {
-            "question": "和240分6份平均？",
-            "formula": "240÷6=?",
-            "answer": 40,
-            "hint": "总和除份数"
-          }
-        ]
-      },
-      {
-        "scene": "学校买来576本练习本，要平均分给18个班。后勤老师要先算出每班分到多少本，再安排分发。",
-        "question": "每个班分到多少本？",
-        "formula": "576 ÷ 18 = ?",
-        "answer": 32,
-        "choices": [
-          28,
-          30,
-          32,
-          34
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "10个班",
-              "val": 320,
-              "color": "#2570E8"
-            },
-            {
-              "label": "8个班",
-              "val": 256,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 576
-        },
-        "knowledge": "除数是两位数的除法",
-        "difficulty": 3,
-        "hint": "576÷18：想 18×30=540，余36，18×2=36，所以商 30+2=32",
-        "variants": [
-          {
-            "question": "912本练习本平均分给24个班，每班多少本？",
-            "formula": "912 ÷ 24 = ?",
-            "answer": 38,
-            "hint": "24×38=912"
-          },
-          {
-            "question": "750本图书平均分给25个班，每班多少本？",
-            "formula": "750 ÷ 25 = ?",
-            "answer": 30,
-            "hint": "25×30=750"
-          }
-        ]
-      }
-    ]
-  },
-  "5a": {
-    "title": "五年级上册·小数乘除法与多边形的面积",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 42,
-    "units": [
-      {
-        "name": "观察简单组合体",
-        "level": "current",
-        "children": [
-          {
-            "name": "从不同方向观察组合体",
-            "level": "current"
-          },
-          {
-            "name": "根据视图搭立体图形",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "小数乘法",
-        "level": "current",
-        "children": [
-          {
-            "name": "小数乘整数",
-            "level": "done"
-          },
-          {
-            "name": "小数乘小数",
-            "level": "current"
-          },
-          {
-            "name": "积的近似数与估算",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "小数除法",
-        "level": "locked",
-        "children": [
-          {
-            "name": "除数是整数的小数除法",
-            "level": "locked"
-          },
-          {
-            "name": "一个数除以小数",
-            "level": "locked"
-          },
-          {
-            "name": "循环小数与近似商",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "图形的运动",
-        "level": "locked",
-        "children": [
-          {
-            "name": "轴对称",
-            "level": "locked"
-          },
-          {
-            "name": "平移",
-            "level": "locked"
-          },
-          {
-            "name": "旋转",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "用字母表示数和数量关系",
-        "level": "locked",
-        "children": [
-          {
-            "name": "用字母表示数",
-            "level": "locked"
-          },
-          {
-            "name": "表示数量关系",
-            "level": "locked"
-          },
-          {
-            "name": "代入求值",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "多边形的面积",
-        "level": "locked",
-        "children": [
-          {
-            "name": "底和高的认识",
-            "level": "locked"
-          },
-          {
-            "name": "平行四边形、三角形、梯形的面积",
-            "level": "locked"
-          },
-          {
-            "name": "组合图形的面积",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "有趣的密铺（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "密铺的条件",
-            "level": "locked"
-          },
-          {
-            "name": "设计密铺图案",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "可能性",
-        "level": "locked",
-        "children": [
-          {
-            "name": "可能性的大小",
-            "level": "locked"
-          },
-          {
-            "name": "游戏公平性",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "数量关系",
-            "level": "locked"
-          },
-          {
-            "name": "图形的位置与测量",
-            "level": "locked"
-          },
-          {
-            "name": "数学广角：植树问题",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "超市里一瓶牛奶售价2.5元，小明帮家里买4瓶。他从钱包里拿出零钱，想先算算一共要付多少钱。",
-        "question": "买4瓶牛奶共多少元？",
-        "formula": "2.5 × 4 = ?",
-        "answer": 10,
-        "choices": [
-          8,
-          10,
-          12,
-          6.5
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "total": 10,
-          "parts": [
-            {
-              "label": "瓶1",
-              "val": 2.5,
-              "color": "#2570E8"
-            },
-            {
-              "label": "瓶2",
-              "val": 2.5,
-              "color": "#F5B800"
-            },
-            {
-              "label": "瓶3",
-              "val": 2.5,
-              "color": "#FB923C"
-            },
-            {
-              "label": "瓶4",
-              "val": 2.5,
-              "color": "#E8A0BF"
-            }
-          ]
-        },
-        "knowledge": "小数乘法",
-        "difficulty": 2,
-        "hint": "25×4再点一位小数",
-        "variants": [
-          {
-            "question": "1.5×6=?",
-            "formula": "1.5×6=?",
-            "answer": 9,
-            "hint": "15×6再点小数点"
-          },
-          {
-            "question": "0.8×5=?",
-            "formula": "0.8×5=?",
-            "answer": 4,
-            "hint": "8×5=40点一位"
-          }
-        ]
-      },
-      {
-        "scene": "一根绳子长7.5米，小红要把它平均剪成3段，用来扎3束花。她拿出剪刀前先算每段应该剪多长。",
-        "question": "每段绳子长多少米？",
-        "formula": "7.5 ÷ 3 = ?",
-        "answer": 2.5,
-        "choices": [
-          2.5,
-          3.5,
-          2.25,
-          22.5
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 7.5,
-          "points": [
-            {
-              "pos": 2.5,
-              "label": "第1段",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 5,
-              "label": "第2段",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 7.5,
-              "label": "第3段",
-              "color": "#FB923C"
-            }
-          ],
-          "highlight": [
-            0,
-            7.5
-          ]
-        },
-        "knowledge": "小数除法",
-        "difficulty": 2,
-        "hint": "75÷3再点一位小数",
-        "variants": [
-          {
-            "question": "9.6÷4=?",
-            "formula": "9.6÷4=?",
-            "answer": 2.4,
-            "hint": "96÷4=24点一位"
-          },
-          {
-            "question": "6.4÷8=?",
-            "formula": "6.4÷8=?",
-            "answer": 0.8,
-            "hint": "64÷8=8点一位"
-          }
-        ]
-      },
-      {
-        "scene": "文具店里的笔记本每本 a 元，小明买了5本。老师说：总价可以用 a×5 来表示，写成 5a；如果每本12元，就把 a=12 代进去算一算。",
-        "question": "当 a = 12 时，一共要付多少元？",
-        "formula": "5a = 5 × 12 = ?",
-        "answer": 60,
-        "choices": [
-          17,
-          50,
-          60,
-          72
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "parts": [
-            {
-              "label": "2本",
-              "val": 24,
-              "color": "#2570E8"
-            },
-            {
-              "label": "3本",
-              "val": 36,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 60
-        },
-        "knowledge": "用字母表示数和数量关系",
-        "difficulty": 3,
-        "hint": "数量关系：总价 = 单价×数量 = a×5 = 5a；把 a=12 代入，5×12=60",
-        "variants": [
-          {
-            "question": "苹果每千克 b 元，买3千克，当 b=8 时一共多少元？",
-            "formula": "3b = 3 × 8 = ?",
-            "answer": 24,
-            "hint": "3×8=24"
-          },
-          {
-            "question": "长方形长 x 厘米、宽5厘米，周长是 (x+5)×2，当 x=10 时周长是多少？",
-            "formula": "(10 + 5) × 2 = ?",
-            "answer": 30,
-            "hint": "（10+5）×2=30"
-          }
-        ]
-      },
-      {
-        "scene": "学校有一块三角形花圃，底是10米，高是6米。园丁要在花圃里种月季花，需要先算花圃的面积。",
-        "question": "三角形花圃的面积是多少平方米？",
-        "formula": "10 × 6 ÷ 2 = ?",
-        "answer": 30,
-        "choices": [
-          30,
-          60,
-          16,
-          18
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "triangle",
-          "params": {
-            "base": 10,
-            "height": 6
-          }
-        },
-        "knowledge": "多边形的面积·三角形",
-        "difficulty": 3,
-        "hint": "面积=底×高÷2",
-        "variants": [
-          {
-            "question": "底8高9面积？",
-            "formula": "8×9÷2=?",
-            "answer": 36,
-            "hint": "底乘高除2"
-          },
-          {
-            "question": "底12高7面积？",
-            "formula": "12×7÷2=?",
-            "answer": 42,
-            "hint": "先乘再除2"
-          }
-        ]
-      },
-      {
-        "scene": "社区有一块平行四边形草坪，底是8米，高是5米。物业要在草坪周围修小路，先要算草坪的面积。",
-        "question": "平行四边形草坪的面积是多少平方米？",
-        "formula": "8 × 5 = ?",
-        "answer": 40,
-        "choices": [
-          40,
-          30,
-          45,
-          13
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "parallelogram",
-          "params": {
-            "base": 8,
-            "height": 5,
-            "side": 7
-          }
-        },
-        "knowledge": "多边形的面积·平行四边形",
-        "difficulty": 2,
-        "hint": "面积=底×高",
-        "variants": [
-          {
-            "question": "底12高4面积？",
-            "formula": "12×4=?",
-            "answer": 48,
-            "hint": "底乘高"
-          },
-          {
-            "question": "底9高6面积？",
-            "formula": "9×6=?",
-            "answer": 54,
-            "hint": "底乘高"
-          }
-        ]
-      },
-      {
-        "scene": "园林工人要在一条长20米的小路一侧植树，每隔5米栽一棵，两端都要栽树。小明帮工人算要准备多少棵树苗。",
-        "question": "一共要栽多少棵树？",
-        "formula": "20 ÷ 5 + 1 = ?",
-        "answer": 5,
-        "choices": [
-          4,
-          5,
-          6,
-          3
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 20,
-          "points": [
-            {
-              "pos": 0,
-              "label": "第1棵",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 5,
-              "label": "第2棵",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 10,
-              "label": "第3棵",
-              "color": "#FB923C"
-            },
-            {
-              "pos": 15,
-              "label": "第4棵",
-              "color": "#E8A0BF"
-            },
-            {
-              "pos": 20,
-              "label": "第5棵",
-              "color": "#1E3A5F"
-            }
-          ],
-          "highlight": [
-            0,
-            20
-          ]
-        },
-        "knowledge": "数学广角：植树问题",
-        "difficulty": 3,
-        "hint": "两端都栽：棵数=段数+1",
-        "variants": [
-          {
-            "question": "30米路每5米栽树两端栽几棵？",
-            "formula": "30÷5+1=?",
-            "answer": 7,
-            "hint": "两端都栽加1"
-          },
-          {
-            "question": "40米路每8米栽树两端栽几棵？",
-            "formula": "40÷8+1=?",
-            "answer": 6,
-            "hint": "两端都栽加1"
-          }
-        ]
-      }
-    ]
-  },
-  "5b": {
-    "title": "五年级下册·因数倍数与分数加减法",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 38,
-    "units": [
-      {
-        "name": "因数和倍数",
-        "level": "current",
-        "children": [
-          {
-            "name": "因数与倍数",
-            "level": "done"
-          },
-          {
-            "name": "2、5、3 的倍数特征",
-            "level": "current"
-          },
-          {
-            "name": "质数与合数",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "分数的认识",
-        "level": "locked",
-        "children": [
-          {
-            "name": "分数的意义",
-            "level": "locked"
-          },
-          {
-            "name": "分数与除法",
-            "level": "locked"
-          },
-          {
-            "name": "分数的基本性质",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "分数的加法和减法",
-        "level": "locked",
-        "children": [
-          {
-            "name": "同分母分数加减",
-            "level": "locked"
-          },
-          {
-            "name": "异分母分数加减",
-            "level": "locked"
-          },
-          {
-            "name": "分数加减混合",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "长方体和正方体",
-        "level": "locked",
-        "children": [
-          {
-            "name": "长方体的认识",
-            "level": "locked"
-          },
-          {
-            "name": "表面积",
-            "level": "locked"
-          },
-          {
-            "name": "体积与容积",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "度量衡的故事（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "古代长度、容量、质量单位",
-            "level": "locked"
-          },
-          {
-            "name": "单位换算与换算思想",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "折线统计图",
-        "level": "locked",
-        "children": [
-          {
-            "name": "单式折线统计图",
-            "level": "locked"
-          },
-          {
-            "name": "复式折线统计图",
-            "level": "locked"
-          },
-          {
-            "name": "数据分析与预测",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "图形的认识与测量",
-            "level": "locked"
-          },
-          {
-            "name": "数据的收集与表达",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "老师在黑板上写了一个数12，让同学们找出它所有的因数。小红把因数都写在卡片上，又好奇这些因数加起来和是多少。",
-        "question": "12的所有因数的和是多少？",
-        "formula": "1+2+3+4+6+12 = ?",
-        "answer": 28,
-        "choices": [
-          28,
-          18,
-          12,
-          24
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "total": 28,
-          "parts": [
-            {
-              "val": 12,
-              "color": "#2570E8"
-            },
-            {
-              "val": 6,
-              "color": "#F5B800"
-            },
-            {
-              "val": 4,
-              "color": "#FB923C"
-            },
-            {
-              "val": 3,
-              "color": "#E8A0BF"
-            },
-            {
-              "val": 2,
-              "color": "#1E3A5F"
-            },
-            {
-              "val": 1,
-              "color": "#2570E8"
-            }
-          ]
-        },
-        "knowledge": "因数和倍数",
-        "difficulty": 3,
-        "hint": "12的因数有1,2,3,4,6,12",
-        "variants": [
-          {
-            "question": "6的因数和？",
-            "formula": "1+2+3+6=?",
-            "answer": 12,
-            "hint": "1+2+3+6"
-          },
-          {
-            "question": "8的因数和？",
-            "formula": "1+2+4+8=?",
-            "answer": 15,
-            "hint": "8的因数1,2,4,8"
-          }
-        ]
-      },
-      {
-        "scene": "爸爸买了一个长方体鱼缸，长5分米、宽4分米、高3分米。他想往鱼缸里放满水养金鱼，要算算能装多少升水。",
-        "question": "鱼缸能装多少升水？",
-        "formula": "5 × 4 × 3 = ?",
-        "answer": 60,
-        "choices": [
-          60,
-          12,
-          20,
-          40
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "total": 60,
-          "parts": [
-            {
-              "label": "第1层(5×4)",
-              "val": 20,
-              "color": "#2570E8"
-            },
-            {
-              "label": "第2层",
-              "val": 20,
-              "color": "#F5B800"
-            },
-            {
-              "label": "第3层",
-              "val": 20,
-              "color": "#FB923C"
-            }
-          ]
-        },
-        "knowledge": "长方体和正方体的体积",
-        "difficulty": 3,
-        "hint": "体积=长×宽×高",
-        "variants": [
-          {
-            "question": "长4宽3高2体积？",
-            "formula": "4×3×2=?",
-            "answer": 24,
-            "hint": "长乘宽乘高"
-          },
-          {
-            "question": "长6宽5高2体积？",
-            "formula": "6×5×2=?",
-            "answer": 60,
-            "hint": "长乘宽乘高"
-          }
-        ]
-      },
-      {
-        "scene": "妈妈把一根彩带平均分成4份，取其中3份用来包装礼物。小芳想知道这3份是整根彩带的几分之几。",
-        "question": "3份是整根彩带的几分之几？（填分子）",
-        "formula": "3 / 4",
-        "answer": 3,
-        "choices": [
-          3,
-          4,
-          1,
-          2
-        ],
-        "visualType": "fractionStrip",
-        "visualData": {
-          "num": 3,
-          "total": 4,
-          "color": "#2570E8"
-        },
-        "knowledge": "分数的认识",
-        "difficulty": 2,
-        "hint": "取3份就是四分之三",
-        "variants": [
-          {
-            "question": "分5份取2份是几分之几（填分子）？",
-            "formula": "2/5",
-            "answer": 2,
-            "hint": "2/5"
-          },
-          {
-            "question": "分6份取5份是几分之几（填分子）？",
-            "formula": "5/6",
-            "answer": 5,
-            "hint": "5/6"
-          }
-        ]
-      },
-      {
-        "scene": "小红做手工，第一次用了1/3米的丝带，第二次用了1/6米的丝带。她想知道两次一共用了多少米丝带。",
-        "question": "两次一共用了多少米丝带？（结果填分子，化为最简分数）",
-        "formula": "1/3 + 1/6 = ?",
-        "answer": 1,
-        "choices": [
-          1,
-          2,
-          3,
-          6
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 1,
-          "points": [
-            {
-              "pos": 0.33,
-              "label": "1/3",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 0.5,
-              "label": "3/6=1/2",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 0.67,
-              "label": "2/3",
-              "color": "#FB923C"
-            }
-          ],
-          "highlight": [
-            0,
-            0.5
-          ]
-        },
-        "knowledge": "分数的加法和减法",
-        "difficulty": 3,
-        "hint": "先通分1/3=2/6，3/6约分得1/2",
-        "variants": [
-          {
-            "question": "1/4+1/2=?（填分子，最简）",
-            "formula": "1/4+2/4=?",
-            "answer": 3,
-            "hint": "通分后3/4"
-          },
-          {
-            "question": "2/3+1/6=?（填分子，最简）",
-            "formula": "4/6+1/6=?",
-            "answer": 5,
-            "hint": "通分后5/6"
-          }
-        ]
-      },
-      {
-        "scene": "小亮这一周每天早晨测量体温，分别是36.5℃、37℃、38℃、37.5℃、36.8℃。妈妈看记录找出他体温最高的一天。",
-        "question": "哪一天体温最高？最高是多少℃？",
-        "formula": "最高体温 = ?",
-        "answer": 38,
-        "choices": [
-          38,
-          37,
-          36.8,
-          37.5
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 36,
-          "end": 39,
-          "points": [
-            {
-              "pos": 36.5,
-              "label": "周一",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 37,
-              "label": "周二",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 38,
-              "label": "周三",
-              "color": "#FB923C"
-            },
-            {
-              "pos": 37.5,
-              "label": "周四",
-              "color": "#E8A0BF"
-            },
-            {
-              "pos": 36.8,
-              "label": "周五",
-              "color": "#1E3A5F"
-            }
-          ],
-          "highlight": [
-            36,
-            38
-          ]
-        },
-        "knowledge": "折线统计图",
-        "difficulty": 2,
-        "hint": "比较整数部分再比小数",
-        "variants": [
-          {
-            "question": "36.2、37.1、36.8最高？",
-            "formula": "比较大小",
-            "answer": 37.1,
-            "hint": "比较整数部分"
-          },
-          {
-            "question": "36.5、37、38.2最高？",
-            "formula": "比较大小",
-            "answer": 38.2,
-            "hint": "先比整数再比小数"
-          }
-        ]
-      },
-      {
-        "scene": "\"度量衡的故事\"课堂上，老师讲古代的长度单位：一尺大约相当于现在的23厘米。同学们要算一算古书里说的\"三尺\"有多长。",
-        "question": "3尺大约是多少厘米？",
-        "formula": "23 × 3 = ?",
-        "answer": 69,
-        "choices": [
-          63,
-          69,
-          76,
-          230
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 3,
-          "points": [
-            {
-              "pos": 1,
-              "label": "1尺≈23厘米",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 3,
-              "label": "3尺",
-              "color": "#F5B800"
-            }
-          ],
-          "highlight": [
-            0,
-            3
-          ]
-        },
-        "knowledge": "度量衡的故事（单位换算）",
-        "difficulty": 2,
-        "hint": "1尺≈23厘米，3尺就是3个23厘米：23×3=69",
-        "variants": [
-          {
-            "question": "古代一石约60千克，5石约多少千克？",
-            "formula": "60 × 5 = ?",
-            "answer": 300,
-            "hint": "60×5=300"
-          },
-          {
-            "question": "一寸约3厘米，9寸约多少厘米？",
-            "formula": "3 × 9 = ?",
-            "answer": 27,
-            "hint": "3×9=27"
-          }
-        ]
-      }
-    ]
-  },
-  "6a": {
-    "title": "六年级上册·分数乘除法、百分数与圆",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 30,
-    "units": [
-      {
-        "name": "确定位置",
-        "level": "current",
-        "children": [
-          {
-            "name": "用有序数对确定位置",
-            "level": "current"
-          },
-          {
-            "name": "用方向和距离确定位置",
-            "level": "current"
-          },
-          {
-            "name": "生活中的定位应用",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "分数乘法",
-        "level": "current",
-        "children": [
-          {
-            "name": "分数乘整数",
-            "level": "done"
-          },
-          {
-            "name": "分数乘分数",
-            "level": "current"
-          },
-          {
-            "name": "分数、小数混合与运算律",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "分数除法",
-        "level": "locked",
-        "children": [
-          {
-            "name": "倒数的认识",
-            "level": "locked"
-          },
-          {
-            "name": "分数除以整数、除以分数",
-            "level": "locked"
-          },
-          {
-            "name": "利用抽象\"1\"解决问题",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "生活中的负数（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "寻找负数",
-            "level": "locked"
-          },
-          {
-            "name": "认识负数",
-            "level": "locked"
-          },
-          {
-            "name": "应用负数",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "圆",
-        "level": "locked",
-        "children": [
-          {
-            "name": "圆和扇形的认识",
-            "level": "locked"
-          },
-          {
-            "name": "圆的周长",
-            "level": "locked"
-          },
-          {
-            "name": "圆的面积（数格子推导）",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "体育中的数学（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "选择体育问题",
-            "level": "locked"
-          },
-          {
-            "name": "收集分析数据",
-            "level": "locked"
-          },
-          {
-            "name": "交流分享",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "百分数",
-        "level": "locked",
-        "children": [
-          {
-            "name": "百分数的意义",
-            "level": "locked"
-          },
-          {
-            "name": "百分数与分数、小数的互化",
-            "level": "locked"
-          },
-          {
-            "name": "求百分率、折扣与利率",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "水是生命之源（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "状况调查",
-            "level": "locked"
-          },
-          {
-            "name": "方案设计",
-            "level": "locked"
-          },
-          {
-            "name": "交流展示",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "复习与关联",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与运算",
-            "level": "locked"
-          },
-          {
-            "name": "图形的认识与测量",
-            "level": "locked"
-          },
-          {
-            "name": "数据的收集与表达",
-            "level": "locked"
-          },
-          {
-            "name": "数学广角：鸽巢问题",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "超市促销，一箱果汁有8瓶。小明家喝了这箱果汁的3/4，他想算一算一共喝了多少瓶。",
-        "question": "小明家一共喝了多少瓶果汁？",
-        "formula": "8 × 3/4 = ?",
-        "answer": 6,
-        "choices": [
-          6,
-          3,
-          8,
-          2
-        ],
-        "visualType": "fractionStrip",
-        "visualData": {
-          "num": 6,
-          "total": 8,
-          "color": "#2570E8"
-        },
-        "knowledge": "分数乘法",
-        "difficulty": 3,
-        "hint": "8的3/4就是8÷4×3",
-        "variants": [
-          {
-            "question": "12的2/3是多少？",
-            "formula": "12×2/3=?",
-            "answer": 8,
-            "hint": "12÷3×2"
-          },
-          {
-            "question": "15的3/5是多少？",
-            "formula": "15×3/5=?",
-            "answer": 9,
-            "hint": "15÷5×3"
-          }
-        ]
-      },
-      {
-        "scene": "一根绳子的1/3是2米。小红好奇这根绳子原来全长是多少米，她想用除法算出来。",
-        "question": "这根绳子全长多少米？",
-        "formula": "2 ÷ 1/3 = ?",
-        "answer": 6,
-        "choices": [
-          6,
-          4,
-          8,
-          2
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 6,
-          "points": [
-            {
-              "pos": 2,
-              "label": "1/3段",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 4,
-              "label": "2/3段",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 6,
-              "label": "全长",
-              "color": "#FB923C"
-            }
-          ],
-          "highlight": [
-            0,
-            6
-          ]
-        },
-        "knowledge": "分数除法",
-        "difficulty": 3,
-        "hint": "除以分数等于乘倒数",
-        "variants": [
-          {
-            "question": "3÷1/5=?",
-            "formula": "3÷1/5=?",
-            "answer": 15,
-            "hint": "除以分数乘倒数"
-          },
-          {
-            "question": "6÷1/4=?",
-            "formula": "6÷1/4=?",
-            "answer": 24,
-            "hint": "乘倒数"
-          }
-        ]
-      },
-      {
-        "scene": "电影院里的座位用有序数对表示，(3,5) 表示第3列第5行。小红坐在 (4,2)，小亮坐在她正右方的第3个座位。",
-        "question": "小亮的座位用数对表示，列数是几？",
-        "formula": "4 + 3 = ?（列）",
-        "answer": 7,
-        "choices": [
-          3,
-          5,
-          6,
-          7
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "parts": [
-            {
-              "label": "小红的列",
-              "val": 4,
-              "color": "#2570E8"
-            },
-            {
-              "label": "向右移",
-              "val": 3,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 7
-        },
-        "knowledge": "确定位置（有序数对）",
-        "difficulty": 2,
-        "hint": "数对第一个数表示列，向右移列数增加：4+3=7，小亮坐在 (7,2)",
-        "variants": [
-          {
-            "question": "小明在 (2,6)，向正后方（行数增加）移2个位置，行数是几？",
-            "formula": "6 + 2 = ?（行）",
-            "answer": 8,
-            "hint": "数对第二个数表示行，6+2=8"
-          },
-          {
-            "question": "(5,3) 与 (5,7) 在同一列，它们相隔几行？",
-            "formula": "7 - 3 = ?",
-            "answer": 4,
-            "hint": "同一列，行相减：7-3=4"
-          }
-        ]
-      },
-      {
-        "scene": "公园里有一个圆形花坛，半径是5米。园丁要在花坛边缘围上一圈彩灯，要算彩灯有多长。",
-        "question": "花坛的周长是多少米？",
-        "formula": "2 × 3.14 × 5 = ?",
-        "answer": 31.4,
-        "choices": [
-          15.7,
-          31.4,
-          25,
-          78.5
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "circle",
-          "params": {
-            "radius": 5
-          }
-        },
-        "knowledge": "圆的周长",
-        "difficulty": 3,
-        "hint": "周长=2πr",
-        "variants": [
-          {
-            "question": "r=3周长？",
-            "formula": "2×3.14×3=?",
-            "answer": 18.84,
-            "hint": "2πr"
-          },
-          {
-            "question": "r=4周长？",
-            "formula": "2×3.14×4=?",
-            "answer": 25.12,
-            "hint": "2πr"
-          }
-        ]
-      },
-      {
-        "scene": "商场里一件衣服原价200元，国庆节打八折出售。妈妈想给小亮买这件衣服，要算算打折后便宜了多少。",
-        "question": "打折后现价多少元？",
-        "formula": "200 × 80% = ?",
-        "answer": 160,
-        "choices": [
-          120,
-          160,
-          180,
-          140
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "total": 200,
-          "parts": [
-            {
-              "label": "现价80%",
-              "val": 160,
-              "color": "#2570E8"
-            },
-            {
-              "label": "优惠20%",
-              "val": 40,
-              "color": "#FB923C"
-            }
-          ]
-        },
-        "knowledge": "百分数",
-        "difficulty": 3,
-        "hint": "八折就是按80%出售",
-        "variants": [
-          {
-            "question": "300×70%=?",
-            "formula": "300×0.7=?",
-            "answer": 210,
-            "hint": "百分数化小数"
-          },
-          {
-            "question": "500×60%=?",
-            "formula": "500×0.6=?",
-            "answer": 300,
-            "hint": "百分数化小数"
-          }
-        ]
-      },
-      {
-        "scene": "冬天北方很冷，某天的最低气温降到零下5℃，最高气温是3℃。小红看天气预报，想知道这一天到底冷到什么程度，就算了算温差。",
-        "question": "这一天的温差是多少℃？",
-        "formula": "3 - (-5) = ?",
-        "answer": 8,
-        "choices": [
-          -8,
-          2,
-          5,
-          8
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": -5,
-          "end": 3,
-          "points": [
-            {
-              "pos": 0,
-              "label": "-5℃（最低）",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 1,
-              "label": "3℃（最高）",
-              "color": "#FB923C"
-            }
-          ],
-          "highlight": [
-            0,
-            1
-          ]
-        },
-        "knowledge": "生活中的负数",
-        "difficulty": 2,
-        "hint": "温差 = 最高气温 - 最低气温 = 3-（-5）= 8（℃）；减去一个负数等于加上它",
-        "variants": [
-          {
-            "question": "最低气温零下8℃，最高气温2℃，温差是多少℃？",
-            "formula": "2 - (-8) = ?",
-            "answer": 10,
-            "hint": "2+8=10"
-          },
-          {
-            "question": "收入500元记作+500元，支出300元记作-300元，结余多少元？",
-            "formula": "500 + (-300) = ?",
-            "answer": 200,
-            "hint": "500-300=200"
-          }
-        ]
-      }
-    ]
-  },
-  "6b": {
-    "title": "六年级下册·比和比例关系与圆柱圆锥",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
-    "progress": 25,
-    "units": [
-      {
-        "name": "比和比例关系",
-        "level": "current",
-        "children": [
-          {
-            "name": "比的意义与基本性质",
-            "level": "current"
-          },
-          {
-            "name": "比例的意义与基本性质",
-            "level": "current"
-          },
-          {
-            "name": "正反比例、比例尺",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "扇形统计图",
-        "level": "locked",
-        "children": [
-          {
-            "name": "扇形统计图的认识",
-            "level": "locked"
-          },
-          {
-            "name": "从扇形图读信息与决策",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "圆柱和圆锥",
-        "level": "locked",
-        "children": [
-          {
-            "name": "圆柱的认识与表面积",
-            "level": "locked"
-          },
-          {
-            "name": "圆柱的体积",
-            "level": "locked"
-          },
-          {
-            "name": "圆锥的体积",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "有趣的平衡（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "杠杆平衡的条件",
-            "level": "locked"
-          },
-          {
-            "name": "反比例关系的初步体验",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "校园平面图（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "测量与比例尺应用",
-            "level": "locked"
-          },
-          {
-            "name": "绘制平面图",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "营养午餐（综合实践）",
-        "level": "locked",
-        "children": [
-          {
-            "name": "热量与营养搭配",
-            "level": "locked"
-          },
-          {
-            "name": "方案设计",
-            "level": "locked"
-          }
-        ]
-      },
-      {
-        "name": "总复习",
-        "level": "locked",
-        "children": [
-          {
-            "name": "数与代数",
-            "level": "locked"
-          },
-          {
-            "name": "图形与几何",
-            "level": "locked"
-          },
-          {
-            "name": "统计与概率",
-            "level": "locked"
-          },
-          {
-            "name": "综合与实践",
-            "level": "locked"
-          }
-        ]
-      }
-    ],
-    "problems": [
-      {
-        "scene": "六(1)班男生12人，女生18人。老师让同学们写出男女生人数比，并化成最简整数比，体会\"比\"表示两个量之间的倍数关系。",
-        "question": "男女生人数比化简后，前项与后项之和是多少？",
-        "formula": "12 : 18 = 2 : 3，2 + 3 = ?",
-        "answer": 5,
-        "choices": [
-          5,
-          6,
-          15,
-          30
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "parts": [
-            {
-              "label": "男生",
-              "val": 12,
-              "color": "#2570E8"
-            },
-            {
-              "label": "女生",
-              "val": 18,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 30
-        },
-        "knowledge": "比和比例关系",
-        "difficulty": 3,
-        "hint": "12:18 同时除以6得 2:3，前项与后项之和 2+3=5",
-        "variants": [
-          {
-            "question": "20:35 化成最简比，前项与后项之和是多少？",
-            "formula": "20 : 35 = 4 : 7，4 + 7 = ?",
-            "answer": 11,
-            "hint": "同除以5得4:7，4+7=11"
-          },
-          {
-            "question": "甲数16、乙数24，它们最简整数比的前项与后项之和是多少？",
-            "formula": "16 : 24 = 2 : 3，2 + 3 = ?",
-            "answer": 5,
-            "hint": "同除以8得2:3，前项与后项之和 2+3=5"
-          }
-        ]
-      },
-      {
-        "scene": "小亮有一个圆柱形水杯，底面半径3厘米，高10厘米。他想知道这个水杯能装多少毫升水。",
-        "question": "水杯的体积是多少立方厘米？",
-        "formula": "3.14 × 3² × 10 = ?",
-        "answer": 282.6,
-        "choices": [
-          282.6,
-          282,
-          28.26,
-          942
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "cylinder",
-          "params": {
-            "radius": 3,
-            "height": 10
-          }
-        },
-        "knowledge": "圆柱的体积",
-        "difficulty": 4,
-        "hint": "体积=πr²h",
-        "variants": [
-          {
-            "question": "r=2,h=5体积？",
-            "formula": "3.14×4×5=?",
-            "answer": 62.8,
-            "hint": "πr²h"
-          },
-          {
-            "question": "r=1,h=10体积？",
-            "formula": "3.14×1×10=?",
-            "answer": 31.4,
-            "hint": "πr²h"
-          }
-        ]
-      },
-      {
-        "scene": "手工课上，小芳用橡皮泥捏了一个圆锥，底面半径3厘米，高10厘米。她想知道这个圆锥用了多少橡皮泥。",
-        "question": "圆锥的体积是多少立方厘米？",
-        "formula": "3.14 × 3² × 10 ÷ 3 = ?",
-        "answer": 94.2,
-        "choices": [
-          94.2,
-          94,
-          9.42,
-          282.6
-        ],
-        "visualType": "geometry",
-        "visualData": {
-          "shape": "circle",
-          "params": {
-            "radius": 3
-          }
-        },
-        "knowledge": "圆锥的体积",
-        "difficulty": 4,
-        "hint": "体积=1/3πr²h",
-        "variants": [
-          {
-            "question": "r=6,h=10圆锥体积？",
-            "formula": "3.14×36×10÷3=?",
-            "answer": 376.8,
-            "hint": "1/3πr²h"
-          },
-          {
-            "question": "r=3,h=5圆锥体积？",
-            "formula": "3.14×9×5÷3=?",
-            "answer": 47.1,
-            "hint": "1/3πr²h"
-          }
-        ]
-      },
-      {
-        "scene": "地图上比例尺是1:100000，小红量得地图上两地的距离是3厘米。她想算出实际距离是多少千米。",
-        "question": "两地实际距离是多少千米？",
-        "formula": "3 × 100000 = ? (cm) = ? km",
-        "answer": 3,
-        "choices": [
-          3,
-          30,
-          300,
-          3000
-        ],
-        "visualType": "numberLine",
-        "visualData": {
-          "start": 0,
-          "end": 9,
-          "points": [
-            {
-              "pos": 2,
-              "label": "2cm",
-              "color": "#2570E8"
-            },
-            {
-              "pos": 3,
-              "label": "3cm",
-              "color": "#F5B800"
-            },
-            {
-              "pos": 6,
-              "label": "6cm",
-              "color": "#FB923C"
-            },
-            {
-              "pos": 9,
-              "label": "9cm",
-              "color": "#E8A0BF"
-            }
-          ],
-          "highlight": [
-            0,
-            3
-          ]
-        },
-        "knowledge": "比例尺",
-        "difficulty": 3,
-        "hint": "1cm代表1km",
-        "variants": [
-          {
-            "question": "图上5cm实际几km？",
-            "formula": "5×100000",
-            "answer": 5,
-            "hint": "1cm代表1km"
-          },
-          {
-            "question": "图上2cm实际几km？",
-            "formula": "2×100000",
-            "answer": 2,
-            "hint": "1cm代表1km"
-          }
-        ]
-      },
-      {
-        "scene": "老师调查了40名同学最喜欢的运动：足球12人，篮球10人，乒乓球8人，其他10人。老师问喜欢足球的比篮球多几人。",
-        "question": "喜欢足球的比篮球多几人？",
-        "formula": "12 - 10 = ?",
-        "answer": 2,
-        "choices": [
-          1,
-          2,
-          3,
-          4
-        ],
-        "visualType": "barModel",
-        "visualData": {
-          "total": 40,
-          "parts": [
-            {
-              "label": "足球",
-              "val": 12,
-              "color": "#2570E8"
-            },
-            {
-              "label": "篮球",
-              "val": 10,
-              "color": "#F5B800"
-            },
-            {
-              "label": "乒乓",
-              "val": 8,
-              "color": "#FB923C"
-            },
-            {
-              "label": "其他",
-              "val": 10,
-              "color": "#E8A0BF"
-            }
-          ]
-        },
-        "knowledge": "扇形统计图",
-        "difficulty": 2,
-        "hint": "足球人数减篮球人数",
-        "variants": [
-          {
-            "question": "乒乓8人比篮球10人少几？",
-            "formula": "10-8=?",
-            "answer": 2,
-            "hint": "用减法"
-          },
-          {
-            "question": "足球12人比乒乓8多几？",
-            "formula": "12-8=?",
-            "answer": 4,
-            "hint": "用减法"
-          }
-        ]
-      },
-      {
-        "scene": "科学课上做杠杆平衡实验：左边距离支点2格处挂3个钩码。老师说，要让杠杆平衡，两边\"钩码数×格数\"必须相等。",
-        "question": "右边距离支点3格处应挂几个钩码？",
-        "formula": "3 × 2 ÷ 3 = ?",
-        "answer": 2,
-        "choices": [
-          2,
-          3,
-          4,
-          6
-        ],
-        "visualType": "numberBond",
-        "visualData": {
-          "parts": [
-            {
-              "label": "左边：3×2",
-              "val": 6,
-              "color": "#2570E8"
-            },
-            {
-              "label": "右边：2×3",
-              "val": 6,
-              "color": "#F5B800"
-            }
-          ],
-          "total": 12
-        },
-        "knowledge": "有趣的平衡（反比例）",
-        "difficulty": 4,
-        "hint": "钩码数×格数相等才平衡：左边 3×2=6，右边 ?×3=6，所以挂 2 个",
-        "variants": [
-          {
-            "question": "左边4个钩码距支点3格，右边距支点2格，应挂几个？",
-            "formula": "4 × 3 ÷ 2 = ?",
-            "answer": 6,
-            "hint": "4×3=12，12÷2=6"
-          },
-          {
-            "question": "左边5个钩码距支点4格，右边距支点5格，应挂几个？",
-            "formula": "5 × 4 ÷ 5 = ?",
-            "answer": 4,
-            "hint": "5×4=20，20÷5=4"
-          }
-        ]
-      }
-    ]
-  }
-};;;
+var MATH_BY_GRADE = {};   // 由 data/math-data-<册>.js 懒加载填充（P2-7）
+;;
 
 // === MathVisual 动态数形结合可视化引擎 ===
 // 6种动态可视化渲染器：条形模型 / 面积模型 / 数字Bond / 分数条 / 数轴 / 几何图形
@@ -7115,7 +3651,8 @@ function _adaptStaticProblem(p, semKey){
     scene: p.scene || '',
     knowledge: p.knowledge || '',
     visualType: p.visualType || null,
-    visualData: p.visualData || null,
+    // P2-8：出口统一字段 {value} → {val}，全 App（含错题再练/诊断/复盘）都拿到规范化数据
+    visualData: (typeof window.normVisualData === 'function') ? window.normVisualData(p.visualData || null) : (p.visualData || null),
     choices: safe.choices,
     hints: [strat, p.hintL2 || '把题目里的关键数量找出来，先想清楚先算哪一步。', p.hint || ''],
     hint: strat,                    // L1：解题前展示，不含答案
@@ -7216,26 +3753,59 @@ function _logToday(correct, knowledge){
     if(typeof saveState==='function') saveState();
   }catch(e){}
 }
+// ---- P1-6（2026-09-10）知识链点亮 ----
+// 题库 knowledge 是「课时名」（8的乘法口诀），MATH_CHAINS 的 step 是「教材单元名」（表内乘法），
+// 字面比对覆盖率只有 7%。用 data/math-chain-map.js 的映射表把课时名归到主线 step 上，
+// 覆盖率提升到 90%（node scripts/_gen_chain_map.js 生成 + _audit_chain_map.js 把关）。
+function _chainMap(){ return (typeof MATH_CHAIN_MAP!=='undefined' && MATH_CHAIN_MAP) || null; }
+// 反向索引：stepRef("chainId|册|单元名") → [已练过的课时名...]
+// 返回 {status, practiced, mastered}；status: mastered / learning / none
+function _stepProgress(ref){
+  var M=_chainMap(); var p=_getMathProgress(); var r={status:'none',practiced:[],mastered:[]};
+  if(!M) return r;
+  for(var k in M){
+    var refs=M[k]; if(!refs||refs.indexOf(ref)<0) continue;
+    if(p.mastered.indexOf(k)>=0){ r.mastered.push(k); r.status='mastered'; continue; }
+    if(p.touched[k]){ r.practiced.push(k); if(r.status!=='mastered') r.status='learning'; }
+  }
+  return r;
+}
 function _mathStepStatus(t){
   var p = _getMathProgress(); var k = _normK(t);
   if(p.mastered.indexOf(k) >= 0 || p.mastered.indexOf(t) >= 0) return 'mastered';
   if(p.touched[k] || p.touched[t]) return 'learning';
   return 'none';
 }
+// 本册"已练知识点总数"与"其中落在知识主线上的数量"（用于给家长/孩子一个完整交代，
+// 避免没进 8 条主线的课时（时间/观察物体/数学广角等）看起来像"白练了"）
+function _mathPracticeSummary(semKey){
+  var p=_getMathProgress(); var M=_chainMap(); var all=0, onLine=0, mastered=0;
+  for(var k in (p.touched||{})){
+    all++;
+    if(p.mastered.indexOf(k)>=0) mastered++;
+    if(M && M[k] && M[k].length) onLine++;
+  }
+  return {all:all, onLine:onLine, mastered:mastered};
+}
 function renderMathChains(semKey){
   if(typeof MATH_CHAINS==='undefined') return '';
   const G={'1a':'一上','1b':'一下','2a':'二上','2b':'二下','3a':'三上','3b':'三下','4a':'四上','4b':'四下','5a':'五上','5b':'五下','6a':'六上','6b':'六下'};
-  const STATUS_ICON={mastered:'✅ 已掌握', learning:'📖 在学', none:'○ 未学'};
+  const STATUS_ICON={mastered:'✅ 已掌握', learning:'📖 在学', none:'🔓 待解锁'};
   const STATUS_BG={mastered:'#EAF2FF', learning:'#FFF8E6', none:'transparent'};
   const STATUS_BORDER={mastered:'#2570E8', learning:'#F5B800', none:'#C9D6DE'};
   const rows=(MATH_CHAINS||[]).map(function(ch){
     const hit=(ch.steps||[]).some(function(s){return s.g===semKey;});
     const steps=(ch.steps||[]).map(function(s){
       const on=s.g===semKey;
-      const st=_mathStepStatus(s.t);
+      // 优先用映射表；映射表缺失时退回字面比对（保证老数据仍可用）
+      const ref=ch.id+'|'+s.g+'|'+s.t;
+      const sr=(_chainMap()? _stepProgress(ref) : null);
+      const st = sr ? sr.status : _mathStepStatus(s.t);
+      const cnt = sr ? (sr.mastered.length? sr.mastered.length+'个点已掌握' : (sr.practiced.length? '已练'+sr.practiced.length+'个点' : '')) : '';
       const bg=STATUS_BG[st]; const bd=STATUS_BORDER[st];
-      return '<span class="mc-step'+(on?' on':'')+'" style="background:'+bg+';border:1.5px solid '+bd+';border-radius:10px;padding:5px 9px"><b>'+(G[s.g]||s.g)+'</b>'+s.t+
-        '<span style="display:block;font-size:10.5px;font-weight:700;color:'+(st==='mastered'?'#006B5E':st==='learning'?'#AC7E00':'#8A9BB0')+'">'+STATUS_ICON[st]+'</span></span>';
+      const tip = sr && (sr.practiced.length||sr.mastered.length) ? ('已练：'+sr.mastered.concat(sr.practiced).join('、')) : '';
+      return '<span class="mc-step'+(on?' on':'')+'"'+(tip?' title="'+tip+'"':'')+' style="background:'+bg+';border:1.5px solid '+bd+';border-radius:10px;padding:5px 9px"><b>'+(G[s.g]||s.g)+'</b>'+s.t+
+        '<span style="display:block;font-size:10.5px;font-weight:700;color:'+(st==='mastered'?'#006B5E':st==='learning'?'#AC7E00':'#8A9BB0')+'">'+STATUS_ICON[st]+(cnt?' · '+cnt:'')+'</span></span>';
     }).join('<span class="mc-arrow">→</span>');
     return '<div class="mc-chain'+(hit?' hit':'')+'">'+
       '<div class="mc-head">'+ch.icon+' <b>'+ch.name+'</b>'+(hit?'<span class="mc-tag">本册在学</span>':'')+'</div>'+
@@ -7243,9 +3813,13 @@ function renderMathChains(semKey){
       '<div class="mc-steps">'+steps+'</div>'+
     '</div>';
   }).join('');
+  const sm=_mathPracticeSummary(semKey);
+  const summary = sm.all>0 ? ('<div style="font-size:12px;color:var(--text-2);margin:-6px 0 12px;line-height:1.6">📈 你已练过 <b>'+sm.all+'</b> 个知识点，其中 <b>'+sm.onLine+'</b> 个落在上面 '+
+    MATH_CHAINS.length+' 条知识主线上'+(sm.mastered?'，<b>'+sm.mastered+'</b> 个已掌握':'')+'。（时间、观察物体、数学广角等属于独立小单元，不进主线）</div>') : '';
   return '<div class="knowledge-tree" style="margin-top:16px">'+
     '<div class="card-title" style="margin-bottom:6px">🔗 知识关联链 <span style="font-size:11px;font-weight:600;color:var(--text-3)">做完一道题自动点亮</span></div>'+
-    '<div style="font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:14px">2024 版新教材按「知识结构系统化」编排，下面这些主线贯穿多个年级——看清知识的来龙去脉，学得更牢。</div>'+
+    '<div style="font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:10px">2024 版新教材按「知识结构系统化」编排，下面这些主线贯穿多个年级——看清知识的来龙去脉，学得更牢。把鼠标停在格子上能看到你练过的具体课时。</div>'+
+    summary+
     rows+
   '</div>';
 }
@@ -7261,7 +3835,7 @@ function renderMath(grade='3'){
 
   const g = String(grade);
   const semKey = g + (S.math.semester || 'a');
-  const data = MATH_BY_GRADE[semKey] || MATH_BY_GRADE[g+'a'] || MATH_BY_GRADE['3a'];
+  const data = _mathGradeData(semKey) || {};
 
   // 出题主链路（2026-09-10 二次重构）：
   //   ① MathDailyBank 净化池优先——同一题干只保留一条（消灭"做着做着遇到一样的题"），
@@ -7269,16 +3843,32 @@ function renderMath(grade='3'){
   //   ② 净化池拿不到时回落到原始 MATH_BY_GRADE.problems（保持可用性）
   //   ③ 再不行才用 MathKernel 动态出题
   // 数据就绪保障（2026-09-10）：真实题库按册懒加载，若当前册还没真正加载过，
-  // 先加载再重渲染，避免一直用内联占位数据（每册 6 题）出题。
+  // 先加载再重渲染。
+  // P2-7：内联占位题库已删除 → 加载空档期不再拿"假题"顶上，直接给一个诚实的加载态。
+  const _needLoad = !(window.MATH_LOADED_GRADES||{})[semKey] && window.GRADE_FILES && GRADE_FILES[semKey];
   try{
-    if(window.GRADE_FILES && GRADE_FILES[semKey] && !(window.MATH_LOADED_GRADES||{})[semKey] && !window.__mathLoadingKick){
+    if(_needLoad && !window.__mathLoadingKick){
       window.__mathLoadingKick = true;
       loadGrade(semKey).then(ok => {
         window.__mathLoadingKick = false;
-        if(ok){ window.MATH_SESSION = null; try{ render(); }catch(e){} }
+        window.MATH_SESSION = null;
+        try{ render(); }catch(e){}
       });
     }
   }catch(e){}
+
+  // 加载中 / 加载失败：只渲染骨架，不落入"用错册的兜底题"这条坑
+  if(_needLoad){
+    const failed = !!(window.MATH_LOAD_FAILED||{})[semKey];
+    return `<div class="card" style="padding:28px 22px;text-align:center">
+      <div style="font-size:34px;margin-bottom:10px">${failed ? '😕' : '⏳'}</div>
+      <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px">${failed ? '本册题库没能加载出来' : '正在准备本册题库…'}</div>
+      <div style="font-size:12.5px;color:var(--text-2);line-height:1.7">
+        ${failed ? '可能是网络不稳定。点下面按钮重试一次。' : `正在加载 ${(window.GRADE_FILES&&GRADE_FILES[semKey])||''} ，通常不到 1 秒。`}
+      </div>
+      ${failed ? `<button onclick="_retryLoadGrade('${semKey}')" style="margin-top:16px;padding:10px 22px;border-radius:22px;border:none;background:var(--navy);color:#fff;font-size:14px;font-weight:800;cursor:pointer">重新加载</button>` : ''}
+    </div>`;
+  }
 
   const rawBank = (data && Array.isArray(data.problems) && data.problems.length) ? data.problems : null;
   let daily = null;
@@ -7336,8 +3926,43 @@ function renderMath(grade='3'){
   }
   window.MATH_IS_BOOK_END = !!(bankTotal && pIdx >= bankTotal - 1);
 
+  // P1-4 自适应档位：在"当前指针之后的 K 题"里挑与目标档位最接近的那道，挪到当前位。
+  // 题目集合不变（每题仍只出现一次），只是顺序按孩子当前水平微调 —— 保证"够一够能拿到"。
+  // ⚠ 修正（2026-09-10）：早先版本用"与窗口内最优项对调(swap)"实现，会把窗口里
+  //   后面位置的题换到前面，而指针推进后同一个位置又落回新窗口 —— 实测连做 20 题
+  //   同一道题重复出现 4 次。改为**在 [pIdx, best] 区间内轮转**：
+  //   位置 ≤ pIdx 的已消费前缀永不被触碰，指针每格只访问一次 → 数学上不可能重复。
+  let _sBank = bank;
+  if (bank && bank.length){
+    try{
+      if(!window.MATH_SESSION.bankKey || window.MATH_SESSION.bankKey !== semKey ||
+         !window.MATH_SESSION.bank || window.MATH_SESSION.bank.length !== bank.length){
+        window.MATH_SESSION.bankKey = semKey;
+        window.MATH_SESSION.bank = bank.slice();
+        window.MATH_SESSION._adaptedIdx = null;
+      }
+      _sBank = window.MATH_SESSION.bank;
+      // 每个题号只调整一次（避免同一题在作答中途被换掉）
+      if(window.MATH_SESSION._adaptedIdx !== pIdx){
+        const _lv = _mathLevel();
+        const _K = 6;
+        let _best = pIdx, _bestScore = Infinity;
+        for(let i = pIdx; i < Math.min(_sBank.length, pIdx + _K); i++){
+          const _d = _mathDiffNum(_sBank[i] && _sBank[i].difficulty);
+          const _sc = Math.abs(_d - _lv);
+          if(_sc < _bestScore){ _bestScore = _sc; _best = i; }
+        }
+        if(_best !== pIdx){
+          const picked = _sBank[_best];
+          for(let i = _best; i > pIdx; i--) _sBank[i] = _sBank[i - 1];
+          _sBank[pIdx] = picked;
+        }
+        window.MATH_SESSION._adaptedIdx = pIdx;
+      }
+    }catch(e){ _sBank = bank; }
+  }
   let problem = null;
-  if (bank) { try { problem = _adaptStaticProblem(bank[pIdx], semKey); } catch (e) { problem = null; } }
+  if (_sBank) { try { problem = _adaptStaticProblem(_sBank[pIdx], semKey); } catch (e) { problem = null; } }
   if (!problem && window.MathKernel && typeof window.MathKernel.generate === 'function') {
     try { problem = _genMathProblemKernel(semKey); } catch (e) { problem = null; }
   }
@@ -7378,6 +4003,14 @@ function renderMath(grade='3'){
           <div class="grade-pills" id="mathGrades">
             ${['2','3','4','5','6'].map(gx=>`<div class="grade-pill ${gx===g?'active':''}" data-grade="${gx}">${gx}年级</div>`).join('')}
           </div>
+          ${(()=>{ try{
+            const _lv = _mathLevelMeta(_mathLevel());
+            const _st = Number(S.math.streak) || 0;
+            const _bs = Number(S.math.bestStreak) || 0;
+            const _lvc = _lv.color;
+            return `<span title="连对 3 题升档、连错 2 题降档 · ${_lv.note}" style="display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:${_lvc}18;color:${_lvc};font-size:12px;font-weight:800;border:1px solid ${_lvc}44">${_lv.icon} ${_lv.name}</span>`
+              + (_st > 0 ? `<span title="历史最高连胜 ${_bs}" style="display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:rgba(255,122,69,.14);color:#C2410C;font-size:12px;font-weight:800;border:1px solid rgba(255,122,69,.3)">🔥 连胜 ${_st}</span>` : '');
+          }catch(e){ return ''; } })()}
           <span style="margin-left:auto;font-size:12px;color:var(--text-3);font-weight:600">
             ${window.MATH_IS_REVIEW ? `📕 错题再练 <b style="color:var(--coral)">${(window.MATH_REVIEW.idx||0)+1}/${window.MATH_REVIEW.list.length}</b>` : `
             本册 ${pIdx+1} / ${bankTotal||1} 题
@@ -7388,7 +4021,7 @@ function renderMath(grade='3'){
         </div>
         <div class="math-banner">
           <div>
-            <h2>${data.title}</h2>
+            <h2>${data.title || ((g) + " 年级 · 题库加载中…")}</h2>
             <p>${data.sub} · 场景发现式教学 · 数形结合 CPA</p>
           </div>
           <div class="progress"><span>掌握进度</span><span class="num">${data.progress}%</span></div>
@@ -7428,7 +4061,7 @@ function renderMath(grade='3'){
           <span style="font-size:24px">🏆</span>
           <div style="flex:1;min-width:0">
             <div style="font-size:14px;font-weight:800;color:var(--navy)">本册已全部学完</div>
-            <div style="font-size:12px;color:var(--text-2);margin-top:2px">${data.title} · 共 ${bankTotal} 题${_mathNextSemKey(semKey)?`，下一册：${(MATH_BY_GRADE[_mathNextSemKey(semKey)]||{}).title||''}`:'，已是最后一册'}</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:2px">${data.title || "本册题库"} · 共 ${bankTotal} 题${_mathNextSemKey(semKey)?`，下一册：${(MATH_BY_GRADE[_mathNextSemKey(semKey)]||{}).title||''}`:'，已是最后一册'}</div>
           </div>
           ${_mathNextSemKey(semKey)?`<button onclick="mathAdvanceToNextSem()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--navy);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">进入下一册 →</button>`:''}
           <button onclick="_resetSemIdx()" style="padding:9px 16px;border-radius:20px;border:1px solid var(--ink-200);background:white;color:var(--text-2);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">重做本册</button>
@@ -7554,13 +4187,32 @@ function mathAdvance(stage){
 // ===== 进入下一题（指针单调推进，永不回绕到第 1 题）=====
 // 修复用户反馈：①日练题目重复 ②做完一轮回到第 1 题而不进下一单元
 const _MATH_SEM_ORDER = ['2a','2b','3a','3b','4a','4b','5a','5b','6a','6b','7a','7b','8a','8b','9a','9b'];
+// P2-7：内联占位题库已删除 → 统一走这里取册数据（并容忍"尚未懒加载完成"的空档）
+function _mathGradeData(semKey){
+  const M = (typeof MATH_BY_GRADE !== 'undefined' && MATH_BY_GRADE) || {};
+  const g = String(semKey || '').slice(0, 1);
+  return M[semKey] || M[g + 'a'] || M['3a'] || null;
+}
+// 加载失败后的重试（清掉失败标记再走一次懒加载）
+window._retryLoadGrade = function(semKey){
+  try{
+    if(window.MATH_LOAD_FAILED) delete window.MATH_LOAD_FAILED[semKey];
+    if(window.MATH_LOADING) delete window.MATH_LOADING[semKey];
+    window.__mathLoadingKick = false;
+    window.MATH_SESSION = null;
+    loadGrade(semKey).then(function(ok){
+      if(ok){ toast && toast('✅ 题库加载完成'); try{ render(); }catch(e){} }
+      else { toast && toast('还是没加载上，检查一下网络'); }
+    });
+  }catch(e){}
+};
 function _mathNextSemKey(semKey){
   const i = _MATH_SEM_ORDER.indexOf(semKey);
   return (i >= 0 && i < _MATH_SEM_ORDER.length - 1) ? _MATH_SEM_ORDER[i+1] : null;
 }
 function _mathDailyPool(semKey){
   try{ const r = window.MathDailyBank && window.MathDailyBank.build(semKey); if(r && r.list && r.list.length) return r.list; }catch(e){}
-  const d = MATH_BY_GRADE[semKey] || MATH_BY_GRADE['3a'];
+  const d = _mathGradeData(semKey);
   return (d && d.problems) || [];
 }
 function _mathTodayKey(){
@@ -7726,6 +4378,15 @@ function mathNextProblem(){
       S.math.daily = { date:today, semKey:semKey, done:0, round:1 };
     }
     S.math.daily.done++;
+    // P2-10：完成/中断埋点（家长面板的"完成率/中断次数"据此统计）
+    try{
+      if(window.UsageMetrics){
+        UsageMetrics.event('answer', {subject:'math'});
+        UsageMetrics.mark('start','math');
+        if(S.math.daily.done === MATH_DAILY_COUNT){ UsageMetrics.event('complete', {subject:'math'}); UsageMetrics.mark('complete','math'); }
+        else if(S.math.daily.done === 1){ UsageMetrics.event('start', {subject:'math'}); }
+      }
+    }catch(e){}
     if(S.math.daily.done === MATH_DAILY_COUNT) milestone = true;
   }catch(e){}
 
@@ -7747,11 +4408,25 @@ function mathNextProblem(){
     }
   }
 
+  // 同册推进时保留自适应轮转产生的 bank 顺序与已调整标记，
+  // 否则 MATH_SESSION 被整体重建会导致 render 从原始 bank 重新 slice，
+  // 重叠窗口反复选中同一道最匹配题（"24×4"连出 4 次的回归 bug）。
+  // 切册(nextSemKey 变化)则不保留，交由 render 按新册重建 bank。
+  const _sameSem = (nextSemKey === semKey);
+  const _prevBank = _sameSem ? (window.MATH_SESSION && window.MATH_SESSION.bank) : null;
+  const _prevBankKey = _sameSem ? (window.MATH_SESSION && window.MATH_SESSION.bankKey) : null;
+  const _prevAdapted = _sameSem ? (window.MATH_SESSION && window.MATH_SESSION._adaptedIdx) : null;
+
   window.MATH_SESSION = {
     grade:nextGrade, semKey:nextSemKey, problemIdx:nextIdx, stage:'scene',
     discoveryStep:0, hintUsed:false, solveAttempts:0,
     divergentIdx:0, divergentNotes:[], startTs:Date.now()
   };
+  if(_sameSem){
+    window.MATH_SESSION.bank = _prevBank;
+    window.MATH_SESSION.bankKey = _prevBankKey;
+    window.MATH_SESSION._adaptedIdx = _prevAdapted;
+  }
   try{ S.math.idxBySem = S.math.idxBySem||{}; S.math.idxBySem[nextSemKey]=nextIdx; saveState(); }catch(e){}
   if(window.MathFlowV5) MathFlowV5._sess = null;
   setStar(2,'完成一题');
@@ -7840,13 +4515,16 @@ function renderMathDiscovery(problem){
 }
 
 // ===== 安全选项生成器（确保正确答案永远在选项中） =====
-function _safeMathChoices(problem){
+  function _safeMathChoices(problem){
   const ans = problem.answer;
   let choices = (problem.choices || []).slice();
   // 去重输入选项
   const seenInput = new Set();
   choices = choices.filter(c => { const k = String(c); if(seenInput.has(k)) return false; seenInput.add(k); return true; });
-  if(choices.indexOf(ans) !== -1) return {choices, correctIdx: choices.indexOf(ans)};
+  // 防御（问题1·2026-09-11）：数值型 vs 字符串型答案统一按字符串比较，避免「答案在选项里却被判为缺」被误重生成
+  const ansKey = String(ans);
+  const _idxOfAns = (arr) => { const i = arr.indexOf(ans); return i !== -1 ? i : arr.findIndex(c => String(c) === ansKey); };
+  if(_idxOfAns(choices) !== -1) return {choices, correctIdx: _idxOfAns(choices)};
   const a = Number(ans);
   const base = isNaN(a) ? ans : a;
   const distractors = [];
@@ -8052,6 +4730,74 @@ function _mathDivergentSummary(problem, variants){
 
 // ===== 统一答题处理（选择 / 填空通用入口） =====
 // kind: 'discovery' | 'solve' ；chosenIdx/correctIdx 为选项在 choices 中的下标
+// ===== P1-4 / P1-5：自适应档位 + 连胜（单一事实源：S.math.adaptive / S.math.streak）=====
+// 为什么：孩子愿不愿意主动用，取决于"我做对了 → 世界立刻给了我反馈"。
+// 之前这两样都没有：档位骨架（MathKernel.STATE）闲置，答对只有一行文字。
+const MATH_LEVELS = [
+  { lv:1, name:'基础', icon:'🌱', color:'#2570E8', note:'先把数量关系看明白' },
+  { lv:2, name:'进阶', icon:'🔥', color:'#C77700', note:'够一够就能拿到的难度' },
+  { lv:3, name:'挑战', icon:'🏆', color:'#C2410C', note:'挑战更难的题' }
+];
+function _mathDiffNum(d){
+  if(typeof d === 'number' && isFinite(d)) return Math.max(1, Math.min(3, Math.round(d)));
+  const s = String(d==null?'':d).toLowerCase();
+  if(s === 'easy' || s === '1' || s === '基础' || s === '简单') return 1;
+  if(s === 'hard' || s === '3' || s === '挑战' || s === '困难') return 3;
+  return 2;
+}
+function _mathAdaptive(){
+  S.math.adaptive = S.math.adaptive || { level:1, correctStreak:0, wrongStreak:0 };
+  const a = S.math.adaptive;
+  let lv = _mathDiffNum(a.level);
+  if(lv !== a.level) a.level = lv;
+  a.correctStreak = Number(a.correctStreak) || 0;
+  a.wrongStreak = Number(a.wrongStreak) || 0;
+  return a;
+}
+function _mathLevel(){ return _mathAdaptive().level; }
+function _mathLevelMeta(lv){ return MATH_LEVELS[Math.max(0, Math.min(2, (_mathDiffNum(lv) - 1)))]; }
+
+// 连对 3 题升档、连错 2 题降档；同一套规则同步给 MathKernel.STATE（兜底出题也用同一档位）
+function _mathAdaptiveRecord(correct){
+  const a = _mathAdaptive();
+  if(correct){ a.correctStreak++; a.wrongStreak = 0; } else { a.wrongStreak++; a.correctStreak = 0; }
+  let leveled = 0;
+  if(correct && a.correctStreak >= 3){ a.correctStreak = 0; if(a.level < 3){ a.level++; leveled = 1; } }
+  if(!correct && a.wrongStreak >= 2){ a.wrongStreak = 0; if(a.level > 1){ a.level--; leveled = -1; } }
+  try{
+    if(window.MathKernel && window.MathKernel.submit){
+      const ans = window.CURRENT_MATH_PROBLEM && window.CURRENT_MATH_PROBLEM.answer;
+      // 传正确答案 → 内核记为答对；传哨兵字符串 → 记为答错（内核内部另有同样的升降档）
+      window.MathKernel.submit({ answer: ans }, correct ? ans : '__wrong__');
+    }
+  }catch(e){}
+  try{ saveState(); }catch(e){}
+  return leveled;
+}
+
+function _mathStreakRecord(correct){
+  S.math.streak = Number(S.math.streak) || 0;
+  S.math.bestStreak = Number(S.math.bestStreak) || 0;
+  if(correct){ S.math.streak++; if(S.math.streak > S.math.bestStreak) S.math.bestStreak = S.math.streak; }
+  else { S.math.streak = 0; }
+  try{ saveState(); }catch(e){}
+  return S.math.streak;
+}
+
+// 即时庆祝：答对闪一下 + 连胜数字；升档另有专属提示（损失厌恶比获得更驱动人）
+function _mathCelebrate(text, emoji, strong){
+  try{
+    let host = document.getElementById('mathCelebrateHost');
+    if(!host){ host = document.createElement('div'); host.id = 'mathCelebrateHost'; document.body.appendChild(host); }
+    const el = document.createElement('div');
+    el.className = 'math-celebrate' + (strong ? ' strong' : '');
+    el.innerHTML = `<span class="mc-emoji">${emoji||'✨'}</span><span class="mc-text">${text||''}</span>`;
+    host.appendChild(el);
+    setTimeout(()=>{ try{ el.classList.add('out'); }catch(e){} }, 1100);
+    setTimeout(()=>{ try{ el.remove(); }catch(e){} }, 1900);
+  }catch(e){}
+}
+
 function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
   const isCorrect = chosenIdx === correctIdx;
   const container = el.parentElement;
@@ -8102,6 +4848,10 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
     try{ WeaknessDetector.recordAnswer(S, wdQuestion, window.MATH_SESSION.hintUsed ? 'hint' : 'correct', timeUsed); }catch(e){}
     setStar(3, '数学场景题');
     try{ if(typeof _bumpMathProgress==='function') _bumpMathProgress(problem.knowledge); }catch(e){}
+    // P1-4 / P1-5：档位升降 + 连胜（连对 3 升档、连错 2 降档；连胜可累积也可失去）
+    let _lvUp = 0, _streak = 0;
+    try{ _lvUp = _mathAdaptiveRecord(true); }catch(e){}
+    try{ _streak = _mathStreakRecord(true); }catch(e){}
     // 错题再练：答对即订正成功，从错题本移除
     try{ if(window.MATH_REVIEW && window.MATH_REVIEW.active) _mathReviewMarkCorrect(problem); }catch(e){}
     if(fb){
@@ -8109,12 +4859,22 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
       const previewVisual = (typeof MathVisual!=='undefined' && MathVisual.render && problem.visualType)
         ? `<div style="margin-top:12px;max-height:130px;overflow:hidden;border-radius:10px;border:1px dashed var(--teal);opacity:.9;pointer-events:none">${MathVisual.render(problem.visualType, problem.visualData, problem)}</div>`
         : '';
-      fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐${problem.formula?`<br><span style="font-size:13px;font-weight:600;color:var(--text-2)">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>${previewVisual}<div style="margin-top:8px;text-align:center;font-size:12px;color:var(--teal-700);font-weight:700">⬇️ 数形结合预览 · 即将进入阶段4查看完整动画</div>`;
+      fb.innerHTML = `<div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:15px;color:var(--teal-700);font-weight:700;line-height:1.7">🎉 <b>答对了！</b>用时 ${timeUsed} 秒 · +3 ⭐${problem.formula?`<br><span style="font-size:13px;font-weight:600;color:var(--text-2)">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><span style="font-size:12.5px;font-weight:700;color:var(--text-2)">${_mathLevelMeta(_mathLevel()).icon} 档位：${_mathLevelMeta(_mathLevel()).name} · 🔥 连胜 ${_streak}${_lvUp>0?' · 🏆 升档啦':''}</span><br><span style="font-size:13px;font-weight:500;color:var(--text-2)">接下来用图形看清这道题的内在结构</span></div>${previewVisual}<div style="margin-top:8px;text-align:center;font-size:12px;color:var(--teal-700);font-weight:700">⬇️ 数形结合预览 · 即将进入阶段4查看完整动画</div>`;
     }
+    // P1-5 即时庆祝：升档 > 连胜里程碑 > 普通连胜（越稀有越响亮）
+    try{
+      if(_lvUp > 0) _mathCelebrate('升档！进入「' + _mathLevelMeta(_mathLevel()).name + '」', '🏆', true);
+      else if(_streak > 0 && _streak % 5 === 0) _mathCelebrate('连胜 ' + _streak + ' 题！', '🔥', true);
+      else if(_streak >= 2) _mathCelebrate('连胜 ' + _streak, '✨', false);
+    }catch(e){}
     setTimeout(()=>mathAdvance('explain'), 1100);
   }else{
     window.MATH_SESSION.hintUsed = true;
     window.MATH_SESSION.solveAttempts = (window.MATH_SESSION.solveAttempts||0) + 1;
+    // P1-4 / P1-5：答错清空连胜；连错 2 题降档，把难度拉回"够得到的区间"
+    let _lvDown = 0;
+    try{ _lvDown = _mathAdaptiveRecord(false); }catch(e){}
+    try{ _mathStreakRecord(false); }catch(e){}
     // 记录错误（每次错误都记录，供掌握度计算）
     try{ WeaknessDetector.recordAnswer(S, wdQuestion, 'wrong', timeUsed); }catch(e){}
     // 错题再练：记一次"仍需再练"
@@ -8127,7 +4887,7 @@ function mathAnswer(el, chosenIdx, correctIdx, kind, stepIdx){
       saveState();
     }
     try{ SpacedReview.add(S.currentProfileId||'default', 'math', problem.id||problem.question); }catch(e){}
-    if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><b>别急，看下面的分步推理，再试一次</b></div>${_mathStepByStep(problem)}`;
+    if(fb) fb.innerHTML = `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 差一点点！已加入错题本。${problem.formula?`<br><span style="color:var(--text-2);font-size:13px">📜 完整算式：<b style="color:var(--teal);font-family:'Inter',sans-serif">${problem.formula}</b></span>`:''}<br><span style="font-size:12.5px;font-weight:700;color:var(--text-2)">${_mathLevelMeta(_mathLevel()).icon} 档位：${_mathLevelMeta(_mathLevel()).name}${_lvDown<0?'（已调低一档，先把基础打牢）':''} · 连胜已重置</span><br><b>别急，看下面的分步推理，再试一次</b></div>${_mathStepByStep(problem)}`;
     // 重新渲染 solve 阶段，展示提示
     setTimeout(()=>updateMathStage(), 900);
   }
@@ -10477,9 +7237,12 @@ function initParentCharts(){
   try{
     if(parentChart1){try{parentChart1.dispose();}catch(e){}}
     parentChart1=echarts.init(el1);
-    const days=['周一','周二','周三','周四','周五','周六','周日'];
-    const mathData=Array.from({length:7},()=>Math.floor(55+Math.random()*40));
-    const engData=Array.from({length:7},()=>Math.floor(45+Math.random()*40));
+    // P2-10：改用真实埋点数据（旧版这里是 Math.random() 现编的假数据，家长看到的是假的）
+    const um = (window.UsageMetrics && UsageMetrics.last) ? UsageMetrics.last(7) : [];
+    const days = um.length ? um.map(x=>'周'+x.dow) : ['周一','周二','周三','周四','周五','周六','周日'];
+    const pick=(k)=> um.map(x=>Math.round((((x.subj||{})[k]||{}).min)||0));
+    const mathData = um.length ? pick('math') : [0,0,0,0,0,0,0];
+    const engData  = um.length ? um.map(x=>Math.round((((x.subj||{}).english||((x.subj||{}).eng)||{}).min)||0)) : [0,0,0,0,0,0,0];
     parentChart1.setOption({
       grid:{left:40,right:16,top:30,bottom:30},
       legend:{data:['数学','英语'],top:0,right:0,textStyle:{fontSize:11,color:'var(--ink-600)'.includes('var')?'#475569':'#475569'},icon:'roundRect',itemWidth:10,itemHeight:10},
@@ -10683,6 +7446,27 @@ function renderParentDashboard(pt){
               <div style="padding:10px 16px;background:var(--yellow-soft);border-radius:12px;text-align:center"><div style="font-size:22px;font-weight:900;color:var(--yellow-700)">${acc}%</div><div style="font-size:11px;color:var(--ink-600)">正确率</div></div>
             </div>
             ${kmax.length?`<div style="font-size:12px;color:var(--text-3);margin-bottom:6px;font-weight:600">今天练过的知识点：</div><div style="display:flex;flex-wrap:wrap;gap:6px">${kmax.map(([k,n])=>`<span style="padding:4px 12px;border-radius:999px;background:var(--teal-soft);color:var(--teal-700);font-size:12px;font-weight:700">${k} ×${n}</span>`).join('')}</div>`:''}`;
+          })()}
+        </div>
+
+        <div class="card" style="margin-bottom:16px;border-top:3px solid var(--teal-700)">
+          <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">📈 使用情况（近 7 天 · 仅本机记录）</div>
+          ${(()=>{
+            const um=(window.UsageMetrics&&UsageMetrics.summary)?UsageMetrics.summary(7):null;
+            if(!um||(!um.opens&&!um.min)) return '<div style="font-size:13px;color:var(--text-3)">还没有足够的使用记录。用几天后这里会显示"打开频率、每次时长、完成/中断"，帮你判断孩子是不是真在用。</div>';
+            const box=(n,l,c)=>`<div style="padding:10px 14px;background:${c};border-radius:12px;text-align:center;min-width:92px"><div style="font-size:20px;font-weight:900">${n}</div><div style="font-size:11px;color:var(--ink-600)">${l}</div></div>`;
+            return `<div style="display:flex;gap:10px;flex-wrap:wrap">
+              ${box(um.openDays+'/7','有使用的天数','var(--teal-soft)')}
+              ${box(um.opens,'打开次数','var(--yellow-soft)')}
+              ${box(um.min+'m','总时长','var(--success-soft)')}
+              ${box(um.avgMinPerOpen+'m','平均每次','var(--violet-soft,#EFE9FF)')}
+              ${box(um.completed,'完成日目标','var(--teal-soft)')}
+              ${box(um.abandoned,'中途离开','var(--coral-soft)')}
+            </div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:10px;line-height:1.7">
+              ${um.completed?`✅ 完成率 <b>${um.finishRate}%</b>（完成 ${um.completed} / 开始 ${um.starts}）`:'今天还没完成过一整轮日练'}${um.abandoned>=3?'；⚠️ 中途离开偏多，可能是单次任务偏长或难度不合适':''}
+              <br/>数学 ${um.subjMin.math||0} 分钟 · 英语 ${(um.subjMin.english||um.subjMin.eng||0)} 分钟
+            </div>`;
           })()}
         </div>
 
@@ -11779,6 +8563,8 @@ function renderTextbookProgress(){
 }
 
 function switchView(view){
+  // P2-10：切视图时结算上一个板块的停留时长，开始给新板块计时
+  try{ if(window.UsageMetrics) UsageMetrics.nav(view); }catch(e){}
   // 切换板块时关闭听算弹层（模态不跨板块残留）
   try{ const _lm=document.getElementById('lmOverlay'); if(_lm) _lm.remove(); }catch(e){}
   // Q6-4：进入数学板块时，把内核年级与当前选择重新对齐（防系统级返回/跳转丢年级）
@@ -11939,6 +8725,15 @@ function playEngSceneAudio(){
 
 // 初始化
 document.addEventListener('DOMContentLoaded',()=>{
+  // P2-10：启动使用埋点（本地、无网络），并记一次"打开"
+  try{
+    if(window.UsageMetrics){
+      UsageMetrics.init();
+      UsageMetrics.open();
+      // 首屏所在视图开始计时（后续 switchView 会自动切换）
+      UsageMetrics.nav(typeof currentView!=='undefined' ? currentView : 'overview');
+    }
+  }catch(e){}
   // 注册 PWA Service Worker
   if('serviceWorker' in navigator){
     try{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }catch(e){}
@@ -12009,6 +8804,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <!-- === V5 数据文件 === -->
 <script src="data/math-data-core.js"></script>
 <script src="data/math-daily-bank.js"></script>
+<script src="data/math-chain-map.js?v=20260910a"></script>
 <script src="data/english-vocab.js"></script>
 <script src="data/english-phonics.js"></script>
 <script src="data/english-listening.js"></script>
@@ -12016,6 +8812,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="data/english-scenarios.js"></script>
 <!-- === V5 引擎文件 === -->
 <script src="engine/achievements.js"></script>
+<script src="engine/usage-metrics.js?v=20260910a"></script>
 <script src="engine/mic-permission.js"></script>
 <script src="engine/scene-manager.js"></script>
 <script src="engine/math-visual-v5.js?v=20260806b"></script>
@@ -12052,14 +8849,24 @@ if(typeof window.MATH_GRADE_2!=='undefined' && typeof MATH_BY_GRADE!=='undefined
   Object.keys(window.MATH_GRADE_2).forEach(function(k){ MATH_BY_GRADE[k]=window.MATH_GRADE_2[k]; });
   console.log('[QuiquV5] 2a/2b 数学合并完成，MATH_BY_GRADE 当前年级:', Object.keys(MATH_BY_GRADE).join(','));
 }
-// 2. 追加 3-6 年级扩展题到各学期 problems
-if(typeof MATH_EXTEND_3_6!=='undefined' && typeof MATH_BY_GRADE!=='undefined'){
+// 2. 追加 3-6 年级扩展题（P2-7 修复）
+// 旧写法把扩展题 concat 进"内联占位对象"，而 loadGrade() 注入的 math-data-<册>.js
+// 会整体覆盖该对象 → 41 道扩展题从来没进过题库（实测 hasProbe=false）。
+// 现改为登记到 MATH_GRADE_PATCH，由 loadGrade 的 onload 在册文件落地后合并（按题干去重）。
+if(typeof MATH_EXTEND_3_6!=='undefined'){
+  window.MATH_GRADE_PATCH = window.MATH_GRADE_PATCH || {};
+  var _extTotal = 0;
   Object.keys(MATH_EXTEND_3_6).forEach(function(ek){
-    var gk=ek.replace('_e',''); // '3a_e' → '3a'
-    if(MATH_BY_GRADE[gk] && MATH_BY_GRADE[gk].problems){
-      MATH_BY_GRADE[gk].problems=MATH_BY_GRADE[gk].problems.concat(MATH_EXTEND_3_6[ek]);
-    }
+    var gk=ek.replace(/_e$/,''); // '3a_e' → '3a'
+    var arr=MATH_EXTEND_3_6[ek]||[];
+    if(!arr.length) return;
+    window.MATH_GRADE_PATCH[gk]=(window.MATH_GRADE_PATCH[gk]||[]).concat(arr);
+    _extTotal+=arr.length;
+    // 该册若此刻已在内存（脚本顺序变化时），立刻生效
+    try{ if(window.applyGradePatch) window.applyGradePatch(gk); }catch(e){}
   });
+  window.MATH_EXTEND_TOTAL = _extTotal;
+  console.log('[QuiquV5] 扩展题已登记 ' + _extTotal + ' 道 →', Object.keys(window.MATH_GRADE_PATCH).join(','));
 }
 // 3. 合并口语场景：const SPEAK_SCENARIOS(内置) + speak-8-new.js 新增8个 = 最多 20 个
 if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARIOS!=='undefined'){

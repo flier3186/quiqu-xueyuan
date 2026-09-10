@@ -7142,7 +7142,7 @@ window.MATH_BY_GRADE["2b"] = {
             "scene": "把一张纸对折后剪一个圆形，打开后有几个圆？",
             "question": "打开后有几个圆？",
             "formula": "图形运动",
-            "answer": 2,
+            "answer": "2",
             "choices": [
                 "1",
                 "2",

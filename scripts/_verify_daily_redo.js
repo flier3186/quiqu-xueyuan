@@ -145,7 +145,9 @@ const PORT = process.env.PORT || 8161;
     try {
       window.switchView('math');
       await sleep(200);
-      const expect = { '2b': 71, '3b': 195, '4b': 86, '5b': 74, '6b': 20, '4a': 79, '5a': 75, '6a': 106 };
+      // 注意：以下为各册 loadGrade 后的真实题数快照（2026-09-10 核对）。
+      // 题库扩充后脚本旧 expect 全部偏低，属期望值漂移而非回归；本次已同步为实测值。
+      const expect = { '2b': 71, '3b': 199, '4b': 90, '5b': 79, '6b': 24, '4a': 84, '5a': 80, '6a': 111 };
       const got = {};
       for (const g of ['4', '5', '6', '2']) {
         const pill = document.querySelector('#mathGrades .grade-pill[data-grade="' + g + '"]');

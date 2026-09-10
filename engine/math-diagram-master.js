@@ -219,28 +219,35 @@
   }
 
   // ================= 路由（统一仲裁 + 分歧报告） =================
-  function v5RendererOf(p) {
+  // ---- 旧路由读取（仅用于"教材对齐的静态语义"与历史分歧取证，不做最终判定）----
+  // 必须显式调用 *Legacy 版本：v5/manip 的委托版会回调本模块，直接调会递归。
+  function legacyV5RendererOf(p) {
+    var M = root.MathDiagramMaster;
     try {
-      if (root.MathVisualV5 && root.MathVisualV5._resolveType) {
-        return root.MathVisualV5._resolveType(p.visualType, p.visualData, p);
-      }
-    } catch (e) {}
+      if (M) M.__resolving = true;
+      var mv = root.MathVisualV5;
+      if (mv && mv._resolveTypeLegacy) return mv._resolveTypeLegacy(p.visualType, p.visualData, p);
+      if (mv && mv._resolveType) return mv._resolveType(p.visualType, p.visualData, p);
+    } catch (e) {} finally { if (M) M.__resolving = false; }
     return null;
   }
-  function manipModeOf(p) {
+  function legacyManipModeOf(p) {
     try {
-      if (root.MathManipulative && root.MathManipulative.classify) return root.MathManipulative.classify(p);
+      var mm = root.MathManipulative;
+      if (mm && mm.classifyLegacy) return mm.classifyLegacy(p);
+      if (mm && mm.classify) return mm.classify(p);
     } catch (e) {}
     return null;
   }
 
-  // 把两条旧路由的输出折算成统一 family，用于分歧检测
+  // 把静态渲染器 / 教具模式折算成统一 family
   function familyFromV5(renderer) {
     if (!renderer) return null;
     if (root.MathVisualV5 && root.MathVisualV5._getModelFamilyFromStep) {
       var f = root.MathVisualV5._getModelFamilyFromStep(renderer);
       if (f) return f;
     }
+    if (/dotArray|array/i.test(renderer)) return 'areaModel';
     if (/bar/i.test(renderer)) return 'barModel';
     if (/fraction/i.test(renderer)) return 'fractionModel';
     if (/area/i.test(renderer)) return 'areaModel';
@@ -253,41 +260,97 @@
     if (/ruler|mapZoom|bodyRuler/i.test(renderer)) return 'measure';
     return null;
   }
+  // share（平均分到盘子）属于「每份×份数」家族；barDrop 属于「整体=部分+部分」家族
   function familyFromManip(mode) {
     return ({
-      barDrop: 'barModel', share: 'barModel', fraction: 'fractionModel',
+      barDrop: 'barModel', share: 'areaModel', fraction: 'fractionModel',
       array: 'areaModel', placeValue: 'baseTenBlocks', scene: 'barModel'
     })[mode] || null;
   }
 
-  function route(p) {
-    if (!p) return { master: null, stage: 'missing', source: 'none', reason: 'no-problem' };
-    var hit = null;
+  // 家族 → 母版。优先精确命中渲染器（circleArea / geometry 同族时才不会串号）
+  function masterForRenderer(fam, renderer) {
+    var byFam = null;
     for (var i = 0; i < MASTERS.length; i++) {
       var m = MASTERS[i];
-      try { if (m.supports(p)) { hit = m; break; } } catch (e) {}
+      if (renderer && m.v5Type === renderer) return m;
+      if (fam && m.family === fam && !byFam) byFam = m;
     }
-    var v5 = v5RendererOf(p);
-    var mp = manipModeOf(p);
-    var famV5 = familyFromV5(v5);
-    var famMp = familyFromManip(mp);
+    return byFam;
+  }
+  // 家族 → 教具模式；家族已知但没有可操作实现时返回 'none'（而不是 null，null 表示无法判定）
+  function manipModeForFamily(fam) {
+    if (!fam) return null;
+    for (var i = 0; i < MASTERS.length; i++) {
+      var m = MASTERS[i];
+      if (m.family === fam) return (m.source === 'manip' && m.manipMode) ? m.manipMode : 'none';
+    }
+    return null;
+  }
 
-    if (!hit) {
-      // 没有任何母版命中 → 退回条形母版兜底（绝不让孩子看到空白图）
-      hit = BY_ID.barModel;
-      return {
-        master: hit, stage: 'static', source: 'generic-fallback', fallback: true,
-        v5Renderer: v5, manipMode: mp,
-        conflict: !!(famV5 && famMp && famV5 !== famMp),
-        reason: 'no-master-matched→barModel-fallback'
-      };
+  // ================= 唯一仲裁（P0-2）=================
+  // 判定顺序：
+  //   ① 以"教材对齐的静态图语义"定家族 —— 保证人工校准过的图形不被改写；
+  //   ② 家族 → 母版；家族没有对应母版时才退回 supports() 关键词匹配。
+  // 静态渲染器与动手教具都从同一家族派生，两条旧路由因此不可能再给出两套模型。
+  function pick(p) {
+    if (!p) return null;
+    var legacy = legacyV5RendererOf(p);
+    var m = masterForRenderer(familyFromV5(legacy), legacy);
+    if (m) return m;
+    for (var i = 0; i < MASTERS.length; i++) {
+      try { if (MASTERS[i].supports(p)) return MASTERS[i]; } catch (e) {}
     }
-    return {
-      master: hit, stage: hit.stage, source: hit.source, fallback: false,
-      v5Renderer: v5, manipMode: mp,
-      conflict: !!(famV5 && famMp && famV5 !== famMp),
-      reason: 'matched:' + hit.id
+    return null;
+  }
+
+  function familyOf(p) { var m = pick(p); return m ? m.family : null; }
+  function v5RendererFor(p) { return p ? legacyV5RendererOf(p) : null; }
+
+  function manipModeFor(p) {
+    if (!p) return null;
+    var hit = pick(p);
+    if (!hit) return null;
+    var fam = hit.family;
+    // 除法的动手工具是"平均分到盘子"，与点阵同属「每份×份数」家族，语义一致
+    if (fam === 'areaModel' && /÷/.test(String(p.formula || ''))) return 'share';
+    return manipModeForFamily(fam);
+  }
+
+  // 历史取证：两条旧路由原本是否分歧（改造前全册 170 处）
+  function legacyConflictOf(p) {
+    var fv = familyFromV5(legacyV5RendererOf(p));
+    var fm = familyFromManip(legacyManipModeOf(p));
+    return !!(fv && fm && fv !== fm);
+  }
+
+  function route(p) {
+    if (!p) return {
+      master: null, family: null, stage: 'missing', source: 'none',
+      v5Renderer: null, manipMode: 'none', fallback: false, conflict: false,
+      legacyConflict: false, reason: 'no-problem'
     };
+    var hit = pick(p);
+    var v5 = legacyV5RendererOf(p);
+    var mode = manipModeFor(p) || 'none';
+    var fm = familyFromManip(mode);
+    // 单一仲裁后 conflict 恒为 false；保留该字段是为了让审计脚本能断言"分歧为 0"
+    var base = {
+      v5Renderer: v5, manipMode: mode,
+      conflict: !!(hit && fm && fm !== hit.family),
+      legacyConflict: legacyConflictOf(p)
+    };
+    if (!hit) {
+      var fb = BY_ID.barModel;
+      return Object.assign(base, {
+        master: fb, family: fb.family, stage: 'static', source: 'generic-fallback',
+        fallback: true, reason: 'no-master-matched→barModel-fallback'
+      });
+    }
+    return Object.assign(base, {
+      master: hit, family: hit.family, stage: hit.stage, source: hit.source,
+      fallback: false, reason: 'matched:' + hit.id
+    });
   }
 
   // ================= 渲染入口 =================
@@ -349,17 +412,39 @@
   // ================= 参数化判定（可测判据） =================
   // 判据：把两个"已知部分"的值互换后，若几何签名不变 → 这张图不随数字变 = 静态插图。
   // （交换而非缩放：避免触碰 _resolveType 里的数值阈值判断，得到干净结论。）
+  // 几何签名：用于判断"图是否随数值变化"。
+  // ⚠ 2026-09-10 修正：旧版把**所有数字都替换成 '#'**，导致坐标/宽度/半径全被抹平，
+  // 于是任何图形都被判成"几何不随数值变"——之前报告的"参数化率 0%"有一部分是这个 bug 造成的。
+  // 现在只去掉 <text> 的文字内容，保留数字（量化到 1 位小数以吸收浮点误差）。
   function geoSignature(html) {
     return String(html || '')
-      .replace(/<text[\s\S]*?<\/text>/g, '<text/>')   // 去掉文字内容
-      .replace(/\d+(?:\.\d+)?/g, '#');                // 去掉坐标/数值
+      .replace(/(<text\b[^>]*>)[\s\S]*?(<\/text>)/g, '$1$2')   // 文字内容不是几何
+      .replace(/-?\d+(?:\.\d+)?/g, function (n) { return (Math.round(Number(n) * 10) / 10).toFixed(1); })
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   function mutateSwapParts(p) {
     var vd = p.visualData;
     if (!vd) return null;
     var key = (vd.parts && vd.parts.length) ? 'parts' : ((vd.bars && vd.bars.length) ? 'bars' : null);
-    if (!key) return null;
+    if (!key) {
+      // 没有 parts/bars 的图（点阵 / 面积 / 几何）：交换行列参数也能改变几何。
+      // 注意要把 a/b 与 rows/cols 两对**都**换掉——不同渲染器读的是不同的一对，
+      // 只换一对会出现"数据换了、图没变"的假阴性（2026-09-10 实测踩到）。
+      var pairs = [['a', 'b'], ['rows', 'cols']];
+      var clone = JSON.parse(JSON.stringify(p));
+      var swapped = false;
+      pairs.forEach(function (pr) {
+        if (N(clone.visualData[pr[0]]) != null && N(clone.visualData[pr[1]]) != null) {
+          var t = clone.visualData[pr[0]];
+          clone.visualData[pr[0]] = clone.visualData[pr[1]];
+          clone.visualData[pr[1]] = t;
+          swapped = true;
+        }
+      });
+      return swapped ? clone : null;
+    }
     var arr = vd[key];
     // 题库混用两种字段名：value（28 处）/ val（82 处）。读写都必须认同一套，
     // 否则"参数化判定"会把 val 型数据全判成不可测（2026-09-10 踩过）。
@@ -369,23 +454,39 @@
     if (idx.length < 2) return null;
     var clone = JSON.parse(JSON.stringify(p));
     var a = idx[0], b = idx[idx.length - 1];
-    var fa = fieldOf(clone.visualData[key][a]);
-    var fb = fieldOf(clone.visualData[key][b]);
-    var tmp = clone.visualData[key][a][fa];
-    clone.visualData[key][a][fa] = clone.visualData[key][b][fb];
-    clone.visualData[key][b][fb] = tmp;
+    var fa2 = fieldOf(clone.visualData[key][a]);
+    var fb2 = fieldOf(clone.visualData[key][b]);
+    var tmp = clone.visualData[key][a][fa2];
+    clone.visualData[key][a][fa2] = clone.visualData[key][b][fb2];
+    clone.visualData[key][b][fb2] = tmp;
     return clone;
   }
 
+  // 参数化判定：
+  //   valueBound  —— 把数值换掉后，整张图（含文字）是否变化。false = 图完全无视数据（硬编码插图）
+  //   parametric  —— 更严格：连**几何**都随数值变（坐标/宽度/半径变化）
+  // 两个都测：多数"分与合"类母版布局是规范化的（几何天然对称），但数值必须真的来自题目。
   function checkParametric(p) {
     var mut = mutateSwapParts(p);
-    if (!mut) return { tested: false, parametric: null, reason: 'no-swappable-parts' };
+    if (!mut) return { tested: false, parametric: null, valueBound: null, reason: 'no-swappable-parts' };
+    // 两个待交换的值相等（如 5×5、8×8）时，交换是空操作 → 无法判定，不能算作"硬编码"
+    try {
+      if (JSON.stringify(p.visualData) === JSON.stringify(mut.visualData)) {
+        return { tested: false, parametric: null, valueBound: null, reason: 'mutation-noop-values-equal' };
+      }
+    } catch (e) {}
     var a, b;
-    try { a = renderFor(p, { dynamic: false }).html; } catch (e) { return { tested: false, parametric: null, reason: 'render-error' }; }
-    try { b = renderFor(mut, { dynamic: false }).html; } catch (e) { return { tested: false, parametric: null, reason: 'render-error' }; }
-    if (!a || !b) return { tested: false, parametric: null, reason: 'empty-render' };
-    var same = geoSignature(a) === geoSignature(b);
-    return { tested: true, parametric: !same, reason: same ? 'geometry-invariant-to-values' : 'geometry-follows-values' };
+    try { a = renderFor(p, { dynamic: false }).html; } catch (e) { return { tested: false, parametric: null, valueBound: null, reason: 'render-error' }; }
+    try { b = renderFor(mut, { dynamic: false }).html; } catch (e) { return { tested: false, parametric: null, valueBound: null, reason: 'render-error' }; }
+    if (!a || !b) return { tested: false, parametric: null, valueBound: null, reason: 'empty-render' };
+    var valueBound = (a !== b);
+    var sameGeo = geoSignature(a) === geoSignature(b);
+    return {
+      tested: true,
+      parametric: !sameGeo,
+      valueBound: valueBound,
+      reason: sameGeo ? 'geometry-invariant-to-values' : 'geometry-follows-values'
+    };
   }
 
   // ================= 覆盖审计 =================
@@ -395,8 +496,9 @@
     var keys = semKeys && semKeys.length ? semKeys.slice() : Object.keys(G);
     var bank = root.MathDailyBank;
     var out = {
-      perSem: {}, totals: { problems: 0, tested: 0, parametric: 0 },
-      byMaster: {}, byStage: {}, missing: [], nonParametric: [], conflicts: [], fallback: []
+      perSem: {}, totals: { problems: 0, tested: 0, parametric: 0, valueBound: 0, legacyConflicts: 0 },
+      byMaster: {}, byStage: {}, byMasterParametric: {},
+      missing: [], nonParametric: [], hardcoded: [], conflicts: [], legacyConflicts: [], fallback: []
     };
     keys.forEach(function (sem) {
       var list = null;
@@ -411,14 +513,24 @@
         stat.byMaster[mid] = (stat.byMaster[mid] || 0) + 1;
         out.byStage[r.stage] = (out.byStage[r.stage] || 0) + 1;
         stat.byStage[r.stage] = (stat.byStage[r.stage] || 0) + 1;
-        if (r.conflict) out.conflicts.push({ sem: sem, kp: p.knowledge, v5: r.v5Renderer, manip: r.manipMode });
-        // 只对"非可操作"的图做参数化判定（可操作教具的参数化由拖拽行为本身保证）
-        if (r.stage !== 'operable' && r.stage !== 'missing') {
+        if (r.conflict) out.conflicts.push({ sem: sem, kp: p.knowledge, master: mid, v5: r.v5Renderer, manip: r.manipMode });
+        // 历史取证：改造前两条旧路由的分歧（改造后应只剩这个计数，conflicts 必须为 0）
+        if (r.legacyConflict) {
+          out.totals.legacyConflicts++;
+          out.legacyConflicts.push({ sem: sem, kp: p.knowledge, master: mid, v5: r.v5Renderer, manip: legacyManipModeOf(p) });
+        }
+        // 参数化判定：对**所有**图都做。静态图才是作答前孩子真正看到的东西，
+        // 所以"图是否随数值变"对每一题都有意义（可操作教具作答后才出现）。
+        if (r.stage !== 'missing') {
           var cp = checkParametric(p);
           if (cp.tested) {
             out.totals.tested++; stat.tested++;
             if (cp.parametric) { out.totals.parametric++; stat.parametric++; }
-            else out.nonParametric.push({ sem: sem, kp: p.knowledge, master: mid, question: String(p.question || '').slice(0, 40), reason: cp.reason });
+            if (cp.valueBound) { out.totals.valueBound++; }
+            else out.hardcoded.push({ sem: sem, kp: p.knowledge, master: mid, question: String(p.question || '').slice(0, 40) });
+            var mp = out.byMasterParametric[mid] = out.byMasterParametric[mid] || { tested: 0, parametric: 0, valueBound: 0 };
+            mp.tested++; if (cp.parametric) mp.parametric++; if (cp.valueBound) mp.valueBound++;
+            if (!cp.parametric) out.nonParametric.push({ sem: sem, kp: p.knowledge, master: mid, question: String(p.question || '').slice(0, 40), reason: cp.reason });
           }
         }
       });
@@ -437,6 +549,15 @@
       });
     },
     varsOf: varsOf,
+    // 唯一仲裁（P0-2）：所有渲染/教具调用方都应经由此处取判定
+    pick: pick,
+    familyOf: familyOf,
+    v5RendererFor: v5RendererFor,
+    manipModeFor: manipModeFor,
+    legacyConflictOf: legacyConflictOf,
+    // 兼容：旧名保留，语义已改为"旧路由读取"（仅取证用）
+    v5RendererOf: legacyV5RendererOf,
+    manipModeOf: legacyManipModeOf,
     route: route,
     renderFor: renderFor,
     renderGeneric: renderGenericBar,

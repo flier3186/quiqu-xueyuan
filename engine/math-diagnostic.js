@@ -37,16 +37,38 @@
   }
   function e(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
-  // ================= 持久化 =================
+  // ================= 持久化（双写：localStorage + 主状态 S） =================
+  // P0-3：此前只写 localStorage('quiqu_math_diag_v1')，家长清理浏览器数据即丢，
+  // 孩子又得从头再做一次 12 题诊断。现在同时写进主状态 S.math.diag（随 saveState 落盘），
+  // 读取时两份取"日期较新"的一份，互为备份。
   function loadAll() {
+    var out = {};
     try {
       var raw = root.localStorage && root.localStorage.getItem(KEY);
       var o = raw ? JSON.parse(raw) : {};
-      return (o && typeof o === 'object') ? o : {};
-    } catch (e2) { return {}; }
+      if (o && typeof o === 'object') out = o;
+    } catch (e2) {}
+    try {
+      var m = root.S && root.S.math && root.S.math.diag;
+      if (m && typeof m === 'object') {
+        Object.keys(m).forEach(function (k) {
+          var a = String((out[k] || {}).date || '');
+          var b = String((m[k] || {}).date || '');
+          if (!out[k] || b > a) out[k] = m[k];
+        });
+      }
+    } catch (e2) {}
+    return out;
   }
   function saveAll(o) {
     try { if (root.localStorage) root.localStorage.setItem(KEY, JSON.stringify(o)); } catch (e2) {}
+    try {
+      if (root.S) {
+        root.S.math = root.S.math || {};
+        root.S.math.diag = o;
+        if (typeof root.saveState === 'function') root.saveState();
+      }
+    } catch (e2) {}
   }
   function getResult(semKey) { return loadAll()[semKey] || null; }
   function isStale(res) { return !res || daysBetween(res.date, todayKey()) > STALE_DAYS; }

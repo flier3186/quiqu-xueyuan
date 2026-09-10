@@ -88,7 +88,7 @@ const REVEAL_CLASSES = ['mv-bond-total', 'mv-result', 'mv-formula', 'mv-step-bon
         // 取值：bars(value) 或 parts(val)
         const vd = problem.visualData || {};
         let vals = [];
-        if (Array.isArray(vd.bars)) vals = vd.bars.map(b => +b.value);
+        if (Array.isArray(vd.bars)) vals = vd.bars.map(b => +(b.val != null ? b.val : b.value));
         else if (Array.isArray(vd.parts)) vals = vd.parts.map(p => +(p.val != null ? p.val : p.value));
         // 量条形矩形（高度≥20、宽度>5）
         const rects = [...host.querySelectorAll('svg rect')].filter(rc => {
