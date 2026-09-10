@@ -58,6 +58,54 @@
   // ---- 工具 ----
   function setLogLevel(lv) { _logLevel = lv; }
 
+  // ---- 数字→英文词归一化（朗读前把阿拉伯数字换成英文词，避免被中文 voice 读成"十"等）----
+  // 覆盖：独立整数 0-9999、序数(st/nd/rd/th)。
+  // 不动：含 CJK 的文本、小数(如 3.14)、字母数字混合(如 mp3/b2b)、>4 位数。
+  var _NUM_ONES  = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+  var _NUM_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  var _NUM_TENS  = ['','ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  function _numToEnglish(n){
+    n = Math.max(0, Math.min(9999, n|0));
+    if(n < 10) return _NUM_ONES[n];
+    if(n < 20) return _NUM_TEENS[n-10];
+    if(n < 100){ var t=_NUM_TENS[Math.floor(n/10)]; return n%10 ? t+'-'+_numToEnglish(n%10) : t; }
+    if(n < 1000){ var h=_numToEnglish(Math.floor(n/100))+' hundred'; return n%100 ? h+' '+_numToEnglish(n%100) : h; }
+    var th=_numToEnglish(Math.floor(n/1000))+' thousand';
+    return n%1000 ? th+' '+_numToEnglish(n%1000) : th;
+  }
+  function _ordinalWord(n){
+    var card = _numToEnglish(n);
+    var idx = Math.max(card.lastIndexOf(' '), card.lastIndexOf('-'));
+    var pre = idx >= 0 ? card.slice(0, idx+1) : '';
+    var last = idx >= 0 ? card.slice(idx+1) : card;
+    var ord;
+    if(last==='one') ord='first';
+    else if(last==='two') ord='second';
+    else if(last==='three') ord='third';
+    else if(last==='five') ord='fifth';
+    else if(last==='eight') ord='eighth';
+    else if(last==='nine') ord='ninth';
+    else if(last==='twelve') ord='twelfth';
+    else if(/y$/.test(last)) ord=last.slice(0,-1)+'ieth';
+    else ord=last+'th';
+    return pre+ord;
+  }
+  function _normalizeNumbers(text){
+    if(!text || typeof text!=='string') return text;
+    if(/[\u4e00-\u9fa5]/.test(text)) return text;
+    text = text.replace(/(\d+)(st|nd|rd|th)\b/gi, function(_m, num){
+      var n = parseInt(num,10);
+      if(!isFinite(n) || n<1 || n>9999) return _m;
+      return _ordinalWord(n);
+    });
+    text = text.replace(/(?<![\w.])(\d{1,4})(?![A-Za-z0-9]|\.\d)/g, function(_m, num){
+      var n = parseInt(num,10);
+      if(!isFinite(n) || n<0 || n>9999) return _m;
+      return _numToEnglish(n);
+    });
+    return text;
+  }
+
   function uuid() {
     try {
       if (global.crypto && global.crypto.randomUUID) return global.crypto.randomUUID(); // 带横杠的标准 UUID v4
@@ -219,6 +267,7 @@
 
   // 对外主入口（纯神经）：合成并播放。resolve=播放完成；reject=彻底失败（调用方降级 speechSynthesis）
   async function speak(text, opts) {
+    text = _normalizeNumbers(text);
     const myGen = ++_gen;
     const r = await synthesize(text, Object.assign({}, opts));
     if (myGen !== _gen) throw new Error('cancelled');
@@ -227,6 +276,7 @@
 
   // 浏览器内置 speechSynthesis 最终降级（speakSafe 用）
   function _browserFallback(text, opts) {
+    text = _normalizeNumbers(text);
     return new Promise((resolve) => {
       if (!('speechSynthesis' in window)) { _log('warn', 'speechSynthesis 不可用，无法降级', {}); resolve('none'); return; }
       try {
@@ -252,6 +302,7 @@
   // 统一入口：神经优先，失败自动降级浏览器 TTS。resolve('neural'|'browser'|'none')
   async function speakSafe(text, opts) {
     if (!text) return 'none';
+    text = _normalizeNumbers(text);
     try {
       await speak(text, opts);
       return 'neural';
@@ -311,7 +362,7 @@
     return report;
   }
 
-  global.NeuralTTS = { speak, speakSafe, stop, isDisabled, reset, status, configure, syncClock, setLogLevel, onLog, VOICES, _probe };
+  global.NeuralTTS = { speak, speakSafe, stop, isDisabled, reset, status, configure, syncClock, setLogLevel, onLog, _normalizeNumbers, VOICES, _probe };
 
   // ============================================================
   // VoiceCore —— 统一语音选择层（Echo 重写，替代 WebSocket 神经语音方案）
@@ -393,6 +444,7 @@
 
     // 朗读：自动选 voice，resolves 为命中的 tier 或 'none'
     function speak(text, opts) {
+      text = _normalizeNumbers(text);
       opts = opts || {};
       return new Promise(function (resolve) {
         if (!text || typeof speechSynthesis === 'undefined' || !('speechSynthesis' in window)) { resolve('none'); return; }

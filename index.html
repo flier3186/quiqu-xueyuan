@@ -6304,6 +6304,19 @@ let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
 function speak(text){
   if(!text) return;
+  // 朗读前归一化：阿拉伯数字→英文词，避免被中文 voice 读成"十"等中文数字
+  try{ if(window.NeuralTTS && NeuralTTS._normalizeNumbers) text = NeuralTTS._normalizeNumbers(text); }catch(e){}
+  if(!text) return;
+  // 一次性提示：当浏览器未安装英文语音包时（纯本地降级链会落到中文 voice 读英文）
+  if(!/[\u4e00-\u9fa5]/.test(text) && !window.__ttsEnWarned){
+    try{
+      var vs = (window.speechSynthesis && speechSynthesis.getVoices) ? speechSynthesis.getVoices() : [];
+      if(vs && vs.length && !vs.some(function(v){return /^en/i.test(v.lang);})){
+        window.__ttsEnWarned = true;
+        if(typeof toast === 'function') toast('当前未安装英文语音包，发音可能带口音（设置 → 时间和语言 → 语言 → English → 语音 → 添加）');
+      }
+    }catch(e){}
+  }
   // 三级语音链最高级：云端情感语音(CosyVoice2, 有感情起伏) → VoiceCore(Edge Online Natural) → 系统音
   try{
     if(window.CloudTTS && window.CloudTTS.isReady()){
