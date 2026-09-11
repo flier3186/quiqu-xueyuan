@@ -1230,6 +1230,47 @@ window.MathFlowV5 = {
     return this._renderL4(problem);
   },
 
+  // 语义常量保护：从题干/场景中识别单位进率等固定数值，
+  // 返回算式中不应被变异的数字下标数组（与 _mutateFormula 的 keepIdx 语义一致）。
+  // 例："1分钟"、"1分"、"60秒" 都映射到 60；"跳了38秒还差几秒到1分" 中 60 必须固定。
+  _semanticKeepIdx(base, formula){
+    try{
+      const text = String(base.scene || '') + ' ' + String(base.question || '');
+      if(!text) return null;
+      const head = String(formula || '').slice(0, String(formula || '').indexOf('=')).trim();
+      const nums = (head.match(/\d+/g) || []).map(Number);
+      if(!nums.length) return null;
+      // 规则：题干中出现左侧单位表述，且算式中有对应进率数值，则保护该数值。
+      const rules = [
+        { re: /1\s*分\s*钟?|1\s*分钟|60\s*秒|半\s*分\s*钟|半\s*分钟/, v: 60 },
+        { re: /1\s*小?时\s*[=是]?\s*60\s*分\s*钟?|1\s*小?时|60\s*分\s*钟?/, v: 60 },
+        { re: /1\s*[日天]\s*[=是]?\s*24\s*小?时|1\s*[日天]|24\s*小?时/, v: 24 },
+        { re: /1\s*周\s*期?|1\s*星期|7\s*[日天]/, v: 7 },
+        { re: /1\s*年\s*[=是]?\s*12\s*个?月|1\s*年|12\s*个?月/, v: 12 },
+        { re: /1\s*米\s*[=是]?\s*100\s*厘米|100\s*厘米\s*[=是]?\s*1\s*米/, v: 100 },
+        { re: /1\s*米\s*[=是]?\s*10\s*分米|10\s*分米\s*[=是]?\s*1\s*米/, v: 10 },
+        { re: /1\s*分米\s*[=是]?\s*10\s*厘米|10\s*厘米\s*[=是]?\s*1\s*分米/, v: 10 },
+        { re: /1\s*厘米\s*[=是]?\s*10\s*毫米|10\s*毫米\s*[=是]?\s*1\s*厘米/, v: 10 },
+        { re: /1\s*千?米\s*[=是]?\s*1000\s*米|1\s*公里\s*[=是]?\s*1000\s*米/, v: 1000 },
+        { re: /1\s*吨\s*[=是]?\s*1000\s*千?克|1000\s*千?克\s*[=是]?\s*1\s*吨/, v: 1000 },
+        { re: /1\s*千?克\s*[=是]?\s*1000\s*克|1000\s*克\s*[=是]?\s*1\s*千?克/, v: 1000 },
+        { re: /1\s*元\s*[=是]?\s*10\s*角|10\s*角\s*[=是]?\s*1\s*元/, v: 10 },
+        { re: /1\s*角\s*[=是]?\s*10\s*分|10\s*分\s*[=是]?\s*1\s*角/, v: 10 },
+        { re: /半\s*小?时/, v: 30 },
+        { re: /半\s*年/, v: 6 },
+        { re: /一\s*周\s*有\s*七\s*天|一星期有七天/, v: 7 }
+      ];
+      const keep = new Set();
+      for(let i = 0; i < rules.length; i++){
+        const r = rules[i];
+        if(r.re.test(text)){
+          nums.forEach((n, idx) => { if(n === r.v) keep.add(idx); });
+        }
+      }
+      return keep.size ? Array.from(keep).sort((a,b)=>a-b) : null;
+    }catch(e){ return null; }
+  },
+
   // ============================================================
   // 数字变异引擎：从基准题生成"同结构新数字"的变体
   // 保证图文一致、难度一致（同位数）、运算可行（整除/非负），失败则原样返回
@@ -1249,6 +1290,13 @@ window.MathFlowV5 = {
         const fm = String(problem.formula).replace(/\s/g, '');
         if(fm.indexOf('÷') >= 0 || fm.indexOf('/') >= 0) keepIdx = [1];
         else if(/\)[×x]\d+$/.test(fm)) keepIdx = ['last'];
+      }
+      // 语义常量保护：题干里出现"1分/1小时/1天/1米/1千克"等单位进率时，
+      // 算式中对应的 60/24/7/100/1000 等数字不可变异，否则会出现
+      // "跳了19秒还差几秒到1分？"变成"21-19=?"这类图文矛盾的题目。
+      const semKeep = this._semanticKeepIdx(base, base.formula);
+      if(semKeep && semKeep.length){
+        keepIdx = Array.isArray(keepIdx) ? keepIdx.concat(semKeep) : semKeep;
       }
       const m = this._mutateFormula(base.formula, keepIdx);
       if(!m) return problem;

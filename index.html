@@ -2881,13 +2881,49 @@ function speak(text){
       return;
     }
   }catch(e){}
-  // 极旧兜底（VoiceCore 未加载）
+  // 浏览器系统语音兜底（VoiceCore/CloudTTS 都不可用时）
   if(!('speechSynthesis' in window)) return;
   unlockAudio();
-  speechSynthesis.cancel();
+  _speakSystemTTS(text);
+}
+
+// 系统 TTS：等语音列表加载完成后再播报，解决 Chrome 未加载语音包时点击无声音的问题。
+function _speakSystemTTS(text){
+  const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices() || []) : [];
+  // 语音列表未就绪时先排队，unlockAudio 的 voiceschanged 会触发重播
+  if(!voices.length || !_speakVoicesReady){
+    _pendingSpeak = { text: text, ts: Date.now() };
+    // 保险：2 秒后若仍未触发 voiceschanged，直接用当前可用语音播报
+    setTimeout(function(){
+      if(_pendingSpeak && _pendingSpeak.text === text && ('speechSynthesis' in window)){
+        const vNow = speechSynthesis.getVoices() || [];
+        if(vNow.length){ _pendingSpeak = null; _doSpeakSystem(text, vNow); }
+      }
+    }, 1800);
+    return;
+  }
+  _doSpeakSystem(text, voices);
+}
+
+function _doSpeakSystem(text, voices){
+  try{ speechSynthesis.cancel(); }catch(e){}
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = /[\u4e00-\u9fa5]/.test(text) ? 'zh-CN' : 'en-US';
-  u.volume = 1; u.rate = 0.9; u.pitch = 1.0;
+  const isZh = /[\u4e00-\u9fa5]/.test(text);
+  u.lang = isZh ? 'zh-CN' : 'en-US';
+  u.volume = 1; u.rate = isZh ? 1.0 : 0.9; u.pitch = isZh ? 1.0 : 1.1;
+  // 优先级：同语言自然/在线语音 > 同语言女声 > 同语言任意
+  const score = function(v){
+    let s = 0;
+    const vl = (v.lang || '').toLowerCase();
+    const want = isZh ? 'zh' : 'en';
+    if(vl.indexOf(want) >= 0) s += 200;
+    if(/natural|online|neural/i.test(v.name)) s += 100;
+    if(/female|samantha|victoria|zira|aria|jenny|woman|girl|xiaoxiao|xiaoyi|yaoyao/i.test(v.name)) s += 30;
+    return s;
+  };
+  const sameLang = voices.filter(function(v){ return String(v.lang || '').toLowerCase().indexOf(isZh?'zh':'en') >= 0; });
+  const preferred = (sameLang.length ? sameLang : voices).sort(function(a,b){ return score(b) - score(a); })[0];
+  if(preferred){ try{ u.voice = preferred; }catch(e){} }
   try{ speechSynthesis.resume(); }catch(e){}
   speechSynthesis.speak(u);
 }
@@ -2961,20 +2997,6 @@ const CloudTTSPanel = {
   }
 };
 
-function _doSpeak(text, voices){
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US';
-  u.volume = 1; u.rate = 0.85; u.pitch = 1.1;
-  // 优先级：自然神经语音(Natural/Online) > Google 英声 > 英文女声 > 任意英文
-  const score = v => (/natural/i.test(v.name) ? 100 : /online/i.test(v.name) ? 80 : /google/i.test(v.name) && /en/i.test(v.lang) ? 60 : 0);
-  const preferred = voices.filter(v=>/en[-_]US/i.test(v.lang) && /female|samantha|victoria|zira|aria|jenny|woman|girl/i.test(v.name)).sort((a,b)=>score(b)-score(a))[0]
-    || voices.filter(v=>/en[-_]US/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0]
-    || voices.filter(v=>/^en/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
-  if(preferred){ try{ u.voice = preferred; }catch(e){} }
-  // 解决部分浏览器暂停后无法继续的问题
-  try{ speechSynthesis.resume(); }catch(e){}
-  speechSynthesis.speak(u);
-}
 // 解锁音频引擎：移动端浏览器要求用户手势交互后才能播放音频
 function unlockAudio(){
   if(_speakUnlocked) return;
@@ -2994,12 +3016,12 @@ function unlockAudio(){
       speechSynthesis.addEventListener('voiceschanged', function handler(){
         speechSynthesis.removeEventListener('voiceschanged', handler);
         const v = speechSynthesis.getVoices() || [];
-        if(v.some(x=>/en/i.test(x.lang))){
+        if(v.length){
           _speakVoicesReady = true;
           if(_pendingSpeak){
             const pending = _pendingSpeak;
             _pendingSpeak = null;
-            _doSpeak(pending.text, v);
+            _speakSystemTTS(pending.text);
           }
         }
       });
@@ -3911,6 +3933,7 @@ function renderMath(grade='3'){
   const _todayKey = (function(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); })();
   if(!S.math.daily || S.math.daily.date !== _todayKey || S.math.daily.semKey !== semKey){
     S.math.daily = { date:_todayKey, semKey:semKey, done:0, round:1 };
+    window.MATH_DAILY_COMPLETE_DISMISSED = false;
     try{ saveState(); }catch(e){}
   }
   window.MATH_DAILY = { count:MATH_DAILY_COUNT, done:S.math.daily.done, round:S.math.daily.round, date:_todayKey };
@@ -4045,17 +4068,6 @@ function renderMath(grade='3'){
           <button onclick="mathStartReview()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--coral);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">开始再练 →</button>
         </div>` : '')}
         ${_diagEntry}
-        ${(window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT && !window.MATH_IS_REVIEW) ? `
-        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#E1F5EE,#E6F1FB);border-left:4px solid var(--teal);border-radius:12px;padding:14px 16px;margin-bottom:14px">
-          <span style="font-size:24px">🎉</span>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:14px;font-weight:800;color:var(--teal-700)">今日 ${MATH_DAILY_COUNT} 题已完成</div>
-            <div style="font-size:12px;color:var(--text-2);margin-top:2px">
-              ${window.MATH_SEGMENT ? `当前「${window.MATH_SEGMENT.kp}」${window.MATH_SEGMENT.next?` · 下一节「${window.MATH_SEGMENT.next}」`:''}` : '可以收工，也可以继续往下挑战'}
-            </div>
-          </div>
-          <button onclick="mathNextProblem()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--teal);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">继续挑战下一单元 →</button>
-        </div>` : ''}
         ${(bankTotal && pIdx >= bankTotal - 1 && !window.MATH_IS_REVIEW) ? `
         <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FAEEDA,#FFF6E2);border-left:4px solid var(--yellow);border-radius:12px;padding:14px 16px;margin-bottom:14px">
           <span style="font-size:24px">🏆</span>
@@ -4067,7 +4079,11 @@ function renderMath(grade='3'){
           <button onclick="_resetSemIdx()" style="padding:9px 16px;border-radius:20px;border:1px solid var(--ink-200);background:white;color:var(--text-2);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">重做本册</button>
         </div>` : ''}
         ${window.__mathDiagPanel ? '' : renderMathStageProgress()}
-        <div id="mathStage" class="math-stage-host">${window.__mathDiagPanel || (window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))}</div>
+        <div id="mathStage" class="math-stage-host">${window.__mathDiagPanel || (
+          (!window.MATH_IS_REVIEW && !window.MATH_IS_DIAG && window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT && !window.MATH_DAILY_COMPLETE_DISMISSED && !(bankTotal && pIdx >= bankTotal - 1))
+            ? renderDailyCompletionCard()
+            : (window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))
+        )}</div>
         <div class="knowledge-tree">
           <div class="card-title" style="margin-bottom:14px">🌳 知识图谱</div>
           ${(data.units||[]).map(k=>`
@@ -4083,6 +4099,32 @@ function renderMath(grade='3'){
       ${renderSidePanel()}
     </div>`;
 }
+
+// 今日日练完成卡：答满 14 题后主动占据练习区，给孩子明确的"今日目标达成"反馈，
+// 并提供"继续挑战 / 去学英语 / 休息"三个出口，避免"做完没有完成提示、也没有下一项选项"的困惑。
+function renderDailyCompletionCard(){
+  const nextKp = window.MATH_SEGMENT && window.MATH_SEGMENT.next ? `下一节将学习「${window.MATH_SEGMENT.next}」` : '可以收工，也可以继续往下挑战';
+  return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
+    <span class="cpa-tag" style="background:var(--teal);color:#fff">🎉 今日目标达成</span>
+    <div style="margin:20px 0 10px;font-size:24px;font-weight:900;color:var(--teal-700)">数学日练完成啦！</div>
+    <div style="font-size:15px;color:var(--text-2);line-height:1.7;margin-bottom:18px">
+      已完成今日 <b style="color:var(--teal-700)">${MATH_DAILY_COUNT}</b> 题挑战，给坚持不懈的你点个大大的赞 👍<br>
+      ${nextKp}
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+      <button onclick="mathDismissDailyComplete('continue')" style="padding:12px 22px;border-radius:24px;border:none;background:var(--teal);color:white;font-size:15px;font-weight:800;cursor:pointer">继续挑战下一题 →</button>
+      <button onclick="mathDismissDailyComplete('english')" style="padding:12px 22px;border-radius:24px;border:2px solid var(--teal);background:white;color:var(--teal-700);font-size:15px;font-weight:700;cursor:pointer">📖 去学英语</button>
+      <button onclick="mathDismissDailyComplete('dashboard')" style="padding:12px 22px;border-radius:24px;border:2px solid var(--ink-200);background:white;color:var(--text-2);font-size:15px;font-weight:700;cursor:pointer">🏠 休息一下</button>
+    </div>
+  </div>`;
+}
+function mathDismissDailyComplete(go){
+  window.MATH_DAILY_COMPLETE_DISMISSED = true;
+  if(go === 'continue') render();
+  else if(go === 'english') switchView('english');
+  else if(go === 'dashboard') switchView('dashboard');
+}
+window.mathDismissDailyComplete = mathDismissDailyComplete;
 
 // ===== 阶段进度条（V5 九步进度指示器） =====
 function renderMathStageProgress(){
@@ -4376,6 +4418,7 @@ function mathNextProblem(){
     const today = _mathTodayKey();
     if(!S.math.daily || S.math.daily.date !== today || S.math.daily.semKey !== semKey){
       S.math.daily = { date:today, semKey:semKey, done:0, round:1 };
+      window.MATH_DAILY_COMPLETE_DISMISSED = false;
     }
     S.math.daily.done++;
     // P2-10：完成/中断埋点（家长面板的"完成率/中断次数"据此统计）
