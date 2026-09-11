@@ -1,51 +1,73 @@
 window.MATH_BY_GRADE = window.MATH_BY_GRADE || {};
 window.MATH_BY_GRADE["3a"] = {
-    "title": "三年级上册·万以内加减法与时分秒",
-    "sub": "数与代数 · 图形与几何 · 统计概率 · 综合实践",
+    "title": "三年级上册·2024版人教版（观察物体·混合运算·毫米分米千米·曹冲称象·多位数乘一位数·数字编码·线和角·分数）",
+    "sub": "数与代数 · 图形与几何 · 综合与实践",
     "progress": 0,
     "units": [
         {
-            "name": "时、分、秒",
+            "name": "观察物体(一)",
             "level": "current",
             "children": [
                 {
-                    "name": "秒的认识",
+                    "name": "从不同位置观察物体",
                     "level": "current"
                 },
                 {
-                    "name": "时间计算",
+                    "name": "立体图形与平面图形",
+                    "level": "locked"
+                },
+                {
+                    "name": "搭一搭、看一看",
                     "level": "locked"
                 }
             ]
         },
         {
-            "name": "万以内的加减法",
+            "name": "混合运算",
             "level": "locked",
             "children": [
                 {
-                    "name": "口算加减",
+                    "name": "乘加、乘减两步式题",
                     "level": "locked"
                 },
                 {
-                    "name": "笔算加减",
+                    "name": "除加、除减两步式题",
                     "level": "locked"
                 },
                 {
-                    "name": "加减法验算",
+                    "name": "带小括号的两步式题",
                     "level": "locked"
                 }
             ]
         },
         {
-            "name": "测量",
+            "name": "毫米、分米和千米",
             "level": "locked",
             "children": [
                 {
-                    "name": "毫米与分米",
+                    "name": "毫米的认识",
                     "level": "locked"
                 },
                 {
-                    "name": "千米与吨",
+                    "name": "分米的认识",
+                    "level": "locked"
+                },
+                {
+                    "name": "千米与米的换算",
+                    "level": "locked"
+                }
+            ]
+        },
+        {
+            "name": "曹冲称象的故事（综合实践）",
+            "level": "locked",
+            "children": [
+                {
+                    "name": "克、千克、吨",
+                    "level": "locked"
+                },
+                {
+                    "name": "等量代换的思想",
                     "level": "locked"
                 }
             ]
@@ -59,27 +81,49 @@ window.MATH_BY_GRADE["3a"] = {
                     "level": "locked"
                 },
                 {
-                    "name": "笔算乘法",
-                    "level": "locked"
-                }
-            ]
-        },
-        {
-            "name": "长方形和正方形",
-            "level": "locked",
-            "children": [
-                {
-                    "name": "四边形认识",
+                    "name": "笔算乘法（连续进位）",
                     "level": "locked"
                 },
                 {
-                    "name": "周长",
+                    "name": "估算与笔算结合",
                     "level": "locked"
                 }
             ]
         },
         {
-            "name": "分数初步认识",
+            "name": "数字编码（综合实践）",
+            "level": "locked",
+            "children": [
+                {
+                    "name": "生活中的编码",
+                    "level": "locked"
+                },
+                {
+                    "name": "设计编码方案",
+                    "level": "locked"
+                }
+            ]
+        },
+        {
+            "name": "线和角",
+            "level": "locked",
+            "children": [
+                {
+                    "name": "线段、直线、射线",
+                    "level": "locked"
+                },
+                {
+                    "name": "直角、锐角、钝角",
+                    "level": "locked"
+                },
+                {
+                    "name": "平角与周角",
+                    "level": "locked"
+                }
+            ]
+        },
+        {
+            "name": "分数的初步认识",
             "level": "locked",
             "children": [
                 {
@@ -87,17 +131,25 @@ window.MATH_BY_GRADE["3a"] = {
                     "level": "locked"
                 },
                 {
-                    "name": "同分母加减",
+                    "name": "几分之几",
+                    "level": "locked"
+                },
+                {
+                    "name": "同分母分数比大小",
                     "level": "locked"
                 }
             ]
         },
         {
-            "name": "数学广角",
+            "name": "复习与关联",
             "level": "locked",
             "children": [
                 {
-                    "name": "集合",
+                    "name": "数与运算",
+                    "level": "locked"
+                },
+                {
+                    "name": "图形的认识与测量",
                     "level": "locked"
                 }
             ]
@@ -105,1613 +157,778 @@ window.MATH_BY_GRADE["3a"] = {
     ],
     "problems": [
         {
-            "scene": "体育课上小红跳绳，老师计时1分钟。小红跳了45秒就累了，她想知道距离1分钟还差几秒。",
-            "question": "距离1分钟(60秒)还差几秒？",
-            "formula": "60 - 45 = ?",
-            "answer": 15,
+            "id": "3A-OBS-01",
+            "scene": "课堂上每个同学都拿了一个正方体魔方观察。老师问：从正面看这个正方体，看到的面是什么形状？",
+            "question": "从正面观察一个正方体，看到的面是( )形。",
+            "formula": "",
+            "answer": "正方形",
             "choices": [
-                15,
-                25,
-                5,
-                105
+                "正方形",
+                "长方形",
+                "三角形",
+                "圆"
+            ],
+            "knowledge": "观察物体",
+            "difficulty": 2,
+            "hint": "正方体的六个面都是完全相同的正方形",
+            "variants": [
+                {
+                    "question": "从上面观察同一个正方体，看到的面是( )形。",
+                    "formula": "",
+                    "answer": "正方形",
+                    "hint": "每个面都是正方形"
+                }
             ],
             "visualType": "numberBond",
             "visualData": {
                 "type": "numberBond",
-                "total": 60,
+                "total": "正方形",
                 "parts": [
                     {
-                        "value": 45,
-                        "label": "已过",
-                        "color": "#FB923C"
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
                     },
                     {
-                        "value": 15,
-                        "label": "还差",
+                        "label": "另一部分",
+                        "val": null,
                         "color": "#00A896"
                     }
                 ]
             },
-            "knowledge": "秒的认识",
-            "difficulty": 1,
-            "hint": "1分=60秒，用减法",
-            "variants": [
-                {
-                    "question": "跳了38秒还差几秒到1分？",
-                    "formula": "60-38=?",
-                    "answer": 22,
-                    "hint": "60减38"
-                },
-                {
-                    "question": "跳了52秒还差几秒到1分？",
-                    "formula": "60-52=?",
-                    "answer": 8,
-                    "hint": "60减52"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 1分钟等于多少秒？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "60秒",
-                        "100秒",
-                        "30秒",
-                        "12秒"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "60秒",
-                    "explain": "1分=60秒"
+                    "answer": "认真读题，明确问题",
+                    "explain": "从正面观察一个正方体，看到的面是( )形。"
                 },
                 {
-                    "q": "🔢 已经过了多少秒？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "45秒",
-                        "60秒",
-                        "15秒",
-                        "不知道"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "45秒",
-                    "explain": "已经过了45秒"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "正方体的六个面都是完全相同的正方形"
                 },
                 {
-                    "q": "🧩 用什么方法求还差多少秒？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "减法",
-                        "加法",
-                        "乘法",
-                        "除法"
+                        "观察立体图形的面",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "减法",
-                    "explain": "用总秒数减去已过的秒数：60-45=15"
+                    "answer": "观察立体图形的面",
+                    "explain": "正方体的六个面都是完全相同的正方形"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "数字Bond图展示总秒数60分成已过45秒和还差15秒",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "60-45=15，从总数中减去一部分",
+                    "text": "正方体的六个面都是完全相同的正方形",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求剩余用减法：总数-已用=剩余",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
-            ],
-            "id": "3A-TIME-01"
+            ]
         },
         {
-            "scene": "科学课上老师展示了一个大钟面，秒针滴答滴答走了一圈。小明好奇秒针走一圈到底是多少秒。",
-            "question": "秒针走一圈是多少秒？",
-            "formula": "秒针一圈 = ? 秒",
-            "answer": 60,
+            "id": "3A-OBS-02",
+            "scene": "小明家有一个茶叶筒（圆柱形的）。他分别从侧面和上面观察它。",
+            "question": "从侧面观察一个圆柱，看到的形状是( )形。",
+            "formula": "",
+            "answer": "长方形",
             "choices": [
-                60,
-                100,
-                30,
-                12
+                "长方形",
+                "圆",
+                "正方形",
+                "三角形"
             ],
-            "visualType": "numberLine",
-            "visualData": {
-                "start": 0,
-                "end": 60,
-                "points": [
-                    {
-                        "pos": 0,
-                        "label": "起点",
-                        "color": "#00A896"
-                    },
-                    {
-                        "pos": 60,
-                        "label": "一圈",
-                        "color": "#F5B800"
-                    }
-                ],
-                "highlight": [
-                    0,
-                    60
-                ]
-            },
-            "knowledge": "秒的认识",
-            "difficulty": 1,
-            "hint": "秒针走一圈=1分=60秒",
-            "variants": [
-                {
-                    "question": "秒针走半圈多少秒？",
-                    "formula": "60÷2=?",
-                    "answer": 30,
-                    "hint": "半圈就是30秒"
-                },
-                {
-                    "question": "秒针走两圈多少秒？",
-                    "formula": "60×2=?",
-                    "answer": 120,
-                    "hint": "两圈120秒"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「秒针走一圈是多少秒？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-02"
-        },
-        {
-            "scene": "动画片中一首歌播放了1分20秒。小亮想知道这等于多少秒，好记录在自己的小本子上。",
-            "question": "1分20秒等于多少秒？",
-            "formula": "60 + 20 = ?",
-            "answer": 80,
-            "choices": [
-                80,
-                120,
-                20,
-                70
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "type": "bar",
-                "bars": [
-                    {
-                        "label": "1分",
-                        "value": 60,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "20秒",
-                        "value": 20,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "共80秒",
-                        "value": 80,
-                        "color": "#E8A0BF"
-                    }
-                ],
-                "total": 80
-            },
-            "knowledge": "秒的认识",
-            "difficulty": 1,
-            "hint": "1分=60秒，再加20秒",
-            "variants": [
-                {
-                    "question": "1分15秒=多少秒？",
-                    "formula": "60+15=?",
-                    "answer": 75,
-                    "hint": "60加15"
-                },
-                {
-                    "question": "1分40秒=多少秒？",
-                    "formula": "60+40=?",
-                    "answer": 100,
-                    "hint": "60加40"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 1分等于多少秒？",
-                    "choices": [
-                        "60秒",
-                        "100秒",
-                        "30秒",
-                        "120秒"
-                    ],
-                    "answer": "60秒",
-                    "explain": "1分=60秒"
-                },
-                {
-                    "q": "🔢 先换算再计算",
-                    "choices": [
-                        "60+20=80",
-                        "60-20=?",
-                        "60×20=?",
-                        "60÷20=?"
-                    ],
-                    "answer": "60+20=80",
-                    "explain": "先把1分换算成60秒，再加20秒"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "加法",
-                        "减法",
-                        "乘法",
-                        "除法"
-                    ],
-                    "answer": "加法",
-                    "explain": "把两部分合起来用加法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图分两段：1分(60秒)和20秒，合起来80秒",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "1分20秒=60+20=80秒",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "时间换算：先把大单位换成小单位再相加",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-03"
-        },
-        {
-            "scene": "周末全家坐火车去外婆家，火车9时从车站出发，路上行驶了3个小时。妈妈问小明几点能到。",
-            "question": "火车几点到达？",
-            "formula": "9 + 3 = ? (时)",
-            "answer": 12,
-            "choices": [
-                11,
-                12,
-                13,
-                6
-            ],
-            "visualType": "numberLine",
-            "visualData": {
-                "start": 8,
-                "end": 13,
-                "points": [
-                    {
-                        "pos": 9,
-                        "label": "出发",
-                        "color": "#00A896"
-                    },
-                    {
-                        "pos": 12,
-                        "label": "到达",
-                        "color": "#F5B800"
-                    }
-                ],
-                "highlight": [
-                    9,
-                    12
-                ]
-            },
-            "knowledge": "时间计算",
+            "knowledge": "观察物体",
             "difficulty": 2,
-            "hint": "结束时刻=开始时刻+经过时间",
+            "hint": "圆柱侧面展开是长方形，正视图为长方形",
             "variants": [
                 {
-                    "question": "8时出发行驶4时几点到？",
-                    "formula": "8+4=?",
-                    "answer": 12,
-                    "hint": "8加4"
-                },
-                {
-                    "question": "10时出发行驶5时几点到？",
-                    "formula": "10+5=?",
-                    "answer": 15,
-                    "hint": "10加5"
+                    "question": "从上面观察同一个圆柱，看到的形状是( )形。",
+                    "formula": "",
+                    "answer": "圆",
+                    "hint": "上面看是圆形底面"
                 }
             ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "长方形",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「火车几点到达？」"
+                    "answer": "认真读题，明确问题",
+                    "explain": "从侧面观察一个圆柱，看到的形状是( )形。"
                 },
                 {
-                    "q": "🔢 题目给了哪些关键信息？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "圆柱侧面展开是长方形，正视图为长方形"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "观察立体图形的面",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "观察立体图形的面",
+                    "explain": "圆柱侧面展开是长方形，正视图为长方形"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "text": "圆柱侧面展开是长方形，正视图为长方形",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
-            ],
-            "id": "3A-TIME-04"
+            ]
         },
         {
-            "scene": "图书馆下午2时开门，小芳下午4时离开图书馆。她想知道自己在图书馆看了多久的书。",
-            "question": "小芳在图书馆待了几小时？",
-            "formula": "16 - 14 = ?",
+            "id": "3A-OBS-03",
+            "scene": "美术课搭积木：把 3 个同样的小正方体横着排成一排。",
+            "question": "从正面看这排积木，能看到( )个正方形。",
+            "formula": "3 = ?",
+            "answer": 3,
+            "choices": [
+                3,
+                2,
+                4,
+                1
+            ],
+            "knowledge": "观察物体",
+            "difficulty": 2,
+            "hint": "3 个并排，正面看到 3 个正方形",
+            "variants": [
+                {
+                    "question": "把 2 个同样的小正方体上下叠放，从正面看能看到( )个正方形。",
+                    "formula": "2 = ?",
+                    "answer": 2,
+                    "hint": "上下 2 个，正面看到 2 个"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 3,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 2,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 1,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "从正面看这排积木，能看到( )个正方形。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "3 个并排，正面看到 3 个正方形"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "数一数",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "数一数",
+                    "explain": "3 个并排，正面看到 3 个正方形"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "3 个并排，正面看到 3 个正方形",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-MIX-01",
+            "scene": "文具店里一支钢笔 6 元，一个笔记本 4 元。小明要买 3 支钢笔和 1 个笔记本，他先算一算一共要花多少钱。",
+            "question": "一共要付多少元？",
+            "formula": "3 × 6 + 4 = ?",
+            "answer": 22,
+            "choices": [
+                18,
+                22,
+                24,
+                26
+            ],
+            "knowledge": "混合运算",
+            "difficulty": 2,
+            "hint": "先算乘法 3×6=18，再算加法 18+4=22（先乘除后加减）",
+            "variants": [
+                {
+                    "question": "买 5 支铅笔（每支 2 元）和 1 块橡皮（3 元），一共多少元？",
+                    "formula": "5 × 2 + 3 = ?",
+                    "answer": 13,
+                    "hint": "先算 5×2=10，再算 10+3=13"
+                },
+                {
+                    "question": "买 4 个面包（每个 5 元），付给售货员 30 元，应找回多少元？",
+                    "formula": "30 - 4 × 5 = ?",
+                    "answer": 10,
+                    "hint": "先算 4×5=20，再算 30-20=10"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 22,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 11,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 11,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "一共要付多少元？"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "先算乘法 3×6=18，再算加法 18+4=22（先乘除后加减）"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "乘加两步式题",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "乘加两步式题",
+                    "explain": "先算乘法 3×6=18，再算加法 18+4=22（先乘除后加减）"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "先算乘法 3×6=18，再算加法 18+4=22（先乘除后加减）",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-MIX-02",
+            "scene": "每盒铅笔 8 元，小明买了 2 盒，又买了一块 3 元的橡皮。",
+            "question": "小明一共花了多少元？",
+            "formula": "2 × 8 + 3 = ?",
+            "answer": 19,
+            "choices": [
+                16,
+                19,
+                22,
+                27
+            ],
+            "knowledge": "混合运算",
+            "difficulty": 2,
+            "hint": "先算乘法 2×8=16，再加 3 得 19",
+            "variants": [
+                {
+                    "question": "4 支笔每支 2 元，和 1 本 7 元的本子，一共多少元？",
+                    "formula": "4 × 2 + 7 = ?",
+                    "answer": 15,
+                    "hint": "先算 4×2=8，再加 7"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 19,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 10,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 9,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "小明一共花了多少元？"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "先算乘法 2×8=16，再加 3 得 19"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "乘加两步式题",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "乘加两步式题",
+                    "explain": "先算乘法 2×8=16，再加 3 得 19"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "先算乘法 2×8=16，再加 3 得 19",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-MIX-03",
+            "scene": "小军有 24 元，先买 3 支笔（每支 4 元），剩下的钱买每本 6 元的本子。",
+            "question": "剩下的钱能买几本本子？",
+            "formula": "(24 - 3 × 4) ÷ 6 = ?",
             "answer": 2,
             "choices": [
                 2,
-                6,
-                12,
-                4
+                3,
+                4,
+                6
             ],
-            "visualType": "numberBond",
-            "visualData": {
-                "total": 16,
-                "parts": [
-                    {
-                        "val": 14,
-                        "color": "#00A896"
-                    },
-                    {
-                        "val": 2,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "时间计算",
+            "knowledge": "混合运算",
             "difficulty": 2,
-            "hint": "经过时间=结束-开始",
+            "hint": "先算括号里 24-12=12，再算 12÷6=2",
             "variants": [
                 {
-                    "question": "9时到12时经过几时？",
-                    "formula": "12-9=?",
+                    "question": "36 元买 4 支笔（每支 3 元），剩下的钱买每本 8 元的本子，能买几本？",
+                    "formula": "(36 - 4 × 3) ÷ 8 = ?",
                     "answer": 3,
-                    "hint": "12减9"
-                },
-                {
-                    "question": "8时到11时经过几时？",
-                    "formula": "11-8=?",
-                    "answer": 3,
-                    "hint": "11减8"
+                    "hint": "括号里 36-12=24，24÷8=3"
                 }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「小芳在图书馆待了几小时？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-05"
-        },
-        {
-            "scene": "小明8时10分开始写作业，写了25分钟后完成。他想算算自己几点写完作业。",
-            "question": "小明几点写完作业？",
-            "formula": "8时10分 + 25分 = ?",
-            "answer": 35,
-            "choices": [
-                35,
-                33,
-                15,
-                25
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 35,
-                "parts": [
-                    {
-                        "label": "已过10分",
-                        "val": 10,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "再写25分",
-                        "val": 25,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "时间计算",
-            "difficulty": 2,
-            "hint": "10分加25分=35分，8时35分",
-            "variants": [
-                {
-                    "question": "8:20开始写35分后几点完？",
-                    "formula": "20+35=?",
-                    "answer": 55,
-                    "hint": "8时55分完"
-                },
-                {
-                    "question": "9:05开始写30分后几分完？",
-                    "formula": "5+30=?",
-                    "answer": 35,
-                    "hint": "9时35分完"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「小明几点写完作业？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-06"
-        },
-        {
-            "scene": "文具店里铅笔35元一盒，彩笔27元一盒。小红想各买一盒，她要算算一共多少元。",
-            "question": "买两盒一共多少元？",
-            "formula": "35 + 27 = ?",
-            "answer": 62,
-            "choices": [
-                62,
-                52,
-                72,
-                58
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "type": "bar",
-                "bars": [
-                    {
-                        "label": "第一部分",
-                        "value": 35,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "第二部分",
-                        "value": 27,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "合计62",
-                        "value": 62,
-                        "color": "#E8A0BF"
-                    }
-                ],
-                "total": 62
-            },
-            "knowledge": "两位数加两位数口算",
-            "difficulty": 2,
-            "hint": "先算35+20=55再算55+7",
-            "variants": [
-                {
-                    "question": "28+36=?",
-                    "formula": "28+36=?",
-                    "answer": 64,
-                    "hint": "28+30再加6"
-                },
-                {
-                    "question": "45+19=?",
-                    "formula": "45+19=?",
-                    "answer": 64,
-                    "hint": "45+20再减1"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 这道题要求什么？",
-                    "choices": [
-                        "求两部分合起来的总数",
-                        "求剩下的部分",
-                        "求每份是多少",
-                        "求谁比谁多"
-                    ],
-                    "answer": "求两部分合起来的总数",
-                    "explain": "把35和27合起来"
-                },
-                {
-                    "q": "🔢 怎么拆数口算？",
-                    "choices": [
-                        "先算35+20=55，再算+7",
-                        "直接列竖式",
-                        "用乘法",
-                        "用除法"
-                    ],
-                    "answer": "先算35+20=55，再算+7",
-                    "explain": "把27拆成20+7，分两步加"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "拆数法口算",
-                        "列竖式笔算",
-                        "乘法",
-                        "减法"
-                    ],
-                    "answer": "拆数法口算",
-                    "explain": "两位数加两位数口算：拆一个数，分两步加"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图展示35和27两部分合起来是62",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "35+27=62，把27拆成20+7",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "两位数加两位数口算：拆数法，先加整十再加个位",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-07"
-        },
-        {
-            "scene": "学校组织捐书活动，三(1)班捐了48本，三(2)班捐了36本。大队部要统计两个班一共捐了多少本。",
-            "question": "两个班一共捐了多少本？",
-            "formula": "48 + 36 = ?",
-            "answer": 84,
-            "choices": [
-                84,
-                74,
-                94,
-                64
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "type": "bar",
-                "bars": [
-                    {
-                        "label": "第一部分",
-                        "value": 48,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "第二部分",
-                        "value": 36,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "合计84",
-                        "value": 84,
-                        "color": "#E8A0BF"
-                    }
-                ],
-                "total": 84
-            },
-            "knowledge": "两位数加两位数口算",
-            "difficulty": 2,
-            "hint": "先算48+30=78再算78+6",
-            "variants": [
-                {
-                    "question": "37+45=?",
-                    "formula": "37+45=?",
-                    "answer": 82,
-                    "hint": "37+40再加5"
-                },
-                {
-                    "question": "56+28=?",
-                    "formula": "56+28=?",
-                    "answer": 84,
-                    "hint": "56+20再加8"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 这道题要求什么？",
-                    "choices": [
-                        "求两部分合起来的总数",
-                        "求剩下的部分",
-                        "求每份是多少",
-                        "求谁比谁多"
-                    ],
-                    "answer": "求两部分合起来的总数",
-                    "explain": "把48和36合起来"
-                },
-                {
-                    "q": "🔢 怎么拆数口算？",
-                    "choices": [
-                        "先算48+30=78，再算+6",
-                        "直接列竖式",
-                        "用乘法",
-                        "用除法"
-                    ],
-                    "answer": "先算48+30=78，再算+6",
-                    "explain": "把36拆成30+6，分两步加"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "拆数法口算",
-                        "列竖式笔算",
-                        "乘法",
-                        "减法"
-                    ],
-                    "answer": "拆数法口算",
-                    "explain": "两位数加两位数口算：拆一个数，分两步加"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图展示48和36两部分合起来是84",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "48+36=84，把36拆成30+6",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "两位数加两位数口算：拆数法，先加整十再加个位",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-08"
-        },
-        {
-            "scene": "小亮集邮，动物邮票有23枚，植物邮票有49枚。他想知道自己的邮票一共多少枚。",
-            "question": "小亮一共有多少枚邮票？",
-            "formula": "23 + 49 = ?",
-            "answer": 72,
-            "choices": [
-                72,
-                62,
-                82,
-                52
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "type": "bar",
-                "bars": [
-                    {
-                        "label": "第一部分",
-                        "value": 23,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "第二部分",
-                        "value": 49,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "合计72",
-                        "value": 72,
-                        "color": "#E8A0BF"
-                    }
-                ],
-                "total": 72
-            },
-            "knowledge": "两位数加两位数口算",
-            "difficulty": 2,
-            "hint": "先算23+40=63再算63+9",
-            "variants": [
-                {
-                    "question": "34+48=?",
-                    "formula": "34+48=?",
-                    "answer": 82,
-                    "hint": "34+40再加8"
-                },
-                {
-                    "question": "19+55=?",
-                    "formula": "19+55=?",
-                    "answer": 74,
-                    "hint": "19+50再加5"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 这道题要求什么？",
-                    "choices": [
-                        "求两部分合起来的总数",
-                        "求剩下的部分",
-                        "求每份是多少",
-                        "求谁比谁多"
-                    ],
-                    "answer": "求两部分合起来的总数",
-                    "explain": "把23和49合起来"
-                },
-                {
-                    "q": "🔢 怎么拆数口算？",
-                    "choices": [
-                        "先算23+40=63，再算+9",
-                        "直接列竖式",
-                        "用乘法",
-                        "用除法"
-                    ],
-                    "answer": "先算23+40=63，再算+9",
-                    "explain": "把49拆成40+9，分两步加"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "拆数法口算",
-                        "列竖式笔算",
-                        "乘法",
-                        "减法"
-                    ],
-                    "answer": "拆数法口算",
-                    "explain": "两位数加两位数口算：拆一个数，分两步加"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图展示23和49两部分合起来是72",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "23+49=72，把49拆成40+9",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "两位数加两位数口算：拆数法，先加整十再加个位",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-09"
-        },
-        {
-            "scene": "小芳有65颗糖果，分给小朋友28颗。她想知道自己还剩多少颗糖果。",
-            "question": "小芳还剩多少颗糖果？",
-            "formula": "65 - 28 = ?",
-            "answer": 37,
-            "choices": [
-                37,
-                47,
-                33,
-                43
             ],
             "visualType": "numberBond",
             "visualData": {
                 "type": "numberBond",
-                "total": 65,
+                "total": 2,
                 "parts": [
                     {
-                        "value": 28,
-                        "label": "减去的",
-                        "color": "#FB923C"
-                    },
-                    {
-                        "value": 37,
-                        "label": "剩下的",
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "两位数减两位数口算",
-            "difficulty": 2,
-            "hint": "先算65-20=45再算45-8",
-            "variants": [
-                {
-                    "question": "72-35=?",
-                    "formula": "72-35=?",
-                    "answer": 37,
-                    "hint": "72-30再减5"
-                },
-                {
-                    "question": "56-29=?",
-                    "formula": "56-29=?",
-                    "answer": 27,
-                    "hint": "56-30再加1"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 这道题要求什么？",
-                    "choices": [
-                        "求剩下的部分（差）",
-                        "求总数",
-                        "求每份是多少",
-                        "求谁是谁的几倍"
-                    ],
-                    "answer": "求剩下的部分（差）",
-                    "explain": "从65里去掉28"
-                },
-                {
-                    "q": "🔢 怎么拆数口算？",
-                    "choices": [
-                        "先算65-20=45，再算-8",
-                        "直接列竖式",
-                        "用乘法",
-                        "用除法"
-                    ],
-                    "answer": "先算65-20=45，再算-8",
-                    "explain": "把28拆成20+8，分两步减"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "拆数法口算",
-                        "列竖式笔算",
-                        "乘法",
-                        "加法"
-                    ],
-                    "answer": "拆数法口算",
-                    "explain": "两位数减两位数口算：拆减数，分两步减"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "数字Bond图：总数65，减去28，剩37",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "65-28=37，拆数法",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "两位数减两位数口算：拆减数，分两步减",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-10"
-        },
-        {
-            "scene": "学校体育室有82个皮球，借给三(1)班45个。体育老师要算算还剩多少个皮球。",
-            "question": "体育室还剩多少个皮球？",
-            "formula": "82 - 45 = ?",
-            "answer": 37,
-            "choices": [
-                37,
-                47,
-                27,
-                43
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": 82,
-                "parts": [
-                    {
-                        "value": 45,
-                        "label": "减去的",
-                        "color": "#FB923C"
-                    },
-                    {
-                        "value": 37,
-                        "label": "剩下的",
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "两位数减两位数口算",
-            "difficulty": 2,
-            "hint": "先算82-40=42再算42-5",
-            "variants": [
-                {
-                    "question": "91-36=?",
-                    "formula": "91-36=?",
-                    "answer": 55,
-                    "hint": "91-30再减6"
-                },
-                {
-                    "question": "63-27=?",
-                    "formula": "63-27=?",
-                    "answer": 36,
-                    "hint": "63-30再加3"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 这道题要求什么？",
-                    "choices": [
-                        "求剩下的部分（差）",
-                        "求总数",
-                        "求每份是多少",
-                        "求谁是谁的几倍"
-                    ],
-                    "answer": "求剩下的部分（差）",
-                    "explain": "从82里去掉45"
-                },
-                {
-                    "q": "🔢 怎么拆数口算？",
-                    "choices": [
-                        "先算82-40=42，再算-5",
-                        "直接列竖式",
-                        "用乘法",
-                        "用除法"
-                    ],
-                    "answer": "先算82-40=42，再算-5",
-                    "explain": "把45拆成40+5，分两步减"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "拆数法口算",
-                        "列竖式笔算",
-                        "乘法",
-                        "加法"
-                    ],
-                    "answer": "拆数法口算",
-                    "explain": "两位数减两位数口算：拆减数，分两步减"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "数字Bond图：总数82，减去45，剩37",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "82-45=37，拆数法",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "两位数减两位数口算：拆减数，分两步减",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-11"
-        },
-        {
-            "scene": "图书角有70本故事书，同学们借走了36本。图书管理员小红要算还剩多少本。",
-            "question": "图书角还剩多少本故事书？",
-            "formula": "70 - 36 = ?",
-            "answer": 34,
-            "choices": [
-                34,
-                44,
-                24,
-                46
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": 70,
-                "parts": [
-                    {
-                        "value": 36,
-                        "label": "减去的",
-                        "color": "#FB923C"
-                    },
-                    {
-                        "value": 34,
-                        "label": "剩下的",
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "两位数减两位数口算",
-            "difficulty": 2,
-            "hint": "先算70-30=40再算40-6",
-            "variants": [
-                {
-                    "question": "80-47=?",
-                    "formula": "80-47=?",
-                    "answer": 33,
-                    "hint": "80-40再减7"
-                },
-                {
-                    "question": "60-28=?",
-                    "formula": "60-28=?",
-                    "answer": 32,
-                    "hint": "60-30再加2"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 这道题要求什么？",
-                    "choices": [
-                        "求剩下的部分（差）",
-                        "求总数",
-                        "求每份是多少",
-                        "求谁是谁的几倍"
-                    ],
-                    "answer": "求剩下的部分（差）",
-                    "explain": "从70里去掉36"
-                },
-                {
-                    "q": "🔢 怎么拆数口算？",
-                    "choices": [
-                        "先算70-30=40，再算-6",
-                        "直接列竖式",
-                        "用乘法",
-                        "用除法"
-                    ],
-                    "answer": "先算70-30=40，再算-6",
-                    "explain": "把36拆成30+6，分两步减"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "拆数法口算",
-                        "列竖式笔算",
-                        "乘法",
-                        "加法"
-                    ],
-                    "answer": "拆数法口算",
-                    "explain": "两位数减两位数口算：拆减数，分两步减"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "数字Bond图：总数70，减去36，剩34",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "70-36=34，拆数法",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "两位数减两位数口算：拆减数，分两步减",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-12"
-        },
-        {
-            "scene": "果园里上午摘了320千克苹果，下午又摘了150千克。果农伯伯要算一共摘了多少千克。",
-            "question": "一共摘了多少千克苹果？",
-            "formula": "320 + 150 = ?",
-            "answer": 470,
-            "choices": [
-                470,
-                360,
-                570,
-                420
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "type": "bar",
-                "bars": [
-                    {
-                        "label": "第一部分",
-                        "value": 320,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "第二部分",
-                        "value": 150,
+                        "label": "一部分",
+                        "val": 1,
                         "color": "#F5B800"
                     },
                     {
-                        "label": "合计470",
-                        "value": 470,
-                        "color": "#E8A0BF"
-                    }
-                ],
-                "total": 470
-            },
-            "knowledge": "几百几十加减",
-            "difficulty": 2,
-            "hint": "32+15=47，添一个0",
-            "variants": [
-                {
-                    "question": "460+230=?",
-                    "formula": "460+230=?",
-                    "answer": 690,
-                    "hint": "46+23=69添0"
-                },
-                {
-                    "question": "510+180=?",
-                    "formula": "510+180=?",
-                    "answer": 690,
-                    "hint": "51+18=69添0"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 几百几十加减法有什么技巧？",
-                    "choices": [
-                        "看成几十几个十再加减",
-                        "直接列竖式",
-                        "用乘法口诀",
-                        "用除法"
-                    ],
-                    "answer": "看成几十几个十再加减",
-                    "explain": "把320看作32个十，150看作15个十"
-                },
-                {
-                    "q": "🔢 转化后怎么算？",
-                    "choices": [
-                        "32+15=47，添0得470",
-                        "直接320+150=470",
-                        "用乘法",
-                        "用加法"
-                    ],
-                    "answer": "32+15=47，添0得470",
-                    "explain": "先算几个十，再添0"
-                },
-                {
-                    "q": "🧩 用什么方法？",
-                    "choices": [
-                        "转化成表内运算再添0",
-                        "列竖式",
-                        "用计算器",
-                        "估算"
-                    ],
-                    "answer": "转化成表内运算再添0",
-                    "explain": "几百几十加减：看成几十几个十，算完再添0"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图展示320和150的和是470",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "看成32个十±15个十=47个十=470",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "几百几十加减：先转化为表内运算，再添0",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-13"
-        },
-        {
-            "scene": "粮店运来580袋大米，卖出了240袋。店主要算算还剩多少袋大米没卖。",
-            "question": "还剩多少袋大米？",
-            "formula": "580 - 240 = ?",
-            "answer": 340,
-            "choices": [
-                340,
-                440,
-                240,
-                330
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": 580,
-                "parts": [
-                    {
-                        "value": 240,
-                        "label": "减去的",
-                        "color": "#FB923C"
-                    },
-                    {
-                        "value": 340,
-                        "label": "剩下的",
+                        "label": "另一部分",
+                        "val": 1,
                         "color": "#00A896"
                     }
                 ]
             },
-            "knowledge": "几百几十加减",
-            "difficulty": 2,
-            "hint": "58-24=34，添一个0",
-            "variants": [
-                {
-                    "question": "760-320=?",
-                    "formula": "760-320=?",
-                    "answer": 440,
-                    "hint": "76-32=44添0"
-                },
-                {
-                    "question": "690-150=?",
-                    "formula": "690-150=?",
-                    "answer": 540,
-                    "hint": "69-15=54添0"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 几百几十加减法有什么技巧？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "看成几十几个十再加减",
-                        "直接列竖式",
-                        "用乘法口诀",
-                        "用除法"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "看成几十几个十再加减",
-                    "explain": "把580看作58个十，240看作24个十"
+                    "answer": "认真读题，明确问题",
+                    "explain": "剩下的钱能买几本本子？"
                 },
                 {
-                    "q": "🔢 转化后怎么算？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "58-24=34，添0得340",
-                        "直接580-240=340",
-                        "用乘法",
-                        "用加法"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "58-24=34，添0得340",
-                    "explain": "先算几个十，再添0"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "先算括号里 24-12=12，再算 12÷6=2"
                 },
                 {
-                    "q": "🧩 用什么方法？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "转化成表内运算再添0",
-                        "列竖式",
-                        "用计算器",
-                        "估算"
+                        "带小括号的两步式题",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "转化成表内运算再添0",
-                    "explain": "几百几十加减：看成几十几个十，算完再添0"
+                    "answer": "带小括号的两步式题",
+                    "explain": "先算括号里 24-12=12，再算 12÷6=2"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "条形图展示580和240的差是340",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "看成58个十-24个十=34个十=340",
+                    "text": "先算括号里 24-12=12，再算 12÷6=2",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "几百几十加减：先转化为表内运算，再添0",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
-            ],
-            "id": "3A-TIME-14"
+            ]
         },
         {
-            "scene": "两个养鸡场，第一个每月产蛋460个，第二个每月产蛋380个。兽医站要统计两个场一共产蛋多少个。",
-            "question": "两个养鸡场一共产蛋多少个？",
-            "formula": "460 + 380 = ?",
-            "answer": 840,
+            "id": "3A-MIX-04",
+            "scene": "一包糖有 5 排，每排 6 颗。小红吃了 8 颗。",
+            "question": "还剩多少颗糖？",
+            "formula": "5 × 6 - 8 = ?",
+            "answer": 22,
             "choices": [
-                840,
-                740,
-                940,
-                820
+                22,
+                30,
+                38,
+                7
             ],
-            "visualType": "barModel",
+            "knowledge": "混合运算",
+            "difficulty": 2,
+            "hint": "先算 5×6=30，再减 8 得 22",
+            "variants": [
+                {
+                    "question": "每盘 7 个草莓，有 4 盘，吃了 10 个，还剩几个？",
+                    "formula": "4 × 7 - 10 = ?",
+                    "answer": 18,
+                    "hint": "先算 4×7=28，再减 10"
+                }
+            ],
+            "visualType": "numberBond",
             "visualData": {
-                "type": "bar",
-                "bars": [
+                "type": "numberBond",
+                "total": 22,
+                "parts": [
                     {
-                        "label": "第一部分",
-                        "value": 460,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "第二部分",
-                        "value": 380,
+                        "label": "一部分",
+                        "val": 11,
                         "color": "#F5B800"
                     },
                     {
-                        "label": "合计840",
-                        "value": 840,
-                        "color": "#E8A0BF"
+                        "label": "另一部分",
+                        "val": 11,
+                        "color": "#00A896"
                     }
-                ],
-                "total": 840
+                ]
             },
-            "knowledge": "几百几十加减",
-            "difficulty": 2,
-            "hint": "46+38=84，添一个0",
-            "variants": [
-                {
-                    "question": "350+270=?",
-                    "formula": "350+270=?",
-                    "answer": 620,
-                    "hint": "35+27=62添0"
-                },
-                {
-                    "question": "540+190=?",
-                    "formula": "540+190=?",
-                    "answer": 730,
-                    "hint": "54+19=73添0"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 几百几十加减法有什么技巧？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "看成几十几个十再加减",
-                        "直接列竖式",
-                        "用乘法口诀",
-                        "用除法"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "看成几十几个十再加减",
-                    "explain": "把460看作46个十，380看作38个十"
+                    "answer": "认真读题，明确问题",
+                    "explain": "还剩多少颗糖？"
                 },
                 {
-                    "q": "🔢 转化后怎么算？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "46+38=84，添0得840",
-                        "直接460+380=840",
-                        "用乘法",
-                        "用加法"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "46+38=84，添0得840",
-                    "explain": "先算几个十，再添0"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "先算 5×6=30，再减 8 得 22"
                 },
                 {
-                    "q": "🧩 用什么方法？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "转化成表内运算再添0",
-                        "列竖式",
-                        "用计算器",
-                        "估算"
+                        "乘减两步式题",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "转化成表内运算再添0",
-                    "explain": "几百几十加减：看成几十几个十，算完再添0"
+                    "answer": "乘减两步式题",
+                    "explain": "先算 5×6=30，再减 8 得 22"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "条形图展示460和380的和是840",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "看成46个十±38个十=84个十=840",
+                    "text": "先算 5×6=30，再减 8 得 22",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "几百几十加减：先转化为表内运算，再添0",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
+            ]
+        },
+        {
+            "id": "3A-MIX-05",
+            "scene": "计算 36 - 12 ÷ 3 时，要先算哪一步？",
+            "question": "36 - 12 ÷ 3 = ?",
+            "formula": "36 - 12 ÷ 3 = ?",
+            "answer": 32,
+            "choices": [
+                32,
+                30,
+                11,
+                24
             ],
-            "id": "3A-TIME-15"
+            "knowledge": "混合运算",
+            "difficulty": 2,
+            "hint": "先算除法 12÷3=4，再算减法 36-4=32",
+            "variants": [
+                {
+                    "question": "18 + 4 × 2 = ?",
+                    "formula": "18 + 4 × 2 = ?",
+                    "answer": 26,
+                    "hint": "先算 4×2=8，再加 18"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 32,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 16,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 16,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "36 - 12 ÷ 3 = ?"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "先算除法 12÷3=4，再算减法 36-4=32"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "先乘除后加减",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "先乘除后加减",
+                    "explain": "先算除法 12÷3=4，再算减法 36-4=32"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "先算除法 12÷3=4，再算减法 36-4=32",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
         },
         {
             "scene": "科学课上老师让同学们测量回形针的厚度。小明发现回形针大约厚1毫米，他想知道1厘米等于多少毫米。",
@@ -3005,1247 +2222,481 @@ window.MATH_BY_GRADE["3a"] = {
             "id": "3A-TIME-27"
         },
         {
-            "scene": "学校图书馆原有故事书386本，今天又新买进247本。小明帮忙整理书架，他好奇现在一共有多少本。",
-            "question": "图书馆现在一共有多少本故事书？",
-            "formula": "386 + 247 = ?",
-            "answer": 633,
+            "id": "3A-CAO-01",
+            "scene": "妈妈在厨房称食材，一个鸡蛋很轻，一袋大米很重。",
+            "question": "一个鸡蛋约重 50( )。",
+            "formula": "",
+            "answer": "克",
             "choices": [
-                633,
-                533,
-                733,
-                623
+                "克",
+                "千克",
+                "吨"
             ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 633,
-                "parts": [
-                    {
-                        "label": "原有",
-                        "val": 386,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "新买",
-                        "val": 247,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "万以内加法笔算",
+            "knowledge": "克和千克",
             "difficulty": 2,
-            "hint": "相同数位对齐满十进一",
+            "hint": "较轻的物体用“克”做单位",
             "variants": [
                 {
-                    "question": "418+265=?",
-                    "formula": "418+265=?",
-                    "answer": 683,
-                    "hint": "连续进位要细心"
-                },
-                {
-                    "question": "295+156=?",
-                    "formula": "295+156=?",
-                    "answer": 451,
-                    "hint": "十位满十向百位进"
+                    "question": "一个西瓜约重 5( )。",
+                    "formula": "",
+                    "answer": "千克",
+                    "hint": "较重的物体用“千克”"
                 }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「图书馆现在一共有多少本故事书？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-28"
-        },
-        {
-            "scene": "学校体育室有跳绳458根，又新买了375根。体育老师要统计一共有多少根跳绳。",
-            "question": "体育室一共有多少根跳绳？",
-            "formula": "458 + 375 = ?",
-            "answer": 833,
-            "choices": [
-                833,
-                733,
-                933,
-                823
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 833,
-                "parts": [
-                    {
-                        "label": "原有",
-                        "val": 458,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "新买",
-                        "val": 375,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "万以内加法笔算",
-            "difficulty": 2,
-            "hint": "个位8+5=13进一",
-            "variants": [
-                {
-                    "question": "537+286=?",
-                    "formula": "537+286=?",
-                    "answer": 823,
-                    "hint": "连续进位"
-                },
-                {
-                    "question": "649+178=?",
-                    "formula": "649+178=?",
-                    "answer": 827,
-                    "hint": "注意进位"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「体育室一共有多少根跳绳？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-29"
-        },
-        {
-            "scene": "小明家离学校569米，学校离书店423米。他想知道从家经过学校到书店一共多少米。",
-            "question": "从家到书店一共多少米？",
-            "formula": "569 + 423 = ?",
-            "answer": 992,
-            "choices": [
-                992,
-                892,
-                982,
-                993
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 992,
-                "parts": [
-                    {
-                        "label": "家到校",
-                        "val": 569,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "校到店",
-                        "val": 423,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "万以内加法笔算",
-            "difficulty": 2,
-            "hint": "个位9+3=12进一",
-            "variants": [
-                {
-                    "question": "678+245=?",
-                    "formula": "678+245=?",
-                    "answer": 923,
-                    "hint": "注意进位"
-                },
-                {
-                    "question": "387+456=?",
-                    "formula": "387+456=?",
-                    "answer": 843,
-                    "hint": "连续进位"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「从家到书店一共多少米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-30"
-        },
-        {
-            "scene": "小明攒了500元压岁钱，开学时买了一个新书包用去168元。他想算算还剩多少钱存进储蓄罐。",
-            "question": "小明还剩多少元？",
-            "formula": "500 - 168 = ?",
-            "answer": 332,
-            "choices": [
-                332,
-                432,
-                368,
-                232
             ],
             "visualType": "numberBond",
             "visualData": {
-                "total": 500,
+                "type": "numberBond",
+                "total": "克",
                 "parts": [
                     {
-                        "val": 168,
-                        "color": "#FB923C"
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
                     },
                     {
-                        "val": 332,
+                        "label": "另一部分",
+                        "val": null,
                         "color": "#00A896"
                     }
                 ]
             },
-            "knowledge": "万以内减法笔算",
-            "difficulty": 2,
-            "hint": "0不够减向前一位借",
-            "variants": [
-                {
-                    "question": "700-245=?",
-                    "formula": "700-245=?",
-                    "answer": 455,
-                    "hint": "连续退位要细心"
-                },
-                {
-                    "question": "600-187=?",
-                    "formula": "600-187=?",
-                    "answer": 413,
-                    "hint": "0不够减向前借"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「小明还剩多少元？」"
+                    "answer": "认真读题，明确问题",
+                    "explain": "一个鸡蛋约重 50( )。"
                 },
                 {
-                    "q": "🔢 题目给了哪些关键信息？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "较轻的物体用“克”做单位"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "选择合适的质量单位",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "选择合适的质量单位",
+                    "explain": "较轻的物体用“克”做单位"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "text": "较轻的物体用“克”做单位",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
-            ],
-            "id": "3A-TIME-31"
+            ]
         },
         {
-            "scene": "服装厂上午生产了800件衣服，下午运走了465件。厂长要算还剩多少件衣服在仓库。",
-            "question": "仓库还剩多少件衣服？",
-            "formula": "800 - 465 = ?",
-            "answer": 335,
+            "id": "3A-CAO-02",
+            "scene": "超市里一袋食盐标着 500，一头牛站在秤上。",
+            "question": "一袋食盐重 500( )。",
+            "formula": "",
+            "answer": "克",
             "choices": [
-                335,
-                435,
-                365,
-                345
+                "克",
+                "千克",
+                "吨"
+            ],
+            "knowledge": "克和千克",
+            "difficulty": 2,
+            "hint": "食盐一般用克",
+            "variants": [
+                {
+                    "question": "一头牛约重 500( )。",
+                    "formula": "",
+                    "answer": "千克",
+                    "hint": "大型动物用千克"
+                }
             ],
             "visualType": "numberBond",
             "visualData": {
+                "type": "numberBond",
+                "total": "克",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "一袋食盐重 500( )。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "食盐一般用克"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "选择合适的质量单位",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "选择合适的质量单位",
+                    "explain": "食盐一般用克"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "食盐一般用克",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-CAO-03",
+            "scene": "建筑工地上，一辆大卡车正在装货。",
+            "question": "一辆卡车的载重量约 5( )。",
+            "formula": "",
+            "answer": "吨",
+            "choices": [
+                "吨",
+                "千克",
+                "克"
+            ],
+            "knowledge": "吨的认识",
+            "difficulty": 2,
+            "hint": "很重很重的物体用“吨”",
+            "variants": [
+                {
+                    "question": "一节火车车厢约能装 60( )货物。",
+                    "formula": "",
+                    "answer": "吨",
+                    "hint": "火车载重用吨"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "吨",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "一辆卡车的载重量约 5( )。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "很重很重的物体用“吨”"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "选择合适的质量单位",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "选择合适的质量单位",
+                    "explain": "很重很重的物体用“吨”"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "很重很重的物体用“吨”",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-CAO-04",
+            "scene": "课堂上老师讲曹冲称象：把大象赶上船，看船下沉到画线处；再往船上装石头，装到船下沉到同一位置。每筐石头重 500 千克，一共装了 6 筐。",
+            "question": "这头大象重多少千克？",
+            "formula": "500 × 6 = ?（千克）",
+            "answer": 3000,
+            "choices": [
+                3000,
+                300,
+                600,
+                3300
+            ],
+            "knowledge": "吨的认识",
+            "difficulty": 2,
+            "hint": "石头的总质量就是大象的质量：500×6=3000（千克）",
+            "variants": [
+                {
+                    "question": "每筐石头 400 千克，装了 8 筐，大象重多少千克？",
+                    "formula": "400 × 8 = ?（千克）",
+                    "answer": 3200,
+                    "hint": "400×8=3200"
+                }
+            ],
+            "visualType": "bar",
+            "visualData": {
+                "type": "bar",
+                "bars": [
+                    {
+                        "label": "前3筐",
+                        "val": 1500,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "后3筐",
+                        "val": 1500,
+                        "color": "#00A896"
+                    }
+                ],
+                "total": 3000
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "这头大象重多少千克？"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "石头的总质量就是大象的质量：500×6=3000（千克）"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "等量代换",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "等量代换",
+                    "explain": "石头的总质量就是大象的质量：500×6=3000（千克）"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "石头的总质量就是大象的质量：500×6=3000（千克）",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-CAO-05",
+            "scene": "水果摊上，1 个苹果重 200 克。爷爷说：1 个西瓜的重量等于 4 个苹果。",
+            "question": "这个西瓜重多少克？",
+            "formula": "4 × 200 = ?（克）",
+            "answer": 800,
+            "choices": [
+                800,
+                200,
+                400,
+                1600
+            ],
+            "knowledge": "等量代换",
+            "difficulty": 2,
+            "hint": "4 个 200 克：4×200=800（克）",
+            "variants": [
+                {
+                    "question": "1 本书重 300 克，1 摞书等于 5 本书，这摞书重多少克？",
+                    "formula": "5 × 300 = ?（克）",
+                    "answer": 1500,
+                    "hint": "5×300=1500"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
                 "total": 800,
                 "parts": [
                     {
-                        "val": 465,
-                        "color": "#FB923C"
-                    },
-                    {
-                        "val": 335,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "万以内减法笔算",
-            "difficulty": 2,
-            "hint": "连续退位要细心",
-            "variants": [
-                {
-                    "question": "600-278=?",
-                    "formula": "600-278=?",
-                    "answer": 322,
-                    "hint": "0不够减向前借"
-                },
-                {
-                    "question": "900-536=?",
-                    "formula": "900-536=?",
-                    "answer": 364,
-                    "hint": "连续退位"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「仓库还剩多少件衣服？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-32"
-        },
-        {
-            "scene": "果园今年收了700千克苹果，已经装箱运走289千克。果农要算还剩多少千克没装。",
-            "question": "还剩多少千克苹果？",
-            "formula": "700 - 289 = ?",
-            "answer": 411,
-            "choices": [
-                411,
-                511,
-                489,
-                311
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "total": 700,
-                "parts": [
-                    {
-                        "val": 289,
-                        "color": "#FB923C"
-                    },
-                    {
-                        "val": 411,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "万以内减法笔算",
-            "difficulty": 2,
-            "hint": "0不够减向前一位借",
-            "variants": [
-                {
-                    "question": "800-356=?",
-                    "formula": "800-356=?",
-                    "answer": 444,
-                    "hint": "连续退位"
-                },
-                {
-                    "question": "500-178=?",
-                    "formula": "500-178=?",
-                    "answer": 322,
-                    "hint": "0不够减向前借"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「还剩多少千克苹果？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-33"
-        },
-        {
-            "scene": "小红算了一道加法题：234+156=390。老师教她用减法验算，看看算得对不对。",
-            "question": "用减法验算：390 - 156 = ?",
-            "answer": 234,
-            "formula": "390 - 156 = ?",
-            "choices": [
-                234,
-                144,
-                334,
-                244
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "total": 390,
-                "parts": [
-                    {
-                        "val": 156,
-                        "color": "#FB923C"
-                    },
-                    {
-                        "val": 234,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "加减法验算",
-            "difficulty": 2,
-            "hint": "和-加数=另一个加数",
-            "variants": [
-                {
-                    "question": "验算468+215=683，683-215=?",
-                    "formula": "683-215=?",
-                    "answer": 468,
-                    "hint": "和减加数"
-                },
-                {
-                    "question": "验算327+164=491，491-164=?",
-                    "formula": "491-164=?",
-                    "answer": 327,
-                    "hint": "和减加数"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「用减法验算：390 - 156 = ?」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-34"
-        },
-        {
-            "scene": "小亮算了一道减法题：500-268=232。老师教他用加法验算，看看算得对不对。",
-            "question": "用加法验算：232 + 268 = ?",
-            "answer": 500,
-            "formula": "232 + 268 = ?",
-            "choices": [
-                500,
-                400,
-                600,
-                490
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 500,
-                "parts": [
-                    {
-                        "label": "差",
-                        "val": 232,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "减数",
-                        "val": 268,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "加减法验算",
-            "difficulty": 2,
-            "hint": "差+减数=被减数",
-            "variants": [
-                {
-                    "question": "验算700-356=344，344+356=?",
-                    "formula": "344+356=?",
-                    "answer": 700,
-                    "hint": "差加减数"
-                },
-                {
-                    "question": "验算800-465=335，335+465=?",
-                    "formula": "335+465=?",
-                    "answer": 800,
-                    "hint": "差加减数"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「用加法验算：232 + 268 = ?」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-35"
-        },
-        {
-            "scene": "小芳算了一道加法题：478+345=823。老师让她用减法验算，看看结果对不对。",
-            "question": "用减法验算：823 - 345 = ?",
-            "answer": 478,
-            "formula": "823 - 345 = ?",
-            "choices": [
-                478,
-                378,
-                578,
-                488
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "total": 823,
-                "parts": [
-                    {
-                        "val": 345,
-                        "color": "#FB923C"
-                    },
-                    {
-                        "val": 478,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "加减法验算",
-            "difficulty": 2,
-            "hint": "和-加数=另一个加数",
-            "variants": [
-                {
-                    "question": "验算369+258=627，627-258=?",
-                    "formula": "627-258=?",
-                    "answer": 369,
-                    "hint": "和减加数"
-                },
-                {
-                    "question": "验算456+187=643，643-187=?",
-                    "formula": "643-187=?",
-                    "answer": 456,
-                    "hint": "和减加数"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「用减法验算：823 - 345 = ?」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-36"
-        },
-        {
-            "scene": "花园里有红花4朵，黄花是红花的3倍。园丁要算算黄花有多少朵。",
-            "question": "黄花有多少朵？",
-            "formula": "4 × 3 = ?",
-            "answer": 12,
-            "choices": [
-                12,
-                7,
-                8,
-                4
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 12,
-                "parts": [
-                    {
-                        "label": "红花",
-                        "val": 4,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "黄花",
-                        "val": 8,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "倍的认识",
-            "difficulty": 2,
-            "hint": "几倍是多少用乘法",
-            "variants": [
-                {
-                    "question": "红花5朵黄花是4倍黄花几朵？",
-                    "formula": "5×4=?",
-                    "answer": 20,
-                    "hint": "5乘4"
-                },
-                {
-                    "question": "红花6朵黄花是3倍黄花几朵？",
-                    "formula": "6×3=?",
-                    "answer": 18,
-                    "hint": "6乘3"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「黄花有多少朵？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-37"
-        },
-        {
-            "scene": "动物园里有猴子6只，孔雀2只。小亮想知道猴子的只数是孔雀的几倍。",
-            "question": "猴子是孔雀的几倍？",
-            "formula": "6 ÷ 2 = ?",
-            "answer": 3,
-            "choices": [
-                3,
-                4,
-                8,
-                12
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 6,
-                "parts": [
-                    {
-                        "label": "第1份",
-                        "val": 2,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "第2份",
-                        "val": 2,
+                        "label": "一部分",
+                        "val": 400,
                         "color": "#F5B800"
                     },
                     {
-                        "label": "第3份",
-                        "val": 2,
-                        "color": "#FB923C"
-                    }
-                ]
-            },
-            "knowledge": "倍的认识",
-            "difficulty": 2,
-            "hint": "求几倍用除法",
-            "variants": [
-                {
-                    "question": "15是5的几倍？",
-                    "formula": "15÷5=?",
-                    "answer": 3,
-                    "hint": "15除5"
-                },
-                {
-                    "question": "20是4的几倍？",
-                    "formula": "20÷4=?",
-                    "answer": 5,
-                    "hint": "20除4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「猴子是孔雀的几倍？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-38"
-        },
-        {
-            "scene": "小明今年8岁，爸爸的年龄是小明的4倍。小明好奇爸爸今年多少岁。",
-            "question": "爸爸今年多少岁？",
-            "formula": "8 × 4 = ?",
-            "answer": 32,
-            "choices": [
-                32,
-                12,
-                4,
-                40
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 32,
-                "parts": [
-                    {
-                        "label": "小明8岁",
-                        "val": 8,
+                        "label": "另一部分",
+                        "val": 400,
                         "color": "#00A896"
-                    },
-                    {
-                        "label": "3倍",
-                        "val": 24,
-                        "color": "#F5B800"
                     }
                 ]
             },
-            "knowledge": "倍的认识",
-            "difficulty": 2,
-            "hint": "几倍是多少用乘法",
-            "variants": [
-                {
-                    "question": "小明9岁爸爸是4倍爸爸几岁？",
-                    "formula": "9×4=?",
-                    "answer": 36,
-                    "hint": "9乘4"
-                },
-                {
-                    "question": "小明7岁爸爸是5倍爸爸几岁？",
-                    "formula": "7×5=?",
-                    "answer": 35,
-                    "hint": "7乘5"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「爸爸今年多少岁？」"
+                    "answer": "认真读题，明确问题",
+                    "explain": "这个西瓜重多少克？"
                 },
                 {
-                    "q": "🔢 题目给了哪些关键信息？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "4 个 200 克：4×200=800（克）"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "等量代换",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "等量代换",
+                    "explain": "4 个 200 克：4×200=800（克）"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "text": "4 个 200 克：4×200=800（克）",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
-            ],
-            "id": "3A-TIME-39"
+            ]
         },
         {
             "scene": "文具店里一盒铅笔20支，老师买了3盒。小红帮忙算算一共多少支铅笔。",
@@ -5717,1491 +4168,1110 @@ window.MATH_BY_GRADE["3a"] = {
             "id": "3A-TIME-54"
         },
         {
-            "scene": "数学课上老师让同学们数一数四边形有几条边。小明仔细观察后举手回答。",
-            "question": "四边形有几条边？",
-            "formula": "四边形边数 = ?",
+            "id": "3A-CODE-01",
+            "scene": "寄信时要在信封上写邮政编码。",
+            "question": "我国邮政编码由( )位数字组成。",
+            "formula": "",
+            "answer": 6,
+            "choices": [
+                6,
+                7,
+                8,
+                5
+            ],
+            "knowledge": "数字编码",
+            "difficulty": 2,
+            "hint": "邮政编码是 6 位数字",
+            "variants": [
+                {
+                    "question": "居民身份证号码有( )位。",
+                    "formula": "",
+                    "answer": 18,
+                    "choices": [
+                        18,
+                        15,
+                        16,
+                        12
+                    ],
+                    "hint": "身份证是 18 位"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 6,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 3,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 3,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "我国邮政编码由( )位数字组成。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "邮政编码是 6 位数字"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "了解编码规则",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "了解编码规则",
+                    "explain": "邮政编码是 6 位数字"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "邮政编码是 6 位数字",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-CODE-02",
+            "scene": "老师的身份证号为 1101012015******1234。",
+            "question": "身份证号码倒数第 2 位表示( )。",
+            "formula": "",
+            "answer": "性别",
+            "choices": [
+                "性别",
+                "年龄",
+                "出生地"
+            ],
+            "knowledge": "数字编码",
+            "difficulty": 2,
+            "hint": "第 17 位（倒数第 2 位）是性别码，奇男偶女",
+            "variants": [
+                {
+                    "question": "身份证号码第 7～14 位表示( )。",
+                    "formula": "",
+                    "answer": "出生日期",
+                    "choices": [
+                        "出生日期",
+                        "性别",
+                        "地址"
+                    ],
+                    "hint": "7-14 位是出生年月日"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "性别",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "身份证号码倒数第 2 位表示( )。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "第 17 位（倒数第 2 位）是性别码，奇男偶女"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "解读编码含义",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "解读编码含义",
+                    "explain": "第 17 位（倒数第 2 位）是性别码，奇男偶女"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "第 17 位（倒数第 2 位）是性别码，奇男偶女",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-CODE-03",
+            "scene": "学校给每个学生编学号：入学年份(4位)+班级(2位)+序号(2位)。",
+            "question": "2023 年入学、3 班、15 号的同学，学号应编为( )。",
+            "formula": "",
+            "answer": "20230315",
+            "choices": [
+                "20230315",
+                "2023315",
+                "230315"
+            ],
+            "knowledge": "数字编码",
+            "difficulty": 2,
+            "hint": "年份4位+班级2位+序号2位 → 2023 03 15",
+            "variants": [
+                {
+                    "question": "2024 年入学、5 班、8 号的同学，学号是( )。",
+                    "formula": "",
+                    "answer": "20240508",
+                    "choices": [
+                        "20240508",
+                        "2024508",
+                        "240508"
+                    ],
+                    "hint": "2024 05 08"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "20230315",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 10115158,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 10115157,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "2023 年入学、3 班、15 号的同学，学号应编为( )。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "年份4位+班级2位+序号2位 → 2023 03 15"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "按规则编码",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "按规则编码",
+                    "explain": "年份4位+班级2位+序号2位 → 2023 03 15"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "年份4位+班级2位+序号2位 → 2023 03 15",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-CODE-04",
+            "scene": "宾馆房间号“3402”表示 3 楼、4 室、02 号房。",
+            "question": "5 楼、1 室、07 号房的房间号是( )。",
+            "formula": "",
+            "answer": "5107",
+            "choices": [
+                "5107",
+                "50107",
+                "507"
+            ],
+            "knowledge": "数字编码",
+            "difficulty": 2,
+            "hint": "楼号+室号(2位)+房号(2位) → 5 01 07",
+            "variants": [
+                {
+                    "question": "房间号“2605”表示( )。",
+                    "formula": "",
+                    "answer": "2楼6室05号",
+                    "choices": [
+                        "2楼6室05号",
+                        "26楼5号",
+                        "2楼65号"
+                    ],
+                    "hint": "2 楼、6 室、05 号"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "5107",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 2554,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 2553,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "5 楼、1 室、07 号房的房间号是( )。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "楼号+室号(2位)+房号(2位) → 5 01 07"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "解读房间编码",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "解读房间编码",
+                    "explain": "楼号+室号(2位)+房号(2位) → 5 01 07"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "楼号+室号(2位)+房号(2位) → 5 01 07",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-01",
+            "scene": "美术课上，老师让大家比较三种线。",
+            "question": "线段有( )个端点。",
+            "formula": "",
+            "answer": 2,
+            "choices": [
+                2,
+                1,
+                0,
+                3
+            ],
+            "knowledge": "线段直线射线",
+            "difficulty": 2,
+            "hint": "线段两端都有端点",
+            "variants": [
+                {
+                    "question": "射线有( )个端点。",
+                    "formula": "",
+                    "answer": 1,
+                    "choices": [
+                        1,
+                        2,
+                        0
+                    ],
+                    "hint": "射线只有一个端点"
+                },
+                {
+                    "question": "直线有( )个端点。",
+                    "formula": "",
+                    "answer": 0,
+                    "choices": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "hint": "直线没有端点"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 2,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 1,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 1,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "线段有( )个端点。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "线段两端都有端点"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "认识线",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "认识线",
+                    "explain": "线段两端都有端点"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "线段两端都有端点",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-02",
+            "scene": "把一条线段的一端无限延长，会怎样？",
+            "question": "把线段一端无限延长，得到( )。",
+            "formula": "",
+            "answer": "射线",
+            "choices": [
+                "射线",
+                "直线",
+                "线段"
+            ],
+            "knowledge": "线段直线射线",
+            "difficulty": 2,
+            "hint": "一端无限延长是射线",
+            "variants": [
+                {
+                    "question": "把线段两端都无限延长，得到( )。",
+                    "formula": "",
+                    "answer": "直线",
+                    "choices": [
+                        "直线",
+                        "射线",
+                        "线段"
+                    ],
+                    "hint": "两端无限延长是直线"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "射线",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "把线段一端无限延长，得到( )。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "一端无限延长是射线"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "认识线",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "认识线",
+                    "explain": "一端无限延长是射线"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "一端无限延长是射线",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-03",
+            "scene": "三角板上有三种角，最大的那个角是直角。",
+            "question": "三角板上的直角是( )度。",
+            "formula": "",
+            "answer": 90,
+            "choices": [
+                90,
+                180,
+                45,
+                60
+            ],
+            "knowledge": "锐角直角钝角",
+            "difficulty": 2,
+            "hint": "直角 = 90°",
+            "variants": [
+                {
+                    "question": "一个锐角一定( )90 度。",
+                    "formula": "",
+                    "answer": "小于",
+                    "choices": [
+                        "小于",
+                        "等于",
+                        "大于"
+                    ],
+                    "hint": "锐角小于 90°"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 90,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 45,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 45,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "三角板上的直角是( )度。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "直角 = 90°"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "认识角",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "认识角",
+                    "explain": "直角 = 90°"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "直角 = 90°",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-04",
+            "scene": "老师用活动角演示：把角慢慢张开。",
+            "question": "比直角小、比锐角大的角，是( )角。",
+            "formula": "",
+            "answer": "钝",
+            "choices": [
+                "钝",
+                "锐",
+                "平"
+            ],
+            "knowledge": "锐角直角钝角",
+            "difficulty": 2,
+            "hint": "大于直角小于平角的是钝角",
+            "variants": [
+                {
+                    "question": "比直角小的是( )角。",
+                    "formula": "",
+                    "answer": "锐",
+                    "choices": [
+                        "锐",
+                        "钝",
+                        "平"
+                    ],
+                    "hint": "小于直角是锐角"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "钝",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "比直角小、比锐角大的角，是( )角。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "大于直角小于平角的是钝角"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "认识角",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "认识角",
+                    "explain": "大于直角小于平角的是钝角"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "大于直角小于平角的是钝角",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-05",
+            "scene": "钟面上，时针和分针会组成不同的角。",
+            "question": "钟面 3 时整，时针与分针成( )角。",
+            "formula": "",
+            "answer": "直",
+            "choices": [
+                "直",
+                "锐",
+                "平"
+            ],
+            "knowledge": "锐角直角钝角",
+            "difficulty": 2,
+            "hint": "3 时两针夹角 90°，是直角",
+            "variants": [
+                {
+                    "question": "钟面 6 时整，时针与分针成( )角。",
+                    "formula": "",
+                    "answer": "平",
+                    "choices": [
+                        "平",
+                        "直",
+                        "锐"
+                    ],
+                    "hint": "6 时两针成一条直线，是平角"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": "直",
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": null,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": null,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "钟面 3 时整，时针与分针成( )角。"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "3 时两针夹角 90°，是直角"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "认识角",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "认识角",
+                    "explain": "3 时两针夹角 90°，是直角"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "3 时两针夹角 90°，是直角",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-06",
+            "scene": "数学课上老师用活动角演示：把角的一条边绕顶点旋转，转到半圈时停下，老师说这时的角叫平角。",
+            "question": "平角是多少度？",
+            "formula": "360 ÷ 2 = ?（平角）",
+            "answer": 180,
+            "choices": [
+                90,
+                180,
+                360,
+                45
+            ],
+            "knowledge": "平角周角",
+            "difficulty": 2,
+            "hint": "平角是周角的一半：360÷2=180（度）；也等于 2 个直角",
+            "variants": [
+                {
+                    "question": "2 个直角合起来是多少度？",
+                    "formula": "90 × 2 = ?（度）",
+                    "answer": 180,
+                    "hint": "90×2=180，正好是一个平角"
+                }
+            ],
+            "visualType": "numberBond",
+            "visualData": {
+                "type": "numberBond",
+                "total": 180,
+                "parts": [
+                    {
+                        "label": "直角",
+                        "val": 90,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "直角",
+                        "val": 90,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "平角是多少度？"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "平角是周角的一半：360÷2=180（度）；也等于 2 个直角"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "认识平角周角",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "认识平角周角",
+                    "explain": "平角是周角的一半：360÷2=180（度）；也等于 2 个直角"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "平角是周角的一半：360÷2=180（度）；也等于 2 个直角",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
+        {
+            "id": "3A-ANG-07",
+            "scene": "老师问：一个周角里能装下几个直角？",
+            "question": "周角等于( )个直角。",
+            "formula": "360 ÷ 90 = ?",
             "answer": 4,
             "choices": [
                 4,
-                3,
-                5,
-                6
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "quadrilateral",
-                "params": {
-                    "sides": 4
-                }
-            },
-            "knowledge": "四边形的认识",
-            "difficulty": 1,
-            "hint": "四边形有四条边四个角",
-            "variants": [
-                {
-                    "question": "四边形有几个角？",
-                    "formula": "四边形角数=?",
-                    "answer": 4,
-                    "hint": "四边形有四个角"
-                },
-                {
-                    "question": "三角形有几条边？",
-                    "formula": "三角形边数=?",
-                    "answer": 3,
-                    "hint": "三角形有三条边"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「四边形有几条边？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-55"
-        },
-        {
-            "scene": "小红在纸上画了一些图形：正方形、三角形、圆形、长方形。她想知道其中四边形有几个。",
-            "question": "这些图形中四边形有几个？",
-            "formula": "四边形数量 = ?",
-            "answer": 3,
-            "choices": [
-                3,
                 2,
-                4,
-                1
+                3
             ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "quadrilateral",
-                "params": {
-                    "count": 3
-                }
-            },
-            "knowledge": "四边形的认识",
-            "difficulty": 1,
-            "hint": "四条边的封闭图形是四边形",
+            "knowledge": "平角周角",
+            "difficulty": 2,
+            "hint": "周角 360°，直角 90°，360÷90=4",
             "variants": [
                 {
-                    "question": "正方形、长方形、梯形、圆四边形有几个？",
-                    "formula": "四边形数量=?",
-                    "answer": 3,
-                    "hint": "圆不是四边形"
-                },
-                {
-                    "question": "正方形、三角形、平行四边形四边形有几个？",
-                    "formula": "四边形数量=?",
+                    "question": "平角等于( )个直角。",
+                    "formula": "180 ÷ 90 = ?",
                     "answer": 2,
-                    "hint": "三角形不是"
+                    "hint": "180÷90=2"
                 }
             ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「这些图形中四边形有几个？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-56"
-        },
-        {
-            "scene": "老师拿出一个图形让同学们判断是不是四边形。这个图形有四条边、四个角，且是封闭的。",
-            "question": "这个图形是不是四边形？（是填1否填0）",
-            "formula": "是四边形 = ?",
-            "answer": 1,
-            "choices": [
-                1,
-                0,
-                2,
-                3
-            ],
-            "visualType": "geometry",
+            "visualType": "numberBond",
             "visualData": {
-                "shape": "quadrilateral",
-                "params": {
-                    "closed": true
-                }
-            },
-            "knowledge": "四边形的认识",
-            "difficulty": 1,
-            "hint": "四条边四个角且封闭",
-            "variants": [
-                {
-                    "question": "有5条边的图形是四边形吗（是1否0）？",
-                    "formula": "是四边形=?",
-                    "answer": 0,
-                    "hint": "五边形不是四边形"
-                },
-                {
-                    "question": "有3条边的图形是四边形吗（是1否0）？",
-                    "formula": "是四边形=?",
-                    "answer": 0,
-                    "hint": "三角形不是"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「这个图形是不是四边形？（是填1否填0）」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-57"
-        },
-        {
-            "scene": "小红用尺子量了一个长方形，发现相对的两条边长度一样。她好奇长方形对边有什么特征。",
-            "question": "长方形对边有什么特征？",
-            "formula": "长方形对边 = ?",
-            "answer": 1,
-            "choices": [
-                1,
-                0,
-                2,
-                3
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 8,
-                    "width": 5
-                }
-            },
-            "knowledge": "长方形正方形特征",
-            "difficulty": 2,
-            "hint": "长方形对边相等",
-            "variants": [
-                {
-                    "question": "长方形四个角都是什么角(直角1锐角2)？",
-                    "formula": "角的类型=?",
-                    "answer": 1,
-                    "hint": "四个直角"
-                },
-                {
-                    "question": "正方形四条边有什么特征(相等1不等2)？",
-                    "formula": "四边关系=?",
-                    "answer": 1,
-                    "hint": "四边相等"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「长方形对边有什么特征？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-58"
-        },
-        {
-            "scene": "小亮用尺子量正方形，发现四条边都一样长。他想知道正方形的边长是几厘米。",
-            "question": "正方形边长5厘米，四条边一共多少厘米？",
-            "formula": "5 + 5 + 5 + 5 = ?",
-            "answer": 20,
-            "choices": [
-                20,
-                10,
-                15,
-                25
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 20,
+                "type": "numberBond",
+                "total": 4,
                 "parts": [
                     {
-                        "label": "边1",
-                        "val": 5,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "边2",
-                        "val": 5,
+                        "label": "一部分",
+                        "val": 2,
                         "color": "#F5B800"
                     },
                     {
-                        "label": "边3",
-                        "val": 5,
-                        "color": "#FB923C"
-                    },
-                    {
-                        "label": "边4",
-                        "val": 5,
-                        "color": "#E8A0BF"
-                    }
-                ]
-            },
-            "knowledge": "长方形正方形特征",
-            "difficulty": 2,
-            "hint": "四条边都相等",
-            "variants": [
-                {
-                    "question": "边长6正方形四边一共几cm？",
-                    "formula": "6×4=?",
-                    "answer": 24,
-                    "hint": "6乘4"
-                },
-                {
-                    "question": "边长8正方形四边一共几cm？",
-                    "formula": "8×4=?",
-                    "answer": 32,
-                    "hint": "8乘4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「正方形边长5厘米，四条边一共多少厘米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-59"
-        },
-        {
-            "scene": "老师让同学们画一个长方形，长8厘米宽5厘米。小红画好后用三角尺量了四个角。",
-            "question": "长方形四个角一共多少度？",
-            "formula": "90 × 4 = ?",
-            "answer": 360,
-            "choices": [
-                360,
-                180,
-                90,
-                270
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 8,
-                    "width": 5
-                }
-            },
-            "knowledge": "长方形正方形特征",
-            "difficulty": 2,
-            "hint": "每个角90度，4个角",
-            "variants": [
-                {
-                    "question": "正方形四个角一共多少度？",
-                    "formula": "90×4=?",
-                    "answer": 360,
-                    "hint": "四个直角"
-                },
-                {
-                    "question": "长方形两个角一共多少度？",
-                    "formula": "90×2=?",
-                    "answer": 180,
-                    "hint": "两个直角"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「长方形四个角一共多少度？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-60"
-        },
-        {
-            "scene": "小红沿花坛走了一圈，走了12米。老师告诉她这就是花坛的周长。小红好奇周长是什么意思。",
-            "question": "花坛的周长是多少米？",
-            "formula": "周长 = ?",
-            "answer": 12,
-            "choices": [
-                12,
-                6,
-                24,
-                3
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 4,
-                    "width": 2
-                }
-            },
-            "knowledge": "周长",
-            "difficulty": 1,
-            "hint": "封闭图形一周的长度",
-            "variants": [
-                {
-                    "question": "沿操场走一圈200米周长多少？",
-                    "formula": "周长=?",
-                    "answer": 200,
-                    "hint": "一圈的长度"
-                },
-                {
-                    "question": "沿池塘走一圈80米周长多少？",
-                    "formula": "周长=?",
-                    "answer": 80,
-                    "hint": "一周的长度"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「花坛的周长是多少米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-61"
-        },
-        {
-            "scene": "一个三角形三边分别是3厘米、4厘米、5厘米。小亮要算它的周长。",
-            "question": "三角形的周长是多少厘米？",
-            "formula": "3 + 4 + 5 = ?",
-            "answer": 12,
-            "choices": [
-                12,
-                7,
-                15,
-                60
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 12,
-                "parts": [
-                    {
-                        "label": "边1",
-                        "val": 3,
+                        "label": "另一部分",
+                        "val": 2,
                         "color": "#00A896"
-                    },
-                    {
-                        "label": "边2",
-                        "val": 4,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "边3",
-                        "val": 5,
-                        "color": "#FB923C"
                     }
                 ]
             },
-            "knowledge": "周长",
-            "difficulty": 1,
-            "hint": "三条边相加",
-            "variants": [
-                {
-                    "question": "三边5,5,5周长？",
-                    "formula": "5+5+5=?",
-                    "answer": 15,
-                    "hint": "三边相加"
-                },
-                {
-                    "question": "三边4,5,6周长？",
-                    "formula": "4+5+6=?",
-                    "answer": 15,
-                    "hint": "三边相加"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「三角形的周长是多少厘米？」"
+                    "answer": "认真读题，明确问题",
+                    "explain": "周角等于( )个直角。"
                 },
                 {
-                    "q": "🔢 题目给了哪些关键信息？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "周角 360°，直角 90°，360÷90=4"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "认识平角周角",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "认识平角周角",
+                    "explain": "周角 360°，直角 90°，360÷90=4"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "text": "周角 360°，直角 90°，360÷90=4",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
-            ],
-            "id": "3A-TIME-62"
-        },
-        {
-            "scene": "正方形边长6厘米，小红要算它的周长。她记得正方形四边相等。",
-            "question": "正方形的周长是多少厘米？",
-            "formula": "6 × 4 = ?",
-            "answer": 24,
-            "choices": [
-                24,
-                12,
-                36,
-                10
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 24,
-                "parts": [
-                    {
-                        "label": "边1",
-                        "val": 6,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "边2",
-                        "val": 6,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "边3",
-                        "val": 6,
-                        "color": "#FB923C"
-                    },
-                    {
-                        "label": "边4",
-                        "val": 6,
-                        "color": "#E8A0BF"
-                    }
-                ]
-            },
-            "knowledge": "周长",
-            "difficulty": 1,
-            "hint": "边长×4",
-            "variants": [
-                {
-                    "question": "边长7正方形周长？",
-                    "formula": "7×4=?",
-                    "answer": 28,
-                    "hint": "7乘4"
-                },
-                {
-                    "question": "边长9正方形周长？",
-                    "formula": "9×4=?",
-                    "answer": 36,
-                    "hint": "9乘4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「正方形的周长是多少厘米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-63"
-        },
-        {
-            "scene": "社区要在花园里修一个长方形花坛，长8米、宽5米。工人师傅要在花坛四周围上一圈栅栏。",
-            "question": "花坛的周长是多少米？",
-            "formula": "(8 + 5) × 2 = ?",
-            "answer": 26,
-            "choices": [
-                26,
-                13,
-                40,
-                21
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 8,
-                    "width": 5
-                }
-            },
-            "knowledge": "长方形正方形周长",
-            "difficulty": 2,
-            "hint": "周长=(长+宽)×2",
-            "variants": [
-                {
-                    "question": "长6宽4周长？",
-                    "formula": "(6+4)×2=?",
-                    "answer": 20,
-                    "hint": "长加宽再乘2"
-                },
-                {
-                    "question": "长10宽7周长？",
-                    "formula": "(10+7)×2=?",
-                    "answer": 34,
-                    "hint": "先算长加宽"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「花坛的周长是多少米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-64"
-        },
-        {
-            "scene": "小明的书桌是个长方形，长12分米、宽8分米。妈妈想给书桌贴一圈防撞条。",
-            "question": "需要多长的防撞条？",
-            "formula": "(12 + 8) × 2 = ?",
-            "answer": 40,
-            "choices": [
-                40,
-                20,
-                96,
-                28
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 12,
-                    "width": 8
-                }
-            },
-            "knowledge": "长方形正方形周长",
-            "difficulty": 2,
-            "hint": "(长+宽)×2",
-            "variants": [
-                {
-                    "question": "长15宽10周长？",
-                    "formula": "(15+10)×2=?",
-                    "answer": 50,
-                    "hint": "长加宽乘2"
-                },
-                {
-                    "question": "长9宽6周长？",
-                    "formula": "(9+6)×2=?",
-                    "answer": 30,
-                    "hint": "长加宽乘2"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「需要多长的防撞条？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-65"
-        },
-        {
-            "scene": "学校有一块正方形草坪，边长15米。园丁要在草坪四周修一圈小路。",
-            "question": "小路一共长多少米？",
-            "formula": "15 × 4 = ?",
-            "answer": 60,
-            "choices": [
-                60,
-                30,
-                225,
-                45
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "square",
-                "params": {
-                    "side": 15
-                }
-            },
-            "knowledge": "长方形正方形周长",
-            "difficulty": 2,
-            "hint": "正方形周长=边长×4",
-            "variants": [
-                {
-                    "question": "边长12正方形周长？",
-                    "formula": "12×4=?",
-                    "answer": 48,
-                    "hint": "边长乘4"
-                },
-                {
-                    "question": "边长20正方形周长？",
-                    "formula": "20×4=?",
-                    "answer": 80,
-                    "hint": "边长乘4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「小路一共长多少米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-66"
-        },
-        {
-            "scene": "王伯伯要在院子里靠墙围一个长方形菜地，长8米、宽5米，长边靠墙。他要算需要多少米篱笆。",
-            "question": "需要多少米篱笆？",
-            "formula": "5 + 5 + 8 = ?",
-            "answer": 18,
-            "choices": [
-                18,
-                26,
-                13,
-                21
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 8,
-                    "width": 5,
-                    "againstWall": true
-                }
-            },
-            "knowledge": "周长实际问题",
-            "difficulty": 3,
-            "hint": "靠墙一边不算，两个宽加一个长",
-            "variants": [
-                {
-                    "question": "长10宽6长边靠墙需几米篱笆？",
-                    "formula": "6+6+10=?",
-                    "answer": 22,
-                    "hint": "两宽加一长"
-                },
-                {
-                    "question": "长12宽8长边靠墙需几米篱笆？",
-                    "formula": "8+8+12=?",
-                    "answer": 28,
-                    "hint": "两宽加一长"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「需要多少米篱笆？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-67"
-        },
-        {
-            "scene": "两个边长4厘米的正方形拼成一个长方形。小亮要算拼成后的长方形周长。",
-            "question": "拼成的长方形周长是多少厘米？",
-            "formula": "(8 + 4) × 2 = ?",
-            "answer": 24,
-            "choices": [
-                24,
-                32,
-                16,
-                20
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 8,
-                    "width": 4
-                }
-            },
-            "knowledge": "周长实际问题",
-            "difficulty": 3,
-            "hint": "拼后长8宽4，周长=(8+4)×2",
-            "variants": [
-                {
-                    "question": "两个边长3正方形拼成长方形周长？",
-                    "formula": "(6+3)×2=?",
-                    "answer": 18,
-                    "hint": "长6宽3"
-                },
-                {
-                    "question": "两个边长5正方形拼成长方形周长？",
-                    "formula": "(10+5)×2=?",
-                    "answer": 30,
-                    "hint": "长10宽5"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「拼成的长方形周长是多少厘米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-68"
-        },
-        {
-            "scene": "李阿姨要给长10米、宽6米的长方形花园围篱笆，宽边靠墙。她要算需要多少米篱笆。",
-            "question": "需要多少米篱笆？",
-            "formula": "10 + 10 + 6 = ?",
-            "answer": 26,
-            "choices": [
-                26,
-                32,
-                16,
-                20
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 10,
-                    "width": 6,
-                    "againstWall": "width"
-                }
-            },
-            "knowledge": "周长实际问题",
-            "difficulty": 3,
-            "hint": "宽边靠墙，两个长加一个宽",
-            "variants": [
-                {
-                    "question": "长12宽8宽边靠墙需几米？",
-                    "formula": "12+12+8=?",
-                    "answer": 32,
-                    "hint": "两长加一宽"
-                },
-                {
-                    "question": "长15宽9宽边靠墙需几米？",
-                    "formula": "15+15+9=?",
-                    "answer": 39,
-                    "hint": "两长加一宽"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「需要多少米篱笆？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-69"
+            ]
         },
         {
             "scene": "妈妈把一个圆形大蛋糕平均切成8块。小明吃了其中1块，他想知道自己吃了这块蛋糕的几分之几。",
@@ -8380,724 +6450,196 @@ window.MATH_BY_GRADE["3a"] = {
             "id": "3A-TIME-81"
         },
         {
-            "scene": "三(1)班参加数学兴趣小组的有15人，参加英语兴趣小组的有12人，两个都参加的有5人。老师要算一共有多少人参加兴趣小组。",
-            "question": "一共有多少人参加兴趣小组？",
-            "formula": "15 + 12 - 5 = ?",
-            "answer": 22,
+            "id": "3A-REV-01",
+            "scene": "一个长方形花坛，长 5 厘米、宽 3 厘米。",
+            "question": "这个长方形的周长是多少厘米？",
+            "formula": "(5 + 3) × 2 = ?",
+            "answer": 16,
             "choices": [
-                22,
-                32,
-                27,
-                17
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 22,
-                "parts": [
-                    {
-                        "label": "只数学",
-                        "val": 10,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "都参加",
-                        "val": 5,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "只英语",
-                        "val": 7,
-                        "color": "#FB923C"
-                    }
-                ]
-            },
-            "knowledge": "集合",
-            "difficulty": 2,
-            "hint": "两个都参加的重复算了要减去",
-            "variants": [
-                {
-                    "question": "10人苹果8人香蕉3人都喜欢共几人？",
-                    "formula": "10+8-3=?",
-                    "answer": 15,
-                    "hint": "重复算的要减"
-                },
-                {
-                    "question": "20人体育15人音乐6人都参加共几人？",
-                    "formula": "20+15-6=?",
-                    "answer": 29,
-                    "hint": "重复算的要减"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「一共有多少人参加兴趣小组？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-82"
-        },
-        {
-            "scene": "同学们喜欢吃苹果的有10人，喜欢吃香蕉的有8人，两种都喜欢的有3人。老师要算一共有多少个同学。",
-            "question": "一共有多少个同学？",
-            "formula": "10 + 8 - 3 = ?",
-            "answer": 15,
-            "choices": [
+                16,
                 15,
-                21,
-                18,
-                11
+                8,
+                30
             ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 15,
-                "parts": [
-                    {
-                        "label": "只苹果",
-                        "val": 7,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "都喜欢",
-                        "val": 3,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "只香蕉",
-                        "val": 5,
-                        "color": "#FB923C"
-                    }
-                ]
-            },
-            "knowledge": "集合",
+            "knowledge": "复习与关联",
             "difficulty": 2,
-            "hint": "两个都喜欢的重复算了要减",
+            "hint": "长方形周长 =（长+宽）×2 =（5+3）×2 = 16 厘米",
             "variants": [
                 {
-                    "question": "12人猫8人狗4人都喜欢共几人？",
-                    "formula": "12+8-4=?",
+                    "question": "正方形边长 4 厘米，周长是多少厘米？",
+                    "formula": "4 × 4 = ?",
                     "answer": 16,
-                    "hint": "重复减去"
-                },
-                {
-                    "question": "15人红10人蓝5人都喜欢共几人？",
-                    "formula": "15+10-5=?",
-                    "answer": 20,
-                    "hint": "重复减去"
+                    "hint": "正方形周长=边长×4"
                 }
             ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
-                    ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「一共有多少个同学？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
-                    ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
-                    ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-83"
-        },
-        {
-            "scene": "三(2)班喜欢足球的有20人，喜欢篮球的有15人，两个都喜欢的有6人。班主任要算一共有多少同学喜欢球类运动。",
-            "question": "一共有多少同学喜欢球类运动？",
-            "formula": "20 + 15 - 6 = ?",
-            "answer": 29,
-            "choices": [
-                29,
-                41,
-                35,
-                23
-            ],
-            "visualType": "barModel",
+            "visualType": "numberBond",
             "visualData": {
-                "total": 29,
+                "type": "numberBond",
+                "total": 16,
                 "parts": [
                     {
-                        "label": "只足球",
-                        "val": 14,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "都喜欢",
-                        "val": 6,
+                        "label": "一部分",
+                        "val": 8,
                         "color": "#F5B800"
                     },
                     {
-                        "label": "只篮球",
-                        "val": 9,
-                        "color": "#FB923C"
+                        "label": "另一部分",
+                        "val": 8,
+                        "color": "#00A896"
                     }
                 ]
             },
-            "knowledge": "集合",
-            "difficulty": 2,
-            "hint": "两个都喜欢的重复算了要减去",
-            "variants": [
-                {
-                    "question": "18人画10人唱5人都喜欢共几人？",
-                    "formula": "18+10-5=?",
-                    "answer": 23,
-                    "hint": "重复减去"
-                },
-                {
-                    "question": "25人游12人跑8人都喜欢共几人？",
-                    "formula": "25+12-8=?",
-                    "answer": 29,
-                    "hint": "重复减去"
-                }
-            ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 先读题：这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「一共有多少同学喜欢球类运动？」"
+                    "answer": "认真读题，明确问题",
+                    "explain": "这个长方形的周长是多少厘米？"
                 },
                 {
-                    "q": "🔢 题目给了哪些关键信息？",
+                    "q": "🔢 题目给了哪些已知条件？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "长方形周长 =（长+宽）×2 =（5+3）×2 = 16 厘米"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "周长计算",
+                        "随便选一个",
+                        "一律用加法"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "周长计算",
+                    "explain": "长方形周长 =（长+宽）×2 =（5+3）×2 = 16 厘米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "text": "长方形周长 =（长+宽）×2 =（5+3）×2 = 16 厘米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-84"
-        }
-    ],
-    "knowledgeMap": [
-        {
-            "id": "3A-01",
-            "name": "秒的认识",
-            "concept": "1分=60秒，秒是更细的时间单位",
-            "prerequisite": "二下·认识钟表",
-            "extends": "3A-02 时间计算",
-            "visualStrategy": "钟面动态",
-            "visualType": "numberLine",
-            "coreLiteracy": "量感",
-            "difficulty": 1,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-02",
-            "name": "时间计算",
-            "concept": "经过时间=结束时刻-开始时刻，跨小时要分段",
-            "prerequisite": "秒的认识",
-            "extends": "3B-20 24时计时法",
-            "visualStrategy": "时间线",
-            "visualType": "numberLine",
-            "coreLiteracy": "推理意识",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-03",
-            "name": "两位数加两位数口算",
-            "concept": "拆数法（35+27=35+20+7）",
-            "prerequisite": "二下·100以内加减",
-            "extends": "3A-10 万以内加法笔算",
-            "visualStrategy": "数轴跳跃",
-            "visualType": "barModel",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-04",
-            "name": "两位数减两位数口算",
-            "concept": "拆数法（65-28=65-20-8）",
-            "prerequisite": "两位数加两位数口算",
-            "extends": "3A-11 万以内减法笔算",
-            "visualStrategy": "数轴跳跃",
-            "visualType": "numberBond",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-05",
-            "name": "几百几十加减几百几十",
-            "concept": "看作几十几个十相加减",
-            "prerequisite": "两位数加减口算",
-            "extends": "3A-10 万以内加法笔算",
-            "visualStrategy": "竖式格子",
-            "visualType": "barModel",
-            "coreLiteracy": "数感",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-06",
-            "name": "毫米的认识",
-            "concept": "1cm=10mm，毫米量短小物体",
-            "prerequisite": "二上·厘米和米",
-            "extends": "3A-07 分米的认识",
-            "visualStrategy": "实物对比",
-            "visualType": "numberLine",
-            "coreLiteracy": "量感",
-            "difficulty": 1,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-07",
-            "name": "分米的认识",
-            "concept": "1dm=10cm，1m=10dm",
-            "prerequisite": "毫米的认识",
-            "extends": "3A-08 千米的认识",
-            "visualStrategy": "实物对比",
-            "visualType": "numberLine",
-            "coreLiteracy": "量感",
-            "difficulty": 1,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-08",
-            "name": "千米的认识",
-            "concept": "1km=1000m，千米量长距离",
-            "prerequisite": "分米的认识",
-            "extends": "4A-08 公顷的认识",
-            "visualStrategy": "实物对比+场景",
-            "visualType": "numberLine",
-            "coreLiteracy": "量感",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-09",
-            "name": "吨的认识",
-            "concept": "1t=1000kg，吨量重物体",
-            "prerequisite": "千克和克",
-            "extends": "4A-08 公顷的认识",
-            "visualStrategy": "实物对比+场景",
-            "visualType": "barModel",
-            "coreLiteracy": "量感",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-10",
-            "name": "万以内加法笔算",
-            "concept": "相同数位对齐，从个位加起，满十进一",
-            "prerequisite": "口算加减",
-            "extends": "3A-12 加减法验算",
-            "visualStrategy": "竖式格子+箭头",
-            "visualType": "baseTenBlocks",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true,
-            "knowledge": "万以内加法笔算进位",
-            "russianQuestions": [
-                {
-                    "type": "quantity",
-                    "q": "38+45中，个位8+5=13，满十进一，十位变成多少？",
-                    "keywords": [
-                        "83",
-                        "13",
-                        "进一",
-                        "满十",
-                        "十位",
-                        "8+5"
-                    ]
-                },
-                {
-                    "type": "reverse",
-                    "q": "38+45用竖式计算，相同数位要对齐吗？",
-                    "keywords": [
-                        "数位",
-                        "对齐",
-                        "相同"
-                    ]
-                }
-            ],
-            "rmeChoices": [
-                {
-                    "label": "数位条",
-                    "desc": "画38和45的数位条，合并后数总数",
-                    "correct": true
-                },
-                {
-                    "label": "直接写答案",
-                    "desc": "不画图，直接写83",
-                    "correct": false
-                },
-                {
-                    "label": "凑十法",
-                    "desc": "把45分成2和43，38+2=40，40+43=83",
-                    "correct": true
-                }
-            ],
-            "neriageErrors": [
-                {
-                    "cardIndex": 0,
-                    "errorMsg": "个位8+5=13，忘记进位",
-                    "correctCardIndex": 1,
-                    "isKey": true
-                },
-                {
-                    "cardIndex": 1,
-                    "errorMsg": "数位没对齐，个位对十位",
-                    "correctCardIndex": 1,
-                    "isKey": true
                 }
             ]
         },
         {
-            "id": "3A-11",
-            "name": "万以内减法笔算",
-            "concept": "相同数位对齐，从个位减起，不够借一当十",
-            "prerequisite": "加法笔算",
-            "extends": "3A-12 加减法验算",
-            "visualStrategy": "竖式格子+箭头",
+            "id": "3A-REV-02",
+            "scene": "一本书一共 48 页，第一天看了 20 页。",
+            "question": "还剩多少页没看？",
+            "formula": "48 - 20 = ?",
+            "answer": 28,
+            "choices": [
+                28,
+                20,
+                68,
+                18
+            ],
+            "knowledge": "复习与关联",
+            "difficulty": 2,
+            "hint": "总数减去已看：48-20=28",
+            "variants": [
+                {
+                    "question": "一盒糖 36 颗，吃了 9 颗，还剩几颗？",
+                    "formula": "36 - 9 = ?",
+                    "answer": 27,
+                    "hint": "36-9=27"
+                }
+            ],
             "visualType": "numberBond",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-12",
-            "name": "加减法验算",
-            "concept": "和-加数=另一个加数；差+减数=被减数",
-            "prerequisite": "加减法笔算",
-            "extends": "4B-01 加减法意义",
-            "visualStrategy": "竖式格子",
-            "visualType": "numberBond",
-            "coreLiteracy": "推理意识",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-13",
-            "name": "倍的认识",
-            "concept": "一个数是另一个的几倍=除法；几倍是多少=乘法（合并3A-13/14/15）",
-            "prerequisite": "表内乘法",
-            "extends": "3A-14 口算乘法",
-            "visualStrategy": "条形对比",
-            "visualType": "barModel",
-            "coreLiteracy": "几何直观+模型意识",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-14",
-            "name": "口算乘法（整十整百乘一位数）",
-            "concept": "2×3=6 → 20×3=60，先算表内乘法再添0",
-            "prerequisite": "表内乘法",
-            "extends": "3A-15 笔算乘法",
-            "visualStrategy": "面积模型",
-            "visualType": "areaModel",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-15",
-            "name": "笔算乘法（两三位数乘一位数，不进位）",
-            "concept": "从个位乘起，每一位分别乘",
-            "prerequisite": "口算乘法",
-            "extends": "3A-16 笔算乘法进位",
-            "visualStrategy": "竖式格子+面积模型",
-            "visualType": "areaModel",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-16",
-            "name": "笔算乘法（进位）",
-            "concept": "满几十向前一位进几",
-            "prerequisite": "不进位笔算",
-            "extends": "3A-17 连续进位",
-            "visualStrategy": "竖式格子+箭头",
-            "visualType": "areaModel",
-            "coreLiteracy": "运算能力",
-            "difficulty": 3,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-17",
-            "name": "笔算乘法（连续进位）",
-            "concept": "连续进位时逐位处理，不要跳步",
-            "prerequisite": "进位笔算",
-            "extends": "3A-18 因数有0",
-            "visualStrategy": "竖式格子+箭头",
-            "visualType": "areaModel",
-            "coreLiteracy": "运算能力",
-            "difficulty": 3,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-18",
-            "name": "笔算乘法（因数中间/末尾有0）",
-            "concept": "0乘任何数得0，末尾0先不算最后补",
-            "prerequisite": "连续进位笔算",
-            "extends": "3B-12 两位数乘两位数",
-            "visualStrategy": "竖式格子",
-            "visualType": "areaModel",
-            "coreLiteracy": "运算能力",
-            "difficulty": 3,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-19",
-            "name": "四边形的认识",
-            "concept": "四条边、四个角、封闭图形",
-            "prerequisite": "二下·认识图形",
-            "extends": "3A-20 长方形正方形特征",
-            "visualStrategy": "几何分类图",
-            "visualType": "geometry",
-            "coreLiteracy": "几何直观",
-            "difficulty": 1,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-20",
-            "name": "长方形和正方形的特征",
-            "concept": "长方形对边相等四角直角，正方形四边等长",
-            "prerequisite": "四边形认识",
-            "extends": "3A-21 周长",
-            "visualStrategy": "几何标注图",
-            "visualType": "geometry",
-            "coreLiteracy": "几何直观",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-21",
-            "name": "周长",
-            "concept": "封闭图形一周的长度",
-            "prerequisite": "四边形特征",
-            "extends": "3A-22 长方形正方形周长",
-            "visualStrategy": "描边示意图",
-            "visualType": "barModel",
-            "coreLiteracy": "量感",
-            "difficulty": 1,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-22",
-            "name": "长方形和正方形的周长",
-            "concept": "长方形周长=(长+宽)×2，正方形周长=边长×4",
-            "prerequisite": "周长概念",
-            "extends": "3A-23 周长实际问题",
-            "visualStrategy": "几何标注图",
-            "visualType": "geometry",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-23",
-            "name": "解决周长实际问题",
-            "concept": "拼图形求周长、一面靠墙围篱笆",
-            "prerequisite": "周长计算",
-            "extends": "3B-15 面积",
-            "visualStrategy": "场景示意图",
-            "visualType": "geometry",
-            "coreLiteracy": "应用意识",
-            "difficulty": 3,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-24",
-            "name": "分数的初步认识（几分之一）",
-            "concept": "把一个整体平均分成几份，每份是几分之一",
-            "prerequisite": "表内除法",
-            "extends": "3A-25 分数比较",
-            "visualStrategy": "面积模型（等分图）",
-            "visualType": "fractionStrip",
-            "coreLiteracy": "数感",
-            "difficulty": 1,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-25",
-            "name": "分数比较大小（同分子或同分母）",
-            "concept": "分母相同分子大的大；分子相同分母大的反而小",
-            "prerequisite": "几分之一",
-            "extends": "3A-26 同分母加减",
-            "visualStrategy": "面积模型",
-            "visualType": "fractionStrip",
-            "coreLiteracy": "数感",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-26",
-            "name": "同分母分数加减",
-            "concept": "分母不变，分子相加减",
-            "prerequisite": "分数比较",
-            "extends": "3A-27 分数应用",
-            "visualStrategy": "面积模型",
-            "visualType": "fractionStrip",
-            "coreLiteracy": "运算能力",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-27",
-            "name": "分数的简单应用",
-            "concept": "求一个整体的几分之几是多少",
-            "prerequisite": "同分母分数加减",
-            "extends": "3B-22 小数初步",
-            "visualStrategy": "面积模型+条形对比",
-            "visualType": "barModel",
-            "coreLiteracy": "模型意识",
-            "difficulty": 2,
-            "isKeyTopic": true
-        },
-        {
-            "id": "3A-28",
-            "name": "集合（韦恩图）",
-            "concept": "重叠部分表示同时属于两个集合",
-            "prerequisite": "分类统计",
-            "extends": "3B-25 搭配二",
-            "visualStrategy": "韦恩图",
-            "visualType": "barModel",
-            "coreLiteracy": "数据意识",
-            "difficulty": 2,
-            "isKeyTopic": true
+            "visualData": {
+                "type": "numberBond",
+                "total": 28,
+                "parts": [
+                    {
+                        "label": "一部分",
+                        "val": 14,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "另一部分",
+                        "val": 14,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "discoverySteps": [
+                {
+                    "q": "📖 先读题：这道题要我们求什么？",
+                    "choices": [
+                        "认真读题，明确问题",
+                        "直接猜一个",
+                        "跳过不看题"
+                    ],
+                    "answer": "认真读题，明确问题",
+                    "explain": "还剩多少页没看？"
+                },
+                {
+                    "q": "🔢 题目给了哪些已知条件？",
+                    "choices": [
+                        "找出题目中的数和关键关系",
+                        "凭感觉",
+                        "只看答案"
+                    ],
+                    "answer": "找出题目中的数和关键关系",
+                    "explain": "总数减去已看：48-20=28"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "减法应用",
+                        "随便选一个",
+                        "一律用加法"
+                    ],
+                    "answer": "减法应用",
+                    "explain": "总数减去已看：48-20=28"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "总数减去已看：48-20=28",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
         }
     ]
 };
