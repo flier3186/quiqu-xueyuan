@@ -164,7 +164,9 @@
     var key = hash(body.input + '|' + body.voice + '|' + body.speed);
     var cacheUrl = 'https://quiqu-tts.local/' + key + '.mp3';
 
+    var cacheRef = null;
     return initCache().then(function (c) {
+      cacheRef = c;
       if (c) {
         return c.match(cacheUrl).then(function (hit) { return hit ? hit.blob() : null; });
       }
@@ -198,7 +200,7 @@
         return res.blob();
       }).then(function (b) {
         cacheCount++;
-        if (c) { try { c.put(cacheUrl, new Response(b.slice(0), { headers: { 'Content-Type': 'audio/mpeg' } })); } catch (e) {} }
+        if (cacheRef) { try { cacheRef.put(cacheUrl, new Response(b.slice(0), { headers: { 'Content-Type': 'audio/mpeg' } })); } catch (e) {} }
         else { memCache[key] = b; }
         return b;
       });
