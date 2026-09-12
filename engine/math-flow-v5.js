@@ -99,8 +99,9 @@ window.MathFlowV5 = {
       socraticStep: 0,
       reviewDone: false,
       practiceIndex: 0,        // 当前练习题索引
-      practiceTotal: 10,        // 总练习题数
-      practiceLevels: [1, 2, 3, 4, 1, 2, 3, 4, 1, 2],  // 练习级别序列
+      practiceTotal: 10,        // 总练习题数（下方按知识点题库池覆盖）
+      practiceLevels: [1, 2, 3, 4, 1, 2, 3, 4, 1, 2],  // 练习级别序列（下方按池覆盖）
+      practicePool: null,       // 同知识点去重题库池（避免 10 道子题全是同一题）
       rmeAnswered: false,       // RME选择题是否已回答
       neriageErrorClicked: false, // Neriage错误卡片是否已点击
       russianIdx: 0,            // 俄罗斯追问当前索引
@@ -108,6 +109,15 @@ window.MathFlowV5 = {
       studyMode: null,          // 学习模式：null=未选择, 'beginner'=刚学, 'intermediate'=学过但卡住, 'advanced'=已熟练
       rmeTimeoutTimer: null,    // RME超时定时器
     };
+    // 构建"同知识点去重题库池"：每个主问题做练习时，从池中抽不同题，
+    // 避免概念题（无公式可变异）出现"10 道子题完全一样"的重复（用户反馈：题目重复/循环重复）。
+    try{
+      const _pool = this._buildPracticePool(problem);
+      this._sess.practicePool = _pool;
+      this._sess.practiceTotal = Math.min(_pool.length, 10);
+      this._sess.practiceLevels = _pool.map((_, i) => [1, 2, 3, 4][i % 4]);
+      this._sess.practiceIndex = 0;
+    }catch(e){ /* 兜底：保持原 10 道设置 */ }
     // 若有到期复习项，先进入昨日回顾（优先级：到期复习 > 微课卡 > 常规路径）
     let forced = null;
     try{
@@ -1221,13 +1231,45 @@ window.MathFlowV5 = {
   // 阶段 6：阶梯练习（3 分钟）—— L1基础 → L2变式(先文字后图形) → L4陷阱
   // ============================================================
   renderPractice(problem){
+    // 从"同知识点题库池"按序号抽一道不同题作为本轮练习母题，杜绝重复
+    const base = (this._sess.practicePool && this._sess.practicePool[this._sess.practiceIndex]) || problem;
     const level = this._sess.practiceLevels[this._sess.practiceIndex] || 1;
     // 每次渲染注入随机新数字的同类变体——翻页永远是新题，不再"翻来覆去就那两道"
-    this._sess.levelVar = this._freshProblem(problem, level);
-    if(level === 1) return this._renderL1(problem);
-    if(level === 2) return this._renderL2(problem);
-    if(level === 3) return this._renderL3(problem);  // 新增 L3
-    return this._renderL4(problem);
+    this._sess.levelVar = this._freshProblem(base, level);
+    if(level === 1) return this._renderL1(base);
+    if(level === 2) return this._renderL2(base);
+    if(level === 3) return this._renderL3(base);  // 新增 L3
+    return this._renderL4(base);
+  },
+
+  // 构建"同知识点去重题库池"：把当前题 + 自己的变体 + 同知识点兄弟题(及其变体) 收集起来，
+  // 按题干去重后返回（最多 12 条）。练习阶段每道子题从池里抽一条，保证不重复。
+  _buildPracticePool(problem){
+    try{
+      if(!problem) return [];
+      const kp = problem.knowledge || '';
+      const sem = (window.MATH_SESSION && window.MATH_SESSION.semKey) ||
+                   ((typeof S!=='undefined' && S.math) ? (S.math.grade + (S.math.semester||'a')) : '');
+      const bank = (window.MATH_SESSION && window.MATH_SESSION.bank) ||
+                   (typeof MATH_BY_GRADE!=='undefined' && MATH_BY_GRADE[sem] && MATH_BY_GRADE[sem].problems) || [];
+      const seen = {};
+      const pool = [];
+      const norm = s => String(s||'').replace(/\s/g,'');
+      const add = p => {
+        if(!p || !p.question) return;
+        const k = norm(p.question);
+        if(seen[k]) return;
+        seen[k] = 1; pool.push(p);
+      };
+      // 1) 当前题 + 自己的变体
+      add(problem);
+      (problem.variants||[]).forEach(add);
+      // 2) 同知识点兄弟题 + 变体
+      bank.forEach(p => { if(p && p.knowledge === kp){ add(p); (p.variants||[]).forEach(add); } });
+      // 3) 仍不足 3 条时，用全库变体兜底（尽量不让练习只有孤零零一题）
+      if(pool.length < 3){ bank.forEach(p => { (p.variants||[]).forEach(add); }); }
+      return pool.slice(0, 12);
+    }catch(e){ return [problem]; }
   },
 
   // 语义常量保护：从题干/场景中识别单位进率等固定数值，

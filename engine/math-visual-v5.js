@@ -27,6 +27,8 @@ window.MathVisualV5 = {
   // 宁可多掩不漏答：已知信息恰好等于答案时显示 "?"，由图形结构传达数量关系。
   _scrubAnswer(html, problem){
     if(html == null) return html;
+    // 永远执行：任何渲染器若把 null/undefined 原样写进 <text>，一律清空，绝不出现 "null" 气泡
+    html = this._killNullText(html);
     const ansNum = problem ? Number(problem.answer) : NaN;
     if(isNaN(ansNum)) return html;
     const tokens = [String(ansNum)];
@@ -46,6 +48,11 @@ window.MathVisualV5 = {
       testers.forEach(({re}) => { out = out.replace(re, '$1?'); });
       return open + out + close;
     });
+  },
+  // 兜底清扫：把 <text>...</text> 里整段为 "null" / "undefined" 的字面量清空。
+  // 数据层万一出现 val:null 的 part，经此护栏后只显示空圆，不会再冒出 "null" 文字。
+  _killNullText(html){
+    return String(html).replace(/(<text[^>]*>)\s*(null|undefined)\s*(<\/text>)/g, '$1$3');
   },
 
   // ===== 智能路由：统一仲裁入口（P0-2）=====
@@ -197,6 +204,9 @@ window.MathVisualV5 = {
   },
   _palette(i){ const p=['#00A896','#F5B800','#FB923C','#E8A0BF','#1E3A5F']; return p[i%p.length]; },
   _escape(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); },
+  // SVG <text> 防御：任何可能为 null/undefined 的字段，渲染成空串而不是字面量 "null"/"undefined"。
+  // 概念题误配 numberBond（parts.val 为 null）等数据缺陷，绝不能再上屏成 "null" 气泡。
+  _txt(v){ return (v == null) ? '' : v; },
   // 修复：文字颜色对比度 —— 亮色背景用深色 #12263F，暗色背景用白色 #fff
   _textColor(hex){
     const c = String(hex || '#00A896').replace('#','');
@@ -245,7 +255,7 @@ window.MathVisualV5 = {
     const segs = parts.map((p,i)=>{
       const w = total>0 ? Math.max((p.val/total)*usable, 2) : 0;
       const color = this._hex(p.color) || this._palette(i);
-      const valLabel = (ans != null && p.val === ans) ? '?' : p.val;   // 待求段不印答案
+      const valLabel = (ans != null && p.val === ans) ? '?' : (p.val != null ? p.val : '');   // 待求段不印答案；val 缺失时不冒 "null"
       // 数值字号随段宽自适应：窄段缩小字号，绝不溢出
       const vfs = Math.max(8, Math.min(15, Math.floor((w-4)/Math.max(1,String(valLabel).length)*1.6)));
       const lfs = Math.max(8, Math.min(12, Math.floor((w-4)/Math.max(1,String(p.label||'').length)*1.7)));
@@ -356,14 +366,14 @@ window.MathVisualV5 = {
         const w=(RW-rpad*2)*Math.min(1,wRatio);
         strips+=`<g class="mv-area-block" style="animation-delay:${i*0.3}s">
           <rect x="${rpad}" y="${rpad+i*stripH}" width="${w}" height="${stripH-6}" fill="${col}" opacity="0.85" rx="4"/>
-          <text x="${rpad+w/2}" y="${rpad+i*stripH+stripH/2+1}" text-anchor="middle" font-size="14" font-weight="700" fill="${this._textColor(col)}">${r.val}</text>
+          <text x="${rpad+w/2}" y="${rpad+i*stripH+stripH/2+1}" text-anchor="middle" font-size="14" font-weight="700" fill="${this._textColor(col)}">${this._txt(r.val)}</text>
         </g>`;
       });
       const last = (result != null && isFinite(Number(result))) ? result : (b != null ? a*b : sum);
       return `<div class="mv-wrap mv-area-model">
         <svg viewBox="0 0 ${RW} ${RH+34}" preserveAspectRatio="xMidYMid meet">
           ${strips}
-          <text x="${RW/2}" y="${RH+18}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${rows.map(r=>r.val).join(' + ')} = ${last}</text>
+          <text x="${RW/2}" y="${RH+18}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${rows.map(r=>this._txt(r.val)).join(' + ')} = ${last}</text>
         </svg>
       </div>`;
     }
@@ -381,13 +391,13 @@ window.MathVisualV5 = {
     const blks=blocks.map((bk,i)=>`
       <g class="mv-area-block" style="animation-delay:${i*0.3}s">
         <rect x="${bk.x}" y="${bk.y}" width="${bk.w}" height="${bk.h}" fill="${bk.color}" opacity="0.85"/>
-        <text x="${bk.x+bk.w/2}" y="${bk.y+bk.h/2-4}" text-anchor="middle" font-size="15" font-weight="700" fill="${this._textColor(bk.color)}">${bk.val}</text>
-        <text x="${bk.x+bk.w/2}" y="${bk.y+bk.h/2+14}" text-anchor="middle" font-size="11" fill="${this._textColor(bk.color)}" opacity="0.88">${bk.lab}</text>
+        <text x="${bk.x+bk.w/2}" y="${bk.y+bk.h/2-4}" text-anchor="middle" font-size="15" font-weight="700" fill="${this._textColor(bk.color)}">${this._txt(bk.val)}</text>
+        <text x="${bk.x+bk.w/2}" y="${bk.y+bk.h/2+14}" text-anchor="middle" font-size="11" fill="${this._textColor(bk.color)}" opacity="0.88">${this._txt(bk.lab)}</text>
       </g>`).join('');
     return `<div class="mv-wrap mv-area-model">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
         ${blks}
-        <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${parts.join(' + ')} = ${result}</text>
+        <text x="${W/2}" y="${H-12}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${parts.map(x=>this._txt(x)).join(' + ')} = ${this._txt(result)}</text>
       </svg>
     </div>`;
   },
@@ -399,6 +409,14 @@ window.MathVisualV5 = {
     const parts=(data && data.parts) || [];
     const total=data.total;
     const n=parts.length;
+    // 退化保护：整体不是数字、且所有分段都没有数值（概念题误配 numberBond，如 val:null）。
+    // 这种 bond 没有可画的数量关系，画出来只会是两个空圈 + 一个字符串总数，纯属噪声。
+    // 直接降级为友好提示，避免出现 "null" 气泡或 "正方形" 当总数这种荒诞图。
+    const totalNum = Number(total);
+    const anyVal = parts.some(p => p && p.val != null);
+    if(!isFinite(totalNum) && !anyVal){
+      return '<div class="mv-empty">🔍 这是一道概念题，看下面的选项来判断吧～</div>';
+    }
     // 自适应：数字越长字号越小、圆越大，保证文本永远在圆内
     const fit=(t,baseR,baseF)=>{
       const s=String(t==null?'':t);
@@ -426,7 +444,7 @@ window.MathVisualV5 = {
       const ft=pFits[i];
       return `<g class="mv-bond-part" style="animation-delay:${0.55+i*0.2}s">
         <circle cx="${bx}" cy="${bottomY}" r="${ft.r}" fill="${color}"/>
-        <text x="${bx}" y="${bottomY+ft.f*0.35}" text-anchor="middle" font-size="${ft.f}" font-weight="700" fill="${this._textColor(color)}">${p.val}</text>
+        <text x="${bx}" y="${bottomY+ft.f*0.35}" text-anchor="middle" font-size="${ft.f}" font-weight="700" fill="${this._textColor(color)}">${this._txt(p.val)}</text>
       </g>`;
     }).join('');
     return `<div class="mv-wrap mv-number-bond">
@@ -434,7 +452,7 @@ window.MathVisualV5 = {
         ${lines}
         <g class="mv-bond-total">
           <circle cx="${topX}" cy="${topY}" r="${tot.r}" fill="#1E3A5F"/>
-          <text x="${topX}" y="${topY+tot.f*0.35}" text-anchor="middle" font-size="${tot.f}" font-weight="700" fill="#fff">${total}</text>
+          <text x="${topX}" y="${topY+tot.f*0.35}" text-anchor="middle" font-size="${tot.f}" font-weight="700" fill="#fff">${this._txt(total)}</text>
         </g>
         ${pCircles}
       </svg>
