@@ -2529,9 +2529,9 @@ window.MATH_BY_GRADE["3a"] = {
                     "hint": "400×8=3200"
                 }
             ],
-            "visualType": "bar",
+            "visualType": "barModel",
             "visualData": {
-                "type": "bar",
+                "type": "barModel",
                 "bars": [
                     {
                         "label": "前3筐",
