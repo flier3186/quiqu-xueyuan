@@ -2657,7 +2657,7 @@ const PETS = [
 // === 工具函数 ===
 function $(s){return document.querySelector(s)}
 function $$(s){return Array.from(document.querySelectorAll(s))}
-function toast(msg){const t=$('#toast');t.innerHTML=`<span class="em">✅</span>${msg}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function toast(msg){const t=$('#toast');t.innerHTML=`<span class="em">✅</span>${escapeAttr(msg)}`;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 // 英语单词照片映射：单词→Unsplash真实照片查询词
 // 抽象词/功能词/动作/形容词——照片无法准确表达，直接走 emoji 插画卡，杜绝随机错图
 const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','morning','afternoon','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting',
@@ -2997,6 +2997,92 @@ const CloudTTSPanel = {
   }
 };
 
+// ===== ASR 高级语音识别设置面板（iOS 兜底：Web Speech 零成本默认 / 讯飞·DeepSeek 付费）=====
+const AsrPanel = {
+  // 切换 asrPanel 显隐 + 刷新
+  toggle(){
+    const p = document.getElementById('asrPanel');
+    if(!p) return;
+    p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    if(p.style.display === 'block') AsrPanel.refresh();
+  },
+  // 读 Asr.status()/getConfig() 填 provider / key(脱敏) / relay，更新 active() 文案
+  refresh(){
+    try{
+      if(typeof Asr === 'undefined') return;
+      const st = Asr.status();
+      const cfg = Asr.getConfig();
+      const prov = document.getElementById('asrProvider');
+      const key = document.getElementById('asrKey');
+      const relay = document.getElementById('asrRelay');
+      const stEl = document.getElementById('asrStatus');
+      if(prov) prov.value = st.paidProvider || 'iflytek';
+      if(key){
+        const masked = (st.paidProvider === 'deepseek') ? cfg.deepseekKey : cfg.iFlyKey;
+        if(masked){ key.placeholder = '已配置（' + masked + '）——输入新值可更换'; key.value = ''; }
+        else { key.placeholder = '粘贴 API Key…'; key.value = ''; }
+      }
+      if(relay){ relay.value = (typeof globalThis.__IFLY_ASR_RELAY__ === 'string') ? globalThis.__IFLY_ASR_RELAY__ : ''; }
+      if(stEl){
+        let line;
+        if(st.active === 'paid') line = '✅ 当前激活：付费 ASR（' + (st.paidProvider === 'deepseek' ? 'DeepSeek' : '讯飞') + '）';
+        else if(st.active === 'web') line = '✅ 当前激活：Web Speech（零成本默认通道）';
+        else line = '❌ 无任何可用 ASR 通道（无付费 key 且浏览器不支持 Web Speech）';
+        if(st.lastError) line += ' · 最近异常: ' + st.lastError;
+        stEl.textContent = line;
+      }
+    }catch(e){}
+  },
+  // Asr.saveConfig({enabled:true, provider, iFlyKey/deepseekKey 按 provider 填})
+  save(){
+    try{
+      if(typeof Asr === 'undefined') return;
+      const provider = (document.getElementById('asrProvider')||{}).value || 'iflytek';
+      const rawKey = (document.getElementById('asrKey')||{}).value ? document.getElementById('asrKey').value.trim() : '';
+      const relayVal = (document.getElementById('asrRelay')||{}).value ? document.getElementById('asrRelay').value.trim() : '';
+      globalThis.__IFLY_ASR_RELAY__ = (relayVal || '');
+      const cfg = Asr.getConfig();
+      const oldKey = (provider === 'deepseek') ? cfg.deepseekKey : cfg.iFlyKey;
+      const oldPlain = (oldKey && oldKey.indexOf('***') < 0) ? oldKey : '';
+      const effectiveKey = rawKey || oldPlain;
+      const patch = { enabled: true, provider: provider };
+      if(provider === 'deepseek'){ patch.deepseekKey = effectiveKey; patch.iFlyKey = ''; }
+      else { patch.iFlyKey = effectiveKey; patch.deepseekKey = ''; }
+      Asr.saveConfig(patch);
+      if(document.getElementById('asrKey')) document.getElementById('asrKey').value = '';
+      AsrPanel.refresh();
+      toast('🎤 ASR 配置已保存');
+    }catch(e){ toast('ASR 保存失败: ' + e.message); }
+  },
+  // Asr.test().then(out => 写 asrStatus：out.ok 绿字 / 黄字)
+  test(){
+    try{
+      if(typeof Asr === 'undefined') return;
+      const stEl = document.getElementById('asrStatus');
+      if(stEl) stEl.textContent = '⏳ 测试中…';
+      Asr.test().then(function(out){
+        const el = document.getElementById('asrStatus');
+        if(!el) return;
+        if(out.ok){ el.style.color = '#2e9e5b'; el.textContent = '✅ ' + out.detail; }
+        else { el.style.color = '#d4880f'; el.textContent = '⚠️ ' + out.detail; }
+      }).catch(function(e){
+        const el = document.getElementById('asrStatus');
+        if(el){ el.style.color = '#d4880f'; el.textContent = '测试异常: ' + e.message; }
+      });
+    }catch(e){}
+  },
+  // 清除配置：Asr.saveConfig({enabled:false,iFlyKey:'',deepseekKey:''})
+  clear(){
+    try{
+      if(typeof Asr === 'undefined') return;
+      Asr.saveConfig({ enabled:false, iFlyKey:'', deepseekKey:'' });
+      globalThis.__IFLY_ASR_RELAY__ = '';
+      AsrPanel.refresh();
+      toast('已清除 ASR 配置，回落到 Web Speech / 关键词匹配');
+    }catch(e){}
+  }
+};
+
 // 解锁音频引擎：移动端浏览器要求用户手势交互后才能播放音频
 function unlockAudio(){
   if(_speakUnlocked) return;
@@ -3107,7 +3193,7 @@ function makeClickableSentence(sentence){
     if(/^\s+$/.test(tok))return tok;
     const clean=tok.replace(/[^a-zA-Z']/g,'').toLowerCase();
     if(!clean)return tok;
-    return `<span class="click-word" data-word="${clean}">${tok}</span>`;
+    return `<span class="click-word" data-word="${clean}">${escapeAttr(tok)}</span>`;
   }).join('');
 }
 
@@ -3248,6 +3334,69 @@ function renderSidePanel(){
     </div>`;
 }
 
+// ===== 阶段4 · 入口重组「学/练/测/伴」分组导航（2026-09-17）=====
+// 把平铺 9 tab 按学习动作归成四组：学 / 练 / 测 / 伴。仅做入口整理，不改原视图。
+// 点击后跳到对应视图；【诊断】【俄罗斯追问】等子入口保留在各自视图内，这里给出语义归类入口。
+function renderStudyHubs(){
+  const groups = [
+    { key:'xue', name:'学', icon:'📖', motto:'新知输入', color:'var(--teal)',
+      items:[
+        { label:'数学星球', sub:'闯关练计算', icon:'🪐', act:"switchView('math')" },
+        { label:'英语世界', sub:'同步自然拼读', icon:'🌍', act:"switchView('english')" },
+        { label:'闯关游戏', sub:'迷你游戏场景', icon:'🎮', act:"switchView('game')" }
+      ]},
+    { key:'lian', name:'练', icon:'✏️', motto:'刻意练习', color:'var(--yellow-700)',
+      items:[
+        { label:'数学题库', sub:'每日14题 · 错题再练', icon:'🧮', act:"switchView('math')" },
+        { label:'英语词汇', sub:'闪卡记忆 · 每日短语', icon:'🎴', act:"switchView('english')" },
+        { label:'每日口语', sub:'开口次数目标', icon:'🎯', act:"switchView('speak')" }
+      ]},
+    { key:'ce', name:'测', icon:'📊', motto:'检验掌握', color:'var(--coral)',
+      items:[
+        { label:'口语伙伴', sub:'对话 · 发音评分', icon:'🎤', act:"switchView('speak')" },
+        { label:'数学诊断', sub:'薄弱点定级', icon:'🩺', act:"MATH_IS_DIAG=true;render();switchView('math');" },
+        { label:'俄罗斯追问', sub:'说出数学道理', icon:'🤔', act:"switchView('math')" }
+      ]},
+    { key:'ban', name:'伴', icon:'🗝️', motto:'陪伴成长', color:'var(--navy)',
+      items:[
+        { label:'元宇宙宠物', sub:'喂养 · 鼓励对话', icon:'🐾', act:"switchView('pet')" },
+        { label:'AI 口语老师', sub:'自由对话陪练', icon:'💬', act:"switchView('speak')" },
+        { label:'家长面板', sub:'学情 · 周报 · 权限', icon:'👪', act:"document.getElementById('parentBtn').click();" }
+      ]}
+  ];
+  return '<div class="study-hubs" style="margin-bottom:18px">' +
+    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
+      '<span style="width:10px;height:10px;border-radius:50%;background:#34D399"></span>' +
+      '<span style="font-size:15px;font-weight:800;color:var(--navy)">学 · 练 · 测 · 伴</span>' +
+      '<span style="font-size:11.5px;color:var(--text-3);font-weight:600">按学习动作分组 · 一眼找到想做的事</span>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">' +
+    groups.map((g)=>{
+      return '<div style="border-radius:16px;padding:14px;background:white;border:1px solid #E7EDF5;box-shadow:0 4px 14px rgba(30,58,95,.05)">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">' +
+          '<span style="font-size:15px;font-weight:900;color:' + g.color + '">' + g.icon + ' ' + g.name + '</span>' +
+          '<span style="font-size:11px;color:var(--text-3)">' + g.motto + '</span>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:6px">' +
+        g.items.map((it)=>{
+          return '<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--ink-50,#f6f8fb);cursor:pointer;border:1.5px solid transparent;transition:all .18s" ' +
+            'onmouseover="this.style.borderColor=\'' + g.color + '\';this.style.background=\'#fff\'" ' +
+            'onmouseout="this.style.borderColor=\'transparent\';this.style.background=\'var(--ink-50,#f6f8fb)\'" ' +
+            'onclick="' + it.act + '" >' +
+            '<span style="font-size:17px">' + it.icon + '</span>' +
+            '<span style="flex:1;min-width:0">' +
+              '<span style="display:block;font-size:12.5px;font-weight:700;color:var(--navy)">' + it.label + '</span>' +
+              '<span style="display:block;font-size:10.5px;color:var(--text-3)">' + it.sub + '</span>' +
+            '</span>' +
+            '<span style="font-size:12px;color:' + g.color + '">→</span>' +
+          '</div>';
+        }).join('') +
+        '</div></div>';
+    }).join('') +
+    '</div></div>';
+}
+window.renderStudyHubs = renderStudyHubs;
+
 function renderOverview(){
   const o = S.overview || {};
   const _today = (()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');})();
@@ -3307,6 +3456,8 @@ function renderOverview(){
   return `
     <div class="layout-with-side">
       <div style="flex:1;min-width:0">
+        ${renderStudyHubs()}
+
         <!-- 顶部欢迎条 · 学习驾驶舱 -->
         <div class="tilt-card kid-hero" style="position:relative;overflow:hidden;border-radius:var(--radius-2xl);padding:28px 32px;margin-bottom:20px;background:linear-gradient(135deg,var(--navy) 0%,var(--teal-700) 50%,var(--teal) 100%);color:#fff;box-shadow:var(--shadow-xl)">
           <div style="position:absolute;right:-30px;top:-30px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,184,0,.22),transparent 60%);filter:blur(8px)"></div>
@@ -3351,6 +3502,7 @@ function renderOverview(){
         <div style="margin:14px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
           <button onclick="VoiceCore.runCheck('efVoiceCheckOut')" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔊 发音体检</button>
           <button onclick="CloudTTSPanel.toggle()" style="background:linear-gradient(135deg,#7C5CFF,#2F6BFF);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔑 高级语音设置</button>
+          <button onclick="AsrPanel.toggle()" style="background:linear-gradient(135deg,#FF7C5C,#FF5C8A);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">语音识别设置</button>
           <span id="efVoiceCheckOut" style="font-size:12px;color:var(--text-2);line-height:1.6"></span>
           <div id="cloudTtsPanel" style="display:none;margin-top:10px;padding:14px 16px;background:#fff;border:1.5px solid rgba(124,92,255,.35);border-radius:14px;max-width:520px;box-shadow:var(--shadow-md)">
             <div style="font-size:14px;font-weight:800;color:#7C5CFF;margin-bottom:6px">☁️ 云端情感语音（消灭机械音）</div>
@@ -3383,6 +3535,27 @@ function renderOverview(){
               <button onclick="CloudTTSPanel.test()" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:8px;padding:6px 14px;font-weight:800;cursor:pointer">▶ 试听</button>
             </div>
             <div id="cttsStatus" style="font-size:12px;color:var(--text-2);margin-top:8px;line-height:1.6"></div>
+          </div>
+          <div id="asrPanel" style="display:none;margin-top:10px;padding:14px 16px;background:#fff;border:1.5px solid rgba(124,92,255,.35);border-radius:14px;max-width:520px;box-shadow:var(--shadow-md)">
+            <div style="font-size:14px;font-weight:800;color:#FF5C8A;margin-bottom:6px">🎤 语音识别（iOS 兜底）</div>
+            <div style="font-size:12px;color:var(--text-2);line-height:1.7;margin-bottom:8px">默认零成本 Web Speech（浏览器内置）；iOS Safari 不支持 Web Speech，配讯飞 / DeepSeek 付费 key 兜底。Key 只存本机浏览器。</div>
+            <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">供应商
+              <select id="asrProvider" onchange="AsrPanel.refresh()" style="padding:6px 8px;border:1px solid #d8e0ee;border-radius:8px;margin-left:4px">
+                <option value="iflytek">讯飞 iFlytek</option>
+                <option value="deepseek">DeepSeek（Whisper-1）</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+              <input id="asrKey" type="password" placeholder="粘贴 API Key…" style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #d8e0ee;border-radius:10px;font-size:13px">
+              <button onclick="AsrPanel.save()" style="background:#FF5C8A;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer">保存</button>
+              <button onclick="AsrPanel.test()" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer">▶ 测试</button>
+              <button onclick="AsrPanel.clear()" style="background:#eef2f9;color:#5a6a8a;border:none;border-radius:10px;padding:9px 12px;cursor:pointer">清除</button>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:12px;color:var(--text-2)">
+              <span>讯飞 relay（REST 需服务端签名，纯前端需自备轻量 relay；可不填则讯飞不可用）</span>
+              <input id="asrRelay" type="text" placeholder="https://your-relay.example.com" style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #d8e0ee;border-radius:10px;font-size:13px">
+            </div>
+            <div id="asrStatus" style="font-size:12px;color:var(--text-2);margin-top:6px;line-height:1.6"></div>
           </div>
         </div>
 
@@ -4068,6 +4241,7 @@ function renderMath(grade='3'){
           <button onclick="mathStartReview()" style="padding:9px 16px;border-radius:20px;border:none;background:var(--coral);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">开始再练 →</button>
         </div>` : '')}
         ${_diagEntry}
+        ${mathReverseEntryCard(semKey)}
         ${(bankTotal && pIdx >= bankTotal - 1 && !window.MATH_IS_REVIEW) ? `
         <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FAEEDA,#FFF6E2);border-left:4px solid var(--yellow);border-radius:12px;padding:14px 16px;margin-bottom:14px">
           <span style="font-size:24px">🏆</span>
@@ -4125,6 +4299,42 @@ function mathDismissDailyComplete(go){
   else if(go === 'dashboard') switchView('dashboard');
 }
 window.mathDismissDailyComplete = mathDismissDailyComplete;
+
+// ===== M2 反向建模（形→数）：数学页入口卡 + 启动 =====
+function mathReverseEntryCard(semKey){
+  try{
+    if(typeof window.MATH_REVERSE_MODEL === 'undefined') return '';
+    const glist = window.MATH_REVERSE_MODEL[semKey];
+    if(!glist || !glist.length) return '';
+    const n = glist.length;
+    return '<div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#E6F7F4,#DFF0FF);border-left:4px solid var(--teal);border-radius:12px;padding:12px 16px;margin-bottom:14px;cursor:pointer" onclick="mathReverseStart(\\'' + semKey + '\\')">' +
+      '<span style="font-size:24px">🔁</span>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div style="font-size:13.5px;font-weight:800;color:var(--teal-700)">反向建模 · 看图写数量关系</div>' +
+        '<div style="font-size:12px;color:var(--text-2);margin-top:2px">本册有 ' + n + ' 道"形→数"挑战 · 写出算式/方程，AI 判定</div>' +
+      '</div>' +
+      '<button style="padding:9px 16px;border-radius:20px;border:none;background:var(--teal);color:white;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">去挑战 →</button>' +
+    '</div>';
+  }catch(e){ return ''; }
+}
+function mathReverseStart(semKey){
+  try{
+    const glist = (typeof window.MATH_REVERSE_MODEL !== 'undefined') ? (window.MATH_REVERSE_MODEL[semKey] || []) : [];
+    if(!glist.length){ if(typeof toast==='function') toast('本册暂无反向建模题'); return; }
+    window.CURRENT_REVERSE_SEM = semKey;
+    window.CURRENT_REVERSE_LIST = glist.slice();
+    const item = glist[Math.floor(Math.random()*glist.length)];
+    window.CURRENT_REVERSE_ITEM = item;
+    const host = document.getElementById('mathStage');
+    if(!host){ if(typeof render==='function') render(); return; }
+    host.innerHTML = ReverseModelJudge.renderQuestion(item);
+    host.style.animation = 'none';
+    void host.offsetWidth;
+    host.style.animation = 'fadeIn .45s ease';
+  }catch(e){ if(typeof toast==='function') toast('反向建模启动失败'); console.warn(e); }
+}
+window.mathReverseEntryCard = mathReverseEntryCard;
+window.mathReverseStart = mathReverseStart;
 
 // ===== 阶段进度条（V5 九步进度指示器） =====
 function renderMathStageProgress(){
@@ -5323,6 +5533,7 @@ function renderEnglish(grade='3',subtab='vocab'){
   return `
     <div class="layout-with-side">
       <div style="flex:1;min-width:0">
+
         <div class="grade-bar">
           <span class="grade-label">年级：</span>
           <div class="grade-pills" id="engGrades">
@@ -6377,6 +6588,8 @@ function renderSpeak(){
           </div>
           ${sc?`<button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="SpeakEngineV5.startDialog(S.speakV5.teacher,'${sc.id}');document.getElementById('seV5Dialog').innerHTML=SpeakEngineV5.renderDialog()">🔄 重新开始</button>`:''}
         </div>
+          <button id="seRubricBtn" class="btn btn-ghost" style="font-size:12px;padding:6px 12px;background:rgba(245,184,0,.12);border:1px solid rgba(245,184,0,.4);color:#92400e" onclick="runRubricGrade()">📊评分</button>
+        <div id="seRubricResult" style="margin:0 14px"></div>
         <div class="chat-messages" id="seV5Dialog" style="padding:14px;overflow-y:auto;flex:1">${SpeakEngineV5.renderDialog()}</div>
         <div class="se-hint-row" id="seHint"><span style="color:var(--text-2)">💡 ${sc?'输入英文或点击🎤说话，和老师自由交谈':'先选一个场景开始对话～'}</span></div>
       </div>
@@ -6418,6 +6631,29 @@ function selectScenarioV5(id){
   if(status && sc) status.textContent = '在线 · ' + sc.icon + ' ' + sc.title + (S.apiConfig&&S.apiConfig.deepseekKey?' · AI对话':' · 降级模式');
   if(typeof toast === 'function') toast('🎯 ' + (sc?sc.title:'场景') + ' · 开始对话！');
 }
+function runRubricGrade(){
+  // 取最近一次学生说的话作为待测语料；场景目标句作为参考文本
+  var sc = null;
+  try{ sc = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS.find(function(s){ return s.id === S.speakV5.scenario; }) : null; }catch(e){}
+  var targetText = '';
+  if(sc && sc.targetLines && sc.targetLines.length){ targetText = sc.targetLines[sc.targetLines.length-1].text || ''; }
+  var lastStudentMsg = null;
+  var hist = (S.speakV5 && S.speakV5.history) || [];
+  for(var i = hist.length-1; i >= 0; i--){ if(hist[i] && hist[i].role === 'student'){ lastStudentMsg = hist[i]; break; } }
+  var transcript = lastStudentMsg ? lastStudentMsg.text : '';
+  if(!targetText && !transcript){
+    if(typeof toast === 'function') toast('请先完成一次口语对话再进行评分');
+    return;
+  }
+  var result = SpeakEngineV5.speakRubricGrade(targetText, transcript, {});
+  var box = document.getElementById('seRubricResult');
+  if(box) box.innerHTML = SpeakEngineV5.renderRubricResult(result);
+  if(typeof Achievements !== 'undefined' && Achievements.recordSpeak){
+    Achievements.recordSpeak();
+    if(Achievements.check) Achievements.check();
+  }
+}
+
 function selectTeacherV5(tid){
   SpeakEngineV5.init();
   S.speakV5.teacher = tid;
@@ -7838,6 +8074,9 @@ function ensureAiPanelBound(){
   // 从状态加载已保存的 API Key
   if(S.apiConfig && S.apiConfig.deepseekKey) {
     inp.value = S.apiConfig.deepseekKey;
+    var _mk=(typeof Asr!=="undefined" && Asr.mask)?Asr.mask(S.apiConfig.deepseekKey):String(S.apiConfig.deepseekKey).slice(0,6)+"***"+String(S.apiConfig.deepseekKey).slice(-4);
+    inp.placeholder="已配置（"+_mk+"）——输入新值可更换";
+    inp.value="";
   }
   // 每次进入AI设置Tab都重新绑定按钮事件，防止绑定丢失
   bindAiConfigEvents();
@@ -8846,6 +9085,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 <!-- === V5 数据文件 === -->
 <script src="data/math-data-core.js"></script>
+<script src="data/math-reverse-model.js?v=20260917c"></script>
 <script src="data/math-daily-bank.js"></script>
 <script src="data/math-chain-map.js?v=20260910a"></script>
 <script src="data/english-vocab.js"></script>
@@ -8853,6 +9093,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="data/english-listening.js"></script>
 <script src="data/english-grammar.js"></script>
 <script src="data/english-scenarios.js"></script>
+<script src="data/english-rubric.js"></script>
 <!-- === V5 引擎文件 === -->
 <script src="engine/achievements.js"></script>
 <script src="engine/usage-metrics.js?v=20260910a"></script>
@@ -8862,20 +9103,24 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="engine/math-manipulative.js?v=20260909a"></script>
 <script src="engine/math-geometry-3d.js?v=20260909a"></script>
 <script src="engine/russian-questioning.js"></script>
+<script src="engine/reverse-model-judge.js?v=20260917c"></script>
 <script src="engine/parent-panel.js"></script>
 <script src="engine/cloud-tts.js"></script>
 <script src="engine/neural-tts.js"></script>
+<script src="engine/asr.js"></script>
 <script src="data/grade-limits.js"></script>
 <script src="engine/math-kernel.js"></script>
 <script src="engine/listening-math.js"></script>
 <script type="module" src="engine/pet-companion.js"></script>
 <script src="engine/math-flow-v5.js?v=20260806e"></script>
 <script src="engine/math-diagram-master.js?v=20260910a"></script>
+<script src="engine/diagram-followup.js?v=20260917c"></script>
 <script src="engine/math-diagnostic.js?v=20260910a"></script>
 <script src="engine/speak-engine-v5.js"></script>
 <script src="engine/english-flow-v5.js"></script>
 <script src="engine/weakness-detector-v5.js"></script>
 <script src="engine/progress-tracker-v5.js"></script>
+<script src="lib/ts-fsrs.mjs"></script>
 <script src="engine/spaced-review-v5.js"></script>
 <script src="data/math-2a-2b.js"></script>
 <script src="data/math-3-6-extend.js"></script>

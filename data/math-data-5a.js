@@ -905,110 +905,6 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "求每千克大米多少元",
-                        "求总价",
-                        "求几千克",
-                        "求总重量"
-                    ],
-                    "answer": "求每千克大米多少元",
-                    "explain": "题目问4.8千克大米33.6元，每千克多少元"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "4.8千克共33.6元",
-                        "4.8元",
-                        "33.6千克",
-                        "每千克4.8元"
-                    ],
-                    "answer": "4.8千克共33.6元",
-                    "explain": "总重4.8千克，总价33.6元，求单价"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "除法：33.6÷4.8=7",
-                        "加法",
-                        "减法",
-                        "乘法"
-                    ],
-                    "answer": "除法：33.6÷4.8=7",
-                    "explain": "单价=总价÷数量，33.6÷4.8=7元/千克"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图：4.8kg×7元=33.6元，每段7元共4.8段",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "小数除以整数：商的小数点要和被除数小数点对齐。33.6÷4.8=7",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "除数是整数的小数除法：①按整数除法算②商的小数点对齐被除数③不够除商0④有余数添0继续除",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-008"
-        },
-        {
-            "scene": "小亮算10÷3，除不尽保留两位小数。",
-            "question": "10÷3保留两位小数约是多少？",
-            "formula": "10 ÷ 3 ≈ ?",
-            "answer": 3.33,
-            "choices": [
-                3.33,
-                3.34,
-                3.3,
-                3.35
-            ],
-            "visualType": "numberLine",
-            "visualData": {
-                "start": 3.3,
-                "end": 3.4,
-                "points": [
-                    {
-                        "pos": 3.33,
-                        "label": "3.33",
-                        "color": "#00A896"
-                    }
-                ],
-                "highlight": [
-                    3.3,
-                    3.4
-                ]
-            },
-            "knowledge": "商的近似数",
-            "difficulty": 2,
-            "hint": "第三位3<5舍去",
-            "variants": [
-                {
-                    "question": "20÷7保留两位？",
-                    "formula": "20÷7≈?",
-                    "answer": 2.86,
-                    "hint": "约2.857保留两位"
-                },
-                {
-                    "question": "15÷6保留两位？",
-                    "formula": "15÷6≈?",
-                    "answer": 2.5,
-                    "hint": "2.5就是2.50"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
                         "求72÷8等于多少",
                         "求7.2÷8",
                         "求72÷0.8",
@@ -1063,50 +959,50 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-009"
+            "id": "5A-PROB-008"
         },
         {
-            "scene": "小红算1÷3=0.333...，老师告诉她这是循环小数。",
-            "question": "1÷3的循环节是几？",
-            "formula": "1÷3 = 0.333... 循环节=?",
-            "answer": 3,
+            "scene": "小亮算10÷3，除不尽保留两位小数。",
+            "question": "10÷3保留两位小数约是多少？",
+            "formula": "10 ÷ 3 ≈ ?",
+            "answer": 3.33,
             "choices": [
-                3,
-                1,
-                0,
-                33
+                3.33,
+                3.34,
+                3.3,
+                3.35
             ],
             "visualType": "numberLine",
             "visualData": {
-                "start": 0,
-                "end": 1,
+                "start": 3.3,
+                "end": 3.4,
                 "points": [
                     {
-                        "pos": 0.333,
-                        "label": "0.333...",
+                        "pos": 3.33,
+                        "label": "3.33",
                         "color": "#00A896"
                     }
                 ],
                 "highlight": [
-                    0,
-                    1
+                    3.3,
+                    3.4
                 ]
             },
-            "knowledge": "循环小数",
+            "knowledge": "商的近似数",
             "difficulty": 2,
-            "hint": "不断重复的数字是循环节",
+            "hint": "第三位3<5舍去",
             "variants": [
                 {
-                    "question": "2÷3的循环节是几？",
-                    "formula": "2÷3=0.666...",
-                    "answer": 6,
-                    "hint": "循环节6"
+                    "question": "20÷7保留两位？",
+                    "formula": "20÷7≈?",
+                    "answer": 2.86,
+                    "hint": "约2.857保留两位"
                 },
                 {
-                    "question": "1÷7的循环节有几位(填6)？",
-                    "formula": "1÷7循环节位数=?",
-                    "answer": 6,
-                    "hint": "142857六位"
+                    "question": "15÷6保留两位？",
+                    "formula": "15÷6≈?",
+                    "answer": 2.5,
+                    "hint": "2.5就是2.50"
                 }
             ],
             "discoverySteps": [
@@ -1167,50 +1063,50 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-010"
+            "id": "5A-PROB-009"
         },
         {
-            "scene": "妈妈买3.5千克油，每个瓶子最多装0.8千克。需要几个瓶子？",
-            "question": "需要多少个瓶子？(进一法)",
-            "formula": "3.5 ÷ 0.8 = ? (个)",
-            "answer": 5,
+            "scene": "小红算1÷3=0.333...，老师告诉她这是循环小数。",
+            "question": "1÷3的循环节是几？",
+            "formula": "1÷3 = 0.333... 循环节=?",
+            "answer": 3,
             "choices": [
-                5,
-                4,
-                4.375,
-                6
+                3,
+                1,
+                0,
+                33
             ],
-            "visualType": "barModel",
+            "visualType": "numberLine",
             "visualData": {
-                "total": 3.5,
-                "parts": [
+                "start": 0,
+                "end": 1,
+                "points": [
                     {
-                        "label": "4瓶装3.2",
-                        "val": 3.2,
+                        "pos": 0.333,
+                        "label": "0.333...",
                         "color": "#00A896"
-                    },
-                    {
-                        "label": "余0.3",
-                        "val": 0.3,
-                        "color": "#F5B800"
                     }
+                ],
+                "highlight": [
+                    0,
+                    1
                 ]
             },
-            "knowledge": "小数除法解决问题",
-            "difficulty": 3,
-            "hint": "3.5÷0.8=4余0.3进一法需5瓶",
+            "knowledge": "循环小数",
+            "difficulty": 2,
+            "hint": "不断重复的数字是循环节",
             "variants": [
                 {
-                    "question": "2.5千克每瓶0.4需几瓶？",
-                    "formula": "2.5÷0.4=?",
-                    "answer": 7,
-                    "hint": "2.5÷0.4=6.25进一"
+                    "question": "2÷3的循环节是几？",
+                    "formula": "2÷3=0.666...",
+                    "answer": 6,
+                    "hint": "循环节6"
                 },
                 {
-                    "question": "4米布每件0.6做几件？",
-                    "formula": "4÷0.6=?",
+                    "question": "1÷7的循环节有几位(填6)？",
+                    "formula": "1÷7循环节位数=?",
                     "answer": 6,
-                    "hint": "4÷0.6=6.66去尾法6件"
+                    "hint": "142857六位"
                 }
             ],
             "discoverySteps": [
@@ -1271,45 +1167,50 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-011"
+            "id": "5A-PROB-010"
         },
         {
-            "scene": "袋子里有5个红球，小红闭眼摸一个。老师问摸出什么颜色。",
-            "question": "袋中全是红球，摸出红球是(一定填1,不可能填2,可能填3)",
-            "formula": "全红 → 摸红 ? (1一定/2不可能/3可能)",
-            "answer": 1,
+            "scene": "妈妈买3.5千克油，每个瓶子最多装0.8千克。需要几个瓶子？",
+            "question": "需要多少个瓶子？(进一法)",
+            "formula": "3.5 ÷ 0.8 = ? (个)",
+            "answer": 5,
             "choices": [
-                1,
-                2,
-                3,
-                0
+                5,
+                4,
+                4.375,
+                6
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 5,
+                "total": 3.5,
                 "parts": [
                     {
-                        "label": "红球×5",
-                        "val": 5,
-                        "color": "#FB923C"
+                        "label": "4瓶装3.2",
+                        "val": 3.2,
+                        "color": "#00A896"
+                    },
+                    {
+                        "label": "余0.3",
+                        "val": 0.3,
+                        "color": "#F5B800"
                     }
                 ]
             },
-            "knowledge": "事件发生的确定性",
-            "difficulty": 1,
-            "hint": "全是红球一定摸到红球",
+            "knowledge": "小数除法解决问题",
+            "difficulty": 3,
+            "hint": "3.5÷0.8=4余0.3进一法需5瓶",
             "variants": [
                 {
-                    "question": "袋中全白球摸到红球(1一定2不可能)？",
-                    "formula": "全白→摸红?",
-                    "answer": 2,
-                    "hint": "不可能"
+                    "question": "2.5千克每瓶0.4需几瓶？",
+                    "formula": "2.5÷0.4=?",
+                    "answer": 7,
+                    "hint": "2.5÷0.4=6.25进一"
                 },
                 {
-                    "question": "袋中3红2白摸到红(1一定2不可能3可能)？",
-                    "formula": "3红2白→摸红?",
-                    "answer": 3,
-                    "hint": "可能"
+                    "question": "4米布每件0.6做几件？",
+                    "formula": "4÷0.6=?",
+                    "answer": 6,
+                    "hint": "4÷0.6=6.66去尾法6件"
                 }
             ],
             "discoverySteps": [
@@ -1370,12 +1271,12 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-012"
+            "id": "5A-PROB-011"
         },
         {
-            "scene": "袋子里3个红球1个蓝球。小红摸一个球。",
-            "question": "摸到哪种颜色的球可能性大？(红填1,蓝填2)",
-            "formula": "3红1蓝 → 摸?可能性大 (1红/2蓝)",
+            "scene": "袋子里有5个红球，小红闭眼摸一个。老师问摸出什么颜色。",
+            "question": "袋中全是红球，摸出红球是(一定填1,不可能填2,可能填3)",
+            "formula": "全红 → 摸红 ? (1一定/2不可能/3可能)",
             "answer": 1,
             "choices": [
                 1,
@@ -1385,35 +1286,30 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 4,
+                "total": 5,
                 "parts": [
                     {
-                        "label": "红3个",
-                        "val": 3,
+                        "label": "红球×5",
+                        "val": 5,
                         "color": "#FB923C"
-                    },
-                    {
-                        "label": "蓝1个",
-                        "val": 1,
-                        "color": "#00A896"
                     }
                 ]
             },
-            "knowledge": "可能性的大小",
-            "difficulty": 2,
-            "hint": "数量多可能性大",
+            "knowledge": "事件发生的确定性",
+            "difficulty": 1,
+            "hint": "全是红球一定摸到红球",
             "variants": [
                 {
-                    "question": "2红3蓝摸到哪种可能性大(1红2蓝)？",
-                    "formula": "2红3蓝→?",
+                    "question": "袋中全白球摸到红球(1一定2不可能)？",
+                    "formula": "全白→摸红?",
                     "answer": 2,
-                    "hint": "蓝多"
+                    "hint": "不可能"
                 },
                 {
-                    "question": "4红1蓝摸到哪种可能性大(1红2蓝)？",
-                    "formula": "4红1蓝→?",
-                    "answer": 1,
-                    "hint": "红多"
+                    "question": "袋中3红2白摸到红(1一定2不可能3可能)？",
+                    "formula": "3红2白→摸红?",
+                    "answer": 3,
+                    "hint": "可能"
                 }
             ],
             "discoverySteps": [
@@ -1474,12 +1370,12 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-013"
+            "id": "5A-PROB-012"
         },
         {
-            "scene": "小红和小亮玩游戏，袋中2红2蓝，摸到红小红赢摸到蓝小亮赢。",
-            "question": "这个游戏公平吗？(公平填1,不公平填2)",
-            "formula": "2红2蓝 → ? (1公平/2不公平)",
+            "scene": "袋子里3个红球1个蓝球。小红摸一个球。",
+            "question": "摸到哪种颜色的球可能性大？(红填1,蓝填2)",
+            "formula": "3红1蓝 → 摸?可能性大 (1红/2蓝)",
             "answer": 1,
             "choices": [
                 1,
@@ -1492,32 +1388,32 @@ window.MATH_BY_GRADE["5a"] = {
                 "total": 4,
                 "parts": [
                     {
-                        "label": "红2",
-                        "val": 2,
+                        "label": "红3个",
+                        "val": 3,
                         "color": "#FB923C"
                     },
                     {
-                        "label": "蓝2",
-                        "val": 2,
+                        "label": "蓝1个",
+                        "val": 1,
                         "color": "#00A896"
                     }
                 ]
             },
-            "knowledge": "根据可能性设计公平规则",
+            "knowledge": "可能性的大小",
             "difficulty": 2,
-            "hint": "双方可能性相等即公平",
+            "hint": "数量多可能性大",
             "variants": [
                 {
-                    "question": "3红1蓝游戏公平吗(1公平2不公平)？",
-                    "formula": "3红1蓝→?",
+                    "question": "2红3蓝摸到哪种可能性大(1红2蓝)？",
+                    "formula": "2红3蓝→?",
                     "answer": 2,
-                    "hint": "红多不公平"
+                    "hint": "蓝多"
                 },
                 {
-                    "question": "4红4蓝游戏公平吗(1公平2不公平)？",
-                    "formula": "4红4蓝→?",
+                    "question": "4红1蓝摸到哪种可能性大(1红2蓝)？",
+                    "formula": "4红1蓝→?",
                     "answer": 1,
-                    "hint": "相等公平"
+                    "hint": "红多"
                 }
             ],
             "discoverySteps": [
@@ -1578,56 +1474,50 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-014"
+            "id": "5A-PROB-013"
         },
         {
-            "scene": "小红今年a岁，妈妈比她大25岁。老师问妈妈多少岁。",
-            "question": "妈妈多少岁？(用含a的式子表示)",
-            "formula": "妈妈 = a + ?",
-            "answer": 25,
+            "scene": "小红和小亮玩游戏，袋中2红2蓝，摸到红小红赢摸到蓝小亮赢。",
+            "question": "这个游戏公平吗？(公平填1,不公平填2)",
+            "formula": "2红2蓝 → ? (1公平/2不公平)",
+            "answer": 1,
             "choices": [
-                25,
-                "a",
-                5,
-                250
+                1,
+                2,
+                3,
+                0
             ],
-            "visualType": "numberLine",
+            "visualType": "barModel",
             "visualData": {
-                "start": 0,
-                "end": 100,
-                "points": [
+                "total": 4,
+                "parts": [
                     {
-                        "pos": 25,
-                        "label": "+25",
+                        "label": "红2",
+                        "val": 2,
+                        "color": "#FB923C"
+                    },
+                    {
+                        "label": "蓝2",
+                        "val": 2,
                         "color": "#00A896"
                     }
-                ],
-                "highlight": [
-                    0,
-                    25
                 ]
             },
-            "knowledge": "用字母表示数",
+            "knowledge": "根据可能性设计公平规则",
             "difficulty": 2,
-            "hint": "a+25表示妈妈年龄",
+            "hint": "双方可能性相等即公平",
             "variants": [
                 {
-                    "question": "小红a岁，妈妈b岁，妈妈比小红大几岁？（用含a、b的式子表示）",
-                    "formula": "b-a=?",
-                    "answer": "b-a",
-                    "hint": "妈妈比小红大的部分 = 妈妈年龄 - 小红年龄 = b-a",
-                    "choices": [
-                        "b-a",
-                        "a-b",
-                        "a+b",
-                        "ab"
-                    ]
+                    "question": "3红1蓝游戏公平吗(1公平2不公平)？",
+                    "formula": "3红1蓝→?",
+                    "answer": 2,
+                    "hint": "红多不公平"
                 },
                 {
-                    "question": "每支x元买5支共多少元？",
-                    "formula": "5x中x=?时共15元",
-                    "answer": 3,
-                    "hint": "15÷5=3"
+                    "question": "4红4蓝游戏公平吗(1公平2不公平)？",
+                    "formula": "4红4蓝→?",
+                    "answer": 1,
+                    "hint": "相等公平"
                 }
             ],
             "discoverySteps": [
@@ -1688,42 +1578,56 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-015"
+            "id": "5A-PROB-014"
         },
         {
-            "scene": "老师教小红用字母表示长方形面积公式。",
-            "question": "长方形面积S=长×宽，长a宽b，S=?",
-            "formula": "S = a × ?",
-            "answer": "b",
+            "scene": "小红今年a岁，妈妈比她大25岁。老师问妈妈多少岁。",
+            "question": "妈妈多少岁？(用含a的式子表示)",
+            "formula": "妈妈 = a + ?",
+            "answer": 25,
             "choices": [
-                "b",
-                2,
+                25,
                 "a",
-                1
+                5,
+                250
             ],
-            "visualType": "geometry",
+            "visualType": "numberLine",
             "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": "a",
-                    "width": "b"
-                }
+                "start": 0,
+                "end": 100,
+                "points": [
+                    {
+                        "pos": 25,
+                        "label": "+25",
+                        "color": "#00A896"
+                    }
+                ],
+                "highlight": [
+                    0,
+                    25
+                ]
             },
-            "knowledge": "用字母表示运算定律和公式",
+            "knowledge": "用字母表示数和数量关系",
             "difficulty": 2,
-            "hint": "S=ab",
+            "hint": "a+25表示妈妈年龄",
             "variants": [
                 {
-                    "question": "长方形周长C=2(a+?)",
-                    "formula": "C=2(a+?)",
-                    "answer": "b",
-                    "hint": "C=2(a+b)"
+                    "question": "小红a岁，妈妈b岁，妈妈比小红大几岁？（用含a、b的式子表示）",
+                    "formula": "b-a=?",
+                    "answer": "b-a",
+                    "hint": "妈妈比小红大的部分 = 妈妈年龄 - 小红年龄 = b-a",
+                    "choices": [
+                        "b-a",
+                        "a-b",
+                        "a+b",
+                        "ab"
+                    ]
                 },
                 {
-                    "question": "正方形边长a面积S=?",
-                    "formula": "S=a×?",
-                    "answer": "a",
-                    "hint": "S=a²"
+                    "question": "每支x元买5支共多少元？",
+                    "formula": "5x中x=?时共15元",
+                    "answer": 3,
+                    "hint": "15÷5=3"
                 }
             ],
             "discoverySteps": [
@@ -1784,598 +1688,103 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
+            "id": "5A-PROB-015"
+        },
+        {
+            "scene": "老师教小红用字母表示长方形面积公式。",
+            "question": "长方形面积S=长×宽，长a宽b，S=?",
+            "formula": "S = a × ?",
+            "answer": "b",
+            "choices": [
+                "b",
+                2,
+                "a",
+                1
+            ],
+            "visualType": "geometry",
+            "visualData": {
+                "shape": "rectangle",
+                "params": {
+                    "length": "a",
+                    "width": "b"
+                }
+            },
+            "knowledge": "用字母表示数和数量关系",
+            "difficulty": 2,
+            "hint": "S=ab",
+            "variants": [
+                {
+                    "question": "长方形周长C=2(a+?)",
+                    "formula": "C=2(a+?)",
+                    "answer": "b",
+                    "hint": "C=2(a+b)"
+                },
+                {
+                    "question": "正方形边长a面积S=?",
+                    "formula": "S=a×?",
+                    "answer": "a",
+                    "hint": "S=a²"
+                }
+            ],
+            "discoverySteps": [
+          {
+                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "choices": [
+                              "求长方形面积公式中宽 b",
+                              "求周长",
+                              "求长",
+                              "求面积数值"
+                    ],
+                    "answer": "求长方形面积公式中宽 b",
+                    "explain": "题目说长方形面积S=长×宽，长a宽b，问S=a×?中填什么"
+          },
+          {
+                    "q": "🔢 题目给了我们哪些关键信息？",
+                    "choices": [
+                              "长用a表示、宽用b表示、S=长×宽",
+                              "长a宽a",
+                              "只有数字没有字母",
+                              "S=a+b"
+                    ],
+                    "answer": "长用a表示、宽用b表示、S=长×宽",
+                    "explain": "字母a表示长，字母b表示宽，面积公式S=长×宽=a×b"
+          },
+          {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                              "代入公式：S=a×b，横线处填b",
+                              "S=a+b",
+                              "S=2a+2b",
+                              "S=a-b"
+                    ],
+                    "answer": "代入公式：S=a×b，横线处填b",
+                    "explain": "长方形面积=长×宽=a×b，所以S=a×b，答案填b"
+          }
+],
+            "explainLayers": [
+          {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "几何图显示长方形，长a、宽b分别用字母标出，面积S=长×宽=a×b",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+          },
+          {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "用字母表示公式：S=a×b。字母a、b表示长和宽，字母可以代替具体数值参与运算",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+          },
+          {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "用字母表示公式：面积S=ab、周长C=2(a+b)。字母表示数让公式对任意数值都通用",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+          }
+],
             "id": "5A-PROB-016"
-        },
-        {
-            "scene": "小红看到天平左边放x克砝码右边放50克，天平平衡。老师问这是什么。",
-            "question": "x=50是什么？(方程填1,不等式填2)",
-            "formula": "x=50 → ? (1方程/2不等式)",
-            "answer": 1,
-            "choices": [
-                1,
-                2,
-                3,
-                0
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 50,
-                    "balanced": true
-                }
-            },
-            "knowledge": "方程的意义",
-            "difficulty": 2,
-            "hint": "含未知数的等式叫方程",
-            "variants": [
-                {
-                    "question": "3+5=8是方程吗(1是2不是)？",
-                    "formula": "3+5=8→?",
-                    "answer": 2,
-                    "hint": "没有未知数不是方程"
-                },
-                {
-                    "question": "x+2>5是方程吗(1是2不是)？",
-                    "formula": "x+2>5→?",
-                    "answer": 2,
-                    "hint": "不是等式不是方程"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求长方形面积S=a×?",
-                        "求周长",
-                        "求边长",
-                        "求面积值"
-                    ],
-                    "answer": "求长方形面积S=a×?",
-                    "explain": "题目用字母表示长方形面积公式，长a宽b求S"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "长a宽b，S=长×宽",
-                        "长2宽3",
-                        "边长a",
-                        "长a宽2"
-                    ],
-                    "answer": "长a宽b，S=长×宽",
-                    "explain": "长方形长a宽b，面积公式S=长×宽"
-                },
-                {
-                    "q": "🧩 用什么方法表示？",
-                    "choices": [
-                        "用字母表示：S=a×b",
-                        "S=a+b",
-                        "S=a-b",
-                        "S=a÷b"
-                    ],
-                    "answer": "用字母表示：S=a×b",
-                    "explain": "面积公式用字母表示：S=a×b（简写S=ab）"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "几何图显示长方形长a宽b，面积S=a×b",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "用字母表示公式：S=ab（面积），C=2(a+b)（周长）。字母乘字母可省略×号",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "用字母表示运算定律和公式：①加法交换律 a+b=b+a ②乘法分配律 (a+b)c=ac+bc ③面积公式 S=ab",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-017"
-        },
-        {
-            "scene": "老师告诉小红等式两边同时加同一个数等式仍成立。",
-            "question": "如果x+3=10，两边同时减3，x=?",
-            "formula": "x + 3 - 3 = 10 - 3 → x = ?",
-            "answer": 7,
-            "choices": [
-                7,
-                13,
-                10,
-                3
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 7,
-                    "balanced": true
-                }
-            },
-            "knowledge": "等式的性质",
-            "difficulty": 2,
-            "hint": "等式两边同加减仍相等",
-            "variants": [
-                {
-                    "question": "x-5=12两边加5，x=?",
-                    "formula": "x=12+5",
-                    "answer": 17,
-                    "hint": "等式性质"
-                },
-                {
-                    "question": "x+8=20两边减8，x=?",
-                    "formula": "x=20-8",
-                    "answer": 12,
-                    "hint": "等式性质"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求x=50是什么",
-                        "求x的值",
-                        "求50是多少",
-                        "求方程的解"
-                    ],
-                    "answer": "求x=50是什么",
-                    "explain": "题目问天平平衡x=50是方程还是不等式"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "x=50含未知数且是等式",
-                        "x=50是不等式",
-                        "x=50没有未知数",
-                        "x=50是算式"
-                    ],
-                    "answer": "x=50含未知数且是等式",
-                    "explain": "x是未知数，=是等号，所以是方程"
-                },
-                {
-                    "q": "🧩 用什么方法判断？",
-                    "choices": [
-                        "含未知数的等式叫方程，x=50是方程",
-                        "没有未知数不是方程",
-                        "不是等式不是方程",
-                        "无法判断"
-                    ],
-                    "answer": "含未知数的等式叫方程，x=50是方程",
-                    "explain": "方程定义：含有未知数的等式叫方程"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "几何图显示天平平衡，左边x右边50，表示x=50",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "方程：含有未知数的等式。x=50含未知数x且是等式，所以是方程",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "方程的两个条件：①是等式②含未知数。缺一不可。如3+5=8是等式但无未知数，不是方程",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-018"
-        },
-        {
-            "scene": "小红解方程x+15=40。",
-            "question": "x等于多少？",
-            "formula": "x + 15 = 40 → x = ?",
-            "answer": 25,
-            "choices": [
-                25,
-                55,
-                40,
-                15
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 25,
-                    "balanced": true
-                }
-            },
-            "knowledge": "解方程",
-            "difficulty": 2,
-            "hint": "两边减15",
-            "variants": [
-                {
-                    "question": "x+23=50，x=?",
-                    "formula": "x=50-23",
-                    "answer": 27,
-                    "hint": "两边减23"
-                },
-                {
-                    "question": "x-18=30，x=?",
-                    "formula": "x=30+18",
-                    "answer": 48,
-                    "hint": "两边加18"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求x+3=10两边减3后x等于多少",
-                        "求x+3",
-                        "求10-3",
-                        "求x+10"
-                    ],
-                    "answer": "求x+3=10两边减3后x等于多少",
-                    "explain": "题目问x+3=10两边同时减3后x等于多少"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "x+3=10，两边减3",
-                        "x+3=10两边加3",
-                        "x-3=10",
-                        "x+10=3"
-                    ],
-                    "answer": "x+3=10，两边减3",
-                    "explain": "方程x+3=10，两边同时减3"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "等式性质：两边减3，x=10-3=7",
-                        "两边加3",
-                        "两边乘3",
-                        "两边除3"
-                    ],
-                    "answer": "等式性质：两边减3，x=10-3=7",
-                    "explain": "等式两边同加减同一个数仍相等，x+3-3=10-3，x=7"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "几何图显示天平两边同时减3仍平衡，x=7",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "等式性质：两边同时加/减/乘/除同一个数（除0外）等式仍成立。x+3=10→x=10-3=7",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "等式性质：①两边同加减同数仍相等②两边同乘除同数（除0外）仍相等。这是解方程的基础",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-019"
-        },
-        {
-            "scene": "小亮解方程3x=18。",
-            "question": "x等于多少？",
-            "formula": "3x = 18 → x = ?",
-            "answer": 6,
-            "choices": [
-                6,
-                54,
-                15,
-                21
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "3x",
-                    "right": 18,
-                    "balanced": true
-                }
-            },
-            "knowledge": "解ax=b型方程",
-            "difficulty": 2,
-            "hint": "两边除以3",
-            "variants": [
-                {
-                    "question": "5x=45，x=?",
-                    "formula": "x=45÷5",
-                    "answer": 9,
-                    "hint": "两边除以5"
-                },
-                {
-                    "question": "4x=32，x=?",
-                    "formula": "x=32÷4",
-                    "answer": 8,
-                    "hint": "两边除以4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求x+15=40中x等于多少",
-                        "求x+15",
-                        "求40-15",
-                        "求x+40"
-                    ],
-                    "answer": "求x+15=40中x等于多少",
-                    "explain": "题目解方程x+15=40，求x"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "x+15=40",
-                        "x-15=40",
-                        "x+40=15",
-                        "x=40"
-                    ],
-                    "answer": "x+15=40",
-                    "explain": "方程x+15=40"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "两边减15：x=40-15=25",
-                        "两边加15",
-                        "两边乘15",
-                        "两边除15"
-                    ],
-                    "answer": "两边减15：x=40-15=25",
-                    "explain": "利用等式性质，两边同时减15，x=40-15=25"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "几何图显示天平x+15=40，两边减15后x=25",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "解方程x+a=b：两边减a，x=b-a。x+15=40→x=40-15=25",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "解方程步骤：①用等式性质变形②求出未知数③检验（代入原方程看是否成立）",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-020"
-        },
-        {
-            "scene": "小红有x颗糖果，小亮有15颗，两人一共35颗。小红列方程。",
-            "question": "x+15=35，x等于多少？",
-            "formula": "x + 15 = 35 → x = ?",
-            "answer": 20,
-            "choices": [
-                20,
-                50,
-                35,
-                15
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 35,
-                "parts": [
-                    {
-                        "label": "小红x",
-                        "val": 20,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "小亮15",
-                        "val": 15,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "列方程解决实际问题",
-            "difficulty": 2,
-            "hint": "找等量关系列方程",
-            "variants": [
-                {
-                    "question": "x+8=25，x=?",
-                    "formula": "x=25-8",
-                    "answer": 17,
-                    "hint": "两边减8"
-                },
-                {
-                    "question": "x+12=40，x=?",
-                    "formula": "x=40-12",
-                    "answer": 28,
-                    "hint": "两边减12"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求3x=18中x等于多少",
-                        "求3x",
-                        "求18÷3",
-                        "求x+3"
-                    ],
-                    "answer": "求3x=18中x等于多少",
-                    "explain": "题目解方程3x=18，求x"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "3x=18",
-                        "x+3=18",
-                        "3+x=18",
-                        "x=18"
-                    ],
-                    "answer": "3x=18",
-                    "explain": "方程3x=18"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "两边除以3：x=18÷3=6",
-                        "两边加3",
-                        "两边乘3",
-                        "两边减3"
-                    ],
-                    "answer": "两边除以3：x=18÷3=6",
-                    "explain": "利用等式性质，两边同时除以3，x=18÷3=6"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "几何图显示天平3x=18，两边除3后x=6",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "解方程ax=b：两边除以a，x=b÷a。3x=18→x=18÷3=6",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "解方程类型：①x+a=b 两边减a ②x-a=b 两边加a ③ax=b 两边除a ④x÷a=b 两边乘a",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-021"
-        },
-        {
-            "scene": "苹果比梨多5个，梨有x个苹果有3x个。老师让小红列方程3x-x=5。",
-            "question": "2x=5，x等于多少？",
-            "formula": "2x = 5... → x ≈ ?",
-            "answer": 2.5,
-            "choices": [
-                2.5,
-                2,
-                3,
-                5
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 5,
-                "parts": [
-                    {
-                        "label": "2x",
-                        "val": 5,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "稍复杂的方程",
-            "difficulty": 3,
-            "hint": "3x-x=2x",
-            "variants": [
-                {
-                    "question": "2x+3=11，x=?",
-                    "formula": "2x=8→x=?",
-                    "answer": 4,
-                    "hint": "先减3再除2"
-                },
-                {
-                    "question": "3x-x=8，x=?",
-                    "formula": "2x=8→x=?",
-                    "answer": 4,
-                    "hint": "合并同类项"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求x+15=35中x等于多少",
-                        "求x+15",
-                        "求35-15",
-                        "求x+35"
-                    ],
-                    "answer": "求x+15=35中x等于多少",
-                    "explain": "题目小红有x颗糖小亮15颗共35颗，列方程x+15=35"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "小红x颗+小亮15颗=35颗",
-                        "小红15颗",
-                        "小亮x颗",
-                        "共15颗"
-                    ],
-                    "answer": "小红x颗+小亮15颗=35颗",
-                    "explain": "小红糖果数x+小亮15=总35，列方程x+15=35"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "两边减15：x=35-15=20",
-                        "两边加15",
-                        "两边乘15",
-                        "两边除15"
-                    ],
-                    "answer": "两边减15：x=35-15=20",
-                    "explain": "利用等式性质解方程，x=35-15=20"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图：小红x=20（绿）+小亮15（黄）=总35",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "列方程解应用题：①找等量关系②设未知数③列方程④解方程⑤检验。x+15=35→x=20",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "列方程解应用题步骤：①审题找等量②设x③列方程④解方程⑤检验答。关键是找等量关系",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-022"
         },
         {
             "scene": "小红家的平行四边形花坛底6米高4米。她算花坛面积。",
@@ -2411,102 +1820,6 @@ window.MATH_BY_GRADE["5a"] = {
                     "formula": "10×3=?",
                     "answer": 30,
                     "hint": "底乘高"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求2x=5中x等于多少",
-                        "求2x",
-                        "求5÷2",
-                        "求x+2"
-                    ],
-                    "answer": "求2x=5中x等于多少",
-                    "explain": "题目苹果3x个梨x个苹果比梨多5，列方程3x-x=5即2x=5"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "3x-x=2x=5",
-                        "3x=5",
-                        "x=5",
-                        "2x=3"
-                    ],
-                    "answer": "3x-x=2x=5",
-                    "explain": "苹果3x-梨x=多5，合并3x-x=2x，2x=5"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "两边除以2：x=5÷2=2.5",
-                        "两边加2",
-                        "两边乘2",
-                        "两边减2"
-                    ],
-                    "answer": "两边除以2：x=5÷2=2.5",
-                    "explain": "合并同类项后2x=5，两边除2，x=2.5"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "条形图：2x=5，每段2.5，共2段",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "稍复杂方程：先合并同类项3x-x=2x，再解2x=5，x=5÷2=2.5",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "解稍复杂方程：①合并同类项②移项（变号）③系数化1。形如 ax±bx=c",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-023"
-        },
-        {
-            "scene": "小红画了一个三角形底5厘米高4厘米。她算三角形面积。",
-            "question": "三角形面积是多少平方厘米？",
-            "formula": "5 × 4 ÷ 2 = ? cm²",
-            "answer": 10,
-            "choices": [
-                10,
-                20,
-                9,
-                14
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "triangle",
-                "params": {
-                    "base": 5,
-                    "height": 4
-                }
-            },
-            "knowledge": "三角形的面积",
-            "difficulty": 2,
-            "hint": "底×高÷2",
-            "variants": [
-                {
-                    "question": "底6高8面积？",
-                    "formula": "6×8÷2=?",
-                    "answer": 24,
-                    "hint": "底高除2"
-                },
-                {
-                    "question": "底10高4面积？",
-                    "formula": "10×4÷2=?",
-                    "answer": 20,
-                    "hint": "底高除2"
                 }
             ],
             "discoverySteps": [
@@ -2567,43 +1880,42 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-024"
+            "id": "5A-PROB-023"
         },
         {
-            "scene": "小亮家的梯形花圃上底3米下底5米高4米。他算花圃面积。",
-            "question": "梯形面积是多少平方米？",
-            "formula": "(3+5) × 4 ÷ 2 = ? m²",
-            "answer": 16,
+            "scene": "小红画了一个三角形底5厘米高4厘米。她算三角形面积。",
+            "question": "三角形面积是多少平方厘米？",
+            "formula": "5 × 4 ÷ 2 = ? cm²",
+            "answer": 10,
             "choices": [
-                16,
-                32,
-                8,
-                12
+                10,
+                20,
+                9,
+                14
             ],
             "visualType": "geometry",
             "visualData": {
-                "shape": "trapezoid",
+                "shape": "triangle",
                 "params": {
-                    "top": 3,
-                    "bottom": 5,
+                    "base": 5,
                     "height": 4
                 }
             },
-            "knowledge": "梯形的面积",
-            "difficulty": 3,
-            "hint": "(上底+下底)×高÷2",
+            "knowledge": "三角形的面积",
+            "difficulty": 2,
+            "hint": "底×高÷2",
             "variants": [
                 {
-                    "question": "上4下6高5面积？",
-                    "formula": "(4+6)×5÷2=?",
-                    "answer": 25,
-                    "hint": "上底下底和乘高除2"
+                    "question": "底6高8面积？",
+                    "formula": "6×8÷2=?",
+                    "answer": 24,
+                    "hint": "底高除2"
                 },
                 {
-                    "question": "上2下8高4面积？",
-                    "formula": "(2+8)×4÷2=?",
+                    "question": "底10高4面积？",
+                    "formula": "10×4÷2=?",
                     "answer": 20,
-                    "hint": "上底下底和乘高除2"
+                    "hint": "底高除2"
                 }
             ],
             "discoverySteps": [
@@ -2664,52 +1976,43 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-025"
+            "id": "5A-PROB-024"
         },
         {
-            "scene": "小红家的L形花坛可以分成两个长方形：一个3×4，一个2×3。她算总面积。",
-            "question": "组合图形面积是多少？",
-            "formula": "3×4 + 2×3 = ?",
-            "answer": 18,
+            "scene": "小亮家的梯形花圃上底3米下底5米高4米。他算花圃面积。",
+            "question": "梯形面积是多少平方米？",
+            "formula": "(3+5) × 4 ÷ 2 = ? m²",
+            "answer": 16,
             "choices": [
-                18,
-                12,
-                6,
-                24
+                16,
+                32,
+                8,
+                12
             ],
             "visualType": "geometry",
             "visualData": {
-                "shape": "composite",
+                "shape": "trapezoid",
                 "params": {
-                    "parts": [
-                        {
-                            "shape": "rectangle",
-                            "l": 3,
-                            "w": 4
-                        },
-                        {
-                            "shape": "rectangle",
-                            "l": 2,
-                            "w": 3
-                        }
-                    ]
+                    "top": 3,
+                    "bottom": 5,
+                    "height": 4
                 }
             },
-            "knowledge": "组合图形的面积",
+            "knowledge": "梯形的面积",
             "difficulty": 3,
-            "hint": "分割成基本图形再求和",
+            "hint": "(上底+下底)×高÷2",
             "variants": [
                 {
-                    "question": "分5×3和4×2总面积？",
-                    "formula": "15+8=?",
-                    "answer": 23,
-                    "hint": "分割求和"
+                    "question": "上4下6高5面积？",
+                    "formula": "(4+6)×5÷2=?",
+                    "answer": 25,
+                    "hint": "上底下底和乘高除2"
                 },
                 {
-                    "question": "分6×2和3×3总面积？",
-                    "formula": "12+9=?",
-                    "answer": 21,
-                    "hint": "分割求和"
+                    "question": "上2下8高4面积？",
+                    "formula": "(2+8)×4÷2=?",
+                    "answer": 20,
+                    "hint": "上底下底和乘高除2"
                 }
             ],
             "discoverySteps": [
@@ -2770,42 +2073,52 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-026"
+            "id": "5A-PROB-025"
         },
         {
-            "scene": "小红用方格纸估算一片叶子的面积，数了整格12个半格8个。",
-            "question": "叶子面积约是多少格？",
-            "formula": "12 + 8÷2 = ? (格)",
-            "answer": 16,
+            "scene": "小红家的L形花坛可以分成两个长方形：一个3×4，一个2×3。她算总面积。",
+            "question": "组合图形面积是多少？",
+            "formula": "3×4 + 2×3 = ?",
+            "answer": 18,
             "choices": [
-                16,
-                20,
+                18,
                 12,
-                8
+                6,
+                24
             ],
             "visualType": "geometry",
             "visualData": {
-                "shape": "grid",
+                "shape": "composite",
                 "params": {
-                    "fullCells": 12,
-                    "halfCells": 8
+                    "parts": [
+                        {
+                            "shape": "rectangle",
+                            "l": 3,
+                            "w": 4
+                        },
+                        {
+                            "shape": "rectangle",
+                            "l": 2,
+                            "w": 3
+                        }
+                    ]
                 }
             },
-            "knowledge": "不规则图形的面积估算",
-            "difficulty": 2,
-            "hint": "不满半格算半格",
+            "knowledge": "组合图形的面积",
+            "difficulty": 3,
+            "hint": "分割成基本图形再求和",
             "variants": [
                 {
-                    "question": "整格15半格6面积约？",
-                    "formula": "15+6÷2=?",
-                    "answer": 18,
-                    "hint": "半格算半"
+                    "question": "分5×3和4×2总面积？",
+                    "formula": "15+8=?",
+                    "answer": 23,
+                    "hint": "分割求和"
                 },
                 {
-                    "question": "整格10半格4面积约？",
-                    "formula": "10+4÷2=?",
-                    "answer": 12,
-                    "hint": "半格算半"
+                    "question": "分6×2和3×3总面积？",
+                    "formula": "12+9=?",
+                    "answer": 21,
+                    "hint": "分割求和"
                 }
             ],
             "discoverySteps": [
@@ -2862,6 +2175,102 @@ window.MATH_BY_GRADE["5a"] = {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
                     "text": "组合图形面积求法：①分割法（分成基本图形求和）②添补法（补成大图形减去补的部分）",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ],
+            "id": "5A-PROB-026"
+        },
+        {
+            "scene": "小红用方格纸估算一片叶子的面积，数了整格12个半格8个。",
+            "question": "叶子面积约是多少格？",
+            "formula": "12 + 8÷2 = ? (格)",
+            "answer": 16,
+            "choices": [
+                16,
+                20,
+                12,
+                8
+            ],
+            "visualType": "geometry",
+            "visualData": {
+                "shape": "grid",
+                "params": {
+                    "fullCells": 12,
+                    "halfCells": 8
+                }
+            },
+            "knowledge": "不规则图形的面积估算",
+            "difficulty": 2,
+            "hint": "不满半格算半格",
+            "variants": [
+                {
+                    "question": "整格15半格6面积约？",
+                    "formula": "15+6÷2=?",
+                    "answer": 18,
+                    "hint": "半格算半"
+                },
+                {
+                    "question": "整格10半格4面积约？",
+                    "formula": "10+4÷2=?",
+                    "answer": 12,
+                    "hint": "半格算半"
+                }
+            ],
+            "discoverySteps": [
+                {
+                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "choices": [
+                        "求叶子面积约是多少格",
+                        "求叶子周长",
+                        "求整格数",
+                        "求半格数"
+                    ],
+                    "answer": "求叶子面积约是多少格",
+                    "explain": "题目用方格纸估算叶子面积，整格12半格8"
+                },
+                {
+                    "q": "🔢 题目给了我们哪些关键信息？",
+                    "choices": [
+                        "整格12个半格8个",
+                        "整格8半格12",
+                        "只有整格12",
+                        "只有半格8"
+                    ],
+                    "answer": "整格12个半格8个",
+                    "explain": "数方格：整格12个，半格8个"
+                },
+                {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                        "整格+半格÷2：12+8÷2=12+4=16",
+                        "12+8",
+                        "12-8",
+                        "12×8"
+                    ],
+                    "answer": "整格+半格÷2：12+8÷2=12+4=16",
+                    "explain": "半格按半算，12+8÷2=16格"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "方格图：整格12个（满格）+半格8个（不满格），半格按半算",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "不规则图形估算：数方格法。整格算1，半格算0.5。12+8÷2=16",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "不规则图形面积估算：①数方格法（满格1半格0.5）②分割法③转化法。估算结果约近似值",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -2936,56 +2345,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "求叶子面积约是多少格",
-                        "求叶子周长",
-                        "求整格数",
-                        "求半格数"
+                        "求一共要栽多少棵树",
+                        "求间隔数",
+                        "求路长",
+                        "求间隔距离"
                     ],
-                    "answer": "求叶子面积约是多少格",
-                    "explain": "题目用方格纸估算叶子面积，整格12半格8"
+                    "answer": "求一共要栽多少棵树",
+                    "explain": "题目问20米路每隔5米栽一棵两端都栽共几棵"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "整格12个半格8个",
-                        "整格8半格12",
-                        "只有整格12",
-                        "只有半格8"
+                        "路长20米，每隔5米，两端都栽",
+                        "20米每隔4米",
+                        "两端不栽",
+                        "一端栽"
                     ],
-                    "answer": "整格12个半格8个",
-                    "explain": "数方格：整格12个，半格8个"
+                    "answer": "路长20米，每隔5米，两端都栽",
+                    "explain": "路长20米，间隔5米，两端都栽树"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "整格+半格÷2：12+8÷2=12+4=16",
-                        "12+8",
-                        "12-8",
-                        "12×8"
+                        "两端都栽：棵数=间隔数+1=20÷5+1=5",
+                        "间隔数",
+                        "间隔数-1",
+                        "间隔数×2"
                     ],
-                    "answer": "整格+半格÷2：12+8÷2=12+4=16",
-                    "explain": "半格按半算，12+8÷2=16格"
+                    "answer": "两端都栽：棵数=间隔数+1=20÷5+1=5",
+                    "explain": "间隔数=20÷5=4，两端都栽棵数=间隔数+1=5"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "方格图：整格12个（满格）+半格8个（不满格），半格按半算",
+                    "text": "数轴0到20，标出5个点：0,5,10,15,20，两端都栽共5棵",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "不规则图形估算：数方格法。整格算1，半格算0.5。12+8÷2=16",
+                    "text": "植树问题（两端都栽）：棵数=间隔数+1。20÷5=4个间隔，4+1=5棵",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "不规则图形面积估算：①数方格法（满格1半格0.5）②分割法③转化法。估算结果约近似值",
+                    "text": "植树问题：①两端都栽 棵数=间隔数+1②两端不栽 棵数=间隔数-1③一端栽/环形 棵数=间隔数",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3056,105 +2465,6 @@ window.MATH_BY_GRADE["5a"] = {
                         "求间隔距离"
                     ],
                     "answer": "求一共要栽多少棵树",
-                    "explain": "题目问20米路每隔5米栽一棵两端都栽共几棵"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "路长20米，每隔5米，两端都栽",
-                        "20米每隔4米",
-                        "两端不栽",
-                        "一端栽"
-                    ],
-                    "answer": "路长20米，每隔5米，两端都栽",
-                    "explain": "路长20米，间隔5米，两端都栽树"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "两端都栽：棵数=间隔数+1=20÷5+1=5",
-                        "间隔数",
-                        "间隔数-1",
-                        "间隔数×2"
-                    ],
-                    "answer": "两端都栽：棵数=间隔数+1=20÷5+1=5",
-                    "explain": "间隔数=20÷5=4，两端都栽棵数=间隔数+1=5"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "数轴0到20，标出5个点：0,5,10,15,20，两端都栽共5棵",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "植树问题（两端都栽）：棵数=间隔数+1。20÷5=4个间隔，4+1=5棵",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "植树问题：①两端都栽 棵数=间隔数+1②两端不栽 棵数=间隔数-1③一端栽/环形 棵数=间隔数",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-029"
-        },
-        {
-            "scene": "小红买西瓜，每千克4.6元，买了6千克。她算算要付多少元。",
-            "question": "一共要付多少元？",
-            "formula": "4.6 × 6 = ?",
-            "answer": 27.6,
-            "choices": [
-                27.6,
-                13.5,
-                12,
-                16
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 14,
-                "parts": [
-                    {
-                        "label": "3.5×4",
-                        "val": 14,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "小数乘整数",
-            "difficulty": 2,
-            "hint": "先算46×6=160再点小数点",
-            "variants": [
-                {
-                    "question": "2.8×6=?",
-                    "formula": "2.8×6=?",
-                    "answer": 14,
-                    "hint": "28×6=160点一位"
-                },
-                {
-                    "question": "1.6×6=?",
-                    "formula": "1.6×6=?",
-                    "answer": 9,
-                    "hint": "16×6=90点一位"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "求一共要栽多少棵树",
-                        "求间隔数",
-                        "求路长",
-                        "求间隔距离"
-                    ],
-                    "answer": "求一共要栽多少棵树",
                     "explain": "题目问20米路每隔5米栽一棵两端都不栽共几棵"
                 },
                 {
@@ -3203,15 +2513,15 @@ window.MATH_BY_GRADE["5a"] = {
                     "color": "var(--coral)"
                 }
             ],
-            "id": "5A-PROB-030"
+            "id": "5A-PROB-029"
         },
         {
-            "scene": "小红买西瓜，每千克4.7元，买了5千克。她算算要付多少元。",
+            "scene": "小红买西瓜，每千克4.6元，买了6千克。她算算要付多少元。",
             "question": "一共要付多少元？",
-            "formula": "4.7 × 5 = ?",
-            "answer": 23.5,
+            "formula": "4.6 × 6 = ?",
+            "answer": 27.6,
             "choices": [
-                23.5,
+                27.6,
                 13.5,
                 12,
                 16
@@ -3229,75 +2539,174 @@ window.MATH_BY_GRADE["5a"] = {
             },
             "knowledge": "小数乘整数",
             "difficulty": 2,
-            "hint": "先算47×5=150再点小数点",
+            "hint": "先算46×6=160再点小数点",
+            "variants": [
+                {
+                    "question": "2.8×6=?",
+                    "formula": "2.8×6=?",
+                    "answer": 14,
+                    "hint": "28×6=160点一位"
+                },
+                {
+                    "question": "1.6×6=?",
+                    "formula": "1.6×6=?",
+                    "answer": 9,
+                    "hint": "16×6=90点一位"
+                }
+            ],
+            "discoverySteps": [
+          {
+                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "choices": [
+                              "求买西瓜一共要付多少元",
+                              "求每千克多少元",
+                              "求买了多少千克",
+                              "求找回多少钱"
+                    ],
+                    "answer": "求买西瓜一共要付多少元",
+                    "explain": "题目问每千克4.6元买6千克，一共要付多少元"
+          },
+          {
+                    "q": "🔢 题目给了我们哪些关键信息？",
+                    "choices": [
+                              "每千克4.6元，买了6千克",
+                              "每千克6元，买了4.6千克",
+                              "一共4.6元",
+                              "一共6元"
+                    ],
+                    "answer": "每千克4.6元，买了6千克",
+                    "explain": "单价每千克4.6元，数量6千克"
+          },
+          {
+                    "q": "🧩 用什么方法计算？",
+                    "choices": [
+                              "总价=单价×数量：4.6×6=27.6",
+                              "4.6+6",
+                              "4.6÷6",
+                              "6-4.6"
+                    ],
+                    "answer": "总价=单价×数量：4.6×6=27.6",
+                    "explain": "小数乘整数：4.6×6=27.6元"
+          }
+],
+            "explainLayers": [
+          {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "条形模型：总价分成6段，每段代表1千克的钱（4.6元），6个4.6就是总价",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+          },
+          {
+                    "icon": "🧠",
+                    "title": "理解 — 数学关系",
+                    "text": "总价=单价×数量。4.6×6可以先按46×6=276算，再看因数共有1位小数，积就是27.6",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+          },
+          {
+                    "icon": "🚀",
+                    "title": "推广 — 通用规律",
+                    "text": "小数乘整数：先按整数乘法算出积，再看因数里有几位小数，就从积的右边起数出几位点上小数点",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+          }
+],
+            "id": "5A-PROB-030"
+        },
+        {
+            "scene": "小红买西瓜，每千克4.7元，买了5千克。她算算要付多少元。",
+            "question": "一共要付多少元？",
+            "formula": "4.7 × 5 = ?",
+            "answer": 23.5,
+            "choices": [
+                23.5,
+                13.5,
+                12,
+                16
+            ],
+            "visualType": "barModel",
+            "visualData": {
+                "total": 23.5,
+                "parts": [
+                    {
+                        "label": "4.7×5",
+                        "val": 23.5,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "knowledge": "小数乘整数",
+            "difficulty": 2,
+            "hint": "先算47×5=235，因数共1位小数，得23.5",
             "variants": [
                 {
                     "question": "2.8×7=?",
                     "formula": "2.8×7=?",
-                    "answer": 14,
-                    "hint": "28×7=150点一位"
+                    "answer": 19.6,
+                    "hint": "28×7=196点一位"
                 },
                 {
                     "question": "1.7×6=?",
                     "formula": "1.7×6=?",
-                    "answer": 9,
-                    "hint": "17×6=90点一位"
+                    "answer": 10.2,
+                    "hint": "17×6=102点一位"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求买西瓜一共要付多少元",
+                        "求每千克多少元",
+                        "求买了多少千克",
+                        "求找回多少元"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红买西瓜，每千克4.7元，买了5千克。她算算要付多少元。」，问的是「一共要付多少元？」，这是求总数"
+                    "answer": "求买西瓜一共要付多少元",
+                    "explain": "题目问每千克4.7元买5千克，一共要付多少元"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：4.7 和 5",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "每千克4.7元，买了5千克",
+                        "每千克5元，买了4.7千克",
+                        "一共4.7元",
+                        "一共5元"
                     ],
-                    "answer": "关键数：4.7 和 5",
-                    "explain": "从题目中找到的关键数是：4.7、5"
+                    "answer": "每千克4.7元，买了5千克",
+                    "explain": "单价每千克4.7元，数量5千克"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "总价=单价×数量：4.7×5=23.5",
+                        "4.7+5=9.7",
+                        "4.7÷5",
+                        "5-4.7"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：4.7 × 5 = ?=14"
+                    "answer": "总价=单价×数量：4.7×5=23.5",
+                    "explain": "小数乘整数：47×5=235，因数共1位小数，得23.5元"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表14，合起来就是14",
+                    "text": "条形模型：总价分成5段，每段代表1千克的钱（4.7元），5个4.7就是总价",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "4.7 × 5 = ?=14",
+                    "text": "总价=单价×数量。4.7×5先按47×5=235算，再看因数共有1位小数，积就是23.5",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "小数乘整数：先按整数乘法算出积，再看因数里有几位小数，从积的右边起数出几位点上小数点",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3323,13 +2732,13 @@ window.MATH_BY_GRADE["5a"] = {
             },
             "knowledge": "小数乘小数",
             "difficulty": 3,
-            "hint": "36×32=1330点两位",
+            "hint": "36×32=1152，因数共两位小数，得11.52",
             "variants": [
                 {
                     "question": "2.6×0.3=?",
                     "formula": "2.6×0.3=?",
-                    "answer": 1,
-                    "hint": "26×3=100点两位"
+                    "answer": 0.78,
+                    "hint": "26×3=78点两位"
                 },
                 {
                     "question": "1.2×0.8=?",
@@ -3342,56 +2751,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求房间面积是多少平方米",
+                        "求房间周长",
+                        "求长与宽的和",
+                        "求地砖块数"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小亮房间长3.6米宽3.2米。他想算房间面积是多少平方米。」，问的是「房间面积是多少平方米？」，这是求总数"
+                    "answer": "求房间面积是多少平方米",
+                    "explain": "题目问长3.6米宽3.2米的房间面积是多少平方米"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：3.6 和 3.2",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "长3.6米、宽3.2米",
+                        "长3.2米、宽2.6米",
+                        "只有宽3.2米",
+                        "长加宽=6.8米"
                     ],
-                    "answer": "关键数：3.6 和 3.2",
-                    "explain": "从题目中找到的关键数是：3.6、3.2"
+                    "answer": "长3.6米、宽3.2米",
+                    "explain": "长方形的长是3.6米，宽是3.2米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=长×宽：3.6×3.2=11.52",
+                        "3.6+3.2=6.8",
+                        "3.6×2+3.2×2",
+                        "3.6÷3.2"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：3.6 × 3.2 = ?=14.4"
+                    "answer": "面积=长×宽：3.6×3.2=11.52",
+                    "explain": "小数乘小数：36×32=1152，因数共两位小数，得11.52平方米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "面积模型用方格区域展示了乘法的几何意义",
+                    "text": "面积模型：长3.6米宽3.2米的长方形，可以分成小方格来数面积",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "3.6 × 3.2 = ?=14.4",
+                    "text": "长方形面积=长×宽。3.6×3.2先按36×32=1152算，因数共有2位小数，积是11.52",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "小数乘小数：先按整数乘法算积，再看因数共有几位小数，从积的右边起数出几位点上小数点",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3411,19 +2820,19 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "visualType": "areaModel",
             "visualData": {
-                "rows": 4.5,
-                "cols": 3.2,
+                "rows": 4.7,
+                "cols": 4.2,
                 "color": "#00A896"
             },
             "knowledge": "小数乘小数",
             "difficulty": 3,
-            "hint": "47×42=1440点两位",
+            "hint": "47×42=1974，因数共两位小数，得19.74",
             "variants": [
                 {
                     "question": "2.7×0.4=?",
                     "formula": "2.7×0.4=?",
-                    "answer": 1,
-                    "hint": "27×4=100点两位"
+                    "answer": 1.08,
+                    "hint": "27×4=108点两位"
                 },
                 {
                     "question": "1.2×0.8=?",
@@ -3436,56 +2845,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求房间面积是多少平方米",
+                        "求房间周长",
+                        "求长与宽的和",
+                        "求地砖块数"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小亮房间长4.7米宽4.2米。他想算房间面积是多少平方米。」，问的是「房间面积是多少平方米？」，这是求总数"
+                    "answer": "求房间面积是多少平方米",
+                    "explain": "题目问长4.7米宽4.2米的房间面积是多少平方米"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：4.7 和 4.2",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "长4.7米、宽4.2米",
+                        "长4.2米、宽3.7米",
+                        "只有宽4.2米",
+                        "长加宽=8.9米"
                     ],
-                    "answer": "关键数：4.7 和 4.2",
-                    "explain": "从题目中找到的关键数是：4.7、4.2"
+                    "answer": "长4.7米、宽4.2米",
+                    "explain": "长方形的长是4.7米，宽是4.2米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=长×宽：4.7×4.2=19.74",
+                        "4.7+4.2=8.9",
+                        "4.7×2+4.2×2",
+                        "4.7÷4.2"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：4.7 × 4.2 = ?=14.4"
+                    "answer": "面积=长×宽：4.7×4.2=19.74",
+                    "explain": "小数乘小数：47×42=1974，因数共两位小数，得19.74平方米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "面积模型用方格区域展示了乘法的几何意义",
+                    "text": "面积模型：长4.7米宽4.2米的长方形，可以分成小方格来数面积",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "4.7 × 4.2 = ?=14.4",
+                    "text": "长方形面积=长×宽。4.7×4.2先按47×42=1974算，因数共有2位小数，积是19.74",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "小数乘小数：先按整数乘法算积，再看因数共有几位小数，从积的右边起数出几位点上小数点",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3505,11 +2914,11 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 1,
+                "total": 1.75,
                 "parts": [
                     {
-                        "label": "0.25×4",
-                        "val": 1,
+                        "label": "0.35×5",
+                        "val": 1.75,
                         "color": "#00A896"
                     }
                 ]
@@ -3521,70 +2930,70 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "0.135×8=?",
                     "formula": "0.135×8=?",
-                    "answer": 1,
-                    "hint": "凑整"
+                    "answer": 1.08,
+                    "hint": "135×8=1080点三位"
                 },
                 {
                     "question": "0.35×0.5=?",
                     "formula": "0.35×0.5=?",
-                    "answer": 0.1,
-                    "hint": "35×5=100点两位"
+                    "answer": 0.175,
+                    "hint": "35×5=175点三位"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求0.35×5等于多少",
+                        "求0.35×1.1",
+                        "求一共几种方法",
+                        "求5.5的一半"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红算0.35×5.5，她用简便方法0.35×5×1.1。」，问的是「0.35×5等于多少？」，这是求总数"
+                    "answer": "求0.35×5等于多少",
+                    "explain": "题目要求先算0.35×5=1.75"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：0.35 和 5",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "把5.5拆成5×1.1，先算0.35×5",
+                        "直接算0.35×5.5",
+                        "把0.35拆成0.3和0.05",
+                        "先加后乘"
                     ],
-                    "answer": "关键数：0.35 和 5",
-                    "explain": "从题目中找到的关键数是：0.35、5"
+                    "answer": "把5.5拆成5×1.1，先算0.35×5",
+                    "explain": "用乘法结合律凑整：5.5=5×1.1，先算0.35×5"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "0.35×5=1.75",
+                        "0.35×5=0.17",
+                        "0.35×5=17.5",
+                        "0.35×5=3.5"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：0.35 × 5 = ?=1"
+                    "answer": "0.35×5=1.75",
+                    "explain": "35×5=175，因数共2位小数，得1.75"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表1，合起来就是1",
+                    "text": "条形模型：0.35×5 表示5个0.35相加，一共1.75",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "0.35 × 5 = ?=1",
+                    "text": "乘法结合律：0.35×5.5=0.35×5×1.1，先凑整0.35×5=1.75再继续乘",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "整数运算定律在小数中同样适用：拆数凑整能简化计算",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3604,11 +3013,11 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 1,
+                "total": 2.22,
                 "parts": [
                     {
-                        "label": "0.25×4",
-                        "val": 1,
+                        "label": "0.37×6",
+                        "val": 2.22,
                         "color": "#00A896"
                     }
                 ]
@@ -3620,70 +3029,70 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "0.137×8=?",
                     "formula": "0.137×8=?",
-                    "answer": 1,
-                    "hint": "凑整"
+                    "answer": 1.096,
+                    "hint": "137×8=1096点三位"
                 },
                 {
                     "question": "0.37×0.6=?",
                     "formula": "0.37×0.6=?",
-                    "answer": 0.1,
-                    "hint": "37×6=100点两位"
+                    "answer": 0.222,
+                    "hint": "37×6=222点三位"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求0.37×6等于多少",
+                        "求0.37×1.1",
+                        "求一共几种方法",
+                        "求6.6的一半"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红算0.37×6.6，她用简便方法0.37×6×1.1。」，问的是「0.37×6等于多少？」，这是求总数"
+                    "answer": "求0.37×6等于多少",
+                    "explain": "题目要求先算0.37×6=2.22"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：0.37 和 6",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "把6.6拆成6×1.1，先算0.37×6",
+                        "直接算0.37×6.6",
+                        "把0.37拆成0.3和0.07",
+                        "先加后乘"
                     ],
-                    "answer": "关键数：0.37 和 6",
-                    "explain": "从题目中找到的关键数是：0.37、6"
+                    "answer": "把6.6拆成6×1.1，先算0.37×6",
+                    "explain": "用乘法结合律凑整：6.6=6×1.1，先算0.37×6"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "0.37×6=2.22",
+                        "0.37×6=0.22",
+                        "0.37×6=22.2",
+                        "0.37×6=3.7"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：0.37 × 6 = ?=1"
+                    "answer": "0.37×6=2.22",
+                    "explain": "37×6=222，因数共2位小数，得2.22"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表1，合起来就是1",
+                    "text": "条形模型：0.37×6 表示6个0.37相加，一共2.22",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "0.37 × 6 = ?=1",
+                    "text": "乘法结合律：0.37×6.6=0.37×6×1.1，先凑整0.37×6=2.22再继续乘",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "整数运算定律在小数中同样适用：拆数凑整能简化计算",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3692,27 +3101,27 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "出租车4千米内收9元，超过4千米每千米1.7元。小红坐了7千米。",
-            "question": "超过部分(7-4=4千米)要付多少元？",
-            "formula": "1.7 × 4 = ?",
-            "answer": 6.8,
+            "question": "超过部分(7-4=3千米)要付多少元？",
+            "formula": "1.7 × 3 = ?",
+            "answer": 5.1,
             "choices": [
+                5.1,
                 6.8,
                 4.5,
-                9,
-                7.5
+                9
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 14,
+                "total": 14.1,
                 "parts": [
                     {
-                        "label": "起步8元",
-                        "val": 8,
+                        "label": "起步9元",
+                        "val": 9,
                         "color": "#00A896"
                     },
                     {
-                        "label": "超出6元",
-                        "val": 6,
+                        "label": "超出5.1元",
+                        "val": 5.1,
                         "color": "#F5B800"
                     }
                 ]
@@ -3722,15 +3131,15 @@ window.MATH_BY_GRADE["5a"] = {
             "hint": "分段计费",
             "variants": [
                 {
-                    "question": "坐7千米超2千米付多少？",
-                    "formula": "1.7×2=?",
-                    "answer": 4,
+                    "question": "坐7千米超3千米付多少？",
+                    "formula": "1.7×3=?",
+                    "answer": 5.1,
                     "hint": "超出部分"
                 },
                 {
-                    "question": "坐6千米超4千米付多少？",
-                    "formula": "1.7×4=?",
-                    "answer": 4.5,
+                    "question": "坐6千米超2千米付多少？",
+                    "formula": "1.7×2=?",
+                    "answer": 3.4,
                     "hint": "超出部分"
                 }
             ],
@@ -3738,56 +3147,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求超过4千米的部分要付多少元",
+                        "求一共要付多少元",
+                        "求每千米多少元",
+                        "求找回多少元"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「出租车4千米内收9元，超过4千米每千米1.7元。小红坐了7千米。」，问的是「超过部分(7-4=4千米)要付多少元？」，这是求总数"
+                    "answer": "求超过4千米的部分要付多少元",
+                    "explain": "4千米内收起步价9元，超出部分另算，题目问超出部分要付多少元"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：1.7 和 4",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "超出3千米，每千米1.7元",
+                        "超出4千米，每千米1.7元",
+                        "超出7千米，每千米1.7元",
+                        "7千米都按每千米1.7元算"
                     ],
-                    "answer": "关键数：1.7 和 4",
-                    "explain": "从题目中找到的关键数是：1.7、4"
+                    "answer": "超出3千米，每千米1.7元",
+                    "explain": "坐7千米，起步价已含4千米，超出部分=7-4=3千米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "超出费用=1.7×3=5.1元",
+                        "1.7×4=6.8元",
+                        "1.7×7=11.9元",
+                        "9+1.7=10.7元"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：1.7 × 4 = ?=6"
+                    "answer": "超出费用=1.7×3=5.1元",
+                    "explain": "分段计费：超出部分每千米1.7元，1.7×3=5.1元"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表8，合起来就是14",
+                    "text": "条形模型：起步9元是第一段，超出3千米（每段1.7元）是第二段",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "1.7 × 4 = ?=6",
+                    "text": "分段计费：总价=起步价+超出费用。超出费用=1.7×3=5.1元",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "分段计费问题：先找已含在起步价里的部分，再单独算超出部分，最后相加",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3796,27 +3205,27 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "出租车4千米内收12元，超过4千米每千米1.5元。小红坐了7千米。",
-            "question": "超过部分(7-4=6千米)要付多少元？",
-            "formula": "1.5 × 6 = ?",
-            "answer": 9,
+            "question": "超过部分(7-4=3千米)要付多少元？",
+            "formula": "1.5 × 3 = ?",
+            "answer": 4.5,
             "choices": [
-                9,
                 4.5,
+                9,
                 12,
                 7.5
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 14,
+                "total": 16.5,
                 "parts": [
                     {
-                        "label": "起步8元",
-                        "val": 8,
+                        "label": "起步12元",
+                        "val": 12,
                         "color": "#00A896"
                     },
                     {
-                        "label": "超出6元",
-                        "val": 6,
+                        "label": "超出4.5元",
+                        "val": 4.5,
                         "color": "#F5B800"
                     }
                 ]
@@ -3826,15 +3235,15 @@ window.MATH_BY_GRADE["5a"] = {
             "hint": "分段计费",
             "variants": [
                 {
-                    "question": "坐5千米超2千米付多少？",
-                    "formula": "1.5×2=?",
-                    "answer": 4,
+                    "question": "坐5千米超1千米付多少？",
+                    "formula": "1.5×1=?",
+                    "answer": 1.5,
                     "hint": "超出部分"
                 },
                 {
-                    "question": "坐6千米超4千米付多少？",
-                    "formula": "1.5×4=?",
-                    "answer": 4.5,
+                    "question": "坐6千米超2千米付多少？",
+                    "formula": "1.5×2=?",
+                    "answer": 3,
                     "hint": "超出部分"
                 }
             ],
@@ -3842,56 +3251,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求超过4千米的部分要付多少元",
+                        "求一共要付多少元",
+                        "求每千米多少元",
+                        "求找回多少元"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「出租车4千米内收12元，超过4千米每千米1.5元。小红坐了7千米。」，问的是「超过部分(7-4=6千米)要付多少元？」，这是求总数"
+                    "answer": "求超过4千米的部分要付多少元",
+                    "explain": "4千米内收起步价12元，超出部分另算，题目问超出部分要付多少元"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：1.5 和 6",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "超出3千米，每千米1.5元",
+                        "超出4千米，每千米1.5元",
+                        "超出7千米，每千米1.5元",
+                        "7千米都按每千米1.5元算"
                     ],
-                    "answer": "关键数：1.5 和 6",
-                    "explain": "从题目中找到的关键数是：1.5、6"
+                    "answer": "超出3千米，每千米1.5元",
+                    "explain": "坐7千米，起步价已含4千米，超出部分=7-4=3千米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "超出费用=1.5×3=4.5元",
+                        "1.5×6=9元",
+                        "1.5×7=10.5元",
+                        "12+1.5=13.5元"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：1.5 × 6 = ?=6"
+                    "answer": "超出费用=1.5×3=4.5元",
+                    "explain": "分段计费：超出部分每千米1.5元，1.5×3=4.5元"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表8，合起来就是14",
+                    "text": "条形模型：起步12元是第一段，超出3千米（每段1.5元）是第二段",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "1.5 × 6 = ?=6",
+                    "text": "分段计费：总价=起步价+超出费用。超出费用=1.5×3=4.5元",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "分段计费问题：先找已含在起步价里的部分，再单独算超出部分，最后相加",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -3914,8 +3323,8 @@ window.MATH_BY_GRADE["5a"] = {
                 "shape": "grid",
                 "params": {
                     "point": [
-                        3,
-                        5
+                        4,
+                        7
                     ]
                 }
             },
@@ -3940,56 +3349,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
+                        "求数对(4,7)表示第几列",
+                        "求数对(4,7)表示第几行",
+                        "求两个数的和",
+                        "求两个数的差"
                     ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小红在方格纸上用数对(4,7)表示位置，列是4行是7。她想知道(4,7)表示第几列第几行。」，问的是「数对(4,7)表示第几列？」，这是求计算结果"
+                    "answer": "求数对(4,7)表示第几列",
+                    "explain": "题目问数对(4,7)表示第几列"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：4 和 7",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "第一个数4是列，第二个数7是行",
+                        "第一个数7是列，第二个数4是行",
+                        "4和7都是行",
+                        "4和7都是列"
                     ],
-                    "answer": "关键数：4 和 7",
-                    "explain": "从题目中找到的关键数是：4、7"
+                    "answer": "第一个数4是列，第二个数7是行",
+                    "explain": "数对先写列后写行：(4,7)中4是列、7是行"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "计算"
+                        "先列后行：第4列，填4",
+                        "先列后行：第7列",
+                        "数大的填前面",
+                        "随便填"
                     ],
-                    "answer": "计算",
-                    "explain": "计算：(4,7) → 第?列=4"
+                    "answer": "先列后行：第4列，填4",
+                    "explain": "数对(列,行)：括号里第一个数是列，所以(4,7)表示第4列"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "方格图：数对(4,7)对应方格纸上第4列第7行的位置",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "(4,7) → 第?列=4",
+                    "text": "数对格式（列，行）：括号里第一个数表示列，第二个数表示行",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
+                    "text": "用数对确定位置：先看列再横行，两个数顺序不能换",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -4012,8 +3421,8 @@ window.MATH_BY_GRADE["5a"] = {
                 "shape": "grid",
                 "params": {
                     "point": [
-                        3,
-                        5
+                        4,
+                        4
                     ]
                 }
             },
@@ -4038,56 +3447,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
+                        "求数对(4,4)表示第几列",
+                        "求数对(4,4)表示第几行",
+                        "求两个数的和",
+                        "求两个数的差"
                     ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小红在方格纸上用数对(4,4)表示位置，列是4行是4。她想知道(4,4)表示第几列第几行。」，问的是「数对(4,4)表示第几列？」，这是求计算结果"
+                    "answer": "求数对(4,4)表示第几列",
+                    "explain": "题目问数对(4,4)表示第几列"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：4 和 4",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "第一个数4是列，第二个数4是行",
+                        "两个4都表示行",
+                        "两个4都表示列",
+                        "列是8"
                     ],
-                    "answer": "关键数：4 和 4",
-                    "explain": "从题目中找到的关键数是：4、4"
+                    "answer": "第一个数4是列，第二个数4是行",
+                    "explain": "数对先写列后写行：(4,4)中第一个4是列、第二个4是行"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "计算"
+                        "先列后行：第4列，填4",
+                        "先列后行：第8列",
+                        "数大的填前面",
+                        "随便填"
                     ],
-                    "answer": "计算",
-                    "explain": "计算：(4,4) → 第?列=4"
+                    "answer": "先列后行：第4列，填4",
+                    "explain": "数对(列,行)：括号里第一个数是列，所以(4,4)表示第4列"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "方格图：数对(4,4)对应方格纸上第4列第4行的位置",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "(4,4) → 第?列=4",
+                    "text": "数对格式（列，行）：括号里第一个数表示列，第二个数表示行",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
+                    "text": "用数对确定位置：先看列再横行，两个数顺序不能换",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -5326,80 +4735,80 @@ window.MATH_BY_GRADE["5a"] = {
                 "shape": "rectangle",
                 "params": {
                     "length": "a",
-                    "width": "b"
+                    "width": "a"
                 }
             },
             "knowledge": "用字母表示运算定律和公式",
             "difficulty": 2,
-            "hint": "S=ab",
+            "hint": "C=4a",
             "variants": [
                 {
-                    "question": "长方形周长C=2(a+?)",
-                    "formula": "C=2(a+?)",
-                    "answer": "b",
-                    "hint": "C=2(a+b)"
+                    "question": "正方形边长a=3，周长C=?",
+                    "formula": "C=4×3=?",
+                    "answer": 12,
+                    "hint": "C=4a"
                 },
                 {
-                    "question": "正方形边长a面积S=?",
-                    "formula": "S=a×?",
-                    "answer": "a",
-                    "hint": "S=a²"
+                    "question": "正方形周长C=20，边长a=?",
+                    "formula": "a=20÷4=?",
+                    "answer": 5,
+                    "hint": "C=4a"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求正方形周长C用字母怎么表示",
+                        "求正方形面积",
+                        "求边长a是多少",
+                        "求几个正方形拼起来"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「老师教小红用字母表示长方形面积公式。」，问的是「长方形面积S=长×宽，长a宽b，S=?」，这是求总数"
+                    "answer": "求正方形周长C用字母怎么表示",
+                    "explain": "题目给出正方形边长a，问周长C=a×?该填几"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：b",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "正方形4条边都相等，边长都是a",
+                        "只有2条边是a",
+                        "边长不知道",
+                        "边长是1"
                     ],
-                    "answer": "关键数：b",
-                    "explain": "从题目中找到的关键数是："
+                    "answer": "正方形4条边都相等，边长都是a",
+                    "explain": "正方形四条边相等，每条边长都是a"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "周长=4条边相加：C=a+a+a+a=4a，填4",
+                        "C=a×2，填2",
+                        "C=a×1，填1",
+                        "C=a+a，填a"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：S = a × ?=b"
+                    "answer": "周长=4条边相加：C=a+a+a+a=4a，填4",
+                    "explain": "4个a相加写成4a，所以C=a×4，横线处填4"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：正方形4条边都标a，周长是4条边的长度相加",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "S = a × ?=b",
+                    "text": "正方形周长=边长×4：C=a×4=4a，用字母表示每条边长a",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "用字母表示公式：正方形周长C=4a、面积S=a²，字母让公式对任意边长都通用",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -5427,75 +4836,75 @@ window.MATH_BY_GRADE["5a"] = {
             },
             "knowledge": "用字母表示运算定律和公式",
             "difficulty": 2,
-            "hint": "S=ab",
+            "hint": "V=abc",
             "variants": [
                 {
-                    "question": "长方形周长C=2(a+?)",
-                    "formula": "C=2(a+?)",
-                    "answer": "b",
-                    "hint": "C=2(a+b)"
+                    "question": "长方体长2宽3高4，体积V=?",
+                    "formula": "V=2×3×4=?",
+                    "answer": 24,
+                    "hint": "V=abc"
                 },
                 {
-                    "question": "正方形边长a面积S=?",
-                    "formula": "S=a×?",
-                    "answer": "a",
-                    "hint": "S=a²"
+                    "question": "正方体棱长a体积V=?",
+                    "formula": "V=a×a×a=?",
+                    "answer": "a³",
+                    "hint": "V=a³"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求长方体体积V用字母怎么表示",
+                        "求长方体表面积",
+                        "求长宽高的和",
+                        "求棱长总和"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「老师教小红用字母表示长方形面积公式。」，问的是「长方形面积S=长×宽，长a宽b，S=?」，这是求总数"
+                    "answer": "求长方体体积V用字母怎么表示",
+                    "explain": "题目给出长方体长a宽b高c，问体积V用字母式子怎么表示"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：b",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "长a、宽b、高c三个信息",
+                        "只有长a",
+                        "只有宽b",
+                        "只有高c"
                     ],
-                    "answer": "关键数：b",
-                    "explain": "从题目中找到的关键数是："
+                    "answer": "长a、宽b、高c三个信息",
+                    "explain": "长用a表示，宽用b表示，高用c表示"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "体积=长×宽×高：V=a×b×c=abc",
+                        "V=a+b+c",
+                        "V=3abc",
+                        "V=ab"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：S = a × ?=b"
+                    "answer": "体积=长×宽×高：V=a×b×c=abc",
+                    "explain": "长方体体积=长×宽×高=a×b×c，字母连写省略乘号写成abc"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：长方体长a、宽b、高c，体积是长×宽×高",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "S = a × ?=b",
+                    "text": "体积公式V=a×b×c=abc：三个字母连乘表示长宽高的积",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "用字母表示公式：正方体体积V=a³，字母相乘省略乘号，让公式通用简洁",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -5503,1195 +4912,14 @@ window.MATH_BY_GRADE["5a"] = {
             "id": "5A-PROB-053"
         },
         {
-            "scene": "小红看到天平左边放x克砝码右边放71克，天平平衡。老师问这是什么。",
-            "question": "x=71是什么？(方程填1,不等式填2)",
-            "formula": "x=71 → ? (1方程/2不等式)",
-            "answer": 1,
-            "choices": [
-                1,
-                2,
-                3,
-                0
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 50,
-                    "balanced": true
-                }
-            },
-            "knowledge": "方程的意义",
-            "difficulty": 2,
-            "hint": "含未知数的等式叫方程",
-            "variants": [
-                {
-                    "question": "3+5=8是方程吗(1是2不是)？",
-                    "formula": "3+5=8→?",
-                    "answer": 2,
-                    "hint": "没有未知数不是方程"
-                },
-                {
-                    "question": "x+2>5是方程吗(1是2不是)？",
-                    "formula": "x+2>5→?",
-                    "answer": 2,
-                    "hint": "不是等式不是方程"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小红看到天平左边放x克砝码右边放71克，天平平衡。老师问这是什么。」，问的是「x=71是什么？(方程填1,不等式填2)」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：71 和 1",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：71 和 1",
-                    "explain": "从题目中找到的关键数是：71、1、2"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "除法",
-                    "explain": "计算：x=71 → ? (1方程/2不等式)=1"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x=71 → ? (1方程/2不等式)=1",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-054"
-        },
-        {
-            "scene": "小红看到天平左边放x克砝码右边放41克，天平平衡。老师问这是什么。",
-            "question": "x=41是什么？(方程填1,不等式填3)",
-            "formula": "x=41 → ? (1方程/3不等式)",
-            "answer": 1,
-            "choices": [
-                1,
-                3,
-                0
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 50,
-                    "balanced": true
-                }
-            },
-            "knowledge": "方程的意义",
-            "difficulty": 2,
-            "hint": "含未知数的等式叫方程",
-            "variants": [
-                {
-                    "question": "3+5=8是方程吗(1是3不是)？",
-                    "formula": "3+5=8→?",
-                    "answer": 3,
-                    "hint": "没有未知数不是方程"
-                },
-                {
-                    "question": "x+3>5是方程吗(1是3不是)？",
-                    "formula": "x+3>5→?",
-                    "answer": 3,
-                    "hint": "不是等式不是方程"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小红看到天平左边放x克砝码右边放41克，天平平衡。老师问这是什么。」，问的是「x=41是什么？(方程填1,不等式填3)」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：41 和 1",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：41 和 1",
-                    "explain": "从题目中找到的关键数是：41、1、3"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "除法",
-                    "explain": "计算：x=41 → ? (1方程/3不等式)=1"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x=41 → ? (1方程/3不等式)=1",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-055"
-        },
-        {
-            "scene": "老师告诉小红等式两边同时加同一个数等式仍成立。",
-            "question": "如果x+3=12，两边同时减3，x=?",
-            "formula": "x + 3 - 3 = 12 - 3 → x = ?",
-            "answer": 9,
-            "choices": [
-                9,
-                13,
-                12,
-                3
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 7,
-                    "balanced": true
-                }
-            },
-            "knowledge": "等式的性质",
-            "difficulty": 2,
-            "hint": "等式两边同加减仍相等",
-            "variants": [
-                {
-                    "question": "x-5=12两边加5，x=?",
-                    "formula": "x=12+5",
-                    "answer": 17,
-                    "hint": "等式性质"
-                },
-                {
-                    "question": "x+8=20两边减8，x=?",
-                    "formula": "x=20-8",
-                    "answer": 12,
-                    "hint": "等式性质"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "差是多少（剩多少）",
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "积是多少"
-                    ],
-                    "answer": "差是多少（剩多少）",
-                    "explain": "题目说「老师告诉小红等式两边同时加同一个数等式仍成立。」，问的是「如果x+3=12，两边同时减3，x=?」，这是求差是多少"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：3 和 3",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：3 和 3",
-                    "explain": "从题目中找到的关键数是：3、3、12、3"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "减法",
-                    "explain": "减法：x + 3 - 3 = 12 - 3 → x = ?=7"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x + 3 - 3 = 12 - 3 → x = ?=7",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "求差或剩余，用减法。被减数-减数=差",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-056"
-        },
-        {
-            "scene": "老师告诉小红等式两边同时加同一个数等式仍成立。",
-            "question": "如果x+3=13，两边同时减3，x=?",
-            "formula": "x + 3 - 3 = 13 - 3 → x = ?",
-            "answer": 10,
-            "choices": [
-                10,
-                13,
-                16,
-                3
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 7,
-                    "balanced": true
-                }
-            },
-            "knowledge": "等式的性质",
-            "difficulty": 2,
-            "hint": "等式两边同加减仍相等",
-            "variants": [
-                {
-                    "question": "x-5=12两边加5，x=?",
-                    "formula": "x=12+5",
-                    "answer": 17,
-                    "hint": "等式性质"
-                },
-                {
-                    "question": "x+8=20两边减8，x=?",
-                    "formula": "x=20-8",
-                    "answer": 12,
-                    "hint": "等式性质"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "差是多少（剩多少）",
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "积是多少"
-                    ],
-                    "answer": "差是多少（剩多少）",
-                    "explain": "题目说「老师告诉小红等式两边同时加同一个数等式仍成立。」，问的是「如果x+3=13，两边同时减3，x=?」，这是求差是多少"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：3 和 3",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：3 和 3",
-                    "explain": "从题目中找到的关键数是：3、3、13、3"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "减法",
-                    "explain": "减法：x + 3 - 3 = 13 - 3 → x = ?=7"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x + 3 - 3 = 13 - 3 → x = ?=7",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "求差或剩余，用减法。被减数-减数=差",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-057"
-        },
-        {
-            "scene": "小红解方程x+19=49。",
-            "question": "x等于多少？",
-            "formula": "x + 19 = 49 → x = ?",
-            "answer": 30,
-            "choices": [
-                30,
-                55,
-                49,
-                19
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 25,
-                    "balanced": true
-                }
-            },
-            "knowledge": "解方程",
-            "difficulty": 2,
-            "hint": "两边减19",
-            "variants": [
-                {
-                    "question": "x+23=50，x=?",
-                    "formula": "x=50-23",
-                    "answer": 27,
-                    "hint": "两边减23"
-                },
-                {
-                    "question": "x-18=30，x=?",
-                    "formula": "x=30+18",
-                    "answer": 48,
-                    "hint": "两边加18"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "差是多少",
-                        "积是多少"
-                    ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红解方程x+19=49。」，问的是「x等于多少？」，这是求总数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：19 和 49",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：19 和 49",
-                    "explain": "从题目中找到的关键数是：19、49"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "加法",
-                    "explain": "加法：x + 19 = 49 → x = ?=25"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x + 19 = 49 → x = ?=25",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "求几个数的和，用加法。加数+加数=和",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-058"
-        },
-        {
-            "scene": "小红解方程x+20=55。",
-            "question": "x等于多少？",
-            "formula": "x + 20 = 55 → x = ?",
-            "answer": 35,
-            "choices": [
-                35,
-                55,
-                45,
-                20
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "x",
-                    "right": 25,
-                    "balanced": true
-                }
-            },
-            "knowledge": "解方程",
-            "difficulty": 2,
-            "hint": "两边减20",
-            "variants": [
-                {
-                    "question": "x+23=50，x=?",
-                    "formula": "x=50-23",
-                    "answer": 27,
-                    "hint": "两边减23"
-                },
-                {
-                    "question": "x-18=30，x=?",
-                    "formula": "x=30+18",
-                    "answer": 48,
-                    "hint": "两边加18"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "差是多少",
-                        "积是多少"
-                    ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红解方程x+20=55。」，问的是「x等于多少？」，这是求总数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：20 和 55",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：20 和 55",
-                    "explain": "从题目中找到的关键数是：20、55"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "加法",
-                    "explain": "加法：x + 20 = 55 → x = ?=25"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x + 20 = 55 → x = ?=25",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "求几个数的和，用加法。加数+加数=和",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-059"
-        },
-        {
-            "scene": "小亮解方程2x=22。",
-            "question": "x等于多少？",
-            "formula": "2x = 22 → x = ?",
-            "answer": 6,
-            "choices": [
-                6,
-                54,
-                15,
-                21
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "3x",
-                    "right": 18,
-                    "balanced": true
-                }
-            },
-            "knowledge": "解ax=b型方程",
-            "difficulty": 2,
-            "hint": "两边除以2",
-            "variants": [
-                {
-                    "question": "5x=45，x=?",
-                    "formula": "x=45÷5",
-                    "answer": 9,
-                    "hint": "两边除以5"
-                },
-                {
-                    "question": "4x=22，x=?",
-                    "formula": "x=22÷4",
-                    "answer": 8,
-                    "hint": "两边除以4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小亮解方程2x=22。」，问的是「x等于多少？」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：2 和 22",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：2 和 22",
-                    "explain": "从题目中找到的关键数是：2、22"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "除法",
-                    "explain": "计算：2x = 22 → x = ?=6"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "2x = 22 → x = ?=6",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-060"
-        },
-        {
-            "scene": "小亮解方程3x=25。",
-            "question": "x等于多少？",
-            "formula": "3x = 25 → x = ?",
-            "answer": 6,
-            "choices": [
-                6,
-                54,
-                15,
-                21
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "balance",
-                "params": {
-                    "left": "3x",
-                    "right": 18,
-                    "balanced": true
-                }
-            },
-            "knowledge": "解ax=b型方程",
-            "difficulty": 2,
-            "hint": "两边除以3",
-            "variants": [
-                {
-                    "question": "5x=45，x=?",
-                    "formula": "x=45÷5",
-                    "answer": 9,
-                    "hint": "两边除以5"
-                },
-                {
-                    "question": "4x=32，x=?",
-                    "formula": "x=32÷4",
-                    "answer": 8,
-                    "hint": "两边除以4"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小亮解方程3x=25。」，问的是「x等于多少？」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：3 和 25",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：3 和 25",
-                    "explain": "从题目中找到的关键数是：3、25"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "除法",
-                    "explain": "计算：3x = 25 → x = ?=6"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "3x = 25 → x = ?=6",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-061"
-        },
-        {
-            "scene": "小红有x颗糖果，小亮有16颗，两人一共46颗。小红列方程。",
-            "question": "x+16=46，x等于多少？",
-            "formula": "x + 16 = 46 → x = ?",
-            "answer": 30,
-            "choices": [
-                30,
-                50,
-                46,
-                16
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 46,
-                "parts": [
-                    {
-                        "label": "小红x",
-                        "val": 26,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "小亮15",
-                        "val": 20,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "列方程解决实际问题",
-            "difficulty": 2,
-            "hint": "找等量关系列方程",
-            "variants": [
-                {
-                    "question": "x+8=25，x=?",
-                    "formula": "x=25-8",
-                    "answer": 17,
-                    "hint": "两边减8"
-                },
-                {
-                    "question": "x+12=40，x=?",
-                    "formula": "x=40-12",
-                    "answer": 28,
-                    "hint": "两边减12"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "差是多少",
-                        "积是多少"
-                    ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红有x颗糖果，小亮有16颗，两人一共46颗。小红列方程。」，问的是「x+16=46，x等于多少？」，这是求总数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：16 和 46",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：16 和 46",
-                    "explain": "从题目中找到的关键数是：16、46"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "加法",
-                    "explain": "加法：x + 16 = 46 → x = ?=20"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表26，合起来就是46",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x + 16 = 46 → x = ?=20",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "求几个数的和，用加法。加数+加数=和",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-062"
-        },
-        {
-            "scene": "小红有x颗糖果，小亮有18颗，两人一共51颗。小红列方程。",
-            "question": "x+18=51，x等于多少？",
-            "formula": "x + 18 = 51 → x = ?",
-            "answer": 33,
-            "choices": [
-                33,
-                50,
-                51,
-                18
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 51,
-                "parts": [
-                    {
-                        "label": "小红x",
-                        "val": 29,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "小亮15",
-                        "val": 22,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "列方程解决实际问题",
-            "difficulty": 2,
-            "hint": "找等量关系列方程",
-            "variants": [
-                {
-                    "question": "x+8=25，x=?",
-                    "formula": "x=25-8",
-                    "answer": 17,
-                    "hint": "两边减8"
-                },
-                {
-                    "question": "x+12=40，x=?",
-                    "formula": "x=40-12",
-                    "answer": 28,
-                    "hint": "两边减12"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "差是多少",
-                        "积是多少"
-                    ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红有x颗糖果，小亮有18颗，两人一共51颗。小红列方程。」，问的是「x+18=51，x等于多少？」，这是求总数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：18 和 51",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：18 和 51",
-                    "explain": "从题目中找到的关键数是：18、51"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "加法",
-                    "explain": "加法：x + 18 = 51 → x = ?=20"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表29，合起来就是51",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "x + 18 = 51 → x = ?=20",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "求几个数的和，用加法。加数+加数=和",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-063"
-        },
-        {
-            "scene": "苹果比梨多7个，梨有x个苹果有4x个。老师让小红列方程4x-x=7。",
-            "question": "3x=7，x等于多少？",
-            "formula": "3x = 7... → x ≈ ?",
-            "answer": 2.5,
-            "choices": [
-                2.5,
-                3,
-                4,
-                7
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 7,
-                "parts": [
-                    {
-                        "label": "2x",
-                        "val": 7,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "稍复杂的方程",
-            "difficulty": 3,
-            "hint": "4x-x=3x",
-            "variants": [
-                {
-                    "question": "3x+4=11，x=?",
-                    "formula": "3x=8→x=?",
-                    "answer": 4,
-                    "hint": "先减4再除3"
-                },
-                {
-                    "question": "4x-x=8，x=?",
-                    "formula": "3x=8→x=?",
-                    "answer": 4,
-                    "hint": "合并同类项"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「苹果比梨多7个，梨有x个苹果有4x个。老师让小红列方程4x-x=7。」，问的是「3x=7，x等于多少？」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：3 和 7",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：3 和 7",
-                    "explain": "从题目中找到的关键数是：3、7"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "减法",
-                    "explain": "计算：3x = 7... → x ≈ ?=2.5"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表7，合起来就是7",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "3x = 7... → x ≈ ?=2.5",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-064"
-        },
-        {
-            "scene": "苹果比梨多7个，梨有x个苹果有3x个。老师让小红列方程3x-x=7。",
-            "question": "3x=7，x等于多少？",
-            "formula": "3x = 7... → x ≈ ?",
-            "answer": 2.5,
-            "choices": [
-                2.5,
-                3,
-                2.6,
-                7
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 7,
-                "parts": [
-                    {
-                        "label": "2x",
-                        "val": 7,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "knowledge": "稍复杂的方程",
-            "difficulty": 3,
-            "hint": "3x-x=3x",
-            "variants": [
-                {
-                    "question": "3x+3=11，x=?",
-                    "formula": "3x=8→x=?",
-                    "answer": 4,
-                    "hint": "先减3再除3"
-                },
-                {
-                    "question": "3x-x=8，x=?",
-                    "formula": "3x=8→x=?",
-                    "answer": 4,
-                    "hint": "合并同类项"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「苹果比梨多7个，梨有x个苹果有3x个。老师让小红列方程3x-x=7。」，问的是「3x=7，x等于多少？」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：3 和 7",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：3 和 7",
-                    "explain": "从题目中找到的关键数是：3、7"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "减法",
-                    "explain": "计算：3x = 7... → x ≈ ?=2.5"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表7，合起来就是7",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "3x = 7... → x ≈ ?=2.5",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5A-PROB-065"
-        },
-        {
             "scene": "小红家的平行四边形花坛底6米高6米。她算花坛面积。",
             "question": "平行四边形面积是多少平方米？",
             "formula": "6 × 6 = ? m²",
-            "answer": 24,
+            "answer": 36,
             "choices": [
+                36,
                 24,
                 20,
-                10,
                 12
             ],
             "visualType": "geometry",
@@ -6699,7 +4927,7 @@ window.MATH_BY_GRADE["5a"] = {
                 "shape": "parallelogram",
                 "params": {
                     "base": 6,
-                    "height": 4
+                    "height": 6
                 }
             },
             "knowledge": "平行四边形的面积",
@@ -6723,56 +4951,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求平行四边形面积是多少平方米",
+                        "求平行四边形周长",
+                        "求底是多少",
+                        "求高是多少"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红家的平行四边形花坛底6米高6米。她算花坛面积。」，问的是「平行四边形面积是多少平方米？」，这是求总数"
+                    "answer": "求平行四边形面积是多少平方米",
+                    "explain": "题目问底6米高6米的平行四边形花坛面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：6 和 6",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "底6米、高6米",
+                        "底6米、高4米",
+                        "底4米、高6米",
+                        "底和高都是4"
                     ],
-                    "answer": "关键数：6 和 6",
-                    "explain": "从题目中找到的关键数是：6、6"
+                    "answer": "底6米、高6米",
+                    "explain": "平行四边形的底是6米，高是6米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=底×高：6×6=36",
+                        "6+6=12",
+                        "6×4=24",
+                        "6×2=12"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：6 × 6 = ? m²=24"
+                    "answer": "面积=底×高：6×6=36",
+                    "explain": "平行四边形面积=底×高=6×6=36平方米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：平行四边形底6高6，沿高割补可以变成一个边长6的正方形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "6 × 6 = ? m²=24",
+                    "text": "平行四边形面积=底×高=6×6=36平方米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "任何平行四边形沿高割补都能变成长方形，所以面积=底×高",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -6783,11 +5011,11 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "小红家的平行四边形花坛底6米高3米。她算花坛面积。",
             "question": "平行四边形面积是多少平方米？",
             "formula": "6 × 3 = ? m²",
-            "answer": 24,
+            "answer": 18,
             "choices": [
+                18,
                 24,
                 20,
-                10,
                 12
             ],
             "visualType": "geometry",
@@ -6795,7 +5023,7 @@ window.MATH_BY_GRADE["5a"] = {
                 "shape": "parallelogram",
                 "params": {
                     "base": 6,
-                    "height": 4
+                    "height": 3
                 }
             },
             "knowledge": "平行四边形的面积",
@@ -6819,56 +5047,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求平行四边形面积是多少平方米",
+                        "求平行四边形周长",
+                        "求底是多少",
+                        "求高是多少"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红家的平行四边形花坛底6米高3米。她算花坛面积。」，问的是「平行四边形面积是多少平方米？」，这是求总数"
+                    "answer": "求平行四边形面积是多少平方米",
+                    "explain": "题目问底6米高3米的平行四边形花坛面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：6 和 3",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "底6米、高3米",
+                        "底6米、高4米",
+                        "底3米、高6米",
+                        "底和高都是3"
                     ],
-                    "answer": "关键数：6 和 3",
-                    "explain": "从题目中找到的关键数是：6、3"
+                    "answer": "底6米、高3米",
+                    "explain": "平行四边形的底是6米，高是3米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=底×高：6×3=18",
+                        "6+3=9",
+                        "6×4=24",
+                        "6×2=12"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：6 × 3 = ? m²=24"
+                    "answer": "面积=底×高：6×3=18",
+                    "explain": "平行四边形面积=底×高=6×3=18平方米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：平行四边形底6高3，沿高割补可以变成长6宽3的长方形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "6 × 3 = ? m²=24",
+                    "text": "平行四边形面积=底×高=6×3=18平方米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "任何平行四边形沿高割补都能变成长方形，所以面积=底×高",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -6879,19 +5107,19 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "小红画了一个三角形底6厘米高6厘米。她算三角形面积。",
             "question": "三角形面积是多少平方厘米？",
             "formula": "6 × 6 ÷ 2 = ? cm²",
-            "answer": 10,
+            "answer": 18,
             "choices": [
+                18,
                 10,
                 20,
-                9,
                 14
             ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "triangle",
                 "params": {
-                    "base": 5,
-                    "height": 4
+                    "base": 6,
+                    "height": 6
                 }
             },
             "knowledge": "三角形的面积",
@@ -6907,7 +5135,7 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "底10高6面积？",
                     "formula": "10×6÷2=?",
-                    "answer": 20,
+                    "answer": 30,
                     "hint": "底高除2"
                 }
             ],
@@ -6915,56 +5143,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求三角形面积是多少平方厘米",
+                        "求三角形周长",
+                        "求底是多少",
+                        "求高是多少"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红画了一个三角形底6厘米高6厘米。她算三角形面积。」，问的是「三角形面积是多少平方厘米？」，这是求总数"
+                    "answer": "求三角形面积是多少平方厘米",
+                    "explain": "题目问底6厘米高6厘米的三角形面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：6 和 6",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "底6厘米、高6厘米",
+                        "底6厘米、高4厘米",
+                        "底5厘米、高4厘米",
+                        "底和高都是5"
                     ],
-                    "answer": "关键数：6 和 6",
-                    "explain": "从题目中找到的关键数是：6、6、2"
+                    "answer": "底6厘米、高6厘米",
+                    "explain": "三角形的底是6厘米，高是6厘米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=底×高÷2：6×6÷2=18",
+                        "6×6=36",
+                        "6+6=12",
+                        "6×4÷2=12"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：6 × 6 ÷ 2 = ? cm²=10"
+                    "answer": "面积=底×高÷2：6×6÷2=18",
+                    "explain": "三角形面积=底×高÷2=6×6÷2=18平方厘米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：三角形底6高6，两个完全一样的三角形可拼成边长6的正方形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "6 × 6 ÷ 2 = ? cm²=10",
+                    "text": "三角形面积=底×高÷2=6×6÷2=18平方厘米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "两个完全一样的三角形拼成平行四边形，所以三角形面积=底×高÷2",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -6975,19 +5203,19 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "小红画了一个三角形底7厘米高3厘米。她算三角形面积。",
             "question": "三角形面积是多少平方厘米？",
             "formula": "7 × 3 ÷ 2 = ? cm²",
-            "answer": 10,
+            "answer": 10.5,
             "choices": [
+                10.5,
                 10,
                 20,
-                9,
                 14
             ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "triangle",
                 "params": {
-                    "base": 5,
-                    "height": 4
+                    "base": 7,
+                    "height": 3
                 }
             },
             "knowledge": "三角形的面积",
@@ -7003,7 +5231,7 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "底10高3面积？",
                     "formula": "10×3÷2=?",
-                    "answer": 20,
+                    "answer": 15,
                     "hint": "底高除2"
                 }
             ],
@@ -7011,56 +5239,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求三角形面积是多少平方厘米",
+                        "求三角形周长",
+                        "求底是多少",
+                        "求高是多少"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红画了一个三角形底7厘米高3厘米。她算三角形面积。」，问的是「三角形面积是多少平方厘米？」，这是求总数"
+                    "answer": "求三角形面积是多少平方厘米",
+                    "explain": "题目问底7厘米高3厘米的三角形面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：7 和 3",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "底7厘米、高3厘米",
+                        "底7厘米、高4厘米",
+                        "底5厘米、高4厘米",
+                        "底和高都是7"
                     ],
-                    "answer": "关键数：7 和 3",
-                    "explain": "从题目中找到的关键数是：7、3、2"
+                    "answer": "底7厘米、高3厘米",
+                    "explain": "三角形的底是7厘米，高是3厘米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=底×高÷2：7×3÷2=10.5",
+                        "7×3=21",
+                        "7+3=10",
+                        "7×3÷3=7"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：7 × 3 ÷ 2 = ? cm²=10"
+                    "answer": "面积=底×高÷2：7×3÷2=10.5",
+                    "explain": "三角形面积=底×高÷2=7×3÷2=10.5平方厘米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：三角形底7高3，两个完全一样的三角形可拼成底7高3的平行四边形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "7 × 3 ÷ 2 = ? cm²=10",
+                    "text": "三角形面积=底×高÷2=7×3÷2=10.5平方厘米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "两个完全一样的三角形拼成平行四边形，所以三角形面积=底×高÷2",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -7070,94 +5298,94 @@ window.MATH_BY_GRADE["5a"] = {
         {
             "scene": "小亮家的梯形花圃上底4米下底7米高5米。他算花圃面积。",
             "question": "梯形面积是多少平方米？",
-            "formula": "(4+7) × 5 ÷ 3 = ? m²",
-            "answer": 16,
+            "formula": "(4+7) × 5 ÷ 2 = ? m²",
+            "answer": 27.5,
             "choices": [
+                27.5,
                 16,
                 32,
-                8,
                 12
             ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "trapezoid",
                 "params": {
-                    "top": 3,
-                    "bottom": 5,
-                    "height": 4
+                    "top": 4,
+                    "bottom": 7,
+                    "height": 5
                 }
             },
             "knowledge": "梯形的面积",
             "difficulty": 3,
-            "hint": "(上底+下底)×高÷3",
+            "hint": "(上底+下底)×高÷2",
             "variants": [
                 {
                     "question": "上5下6高7面积？",
-                    "formula": "(5+6)×7÷3=?",
-                    "answer": 25,
-                    "hint": "上底下底和乘高除3"
+                    "formula": "(5+6)×7÷2=?",
+                    "answer": 38.5,
+                    "hint": "上底下底和乘高÷2"
                 },
                 {
                     "question": "上3下8高5面积？",
-                    "formula": "(3+8)×5÷3=?",
-                    "answer": 20,
-                    "hint": "上底下底和乘高除3"
+                    "formula": "(3+8)×5÷2=?",
+                    "answer": 27.5,
+                    "hint": "上底下底和乘高÷2"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求梯形面积是多少平方米",
+                        "求梯形周长",
+                        "求上底是多少",
+                        "求高是多少"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小亮家的梯形花圃上底4米下底7米高5米。他算花圃面积。」，问的是「梯形面积是多少平方米？」，这是求总数"
+                    "answer": "求梯形面积是多少平方米",
+                    "explain": "题目问上底4米下底7米高5米的梯形花圃面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：4 和 7",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "上底4米、下底7米、高5米",
+                        "上底3米、下底5米、高4米",
+                        "上底5米、下底7米、高4米",
+                        "没有给高"
                     ],
-                    "answer": "关键数：4 和 7",
-                    "explain": "从题目中找到的关键数是：4、7、5、3"
+                    "answer": "上底4米、下底7米、高5米",
+                    "explain": "梯形的上底4米，下底7米，高5米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=(上底+下底)×高÷2：(4+7)×5÷2=27.5",
+                        "(4+7)×5=55",
+                        "(4+7)÷2",
+                        "4+7+5=16"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：(4+7) × 5 ÷ 3 = ? m²=16"
+                    "answer": "面积=(上底+下底)×高÷2：(4+7)×5÷2=27.5",
+                    "explain": "梯形面积=(上底+下底)×高÷2=(4+7)×5÷2=27.5平方米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：梯形上底4下底7高5，两个完全一样的梯形可拼成平行四边形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "(4+7) × 5 ÷ 3 = ? m²=16",
+                    "text": "梯形面积=(上底+下底)×高÷2=(4+7)×5÷2=27.5平方米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "两个完全一样的梯形拼成平行四边形，所以梯形面积=(上底+下底)×高÷2",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -7168,11 +5396,11 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "小亮家的梯形花圃上底3米下底5米高5米。他算花圃面积。",
             "question": "梯形面积是多少平方米？",
             "formula": "(3+5) × 5 ÷ 2 = ? m²",
-            "answer": 16,
+            "answer": 20,
             "choices": [
+                20,
                 16,
                 32,
-                8,
                 12
             ],
             "visualType": "geometry",
@@ -7181,7 +5409,7 @@ window.MATH_BY_GRADE["5a"] = {
                 "params": {
                     "top": 3,
                     "bottom": 5,
-                    "height": 4
+                    "height": 5
                 }
             },
             "knowledge": "梯形的面积",
@@ -7191,70 +5419,70 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "上5下6高5面积？",
                     "formula": "(5+6)×5÷2=?",
-                    "answer": 25,
-                    "hint": "上底下底和乘高除2"
+                    "answer": 27.5,
+                    "hint": "上底下底和乘高÷2"
                 },
                 {
                     "question": "上2下8高5面积？",
                     "formula": "(2+8)×5÷2=?",
-                    "answer": 20,
-                    "hint": "上底下底和乘高除2"
+                    "answer": 25,
+                    "hint": "上底下底和乘高÷2"
                 }
             ],
             "discoverySteps": [
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求梯形面积是多少平方米",
+                        "求梯形周长",
+                        "求上底是多少",
+                        "求高是多少"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小亮家的梯形花圃上底3米下底5米高5米。他算花圃面积。」，问的是「梯形面积是多少平方米？」，这是求总数"
+                    "answer": "求梯形面积是多少平方米",
+                    "explain": "题目问上底3米下底5米高5米的梯形花圃面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：3 和 5",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "上底3米、下底5米、高5米",
+                        "上底3米、下底5米、高4米",
+                        "上底5米、下底3米、高4米",
+                        "没有给高"
                     ],
-                    "answer": "关键数：3 和 5",
-                    "explain": "从题目中找到的关键数是：3、5、5、2"
+                    "answer": "上底3米、下底5米、高5米",
+                    "explain": "梯形的上底3米，下底5米，高5米"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "面积=(上底+下底)×高÷2：(3+5)×5÷2=20",
+                        "(3+5)×5=40",
+                        "(3+5)÷2=4",
+                        "3+5+5=13"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：(3+5) × 5 ÷ 2 = ? m²=16"
+                    "answer": "面积=(上底+下底)×高÷2：(3+5)×5÷2=20",
+                    "explain": "梯形面积=(上底+下底)×高÷2=(3+5)×5÷2=20平方米"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：梯形上底3下底5高5，两个完全一样的梯形可拼成平行四边形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "(3+5) × 5 ÷ 2 = ? m²=16",
+                    "text": "梯形面积=(上底+下底)×高÷2=(3+5)×5÷2=20平方米",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "两个完全一样的梯形拼成平行四边形，所以梯形面积=(上底+下底)×高÷2",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -7280,11 +5508,11 @@ window.MATH_BY_GRADE["5a"] = {
                         {
                             "shape": "rectangle",
                             "l": 3,
-                            "w": 4
+                            "w": 3
                         },
                         {
                             "shape": "rectangle",
-                            "l": 2,
+                            "l": 3,
                             "w": 3
                         }
                     ]
@@ -7296,14 +5524,14 @@ window.MATH_BY_GRADE["5a"] = {
             "variants": [
                 {
                     "question": "分5×3和3×3总面积？",
-                    "formula": "15+8=?",
-                    "answer": 23,
+                    "formula": "15+9=?",
+                    "answer": 24,
                     "hint": "分割求和"
                 },
                 {
                     "question": "分6×3和3×3总面积？",
-                    "formula": "13+9=?",
-                    "answer": 21,
+                    "formula": "18+9=?",
+                    "answer": 27,
                     "hint": "分割求和"
                 }
             ],
@@ -7311,56 +5539,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求组合图形面积是多少",
+                        "求组合图形周长",
+                        "求大长方形面积",
+                        "求小长方形面积"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红家的L形花坛可以分成两个长方形：一个3×3，一个3×3。她算总面积。」，问的是「组合图形面积是多少？」，这是求总数"
+                    "answer": "求组合图形面积是多少",
+                    "explain": "题目问L形花坛的总面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：3 和 3",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "分成两个长方形：3×3和3×3",
+                        "分成两个长方形：3×4和2×3",
+                        "只分成一个长方形",
+                        "没有给边长"
                     ],
-                    "answer": "关键数：3 和 3",
-                    "explain": "从题目中找到的关键数是：3、3、3、3"
+                    "answer": "分成两个长方形：3×3和3×3",
+                    "explain": "L形花坛可以分成两个3×3的长方形"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "分割求和：3×3+3×3=18",
+                        "3×3=9",
+                        "(3+3)×(3+3)=36",
+                        "3+3+3+3=12"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：3×3 + 3×3 = ?=18"
+                    "answer": "分割求和：3×3+3×3=18",
+                    "explain": "组合图形面积=两个长方形面积相加：9+9=18"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：L形组合图形，分成两个3×3的长方形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "3×3 + 3×3 = ?=18",
+                    "text": "组合图形面积=分割成的各部分面积相加：3×3+3×3=18",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "求组合图形面积：先分割成基本图形，分别算面积再求和",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -7390,7 +5618,7 @@ window.MATH_BY_GRADE["5a"] = {
                         },
                         {
                             "shape": "rectangle",
-                            "l": 2,
+                            "l": 3,
                             "w": 3
                         }
                     ]
@@ -7402,14 +5630,14 @@ window.MATH_BY_GRADE["5a"] = {
             "variants": [
                 {
                     "question": "分5×3和4×3总面积？",
-                    "formula": "15+8=?",
-                    "answer": 23,
+                    "formula": "15+12=?",
+                    "answer": 27,
                     "hint": "分割求和"
                 },
                 {
                     "question": "分6×3和3×3总面积？",
-                    "formula": "13+9=?",
-                    "answer": 21,
+                    "formula": "18+9=?",
+                    "answer": 27,
                     "hint": "分割求和"
                 }
             ],
@@ -7417,56 +5645,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "总数（一共多少）",
-                        "每份是多少",
-                        "有几份",
-                        "差是多少"
+                        "求组合图形面积是多少",
+                        "求组合图形周长",
+                        "求大长方形面积",
+                        "求小长方形面积"
                     ],
-                    "answer": "总数（一共多少）",
-                    "explain": "题目说「小红家的L形花坛可以分成两个长方形：一个3×4，一个3×3。她算总面积。」，问的是「组合图形面积是多少？」，这是求总数"
+                    "answer": "求组合图形面积是多少",
+                    "explain": "题目问L形花坛的总面积是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：3 和 4",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "分成两个长方形：3×4和3×3",
+                        "分成两个长方形：3×4和2×3",
+                        "只分成一个长方形",
+                        "没有给边长"
                     ],
-                    "answer": "关键数：3 和 4",
-                    "explain": "从题目中找到的关键数是：3、4、3、3"
+                    "answer": "分成两个长方形：3×4和3×3",
+                    "explain": "L形花坛可以分成一个3×4和3×3的长方形"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "分割求和：3×4+3×3=21",
+                        "3×4=12",
+                        "(3+3)×(4+3)=42",
+                        "3+4+3+3=13"
                     ],
-                    "answer": "乘法",
-                    "explain": "乘法：3×4 + 3×3 = ?=18"
+                    "answer": "分割求和：3×4+3×3=21",
+                    "explain": "组合图形面积=两个长方形面积相加：12+9=21"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "几何图：L形组合图形，分成3×4和3×3两个长方形",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "3×4 + 3×3 = ?=18",
+                    "text": "组合图形面积=分割成的各部分面积相加：3×4+3×3=21",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求几个相同加数的和，用乘法。每份数×份数=总数",
+                    "text": "求组合图形面积：先分割成基本图形，分别算面积再求和",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -7477,19 +5705,19 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "小红用方格纸估算一片叶子的面积，数了整格16个半格7个。",
             "question": "叶子面积约是多少格？",
             "formula": "16 + 7÷2 = ? (格)",
-            "answer": 16,
+            "answer": 19.5,
             "choices": [
+                19.5,
                 16,
                 20,
-                23,
-                7
+                23
             ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "grid",
                 "params": {
-                    "fullCells": 12,
-                    "halfCells": 8
+                    "fullCells": 16,
+                    "halfCells": 7
                 }
             },
             "knowledge": "不规则图形的面积估算",
@@ -7505,7 +5733,7 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "整格10半格4面积约？",
                     "formula": "10+4÷2=?",
-                    "answer": 16,
+                    "answer": 12,
                     "hint": "半格算半"
                 }
             ],
@@ -7513,56 +5741,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "每份是多少（或几份）",
-                        "总数（一共多少）",
-                        "差是多少",
-                        "和是多少"
+                        "求叶子面积约是多少格",
+                        "求整格有多少个",
+                        "求半格有多少个",
+                        "求叶子的周长"
                     ],
-                    "answer": "每份是多少（或几份）",
-                    "explain": "题目说「小红用方格纸估算一片叶子的面积，数了整格16个半格7个。」，问的是「叶子面积约是多少格？」，这是求每份是多少"
+                    "answer": "求叶子面积约是多少格",
+                    "explain": "题目数了整格16个半格7个，问叶子面积约是多少格"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：16 和 7",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "整格16个，半格7个",
+                        "整格12个，半格8个",
+                        "整格7个，半格16个",
+                        "没有数方格"
                     ],
-                    "answer": "关键数：16 和 7",
-                    "explain": "从题目中找到的关键数是：16、7、2"
+                    "answer": "整格16个，半格7个",
+                    "explain": "数方格：满格16个，半格7个"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "整格+半格÷2：16+7÷2=19.5",
+                        "16+7=23",
+                        "16-7=9",
+                        "16÷2=8"
                     ],
-                    "answer": "除法",
-                    "explain": "除法：16 + 7÷2 = ? (格)=16"
+                    "answer": "整格+半格÷2：16+7÷2=19.5",
+                    "explain": "不满一格按半格算：16+7÷2=16+3.5=19.5格"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "方格图：整格16个（满格），半格7个（不满格），半格按0.5格算",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "16 + 7÷2 = ? (格)=16",
+                    "text": "估算面积=整格数+半格数÷2=16+3.5=19.5格",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求每份是多少或求有几份，用除法。总数÷每份数=份数",
+                    "text": "不规则图形面积估算：数整格，半格折半，两者相加得到约数",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -7573,18 +5801,18 @@ window.MATH_BY_GRADE["5a"] = {
             "scene": "小红用方格纸估算一片叶子的面积，数了整格17个半格8个。",
             "question": "叶子面积约是多少格？",
             "formula": "17 + 8÷2 = ? (格)",
-            "answer": 16,
+            "answer": 21,
             "choices": [
-                16,
-                20,
+                21,
                 17,
-                8
+                16,
+                20
             ],
             "visualType": "geometry",
             "visualData": {
                 "shape": "grid",
                 "params": {
-                    "fullCells": 12,
+                    "fullCells": 17,
                     "halfCells": 8
                 }
             },
@@ -7601,7 +5829,7 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "question": "整格10半格4面积约？",
                     "formula": "10+4÷2=?",
-                    "answer": 17,
+                    "answer": 12,
                     "hint": "半格算半"
                 }
             ],
@@ -7609,56 +5837,56 @@ window.MATH_BY_GRADE["5a"] = {
                 {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "每份是多少（或几份）",
-                        "总数（一共多少）",
-                        "差是多少",
-                        "和是多少"
+                        "求叶子面积约是多少格",
+                        "求整格有多少个",
+                        "求半格有多少个",
+                        "求叶子的周长"
                     ],
-                    "answer": "每份是多少（或几份）",
-                    "explain": "题目说「小红用方格纸估算一片叶子的面积，数了整格17个半格8个。」，问的是「叶子面积约是多少格？」，这是求每份是多少"
+                    "answer": "求叶子面积约是多少格",
+                    "explain": "题目数了整格17个半格8个，问叶子面积约是多少格"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                        "关键数：17 和 8",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
+                        "整格17个，半格8个",
+                        "整格12个，半格8个",
+                        "整格8个，半格17个",
+                        "没有数方格"
                     ],
-                    "answer": "关键数：17 和 8",
-                    "explain": "从题目中找到的关键数是：17、8、2"
+                    "answer": "整格17个，半格8个",
+                    "explain": "数方格：满格17个，半格8个"
                 },
                 {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
+                        "整格+半格÷2：17+8÷2=21",
+                        "17+8=25",
+                        "17-8=9",
+                        "17÷2=8"
                     ],
-                    "answer": "除法",
-                    "explain": "除法：17 + 8÷2 = ? (格)=16"
+                    "answer": "整格+半格÷2：17+8÷2=21",
+                    "explain": "不满一格按半格算：17+8÷2=17+4=21格"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中的几何图形展示了题目的空间关系和属性",
+                    "text": "方格图：整格17个（满格），半格8个（不满格），半格按0.5格算",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "17 + 8÷2 = ? (格)=16",
+                    "text": "估算面积=整格数+半格数÷2=17+4=21格",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
-                    "text": "求每份是多少或求有几份，用除法。总数÷每份数=份数",
+                    "text": "不规则图形面积估算：数整格，半格折半，两者相加得到约数",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }

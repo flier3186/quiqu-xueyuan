@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260910g';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260917c';
 const ASSETS = [
   '/',
   '/index.html',
@@ -57,6 +57,7 @@ const ASSETS = [
   'engine/progress-tracker-v5.js',
   'engine/russian-questioning.js',
   'engine/scene-manager.js',
+  'lib/ts-fsrs.mjs?v=20260916a',
   'engine/spaced-review-v5.js',
   'engine/spaced-review.js',
   'engine/speak-engine-v5.js',

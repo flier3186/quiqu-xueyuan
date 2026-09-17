@@ -25,7 +25,7 @@ window.SpeakEngineV5 = {
     },
     aria: {
       name: 'Aria',
-      avatar: '👩‍💼',
+      avatar: '👩‍🔬',
       avatarImg: 'assets/teacher-aria.jpg',
       personality: '温柔耐心，说话慢，擅长纠音鼓励',
       voice: { rate: 0.85, pitch: 1.1, preferGender: 'female' },
@@ -34,7 +34,7 @@ window.SpeakEngineV5 = {
     }
   },
 
-  // ===== 状态初始化（运行时新增字段，不破坏 defaultState） =====
+  // ===== 状态初始化（运行时新增字段，不破坏 defaultState）=====
   _bestVoice: null,
   _voiceCache: { female: null, male: null },
   recognition: null,
@@ -93,7 +93,7 @@ window.SpeakEngineV5 = {
     return v || null;
   },
 
-  // ===== TTS 朗读：云端情感语音(CosyVoice2) → VoiceCore(神经音) → 浏览器内置 =====
+  // ===== TTS 朗读：云端情感语音（CosyVoice2) → VoiceCore(神经音) → 浏览器内置）=====
   speak(text, teacherId){
     text = (window.NeuralTTS && window.NeuralTTS._normalizeNumbers) ? window.NeuralTTS._normalizeNumbers(text) : text;
     if(!text) return;
@@ -191,12 +191,12 @@ window.SpeakEngineV5 = {
     }
   },
 
-  // ===== 调用 DeepSeek AI API（OpenAI 兼容格式，带重试+超时） =====
+  // ===== 调用 DeepSeek AI API（OpenAI 兼容格式，带重试+超时）=====
   async _callAI(teacherId, userText, dialogHistory){
     const key = (S.apiConfig && S.apiConfig.deepseekKey) || '';
     if(!key) return null; // 触发降级
     const teacher = this.getTeacher(teacherId);
-    // 对话历史只保留最近10轮
+    // 对话历史只保留最近 10 条
     const recent = (dialogHistory || []).slice(-10).map(h => ({
       role: h.role === 'teacher' ? 'assistant' : 'user',
       content: h.text
@@ -252,7 +252,7 @@ window.SpeakEngineV5 = {
     return null;
   },
 
-  // ===== 降级模式：分支对话树（带教师人设差异化 + 上下文感知） =====
+  // ===== 降级模式：分支对话树（带教师人设差异 + 上下文感知） =====
   _fallback(scenarioId, userText, teacherId){
     const scenarios = (typeof SPEAK_SCENARIOS !== 'undefined') ? SPEAK_SCENARIOS : [];
     const sc = scenarios.find(s => s.id === scenarioId);
@@ -396,7 +396,7 @@ window.SpeakEngineV5 = {
     // 无场景时使用上下文感知的追问
     if(!sc){
       const followups = teacherFollowups[tId] || teacherFollowups.emma;
-      // 根据对话长度选择不同的回应，避免重复感
+      // 根据对话长度选择不同的回应，避免重复
       const variant = studentTurns % followups.length;
       // 根据输入长度选择策略：短输入给鼓励，长输入给追问
       if(inputStrategy === 'short'){
@@ -417,8 +417,8 @@ window.SpeakEngineV5 = {
     const badList = teacherBad[tId] || teacherBad.emma;
 
     // ===== 修复"答非所问"：没听懂就承认没听懂，绝不硬着头皮换话题 =====
-    // 孩子的回答没命中关键词时：停在当前这句话，给一个示范句让他再试；
-    // 连续 2 次都没命中才温和放行（不把孩子卡死在一句话上）。
+    // 孩子的回答没命中关键词时：停在当前这句话，给一个示范句让他再试一次
+    // 连续 2 次都没命中才温和放行（不把孩子卡死在一句话上）
     if(!matched){
       S.speakV5.fallbackMisses = (S.speakV5.fallbackMisses || 0) + 1;
       if(S.speakV5.fallbackMisses < 2){
@@ -427,11 +427,11 @@ window.SpeakEngineV5 = {
           ? 'Hmm, I didn\'t quite get that. You can say: "' + sugg + '".'
           : 'Sorry, I don\'t understand. Can you say it again?';
         const retryCn = sugg
-          ? '我没太听清。你可以这样说：「' + sugg + '」'
+          ? '我没太听清。你可以这样说："' + sugg + '"。'
           : '我没听懂，可以再说一遍吗？';
         return { text: retryText, cn: retryCn, line: lineIdx };
       }
-      // 第二次仍未命中：放行到下一句，但诚实地说"没关系"，不假装听懂了
+      // 第二次仍未命中：放行到下一句，但诚实地说"没关系"，不假装听懂
       S.speakV5.fallbackMisses = 0;
       const nextIdxGrace = lineIdx + 1;
       if(sc.teacherLines && sc.teacherLines[nextIdxGrace]){
@@ -523,7 +523,7 @@ window.SpeakEngineV5 = {
     this.init();
     if(!userText) return '';
     if(S.speakV5.completed){
-      if(typeof toast === 'function') toast('对话已结束，可换一个场景继续哦 ✨');
+      if(typeof toast === 'function') toast('对话已结束，可换一个场景继续哦 🎉');
       return '';
     }
     S.speakV5.history.push({ role: 'student', text: userText, ts: Date.now() });
@@ -581,17 +581,17 @@ window.SpeakEngineV5 = {
     this.recognition.maxAlternatives = 1;
     this.recognition.onresult = function(ev){
       const tr = ev.results[0][0].transcript;
-      if(typeof toast === 'function') toast('🎤 识别：' + tr);
+      if(typeof toast === 'function') toast('🎤 识别到：' + tr);
       if(onResult) onResult(tr);
     };
     this.recognition.onerror = function(ev){
       self.isListening = false;
       const err = ev.error || '';
       if(typeof toast === 'function'){
-        if(err === 'not-allowed') toast('🔇 麦克风权限被拒绝，可以用打字继续哦 ✍️');
+        if(err === 'not-allowed') toast('🔇 麦克风权限被拒绝，可以用打字继续 ✍️');
         else if(err === 'no-speech') toast('🤫 没有检测到语音，请再试一次');
-        else if(err === 'network') toast('🌐 网络不通，语音用不了 —— 用打字继续也可以哦 ✍️');
-        else toast('识别出错：' + err + ' —— 可以用打字继续 ✍️');
+        else if(err === 'network') toast('🌐 网络不通，语音用不了 — 用打字继续也可以 ✍️');
+        else toast('识别出错了：' + err + ' — 可以用打字继续 ✍️');
       }
       // 识别失败后把光标放回输入框，给孩子一个明确的"下一步"
       try{ const inp = document.getElementById('seV5Input'); if(inp) inp.focus(); }catch(e2){}
@@ -608,6 +608,18 @@ window.SpeakEngineV5 = {
       try{ this.recognition.stop(); }catch(e){}
     }
     this.isListening = false;
+  },
+
+  _recordAndTranscribe(onResult){
+    if(typeof Asr === "undefined"){ if(typeof toast === "function") toast("请先在家长设置配置付费语音识别 Key"); return; }
+    if(Asr.active() !== "paid"){ if(typeof toast === "function") toast("当前浏览器不支持语音识别，请用文字输入"); return; }
+    if(typeof toast === "function") toast("正在录音，请说完后稍等...");
+    let chunks=[]; let mr=null; let stream=null; let timer=null;
+    const finish=function(){ if(timer) clearTimeout(timer); if(mr && mr.state !== "inactive"){ mr.onstop=function(){ const blob=new Blob(chunks,{type: mr.mimeType||"audio/webm"}); Asr.transcribe({blob:blob}).then(function(t){ if(typeof onResult==="function") onResult(t); }); }; try{ mr.stop(); }catch(e){} } };
+    const stop=function(){ if(timer){ clearTimeout(timer); timer=null; } if(mr && mr.state !== "inactive"){ try{ mr.stop(); }catch(e){} } if(stream){ try{ stream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){} } };
+    const g=window;
+    if(!g.navigator || !g.navigator.mediaDevices || !g.MediaRecorder){ if(typeof toast === "function") toast("浏览器不支持录音，请用文字输入"); return; }
+    g.navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){ stream=s; mr=new g.MediaRecorder(stream); mr.ondataavailable=function(e){ if(e.data && e.data.size) chunks.push(e.data); }; mr.start(); timer=setTimeout(function(){ stop(); },30000); setTimeout(function(){ if(timer && mr && mr.state==="recording"){ finish(); } },8000); }).catch(function(){ if(typeof toast === "function") toast("麦克风权限被拒绝，请用文字输入"); });
   },
 
   // ===== 录音判音（Levenshtein 距离 + 三阶段） =====
@@ -628,8 +640,8 @@ window.SpeakEngineV5 = {
   },
 
   // ===== 儿童补偿曲线 =====
-  // Web Speech API 的声学模型主要以成人语音训练，儿童音调更高、发音更不稳，
-  // 识别文本与目标的编辑距离系统性偏大 —— 也就是说原始分对孩子天然偏低。
+  // Web Speech API 的声学模型主要以成人语音训练，儿童音调更高、发音更不稳定；
+  // 识别文本与目标的编辑距离系统性偏高——也就是说原始分对孩子天然偏低。
   // 这里用一条凹曲线做补偿：低分抬得多、高分抬得少、保持排序、不封顶。
   // 目的是修正已知的测量偏差，不是无差别送分。
   _childCurve(raw){
@@ -652,21 +664,20 @@ window.SpeakEngineV5 = {
     const e = (target || '').toLowerCase().replace(/[^a-z\s]/g, '').trim();
     const r = (spoken || '').toLowerCase().replace(/[^a-z\s]/g, '').trim();
 
-    // 识别失败：孩子说了，但引擎没返回文本。这不是"说错了"，不打分、不记 0 分。
+    // 识别失败：孩子说了，但引擎没返回文本。这不是"说错了"，不打分、不记 0 分
     if(!r){
       const streak = this._noInputStreak();
       // 连续 3 次识别不到就放孩子过去，不再要求重试
       if(streak >= 3){
         this._noInputStreak('reset');
-        return { passed: true, score: null, noInput: true, feedback: '这次先过，我们下次再来 🌱' };
+        return { passed: true, score: null, noInput: true, feedback: '这次先过，我们下次再试试 🌱' };
       }
       const why = streak >= 2
-        ? '还是没听清。可能是周围有点吵，或者离麦克风远了一点点 —— 换个安静的地方再试试？'
-        : '没听清呢～ 可能是环境有点吵，或者说话时离麦克风远了一点点。再试一次？';
+        ? '还是没听清。可能是周围有点吵，或者离麦克风远了一点点 — 换个安静的地方再试试。'
+        : '没听清呢。可能是环境有点吵，或者说话时离麦克风远了一点点。再试一次？';
       return { passed: false, score: null, noInput: true, feedback: why };
     }
-    this._noInputStreak('reset'); // 成功识别，清零
-
+    this._noInputStreak('reset'); // 成功识别，清空
     // 阶段1：不评分，只检测有没有说话（有声音即通过）
     if(st === 1){
       return { passed: true, score: 100, feedback: '真棒，你开口说啦！🌟' };
@@ -683,10 +694,10 @@ window.SpeakEngineV5 = {
     S.speakV5 = S.speakV5 || {};
     S.speakV5.lastScore = score;
     this._save();
-    // 阶段2：评分但不显示绝对分，显示"比上次好多了！"
+    // 阶段2：评分但不显示绝对分，显示"比上次好多了"
     if(st === 2){
       const better = score >= prev;
-      return { passed: true, score: score, feedback: better ? '比上次好多了！继续加油！🎉' : '不错哦，再多练几次会更棒！💪' };
+      return { passed: true, score: score, feedback: better ? '比上次好多了！继续加油！🎉' : '不错哦，再多练几次会更棒！✨' };
     }
     // 阶段3：正式评分，及格线 40%（已过儿童补偿曲线）
     const passed = score >= 40;
@@ -698,7 +709,7 @@ window.SpeakEngineV5 = {
     return { passed: passed, score: score, feedback: feedback };
   },
 
-  // ===== 渲染对话区 HTML =====
+  // ===== 渲染对话视图 HTML =====
   renderDialog(){
     this.init();
     const teacher = this.getTeacher(S.speakV5.teacher);
@@ -726,7 +737,7 @@ window.SpeakEngineV5 = {
       }
     }).join('');
     const done = S.speakV5.completed
-      ? '<div style="margin-top:10px;padding:14px;text-align:center;background:linear-gradient(135deg,var(--teal-soft),rgba(245,184,0,.08));border-radius:14px;font-size:13px;color:var(--navy)">🎉 对话完成！获得 <strong>+5 ⭐</strong></div>'
+      ? '<div style="margin-top:10px;padding:14px;text-align:center;background:linear-gradient(135deg,var(--teal-soft),rgba(245,184,0,.08));border-radius:14px;font-size:13px;color:var(--navy)">🎉 对话完成！获得 <strong>+5 分</strong></div>'
       : '';
     const inputBar = S.speakV5.completed ? '' :
       '<div style="display:flex;gap:8px;padding:12px;background:white;border-radius:12px;box-shadow:var(--shadow-sm);margin-top:12px">' +
@@ -738,7 +749,7 @@ window.SpeakEngineV5 = {
     return '<div>' + msgs + done + inputBar + '</div>';
   },
 
-  // 输入框发送（供 onclick 调用）
+  // 输入框发送（回车/onclick 调用）
   async _onSend(){
     const inp = document.getElementById('seV5Input');
     if(!inp) return;
@@ -753,7 +764,20 @@ window.SpeakEngineV5 = {
   // 麦克风按钮
   _onMic(){
     const self = this;
-    if(!this.SR){ if(typeof toast === 'function') toast('当前浏览器不支持语音识别，请用文本输入 ✍️'); return; }
+    if(!this.SR){
+      if((typeof Asr !== 'undefined') && (Asr.active() === 'paid')){
+        this._recordAndTranscribe(function(tr){
+          if(!tr) return;
+          self.handleInput(S.speakV5.teacher, tr).then(function(){
+            const box=document.getElementById('seV5Dialog');
+            if(box) box.innerHTML=self.renderDialog();
+          });
+        });
+        return;
+      }
+      if(typeof toast === 'function') toast('当前浏览器不支持语音识别，请用文本输入 ✍️');
+      return;
+    }
     if(this.isListening){ this.stopListening(); return; }
     this.startListening(async function(tr){
       await self.handleInput(S.speakV5.teacher, tr);
@@ -784,5 +808,117 @@ window.SpeakEngineV5 = {
       return true;
     }
     return false;
-  }
-};
+  },
+
+  // ===== Rubric grading (Route A: data-driven 3-dimension scoring) =====
+  speakRubricGrade(targetText, transcript, opts){
+    const rubric = (typeof EnglishRubric !== 'undefined') ? EnglishRubric : null;
+    const weights = (rubric && rubric.weights) ? rubric.weights : { accuracy: 0.45, completeness: 0.35, fluency: 0.20 };
+    const t = String(targetText || '').trim().toLowerCase();
+    const tr = String(transcript || '').trim().toLowerCase();
+    let accuracy = 0;
+    if(t && tr){
+      const kw = t.split(/\s+/).filter(w => w.length > 1);
+      let hits = 0;
+      kw.forEach(word => {
+        const cleanW = word.replace(/[^a-z]/g, '');
+        if(!cleanW) { hits++; return; }
+        let best = 0;
+        tr.split(/\s+/).forEach(tk => {
+          const cleanT = tk.replace(/[^a-z]/g, '');
+          if(!cleanT) return;
+          const d = this._levenshtein(cleanW, cleanT);
+          const maxL = Math.max(cleanW.length, cleanT.length);
+          const sim = maxL > 0 ? (1 - d / maxL) : 0;
+          if(sim > best) best = sim;
+        });
+        if(best >= 0.6) hits++;
+      });
+      accuracy = kw.length ? Math.round((hits / kw.length) * 100) : 0;
+    }
+    let completeness = 0;
+    if(t && tr){
+      const tLen = t.length;
+      const trLen = tr.length;
+      completeness = tLen > 0 ? Math.round(Math.min(trLen / tLen, 1) * 100) : 0;
+    }
+    let fluency = 0;
+    let fluencySource = 'fallback';
+    if(tr){
+      const rawPauses = (opts && typeof opts.pauseDurations !== 'undefined' && Array.isArray(opts.pauseDurations)) ? opts.pauseDurations : null;
+      if(rawPauses && rawPauses.length > 0){
+        const slow = rawPauses.filter(p => p > 2).length;
+        fluency = Math.round(100 * Math.max(0, 1 - slow / Math.max(rawPauses.length, 1)));
+        fluencySource = 'pause';
+      } else if(rubric && rubric.degradeFluencyWhenNoTimestamp !== false){
+        fluency = completeness;
+      } else {
+        fluency = 50;
+      }
+    } else {
+      fluency = 0;
+    }
+    const accScore = this._childCurve(accuracy);
+    const compScore = this._childCurve(completeness);
+    const fluScore = this._childCurve(fluency);
+    const total = Math.round(accScore * weights.accuracy + compScore * weights.completeness + fluScore * weights.fluency);
+    const grade = this._rubricGrade(total, rubric);
+    const detail = {
+      accuracy: { raw: accuracy, score: accScore, label: this._dimLabel(accuracy, 'accuracy', rubric) },
+      completeness: { raw: completeness, score: compScore, label: this._dimLabel(completeness, 'completeness', rubric) },
+      fluency: { raw: fluency, score: fluScore, label: this._dimLabel(fluency, 'fluency', rubric), source: fluencySource }
+    };
+    return { total, grade, detail, weights, targetText: t, transcript: tr, ts: Date.now() };
+  },
+
+  _rubricGrade(total, rubric){
+    if(rubric && rubric.gradeLabels){
+      const keys = ['A','B','C','D','F'];
+      for(const k of keys){
+        if(total >= rubric.gradeLabels[k].min) return { key: k, label: rubric.gradeLabels[k].label };
+      }
+    }
+    if(total >= 85) return { key: 'A', label: '优秀！发音清晰，表达完整 🌟' };
+    if(total >= 70) return { key: 'B', label: '很好！继续加油 🎉' };
+    if(total >= 55) return { key: 'C', label: '不错，再多练几次 👍' };
+    if(total >= 40) return { key: 'D', label: '在进步，别灰心 💪' };
+    return { key: 'F', label: '没关系，慢慢来 🌱' };
+  },
+
+  _dimLabel(raw, dim, rubric){
+    if(rubric && rubric.thresholds && rubric.thresholds[dim]){
+      const th = rubric.thresholds[dim];
+      if(raw >= th.excellent) return '优秀';
+      if(raw >= th.good) return '良好';
+      if(raw >= th.fair) return '一般';
+      if(raw >= th.weak) return '需加强';
+      return '需练习';
+    }
+    if(raw >= 85) return '优秀';
+    if(raw >= 70) return '良好';
+    if(raw >= 55) return '一般';
+    if(raw >= 40) return '需加强';
+    return '需练习';
+  },
+
+  renderRubricResult(result){
+    if(!result) return '';
+    const p = (v) => Math.round(v) + '';
+    const dimRow = (d, name) => {
+      return '<div style="display:flex;justify-content:space-between;padding:6px 10px;border-bottom:1px solid #eee;font-size:14px">'
+        + '<span>'+ name +'</span>'
+        + '<span><b style="color:#2e7d32">'+ p(d.score) +'</b> <small style="color:#999">('+ d.label + (d.source ? ' · '+d.source : '') +')</small></span>'
+        + '</div>';
+    };
+    const barColor = (v) => v >= 85 ? '#4caf50' : v >= 70 ? '#ff9800' : v >= 55 ? '#ffc107' : '#f44336';
+    return '<div style="background:#fff8e1;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 2px 8px rgba(0,0,0,0.08)" class="seV5RubricBox">'
+      + '<div style="text-align:center;font-size:20px;font-weight:700;color:' + barColor(result.total) + ';margin-bottom:6px">' + result.total + ' 分</div>'
+      + '<div style="text-align:center;color:#666;margin-bottom:10px;font-size:14px">' + result.grade.label + '</div>'
+      + '<div style="height:10px;background:#eee;border-radius:5px;overflow:hidden;margin-bottom:10px"><div style="height:100%;width:'+result.total+'%;background:' + barColor(result.total) + ';border-radius:5px"></div></div>'
+      + dimRow(result.detail.accuracy, '发音准确度')
+      + dimRow(result.detail.completeness, '内容完整度')
+      + dimRow(result.detail.fluency, '流畅度')
+      + '</div>';
+  },
+
+}

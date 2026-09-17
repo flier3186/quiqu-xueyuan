@@ -170,7 +170,7 @@
 - ❌ 不修改 defaultState 的现有字段（只能新增）
 - ❌ 不删除已部署的引擎对象（MathVisual / LearningPath / WeaknessDetector / ProgressTracker / TimeController / SpeakEngine）
 - ❌ 不引入后端依赖（保持纯前端可静态部署）
-- ❌ 不使用需要 API Key 的付费服务（用户未配置）
+- ❌ 未配置 key 时自动降级到内置/关键词匹配；家长知情后可选配付费 key
 - ❌ 不创建 README / 文档文件（除非用户明确要求）
 - ✅ 允许创建 `state.json` 和 `DECISIONS.md`（项目协作状态文件，非文档）
 
@@ -411,7 +411,7 @@ prototype/v4/
 
 ## 7. 待办与已知限制
 
-- [ ] 口语 AI 基于场景库关键词匹配，非真 LLM（静态站点限制）
+- [ ] 口语 AI 未配置 key 时自动降级到场景库关键词匹配；家长知情后可配付费 key 启用 LLM
 - [ ] 数学题库约856道（含变体近2000题），基本覆盖3-6年级核心知识点
 - [ ] 周报数据需学习几天后才有意义
 - [ ] （在此追加你的待办）

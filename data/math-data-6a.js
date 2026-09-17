@@ -1682,7 +1682,7 @@ window.MATH_BY_GRADE["6a"] = {
                     }
                 ]
             },
-            "knowledge": "比的意义",
+            "knowledge": "比的意义（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "两个数相除又叫比",
             "variants": [
@@ -1759,222 +1759,6 @@ window.MATH_BY_GRADE["6a"] = {
             ]
         },
         {
-            "scene": "老师告诉小红比的前项后项同时乘一个数比值不变。1:2=2:?",
-            "question": "1:2 = 2: ?，问号是几？",
-            "formula": "1:2 = 2:?",
-            "answer": 4,
-            "choices": [
-                4,
-                2,
-                1,
-                3
-            ],
-            "visualType": "numberLine",
-            "visualData": {
-                "start": 0,
-                "end": 4,
-                "points": [
-                    {
-                        "pos": 1,
-                        "label": "1",
-                        "color": "#00A896"
-                    },
-                    {
-                        "pos": 2,
-                        "label": "2",
-                        "color": "#F5B800"
-                    },
-                    {
-                        "pos": 4,
-                        "label": "4",
-                        "color": "#FB923C"
-                    }
-                ],
-                "highlight": [
-                    0,
-                    4
-                ]
-            },
-            "knowledge": "比的基本性质",
-            "difficulty": 2,
-            "hint": "前项后项同乘相同数",
-            "variants": [
-                {
-                    "question": "3:4=6:?",
-                    "formula": "3:4=6:?",
-                    "answer": 8,
-                    "hint": "同乘2"
-                },
-                {
-                    "question": "2:5=?:15",
-                    "formula": "2:5=?:15",
-                    "answer": 6,
-                    "hint": "同乘3"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "1:2=2:?，问号是几",
-                        "1:2的比值",
-                        "1:2化简",
-                        "2:4化简"
-                    ],
-                    "answer": "1:2=2:?，问号是几",
-                    "explain": "题目问「1:2=2:?，问号是几？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "比的基本性质：前后项同乘相同数比值不变",
-                        "1:2的比值是0.5",
-                        "1+2=3",
-                        "2-1=1"
-                    ],
-                    "answer": "比的基本性质：前后项同乘相同数比值不变",
-                    "explain": "前项1→2乘2，后项也要乘2"
-                },
-                {
-                    "q": "🧩 问号是几？",
-                    "choices": [
-                        "前项乘2，后项也乘2，2×2=4",
-                        "前项加1，后项也加1，2+1=3",
-                        "后项不变是2",
-                        "后项乘1是2"
-                    ],
-                    "answer": "前项乘2，后项也乘2，2×2=4",
-                    "explain": "1:2=(1×2):(2×2)=2:4，问号是4"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "数轴上1:2=2:4，前项后项同乘2",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "比的基本性质：前项后项同时乘相同的数(0除外)，比值不变。1:2=(1×2):(2×2)=2:4",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "比的基本性质：前项后项同乘或同除以相同的数(0除外)，比值不变（类似分数基本性质）",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "scene": "小红要把比12:8化简。她同时除以4。",
-            "question": "12:8化简后后项是？",
-            "formula": "12:8 = 3:?",
-            "answer": 2,
-            "choices": [
-                2,
-                8,
-                4,
-                3
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 20,
-                "parts": [
-                    {
-                        "label": "12",
-                        "val": 12,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "8",
-                        "val": 8,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "化简比",
-            "difficulty": 2,
-            "hint": "同除以最大公因数",
-            "variants": [
-                {
-                    "question": "15:10化简后后项？",
-                    "formula": "15:10=3:?",
-                    "answer": 2,
-                    "hint": "同除以5"
-                },
-                {
-                    "question": "18:12化简后后项？",
-                    "formula": "18:12=3:?",
-                    "answer": 2,
-                    "hint": "同除以6"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "12:8化简后后项是几",
-                        "12:8化简后前项是几",
-                        "12和8的比值",
-                        "12和8的最大公因数"
-                    ],
-                    "answer": "12:8化简后后项是几",
-                    "explain": "题目问「12:8化简后后项是几？」，化简后前项是3"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "12和8的最大公因数是4",
-                        "12÷8=1.5",
-                        "12+8=20",
-                        "12-8=4"
-                    ],
-                    "answer": "12和8的最大公因数是4",
-                    "explain": "化简比：前后项同除以最大公因数"
-                },
-                {
-                    "q": "🧩 化简后后项是几？",
-                    "choices": [
-                        "8÷4=2，后项是2",
-                        "12÷4=3，前项是3",
-                        "8÷2=4，后项是4",
-                        "8不变，后项是8"
-                    ],
-                    "answer": "8÷4=2，后项是2",
-                    "explain": "12:8=(12÷4):(8÷4)=3:2，后项是2"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中12:8化简成3:2（同除以4）",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "化简比：前后项同除以最大公因数。12和8的最大公因数是4，12:8=3:2，后项是2",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "化简比：前后项同除以最大公因数，化成最简整数比。最简比前后项互质（只有公因数1）",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
             "scene": "老师把30本练习本按2:3分给甲乙两组。小红算甲组分几本。",
             "question": "30 × 2/(2+3) = ?",
             "formula": "30 × 2/5 = ?",
@@ -2001,7 +1785,7 @@ window.MATH_BY_GRADE["6a"] = {
                     }
                 ]
             },
-            "knowledge": "按比分配",
+            "knowledge": "按比分配（2024版移入六下·拓展保留）",
             "difficulty": 3,
             "hint": "总量×各自份数/总份数",
             "variants": [
@@ -3601,7 +3385,7 @@ window.MATH_BY_GRADE["6a"] = {
                     ]
                 }
             },
-            "knowledge": "扇形统计图",
+            "knowledge": "扇形统计图（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "整个圆=100%",
             "variants": [
@@ -3709,7 +3493,7 @@ window.MATH_BY_GRADE["6a"] = {
                     10
                 ]
             },
-            "knowledge": "选择合适的统计图",
+            "knowledge": "选择合适的统计图（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "折线看趋势条形比多少扇形看占比",
             "variants": [
@@ -6945,7 +6729,7 @@ window.MATH_BY_GRADE["6a"] = {
                     }
                 ]
             },
-            "knowledge": "比的意义",
+            "knowledge": "比的意义（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "两个数相除又叫比",
             "variants": [
@@ -7048,7 +6832,7 @@ window.MATH_BY_GRADE["6a"] = {
                     }
                 ]
             },
-            "knowledge": "比的意义",
+            "knowledge": "比的意义（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "两个数相除又叫比",
             "variants": [
@@ -7125,212 +6909,6 @@ window.MATH_BY_GRADE["6a"] = {
             ]
         },
         {
-            "scene": "小红要把比17:9化简。她同时除以5。",
-            "question": "17:9化简后后项是？",
-            "formula": "17:9 = 3:?",
-            "answer": 2,
-            "choices": [
-                2,
-                9,
-                5,
-                3
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 20,
-                "parts": [
-                    {
-                        "label": "12",
-                        "val": 12,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "8",
-                        "val": 8,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "化简比",
-            "difficulty": 2,
-            "hint": "同除以最大公因数",
-            "variants": [
-                {
-                    "question": "15:10化简后后项？",
-                    "formula": "15:10=3:?",
-                    "answer": 2,
-                    "hint": "同除以5"
-                },
-                {
-                    "question": "19:17化简后后项？",
-                    "formula": "19:17=3:?",
-                    "answer": 2,
-                    "hint": "同除以6"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小红要把比17:9化简。她同时除以5。」，问的是「17:9化简后后项是？」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：17 和 9",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：17 和 9",
-                    "explain": "从题目中找到的关键数是：17、9、3"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "除法",
-                    "explain": "计算：17:9 = 3:?=2"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表12，合起来就是20",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "17:9 = 3:?=2",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "scene": "小红要把比10:10化简。她同时除以5。",
-            "question": "10:10化简后后项是？",
-            "formula": "10:10 = 4:?",
-            "answer": 2,
-            "choices": [
-                2,
-                10,
-                5,
-                4
-            ],
-            "visualType": "barModel",
-            "visualData": {
-                "total": 20,
-                "parts": [
-                    {
-                        "label": "12",
-                        "val": 12,
-                        "color": "#00A896"
-                    },
-                    {
-                        "label": "8",
-                        "val": 8,
-                        "color": "#F5B800"
-                    }
-                ]
-            },
-            "knowledge": "化简比",
-            "difficulty": 2,
-            "hint": "同除以最大公因数",
-            "variants": [
-                {
-                    "question": "15:10化简后后项？",
-                    "formula": "15:10=4:?",
-                    "answer": 2,
-                    "hint": "同除以5"
-                },
-                {
-                    "question": "110:10化简后后项？",
-                    "formula": "110:10=4:?",
-                    "answer": 2,
-                    "hint": "同除以6"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "计算结果",
-                        "每份是多少",
-                        "总数",
-                        "差是多少"
-                    ],
-                    "answer": "计算结果",
-                    "explain": "题目说「小红要把比10:10化简。她同时除以5。」，问的是「10:10化简后后项是？」，这是求计算结果"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "关键数：10 和 10",
-                        "只有总数",
-                        "只有每份数",
-                        "没有关键数"
-                    ],
-                    "answer": "关键数：10 和 10",
-                    "explain": "从题目中找到的关键数是：10、10、4"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "乘法",
-                        "加法",
-                        "减法",
-                        "除法"
-                    ],
-                    "answer": "除法",
-                    "explain": "计算：10:10 = 4:?=2"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表12，合起来就是20",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "10:10 = 4:?=2",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "根据题目条件，直接计算结果",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
             "scene": "老师把40本练习本按2:4分给甲乙两组。小红算甲组分几本。",
             "question": "40 × 2/(2+4) = ?",
             "formula": "40 × 2/6 = ?",
@@ -7357,7 +6935,7 @@ window.MATH_BY_GRADE["6a"] = {
                     }
                 ]
             },
-            "knowledge": "按比分配",
+            "knowledge": "按比分配（2024版移入六下·拓展保留）",
             "difficulty": 3,
             "hint": "总量×各自份数/总份数",
             "variants": [
@@ -7460,7 +7038,7 @@ window.MATH_BY_GRADE["6a"] = {
                     }
                 ]
             },
-            "knowledge": "按比分配",
+            "knowledge": "按比分配（2024版移入六下·拓展保留）",
             "difficulty": 3,
             "hint": "总量×各自份数/总份数",
             "variants": [
@@ -10159,7 +9737,7 @@ window.MATH_BY_GRADE["6a"] = {
                     ]
                 }
             },
-            "knowledge": "扇形统计图",
+            "knowledge": "扇形统计图（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "整个圆=80%",
             "variants": [
@@ -10264,7 +9842,7 @@ window.MATH_BY_GRADE["6a"] = {
                     ]
                 }
             },
-            "knowledge": "扇形统计图",
+            "knowledge": "扇形统计图（2024版移入六下·拓展保留）",
             "difficulty": 2,
             "hint": "整个圆=128%",
             "variants": [

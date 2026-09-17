@@ -1,0 +1,211 @@
+{
+  "status": "node-verified-20260917",
+  "meta": {
+    "ts": "2026-09-16T19:57:04.157Z",
+    "fsrsVersion": "fsrs5-quicku-lite-v1",
+    "paramsCount": 17,
+    "days": 21
+  },
+  "formulaChecks": [
+    {
+      "name": "S0(Good)=2.611",
+      "ok": true,
+      "got": 2.611
+    },
+    {
+      "name": "S0(Easy)=18.856",
+      "ok": true,
+      "got": 18.856
+    },
+    {
+      "name": "D0(Good)∈[1,5]",
+      "ok": true,
+      "got": 1
+    },
+    {
+      "name": "R(1,S=2.611,D=1)∈(0.5,1)",
+      "ok": true,
+      "got": 0.9175672802842628
+    }
+  ],
+  "sm2": {
+    "timeline": [
+      {
+        "day": 1,
+        "correct": true,
+        "nextDue": 5
+      },
+      {
+        "day": 5,
+        "correct": true,
+        "nextDue": 13
+      },
+      {
+        "day": 13,
+        "correct": true,
+        "nextDue": 28
+      }
+    ],
+    "mastered": false,
+    "intervalIndex": 3
+  },
+  "fsrs": {
+    "timeline": [
+      {
+        "day": 0,
+        "rating": 3,
+        "dueInDays": 3,
+        "S": 2.611,
+        "D": 1
+      },
+      {
+        "day": 1,
+        "rating": 3,
+        "dueInDays": 6,
+        "S": 5.506,
+        "D": 1
+      },
+      {
+        "day": 2,
+        "rating": 3,
+        "dueInDays": 11,
+        "S": 11.261,
+        "D": 1
+      },
+      {
+        "day": 3,
+        "rating": 3,
+        "dueInDays": 22,
+        "S": 21.807,
+        "D": 1
+      },
+      {
+        "day": 4,
+        "rating": 3,
+        "dueInDays": 43,
+        "S": 42.611,
+        "D": 1
+      },
+      {
+        "day": 5,
+        "rating": 3,
+        "dueInDays": 83,
+        "S": 82.839,
+        "D": 1
+      },
+      {
+        "day": 6,
+        "rating": 3,
+        "dueInDays": 160,
+        "S": 159.72,
+        "D": 1
+      },
+      {
+        "day": 7,
+        "rating": 1,
+        "dueInDays": 1,
+        "S": 2.214,
+        "D": 1
+      },
+      {
+        "day": 8,
+        "rating": 3,
+        "dueInDays": 3,
+        "S": 3.251,
+        "D": 1
+      },
+      {
+        "day": 9,
+        "rating": 3,
+        "dueInDays": 6,
+        "S": 6.2,
+        "D": 1
+      },
+      {
+        "day": 10,
+        "rating": 3,
+        "dueInDays": 12,
+        "S": 12.013,
+        "D": 1
+      },
+      {
+        "day": 11,
+        "rating": 3,
+        "dueInDays": 23,
+        "S": 23.48,
+        "D": 1
+      },
+      {
+        "day": 12,
+        "rating": 3,
+        "dueInDays": 45,
+        "S": 45.266,
+        "D": 1
+      },
+      {
+        "day": 13,
+        "rating": 3,
+        "dueInDays": 87,
+        "S": 87.386,
+        "D": 1
+      },
+      {
+        "day": 14,
+        "rating": 3,
+        "dueInDays": 168,
+        "S": 167.954,
+        "D": 1
+      },
+      {
+        "day": 15,
+        "rating": 3,
+        "dueInDays": 322,
+        "S": 321.844,
+        "D": 1
+      },
+      {
+        "day": 16,
+        "rating": 3,
+        "dueInDays": 614,
+        "S": 613.741,
+        "D": 1
+      },
+      {
+        "day": 17,
+        "rating": 3,
+        "dueInDays": 1165,
+        "S": 1164.624,
+        "D": 1
+      },
+      {
+        "day": 18,
+        "rating": 3,
+        "dueInDays": 2199,
+        "S": 2199.219,
+        "D": 1
+      },
+      {
+        "day": 19,
+        "rating": 3,
+        "dueInDays": 4132,
+        "S": 4132.388,
+        "D": 1
+      },
+      {
+        "day": 20,
+        "rating": 3,
+        "dueInDays": 7728,
+        "S": 7728.406,
+        "D": 1
+      }
+    ],
+    "finalS": 7728.406,
+    "finalD": 1,
+    "finalDue": "2072-10-17T00:00:00.000Z"
+  },
+  "diff": {
+    "note": "FSRS 基于稳定度 S 动态调度；SM-2 为固定阶梯 [1,3,7,14,30]",
+    "sm2FinalDueDay": 28,
+    "fsrsFinalDueInDays": 7728
+  }
+}

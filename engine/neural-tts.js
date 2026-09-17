@@ -316,7 +316,7 @@
     _gen++;
     if (_currentAudio) { try { _currentAudio.pause(); } catch (e) {} _currentAudio = null; }
   }
-  function isDisabled() { return _wsDisabled || _disabled; }
+  function isDisabled() { return _disabled; }
   function reset() { _disabled = false; _consecFails = 0; _lastError = null; _lastPath = ''; }
   function status() {
     return {

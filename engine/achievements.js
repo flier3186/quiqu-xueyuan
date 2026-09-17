@@ -14,6 +14,90 @@ window.Achievements = (function(){
     }
   }
 
+  // ===== Streak 模块: daily-10 / consecutive-days / speak-daily =====
+  const Streak = (function(){
+    const DAILY10_KEY = 'quicku_daily_10';
+    const STREAK_KEY = 'quicku_streak_days';
+    const SPEAK_KEY = 'quicku_speak_daily';
+    const TOTAL_KEY = 'quicku_speak_total';
+    const PET_CELEBRATED = 'quicku_pet_celebrated';
+    function _todayStr(){ return new Date().toISOString().slice(0,10); }
+    function _yesterdayStr(){ const d=new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); }
+    function _load(key, fallback){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):fallback; }catch(e){ return fallback; } }
+    function _st(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+    function _todaySpeak(){
+      const d = _load(SPEAK_KEY, {date:_todayStr(), count:0});
+      return d.date === _todayStr() ? d.count : 0;
+    }
+
+    function recordAnswer(){
+      const d = _load(DAILY10_KEY, {date:_todayStr(), count:0});
+      if(d.date !== _todayStr()){ d.date=_todayStr(); d.count=0; }
+      d.count++;
+      _st(DAILY10_KEY, d);
+      const streak = _load(STREAK_KEY, {days:0, lastDate:null, maxStreak:0});
+      const today = _todayStr();
+      if(streak.lastDate !== today){
+        if(streak.lastDate === _yesterdayStr()){ streak.days++; }
+        else { streak.days = 1; }
+        streak.lastDate = today;
+        streak.maxStreak = Math.max(streak.maxStreak, streak.days);
+        _st(STREAK_KEY, streak);
+        if(streak.days % 7 === 0){
+          try{ if(typeof PetCompanion !== 'undefined' && typeof PetCompanion.setMood === 'function') PetCompanion.setMood('celebrate'); }catch(e){}
+        }
+      }
+      return streak.days;
+    }
+
+    function recordSpeak(){
+      const d = _load(SPEAK_KEY, {date:_todayStr(), count:0});
+      if(d.date !== _todayStr()){ d.date=_todayStr(); d.count=0; }
+      d.count++;
+      _st(SPEAK_KEY, d);
+      const total = _load(TOTAL_KEY, 0) + 1;
+      _st(TOTAL_KEY, total);
+      return total;
+    }
+
+    function getStreakDays(){
+      const s = _load(STREAK_KEY, {days:0, lastDate:null, maxStreak:0});
+      if(s.lastDate === _todayStr()) return s.days;
+      if(s.lastDate === _yesterdayStr()) return s.days;
+      return 0;
+    }
+
+    function getTodayCount(){
+      const d = _load(DAILY10_KEY, {date:_todayStr(), count:0});
+      return d.date === _todayStr() ? d.count : 0;
+    }
+
+    function getTotalSpeak(){
+      return _load(TOTAL_KEY, 0);
+    }
+
+    function getTodaySpeak(){
+      return _todaySpeak();
+    }
+
+    function maybeCelebrate(){
+      const days = getStreakDays();
+      if(days > 0 && days % 7 === 0){
+        const lastCelebrated = _load(PET_CELEBRATED, 0);
+        if(days > lastCelebrated){
+          _st(PET_CELEBRATED, days);
+          try{ if(typeof PetCompanion !== 'undefined' && typeof PetCompanion.setMood === 'function') PetCompanion.setMood('celebrate'); }catch(e){}
+          if(typeof toast === 'function') toast('🎉 连续'+days+'天学习，宠物为你庆祝！');
+          return true;
+        }
+      }
+      return false;
+    }
+
+    return { recordAnswer, recordSpeak, getStreakDays, getTodayCount, getTotalSpeak, getTodaySpeak, maybeCelebrate };
+  })();
+
   // 成就定义 + 条件 + 进度
   // reward 类型：mathematician(数学家卡片) / stamp(旅行印章) / petSkin(宠物皮肤) / title(称号)
   const DEFS = {
@@ -86,21 +170,59 @@ window.Achievements = (function(){
       name:'第一课', icon:'🎒', desc:'完成第一节数学课', subject:'math',
       cond:()=>Object.values(S.math.moduleProgress||{}).some(v=>v>0),
       prog:()=>{const vs=Object.values(S.math.moduleProgress||{});const done=vs.filter(v=>v>0).length;return{cur:done,tgt:vs.length||1};}
+    },
+    // 游戏化 streak 模块成就
+    'speak-daily': {
+      name:'每日开口', icon:'🎤', desc:'每天至少开口练习1次', subject:'speak',
+      cond:()=> Streak.getTodaySpeak() >= 1,
+      prog:()=>({cur:Math.min(Streak.getTodaySpeak(),1),tgt:1})
+    },
+    'streak-daily-10': {
+      name:'每日十题', icon:'📋', desc:'连续10天每日完成10道题', subject:'all',
+      reward:{type:'title', title:'坚持之星'},
+      cond:()=> Streak.getStreakDays() >= 10,
+      prog:()=>({cur:Math.min(Streak.getStreakDays(),10),tgt:10})
+    },
+    'speak-30': {
+      name:'口语30次', icon:'🌟', desc:'累计完成30次口语练习', subject:'speak',
+      reward:{type:'petSkin', skin:'彩虹款'},
+      cond:()=> Streak.getTotalSpeak() >= 30,
+      prog:()=>({cur:Math.min(Streak.getTotalSpeak(),30),tgt:30})
+    },
+    'streak-7': {
+      name:'周连胜', icon:'🔥', desc:'连续7天坚持学习', subject:'all',
+      reward:{type:'stamp', place:'巴黎', icon:'🇫🇷'},
+      cond:()=> Streak.getStreakDays() >= 7,
+      prog:()=>({cur:Math.min(Streak.getStreakDays(),7),tgt:7})
+    },
+    'streak-30': {
+      name:'月连胜', icon:'🏅', desc:'连续30天坚持学习', subject:'all',
+      reward:{type:'mathematician', card:'欧拉', story:'欧拉每天做研究，80岁失明后仍坚持心算'},
+      cond:()=> Streak.getStreakDays() >= 30,
+      prog:()=>({cur:Math.min(Streak.getStreakDays(),30),tgt:30})
     }
   };
 
   return {
     defs: DEFS,
+    streak: Streak,
 
-    // 检查所有条件，授予未获得的成就
+    recordAnswer(){ return Streak.recordAnswer(); },
+    recordSpeak(){ return Streak.recordSpeak(); },
+    getStreakDays(){ return Streak.getStreakDays(); },
+    getTodayCount(){ return Streak.getTodayCount(); },
+    getTotalSpeak(){ return Streak.getTotalSpeak(); },
+    getTodaySpeak(){ return Streak.getTodaySpeak(); },
+    maybeCelebrate(){ return Streak.maybeCelebrate(); },
+
     check(profileId){
       Object.keys(DEFS).forEach(id=>{
         if(_has(id)) return;
         try{ if(DEFS[id].cond && DEFS[id].cond()) _grant(id); }catch(e){}
       });
+      Streak.maybeCelebrate();
     },
 
-    // 获取已获得成就列表
     getList(profileId){
       return (Array.isArray(S.badges)?S.badges:[]).map(b=>{
         const d = DEFS[b.id];
@@ -109,7 +231,6 @@ window.Achievements = (function(){
       });
     },
 
-    // 获取未获得成就（展示进度）
     getProgress(profileId){
       const out = [];
       Object.keys(DEFS).forEach(id=>{

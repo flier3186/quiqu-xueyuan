@@ -975,6 +975,7 @@ window.MathFlowV5 = {
             <div style="font-size:14px;color:var(--ink-700);line-height:1.75">${l.text}</div>
           </div>`).join('')}
       </div>
+      ${this._followupBlock(problem)}
       <div style="margin-top:14px;padding:14px 18px;background:linear-gradient(135deg,var(--navy),#2a4a72);border-radius:12px;color:#fff">
         <div style="font-size:12px;opacity:.85;font-weight:600;margin-bottom:4px">🎵 小口诀</div>
         <div style="font-size:15px;font-weight:800;line-height:1.6">${this._rhyme(problem, methodName)}</div>
@@ -983,6 +984,47 @@ window.MathFlowV5 = {
         <button onclick="MathFlowV5.advance('${hasRussian ? 'russian' : 'askChild'}')" style="padding:12px 28px;background:linear-gradient(135deg,var(--pink),#F4C2D8);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,191,.4)">🙋 ${hasRussian ? '俄罗斯追问 →' : '轮到你提问了 →'}</button>
       </div>
     </div>`;
+  },
+  // ===== M3 图解追问（2026-09-17）：图解揭示后的深度追问，varsOf 派生，非自由聊天 =====
+  _followupBlock(problem){
+    try{
+      if(typeof window.DiagramFollowup==='undefined' || !problem || !problem.visualType) return '';
+      const g = window.DiagramFollowup.generate(problem);
+      if(!g || !g.followUps || !g.followUps.length) return '';
+      const cards = g.followUps.map((u,i)=>{
+        const opts = (u.threeStep && u.threeStep.choices || []).map(c=>
+          '<div style="font-size:13px;color:var(--ink-700);line-height:1.8;padding:2px 0">• ' + this._escape(c) + '</div>').join('');
+        return '<div style="padding:14px 16px;border-radius:12px;background:var(--ink-100);border-left:4px solid var(--teal);margin-bottom:10px">' +
+          '<div style="font-size:12px;font-weight:800;color:var(--teal-700);margin-bottom:6px">🧩 图解追问 ' + (i+1) + ' · ' + this._followupIcon(u.type) + '</div>' +
+          '<div style="font-size:14px;color:var(--navy);font-weight:700;line-height:1.7">' + this._escape(u.q) + '</div>' +
+          '<div style="margin-top:10px">' +
+            '<button onclick="MathFlowV5._toggleFollowup(this)" style="padding:7px 16px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(0,168,150,.3);border-radius:16px;font-size:12px;font-weight:700;cursor:pointer">🔒 先想一想</button>' +
+            '<div class="v5-fu" style="display:none;margin-top:10px;padding:12px 14px;background:#fff;border-radius:10px;border:1px dashed rgba(0,168,150,.4)">' +
+              opts +
+              '<div style="margin-top:8px;font-size:13px;font-weight:800;color:var(--teal)">✔ ' + this._escape(u.threeStep.answer) + '</div>' +
+              '<div style="margin-top:6px;font-size:12.5px;color:var(--text-2);line-height:1.7">' + this._escape(u.threeStep.explain) + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+      return '<div style="margin-top:16px">' +
+        '<div style="font-size:12px;font-weight:700;color:var(--teal-700);margin-bottom:8px">🧠 想得再深一步 —— 和这张图有关的小追问（先自己想想，再点开验证）</div>' +
+        cards + '</div>';
+    }catch(e){ return ''; }
+  },
+  _followupIcon(type){
+    if(type==='change') return '➕';
+    if(type==='relate') return '⚖️';
+    if(type==='reverse') return '🔁';
+    if(type==='generic') return '🪄';
+    return '❓';
+  },
+  _toggleFollowup(btn){
+    const wrap = btn && btn.nextElementSibling;
+    if(!wrap) return;
+    const open = wrap.style.display !== 'none';
+    wrap.style.display = open ? 'none' : 'block';
+    btn.textContent = open ? '🔒 先想一想' : '🔓 看点拨';
   },
   // ===== 分步演示控制 =====
   _currentStep: 1,

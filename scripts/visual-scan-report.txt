@@ -1,62 +1,3032 @@
-visual 题总数: 898
-发现问题: 397
-  math-data-2b.js 2B-29 [barModel] parts和=7000 ≠ total=3500（减法应为 结果+减数） | formula=3500-800=?
-  math-data-2b.js 2B-30 [barModel] total=4300 ≠ parts和=8600 | formula=2800+1500=?
-  math-data-2b.js 2B-31 [barModel] total=2900 ≠ parts和=5800 | formula=2100+800=?
-  math-data-2b.js 2B-32 [barModel] parts和=1000 ≠ total=500（减法应为 结果+减数） | formula=500-280=?
-  math-data-2b.js 2B-33 [barModel] total=570 ≠ parts和=1140 | formula=450+120=?
-  math-data-2b.js 2B-34 [barModel] total=440 ≠ parts和=880 | formula=180+260=?
-  math-data-2b.js 2B-35 [barModel] total=4800 ≠ parts和=9600 | formula=1600+3200=?
-  math-data-2b.js 2B-36 [barModel] total=230 ≠ parts和=460 | formula=180+50=?
-  math-data-2b.js 2B-38 [barModel] total=4000 ≠ 被减数=2000 | formula=2000-800=?
-  math-data-2b.js 2B-41 [barModel] total=10 ≠ 被减数=5 | formula=5-2=?
-  math-data-2b.js 2B-42 [barModel] 份数=5 ≠ 除数=200 | formula=1000÷200=?
-  math-data-2b.js 2B-42 [barModel] 每份=200 ≠ 商=5 | formula=1000÷200=?
-  math-data-2b.js 2B-43 [barModel] parts和=40 ≠ total=20（减法应为 结果+减数） | formula=20-3×4=?
-  math-data-2b.js 2B-45 [barModel] parts和=70 ≠ total=30（减法应为 结果+减数） | formula=30-8+5=?
-  math-data-2b.js 2B-47 [barModel] total=42 ≠ parts和=84 | formula=6×5+12=?
-  math-data-2b.js 2B-48 [barModel] parts和=200 ≠ total=100（减法应为 结果+减数） | formula=100-50=?
-  math-data-2b.js 2B-50 [barModel] parts和=56 ≠ total=28（减法应为 结果+减数） | formula=28-3×8=?
-  math-data-2b.js 2B-52 [barModel] parts和=90 ≠ total=45（减法应为 结果+减数） | formula=45-28=?
-  math-data-2b.js 2B-53 [numberBond] 除法题各份不等: 5,5,5,5,3 | formula=23÷4=？...
-  math-data-2b.js 2B-54 [numberBond] 除法题各份不等: 5,5,5,5,5,5,1 | formula=31÷6=？...
-  math-data-2b.js 2B-56 [numberBond] 除法题各份不等: 7,7,7,7,7,7,7,1 | formula=50÷7=？...
-  math-data-2b.js 2B-57 [numberBond] 除法题各份不等: 5,5,5,5,5,5,5,2 | formula=37÷5=?
-  math-data-3a.js 3A-TIME-03 [barModel] total=80 ≠ parts和=160 | formula=60 + 20 = ?
-  math-data-3a.js 3A-TIME-07 [barModel] total=62 ≠ parts和=124 | formula=35 + 27 = ?
-  math-data-3a.js 3A-TIME-08 [barModel] total=84 ≠ parts和=168 | formula=48 + 36 = ?
-  math-data-3a.js 3A-TIME-09 [barModel] total=72 ≠ parts和=144 | formula=23 + 49 = ?
-  math-data-3a.js 3A-TIME-13 [barModel] total=470 ≠ parts和=940 | formula=320 + 150 = ?
-  math-data-3a.js 3A-TIME-15 [barModel] total=840 ≠ parts和=1680 | formula=460 + 380 = ?
-  math-data-3a.js 3A-TIME-38 [barModel] 份数=3 ≠ 除数=2 | formula=6 ÷ 2 = ?
-  math-data-3a.js 3A-TIME-38 [barModel] 每份=2 ≠ 商=3 | formula=6 ÷ 2 = ?
-  math-data-3a.js 3A-TIME-69 [geometry] 几何参数 width 非正数 | formula=10 + 10 + 6 = ?
-  math-data-3a.js 3A-TIME-70 [geometry] 几何参数 #00A896 非正数 | formula=1 / ?
-  math-data-3a.js 3A-TIME-73 [fractionStrip] num/total=1/5 ≠ 算式=1/3 | formula=1/3 > 1/?
-  math-data-3a.js 3A-TIME-76 [fractionStrip] num/total=3/5 ≠ 算式=1/5 | formula=1/5 + 2/5 = ?/5
-  math-data-3a.js 3A-TIME-77 [fractionStrip] num/total=4/7 ≠ 算式=5/7 | formula=5/7 - 1/7 = ?/7
-  math-data-3a.js 3A-TIME-78 [fractionStrip] num/total=5/9 ≠ 算式=2/9 | formula=2/9 + 3/9 = ?/9
-  math-data-3a.js 3A-TIME-80 [barModel] 除法题各份不等: 6,6,12,6 | formula=30 ÷ 5 × 2 = ?
-  math-data-3a.js 3A-TIME-80 [barModel] 份数=4 ≠ 除数=5 | formula=30 ÷ 5 × 2 = ?
-  math-data-3a.js 3A-TIME-81 [barModel] 除法题各份不等: 15,5 | formula=20 ÷ 4 × 3 = ?
-  math-data-3a.js 3A-TIME-81 [barModel] 份数=2 ≠ 除数=4 | formula=20 ÷ 4 × 3 = ?
-  math-data-3a.js 3A-TIME-81 [barModel] 每份=15 ≠ 商=5 | formula=20 ÷ 4 × 3 = ?
-  math-data-3b.js 3B-PROB-001 [geometry] 几何参数 东 非正数 | formula=相对方向 = ?
-  math-data-3b.js 3B-PROB-001 [geometry] 几何参数 西 非正数 | formula=相对方向 = ?
-  math-data-3b.js 3B-PROB-002 [geometry] 几何参数 北 非正数 | formula=上方方向 = ?
-  math-data-3b.js 3B-PROB-003 [geometry] 几何参数 西 非正数 | formula=左手方向 = ?
-  math-data-3b.js 3B-PROB-003 [geometry] 几何参数 南 非正数 | formula=左手方向 = ?
-  math-data-3b.js 3B-PROB-004 [geometry] 几何参数 东南 非正数 | formula=东和南之间 = ?
-  math-data-3b.js 3B-PROB-005 [geometry] 几何参数 西北 非正数 | formula=西北 = ?
-  math-data-3b.js 3B-PROB-006 [geometry] 几何参数 西南 非正数 | formula=西南 = ?
-  math-data-3b.js 3B-PROB-019 [areaModel] a,b=25,6 ≠ 算式数=24,4 | formula=24 × 4 = ?
-  math-data-3b.js 3B-PROB-034 [areaModel] parts=100,40,20,8 ≠ 拆分应为100,20,40,8 (a=14,b=12) | formula=14 × 12 = ?
-  math-data-3b.js 3B-PROB-035 [areaModel] parts=200,10,60,3 ≠ 拆分应为200,60,10,3 (a=21,b=13) | formula=21 × 13 = ?
-  math-data-3b.js 3B-PROB-036 [areaModel] parts=300,20,60,4 ≠ 拆分应为300,60,20,4 (a=32,b=12) | formula=32 × 12 = ?
-  math-data-3b.js 3B-PROB-037 [areaModel] parts=800,100,160,20 ≠ 拆分应为800,160,100,20 (a=45,b=24) | formula=45 × 24 = ?
-  math-data-3b.js 3B-PROB-038 [areaModel] parts=600,120,300,0 ≠ 拆分应为600,150,120,30 (a=36,b=25) | formula=36 × 25 = ?
-  math-data-3b.js 3B-PROB-039 [areaModel] parts=400,80,200,40 ≠ 拆分应为400,200,80,40 (a=48,b=15) | formula=48 × 15 = ?
-  math-data-3b.js 3B-PROB-041 [barModel] 份数=3 ≠ 除数=5 | formula=60 ÷ 5 ÷ 4 = ?
-  math-data-3b.js 3B-PROB-041 [barModel] 每份=20 ≠ 商=12 | formula=60 ÷ 5 ÷ 4 = ?
-  math-data-3b.js 3B-PROB-043 [geometry] 几何参数 cm 非正数 | formula=1cm² = ?
-  math-data-3b.js 3B-PROB-064 [fractionStrip] num/total=3/10 ≠ 算式=0/3 | formula=0.3 = ?/10
+# MathDiagramMaster.audit() 全库实跑（M1）
+生成：2026-09-17T04:55:32.334Z
+
+## totals
+{
+  "problems": 983,
+  "tested": 278,
+  "parametric": 221,
+  "valueBound": 243,
+  "legacyConflicts": 339
+}
+
+## byStage
+{
+  "static": 403,
+  "operable": 491,
+  "animated": 89
+}
+
+## byMaster
+{
+  "numberLine": 146,
+  "barModel": 289,
+  "numberBond": 66,
+  "baseTen": 12,
+  "geometry": 257,
+  "areaModel": 93,
+  "ruler": 12,
+  "balance": 8,
+  "fractionBar": 97,
+  "circleArea": 3
+}
+
+## conflicts（0）
+[]
+
+## legacyConflicts（339）
+[
+  {
+    "sem": "2a",
+    "kp": "认识米",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2a",
+    "kp": "长度单位换算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2a",
+    "kp": "连加连减",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "2a",
+    "kp": "从不同位置观察",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2a",
+    "kp": "1时=60分",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "2a",
+    "kp": "时间的计算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2a",
+    "kp": "简单的排列",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "2a",
+    "kp": "简单的组合",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "2a",
+    "kp": "简单的排列",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "表内除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "万以内加减法",
+    "master": "barModel",
+    "v5": "barModel",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "克和千克",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "克和千克",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "克和千克",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "混合运算",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "2b",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "混合运算",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "2b",
+    "kp": "混合运算",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "2b",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "观察物体",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "观察物体",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "array"
+  },
+  {
+    "sem": "3a",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "array"
+  },
+  {
+    "sem": "3a",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "array"
+  },
+  {
+    "sem": "3a",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "毫米的认识",
+    "master": "ruler",
+    "v5": "rulerMagnifier",
+    "manip": "array"
+  },
+  {
+    "sem": "3a",
+    "kp": "毫米的认识",
+    "master": "ruler",
+    "v5": "rulerMagnifier",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "分米的认识",
+    "master": "ruler",
+    "v5": "bodyRuler",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "分米的认识",
+    "master": "ruler",
+    "v5": "bodyRuler",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "千米的认识",
+    "master": "ruler",
+    "v5": "mapZoom",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "千米的认识",
+    "master": "ruler",
+    "v5": "mapZoom",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "v5": "balanceScale",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "v5": "balanceScale",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "v5": "balanceScale",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "v5": "balanceScale",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "等量代换",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "笔算乘法连续进位",
+    "master": "baseTen",
+    "v5": "baseTenBlocks",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "因数末尾有0的乘法",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "因数中间有0的乘法",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "3a",
+    "kp": "数字编码",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "数字编码",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "数字编码",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "线段直线射线",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "锐角直角钝角",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3a",
+    "kp": "锐角直角钝角",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "平角周角",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "平角周角",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3a",
+    "kp": "分数简单应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "3a",
+    "kp": "分数简单应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "3a",
+    "kp": "分数简单应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "3a",
+    "kp": "复习与关联",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "array"
+  },
+  {
+    "sem": "3a",
+    "kp": "复习与关联",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商中间有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商末尾有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商中间有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "除法估算",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "除法估算",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "除法估算",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "口算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "笔算除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "三位数除一位数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商中间有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商中间有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商中间有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商中间有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商末尾有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "商末尾有0",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "周长",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "周长",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形正方形周长",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "周长实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "正方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位进率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "长方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "正方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "正方形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位进率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积单位进率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "面积实际问题",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "年、月、日",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "3b",
+    "kp": "年、月、日",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3b",
+    "kp": "复习与关联",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "barDrop"
+  },
+  {
+    "sem": "3b",
+    "kp": "复习与关联",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "array"
+  },
+  {
+    "sem": "4a",
+    "kp": "亿以内数的认识",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "亿以内数的大小比较",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "十进制计数法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "计算器使用",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "积的变化规律",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "4a",
+    "kp": "速度时间路程",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "条形统计图",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "亿以内数的认识",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "亿以内数的认识",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "十进制计数法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "十进制计数法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "计算器使用",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "计算器使用",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "v5": "areaModelAnim",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4a",
+    "kp": "积的变化规律",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "4a",
+    "kp": "笔算除法（除数是整十数）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "笔算除法（除数是整十数）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "四舍法试商",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "四舍法试商",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "五入法试商",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "五入法试商",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "条形统计图",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "条形统计图",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4a",
+    "kp": "Bar Model翻译行·两步应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "加减法的意义和各部分关系",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "租船问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "简便运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "小数与单位换算",
+    "master": "fractionBar",
+    "v5": "numberLineFraction",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "利用平移求不规则图形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "4b",
+    "kp": "平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "鸡兔同笼",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "加减法的意义和各部分关系",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "加减法的意义和各部分关系",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "带括号的四则运算",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "租船问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "租船问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "简便运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "简便运算",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "三角形内角和",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "整数运算定律推广到小数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "4b",
+    "kp": "利用平移求不规则图形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "4b",
+    "kp": "利用平移求不规则图形面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "4b",
+    "kp": "平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "4b",
+    "kp": "平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘整数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "除数是整数的小数除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "除数是小数的除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "商的近似数",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "循环小数",
+    "master": "fractionBar",
+    "v5": "numberLineFraction",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "平行四边形的面积",
+    "master": "geometry",
+    "v5": "cutPasteGeometry",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "三角形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "梯形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "组合图形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "不规则图形的面积估算",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "植树问题（两端都栽）",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "植树问题（两端不栽）",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘整数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘整数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "除数是整数的小数除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "除数是整数的小数除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "除数是小数的除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "除数是小数的除法",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "平行四边形的面积",
+    "master": "geometry",
+    "v5": "cutPasteGeometry",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "平行四边形的面积",
+    "master": "geometry",
+    "v5": "cutPasteGeometry",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "三角形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "三角形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "梯形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "梯形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "组合图形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "组合图形的面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "5a",
+    "kp": "不规则图形的面积估算",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5a",
+    "kp": "不规则图形的面积估算",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "share"
+  },
+  {
+    "sem": "5b",
+    "kp": "因数和倍数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5b",
+    "kp": "长方体和正方体的表面积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "5b",
+    "kp": "长方体和正方体的体积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "5b",
+    "kp": "排水法求不规则物体体积",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "5b",
+    "kp": "分数与除法",
+    "master": "areaModel",
+    "v5": "dotArray",
+    "manip": "fraction"
+  },
+  {
+    "sem": "5b",
+    "kp": "因数和倍数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5b",
+    "kp": "因数和倍数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "5b",
+    "kp": "长方体和正方体的表面积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "5b",
+    "kp": "长方体和正方体的表面积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "5b",
+    "kp": "长方体和正方体的体积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "5b",
+    "kp": "长方体和正方体的体积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "5b",
+    "kp": "分数与除法",
+    "master": "areaModel",
+    "v5": "dotArray",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘法解决问题（连续求几分之几）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘法解决问题（求比一个数多/少几分之几）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "描述和绘制路线图",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "一个数除以分数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "已知一个数的几分之几求这个数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘除法解决问题综合",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "工程问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "按比分配（2024版移入六下·拓展保留）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "圆的认识",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "6a",
+    "kp": "百分数的意义和读写",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "求百分率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "求一个数比另一个数多/少百分之几",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "求比一个数多/少百分之几的数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "折扣",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "成数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "税率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "利率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘法解决问题（连续求几分之几）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘法解决问题（连续求几分之几）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘法解决问题（求比一个数多/少几分之几）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘法解决问题（求比一个数多/少几分之几）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "描述和绘制路线图",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "描述和绘制路线图",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "一个数除以分数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "一个数除以分数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "已知一个数的几分之几求这个数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "已知一个数的几分之几求这个数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘除法解决问题综合",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "分数乘除法解决问题综合",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "工程问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "工程问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "按比分配（2024版移入六下·拓展保留）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "按比分配（2024版移入六下·拓展保留）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "圆的认识",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "6a",
+    "kp": "圆的认识",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "6a",
+    "kp": "百分数的意义和读写",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "百分数的意义和读写",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6a",
+    "kp": "求百分率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "求百分率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "求一个数比另一个数多/少百分之几",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "求一个数比另一个数多/少百分之几",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6a",
+    "kp": "求比一个数多/少百分之几的数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "求比一个数多/少百分之几的数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "折扣",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "折扣",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "成数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "成数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "税率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "税率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "利率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6a",
+    "kp": "利率",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6b",
+    "kp": "百分数综合应用（折扣成数税率利率购物方案）",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "6b",
+    "kp": "圆柱的表面积",
+    "master": "geometry",
+    "v5": "unrollNet",
+    "manip": "array"
+  },
+  {
+    "sem": "6b",
+    "kp": "比例的基本性质",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "array"
+  },
+  {
+    "sem": "6b",
+    "kp": "比例尺",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6b",
+    "kp": "用比例尺求图上或实际距离",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "6b",
+    "kp": "图形的放大与缩小",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "6b",
+    "kp": "用正比例解决问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "6b",
+    "kp": "用反比例解决问题",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "7a",
+    "kp": "整式运算",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "余角与补角",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "比例分配",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "7a",
+    "kp": "混合运算应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "余角与补角应用",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "一元一次方程应用",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "分数应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "fraction"
+  },
+  {
+    "sem": "7a",
+    "kp": "统计与百分比",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "7a",
+    "kp": "加法模型",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "生活中负数",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "角的计算",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7a",
+    "kp": "统计与百分比",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "7a",
+    "kp": "比例分配",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "7b",
+    "kp": "三角形内角和",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7b",
+    "kp": "多边形内角和",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7b",
+    "kp": "比例分配",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "7b",
+    "kp": "扇形统计图",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7b",
+    "kp": "方程与角度",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7b",
+    "kp": "三角形内角和",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7b",
+    "kp": "多边形内角和",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "7b",
+    "kp": "比例分配",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8a",
+    "kp": "空间勾股定理",
+    "master": "numberBond",
+    "v5": "numberBond",
+    "manip": "share"
+  },
+  {
+    "sem": "8a",
+    "kp": "勾股定理应用",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "8a",
+    "kp": "解直角三角形",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "8a",
+    "kp": "统计与百分比",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8a",
+    "kp": "勾股定理实际应用",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "8a",
+    "kp": "统计与百分比",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8b",
+    "kp": "数据的集中趋势",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8b",
+    "kp": "反比例函数系数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8b",
+    "kp": "方程与角度",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "8b",
+    "kp": "扇形统计图",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "8b",
+    "kp": "特殊角三角函数",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "8b",
+    "kp": "加权平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8b",
+    "kp": "数据的集中趋势",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "8b",
+    "kp": "加权平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "9a",
+    "kp": "一元二次方程应用",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "9a",
+    "kp": "余弦定理",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "9a",
+    "kp": "圆环面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "9a",
+    "kp": "正态分布",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "9a",
+    "kp": "一元二次方程应用",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "array"
+  },
+  {
+    "sem": "9a",
+    "kp": "图形旋转",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  },
+  {
+    "sem": "9b",
+    "kp": "反比例函数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "9b",
+    "kp": "加权平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "9b",
+    "kp": "加权平均数",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "9b",
+    "kp": "等腰三角形性质",
+    "master": "numberLine",
+    "v5": "numberLine",
+    "manip": "placeValue"
+  }
+]
+
+## nonParametric（57）
+[
+  {
+    "sem": "2a",
+    "kp": "长度单位换算",
+    "master": "numberBond",
+    "question": "1 米 20 厘米等于多少厘米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "2a",
+    "kp": "连加连减",
+    "master": "numberBond",
+    "question": "一个果篮一共装多少个水果？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "2a",
+    "kp": "时间的计算",
+    "master": "numberBond",
+    "question": "一节课加课间休息一共多少分？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "question": "每人几颗？剩几颗？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "question": "可以装几盒？剩几支？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "question": "每人几颗？剩几颗？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "2b",
+    "kp": "有余数的除法",
+    "master": "numberBond",
+    "question": "需要几条船？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "观察物体",
+    "master": "numberBond",
+    "question": "从正面看这排积木，能看到( )个正方形。",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "混合运算",
+    "master": "numberBond",
+    "question": "小明一共花了多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "毫米的认识",
+    "master": "ruler",
+    "question": "5厘米2毫米等于多少毫米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "分米的认识",
+    "master": "ruler",
+    "question": "7分米等于多少厘米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "分米的认识",
+    "master": "ruler",
+    "question": "1米5分米等于多少分米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "千米的认识",
+    "master": "ruler",
+    "question": "2千米500米等于多少米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "question": "5吨等于多少千克？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "question": "2吨500千克等于多少千克？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "question": "还剩多少千克钢材？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "数字编码",
+    "master": "numberBond",
+    "question": "2023 年入学、3 班、15 号的同学，学号应编为( )。",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3a",
+    "kp": "数字编码",
+    "master": "numberBond",
+    "question": "5 楼、1 室、07 号房的房间号是( )。",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3b",
+    "kp": "年、月、日",
+    "master": "numberBond",
+    "question": "大月每月有( )天。",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3b",
+    "kp": "小数加减法",
+    "master": "numberBond",
+    "question": "小红还剩多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "计算器使用",
+    "master": "areaModel",
+    "question": "38×46等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "question": "一共买了多少盒粉笔？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "question": "一共多少个苹果？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "question": "一共买了多少盒粉笔？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "question": "一共买了多少盒粉笔？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "question": "一共多少个苹果？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "question": "一共多少个苹果？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "口算除法（整十数除）",
+    "master": "areaModel",
+    "question": "每班分多少个跳绳？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4a",
+    "kp": "口算除法（整十数除）",
+    "master": "areaModel",
+    "question": "每班分多少个跳绳？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘除法的意义和各部分关系",
+    "master": "areaModel",
+    "question": "在3×12=36中，36叫什么？(积填1,因数填2)",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法交换律和结合律",
+    "master": "areaModel",
+    "question": "25×4等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法分配律",
+    "master": "areaModel",
+    "question": "(20+3)×4等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "简便运算",
+    "master": "numberBond",
+    "question": "125-(38+62)等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "小数加减混合运算",
+    "master": "numberBond",
+    "question": "还剩多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘除法的意义和各部分关系",
+    "master": "areaModel",
+    "question": "在3×16=31中，31叫什么？(积填1,因数填2)",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘除法的意义和各部分关系",
+    "master": "areaModel",
+    "question": "在4×18=44中，44叫什么？(积填1,因数填3)",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法交换律和结合律",
+    "master": "areaModel",
+    "question": "27×3等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法交换律和结合律",
+    "master": "areaModel",
+    "question": "29×4等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法分配律",
+    "master": "areaModel",
+    "question": "(27+3)×6等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法分配律",
+    "master": "areaModel",
+    "question": "(28+3)×5等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "简便运算",
+    "master": "numberBond",
+    "question": "113-(34+62)等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "4b",
+    "kp": "简便运算",
+    "master": "numberBond",
+    "question": "124-(40+53)等于多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘小数",
+    "master": "areaModel",
+    "question": "房间面积是多少平方米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘法解决问题",
+    "master": "areaModel",
+    "question": "超过部分(7-3=4千米)要付多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数除法解决问题",
+    "master": "areaModel",
+    "question": "需要多少个瓶子？(进一法)",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘小数",
+    "master": "areaModel",
+    "question": "房间面积是多少平方米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘小数",
+    "master": "areaModel",
+    "question": "房间面积是多少平方米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘法解决问题",
+    "master": "areaModel",
+    "question": "超过部分(7-4=3千米)要付多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘法解决问题",
+    "master": "areaModel",
+    "question": "超过部分(7-4=3千米)要付多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数除法解决问题",
+    "master": "areaModel",
+    "question": "需要多少个瓶子？(进一法)",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数除法解决问题",
+    "master": "areaModel",
+    "question": "需要多少个瓶子？(进一法)",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5b",
+    "kp": "最大公因数",
+    "master": "numberBond",
+    "question": "12和18的最大公因数是几？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5b",
+    "kp": "最大公因数",
+    "master": "numberBond",
+    "question": "12和21的最大公因数是几？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "5b",
+    "kp": "最大公因数",
+    "master": "numberBond",
+    "question": "13和24的最大公因数是几？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "8a",
+    "kp": "空间勾股定理",
+    "master": "numberBond",
+    "question": "最长木棍多少分米？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "8b",
+    "kp": "反比例函数系数",
+    "master": "barModel",
+    "question": "k和x=3时的y分别是多少？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "8b",
+    "kp": "概率的乘法",
+    "master": "areaModel",
+    "question": "两次都摸到红球的概率是多少？",
+    "reason": "geometry-invariant-to-values"
+  }
+]
+
+## hardcoded（35）
+[
+  {
+    "sem": "3a",
+    "kp": "毫米的认识",
+    "master": "ruler",
+    "question": "5厘米2毫米等于多少毫米？"
+  },
+  {
+    "sem": "3a",
+    "kp": "分米的认识",
+    "master": "ruler",
+    "question": "7分米等于多少厘米？"
+  },
+  {
+    "sem": "3a",
+    "kp": "分米的认识",
+    "master": "ruler",
+    "question": "1米5分米等于多少分米？"
+  },
+  {
+    "sem": "3a",
+    "kp": "千米的认识",
+    "master": "ruler",
+    "question": "2千米500米等于多少米？"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "question": "5吨等于多少千克？"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "question": "2吨500千克等于多少千克？"
+  },
+  {
+    "sem": "3a",
+    "kp": "吨的认识",
+    "master": "balance",
+    "question": "还剩多少千克钢材？"
+  },
+  {
+    "sem": "4a",
+    "kp": "计算器使用",
+    "master": "areaModel",
+    "question": "38×46等于多少？"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "question": "一共买了多少盒粉笔？"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "question": "一共多少个苹果？"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "question": "一共买了多少盒粉笔？"
+  },
+  {
+    "sem": "4a",
+    "kp": "三位数乘两位数笔算",
+    "master": "areaModel",
+    "question": "一共买了多少盒粉笔？"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "question": "一共多少个苹果？"
+  },
+  {
+    "sem": "4a",
+    "kp": "因数有0的乘法",
+    "master": "areaModel",
+    "question": "一共多少个苹果？"
+  },
+  {
+    "sem": "4a",
+    "kp": "口算除法（整十数除）",
+    "master": "areaModel",
+    "question": "每班分多少个跳绳？"
+  },
+  {
+    "sem": "4a",
+    "kp": "口算除法（整十数除）",
+    "master": "areaModel",
+    "question": "每班分多少个跳绳？"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘除法的意义和各部分关系",
+    "master": "areaModel",
+    "question": "在3×12=36中，36叫什么？(积填1,因数填2)"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法交换律和结合律",
+    "master": "areaModel",
+    "question": "25×4等于多少？"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法分配律",
+    "master": "areaModel",
+    "question": "(20+3)×4等于多少？"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘除法的意义和各部分关系",
+    "master": "areaModel",
+    "question": "在3×16=31中，31叫什么？(积填1,因数填2)"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘除法的意义和各部分关系",
+    "master": "areaModel",
+    "question": "在4×18=44中，44叫什么？(积填1,因数填3)"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法交换律和结合律",
+    "master": "areaModel",
+    "question": "27×3等于多少？"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法交换律和结合律",
+    "master": "areaModel",
+    "question": "29×4等于多少？"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法分配律",
+    "master": "areaModel",
+    "question": "(27+3)×6等于多少？"
+  },
+  {
+    "sem": "4b",
+    "kp": "乘法分配律",
+    "master": "areaModel",
+    "question": "(28+3)×5等于多少？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘小数",
+    "master": "areaModel",
+    "question": "房间面积是多少平方米？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘法解决问题",
+    "master": "areaModel",
+    "question": "超过部分(7-3=4千米)要付多少元？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数除法解决问题",
+    "master": "areaModel",
+    "question": "需要多少个瓶子？(进一法)"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘小数",
+    "master": "areaModel",
+    "question": "房间面积是多少平方米？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘小数",
+    "master": "areaModel",
+    "question": "房间面积是多少平方米？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘法解决问题",
+    "master": "areaModel",
+    "question": "超过部分(7-4=3千米)要付多少元？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数乘法解决问题",
+    "master": "areaModel",
+    "question": "超过部分(7-4=3千米)要付多少元？"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数除法解决问题",
+    "master": "areaModel",
+    "question": "需要多少个瓶子？(进一法)"
+  },
+  {
+    "sem": "5a",
+    "kp": "小数除法解决问题",
+    "master": "areaModel",
+    "question": "需要多少个瓶子？(进一法)"
+  },
+  {
+    "sem": "8b",
+    "kp": "概率的乘法",
+    "master": "areaModel",
+    "question": "两次都摸到红球的概率是多少？"
+  }
+]
+
+## missing（0）
+[]
