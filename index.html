@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js" defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917d"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -1540,7 +1540,7 @@ const MathVisual = {
       data = Object.assign({}, data, { bars: data.bars.map(p => (p && p.val == null && p.value != null) ? Object.assign({}, p, { val: p.value }) : p) });
     }
     const fn = this[type];
-    const html = (typeof fn === 'function') ? fn.call(this, data) : this.barModel.call(this, data);
+    const html = (typeof fn === 'function') ? fn.call(this, data, problem) : this.barModel.call(this, data, problem);
     return this._scrubAnswer(html, problem);
   },
   // 答案零泄漏：SVG <text> 中等于答案的独立数字一律掩码为 "?"（揭示区豁免）
@@ -1580,16 +1580,51 @@ const MathVisual = {
     return lum>150?'#12263F':'#fff';
   },
 
+  // 从算式推导条形（部分-整体）：支持 a+b、a×b、a-b。未知则返回 null。（与 math-visual-v5.js 引擎一致）
+  _deriveBarParts(problem, total){
+    try{
+      const f = String((problem && problem.formula) || '');
+      const ans = (problem && problem.answer != null) ? Number(problem.answer) : null;
+      const pickT = () => { if(total != null && total > 0) return total; if(ans != null && ans > 0) return ans; return null; };
+      let m;
+      if((m = f.match(/(\d+(?:\.\d+)?)\s*[+＋]\s*(\d+(?:\.\d+)?)/))) {
+        const a = Number(m[1]), b = Number(m[2]);
+        return { parts:[{label:'部分 A', val:a},{label:'部分 B', val:b}], total: pickT() || (a+b) };
+      }
+      if((m = f.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/))) {
+        const a = Number(m[1]), b = Number(m[2]);
+        const reps = a <= b ? a : b, unit = a <= b ? b : a;
+        const parts = [];
+        for(let i=0;i<Math.min(reps,6);i++) parts.push({label:'第'+(i+1)+'段', val:unit});
+        return { parts: parts, total: unit * reps };
+      }
+      if((m = f.match(/(\d+(?:\.\d+)?)\s*[−-]\s*(\d+(?:\.\d+)?)/))) {
+        const a = Number(m[1]), b = Number(m[2]);
+        const rem = (ans != null) ? ans : (a - b);
+        return { parts:[{label:'整体', val:a},{label:'去掉', val:b},{label:'剩下', val:rem}], total: a };
+      }
+      if(ans != null && ans > 0) return { parts:[{label:'结果', val:ans}], total: ans };
+      return null;
+    }catch(e){ return null; }
+  },
+
   // 1. 动态条形模型 —— 加减法 / 部分整体关系
-  // data: {total, parts:[{label,val,color}]}
-  barModel(data){
+  // data: {total, parts:[{label,val,color}]}；problem: 题目对象（用于算式自动推导）
+  barModel(data, problem){
     // 兼容 bars 格式（{type:"bar", bars:[{label,value,color}], total}）
     if(data && data.bars && !data.parts){
-      data.parts = data.bars.map(b => ({label: b.label, val: b.value, color: b.color}));
+      data.parts = data.bars.map(b => ({label: b.label, val: (b.val != null ? b.val : b.value), color: b.color}));
       if(data.total == null) data.total = data.parts.reduce((s,p)=>s+(p.val||0),0);
     }
+    // 修复缺陷1：parts 为空时，从算式/答案自动推导“部分-整体”条形，避免无图直接答题
+    const parts0 = (data && data.parts) || [];
+    let total0 = (data && data.total != null) ? data.total : null;
+    if(!parts0.length){
+      const derivedParts = this._deriveBarParts(problem, total0);
+      if(derivedParts){ if(!data.parts) data.parts = []; data.parts = derivedParts.map(x => Object.assign({}, x)); }
+    }
     const parts = (data && data.parts) || [];
-    if(!parts.length) return '<div class="mv-empty">暂无条形数据</div>';
+    if(!parts.length) return '<div class="mv-empty" style="padding:16px;text-align:center;color:var(--text-3)">📐 这道题没有现成图形，自己画一条线段表示整体，再分段标注。</div>';
     let total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
     if(!(total > 0)) total = parts.reduce((s,p)=>s+(p.val||0),0) || 1;
     const W=560, H=170, padX=24, barY=66, barH=58;
@@ -2662,7 +2697,7 @@ function toast(msg){const t=$('#toast');t.innerHTML=`<span class="em">✅</span>
 // 抽象词/功能词/动作/形容词——照片无法准确表达，直接走 emoji 插画卡，杜绝随机错图
 const ENG_ABSTRACT_WORDS=new Set(['hello','hi','goodbye','bye','name','what','where','who','weekend','sometimes','often','always','future','dream','run','hot','song','morning','afternoon','lost','found','favourite','early','late','hungry','thirsty','tired','thin','long','big','small','heavy','light','new','old','high','low','far','near','behind','between','over','next','front','inside','outside','in','on','under','waking','getting','going','coming','seeing','looking','finding','making','breaking','opening','closing','starting','finishing','beginning','ending','growing','changing','moving','staying','leaving','arriving','returning','entering','exiting','joining','waiting','trying','asking','answering','thinking','wondering','knowing','remembering','forgetting','believing','hoping','wanting','needing','liking','loving','enjoying','feeling','sensing','hearing','listening','speaking','talking','saying','telling','explaining','describing','showing','calling','screaming','whispering','shouting','yelling','laughing','crying','smiling','frowning','waving','pointing','nodding','shaking','holding','grabbing','pulling','pushing','carrying','lifting','dropping','catching','throwing','kicking','hitting',
   // 具体小物件：随机照片极易错配，强制走 emoji 插画卡
-  'ruler','pencil','eraser','crayon','bag','pen','book','notebook','storybook','schoolbag','pencil case','pencil box','lunchbox','snack','toy','key','candy'
+  // 具体小物件已在 2026-09-18 恢复照片模式：实物名词有清晰照片，不再强制 emoji
 ]);
 const ENG_PHOTO_MAP={
   'notebook':'notebook,paper,stationery','candy':'candy,sweets,confectionery','key':'key,lock,vintage',
@@ -2786,13 +2821,15 @@ const ENG_PHOTO_MAP={
 function engPhotoUrl(word){
   if(!word) return '';
   var w=word.toLowerCase().replace(/'/g,'').trim();
-  // 抽象词直接出 emoji 插画卡（照片无法准确表达这些词）
+  // 默认：受控 emoji+语义卡（离线安全、语义正确、绝不跑题）。loremflickr 随机照片已弃用为默认。
   if(typeof ENG_ABSTRACT_WORDS!=='undefined' && ENG_ABSTRACT_WORDS.has(w)) return engEmojiFallback(word);
-  // 关键词：优先用 ENG_PHOTO_MAP 的精准关键词（逗号分隔取第一个）
-  var key=w;
-  if(typeof ENG_PHOTO_MAP!=='undefined' && ENG_PHOTO_MAP[w]) key=ENG_PHOTO_MAP[w].split(',')[0].trim();
-  // 真实摄影照片（LoremFlickr 免费按关键词取图，国内可达）；加载失败由 onerror 退回 emoji 卡
-  return 'https://loremflickr.com/480/320/'+encodeURIComponent(key);
+  // 仅当显式开启照片模式(ENG_PHOTO_MODE==='photo')且在线时，才用真实照片（失败仍回退 emoji 卡）
+  if(window.ENG_PHOTO_MODE==='photo' && (typeof navigator==='undefined' || navigator.onLine)){
+    var key=w;
+    if(typeof ENG_PHOTO_MAP!=='undefined' && ENG_PHOTO_MAP[w]) key=ENG_PHOTO_MAP[w].split(',')[0].trim();
+    return 'https://loremflickr.com/480/320/'+encodeURIComponent(key);
+  }
+  return engEmojiFallback(word);
 }
 function engEmojiFallback(word){
   // 照片加载失败时的 emoji 占位卡
@@ -2837,13 +2874,14 @@ function engEmojiFallback(word){
     waving:'👋',pointing:'👉',nodding:'🙆',shaking:'🙅',
     holding:'🤲',grabbing:'🫳',pulling:'🫴',pushing:'💪',
     carrying:'📦',lifting:'🏋️',dropping:'⬇️',catching:'🧤',
-    throwing:'🎯',kicking:'⚽',hitting:'🥊'
-  };
+    throwing:'🎯',kicking:'⚽',hitting:'🥊',animal:'🦁',frog:'🐸',rabbit:'🐰',bee:'🐝',butterfly:'🦋',lion:'🦁',tiger:'🐯',bear:'🐻',panda:'🐼',elephant:'🐘',monkey:'🐵',snake:'🐍',horse:'🐴',sheep:'🐑',pig:'🐷',chicken:'🐔',duck:'🦆',penguin:'🐧',whale:'🐳',shark:'🦈',lizard:'🦎','ant':'🐜','spider':'🕷️','snail':'🐌','beetle':'🪲','dragonfly':'🪽','grasshopper':'🦗','cricket':'🦗','honey':'🍯','honeybee':'🐝','insect':'🐛','worm':'🪱','octopus':'🐙','squid':'🦑','crab':'🦀','starfish':'🌟','shrimp':'🦐','lobster':'🦞','tortoise':'🐢','turtle':'🐢','sloth':'🦥','koala':'🐨','hedgehog':'🦔','dolphin':'🐬','gorilla':'🦍','leopard':'🐆','zebra':'🦓','giraffe':'🦒','camel':'🐫','ox':'🐃','goat':'🐐','wolf':'🐺','fox':'🦊','deer':'🦌','moose':'🫎','raccoon':'🦝','squirrel':'🐿️','hamburger':'🍔','pizza':'🍕','sushi':'🍣','noodle':'🍜','spaghetti':'🍝','hotdog':'🌭','fries':'🍟','chips':'🍟','burger':'🍔','icecream':'🍨','cake':'🍰','cookie':'🍪','donut':'🍩','pancake':'🥞','waffle':'🧇','jelly':'🍮','pie':'🥧','cucumber':'🥒','carrot':'🥕','potato':'🥔','tomato':'🍅','corn':'🌽','salad':'🥗','dinner':'🍽️','dessert':'🍰','pizzae':'🍕','salami':'🥓','cheese':'🧀','chocolate':'🍫','jam':'🍓','honey2':'🍯','pasta':'🍝','soup':'🍲','drink':'🥤','juice':'🧃','coffee':'☕','tea':'🍵','beer':'🍺','lemonade':'🍋','orangejuice':'🍊','mango':'🥭','pineapple':'🍍','kiwi':'🥝','melon':'🍈','plum':'🟣','cherry':'🍒','apple2':'🍎','banana2':'🍌','grape2':'🍇','strawberry':'🍓','watermelon':'🍉','papaya':'🥭','body2':'🧍','head':'🗣️','face':'😀','hair':'👤','ear':'👂','nose':'👃','mouth':'👄','lip':'💋','tooth':'🦷','eye2':'👁️','eyebrow':'🤨','hand2':'✋','arm':'💪','finger':'👆','thumb':'👍','shoulder':'🧍','chest':'🧍','stomach':'🫄','back':'🧍','waist':'🧍','hip':'🧍','thigh':'🦵','leg':'🦵','knee':'🦵','ankle':'🦶','foot':'🦶','heel':'👞','toe':'🦶','home2':'🏠','bedroom':'🛏️','kitchen':'🍳','bathroom':'🛁','livingroom':'🛋️','garage':'🚗','garden':'🌷','yard':'🏡','balcony':'🪟','basement':'🏚️','roof':'🏠','attic':'🏚️','door':'🚪','window':'🪟','wall':'🧱','floor':'🧱','ceiling':'🏠','furniture':'🪑','chair':'🪑','table':'🛋️','sofa':'🛋️','shelf':'📚','mirror':'🪞','drawer':'🗄️','desk':'🗄️','lamp':'💡','painting':'🖼️','cushion':'🛋️','curtain':'🪟','rug':'🧶','clock':'🕐','calendar':'📅','photo':'📷','picture':'🖼️','cartoon':'📺','tv':'📺','radio':'📻','computer':'💻','phone':'📱','tablet':'📱','camera':'📷','keyboard':'⌨️','mouse':'🖱️','printer':'🖨️','screen':'🖥️','charger':'🔌','headphone':'🎧','speaker':'🔊','battery':'🔋','game':'🎮','console':'🎮','video':'📹','youtube':'▶️','cart':'🛒','market':'🏪','shop':'🏪','store':'🏬','bank':'🏦','hospital':'🏥','pharmacy':'💊','doctor':'👨‍⚕️','nurse':'👩‍⚕️','sick':'🤒','medicine':'💊','pain':'😖','cough':'😮‍💨','fever':'🤒','dental':'🦷','toothache':'🦷','bandage':'🩹','appointment':'📅','bus':'🚌','car':'🚗','taxi':'🚕','train':'🚆','plane':'✈️','bicycle':'🚲','bike':'🚲','scooter':'🛴','skateboard':'🛹','boat':'⛵','ship':'🚢','ferry':'🚢','rocket':'🚀','helicopter':'🚁','ambulance':'🚑','policecar':'🚓','firetruck':'🚒','broadway':'🎬','subway':'🚇','tunnel':'🚇','highway':'🛣️','street':'🛣️','road':'🛣️','bridge':'🌉','parking':'🅿️','gas':'⛽','battery2':'🔋','dress':'👗','skirt':'👗','shirt':'👕','coat':'🧥','jacket':'🧥','sweater':'🧶','pants':'👖','trousers':'👖','shorts':'🩳','jeans':'👖','socks':'🧦','stockings':'🧦','shoes':'👟','sneakers':'👟','boots':'👢','heels':'👠','slippers':'🩴','sandals':'🩴','hat':'🎩','cap':'🧢','helmet':'⛑️','glove':'🧤','gloves':'🧤','scarf':'🧣','tie':'👔','belt':'🧷','umbrella':'☂️','raincoat':'☔','suitcase':'🧳','luggage':'🧳','wallet':'👛','purse':'👛','sunglasses':'🕶️','mask':'😷','jewel':'💍','ring':'💍','necklace':'📿','watch':'⌚','bracelet':'📿','brooch':'📿','tie2':'👔','apron':'👩‍🍳','uniform':'🎽','swimsuit':'👙','swimwear':'👙','goggles':'🥽','hoodie':'🧥','sweatshirt':'🧥','leather':'🟤','cotton':'🧵','silk':'🧵','wool':'🧶','linen':'🧵','nature2':'🌿','mountain':'⛰️','hill':'⛰️','valley':'🏞️','river':'🏞️','lake':'🏞️','sea':'🌊','ocean':'🌊','beach':'🏖️','island':'🏝️','desert':'🏜️','forest':'🌲','jungle':'🌴','cave':'🕳️','volcano':'🌋','glacier':'🧊','snowman':'⛄','ice':'🧊','frost':'❄️','fog':'🌫️','storm':'⛈️','thunder':'⚡','lightning':'⚡','rainbow':'🌈','hail':'🌨️','breeze':'💨','drizzle':'🌦️','people2':'👥','boy':'👦','girl':'👧','man':'👨','woman':'👩','baby':'👶','toddler':'👶','child':'👧','kid':'👦','uncle':'👨','aunt':'👩','cousin':'👦','grandfather':'👴','grandmother':'👵','grandpa':'👴','grandma':'👵','husbandsman':'👨','wife':'👩','boyfriend':'👦','girlfriend':'👧','penpal':'✉️','penfriend':'✉️','classmate':'🎓','neighbour':'🏠','stranger':'🧑','hero':'🦸','villain':'🦹','pirate':'🏴‍☠️','prince':'🤴','princess':'👸','king':'🤴','queen':'👸','magician':'🧙','scientist':'🔬','fireman':'👨‍🚒','farmer':'🧑‍🌾','chef':'👨‍🍳','pilot':'👨‍✈️','police':'👮','soldier':'🪖','reporter':'🎤','engineer':'👷','dentist':'🦷','postman':'📮','driver':'🚗','waiter':'🧑‍🍳','cleaner':'🧹','gardener':'🌱','builder':'🏗️','player':'🏃','athlete':'🏃','coach':'🧑‍🏫','team':'👥','referee':'🚦','goal':'🥅','ball':'⚽','basket':'🏀','soccer':'⚽','tennis':'🎾','swim':'🏊','baseball':'⚾','hockey':'🏒','cricketball':'🏏','badminton':'🏸','golf':'⛳','bowls':'🎳','skating':'⛸️','skiing':'⛷️','surfing':'🏄','climbing':'🧗','fishing':'🎣','hunting':'🏹','cycling':'🚴','hiking':'🥾','skate':'🛼','jogging':'🏃','walking':'🚶','swimming':'🏊','jumping':'🤸','stretching':'🤸','dancing':'💃','playing':'🎮','sleeping':'😴','resting':'🧘','reading':'📖','writing':'✍️','drawing':'✏️','painting2':'🎨','cooking':'🍳','baking':'🧁','cleaning':'🧹','washing':'🧼','tying':'🪢','putting':'📦','taking':'📥','giving':'🎁','helping':'🤝','sharing':'🤝','playing2':'🎲','learning':'📚','studying':'📚','teaching':'👩‍🏫','working':'🛠️','resting2':'🧘','playinggame':'🎮','winning':'🏆','losing':'😢','practising':'🔁','preparing':'🧺','guessing':'🎲','counting':'🔢','adding':'➕','subtracting':'➖','multiplying':'✖️','dividing':'➗','measuring':'📏','weighing':'⚖️','comparing':'⚖️','sorting':'🔀','mixing':'🥣','building':'🏗️','fixing':'🔧','opening2':'📂','closing2':'📁','turning':'🔄','flipping':'🔄','folding':'📄','cutting':'✂️','gluing':'🩹','sticking':'🩹','stamping':'🪪','rubbing':'🧼','crashing':'💥','bumping':'💥','sliding':'🛝','rolling':'🎯','spinning':'🌀','climbing2':'🧗','digging':'⛏️','planting':'🌱','watering':'💧','harvesting':'🌾','growing2':'🌱','blooming':'🌸','withering':'🥀','melting':'🧊','drying':'🌞','cooking2':'🍳','boiling':'🫕','frying':'🍳','baking2':'🥖','roasting':'🍖','toasting':'🍞','grilling':'🍢','steaming':'🍜','peeling':'🥔','slicing':'🔪','chopping':'🔪','crushing':'💥','cracking':'🥚','tapping':'🥁','knocking':'🚪','banging':'🔔','clapping':'👏','drumming':'🥁','singing':'🎤','humming':'🎵','whistling':'🎵','blowing':'💨','crying2':'😭','laughing2':'😆','yelling2':'📢','mumbling':'🤐','shouting2':'📢','talking2':'💬','chatting':'💬','arguing':'💢','agreeing':'👍','disagreeing':'👎','nodding2':'👍','shakinghead':'👎','bowing':'🙇','saluting':'🫡','cheering':'🎉','applauding':'👏','waving2':'👋','shakinghands':'🤝','hugging':'🤗','kissing':'😘','cuddling':'🧸','patting':'🐾','petting':'🐾','stroking':'🐱','brushing':'🪮','combing':'💇','washing2':'🧼','drying2':'🌞','ironing':'👕','folding2':'👕','packing':'🧳','unloading':'📦','carrying2':'📦','lifting2':'🏋️','dragging':'📦','tugging':'📦','pushing2':'📦','pulling2':'📦','shoving':'📦','sweeping':'🧹','mopping':'🧹','vacuuming':'🧹','dusting':'🧹','tidying':'🧹','organizing':'📁','arranging':'📁','stacking':'📚','balancing':'⚖️','weaving':'🧶','sewing':'🪡','stitching':'🪡','knitting':'🧶','crocheting':'🧶','mending':'🪡','patching':'🩹','gluing2':'🩹','nailing':'🔨','screwing':'🔩','drilling':'🔩','hammering':'🔨','sawing':'🪚','cutting2':'✂️','measuring2':'📏','painting3':'🎨','colouring':'🎨','shading':'🎨','sketching':'✏️','doodling':'✏️','tracing':'✏️','scribbling':'✏️','writing2':'✍️','typing':'⌨️','printing':'🖨️','scanning':'🔍','photocopying':'📠','faxing':'📠','emailing':'✉️','messaging':'💬','calling2':'📞','texting':'📱','videoing':'📹','streaming':'📺','browsing':'🌐','searching':'🔎','googling':'🔎','downloading':'⬇️','uploading':'⬆️','saving':'💾','deleting':'🗑️','copying':'📋','pasting':'📋','cutting3':'✂️','selecting':'🖱️','clicking':'🖱️','tapping2':'📱','swiping':'📱','scrolling':'🖱️','zooming':'📷','pinching':'🤏','grabbing2':'🫳','pinching2':'🤏','twisting':'🌀','wringing':'🌀','crushing2':'💥','crushing3':'💥','pressing':'👇','squeezing':'🤏','stretching2':'🤸','tugging2':'📦','snapping':'💥','cracking2':'🥚','popping':'💥','exploding':'💥','bursting':'💥','fizzling':'💨','sizzling':'🍳','crackling':'🔥','roaring':'🦁','growling':'🐯','howling':'🐺','barking':'🐶','meowing':'🐱','mooing':'🐄','baa':'🐑','clucking':'🐔','quacking':'🦆','honking':'🦃','hiss':'🐍','buzz':'🐝','humming2':'🎵','drum':'🥁','beating':'💓','pounding':'💓','thumping':'🥁','tapping3':'🥁','rattling':'🔔','clanking':'🔔','jingling':'🔔','clattering':'🔔','crashing2':'💥','smashing':'💥','breaking2':'💔','crumbling':'🏚️','shattering':'💥','snapping2':'💥','banging2':'🔔','slapping':'🖐️','boxing':'🥊','punching':'🥊','elbowing':'👊','kicking2':'⚽','tackling':'⚽','marking':'📍','scoring':'⚽','shooting':'🏀','dribbling':'⚽','passing':'🏈','catching2':'🧤','tackling2':'⚽','blocking':'🚫','dive':'🤿','save':'🧤','corner':'⚽','penalty':'🥅','goal2':'🥅','hat trick':'🎩','offside':'🚨','foul':'🟥','yellow':'🟨','red':'🟥','green':'🟩','white':'⬜','black':'⬛','blue':'🟦','red2':'🔴','yellow2':'🟡','orange2':'🟠','brown':'🟤','pink':'🌸','purple':'🟪','grey':'🩶','gray':'🩶','beige':'🪵','tan':'🏖️','teal':'🩵','green2':'🟢','navy':'🌊','maroon':'🍷','copper':'🟤','bronze':'🥉','silver':'🥈','gold':'🥇','brass':'🟡','steel':'⚙️','iron':'⚙️','tin':'🥫','zinc':'⚙️','lead':'⚫','glass':'🪟','plastic':'🧴','rubber':'⚽','wood':'🪵','metal':'⚙️','stone':'🪨','sand':'🏖️','dirt':'🟫','mud':'🟫','clay':'🏺','coal':'⚫','oil':'🛢️','fuel':'⛽','gas2':'⛽','steam':'💨','smoke':'💨','dust':'💨','ash':'🌫️','soot':'⚫','charcoal':'⚫','ember':'🔥','spark':'✨','flame':'🔥','fire2':'🔥','candle':'🕯️','torch':'🔥','lantern':'🏮','lamp2':'💡','light2':'💡','glow':'✨','shine':'✨','beam':'🔦','flash':'⚡','blink':'👁️','sparkle':'✨','shimmer':'✨','glimmer':'✨','twinkle':'✨','sparkling':'✨','shining':'✨','glowing':'✨','bright':'☀️','dark':'🌑','dim':'🌒','dull':'🌥️','faint':'🌫️','soft':'🧸','hard':'🪨','rough':'🪨','smooth':'🟦','bumpy':'⛰️','slippery':'🧊','sticky':'🍯','grippy':'🧤','wet':'💧','dry':'🌞','damp':'💧','soggy':'💧','soaked':'💧','sweaty':'😅','chilly':'❄️','cool':'❄️','warm':'🔥','hot2':'🔥','boiling2':'🫕','freezing':'🧊','melting2':'🧊','solid':'🧊','liquid':'💧','gas3':'💨','plasma':'⚡','ice2':'🧊','frozen':'🧊','thawing':'🧊','condensing':'💧','evaporating':'💨','vaporizing':'💨','subliming':'✨','crystallizing':'💎','precipitating':'🌧️','hail2':'🌨️','sleet':'🌨️','drizzle2':'🌦️','downpour':'🌧️','torrential':'🌧️','shower':'🚿','rain2':'🌧️','thunder2':'⛈️','lightning2':'⚡','storm2':'⛈️','gale':'💨','squall':'⛈️','typhoon':'🌀','cyclone':'🌀','hurricane':'🌀','tornado':'🌀','blizzard':'❄️','avalanche':'⛰️','flood':'🌊','tsunami':'🌊','wave':'🌊','ripple':'💧','swell':'🌊','current':'🌊','tide':'🌊','surge':'🌊','drift':'🌊','float':'🛟','sink':'📉','dive2':'🤿','swim2':'🏊','splash':'💦','drown':'💧','breathe':'🫁','inhale':'🫁','exhale':'🫁','gasp':'😮','pant':'😮‍💨','wheeze':'😮‍💨','cough2':'😮‍💨','sneeze':'🤧','hiccough':'🤣','belch':'🤮','burp':'😮‍💨','fart':'💨','pass gas':'💨','gulp':'🥤','chomp':'😋','gnaw':'🦷','chew':'🦷','munch':'😋','crunch':'🍿','snap':'💥','crunch2':'🍿','bite':'🦷','nibble':'🦷','gulp2':'🥤','slurp':'🥣','swallow':'🫃','suck':'🍭','drink2':'🥤','sip':'🥤','quaff':'🥤','gulp3':'🥤','guzzle':'🥤','taste':'😋','sample':'😋','flavor':'😋','flavour':'😋','savour':'😋','savor':'😋','yum':'😋','delicious':'😋','tasty':'😋','savory':'😋','zesty':'🍋','tangy':'🍋','tangier':'🍋','tart':'🍋','sour':'🍋','sweet':'🍬','bitter':'☕','spicy':'🌶️','peppery':'🌶️','hot3':'🌶️','mild':'🌶️','bland':'🥪','saline':'🧂','salted':'🧂','salty':'🧂','brined':'🧂','cured':'🧂','pickled':'🥒','fermented':'🫙','brewed':'🍺','aged':'🕰️','dried':'🌞','smoked':'🍖','grilled':'🍢','roasted':'🍖','baked':'🥖','fried':'🍳','sautéed':'🍳','stir-fried':'🍳','boiled':'🫕','steamed':'🍜','poached':'🍳','braised':'🫕','blanched':'🥬','parboiled':'🫕','simmered':'🫕','percolated':'☕','infused':'🍵','decadent':'🍫','gourmet':'🍽️','rustic':'🌾','homemade':'🏠','artisanal':'🧑‍🍳','organic':'🥬','vegetarian':'🥬','vegan':'🥬','pescatarian':'🐟','kosher':'✡️','halal':'☪️','carnivore':'🍖','omnivore':'🍖','herbivore':'🦌','insectivore':'🐻','granivore':'🐿️','frugivore':'🦜','nectarivore':'🐝','molluscivore':'🐙','carnivorous':'🦷','herbivorous':'🌿','omnivorous':'🦷','detritivore':'🪱','scavenger':'🦅','predator':'🦁','prey':'🦌','apex':'👑','apex2':'👑','top':'👑','bottom':'👣','up':'⬆️','down':'⬇️','left':'⬅️','right':'➡️','forward':'⏩','backward':'⏪','sideways':'↔️','upright':'⬆️','upside down':'🙃','inside2':'🔒','outside2':'🔓','near2':'📍','far2':'🗺️','close':'📍','distant':'🗺️','adjacent':'🧱','opposite':'↔️','across':'↔️','along':'➡️','around':'↔️','through':'↔️','over2':'⬆️','under2':'⬇️','above':'⬆️','below':'⬇️','top2':'👆','bottom2':'👇','middle':'🎯','center':'🎯','centre':'🎯','edge':'➖','border':'➖','rim':'🎯','brim':'🎩','corner2':'📐','angle':'📐','vertex':'📐','apex3':'📐','axis':'📐','origin':'📍','quadrant':'📐','plane':'📐','line':'➖','curve':'〰️','arc':'🌒','chord':'🎻','diameter':'📏','radius':'📏','circumference':'📏','perimeter':'📐','area':'📐','volume':'📦','capacity':'📦','mass':'⚖️','weight':'⚖️','density':'⚖️','temperature':'🌡️','heat':'🔥','cold':'❄️','energy':'⚡','power':'⚡','force':'💪','motion':'🏃','speed':'🏎️','velocity':'🏎️','acceleration':'🚀','momentum':'🏉','inertia':'🚗','friction':'⚙️','drag':'🪂','lift':'🛫','thrust':'🚀','gravity':'🌍','weight2':'⚖️','pressure':'⚙️','torque':'⚙️','lever':'🪓','fulcrum':'🪓','gear':'⚙️','pulley':'⚙️','wheel':'🛞','axle':'🛞','crank':'⚙️','cam':'⚙️','spring':'⚙️','coil':'⚙️','magnet':'🧲','pole':'🧲','north':'🧭','south':'🧭','east':'🧭','west':'🧭','latitude':'🧭','longitude':'🧭','map':'🗺️','compass':'🧭','globe':'🌍','atlas':'🗺️','route':'🗺️','path':'🗺️','trail':'🗺️','way':'🗺️','direction':'🧭','bearing':'🧭','heading':'🧭','course':'🧭','voyage':'🚢','journey':'🧳','trip':'✈️','tour':'🗺️','commute':'🚗','transit':'🚌','transfer':'🚌','transplant':'🚌','detour':'🗺️','byway':'🗺️','passage':'🚪','corridor':'🚪','hallway':'🚪','walkway':'🚪','catwalk':'🚪','runway':'🛫','walkway2':'🚪','boardwalk':'🚪','footpath':'🚶','track':'🚶','pathway':'🚶','lane':'🛣️','thoroughfare':'🛣️','avenue':'🛣️','boulevard':'🛣️','drive':'🛣️','crescent':'🌙','circle':'⭕','square':'🟩','triangle':'🔺','rectangle':'🟦','oval':'🥚','rhombus':'🔶','parallelogram':'🔶','trapezoid':'🔶','pentagon':'🔯','hexagon':'⬢','heptagon':'⬡','octagon':'⬣','nonagon':'⬣','decagon':'⬣','polygon':'⬢','prism':'🔷','pyramid':'🔺','cone':'🍦','cylinder':'🥫','sphere':'⚪','hemisphere':'⚪','dome':'🏛️','cylinder2':'🥫','cuboid':'📦','cube':'📦','cubed':'📦','solid2':'📦','flat':'🟦','thin2':'📏','thick':'📏','slender':'📏','slim':'📏','stocky':'🧍','stout':'🧍','sturdy':'🧍','robust':'🧍','stout2':'🧍','husky':'🦴','stout3':'🧍','stocky2':'🧍','chubby':'🐷','plump':'🍐','plump2':'🍐','fat':'🐷','lean':'🐕','thin3':'📏','gaunt':'🧍','scrawny':'🧍','skinny':'🧍','emaciated':'🧍','starving':'🍽️','hungry2':'🍽️','starved':'🍽️','famished':'🍽️','ravenous':'🦷','peckish':'🍽️','hunger':'🍽️','hunger2':'🍽️','famished2':'🍽️','starve':'🍽️','diet':'🥬','fasting':'🥬','juicing':'🧃','eating':'🍽️','consumption':'🍽️','digesting':'🧪','metabolizing':'🧪','excreting':'🧪','absorbing':'🧪','assimilating':'🧪','nourishing':'🥬','fueling':'⚡','energetize':'⚡','energize':'⚡','revitalize':'✨','recharge':'🔋','replenish':'📦','restock':'📦','replenish2':'📦','refill':'📦','top up':'⛽','refuel':'⛽','recharge2':'🔋','reload':'🔄','recharge3':'🔋','boost':'🚀','amplify':'📢','intensify':'🔥','strengthen':'💪','harden':'🪨','thicken':'📏','toughen':'🧵','stiffen':'🧵','firm up':'💪','firm2':'💪','soften':'🧸','slacken':'🧵','loosen':'🧵','unbuckle':'🧷','unbutton':'👕','untie':'🪢','undo':'↩️','unzip':'👖','unfasten':'🧷','release':'🕊️','free':'🕊️','liberate':'🕊️','emancipate':'🕊️','discharge':'📄','dismiss':'👋','disband':'📄','dissolve':'🫗','melting3':'🧊','fuse':'🔥','weld':'🔥','solder':'🔥','braze':'🔥','adhere':'🩹','cling':'🧲','stick':'🩹','grasp':'🤝','grip':'🤝','clench':'✊','clutch':'🫱','clamp':'🗜️','clamp2':'🗜️','cramp':'🗜️','vice':'🗜️','pincer':'🗜️','tweezer':'🗜️','tongs':'🗜️','pliers':'🗜️','spanner':'🔧','spanner2':'🔧','wrench':'🔧','hammer2':'🔨','chisel':'🔨','chisel2':'🔨','adze':'🔨','sledge':'🔨','gavel':'🔨','gavel2':'🔨','mallet':'🔨','drill':'🔩','auger':'🔩','bit':'🔩','tap':'🔩','tap2':'🔩','reamer':'🔩','reamer2':'🔩','turner':'🔩','turner2':'🔩','lathe':'🔩','milling':'🔩','milling2':'🔩','milled':'🔩','ground':'⚙️','lathework':'🔩','carving':'🪵','carve':'🪵','engraving':'✒️','etching':'✒️','engraving2':'✒️','engraver':'✒️','engraver2':'✒️','engrave':'✒️','engrave2':'✒️','imprint':'🔏','stamping2':'🔏','stamp':'🔏','seal':'🔏','wax':'🕯️','wax2':'🕯️','waxing':'🕯️','waxed':'🕯️','sealed':'🔏','stamp2':'🔏','postmark':'🔏','postmark2':'🔏','post':'📮','mail':'✉️','postage':'📮','stamps':'📮','postcard':'✉️','letter':'✉️','envelope':'✉️','correspondence':'✉️','correspond':'✉️','corresponding':'✉️','writing3':'✍️','scribbling2':'✍️','scribble':'✍️','scrawl':'✍️','scrawl2':'✍️','scribbled':'✍️','drew':'✏️','drawing2':'✏️','sketch':'✏️','sketch2':'✏️','sketched':'✏️','picturing':'🖼️','picture2':'🖼️','picturing2':'🖼️','imagining':'💭','imagine':'💭','daydream':'💭','daydreaming':'💭','daydreamed':'💭','visioning':'🔮','envisage':'🔮','envisaging':'🔮','envisaged':'🔮','foresee':'🔮','foreseeing':'🔮','foreseen':'🔮','predicting':'🔮','predicted':'🔮','predicts':'🔮','predict':'🔮','prediction':'🔮','forecast':'🔮','forecasting':'🔮','forecasted':'🔮','forecasted2':'🔮','forecasts':'🔮','forecast2':'🔮','cast':'🔮','prognosis':'🔮','prognosticate':'🔮','prognosticating':'🔮','prognosticated':'🔮','augur':'🔮','auguring':'🔮','augured':'🔮','divination':'🔮','divining':'🔮','divined':'🔮','scrying':'🔮','scry':'🔮','scryed':'🔮','scrying2':'🔮','scry2':'🔮','clairvoyance':'🔮','clairvoyant':'🔮','precognition':'🔮','precognitive':'🔮','farseer':'🔮','farsighted':'🔮','far-sighted':'🔮','farseeing':'🔮','farsees':'🔮','forethought':'🔮','foresighted':'🔮','foresight':'🔮','prescience':'🔮','prescient':'🔮','prophesize':'🔮','prophesying':'🔮','prophesied':'🔮','prophet':'🔮','oracle':'🔮','prophecy':'🔮','prophetic':'🔮','prophet2':'🔮','seer':'🔮','soothsayer':'🔮','soothsaying':'🔮','soothsayered':'🔮','seer2':'🔮','teller':'🔮','foretell':'🔮','foretelling':'🔮','foretold':'🔮','told':'💬','telling':'💬','tell':'💬','narrate':'💬','narrating':'💬','narrated':'💬','narrates':'💬','narrator':'💬','recount':'💬','recounting':'💬','recounted':'💬','recounts':'💬','recount2':'💬','recount3':'💬','recount4':'💬','recount5':'💬','recount6':'💬','recount7':'💬','recount8':'💬','recount9':'💬','recount10':'💬',
+    };
   var em=emojiMap[w]||'📷';
   return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f0fdf9" rx="12"/><text x="50" y="62" text-anchor="middle" font-size="48">'+em+'</text><text x="50" y="90" text-anchor="middle" font-size="11" fill="#047857" font-family="sans-serif">'+w+'</text></svg>');
 }
 window.engEmojiFallback = engEmojiFallback;
 window.engPhotoUrl = engPhotoUrl;
+window.ENG_PHOTO_MODE = window.ENG_PHOTO_MODE || 'photo'; // 默认真实照片(失败回退 emoji)；改 'emoji' 可全局降级
 window.ENG_PHOTO_MAP = ENG_PHOTO_MAP;
 let _speakUnlocked = false, _speakVoicesReady = false, _pendingSpeak = null;
 // 语音播报：兼容移动端，预加载语音列表 + resume 防暂停 + 儿童友好语调 + 优先英文女声
@@ -6506,18 +6544,20 @@ function renderSpeak(){
   const deepseekOK = !!(S.apiConfig && S.apiConfig.deepseekKey);
   return `
     <style id="seStyle">
-      .se-left{display:flex;flex-direction:column;gap:8px}
+      .se-left{display:flex;flex-direction:column;gap:8px;max-height:600px;overflow:hidden}
       .se-section-title{font-size:13px;font-weight:800;color:var(--navy);padding:0 4px;margin-bottom:2px}
-      .se-scenarios{display:flex;flex-direction:column;gap:8px}
-      .se-scenario-card{display:flex;gap:10px;align-items:center;background:white;border-radius:12px;padding:10px 12px;box-shadow:var(--card-shadow);cursor:pointer;transition:all .2s;border:2px solid transparent}
+      .se-scenarios{display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;min-height:0;padding-right:4px}
+      .se-scenarios::-webkit-scrollbar{width:4px}
+      .se-scenarios::-webkit-scrollbar-thumb{background:var(--teal-soft);border-radius:4px}
+      .se-scenario-card{display:flex;gap:8px;align-items:center;background:white;border-radius:10px;padding:7px 10px;box-shadow:var(--card-shadow);cursor:pointer;transition:all .2s;border:2px solid transparent}
       .se-scenario-card:hover{transform:translateY(-1px);border-color:var(--teal-soft)}
       .se-scenario-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(37,112,232,.06))}
       .se-sc-icon{font-size:20px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--teal-soft);border-radius:10px;flex-shrink:0}
       .se-sc-body{flex:1;min-width:0}
       .se-sc-title{font-size:13px;font-weight:700;color:var(--navy)}
-      .se-sc-desc{font-size:11px;color:var(--text-2);margin-top:1px}
+      .se-sc-desc{font-size:10px;color:var(--text-2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
       .se-sc-level{font-size:10px;font-weight:800;color:white;background:var(--yellow);padding:2px 6px;border-radius:8px;flex-shrink:0}
-      .se-teachers{display:flex;flex-direction:column;gap:8px}
+      .se-teachers{display:flex;flex-direction:column;gap:8px;padding-top:8px}
       .se-teacher-card{display:flex;gap:10px;align-items:center;background:white;border-radius:12px;padding:8px 10px;box-shadow:var(--card-shadow);cursor:pointer;transition:all .2s;border:2px solid transparent}
       .se-teacher-card:hover{border-color:var(--teal-soft)}
       .se-teacher-card.active{border-color:var(--teal);background:linear-gradient(135deg,#fff,rgba(37,112,232,.05))}
@@ -6564,7 +6604,7 @@ function renderSpeak(){
             </div>
           `).join('')}
         </div>
-        <div class="se-section-title" style="margin-top:14px">👩‍🏫 选择老师 ${deepseekOK?'<span style="font-size:10px;color:var(--teal);font-weight:600">AI已启用</span>':'<span style="font-size:10px;color:var(--yellow-600);font-weight:600">降级模式</span>'}</div>
+        <div class="se-section-title" style="margin-top:6px;position:sticky;top:0;z-index:2;background:#fff;padding:6px 4px">👩‍🏫 选择老师 ${deepseekOK?'<span style="font-size:10px;color:var(--teal);font-weight:600">AI已启用</span>':'<span style="font-size:10px;color:var(--yellow-600);font-weight:600">降级模式</span>'}</div>
         <div class="se-teachers">
           ${Object.keys(teachers).map(tid=>{
             const t=teachers[tid];
@@ -9084,52 +9124,52 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js"></script>
-<script src="data/math-reverse-model.js?v=20260917c"></script>
-<script src="data/math-daily-bank.js"></script>
-<script src="data/math-chain-map.js?v=20260910a"></script>
-<script src="data/english-vocab.js"></script>
-<script src="data/english-phonics.js"></script>
-<script src="data/english-listening.js"></script>
-<script src="data/english-grammar.js"></script>
-<script src="data/english-scenarios.js"></script>
-<script src="data/english-rubric.js"></script>
+<script src="data/math-data-core.js?v=20260917d"></script>
+<script src="data/math-reverse-model.js?v=20260917d"></script>
+<script src="data/math-daily-bank.js?v=20260917d"></script>
+<script src="data/math-chain-map.js?v=20260917d"></script>
+<script src="data/english-vocab.js?v=20260917d"></script>
+<script src="data/english-phonics.js?v=20260917d"></script>
+<script src="data/english-listening.js?v=20260917d"></script>
+<script src="data/english-grammar.js?v=20260917d"></script>
+<script src="data/english-scenarios.js?v=20260917d"></script>
+<script src="data/english-rubric.js?v=20260917d"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js"></script>
-<script src="engine/usage-metrics.js?v=20260910a"></script>
-<script src="engine/mic-permission.js"></script>
-<script src="engine/scene-manager.js"></script>
-<script src="engine/math-visual-v5.js?v=20260806b"></script>
-<script src="engine/math-manipulative.js?v=20260909a"></script>
-<script src="engine/math-geometry-3d.js?v=20260909a"></script>
-<script src="engine/russian-questioning.js"></script>
-<script src="engine/reverse-model-judge.js?v=20260917c"></script>
-<script src="engine/parent-panel.js"></script>
-<script src="engine/cloud-tts.js"></script>
-<script src="engine/neural-tts.js"></script>
-<script src="engine/asr.js"></script>
-<script src="data/grade-limits.js"></script>
-<script src="engine/math-kernel.js"></script>
-<script src="engine/listening-math.js"></script>
+<script src="engine/achievements.js?v=20260917d"></script>
+<script src="engine/usage-metrics.js?v=20260917d"></script>
+<script src="engine/mic-permission.js?v=20260917d"></script>
+<script src="engine/scene-manager.js?v=20260917d"></script>
+<script src="engine/math-visual-v5.js?v=20260917d"></script>
+<script src="engine/math-manipulative.js?v=20260917d"></script>
+<script src="engine/math-geometry-3d.js?v=20260917d"></script>
+<script src="engine/russian-questioning.js?v=20260917d"></script>
+<script src="engine/reverse-model-judge.js?v=20260917d"></script>
+<script src="engine/parent-panel.js?v=20260917d"></script>
+<script src="engine/cloud-tts.js?v=20260917d"></script>
+<script src="engine/neural-tts.js?v=20260917d"></script>
+<script src="engine/asr.js?v=20260917d"></script>
+<script src="data/grade-limits.js?v=20260917d"></script>
+<script src="engine/math-kernel.js?v=20260917d"></script>
+<script src="engine/listening-math.js?v=20260917d"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/math-flow-v5.js?v=20260806e"></script>
-<script src="engine/math-diagram-master.js?v=20260910a"></script>
-<script src="engine/diagram-followup.js?v=20260917c"></script>
-<script src="engine/math-diagnostic.js?v=20260910a"></script>
-<script src="engine/speak-engine-v5.js"></script>
-<script src="engine/english-flow-v5.js"></script>
-<script src="engine/weakness-detector-v5.js"></script>
-<script src="engine/progress-tracker-v5.js"></script>
+<script src="engine/math-flow-v5.js?v=20260917d"></script>
+<script src="engine/math-diagram-master.js?v=20260917d"></script>
+<script src="engine/diagram-followup.js?v=20260917d"></script>
+<script src="engine/math-diagnostic.js?v=20260917d"></script>
+<script src="engine/speak-engine-v5.js?v=20260917d"></script>
+<script src="engine/english-flow-v5.js?v=20260917d"></script>
+<script src="engine/weakness-detector-v5.js?v=20260917d"></script>
+<script src="engine/progress-tracker-v5.js?v=20260917d"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js"></script>
-<script src="data/math-2a-2b.js"></script>
-<script src="data/math-3-6-extend.js"></script>
-<script src="data/speak-8-new.js"></script>
-<script src="data/vocab-themes.js"></script>
-<script src="data/word-dict.js"></script>
-<script src="data/storybooks.js"></script>
-<script src="data/tpr-action-house.js"></script>
-<script src="data/listening-radio.js"></script>
+<script src="engine/spaced-review-v5.js?v=20260917d"></script>
+<script src="data/math-2a-2b.js?v=20260917d"></script>
+<script src="data/math-3-6-extend.js?v=20260917d"></script>
+<script src="data/speak-8-new.js?v=20260917d"></script>
+<script src="data/vocab-themes.js?v=20260917d"></script>
+<script src="data/word-dict.js?v=20260917d"></script>
+<script src="data/storybooks.js?v=20260917d"></script>
+<script src="data/tpr-action-house.js?v=20260917d"></script>
+<script src="data/listening-radio.js?v=20260917d"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE

@@ -233,6 +233,33 @@ window.MathVisualV5 = {
   // === 6 种基础渲染器（与原 MathVisual 保持一致，向下兼容） ===
   // ============================================================
 
+  // 从算式推导条形（部分-整体）：支持 a+b=c、a×b=c、a−b=c。未知则返回 null。
+  _deriveBarParts(problem, total){
+    try{
+      const f = String((problem && problem.formula) || '');
+      const ans = (problem && problem.answer != null) ? Number(problem.answer) : null;
+      const pickT = () => { if(total != null && total > 0) return total; if(ans != null && ans > 0) return ans; return null; };
+      let m;
+      if((m = f.match(/(\d+(?:\.\d+)?)\s*[+＋]\s*(\d+(?:\.\d+)?)/))) {
+        const a = Number(m[1]), b = Number(m[2]);
+        return { parts:[{label:'部分 A', val:a},{label:'部分 B', val:b}], total: pickT() || (a+b) };
+      }
+      if((m = f.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/))) {
+        const a = Number(m[1]), b = Number(m[2]);
+        const reps = a <= b ? a : b, unit = a <= b ? b : a;
+        const parts = [];
+        for(let i=0;i<Math.min(reps,6);i++) parts.push({label:'第'+(i+1)+'段', val:unit});
+        return { parts: parts, total: unit * reps };
+      }
+      if((m = f.match(/(\d+(?:\.\d+)?)\s*[−-]\s*(\d+(?:\.\d+)?)/))) {
+        const a = Number(m[1]), b = Number(m[2]);
+        const rem = (ans != null) ? ans : (a - b);
+        return { parts:[{label:'整体', val:a},{label:'去掉', val:b},{label:'剩下', val:rem}], total: a };
+      }
+      if(ans != null && ans > 0) return { parts:[{label:'结果', val:ans}], total: ans };
+      return null;
+    }catch(e){ return null; }
+  },
   // 1. 条形模型 —— 加减法 / 部分整体关系
   // data: {total, parts:[{label,val,color}]}
   barModel(data, problem){
@@ -242,8 +269,16 @@ window.MathVisualV5 = {
       data.parts = data.bars.map(b => ({label: b.label, val: (b.val != null ? b.val : b.value), color: b.color}));
       if(data.total == null) data.total = data.parts.reduce((s,p)=>s+(p.val||0),0);
     }
-    const parts = (data && data.parts) || [];
-    if(!parts.length) return '<div class="mv-empty">暂无条形数据</div>';
+    // 修复缺陷1：parts 为空时，从算式/答案自动推导"部分-整体"条形，避免无图直接答题
+    const parts0 = (data && data.parts) || [];
+    let total0 = (data && data.total != null) ? data.total : null;
+    let derivedParts = null;
+    if(!parts0.length || !parts0.length){
+      derivedParts = _deriveBarParts(problem, total0);
+      if(derivedParts){ if(!data.parts) data.parts = []; data.parts = derivedParts.map(x=>Object.assign({},x)); }
+    }
+    const parts = data.parts || [];
+    if(!parts.length) return '<div class="mv-empty" style="padding:16px;text-align:center;color:var(--text-3)">📐 这道题没有现成图形，自己画一条线段表示整体，再分段标注。</div>';
     let total = (data.total != null) ? data.total : parts.reduce((s,p)=>s+(p.val||0),0);
     // 鲁棒性：total 缺失/非法时回退为各段之和，避免条形被压成等宽 0/2px
     if(!(total > 0)) total = parts.reduce((s,p)=>s+(p.val||0),0) || 1;

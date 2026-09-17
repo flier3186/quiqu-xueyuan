@@ -1622,19 +1622,28 @@ window.MathFlowV5 = {
       const base = isNaN(a) ? ans : a;
       const distractors = [];
       if(typeof base === 'number'){
-        // 数字题：围绕正确答案生成 ±10、±20、±50、位数错位等干扰项
+        // 数字题：围绕正确答案生成档位差/比例/位数错位等干扰项
+        // 修复缺陷4：最小间距 step0（档位/4）淘汰"差 1/差 50"这类与答案雷同的大数干扰项，
+        // 但保留"位数交换/错位"的易错干扰（它们虽接近答案，但属于真实易错点）
         const step = Math.max(1, Math.pow(10, Math.max(0, String(Math.floor(Math.abs(base))).length-2)));
+        const step0 = Math.max(1, Math.floor(step / 4));
+        const isDigitSwap = v => {
+          try{
+            const t = String(Math.abs(Math.floor(v)));
+            return String(t).split('').sort().join('') === String(String(Math.abs(Math.floor(base)))).slice(0,t.length).split('').sort().join('');
+          }catch(e){ return false; }
+        };
         const seen = new Set([String(base)]);
         const pool = [
           base + step, base - step,
           base + step*2, base - step*2,
           Math.round(base * 1.1), Math.round(base * 0.9),
-          base + 50, base - 50,
           // 易错：位数交换（如 683→638, 863）
           (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[0]+s[2]+s[1])*(base<0?-1:1):base+10;})(),
           (()=>{const s=String(Math.abs(Math.floor(base)));return s.length>=3?Number(s[1]+s[0]+s[2])*(base<0?-1:1):base-10;})()
         ].filter(x => {
           if(x === base || x < 0) return false;
+          if(!isDigitSwap(x) && Math.abs(x - base) < step0) return false; // 大数淘汰"差 50"类雷同项
           const k = String(x);
           if(seen.has(k)) return false;
           seen.add(k);
@@ -1643,13 +1652,14 @@ window.MathFlowV5 = {
         // 选取3个最接近的干扰项
         pool.sort((x,y)=>Math.abs(x-base)-Math.abs(y-base));
         distractors.push(...pool.slice(0,3));
-        // 兜底：若上述策略不足3个，用 +1/+2/+3 补齐
-        let guard = 1;
-        while(distractors.length < 3 && guard < 100){
-          const cand = base + guard;
-          const k = String(cand);
-          if(!seen.has(k) && cand >= 0){ seen.add(k); distractors.push(cand); }
-          guard++;
+        // 兜底：若上述策略不足3个，按档位递进补齐（不再用 +1/+2/+3 制造雷同）
+        let g = step0;
+        while(distractors.length < 3 && g < Math.abs(base) + step*4){
+          for(const cand of [base + g, base - g]){
+            const k = String(cand);
+            if(cand !== base && cand >= 0 && !seen.has(k) && Math.abs(cand - base) >= step0){ seen.add(k); distractors.push(cand); break; }
+          }
+          if(distractors.length < 3) g += step0;
         }
       }else{
         // 非数字题：用原题选项去掉重复后 + 正确答案
@@ -1756,13 +1766,16 @@ window.MathFlowV5 = {
   //   3) 否则才尝试 _reScene，且改写后仍要语义一致：question 里的关键名词必须在改写后的 scene 中出现。
   _renderL3(problem){
     const variant = problem.variants && problem.variants[1] || {};
-    const question = variant.question || '如果情况变化，结果会怎样？';
+    // 修复缺陷4：L3 不再用无信息占位句 + 与题干脱节的母题答案生成雷同干扰项。
+    // 变体缺 question 时退回母题真实题干（与 L2/L4 对齐），选项也随母题，保证“有前提、可选”。
+    const question = variant.question || problem.question;
     let scene = variant.scene || '';
     if(!scene && !(/\d/.test(question))){
       scene = this._reScene(problem.scene, problem.formula, variant.formula || variant.question);
       if(scene && !this._sceneQuestionConsistent(scene, question)) scene = '';
     }
-    const {ans, choices, correctIdx} = this._safeChoices(variant, problem);
+    // 变体无 answer 时改用母题答案生成选项，避免“占位题干 + 母题答案”错位
+    const {ans, choices, correctIdx} = this._safeChoices(variant.answer != null ? variant : problem, problem);
 
     return `<div class="cpa-layer" style="border-left-color:var(--pink);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--pink);color:#fff">STAGE 6 · 阶梯练习 · L3 进阶</span>

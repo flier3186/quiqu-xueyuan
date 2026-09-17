@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260917c';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260917d';
 const ASSETS = [
   '/',
   '/index.html',
@@ -15,6 +15,8 @@ const ASSETS = [
   'data/math-2a-2b.js',
   'data/math-3-6-extend.js',
   'data/math-data-2a.js',
+  'data/math-reverse-model.js',
+  'data/english-rubric.js',
   'data/math-data-2b.js',
   'data/math-data-3a.js',
   'data/math-data-3b.js',
@@ -45,12 +47,15 @@ const ASSETS = [
   'engine/listening-math.js',
   'engine/math-flow-v5.js',
   'engine/math-diagram-master.js',
+  'engine/reverse-model-judge.js',
+  'engine/diagram-followup.js',
   'engine/math-diagnostic.js',
   'engine/math-geometry-3d.js',
   'engine/math-kernel.js',
   'engine/math-manipulative.js',
   'engine/math-visual-v5.js',
   'engine/mic-permission.js',
+  'engine/asr.js',
   'engine/neural-tts.js',
   'engine/parent-panel.js',
   'engine/pet-companion.js',

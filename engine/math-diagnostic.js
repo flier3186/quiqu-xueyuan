@@ -278,6 +278,8 @@
     var cur = current();
     if (!cur) return '<div style="padding:24px;text-align:center">诊断已结束</div>';
     var q = cur.problem || {};
+    var visualHtml = '';
+    try { if (q && q.visualType && q.visualData && root.MathVisualV5 && typeof root.MathVisualV5.render === 'function') { var _vh = root.MathVisualV5.render(q.visualType, q.visualData, q); if (_vh && _vh.indexOf('mv-empty') < 0) visualHtml = _vh; } } catch (e3) {}
     var choices = (q.choices && q.choices.length) ? q.choices : [];
     var opts = choices.map(function (c, i) {
       return '<button onclick="MathDiagnostic.answer(\'' + String(c).replace(/'/g, "\\'") + '\')" ' +
@@ -294,6 +296,7 @@
       '</div>' +
       (q.scene ? '<div style="font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:10px">' + e(q.scene) + '</div>' : '') +
       '<div style="font-size:17px;font-weight:800;color:#12263F;line-height:1.6;margin-bottom:14px">' + e(q.question || q.formula || '') + '</div>' +
+      (visualHtml ? '<div style="margin:12px 0;padding:12px;background:#F0F7FF;border:1px solid rgba(37,112,232,.18);border-radius:12px"><div style="font-size:12px;font-weight:700;color:#2570E8;margin-bottom:6px">👀 看图找线索</div><div style="background:#fff;border-radius:8px;padding:4px">' + visualHtml + '</div></div>' : '') +
       opts +
       fb +
       '</div>';
