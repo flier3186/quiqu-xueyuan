@@ -1,31 +1,38 @@
 {
-  "status": "node-verified-20260917",
+  "status": "node-verified-20260918",
   "meta": {
-    "ts": "2026-09-16T19:57:04.157Z",
-    "fsrsVersion": "fsrs5-quicku-lite-v1",
-    "paramsCount": 17,
+    "ts": "2026-09-17T16:46:22.132Z",
+    "fsrsVersion": "fsrs6-quicku-lite-v1",
+    "paramsCount": 21,
+    "decay": -0.1542,
+    "factor": 0.9803464944134799,
     "days": 21
   },
   "formulaChecks": [
     {
-      "name": "S0(Good)=2.611",
+      "name": "S0(Good)=2.3065",
       "ok": true,
-      "got": 2.611
+      "got": 2.3065
     },
     {
-      "name": "S0(Easy)=18.856",
+      "name": "S0(Easy)=8.2956",
       "ok": true,
-      "got": 18.856
+      "got": 8.2956
     },
     {
-      "name": "D0(Good)∈[1,5]",
+      "name": "D0(Good)≈2.118 且∈[1,10]",
+      "ok": true,
+      "got": 2.118103970459015
+    },
+    {
+      "name": "R(S,S)=0.9 恒等",
+      "ok": true,
+      "got": 0.9
+    },
+    {
+      "name": "R(0,S)=1",
       "ok": true,
       "got": 1
-    },
-    {
-      "name": "R(1,S=2.611,D=1)∈(0.5,1)",
-      "ok": true,
-      "got": 0.9175672802842628
     }
   ],
   "sm2": {
@@ -54,158 +61,179 @@
       {
         "day": 0,
         "rating": 3,
-        "dueInDays": 3,
-        "S": 2.611,
-        "D": 1
+        "dueInDays": 2,
+        "S": 2.307,
+        "D": 2.118,
+        "R": 1
       },
       {
         "day": 1,
         "rating": 3,
-        "dueInDays": 6,
-        "S": 5.506,
-        "D": 1
+        "dueInDays": 11,
+        "S": 10.964,
+        "D": 2.111,
+        "R": 0.909
       },
       {
         "day": 2,
         "rating": 3,
-        "dueInDays": 11,
-        "S": 11.261,
-        "D": 1
+        "dueInDays": 46,
+        "S": 46.28,
+        "D": 2.104,
+        "R": 0.9
       },
       {
         "day": 3,
         "rating": 3,
-        "dueInDays": 22,
-        "S": 21.807,
-        "D": 1
+        "dueInDays": 163,
+        "S": 162.862,
+        "D": 2.097,
+        "R": 0.9
       },
       {
         "day": 4,
         "rating": 3,
-        "dueInDays": 43,
-        "S": 42.611,
-        "D": 1
+        "dueInDays": 497,
+        "S": 497.447,
+        "D": 2.091,
+        "R": 0.9
       },
       {
         "day": 5,
         "rating": 3,
-        "dueInDays": 83,
-        "S": 82.839,
-        "D": 1
+        "dueInDays": 1346,
+        "S": 1345.529,
+        "D": 2.084,
+        "R": 0.9
       },
       {
         "day": 6,
         "rating": 3,
-        "dueInDays": 160,
-        "S": 159.72,
-        "D": 1
+        "dueInDays": 3292,
+        "S": 3292.28,
+        "D": 2.077,
+        "R": 0.9
       },
       {
         "day": 7,
         "rating": 1,
         "dueInDays": 1,
-        "S": 2.214,
-        "D": 1
+        "S": 12.393,
+        "D": 7.381,
+        "R": 0.9
       },
       {
         "day": 8,
         "rating": 3,
-        "dueInDays": 3,
-        "S": 3.251,
-        "D": 1
+        "dueInDays": 14,
+        "S": 14.183,
+        "D": 7.369,
+        "R": 0.988
       },
       {
         "day": 9,
         "rating": 3,
-        "dueInDays": 6,
-        "S": 6.2,
-        "D": 1
+        "dueInDays": 32,
+        "S": 31.855,
+        "D": 7.357,
+        "R": 0.901
       },
       {
         "day": 10,
         "rating": 3,
-        "dueInDays": 12,
-        "S": 12.013,
-        "D": 1
+        "dueInDays": 67,
+        "S": 67.097,
+        "D": 7.345,
+        "R": 0.9
       },
       {
         "day": 11,
         "rating": 3,
-        "dueInDays": 23,
-        "S": 23.48,
-        "D": 1
+        "dueInDays": 133,
+        "S": 132.601,
+        "D": 7.332,
+        "R": 0.9
       },
       {
         "day": 12,
         "rating": 3,
-        "dueInDays": 45,
-        "S": 45.266,
-        "D": 1
+        "dueInDays": 249,
+        "S": 248.918,
+        "D": 7.32,
+        "R": 0.9
       },
       {
         "day": 13,
         "rating": 3,
-        "dueInDays": 87,
-        "S": 87.386,
-        "D": 1
+        "dueInDays": 446,
+        "S": 445.79,
+        "D": 7.308,
+        "R": 0.9
       },
       {
         "day": 14,
         "rating": 3,
-        "dueInDays": 168,
-        "S": 167.954,
-        "D": 1
+        "dueInDays": 767,
+        "S": 766.836,
+        "D": 7.296,
+        "R": 0.9
       },
       {
         "day": 15,
         "rating": 3,
-        "dueInDays": 322,
-        "S": 321.844,
-        "D": 1
+        "dueInDays": 1273,
+        "S": 1272.93,
+        "D": 7.284,
+        "R": 0.9
       },
       {
         "day": 16,
         "rating": 3,
-        "dueInDays": 614,
-        "S": 613.741,
-        "D": 1
+        "dueInDays": 2047,
+        "S": 2047.441,
+        "D": 7.272,
+        "R": 0.9
       },
       {
         "day": 17,
         "rating": 3,
-        "dueInDays": 1165,
-        "S": 1164.624,
-        "D": 1
+        "dueInDays": 3202,
+        "S": 3201.877,
+        "D": 7.26,
+        "R": 0.9
       },
       {
         "day": 18,
         "rating": 3,
-        "dueInDays": 2199,
-        "S": 2199.219,
-        "D": 1
+        "dueInDays": 4883,
+        "S": 4883.351,
+        "D": 7.248,
+        "R": 0.9
       },
       {
         "day": 19,
         "rating": 3,
-        "dueInDays": 4132,
-        "S": 4132.388,
-        "D": 1
+        "dueInDays": 7281,
+        "S": 7281.213,
+        "D": 7.236,
+        "R": 0.9
       },
       {
         "day": 20,
         "rating": 3,
-        "dueInDays": 7728,
-        "S": 7728.406,
-        "D": 1
+        "dueInDays": 10637,
+        "S": 10637.116,
+        "D": 7.224,
+        "R": 0.9
       }
     ],
-    "finalS": 7728.406,
-    "finalD": 1,
-    "finalDue": "2072-10-17T00:00:00.000Z"
+    "finalS": 10637.116,
+    "finalD": 7.224,
+    "finalDue": "2126-05-04T00:00:00.000Z"
   },
   "diff": {
-    "note": "FSRS 基于稳定度 S 动态调度；SM-2 为固定阶梯 [1,3,7,14,30]",
+    "note": "FSRS 基于稳定度 S 动态调度（S=保留率90%的间隔）；SM-2 为固定阶梯 [1,3,7,14,30]",
     "sm2FinalDueDay": 28,
-    "fsrsFinalDueInDays": 7728
+    "fsrsFinalDueInDays": 10637
   }
 }

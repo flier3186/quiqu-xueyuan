@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917e"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917f"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -3536,68 +3536,7 @@ function renderOverview(){
           </button>
         </div>
 
-        <!-- 🔊 发音体检入口（Echo）：一键播中/英各一句并显示命中 voice 名与等级 -->
-        <div style="margin:14px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-          <button onclick="VoiceCore.runCheck('efVoiceCheckOut')" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔊 发音体检</button>
-          <button onclick="CloudTTSPanel.toggle()" style="background:linear-gradient(135deg,#7C5CFF,#2F6BFF);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">🔑 高级语音设置</button>
-          <button onclick="AsrPanel.toggle()" style="background:linear-gradient(135deg,#FF7C5C,#FF5C8A);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:14px;box-shadow:var(--shadow-sm)">语音识别设置</button>
-          <span id="efVoiceCheckOut" style="font-size:12px;color:var(--text-2);line-height:1.6"></span>
-          <div id="cloudTtsPanel" style="display:none;margin-top:10px;padding:14px 16px;background:#fff;border:1.5px solid rgba(124,92,255,.35);border-radius:14px;max-width:520px;box-shadow:var(--shadow-md)">
-            <div style="font-size:14px;font-weight:800;color:#7C5CFF;margin-bottom:6px">☁️ 云端情感语音（消灭机械音）</div>
-            <div style="font-size:12px;color:var(--text-2);line-height:1.7;margin-bottom:8px">粘贴 SiliconFlow API Key（<a href="https://cloud.siliconflow.cn/account/ak" target="_blank" rel="noopener">cloud.siliconflow.cn</a> 免费注册送额度），孩子所有发音立即变成有感情起伏的高级 AI 语音。Key 只存在本机浏览器。</div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
-              <input id="cttsKey" type="password" placeholder="sk-..." style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #d8e0ee;border-radius:10px;font-size:13px">
-              <button onclick="CloudTTSPanel.save()" style="background:#7C5CFF;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer">保存</button>
-              <button onclick="CloudTTSPanel.clearKey()" style="background:#eef2f9;color:#5a6a8a;border:none;border-radius:10px;padding:9px 12px;cursor:pointer">清除</button>
-            </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--text-2)">
-              <label>中文音色 <select id="cttsVoiceZh" style="padding:6px;border:1px solid #d8e0ee;border-radius:8px">
-                <option value="FunAudioLLM/CosyVoice2-0.5B:diana">Diana(女·欢快)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:claire">Claire(女·温柔)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:bella">Bella(女·激情)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:anna">Anna(女·沉稳)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:david">David(男·欢快)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·沉稳)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:charles">Charles(男·磁性)</option>
-              </select></label>
-              <label>英文音色 <select id="cttsVoiceEn" style="padding:6px;border:1px solid #d8e0ee;border-radius:8px">
-                <option value="FunAudioLLM/CosyVoice2-0.5B:anna">Anna(女·沉稳)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:diana">Diana(女·欢快)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:claire">Claire(女·温柔)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:bella">Bella(女·激情)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:alex">Alex(男·沉稳)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:david">David(男·欢快)</option>
-                <option value="FunAudioLLM/CosyVoice2-0.5B:benjamin">Benjamin(男·低沉)</option>
-              </select></label>
-              <label><input type="checkbox" id="cttsEmotion" checked> 情感语气</label>
-              <button onclick="CloudTTSPanel.test()" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:8px;padding:6px 14px;font-weight:800;cursor:pointer">▶ 试听</button>
-            </div>
-            <div id="cttsStatus" style="font-size:12px;color:var(--text-2);margin-top:8px;line-height:1.6"></div>
-          </div>
-          <div id="asrPanel" style="display:none;margin-top:10px;padding:14px 16px;background:#fff;border:1.5px solid rgba(124,92,255,.35);border-radius:14px;max-width:520px;box-shadow:var(--shadow-md)">
-            <div style="font-size:14px;font-weight:800;color:#FF5C8A;margin-bottom:6px">🎤 语音识别（iOS 兜底）</div>
-            <div style="font-size:12px;color:var(--text-2);line-height:1.7;margin-bottom:8px">默认零成本 Web Speech（浏览器内置）；iOS Safari 不支持 Web Speech，配讯飞 / DeepSeek 付费 key 兜底。Key 只存本机浏览器。</div>
-            <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">供应商
-              <select id="asrProvider" onchange="AsrPanel.refresh()" style="padding:6px 8px;border:1px solid #d8e0ee;border-radius:8px;margin-left:4px">
-                <option value="iflytek">讯飞 iFlytek</option>
-                <option value="deepseek">DeepSeek（Whisper-1）</option>
-              </select>
-            </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
-              <input id="asrKey" type="password" placeholder="粘贴 API Key…" style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #d8e0ee;border-radius:10px;font-size:13px">
-              <button onclick="AsrPanel.save()" style="background:#FF5C8A;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer">保存</button>
-              <button onclick="AsrPanel.test()" style="background:linear-gradient(135deg,var(--teal),var(--yellow));color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer">▶ 测试</button>
-              <button onclick="AsrPanel.clear()" style="background:#eef2f9;color:#5a6a8a;border:none;border-radius:10px;padding:9px 12px;cursor:pointer">清除</button>
-            </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:12px;color:var(--text-2)">
-              <span>讯飞 relay（REST 需服务端签名，纯前端需自备轻量 relay；可不填则讯飞不可用）</span>
-              <input id="asrRelay" type="text" placeholder="https://your-relay.example.com" style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #d8e0ee;border-radius:10px;font-size:13px">
-            </div>
-            <div id="asrStatus" style="font-size:12px;color:var(--text-2);margin-top:6px;line-height:1.6"></div>
-          </div>
-        </div>
-
-        <!-- Bento Grid 学习驾驶舱 -->
+                <!-- Bento Grid 学习驾驶舱 -->
         <div class="bento-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch;margin-bottom:20px">
 
           <!-- 卡片1：今日学习任务（主卡，span 7，跨2行） -->
@@ -6835,7 +6774,7 @@ function renderPet(){
         <div class="pet-stats-card">
           <h4>🏆 成就墙</h4>
           <div class="achievement-wall">
-            ${[['连续7天',true],['100词汇',true],['计算达人',true],['首个满分',true],['1000星',true],['口语王者',false],['SSR进化',false],['满级毕业',false]].map(([n,u])=>`<div class="achv-item ${u?'unlocked':'locked'}"><span class="em">⭐</span><div>${n}</div></div>`).join('')}
+            ${(function(){const _has=b=>Array.isArray(S.badges)&&S.badges.some(x=>x.id===b);const _mDone=v=>(S.math&&S.math.moduleProgress&&Object.values(S.math.moduleProgress).filter(x=>x>=v).length)||0;const _lvl=(S.pet&&S.pet.level)||0;const walls=[['连续7天',_has('streak-7')||_has('all-streak-7')||_has('math-streak-7')||_has('eng-streak-7')],['100词汇',_has('eng-vocab-100')||((S.eng||{}).learnedWords||0)>=100],['计算达人',_mDone(100)>=1||_has('math-unit-3a-1')],['首个满分',_has('math-perfect')],['1000星',(S.overview&&S.overview.stars||0)>=1000],['口语王者',_has('speak-5')||_has('speak-30')],['SSR进化',_lvl>=20],['满级毕业',_lvl>=30||_has('math-all-3a')]];return walls.map(([n,u])=>`<div class="achv-item ${u?'unlocked':'locked'}"><span class="em">⭐</span><div>${n}</div></div>`).join('');})()}
           </div>
         </div>
       </div>
@@ -8044,6 +7983,37 @@ function renderParentDashboard(pt){
             </div>
           </div>
         </div>
+        <div class="report-card">
+          <div style="position:relative;z-index:2;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.2em;opacity:.8;margin-bottom:4px">VOICE ASR</div>
+            <h3 style="margin:0">🎤 语音识别设置（iOS 兜底）</h3>
+            <p style="font-size:12px;color:var(--text-2);margin:6px 0 0">默认零成本 Web Speech（浏览器内置）；iOS Safari 不支持 Web Speech，配讯飞 / DeepSeek 付费 key 兜底。Key 只存本机浏览器。</p>
+          </div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+              <label style="font-size:12px;font-weight:700;color:var(--navy)">供应商
+                <select id="asrProvider" onchange="AsrPanel.refresh()" style="padding:6px 8px;border:1px solid #d8e0ee;border-radius:8px;margin-left:4px">
+                  <option value="iflytek">讯飞 iFlytek</option>
+                  <option value="deepseek">DeepSeek（Whisper-1）</option>
+                </select>
+              </label>
+              <input id="asrKey" type="password" placeholder="粘贴 API Key…" style="flex:1;min-width:200px;padding:9px 12px;border:1.5px solid var(--ink-200);border-radius:10px;font-size:13px">
+              <button class="btn btn-yellow" onclick="AsrPanel.save()" style="padding:10px 16px;font-size:13px;font-weight:700">💾 保存</button>
+              <button class="btn" onclick="AsrPanel.test()" style="padding:10px 16px;font-size:13px;font-weight:700">▶ 测试</button>
+              <button class="btn btn-ghost" onclick="AsrPanel.clear()" style="padding:10px 12px;font-size:12px;white-space:nowrap">🗑 清除</button>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--text-2)">
+              <span style="font-weight:700;color:var(--navy)">讯飞 relay（纯前端需自备轻量 relay，可不填则讯飞不可用）</span>
+              <input id="asrRelay" type="text" placeholder="https://your-relay.example.com" style="flex:1;min-width:220px;padding:8px 10px;border:1.5px solid var(--ink-200);border-radius:8px;font-size:12px">
+            </div>
+            <div id="asrStatus" style="font-size:12px;color:var(--text-2);line-height:1.6"></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px dashed var(--ink-100);padding-top:12px">
+              <button class="btn btn-ghost" onclick="VoiceCore.runCheck('efVoiceCheckOut')" style="padding:10px 14px;font-size:12px;font-weight:700">🔊 发音体检</button>
+              <span style="font-size:12px;color:var(--text-2)">播一句中文 + 一句英文，确认当前音色是否正常</span>
+              <span id="efVoiceCheckOut" style="font-size:12px;color:var(--text-2);line-height:1.6;width:100%"></span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="parent-section" data-psec="errors">
@@ -8078,7 +8048,7 @@ function renderParentDashboard(pt){
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
   if(pt==='overview'&&typeof echarts!=='undefined'){setTimeout(()=>initParentCharts(),80);}
-  if(pt==='ai') ensureAiPanelBound();
+  if(pt==='ai'){ ensureAiPanelBound(); try{ AsrPanel.refresh(); }catch(e){} }
   // 事件委托：避免每次渲染重复绑定
   let parentBodyEl=$('#parentBody');
   if(parentBodyEl){
@@ -8106,7 +8076,7 @@ function switchParentTab(pt){
   if(pt==='profiles') renderProfiles();
   if(pt==='math' && typeof ParentPanel!=='undefined'){const c=$('#parentMathSettings');if(c)c.innerHTML=ParentPanel.render();}
   if(pt==='overview'&&typeof echarts!=='undefined') setTimeout(()=>initParentCharts(),80);
-  if(pt==='ai') ensureAiPanelBound();
+  if(pt==='ai'){ ensureAiPanelBound(); try{ AsrPanel.refresh(); }catch(e){} }
 }
 function ensureAiPanelBound(){
   const inp=$('#deepseekKeyInput');
@@ -8285,7 +8255,7 @@ async function testDeepseekKey(){
     if(resp.ok){
       const data=await resp.json();
       const reply=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
-      showDeepseekTestResult('ok','✅ 连接成功！AI 回复：<b>'+(reply||'OK')+'</b><br>点击"保存"即可启用 AI 自由对话。');
+      showDeepseekTestResult('ok','✅ 连接成功！AI 回复：<b>'+escapeAttr(reply||'OK')+'</b><br>点击"保存"即可启用 AI 自由对话。');
       speak(reply||'OK');
     }else if(resp.status===401){
       showDeepseekTestResult('error','❌ 认证失败：这不是有效的 DeepSeek Key<br><span style="font-weight:400">· 如果你想配置的是<b>发音</b>（SiliconFlow Key），请滚动到下方"🔊 高级语音"卡片粘贴<br>· 如果是 DeepSeek Key，请到 <a href="https://platform.deepseek.com" target="_blank" style="color:inherit;text-decoration:underline">platform.deepseek.com</a> 重新生成</span>');
@@ -9124,52 +9094,52 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260917e"></script>
-<script src="data/math-reverse-model.js?v=20260917e"></script>
-<script src="data/math-daily-bank.js?v=20260917e"></script>
-<script src="data/math-chain-map.js?v=20260917e"></script>
-<script src="data/english-vocab.js?v=20260917e"></script>
-<script src="data/english-phonics.js?v=20260917e"></script>
-<script src="data/english-listening.js?v=20260917e"></script>
-<script src="data/english-grammar.js?v=20260917e"></script>
-<script src="data/english-scenarios.js?v=20260917e"></script>
-<script src="data/english-rubric.js?v=20260917e"></script>
+<script src="data/math-data-core.js?v=20260917f"></script>
+<script src="data/math-reverse-model.js?v=20260917f"></script>
+<script src="data/math-daily-bank.js?v=20260917f"></script>
+<script src="data/math-chain-map.js?v=20260917f"></script>
+<script src="data/english-vocab.js?v=20260917f"></script>
+<script src="data/english-phonics.js?v=20260917f"></script>
+<script src="data/english-listening.js?v=20260917f"></script>
+<script src="data/english-grammar.js?v=20260917f"></script>
+<script src="data/english-scenarios.js?v=20260917f"></script>
+<script src="data/english-rubric.js?v=20260917f"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260917e"></script>
-<script src="engine/usage-metrics.js?v=20260917e"></script>
-<script src="engine/mic-permission.js?v=20260917e"></script>
-<script src="engine/scene-manager.js?v=20260917e"></script>
-<script src="engine/math-visual-v5.js?v=20260917e"></script>
-<script src="engine/math-manipulative.js?v=20260917e"></script>
-<script src="engine/math-geometry-3d.js?v=20260917e"></script>
-<script src="engine/russian-questioning.js?v=20260917e"></script>
-<script src="engine/reverse-model-judge.js?v=20260917e"></script>
-<script src="engine/parent-panel.js?v=20260917e"></script>
-<script src="engine/cloud-tts.js?v=20260917e"></script>
-<script src="engine/neural-tts.js?v=20260917e"></script>
-<script src="engine/asr.js?v=20260917e"></script>
-<script src="data/grade-limits.js?v=20260917e"></script>
-<script src="engine/math-kernel.js?v=20260917e"></script>
-<script src="engine/listening-math.js?v=20260917e"></script>
+<script src="engine/achievements.js?v=20260917f"></script>
+<script src="engine/usage-metrics.js?v=20260917f"></script>
+<script src="engine/mic-permission.js?v=20260917f"></script>
+<script src="engine/scene-manager.js?v=20260917f"></script>
+<script src="engine/math-visual-v5.js?v=20260917f"></script>
+<script src="engine/math-manipulative.js?v=20260917f"></script>
+<script src="engine/math-geometry-3d.js?v=20260917f"></script>
+<script src="engine/russian-questioning.js?v=20260917f"></script>
+<script src="engine/reverse-model-judge.js?v=20260917f"></script>
+<script src="engine/parent-panel.js?v=20260917f"></script>
+<script src="engine/cloud-tts.js?v=20260917f"></script>
+<script src="engine/neural-tts.js?v=20260917f"></script>
+<script src="engine/asr.js?v=20260917f"></script>
+<script src="data/grade-limits.js?v=20260917f"></script>
+<script src="engine/math-kernel.js?v=20260917f"></script>
+<script src="engine/listening-math.js?v=20260917f"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/math-flow-v5.js?v=20260917e"></script>
-<script src="engine/math-diagram-master.js?v=20260917e"></script>
-<script src="engine/diagram-followup.js?v=20260917e"></script>
-<script src="engine/math-diagnostic.js?v=20260917e"></script>
-<script src="engine/speak-engine-v5.js?v=20260917e"></script>
-<script src="engine/english-flow-v5.js?v=20260917e"></script>
-<script src="engine/weakness-detector-v5.js?v=20260917e"></script>
-<script src="engine/progress-tracker-v5.js?v=20260917e"></script>
+<script src="engine/math-flow-v5.js?v=20260917f"></script>
+<script src="engine/math-diagram-master.js?v=20260917f"></script>
+<script src="engine/diagram-followup.js?v=20260917f"></script>
+<script src="engine/math-diagnostic.js?v=20260917f"></script>
+<script src="engine/speak-engine-v5.js?v=20260917f"></script>
+<script src="engine/english-flow-v5.js?v=20260917f"></script>
+<script src="engine/weakness-detector-v5.js?v=20260917f"></script>
+<script src="engine/progress-tracker-v5.js?v=20260917f"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260917e"></script>
-<script src="data/math-2a-2b.js?v=20260917e"></script>
-<script src="data/math-3-6-extend.js?v=20260917e"></script>
-<script src="data/speak-8-new.js?v=20260917e"></script>
-<script src="data/vocab-themes.js?v=20260917e"></script>
-<script src="data/word-dict.js?v=20260917e"></script>
-<script src="data/storybooks.js?v=20260917e"></script>
-<script src="data/tpr-action-house.js?v=20260917e"></script>
-<script src="data/listening-radio.js?v=20260917e"></script>
+<script src="engine/spaced-review-v5.js?v=20260917f"></script>
+<script src="data/math-2a-2b.js?v=20260917f"></script>
+<script src="data/math-3-6-extend.js?v=20260917f"></script>
+<script src="data/speak-8-new.js?v=20260917f"></script>
+<script src="data/vocab-themes.js?v=20260917f"></script>
+<script src="data/word-dict.js?v=20260917f"></script>
+<script src="data/storybooks.js?v=20260917f"></script>
+<script src="data/tpr-action-house.js?v=20260917f"></script>
+<script src="data/listening-radio.js?v=20260917f"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE

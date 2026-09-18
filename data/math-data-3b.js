@@ -2681,21 +2681,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：85 ÷ 3 = ?=20"
+                    "explain": "除法：85 ÷ 3 = ?=28"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表28，合起来就是85",
+                    "text": "图中有3条等长的条形，每条代表28，还剩1颗",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "85 ÷ 3 = ?=20",
+                    "text": "85 ÷ 3 = ?=28",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -2754,7 +2754,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "90÷4=?",
                     "formula": "90÷4=?",
-                    "answer": 30,
+                    "answer": 22,
                     "hint": "9÷4=4添0"
                 }
             ],
@@ -2790,21 +2790,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：49 ÷ 4 = ?=20"
+                    "explain": "除法：49 ÷ 4 = ?=12"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表16，合起来就是49",
+                    "text": "图中有4条等长的条形，每条代表12，还剩1颗",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "49 ÷ 4 = ?=20",
+                    "text": "49 ÷ 4 = ?=12",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -2894,7 +2894,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：396 ÷ 2 = ?=200"
+                    "explain": "除法：396 ÷ 2 = ?=198"
                 }
             ],
             "explainLayers": [
@@ -2908,7 +2908,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "396 ÷ 2 = ?=200",
+                    "text": "396 ÷ 2 = ?=198",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -2998,7 +2998,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：436 ÷ 2 = ?=200"
+                    "explain": "除法：436 ÷ 2 = ?=218"
                 }
             ],
             "explainLayers": [
@@ -3012,7 +3012,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "436 ÷ 2 = ?=200",
+                    "text": "436 ÷ 2 = ?=218",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3112,21 +3112,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：101 ÷ 4 = ?=20"
+                    "explain": "除法：101 ÷ 4 = ?=25"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表25，合起来就是101",
+                    "text": "图中有4条等长的条形，每条代表25，还剩1颗",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "101 ÷ 4 = ?=20",
+                    "text": "101 ÷ 4 = ?=25",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3226,21 +3226,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：109 ÷ 5 = ?=20"
+                    "explain": "除法：109 ÷ 5 = ?=21"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表27，合起来就是109",
+                    "text": "图中有5条等长的条形，每条代表21，还剩4颗",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "109 ÷ 5 = ?=20",
+                    "text": "109 ÷ 5 = ?=21",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3298,13 +3298,13 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "85÷5=?",
                     "formula": "85÷5=?",
-                    "answer": 21,
+                    "answer": 17,
                     "hint": "80÷5加5÷5"
                 },
                 {
                     "question": "108÷5=?",
                     "formula": "108÷5=?",
-                    "answer": 27,
+                    "answer": 21,
                     "hint": "100÷5加8÷5"
                 }
             ],
@@ -3340,21 +3340,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：80 ÷ 5 = ?=24"
+                    "explain": "除法：80 ÷ 5 = ?=16"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表20，合起来就是80",
+                    "text": "图中有5条等长的条形，每条代表16，合起来就是80",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "80 ÷ 5 = ?=24",
+                    "text": "80 ÷ 5 = ?=16",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3412,13 +3412,13 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "85÷5=?",
                     "formula": "85÷5=?",
-                    "answer": 21,
+                    "answer": 17,
                     "hint": "80÷5加5÷5"
                 },
                 {
                     "question": "108÷5=?",
                     "formula": "108÷5=?",
-                    "answer": 27,
+                    "answer": 21,
                     "hint": "100÷5加8÷5"
                 }
             ],
@@ -3454,21 +3454,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：89 ÷ 5 = ?=24"
+                    "explain": "除法：89 ÷ 5 = ?=17"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表22，合起来就是89",
+                    "text": "图中有5条等长的条形，每条代表17，还剩4颗",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "89 ÷ 5 = ?=24",
+                    "text": "89 ÷ 5 = ?=17",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3521,13 +3521,13 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "78÷4=?",
                     "formula": "78÷4=?",
-                    "answer": 26,
+                    "answer": 19,
                     "hint": "60÷4加18÷4"
                 },
                 {
                     "question": "94÷4=?",
                     "formula": "94÷4=?",
-                    "answer": 31,
+                    "answer": 23,
                     "hint": "90÷4加4÷4"
                 }
             ],
@@ -3563,21 +3563,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：92 ÷ 4 = ?=28"
+                    "explain": "除法：92 ÷ 4 = ?=23"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表31，合起来就是92",
+                    "text": "图中有4条等长的条形，每条代表23，合起来就是92",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "92 ÷ 4 = ?=28",
+                    "text": "92 ÷ 4 = ?=23",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3630,13 +3630,13 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "78÷4=?",
                     "formula": "78÷4=?",
-                    "answer": 26,
+                    "answer": 19,
                     "hint": "60÷4加18÷4"
                 },
                 {
                     "question": "94÷4=?",
                     "formula": "94÷4=?",
-                    "answer": 31,
+                    "answer": 23,
                     "hint": "90÷4加4÷4"
                 }
             ],
@@ -3672,21 +3672,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：101 ÷ 4 = ?=28"
+                    "explain": "除法：101 ÷ 4 = ?=25"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表34，合起来就是101",
+                    "text": "图中有4条等长的条形，每条代表25，还剩1颗",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "101 ÷ 4 = ?=28",
+                    "text": "101 ÷ 4 = ?=25",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3749,13 +3749,13 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "66÷6=?",
                     "formula": "66÷6=?",
-                    "answer": 13,
+                    "answer": 11,
                     "hint": "60÷6加16÷6"
                 },
                 {
                     "question": "86÷6=?",
                     "formula": "86÷6=?",
-                    "answer": 17,
+                    "answer": 14,
                     "hint": "60÷6加36÷6"
                 }
             ],
@@ -3791,21 +3791,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：103 ÷ 6 = ?=15"
+                    "explain": "除法：103 ÷ 6 = ?=17"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有5条等长的条形，每条代表21，合起来就是103",
+                    "text": "图中有6条等长的条形，每条代表17，还剩1张",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "103 ÷ 6 = ?=15",
+                    "text": "103 ÷ 6 = ?=17",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -3868,13 +3868,13 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "67÷7=?",
                     "formula": "67÷7=?",
-                    "answer": 13,
+                    "answer": 9,
                     "hint": "70÷7加17÷7"
                 },
                 {
                     "question": "87÷7=?",
                     "formula": "87÷7=?",
-                    "answer": 17,
+                    "answer": 12,
                     "hint": "70÷7加37÷7"
                 }
             ],
@@ -3917,7 +3917,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有5条等长的条形，每条代表22，合起来就是110",
+                    "text": "图中有7条等长的条形，每条代表15，还剩5张",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
@@ -3977,7 +3977,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "486÷4=?",
                     "formula": "486÷4=?",
-                    "answer": 162,
+                    "answer": 121,
                     "hint": "分位相除"
                 },
                 {
@@ -4019,21 +4019,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：447 ÷ 4 = ?=123"
+                    "explain": "除法：447 ÷ 4 = ?=111"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表116，合起来就是347",
+                    "text": "图中有4条等长的条形，每条代表111，还剩3本",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "447 ÷ 4 = ?=123",
+                    "text": "447 ÷ 4 = ?=111",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -4086,7 +4086,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "486÷4=?",
                     "formula": "486÷4=?",
-                    "answer": 162,
+                    "answer": 121,
                     "hint": "分位相除"
                 },
                 {
@@ -4128,21 +4128,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：484 ÷ 4 = ?=123"
+                    "explain": "除法：484 ÷ 4 = ?=121"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表128，合起来就是384",
+                    "text": "图中有4条等长的条形，每条代表121，合起来就是484",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "484 ÷ 4 = ?=123",
+                    "text": "484 ÷ 4 = ?=121",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -4206,7 +4206,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "858÷5=?",
                     "formula": "858÷5=?",
-                    "answer": 212,
+                    "answer": 171,
                     "hint": "分位相除"
                 }
             ],
@@ -4242,21 +4242,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：552 ÷ 5 = ?=112"
+                    "explain": "除法：552 ÷ 5 = ?=110"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表136，合起来就是542",
+                    "text": "图中有5条等长的条形，每条代表110，还剩2本",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "552 ÷ 5 = ?=112",
+                    "text": "552 ÷ 5 = ?=110",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -4320,7 +4320,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "868÷6=?",
                     "formula": "868÷6=?",
-                    "answer": 212,
+                    "answer": 144,
                     "hint": "分位相除"
                 }
             ],
@@ -4356,21 +4356,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：587 ÷ 6 = ?=112"
+                    "explain": "除法：587 ÷ 6 = ?=97"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表147，合起来就是587",
+                    "text": "图中有6条等长的条形，每条代表97，还剩5本",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "587 ÷ 6 = ?=112",
+                    "text": "587 ÷ 6 = ?=97",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -4428,7 +4428,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "955÷3=?",
                     "formula": "955÷3=?",
-                    "answer": 315,
+                    "answer": 318,
                     "hint": "分位相除"
                 },
                 {
@@ -4470,21 +4470,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：1267 ÷ 5 = ?=214"
+                    "explain": "除法：1267 ÷ 5 = ?=253"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表317，合起来就是1267",
+                    "text": "图中有5条等长的条形，每条代表253，还剩2根",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "1267 ÷ 5 = ?=214",
+                    "text": "1267 ÷ 5 = ?=253",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -4542,7 +4542,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "935÷3=?",
                     "formula": "935÷3=?",
-                    "answer": 315,
+                    "answer": 311,
                     "hint": "分位相除"
                 },
                 {
@@ -4584,21 +4584,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：753 ÷ 3 = ?=214"
+                    "explain": "除法：753 ÷ 3 = ?=251"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表188，合起来就是753",
+                    "text": "图中有3条等长的条形，每条代表251，合起来就是753",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "753 ÷ 3 = ?=214",
+                    "text": "753 ÷ 3 = ?=251",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -5253,7 +5253,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "415÷4=?",
                     "formula": "415÷4=?",
-                    "answer": 104,
+                    "answer": 103,
                     "hint": "十位不够商1商0"
                 },
                 {
@@ -5295,21 +5295,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：710 ÷ 5 = ?=102"
+                    "explain": "除法：710 ÷ 5 = ?=142"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有6条等长的条形，每条代表118，合起来就是710",
+                    "text": "图中有5条等长的条形，每条代表142，合起来就是710",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "710 ÷ 5 = ?=102",
+                    "text": "710 ÷ 5 = ?=142",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -5419,21 +5419,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：771 ÷ 6 = ?=102"
+                    "explain": "除法：771 ÷ 6 = ?=128"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有6条等长的条形，每条代表129，合起来就是771",
+                    "text": "图中有6条等长的条形，每条代表128，还剩3本",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "771 ÷ 6 = ?=102",
+                    "text": "771 ÷ 6 = ?=128",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -5528,7 +5528,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：918 ÷ 3 = ?=303"
+                    "explain": "除法：918 ÷ 3 = ?=306"
                 }
             ],
             "explainLayers": [
@@ -5542,7 +5542,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "918 ÷ 3 = ?=303",
+                    "text": "918 ÷ 3 = ?=306",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -5637,21 +5637,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：1000 ÷ 3 = ?=303"
+                    "explain": "除法：1000 ÷ 3 = ?=333"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表333，合起来就是1000",
+                    "text": "图中有3条等长的条形，每条代表333，还剩1个",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "1000 ÷ 3 = ?=303",
+                    "text": "1000 ÷ 3 = ?=333",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -5715,7 +5715,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "960÷3=?",
                     "formula": "960÷3=?",
-                    "answer": 240,
+                    "answer": 320,
                     "hint": "个位商0"
                 }
             ],
@@ -5751,21 +5751,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：1200 ÷ 3 = ?=210"
+                    "explain": "除法：1200 ÷ 3 = ?=400"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有4条等长的条形，每条代表300，合起来就是1200",
+                    "text": "图中有3条等长的条形，每条代表400，合起来就是1200",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "1200 ÷ 3 = ?=210",
+                    "text": "1200 ÷ 3 = ?=400",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -5865,7 +5865,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：696 ÷ 4 = ?=210"
+                    "explain": "除法：696 ÷ 4 = ?=174"
                 }
             ],
             "explainLayers": [
@@ -5879,7 +5879,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "696 ÷ 4 = ?=210",
+                    "text": "696 ÷ 4 = ?=174",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -11387,7 +11387,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "三1班13人三2班21人共几人？",
                     "formula": "13+21=?",
-                    "answer": 27,
+                    "answer": 34,
                     "hint": "人数相加"
                 }
             ],
@@ -11491,7 +11491,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "三1班15人三2班22人共几人？",
                     "formula": "15+22=?",
-                    "answer": 27,
+                    "answer": 37,
                     "hint": "人数相加"
                 }
             ],
@@ -11907,7 +11907,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "三1班16人三3班30人共几人？",
                     "formula": "16+30=?",
-                    "answer": 36,
+                    "answer": 46,
                     "hint": "人数相加"
                 }
             ],
@@ -15051,14 +15051,14 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "visualType": "numberBond",
             "visualData": {
-                "total": 4.2,
+                "total": 4.3,
                 "parts": [
                     {
-                        "val": 3,
+                        "val": 1.5,
                         "color": "#FB923C"
                     },
                     {
-                        "val": 1.2000000000000002,
+                        "val": 2.8,
                         "color": "#00A896"
                     }
                 ]
@@ -15070,7 +15070,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "5.3-3.8=?",
                     "formula": "5.3-3.8=?",
-                    "answer": 2.5,
+                    "answer": 1.5,
                     "hint": "借位减"
                 },
                 {
@@ -15112,21 +15112,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "减法",
-                    "explain": "减法：4.3 - 1.5 = ?=2.7"
+                    "explain": "减法：4.3 - 1.5 = ?=2.8"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中展示了部分与整体的关系：3 和 1.2000000000000002 合起来是 4.2",
+                    "text": "图中展示了部分与整体的关系：1.5 和 2.8 合起来是 4.3",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "4.3 - 1.5 = ?=2.7",
+                    "text": "4.3 - 1.5 = ?=2.8",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -15153,14 +15153,14 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "visualType": "numberBond",
             "visualData": {
-                "total": 4.2,
+                "total": 5.2,
                 "parts": [
                     {
-                        "val": 3,
+                        "val": 1.7,
                         "color": "#FB923C"
                     },
                     {
-                        "val": 1.2000000000000002,
+                        "val": 3.5,
                         "color": "#00A896"
                     }
                 ]
@@ -15172,7 +15172,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "7.3-2.8=?",
                     "formula": "7.3-2.8=?",
-                    "answer": 2.5,
+                    "answer": 4.5,
                     "hint": "借位减"
                 },
                 {
@@ -15214,21 +15214,21 @@ window.MATH_BY_GRADE["3b"] = {
                         "除法"
                     ],
                     "answer": "减法",
-                    "explain": "减法：5.2 - 1.7 = ?=2.7"
+                    "explain": "减法：5.2 - 1.7 = ?=3.5"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中展示了部分与整体的关系：3 和 1.2000000000000002 合起来是 4.2",
+                    "text": "图中展示了部分与整体的关系：1.7 和 3.5 合起来是 5.2",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "5.2 - 1.7 = ?=2.7",
+                    "text": "5.2 - 1.7 = ?=3.5",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -15282,7 +15282,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "2.4+0.6=?",
                     "formula": "2.4+0.6=?",
-                    "answer": 2.9,
+                    "answer": 3,
                     "hint": "小数点对齐"
                 }
             ],
@@ -15386,7 +15386,7 @@ window.MATH_BY_GRADE["3b"] = {
                 {
                     "question": "2.4+0.6=?",
                     "formula": "2.4+0.6=?",
-                    "answer": 2.9,
+                    "answer": 3,
                     "hint": "小数点对齐"
                 }
             ],

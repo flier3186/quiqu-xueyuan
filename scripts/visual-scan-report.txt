@@ -1,13 +1,13 @@
 # MathDiagramMaster.audit() 全库实跑（M1）
-生成：2026-09-17T04:55:32.334Z
+生成：2026-09-17T19:12:37.668Z
 
 ## totals
 {
   "problems": 983,
-  "tested": 278,
+  "tested": 280,
   "parametric": 221,
-  "valueBound": 243,
-  "legacyConflicts": 339
+  "valueBound": 245,
+  "legacyConflicts": 341
 }
 
 ## byStage
@@ -34,7 +34,7 @@
 ## conflicts（0）
 []
 
-## legacyConflicts（339）
+## legacyConflicts（341）
 [
   {
     "sem": "2a",
@@ -1641,13 +1641,6 @@
   },
   {
     "sem": "5b",
-    "kp": "因数和倍数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "5b",
     "kp": "长方体和正方体的表面积",
     "master": "geometry",
     "v5": "unrollNet",
@@ -1925,6 +1918,13 @@
     "master": "geometry",
     "v5": "geometry",
     "manip": "array"
+  },
+  {
+    "sem": "6a",
+    "kp": "扇形",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "placeValue"
   },
   {
     "sem": "6a",
@@ -2341,6 +2341,13 @@
   },
   {
     "sem": "9a",
+    "kp": "圆的周长与面积",
+    "master": "geometry",
+    "v5": "geometry",
+    "manip": "array"
+  },
+  {
+    "sem": "9a",
     "kp": "一元二次方程应用",
     "master": "geometry",
     "v5": "geometry",
@@ -2390,6 +2397,13 @@
   },
   {
     "sem": "9b",
+    "kp": "概率计算",
+    "master": "barModel",
+    "v5": "barModelTranslate",
+    "manip": "share"
+  },
+  {
+    "sem": "9b",
     "kp": "加权平均数",
     "master": "barModel",
     "v5": "barModelTranslate",
@@ -2411,7 +2425,7 @@
   }
 ]
 
-## nonParametric（57）
+## nonParametric（59）
 [
   {
     "sem": "2a",
@@ -2554,6 +2568,20 @@
     "reason": "geometry-invariant-to-values"
   },
   {
+    "sem": "3b",
+    "kp": "小数加减法",
+    "master": "numberBond",
+    "question": "小红还剩多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
+    "sem": "3b",
+    "kp": "小数加减法",
+    "master": "numberBond",
+    "question": "小红还剩多少元？",
+    "reason": "geometry-invariant-to-values"
+  },
+  {
     "sem": "4a",
     "kp": "计算器使用",
     "master": "areaModel",
@@ -2655,14 +2683,14 @@
     "sem": "4b",
     "kp": "乘除法的意义和各部分关系",
     "master": "areaModel",
-    "question": "在3×16=31中，31叫什么？(积填1,因数填2)",
+    "question": "在3×16=48中，48叫什么？(积填1,因数填2)",
     "reason": "geometry-invariant-to-values"
   },
   {
     "sem": "4b",
     "kp": "乘除法的意义和各部分关系",
     "master": "areaModel",
-    "question": "在4×18=44中，44叫什么？(积填1,因数填3)",
+    "question": "在4×18=72中，72叫什么？(积填1,因数填3)",
     "reason": "geometry-invariant-to-values"
   },
   {
@@ -2934,13 +2962,13 @@
     "sem": "4b",
     "kp": "乘除法的意义和各部分关系",
     "master": "areaModel",
-    "question": "在3×16=31中，31叫什么？(积填1,因数填2)"
+    "question": "在3×16=48中，48叫什么？(积填1,因数填2)"
   },
   {
     "sem": "4b",
     "kp": "乘除法的意义和各部分关系",
     "master": "areaModel",
-    "question": "在4×18=44中，44叫什么？(积填1,因数填3)"
+    "question": "在4×18=72中，72叫什么？(积填1,因数填3)"
   },
   {
     "sem": "4b",

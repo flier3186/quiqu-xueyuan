@@ -622,6 +622,10 @@ window.SpeakEngineV5 = {
     g.navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){ stream=s; mr=new g.MediaRecorder(stream); mr.ondataavailable=function(e){ if(e.data && e.data.size) chunks.push(e.data); }; mr.start(); timer=setTimeout(function(){ stop(); },30000); setTimeout(function(){ if(timer && mr && mr.state==="recording"){ finish(); } },8000); }).catch(function(){ if(typeof toast === "function") toast("麦克风权限被拒绝，请用文字输入"); });
   },
 
+  _escape(s){
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  },
+
   // ===== 录音判音（Levenshtein 距离 + 三阶段） =====
   _levenshtein(a, b){
     if(a === b) return 0;
@@ -726,14 +730,14 @@ window.SpeakEngineV5 = {
     }
     const msgs = S.speakV5.history.map(function(m){
       if(m.role === 'teacher'){
-        const cn = m.cn ? '<div style="font-size:11px;color:var(--text-2);margin-top:4px">' + m.cn + '</div>' : '';
+        const cn = m.cn ? '<div style="font-size:11px;color:var(--text-2);margin-top:4px">' + this._escape(m.cn) + '</div>' : '';
         return '<div style="display:flex;gap:10px;margin-bottom:12px">' +
           '<div style="width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--teal-soft)"><img src="' + (teacher.avatarImg||'') + '" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"></div>' +
-          '<div><div style="background:white;padding:10px 14px;border-radius:14px;border-top-left-radius:4px;box-shadow:var(--shadow-sm);font-size:14px;color:var(--navy);max-width:280px">' + m.text + '</div>' + cn + '</div></div>';
+          '<div><div style="background:white;padding:10px 14px;border-radius:14px;border-top-left-radius:4px;box-shadow:var(--shadow-sm);font-size:14px;color:var(--navy);max-width:280px">' + this._escape(m.text) + '</div>' + cn + '</div></div>';
       } else {
         return '<div style="display:flex;gap:10px;margin-bottom:12px;flex-direction:row-reverse">' +
           '<div style="min-width:36px"></div>' +
-          '<div><div style="background:var(--teal);color:white;padding:10px 14px;border-radius:14px;border-top-right-radius:4px;font-size:14px;max-width:280px">' + m.text + '</div></div></div>';
+          '<div><div style="background:var(--teal);color:white;padding:10px 14px;border-radius:14px;border-top-right-radius:4px;font-size:14px;max-width:280px">' + this._escape(m.text) + '</div></div></div>';
       }
     }).join('');
     const done = S.speakV5.completed

@@ -43,7 +43,9 @@ window.ReverseModelJudge = {
     var lb = pb.lhs.replace(/\+/g, ' ').replace(/×/g, ' ').trim().split(/\s+/).filter(Boolean).sort().join('+');
     var ra = pa.rhs.replace(/\+/g, ' ').replace(/×/g, ' ').trim().split(/\s+/).filter(Boolean).sort().join('+');
     var rb = pb.rhs.replace(/\+/g, ' ').replace(/×/g, ' ').trim().split(/\s+/).filter(Boolean).sort().join('+');
-    return la === lb && ra === rb;
+    // 两侧内容一致（同向）；或整体左右调换（孩子把答案写在左边，如 5=12-7）
+    if (la === lb && ra === rb) return true;
+    return la === rb && ra === lb;
   },
 
   // 本地判对：输入是否等价于任一期望式

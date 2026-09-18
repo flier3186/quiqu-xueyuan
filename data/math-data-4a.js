@@ -2900,7 +2900,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-032"
         },
         {
-            "scene": "老师告诉小明每相邻两个计数单位之间的进率都是12。小明想知道12个一万是多少。",
+            "scene": "老师告诉小明每相邻两个计数单位之间的进率都是10。小明想知道12个一万是多少。",
             "question": "12个一万是多少？",
             "formula": "12 × 10000 = ?",
             "answer": 120000,
@@ -2999,7 +2999,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-033"
         },
         {
-            "scene": "老师告诉小明每相邻两个计数单位之间的进率都是13。小明想知道13个一万是多少。",
+            "scene": "老师告诉小明每相邻两个计数单位之间的进率都是10。小明想知道13个一万是多少。",
             "question": "13个一万是多少？",
             "formula": "13 × 10000 = ?",
             "answer": 130000,
@@ -4818,7 +4818,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-052"
         },
         {
-            "scene": "小红发现4×5=11，如果把5变成10（乘2），积也跟着变。她好奇积变成多少。",
+            "scene": "小红发现4×5=20，如果把5变成10（乘2），积也跟着变。她好奇积变成多少。",
             "question": "4×10=? (4不变,5变10)",
             "formula": "4 × 10 = ?",
             "answer": 40,
@@ -4922,7 +4922,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-053"
         },
         {
-            "scene": "小红发现4×4=11，如果把4变成11（乘2），积也跟着变。她好奇积变成多少。",
+            "scene": "小红发现4×4=16，如果把第二个因数从4变成11，积也跟着变。她好奇积变成多少。",
             "question": "4×11=? (4不变,4变11)",
             "formula": "4 × 11 = ?",
             "answer": 44,
@@ -4945,7 +4945,7 @@ window.MATH_BY_GRADE["4a"] = {
             },
             "knowledge": "积的变化规律",
             "difficulty": 2,
-            "hint": "一个因数乘2积也乘2",
+            "hint": "一个因数从4变成11，4×11=44",
             "variants": [
                 {
                     "question": "5×6=30，把6变成12（乘2），5×12=?",
@@ -6193,7 +6193,7 @@ window.MATH_BY_GRADE["4a"] = {
             },
             "knowledge": "口算除法（整十数除）",
             "difficulty": 2,
-            "hint": "8÷2=4，添0",
+            "hint": "117÷16=7余5",
             "variants": [
                 {
                     "question": "150÷30=?",
@@ -6240,21 +6240,21 @@ window.MATH_BY_GRADE["4a"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：117 ÷ 16 = ?=4"
+                    "explain": "除法：117 ÷ 16 = ?=7"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "面积模型用方格区域展示了乘法的几何意义",
+                    "text": "图中有7条等长的条形，每条代表16，合起来就是112，还剩5个跳绳",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "117 ÷ 16 = ?=4",
+                    "text": "117 ÷ 16 = ?=7",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -6287,7 +6287,7 @@ window.MATH_BY_GRADE["4a"] = {
             },
             "knowledge": "口算除法（整十数除）",
             "difficulty": 2,
-            "hint": "8÷2=4，添0",
+            "hint": "68÷19=3余11",
             "variants": [
                 {
                     "question": "150÷30=?",
@@ -6334,21 +6334,21 @@ window.MATH_BY_GRADE["4a"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：68 ÷ 19 = ?=4"
+                    "explain": "除法：68 ÷ 19 = ?=3"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "面积模型用方格区域展示了乘法的几何意义",
+                    "text": "图中有3条等长的条形，每条代表19，合起来就是57，还剩11个跳绳",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "68 ÷ 19 = ?=4",
+                    "text": "68 ÷ 19 = ?=3",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -6445,7 +6445,7 @@ window.MATH_BY_GRADE["4a"] = {
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表93，合起来就是95",
+                    "text": "图中有3条等长的条形，每条代表26，合起来就是78，还剩17本",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
@@ -6549,7 +6549,7 @@ window.MATH_BY_GRADE["4a"] = {
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有2条等长的条形，每条代表101，合起来就是103",
+                    "text": "图中有3条等长的条形，每条代表30，合起来就是90，还剩13本",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
@@ -6571,7 +6571,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-070"
         },
         {
-            "scene": "小红做除法109÷19，她把19看成27来试商。",
+            "scene": "小红做除法109÷19，她把19看成20来试商。",
             "question": "109÷19等于多少？",
             "formula": "109 ÷ 19 = ?",
             "answer": 5,
@@ -6594,7 +6594,7 @@ window.MATH_BY_GRADE["4a"] = {
             },
             "knowledge": "四舍法试商",
             "difficulty": 3,
-            "hint": "把19看成27试商4",
+            "hint": "把19看成20试商5",
             "variants": [
                 {
                     "question": "96÷32=?",
@@ -6606,7 +6606,7 @@ window.MATH_BY_GRADE["4a"] = {
                     "question": "68÷22=?",
                     "formula": "68÷22=?",
                     "answer": 3,
-                    "hint": "22看成27试商3"
+                    "hint": "22看成20试商3"
                 }
             ],
             "discoverySteps": [
@@ -6619,7 +6619,7 @@ window.MATH_BY_GRADE["4a"] = {
                         "和是多少"
                     ],
                     "answer": "每份是多少（或几份）",
-                    "explain": "题目说「小红做除法109÷19，她把19看成27来试商。」，问的是「109÷19等于多少？」，这是求每份是多少"
+                    "explain": "题目说「小红做除法109÷19，她把19看成20来试商。」，问的是「109÷19等于多少？」，这是求每份是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
@@ -6641,21 +6641,21 @@ window.MATH_BY_GRADE["4a"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：109 ÷ 19 = ?=4"
+                    "explain": "除法：109 ÷ 19 = ?=5"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表109，合起来就是109",
+                    "text": "图中有5条等长的条形，每条代表19，合起来就是95，还剩14",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "109 ÷ 19 = ?=4",
+                    "text": "109 ÷ 19 = ?=5",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -6670,7 +6670,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-071"
         },
         {
-            "scene": "小红做除法117÷22，她把22看成22来试商。",
+            "scene": "小红做除法117÷22，她把22看成20来试商。",
             "question": "117÷22等于多少？",
             "formula": "117 ÷ 22 = ?",
             "answer": 5,
@@ -6693,7 +6693,7 @@ window.MATH_BY_GRADE["4a"] = {
             },
             "knowledge": "四舍法试商",
             "difficulty": 3,
-            "hint": "把22看成22试商4",
+            "hint": "把22看成20试商5",
             "variants": [
                 {
                     "question": "96÷32=?",
@@ -6705,7 +6705,7 @@ window.MATH_BY_GRADE["4a"] = {
                     "question": "68÷22=?",
                     "formula": "68÷22=?",
                     "answer": 3,
-                    "hint": "22看成22试商3"
+                    "hint": "22看成20试商3"
                 }
             ],
             "discoverySteps": [
@@ -6718,7 +6718,7 @@ window.MATH_BY_GRADE["4a"] = {
                         "和是多少"
                     ],
                     "answer": "每份是多少（或几份）",
-                    "explain": "题目说「小红做除法117÷22，她把22看成22来试商。」，问的是「117÷22等于多少？」，这是求每份是多少"
+                    "explain": "题目说「小红做除法117÷22，她把22看成20来试商。」，问的是「117÷22等于多少？」，这是求每份是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
@@ -6740,21 +6740,21 @@ window.MATH_BY_GRADE["4a"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：117 ÷ 22 = ?=4"
+                    "explain": "除法：117 ÷ 22 = ?=5"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表117，合起来就是117",
+                    "text": "图中有5条等长的条形，每条代表22，合起来就是110，还剩7",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "117 ÷ 22 = ?=4",
+                    "text": "117 ÷ 22 = ?=5",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -6769,7 +6769,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-072"
         },
         {
-            "scene": "小亮做除法171÷26，他把26看成26来试商。",
+            "scene": "小亮做除法171÷26，他把26看成30来试商。",
             "question": "171÷26等于多少？(填商)",
             "formula": "171 ÷ 26 = ? (商)",
             "answer": 7,
@@ -6781,30 +6781,35 @@ window.MATH_BY_GRADE["4a"] = {
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 196,
+                "total": 171,
                 "parts": [
                     {
-                        "label": "7组",
-                        "val": 196,
+                        "label": "6组坐156人",
+                        "val": 156,
                         "color": "#00A896"
+                    },
+                    {
+                        "label": "余15人",
+                        "val": 15,
+                        "color": "#F5B800"
                     }
                 ]
             },
             "knowledge": "五入法试商",
             "difficulty": 3,
-            "hint": "26看成26试商6，调大到7",
+            "hint": "26看成30试商5，调大到6，进一得7",
             "variants": [
                 {
                     "question": "156÷26=?",
                     "formula": "156÷26=?",
                     "answer": 6,
-                    "hint": "26看成26试商"
+                    "hint": "26看成30试商"
                 },
                 {
                     "question": "192÷32=?",
                     "formula": "192÷32=?",
                     "answer": 6,
-                    "hint": "32看成26试商"
+                    "hint": "32看成30试商"
                 }
             ],
             "discoverySteps": [
@@ -6817,7 +6822,7 @@ window.MATH_BY_GRADE["4a"] = {
                         "和是多少"
                     ],
                     "answer": "每份是多少（或几份）",
-                    "explain": "题目说「小亮做除法171÷26，他把26看成26来试商。」，问的是「171÷26等于多少？(填商)」，这是求每份是多少"
+                    "explain": "题目说「小亮做除法171÷26，他把26看成30来试商。」，问的是「171÷26等于多少？(填商)」，这是求每份是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
@@ -6846,7 +6851,7 @@ window.MATH_BY_GRADE["4a"] = {
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表196，合起来就是196",
+                    "text": "图中有6条等长的条形，每条代表26，合起来就是156，还剩15人",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
@@ -6868,7 +6873,7 @@ window.MATH_BY_GRADE["4a"] = {
             "id": "4A-PROB-073"
         },
         {
-            "scene": "小亮做除法189÷30，他把30看成38来试商。",
+            "scene": "小亮做除法189÷30，试商6后还余9。",
             "question": "189÷30等于多少？(填商)",
             "formula": "189 ÷ 30 = ? (商)",
             "answer": 7,
@@ -6880,30 +6885,35 @@ window.MATH_BY_GRADE["4a"] = {
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 196,
+                "total": 189,
                 "parts": [
                     {
-                        "label": "7组",
-                        "val": 196,
+                        "label": "6组坐180人",
+                        "val": 180,
                         "color": "#00A896"
+                    },
+                    {
+                        "label": "余9人",
+                        "val": 9,
+                        "color": "#F5B800"
                     }
                 ]
             },
             "knowledge": "五入法试商",
             "difficulty": 3,
-            "hint": "30看成38试商6，调大到7",
+            "hint": "189÷30=6余9，进一得7",
             "variants": [
                 {
                     "question": "156÷26=?",
                     "formula": "156÷26=?",
                     "answer": 6,
-                    "hint": "26看成38试商"
+                    "hint": "26看成30试商"
                 },
                 {
                     "question": "192÷32=?",
                     "formula": "192÷32=?",
                     "answer": 6,
-                    "hint": "32看成38试商"
+                    "hint": "32看成30试商"
                 }
             ],
             "discoverySteps": [
@@ -6916,7 +6926,7 @@ window.MATH_BY_GRADE["4a"] = {
                         "和是多少"
                     ],
                     "answer": "每份是多少（或几份）",
-                    "explain": "题目说「小亮做除法189÷30，他把30看成38来试商。」，问的是「189÷30等于多少？(填商)」，这是求每份是多少"
+                    "explain": "题目说「小亮做除法189÷30，试商6后还余9。」，问的是「189÷30等于多少？(填商)」，这是求每份是多少"
                 },
                 {
                     "q": "🔢 题目给了我们哪些关键信息？",
@@ -6945,7 +6955,7 @@ window.MATH_BY_GRADE["4a"] = {
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有1条等长的条形，每条代表196，合起来就是196",
+                    "text": "图中有6条等长的条形，每条代表30，合起来就是180，还剩9人",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
@@ -6970,7 +6980,7 @@ window.MATH_BY_GRADE["4a"] = {
             "scene": "统计图上1格表示5人。小红所在兴趣小组有21人，需要画几格？",
             "question": "21人需要画几格？",
             "formula": "21 ÷ 5 = ? (格)",
-            "answer": 3,
+            "answer": 5,
             "choices": [
                 3,
                 21,
@@ -6983,24 +6993,34 @@ window.MATH_BY_GRADE["4a"] = {
                 "parts": [
                     {
                         "label": "格1",
-                        "val": 7,
+                        "val": 5,
                         "color": "#00A896"
                     },
                     {
                         "label": "格2",
-                        "val": 7,
+                        "val": 5,
                         "color": "#F5B800"
                     },
                     {
                         "label": "格3",
-                        "val": 7,
+                        "val": 5,
                         "color": "#FB923C"
+                    },
+                    {
+                        "label": "格4",
+                        "val": 5,
+                        "color": "#7C5CFC"
+                    },
+                    {
+                        "label": "余1人",
+                        "val": 1,
+                        "color": "#EF476F"
                     }
                 ]
             },
             "knowledge": "条形统计图",
             "difficulty": 2,
-            "hint": "1格5人，21÷5=3格",
+            "hint": "1格5人，21÷5=4格余1人，需画5格",
             "variants": [
                 {
                     "question": "20人每格5人几格？",
@@ -7047,21 +7067,21 @@ window.MATH_BY_GRADE["4a"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：21 ÷ 5 = ? (格)=3"
+                    "explain": "除法：21 ÷ 5 = ? (格)=5"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表7，合起来就是21",
+                    "text": "图中有4条等长的条形，每条代表5，合起来就是20，余1人再画1格，共5格",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "21 ÷ 5 = ? (格)=3",
+                    "text": "21 ÷ 5 = ? (格)=5",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
@@ -7079,7 +7099,7 @@ window.MATH_BY_GRADE["4a"] = {
             "scene": "统计图上1格表示6人。小红所在兴趣小组有12人，需要画几格？",
             "question": "12人需要画几格？",
             "formula": "12 ÷ 6 = ? (格)",
-            "answer": 3,
+            "answer": 2,
             "choices": [
                 3,
                 12,
@@ -7092,24 +7112,19 @@ window.MATH_BY_GRADE["4a"] = {
                 "parts": [
                     {
                         "label": "格1",
-                        "val": 4,
+                        "val": 6,
                         "color": "#00A896"
                     },
                     {
                         "label": "格2",
-                        "val": 4,
+                        "val": 6,
                         "color": "#F5B800"
-                    },
-                    {
-                        "label": "格3",
-                        "val": 4,
-                        "color": "#FB923C"
                     }
                 ]
             },
             "knowledge": "条形统计图",
             "difficulty": 2,
-            "hint": "1格6人，12÷6=3格",
+            "hint": "1格6人，12÷6=2格",
             "variants": [
                 {
                     "question": "20人每格6人几格？",
@@ -7120,8 +7135,8 @@ window.MATH_BY_GRADE["4a"] = {
                 {
                     "question": "26人每格6人几格？",
                     "formula": "26÷6=?",
-                    "answer": 6,
-                    "hint": "26÷6"
+                    "answer": 5,
+                    "hint": "26÷6=4格余2人，需画5格"
                 }
             ],
             "discoverySteps": [
@@ -7156,21 +7171,21 @@ window.MATH_BY_GRADE["4a"] = {
                         "除法"
                     ],
                     "answer": "除法",
-                    "explain": "除法：12 ÷ 6 = ? (格)=3"
+                    "explain": "除法：12 ÷ 6 = ? (格)=2"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
-                    "text": "图中有3条等长的条形，每条代表4，合起来就是12",
+                    "text": "图中有2条等长的条形，每条代表6，合起来就是12",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
-                    "text": "12 ÷ 6 = ? (格)=3",
+                    "text": "12 ÷ 6 = ? (格)=2",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },

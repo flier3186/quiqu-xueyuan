@@ -1305,13 +1305,13 @@ window.MATH_BY_GRADE["8a"] = {
                 {
                     "question": "直角边6和8，斜边上的高？",
                     "formula": "h=6*8/10",
-                    "answer": 4,
+                    "answer": 4.8,
                     "hint": "斜边=10，高=4.8"
                 },
                 {
                     "question": "直角边9和12，斜边上的高？",
                     "formula": "h=9*12/15",
-                    "answer": 7,
+                    "answer": 7.2,
                     "hint": "斜边=15，高=7.2"
                 }
             ],
@@ -1598,7 +1598,7 @@ window.MATH_BY_GRADE["8a"] = {
                 {
                     "question": "山顶视角30度，后退100米后视角20度，山高多少？",
                     "formula": "h=100*tan30*tan20/(tan30-tan20)",
-                    "answer": 58,
+                    "answer": 98.5,
                     "hint": "列方程求解"
                 }
             ],
@@ -1783,13 +1783,13 @@ window.MATH_BY_GRADE["8a"] = {
                 {
                     "question": "树高3米，影长4米，同一时刻电线杆影长10米，电线杆多高？",
                     "formula": "3*10/4=7.5",
-                    "answer": 8,
+                    "answer": 7.5,
                     "hint": "物高与影长成正比"
                 },
                 {
                     "question": "测得一建筑物影长30米，同时1.5米竹竿影长2米，建筑物多高？",
                     "formula": "1.5*30/2=22.5",
-                    "answer": 22,
+                    "answer": 22.5,
                     "hint": "比例关系"
                 }
             ],
