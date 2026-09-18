@@ -7287,6 +7287,8 @@ window.MATH_BY_GRADE["2b"] = {
                         "后面的",
                         "多出来的"
                     ]
+                ,
+                    "options": [{"text":"右边的第二段（多出来的5颗）","correct":true},{"text":"第一段（小红原来的12颗）","correct":false},{"text":"整条条形（小明一共的17颗）","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -7298,6 +7300,8 @@ window.MATH_BY_GRADE["2b"] = {
                         "加",
                         "增加"
                     ]
+                ,
+                    "options": [{"text":"变长（要多画3颗）","correct":true},{"text":"变短（要少画3颗）","correct":false},{"text":"不变","correct":false}]
                 }
             ],
             "barTranslateLine": {
@@ -7375,6 +7379,8 @@ window.MATH_BY_GRADE["2b"] = {
                         "后面",
                         "突出的部分"
                     ]
+                ,
+                    "options": [{"text":"右边突出的那段（表示多15本）","correct":true},{"text":"第一段（故事书28本那段）","correct":false},{"text":"整条条形（科技书43本）","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -7386,6 +7392,8 @@ window.MATH_BY_GRADE["2b"] = {
                         "差",
                         "少"
                     ]
+                ,
+                    "options": [{"text":"15本","correct":true},{"text":"43本","correct":false},{"text":"28本","correct":false}]
                 }
             ],
             "barTranslateLine": {
@@ -7463,6 +7471,8 @@ window.MATH_BY_GRADE["2b"] = {
                         "部分",
                         "整体"
                     ]
+                ,
+                    "options": [{"text":"两段：原来15只 + 飞来8只","correct":true},{"text":"一段：就是总数23只","correct":false},{"text":"三段：15只、8只、3只","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -7474,6 +7484,8 @@ window.MATH_BY_GRADE["2b"] = {
                         "更长",
                         "更多只"
                     ]
+                ,
+                    "options": [{"text":"变大（变成25只）","correct":true},{"text":"变小（变成21只）","correct":false},{"text":"不变","correct":false}]
                 }
             ],
             "barTranslateLine": {

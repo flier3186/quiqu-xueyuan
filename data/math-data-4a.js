@@ -7258,6 +7258,8 @@ window.MATH_BY_GRADE["4a"] = {
                         "后面",
                         "突出的部分"
                     ]
+                ,
+                    "options": [{"text":"右边多出来的那段（表示多12本）","correct":true},{"text":"第一段（故事书45本）","correct":false},{"text":"整条（科技书57本）","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -7269,6 +7271,8 @@ window.MATH_BY_GRADE["4a"] = {
                         "差",
                         "少"
                     ]
+                ,
+                    "options": [{"text":"12本","correct":true},{"text":"57本","correct":false},{"text":"45本","correct":false}]
                 }
             ],
             "barTranslateLine": {
@@ -7405,6 +7409,8 @@ window.MATH_BY_GRADE["4a"] = {
                         "突出的部分",
                         "比上午多的部分"
                     ]
+                ,
+                    "options": [{"text":"下午比上午多卖的15kg","correct":true},{"text":"上午卖出的38kg","correct":false},{"text":"下午总共卖出的53kg","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -7416,6 +7422,8 @@ window.MATH_BY_GRADE["4a"] = {
                         "变长",
                         "增加"
                     ]
+                ,
+                    "options": [{"text":"58kg（38+20）","correct":true},{"text":"53kg（38+15）","correct":false},{"text":"20kg","correct":false}]
                 }
             ],
             "barTranslateLine": {
@@ -7552,6 +7560,8 @@ window.MATH_BY_GRADE["4a"] = {
                         "总条形",
                         "两部分"
                     ]
+                ,
+                    "options": [{"text":"一年级135人 + 二年级多28人，总条形是两个年级一共298人","correct":true},{"text":"一年级135人 + 二年级135人","correct":false},{"text":"总条形就是二年级的人数","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -7563,6 +7573,8 @@ window.MATH_BY_GRADE["4a"] = {
                         "差",
                         "少"
                     ]
+                ,
+                    "options": [{"text":"163人（298-135）","correct":true},{"text":"135人","correct":false},{"text":"298人","correct":false}]
                 }
             ],
             "barTranslateLine": {

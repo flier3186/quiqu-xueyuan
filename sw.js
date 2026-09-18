@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260917f';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260917g';
 const ASSETS = [
   '/',
   '/index.html',
@@ -59,6 +59,8 @@ const ASSETS = [
   'engine/neural-tts.js',
   'engine/parent-panel.js',
   'engine/pet-companion.js',
+  'engine/pet-whisper.js',
+  'engine/math-warmup.js',
   'engine/progress-tracker-v5.js',
   'engine/russian-questioning.js',
   'engine/scene-manager.js',

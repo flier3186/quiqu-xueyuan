@@ -227,8 +227,9 @@ window.MathFlowV5 = {
       case 'neriage':   return this._renderNeriage(p);
       case 'solve':     return this.renderSolve(p);
       case 'explain':   return this.renderExplain(p);
-      case 'russian':   return this.renderRussianQuestion(p);
-      case 'askChild':  return this.renderAskChild(p);
+      // 2026-09-18：russian/askChild 口头环节已移除，旧会话断点兼容直接落 practice
+      case 'russian':
+      case 'askChild':  return this.renderPractice(p);
       case 'practice':  return this.renderPractice(p);
       case 'complete':  return this._renderComplete(p);
       default:          return this.renderWarmup(p);
@@ -981,7 +982,7 @@ window.MathFlowV5 = {
         <div style="font-size:15px;font-weight:800;line-height:1.6">${this._rhyme(problem, methodName)}</div>
       </div>
       <div style="text-align:center;margin-top:18px">
-        <button onclick="MathFlowV5.advance('${hasRussian ? 'russian' : 'askChild'}')" style="padding:12px 28px;background:linear-gradient(135deg,var(--pink),#F4C2D8);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,191,.4)">🙋 ${hasRussian ? '俄罗斯追问 →' : '轮到你提问了 →'}</button>
+        <button onclick="MathFlowV5.advance('practice')" style="padding:12px 28px;background:linear-gradient(135deg,var(--pink),#F4C2D8);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,191,.4)">🚀 跳过讲解，去做练习 →</button>
       </div>
     </div>`;
   },
@@ -1039,9 +1040,8 @@ window.MathFlowV5 = {
     if(this._currentStep >= 3){
       const indicator = document.getElementById('v5StepIndicator');
       if(indicator) indicator.textContent = '✅ 演示完成！';
-      // 演示完成 → 自动进入下一阶段
-      const hasRussian = this._sess.problem.russianQuestions && this._sess.problem.russianQuestions.length > 0;
-      setTimeout(()=>{ this.advance(hasRussian ? 'russian' : 'askChild'); }, 800);
+      // 演示完成 → 自动进入练习（2026-09-18：russian/askChild 口头环节已移除）
+      setTimeout(()=>{ this.advance('practice'); }, 800);
       return;
     }
     this._currentStep++;
@@ -1860,8 +1860,10 @@ window.MathFlowV5 = {
     }
     const fb = document.getElementById('v5PracticeFeedback');
     if(fb){
+      const _pwOffer = (typeof PetWhisper!=='undefined' && !this._sess.whisperDone)
+        ? PetWhisper.offer(this._sess.problem) : '';
       fb.innerHTML = isCorrect
-        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7;margin-bottom:12px">✅ 答对了！</div>`
+        ? `<div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7;margin-bottom:12px">✅ 答对了！</div>` + _pwOffer
         : `<div style="padding:12px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:14px;color:var(--coral);line-height:1.7">❌ 再想想，看下面的解析</div>`;
     }
     if(isCorrect){

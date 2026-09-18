@@ -7474,6 +7474,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "拼一起",
                         "一半"
                     ]
+                ,
+                    "options": [{"text":"2/4，也就是1/2","correct":true},{"text":"2/8","correct":false},{"text":"1/4","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -7485,6 +7487,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "相加",
                         "加法"
                     ]
+                ,
+                    "options": [{"text":"2/8，也就是1/4","correct":true},{"text":"1/8","correct":false},{"text":"1/2","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -7603,6 +7607,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "剩余",
                         "剩下"
                     ]
+                ,
+                    "options": [{"text":"5/8（8份里没涂的5份）","correct":true},{"text":"3/8（涂了的3份）","correct":false},{"text":"1/8","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -7614,6 +7620,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "差",
                         "少"
                     ]
+                ,
+                    "options": [{"text":"3/8","correct":true},{"text":"5/8","correct":false},{"text":"2/8","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -7732,6 +7740,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "一半",
                         "对半"
                     ]
+                ,
+                    "options": [{"text":"1/2","correct":true},{"text":"3/6","correct":false},{"text":"1/3","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -7743,6 +7753,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "剩",
                         "还有"
                     ]
+                ,
+                    "options": [{"text":"2/6，也就是1/3","correct":true},{"text":"4/6","correct":false},{"text":"1/6","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -7861,6 +7873,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "剩余",
                         "10-3"
                     ]
+                ,
+                    "options": [{"text":"7段（7/10）","correct":true},{"text":"3段（用去的）","correct":false},{"text":"10段","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -7872,6 +7886,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "少",
                         "剩余"
                     ]
+                ,
+                    "options": [{"text":"3/10","correct":true},{"text":"7/10","correct":false},{"text":"4/10","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -7990,6 +8006,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "合起来",
                         "3+2"
                     ]
+                ,
+                    "options": [{"text":"5份（5/7）","correct":true},{"text":"3份（番茄）","correct":false},{"text":"2份（黄瓜）","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -8001,6 +8019,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "整块",
                         "1"
                     ]
+                ,
+                    "options": [{"text":"7/7，就是1（整块地）","correct":true},{"text":"3/7","correct":false},{"text":"4/7","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8119,6 +8139,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "剩下",
                         "剩余"
                     ]
+                ,
+                    "options": [{"text":"4份（4/9）","correct":true},{"text":"5份（看过的）","correct":false},{"text":"9份","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -8129,6 +8151,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "差",
                         "少"
                     ]
+                ,
+                    "options": [{"text":"2/9","correct":true},{"text":"7/9","correct":false},{"text":"1/9","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8243,6 +8267,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "一样",
                         "对等"
                     ]
+                ,
+                    "options": [{"text":"2/4那行","correct":true},{"text":"1/4那行","correct":false},{"text":"3/4那行","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -8254,6 +8280,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "一样长",
                         "6÷8"
                     ]
+                ,
+                    "options": [{"text":"6/8","correct":true},{"text":"3/8","correct":false},{"text":"5/8","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8368,6 +8396,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "对等",
                         "3×2/4×2"
                     ]
+                ,
+                    "options": [{"text":"6/8那行","correct":true},{"text":"3/8那行","correct":false},{"text":"1/2那行","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -8379,6 +8409,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "等值",
                         "简化"
                     ]
+                ,
+                    "options": [{"text":"3/4","correct":true},{"text":"3/8","correct":false},{"text":"6/4","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8493,6 +8525,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "对等",
                         "2÷2/6÷2"
                     ]
+                ,
+                    "options": [{"text":"1/3那行","correct":true},{"text":"2/3那行","correct":false},{"text":"1/2那行","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -8504,6 +8538,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "相同",
                         "相等"
                     ]
+                ,
+                    "options": [{"text":"一样大（是等值分数）","correct":true},{"text":"1/3大","correct":false},{"text":"2/6大","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8636,6 +8672,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "数轴上",
                         "到2"
                     ]
+                ,
+                    "options": [{"text":"2","correct":true},{"text":"-2（向左数5格）","correct":false},{"text":"8","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -8647,6 +8685,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "升高",
                         "变"
                     ]
+                ,
+                    "options": [{"text":"5","correct":true},{"text":"-5","correct":false},{"text":"11","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8779,6 +8819,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "数轴",
                         "到3"
                     ]
+                ,
+                    "options": [{"text":"3层","correct":true},{"text":"-3层（向左数5格）","correct":false},{"text":"7层","correct":false}]
                 },
                 {
                     "type": "reverse",
@@ -8790,6 +8832,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "-2",
                         "向下"
                     ]
+                ,
+                    "options": [{"text":"-2层","correct":true},{"text":"2层","correct":false},{"text":"-7层","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -8922,6 +8966,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "水下13",
                         "-8-5"
                     ]
+                ,
+                    "options": [{"text":"-13","correct":true},{"text":"-3","correct":false},{"text":"13","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -8933,6 +8979,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "上升",
                         "没那么深"
                     ]
+                ,
+                    "options": [{"text":"-5","correct":true},{"text":"-11","correct":false},{"text":"5","correct":false}]
                 }
             ],
             "neriageErrors": [
@@ -9058,6 +9106,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "重合",
                         "是"
                     ]
+                ,
+                    "options": [{"text":"重合（在同一点）","correct":true},{"text":"不重合（差一点）","correct":false},{"text":"1/2在0.5的左边","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -9069,6 +9119,8 @@ window.MATH_BY_GRADE["4b"] = {
                         "重合",
                         "是"
                     ]
+                ,
+                    "options": [{"text":"重合（在同一点）","correct":true},{"text":"不重合","correct":false},{"text":"0.25在1/4的右边","correct":false}]
                 }
             ],
             "neriageErrors": [
