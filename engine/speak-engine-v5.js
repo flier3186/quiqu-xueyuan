@@ -591,7 +591,7 @@ window.SpeakEngineV5 = {
         if(err === 'not-allowed') toast('🔇 麦克风权限被拒绝，可以用打字继续 ✍️');
         else if(err === 'no-speech') toast('🤫 没有检测到语音，请再试一次');
         else if(err === 'network') toast('🌐 网络不通，语音用不了 — 用打字继续也可以 ✍️');
-        else toast('识别出错了：' + err + ' — 可以用打字继续 ✍️');
+        else toast('咦，没听懂，再大声说一次就好，或者用打字 ✍️');
       }
       // 识别失败后把光标放回输入框，给孩子一个明确的"下一步"
       try{ const inp = document.getElementById('seV5Input'); if(inp) inp.focus(); }catch(e2){}

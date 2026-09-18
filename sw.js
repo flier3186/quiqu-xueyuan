@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260917i';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260917j';
 const ASSETS = [
   '/',
   '/index.html',
@@ -64,9 +64,8 @@ const ASSETS = [
   'engine/progress-tracker-v5.js',
   'engine/russian-questioning.js',
   'engine/scene-manager.js',
-  'lib/ts-fsrs.mjs?v=20260916a',
+  'lib/ts-fsrs.mjs',
   'engine/spaced-review-v5.js',
-  'engine/spaced-review.js',
   'engine/speak-engine-v5.js',
   'engine/weakness-detector-v5.js'
 ];
@@ -98,7 +97,15 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match('/index.html'))
+      Promise.race([
+        fetch(event.request),
+        new Promise(function(resolve){ setTimeout(function(){ resolve(null); }, 5000); })
+      ]).then(function(resp){
+        if(resp) return resp;
+        return caches.match('/index.html');
+      }).catch(function(){
+        return caches.match('/index.html');
+      })
     );
     return;
   }

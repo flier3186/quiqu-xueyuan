@@ -21,8 +21,11 @@ window.Achievements = (function(){
     const SPEAK_KEY = 'quicku_speak_daily';
     const TOTAL_KEY = 'quicku_speak_total';
     const PET_CELEBRATED = 'quicku_pet_celebrated';
-    function _todayStr(){ return new Date().toISOString().slice(0,10); }
-    function _yesterdayStr(){ const d=new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); }
+    // B-2: day boundary must use LOCAL date, not UTC (toISOString = UTC, misjudges 00:00-08:00 CN)
+    function _localYMD(d){ const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), da=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${da}`; }
+    function _todayStr(){ return _localYMD(new Date()); }
+    function _yesterdayStr(){ const d=new Date(); d.setDate(d.getDate()-1); return _localYMD(d); }
+    
     function _load(key, fallback){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):fallback; }catch(e){ return fallback; } }
     function _st(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
 
