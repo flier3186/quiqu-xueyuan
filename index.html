@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917h"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917i"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -1268,7 +1268,7 @@ body::before{opacity:.35;mix-blend-mode:multiply}
         <div class="logo-text">奇趣<span>学园</span></div>
       </div>
       <nav class="nav-tabs" id="navTabs">
-        <div class="nav-tab active" data-view="overview"><span class="em nav-ico">🏠</span><span>总览</span><div class="underline"></div></div>
+        <div class="nav-tab active" data-view="overview"><span class="em nav-ico">🏠</span><span>首页</span><div class="underline"></div></div>
         <div class="nav-tab" data-view="math"><span class="em nav-ico">🪐</span><span>数学星球</span><div class="underline"></div></div>
         <div class="nav-tab" data-view="english"><span class="em nav-ico">🌍</span><span>英语世界</span><div class="underline"></div></div>
         <div class="nav-tab" data-view="speak"><span class="em nav-ico">🎤</span><span>口语伙伴</span><div class="underline"></div></div>
@@ -3291,23 +3291,6 @@ function renderSidePanel(){
         </div>
       </div>
       <div class="panel-card">
-        <h3>📋 今日任务</h3>
-        <div class="task-list">
-          <div class="task-item" onclick="switchView('math')">
-            <div class="task-thumb"><span class="em">🧮</span></div>
-            <div class="task-info"><div class="task-title">数学 · 多位数乘法</div><div class="task-meta">3道 · 15分钟 · <span style="color:var(--teal)">待开始</span></div></div>
-          </div>
-          <div class="task-item" onclick="switchView('english')">
-            <div class="task-thumb"><span class="em">🌍</span></div>
-            <div class="task-info"><div class="task-title">英语 · SH拼读</div><div class="task-meta">5个词 · 10分钟 · <span style="color:var(--yellow-700)">3/5</span></div></div>
-          </div>
-          <div class="task-item" onclick="switchView('speak')">
-            <div class="task-thumb"><span class="em">🎤</span></div>
-            <div class="task-info"><div class="task-title">口语 · 咖啡店</div><div class="task-meta">3轮 · 8分钟 · <span style="color:var(--ink-400)">未开始</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-card">
         <h3>⚡ 快速入口</h3>
         <div class="quick-grid">
           <div class="quick-item" onclick="switchView('math')"><span class="em">🏋️</span><span>训练营</span></div>
@@ -3315,7 +3298,7 @@ function renderSidePanel(){
           <div class="quick-item" onclick="toast('错题本：'+S.math.wrongProblems.length+' 道')"><span class="em">📕</span><span>错题</span></div>
           <div class="quick-item" onclick="switchView('english')"><span class="em">🚀</span><span>进阶</span></div>
           <div class="quick-item" onclick="switchView('pet')"><span class="em">🐾</span><span>宠物</span></div>
-          <div class="quick-item" onclick="setStar(10,'签到成功');this.style.background='var(--teal-soft)';this.querySelector('span').style.color='var(--teal)'"><span class="em">✅</span><span>签到</span></div>
+          <div class="quick-item" onclick="signIn(this)"><span class="em">✅</span><span>签到</span></div>
         </div>
       </div>
 
@@ -4168,6 +4151,7 @@ function renderMath(grade='3'){
     try{ _diagEntry = MathDiagnostic.renderEntryCard(semKey) || ''; }catch(e){ _diagEntry = ''; }
   }
 
+  const _mp=(()=>{try{const now=Date.now(),d7=now-7*864e5,log=(S.answerLog||[]).filter(a=>a.subject==='math'&&a.date&&new Date(a.date).getTime()>d7);if(!log.length)return 0;const ok=log.filter(a=>a.result==='correct').length;return Math.round(ok/log.length*100);}catch(e){return 0;}})();
   return `
     <div class="layout-with-side math-scope">
       <div style="flex:1;min-width:0">
@@ -4198,7 +4182,7 @@ function renderMath(grade='3'){
             <h2>${data.title || ((g) + " 年级 · 题库加载中…")}</h2>
             <p>${data.sub} · 场景发现式教学 · 数形结合 CPA</p>
           </div>
-          <div class="progress"><span>掌握进度</span><span class="num">${data.progress}%</span></div>
+          <div class="progress"><span>掌握进度（近7天）</span><span class="num">${_mp}%</span></div>
         </div>
         ${(window.MATH_IS_REVIEW && window.MATH_REVIEW) ? `
         <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFE9D6,#FFF6E2);border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;margin-bottom:14px">
@@ -5190,14 +5174,16 @@ function _mathDiscoverySteps(problem){
   const rot = (arr, k)=>{ const n=arr.length; k=((k%n)+n)%n; return arr.slice(k).concat(arr.slice(0,k)); };
 
   // Step 1：理解题意 —— 选项为「正确问法 + 3 个干扰」
-  const distractQ = ['求原来有多少','求相差多少','求平均每份是多少','求一共多少'].filter(x=>x!==problem.question);
+  const isGeo = problem.visualType==='geometry' || /图形|几何|观察|周长|面积/.test(problem.knowledge||'');
+  const distractQ = (isGeo ? ['求周长是多少','求面积是多少','求每条边（或每份）是多少','观察它有多少个面'] : ['求原来有多少','求相差多少','求平均每份是多少','求一共多少']).filter(x=>x!==problem.question);
   let c1 = [problem.question, ...distractQ.slice(0,3)];
   while(c1.length<4) c1.push('以上都不对');
   c1 = rot(c1, 1);
 
   // Step 2：找关键信息 —— 从算式提取关键数
   const nums = (f.match(/-?\d+(\.\d+)?/g)||[]).filter(n=>parseFloat(n)!==0);
-  const keyInfo = `关键数：${nums.slice(0,4).join('、')}${nums.length>4?'...':''}（来自算式 ${problem.formula}）`;
+  const formulaTxt = problem.formula ? `（来自算式 ${problem.formula}）` : '';
+  const keyInfo = nums.length ? `关键数：${nums.slice(0,4).join('、')}${nums.length>4?'...':''}${formulaTxt}` : `从题目场景里找一找故事中提到的数量${formulaTxt}`;
   const c2 = rot([keyInfo, '没有给出任何数', '只有问题没有条件', '只有答案没有过程'], 2);
 
   // Step 3：选方法 —— 正确运算 + 其它运算干扰
@@ -5206,7 +5192,7 @@ function _mathDiscoverySteps(problem){
 
   return [
     { q:'📖 再读一遍场景，这道题要我们求什么？', choices:c1, answer:problem.question, explain:`题目问的是：${problem.question}` },
-    { q:'🔢 题目给了我们哪些关键的数和条件？', choices:c2, answer:keyInfo, explain:`从场景里能找到关键数，写出算式就是：${problem.formula}` },
+    { q:'🔢 题目给了我们哪些关键的数和条件？', choices:c2, answer:keyInfo, explain:`从场景里能找到关键数${problem.formula?'，写出算式就是：'+problem.formula:''}` },
     { q:'🧩 要解决这个问题，你觉得该用什么方法？', choices:c3, answer:methodName, explain:`看算式 ${problem.formula} 里有「${op}」，所以用${methodName}来解决。` }
   ];
 }
@@ -6590,8 +6576,8 @@ function renderSpeak(){
         </div>
         <div class="daily-challenge">
           <h4>🎯 口语挑战</h4>
-          <p>完成 3 个不同场景的对话，解锁"口语小达人"徽章！</p>
-          <div class="reward">+50 ⭐</div>
+          <p>完成 3 个不同场景的对话，点亮「口语小明星」！</p>
+          <div class="reward">已体验 ${(()=>{try{const a=(S.speakV5&&S.speakV5.sceneDone)||[];return Math.min(a.length,3)+'/3';}catch(e){return '0/3';}})()} 个场景</div>
         </div>
       </div>
     </div>
@@ -6601,6 +6587,7 @@ function renderSpeak(){
 // ===== V5 口语辅助函数 =====
 function selectScenarioV5(id){
   SpeakEngineV5.init();
+  try{ const arr=(S.speakV5.sceneDone)||(S.speakV5.sceneDone=[]); if(arr.indexOf(id)<0){arr.push(id);} if(arr.length>=3&&!S.speakV5.challengeDone){S.speakV5.challengeDone=true;setStar(10,'🎯 完成 3 场景口语挑战');} }catch(e){}
   S.speakV5.scenario = id;
   SpeakEngineV5._save();
   SpeakEngineV5.startDialog(S.speakV5.teacher, id);
@@ -7024,7 +7011,6 @@ function startMemoryGame(){
   var pairs=[...emojis,...emojis].sort(()=>Math.random()-0.5);
   memoryCards=pairs.map((e,i)=>{return{emoji:e,id:i,flipped:false,matched:false};});
   memoryFlipped=[];memoryMatched=0;memoryLocked=false;
-  S.pet.coins += 10;saveState();
   renderMemoryBoard();
 }
 function renderMemoryBoard(){
@@ -7053,7 +7039,6 @@ function flipMemoryCard(i){
     if(memoryCards[a].emoji===memoryCards[b].emoji){
       memoryCards[a].matched=true;memoryCards[b].matched=true;
       memoryMatched+=2;memoryFlipped=[];memoryLocked=false;
-      S.pet.coins+=5;saveState();
       if(memoryMatched>=memoryCards.length){
         setTimeout(()=>{toast('🎉 全部配对成功！');},300);
       }
@@ -7064,8 +7049,9 @@ function flipMemoryCard(i){
   }
 }
 function finishMemoryGame(){
-  S.pet.coins+=20;saveState();
-  toast('🎉 记忆翻牌完成！+20 金币');
+  const _d=new Date();const today=_d.getFullYear()+'-'+String(_d.getMonth()+1).padStart(2,'0')+'-'+String(_d.getDate()).padStart(2,'0');
+  if(S.pet.lastMemoryDate===today){toast('✅ 今日翻牌奖励已领取，明天再来挑战！');}
+  else{ S.pet.lastMemoryDate=today; S.pet.coins+=50; saveState(); toast('🎉 记忆翻牌完成！+50 金币（每日一次）'); }
   renderPet();
 }
 
@@ -7553,7 +7539,7 @@ function openParentPanel(){
 }
 function checkParentPwd(){
   const pwd=$('#parentPwd').value;
-  if(pwd==='1234'){
+  if(pwd===((S.parent&&S.parent.pwd)||'1234')){
     renderParentDashboard();
   }else{
     $('#pwdError').style.display='block';
@@ -7813,7 +7799,7 @@ function renderParentDashboard(pt){
             </div>
             <div class="report-kpi">
               <div class="rk-num up">${o.avgAccuracy}%</div>
-              <div class="rk-label">正确率 ↑ 3.2%</div>
+              <div class="rk-label">本周正确率</div>
             </div>
             <div class="report-kpi">
               <div class="rk-num up">+${Math.max(12,Math.floor(o.stars*0.3))}</div>
@@ -7825,56 +7811,42 @@ function renderParentDashboard(pt){
             </div>
           </div>
           <div class="report-body">
-            <h3>🌟 本周亮点与待提升</h3>
+            <h3>🌟 本周亮点与待提升</h3>            <h3>🌟 本周亮点与待提升</h3>
             <div class="report-list">
-              <div class="report-item good">
-                <div class="report-item-icon">✓</div>
-                <div class="report-item-body">
-                  <div class="report-item-title">数学：CPA 具象化思维提升明显</div>
-                  <div class="report-item-desc">本周苹果模型、Bar Model 题目正确率达到 92%，较上周 ↑8%</div>
-                </div>
-              </div>
-              <div class="report-item good">
-                <div class="report-item-icon">✓</div>
-                <div class="report-item-body">
-                  <div class="report-item-title">英语：CVC 拼读突破</div>
-                  <div class="report-item-desc">18 个 CVC 单词连续拼读成功，主动开口时长增加 15 分钟</div>
-                </div>
-              </div>
-              <div class="report-item good">
-                <div class="report-item-icon">✓</div>
-                <div class="report-item-body">
-                  <div class="report-item-title">专注力：单日最长 48 分钟</div>
-                  <div class="report-item-desc">周六下午深度沉浸学习，解锁「专注小达人」成就</div>
-                </div>
-              </div>
-              <div class="report-item bad">
-                <div class="report-item-icon">!</div>
-                <div class="report-item-body">
-                  <div class="report-item-title">数学：通分最小公倍数找法需巩固</div>
-                  <div class="report-item-desc">连续 5 道异分母加减题目出现公倍数错误，建议短除法专项训练</div>
-                </div>
-              </div>
-              <div class="report-item bad">
-                <div class="report-item-icon">!</div>
-                <div class="report-item-body">
-                  <div class="report-item-title">英语：th 咬舌音清浊混淆</div>
-                  <div class="report-item-desc">think / this 单词对比练习中 40% 区分错误，需加强听力+口型练习</div>
-                </div>
-              </div>
+              ${(()=>{
+                try{
+                  const now=Date.now(),d7=now-7*864e5;
+                  const log=(S.answerLog||[]).filter(a=>a.date&&new Date(a.date).getTime()>d7);
+                  if(!log.length) return '<div class="report-item good"><div class="report-item-icon">✓</div><div class="report-item-body"><div class="report-item-title">本周刚开始，先完成几次练习吧！</div><div class="report-item-desc">答题后这里会显示真实的学习亮点与建议。</div></div></div>';
+                  const ok=log.filter(a=>a.result==='correct').length;
+                  const acc=Math.round(ok/log.length*100);
+                  const byK={}; log.forEach(a=>{ if(a.result==='correct'){ const k=(a.knowledge||'综合').trim(); (byK[k]=byK[k]||[]).push(a); } });
+                  const best=Object.entries(byK).sort((x,y)=>y[1].length-x[1].length)[0];
+                  let html='';
+                  html+='<div class="report-item good"><div class="report-item-icon">✓</div><div class="report-item-body"><div class="report-item-title">本周学习概况</div><div class="report-item-desc">共完成 '+log.length+' 题，正确率 '+acc+'%'+(best?'；「'+best[0]+'」表现最棒。':'。')+'</div></div></div>';
+                  let weakTop=null;
+                  try{ const w=(window.WeaknessDetector&&WeaknessDetector.analyzeWeakness(S,'math')); weakTop=(w&&w.weakPoints&&w.weakPoints[0])||null; }catch(e){}
+                  if(weakTop){ html+='<div class="report-item bad"><div class="report-item-icon">!</div><div class="report-item-body"><div class="report-item-title">需加强：'+weakTop.knowledge+'</div><div class="report-item-desc">掌握度 '+weakTop.mastery+'%。建议：'+(weakTop.strategy||'回到基础概念，用图示重新理解题意')+'</div></div></div>'; }
+                  else{ html+='<div class="report-item good"><div class="report-item-icon">✓</div><div class="report-item-body"><div class="report-item-title">当前无明显薄弱点</div><div class="report-item-desc">继续保持，可在「漏洞检测」里查看详情</div></div></div>'; }
+                  return html;
+                }catch(e){ return '<div class="report-item good"><div class="report-item-icon">✓</div><div class="report-item-body"><div class="report-item-title">本周学习概况</div><div class="report-item-desc">继续学习，下周再来看进步吧！</div></div></div>'; }
+              })()}
             </div>
+          </div>
+        </div>
+        <div class="suggest-grid">            </div>
           </div>
         </div>
         <div class="suggest-grid">
           <div class="suggest-card">
             <div class="suggest-ic">🔢</div>
             <h4>数学专项建议</h4>
-            <p>① 每日 5 道通分专项（短除法找 LCM）<br/>② 新增 3 题多步应用题审题训练<br/>③ 周末复习面积单位换算进率表</p>
+            <p>① 每天完成「今日任务」里的数学练习<br/>② 做错的题及时进「错题本」复习<br/>③ 学有余力再挑战闯关与热身小游戏</p>
           </div>
           <div class="suggest-card y">
             <div class="suggest-ic">🔤</div>
             <h4>英语专项建议</h4>
-            <p>① th 清浊对比听力 10 分钟/天<br/>② 魔法 e 闪卡游戏复习 3 轮<br/>③ 每日跟读 5 句现在进行时句型</p>
+            <p>① 每天学 3~5 个新词并用自然拼读认读<br/>② 先听示范再跟读，注意语音语调<br/>③ 完成每日口语练习目标</p>
           </div>
           <div class="suggest-card c">
             <div class="suggest-ic">💪</div>
@@ -8035,6 +8007,14 @@ function renderParentDashboard(pt){
       </div>
 
       <div class="parent-section" data-psec="profiles">
+        <div class="card" style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">🔐 家长密码</div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <input type="password" id="parentPwdNew" placeholder="新密码（4 位数字）" maxlength="4" style="flex:1;min-width:160px;padding:9px 12px;border:1.5px solid var(--ink-200);border-radius:10px;font-size:13px;outline:none">
+            <button class="btn btn-yellow" onclick="saveParentPwd()">保存密码</button>
+          </div>
+          <div style="font-size:11px;color:var(--text-3);margin-top:6px">默认 1234。保存后进入家长面板需使用新密码。</div>
+        </div>
         <div class="card">
           <h4 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px">👨‍👩‍👧 学员档案</h4>
           <div id="profilesList" style="display:flex;flex-direction:column;gap:8px"><div style="padding:20px;text-align:center;color:var(--text-3);font-size:13px">加载中...</div></div>
@@ -8485,6 +8465,7 @@ function addProfile(name){
 }
 // 删除档案（不能删除最后一个）
 function deleteProfile(id){
+  if(!window.confirm('确定删除这个学习档案吗？删除后将无法恢复。'))return;
   const keys=Object.keys(S.profiles);
   if(keys.length<=1){toast('至少保留一个档案');return;}
   if(id===S.currentProfileId){
@@ -8496,6 +8477,20 @@ function deleteProfile(id){
   saveProfileMeta();
   render();
   toast(`已删除档案`);
+}
+function signIn(btn){
+  const _d=new Date();const today=_d.getFullYear()+'-'+String(_d.getMonth()+1).padStart(2,'0')+'-'+String(_d.getDate()).padStart(2,'0');
+  if((S.overview.lastSignDate||'')===today){toast('✅ 今天已经签过到了，明天再来吧！');return;}
+  S.overview.lastSignDate=today;setStar(10,'签到成功');
+  if(btn){btn.style.background='var(--teal-soft)';const s=btn.querySelector('.em + span');if(s)s.style.color='var(--teal)';}
+}
+function saveParentPwd(){
+  const _el=$('#parentPwdNew');
+  const v=(_el&&_el.value||'').trim();
+  if(!/^\d{4}$/.test(v)){toast('⚠️ 请输入 4 位数字密码');return;}
+  if(v==='1234'){toast('已默认 1234，无需再设');_el.value='';return;}
+  S.parent=S.parent||{};S.parent.pwd=v;saveState();
+  _el.value='';toast('✅ 家长密码已更新');
 }
 function setStar(n,msg=''){S.overview.stars+=n;saveState();toast(`⭐ +${n}${msg?' · '+msg:''}`);}
 function addBadge(id,name,icon){if(S.badges.find(b=>b.id===id))return;S.badges.push({id,name,icon,ts:Date.now()});saveState();toast(`🏆 解锁徽章：${name}`);}
@@ -9095,54 +9090,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260917h"></script>
-<script src="data/math-reverse-model.js?v=20260917h"></script>
-<script src="data/math-daily-bank.js?v=20260917h"></script>
-<script src="data/math-chain-map.js?v=20260917h"></script>
-<script src="data/english-vocab.js?v=20260917h"></script>
-<script src="data/english-phonics.js?v=20260917h"></script>
-<script src="data/english-listening.js?v=20260917h"></script>
-<script src="data/english-grammar.js?v=20260917h"></script>
-<script src="data/english-scenarios.js?v=20260917h"></script>
-<script src="data/english-rubric.js?v=20260917h"></script>
+<script src="data/math-data-core.js?v=20260917i"></script>
+<script src="data/math-reverse-model.js?v=20260917i"></script>
+<script src="data/math-daily-bank.js?v=20260917i"></script>
+<script src="data/math-chain-map.js?v=20260917i"></script>
+<script src="data/english-vocab.js?v=20260917i"></script>
+<script src="data/english-phonics.js?v=20260917i"></script>
+<script src="data/english-listening.js?v=20260917i"></script>
+<script src="data/english-grammar.js?v=20260917i"></script>
+<script src="data/english-scenarios.js?v=20260917i"></script>
+<script src="data/english-rubric.js?v=20260917i"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260917h"></script>
-<script src="engine/usage-metrics.js?v=20260917h"></script>
-<script src="engine/mic-permission.js?v=20260917h"></script>
-<script src="engine/scene-manager.js?v=20260917h"></script>
-<script src="engine/math-visual-v5.js?v=20260917h"></script>
-<script src="engine/math-manipulative.js?v=20260917h"></script>
-<script src="engine/math-geometry-3d.js?v=20260917h"></script>
-<script src="engine/russian-questioning.js?v=20260917h"></script>
-<script src="engine/reverse-model-judge.js?v=20260917h"></script>
-<script src="engine/parent-panel.js?v=20260917h"></script>
-<script src="engine/cloud-tts.js?v=20260917h"></script>
-<script src="engine/neural-tts.js?v=20260917h"></script>
-<script src="engine/asr.js?v=20260917h"></script>
-<script src="data/grade-limits.js?v=20260917h"></script>
-<script src="engine/math-kernel.js?v=20260917h"></script>
-<script src="engine/listening-math.js?v=20260917h"></script>
+<script src="engine/achievements.js?v=20260917i"></script>
+<script src="engine/usage-metrics.js?v=20260917i"></script>
+<script src="engine/mic-permission.js?v=20260917i"></script>
+<script src="engine/scene-manager.js?v=20260917i"></script>
+<script src="engine/math-visual-v5.js?v=20260917i"></script>
+<script src="engine/math-manipulative.js?v=20260917i"></script>
+<script src="engine/math-geometry-3d.js?v=20260917i"></script>
+<script src="engine/russian-questioning.js?v=20260917i"></script>
+<script src="engine/reverse-model-judge.js?v=20260917i"></script>
+<script src="engine/parent-panel.js?v=20260917i"></script>
+<script src="engine/cloud-tts.js?v=20260917i"></script>
+<script src="engine/neural-tts.js?v=20260917i"></script>
+<script src="engine/asr.js?v=20260917i"></script>
+<script src="data/grade-limits.js?v=20260917i"></script>
+<script src="engine/math-kernel.js?v=20260917i"></script>
+<script src="engine/listening-math.js?v=20260917i"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20260917h"></script>
-<script src="engine/math-warmup.js?v=20260917h"></script>
-<script src="engine/math-flow-v5.js?v=20260917h"></script>
-<script src="engine/math-diagram-master.js?v=20260917h"></script>
-<script src="engine/diagram-followup.js?v=20260917h"></script>
-<script src="engine/math-diagnostic.js?v=20260917h"></script>
-<script src="engine/speak-engine-v5.js?v=20260917h"></script>
-<script src="engine/english-flow-v5.js?v=20260917h"></script>
-<script src="engine/weakness-detector-v5.js?v=20260917h"></script>
-<script src="engine/progress-tracker-v5.js?v=20260917h"></script>
+<script src="engine/pet-whisper.js?v=20260917i"></script>
+<script src="engine/math-warmup.js?v=20260917i"></script>
+<script src="engine/math-flow-v5.js?v=20260917i"></script>
+<script src="engine/math-diagram-master.js?v=20260917i"></script>
+<script src="engine/diagram-followup.js?v=20260917i"></script>
+<script src="engine/math-diagnostic.js?v=20260917i"></script>
+<script src="engine/speak-engine-v5.js?v=20260917i"></script>
+<script src="engine/english-flow-v5.js?v=20260917i"></script>
+<script src="engine/weakness-detector-v5.js?v=20260917i"></script>
+<script src="engine/progress-tracker-v5.js?v=20260917i"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260917h"></script>
-<script src="data/math-2a-2b.js?v=20260917h"></script>
-<script src="data/math-3-6-extend.js?v=20260917h"></script>
-<script src="data/speak-8-new.js?v=20260917h"></script>
-<script src="data/vocab-themes.js?v=20260917h"></script>
-<script src="data/word-dict.js?v=20260917h"></script>
-<script src="data/storybooks.js?v=20260917h"></script>
-<script src="data/tpr-action-house.js?v=20260917h"></script>
-<script src="data/listening-radio.js?v=20260917h"></script>
+<script src="engine/spaced-review-v5.js?v=20260917i"></script>
+<script src="data/math-2a-2b.js?v=20260917i"></script>
+<script src="data/math-3-6-extend.js?v=20260917i"></script>
+<script src="data/speak-8-new.js?v=20260917i"></script>
+<script src="data/vocab-themes.js?v=20260917i"></script>
+<script src="data/word-dict.js?v=20260917i"></script>
+<script src="data/storybooks.js?v=20260917i"></script>
+<script src="data/tpr-action-house.js?v=20260917i"></script>
+<script src="data/listening-radio.js?v=20260917i"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
