@@ -69,7 +69,10 @@ window.MathWarmup = {
   },
 
   // ===== 打开/关闭 =====
+  _clearTimer(){ if(this._nextTimer){ clearTimeout(this._nextTimer); this._nextTimer = null; } },
+
   open(mode){
+    this._clearTimer();
     this._mode = mode || 'dots';
     this._coins = 0; this._count = 0;
     let ov = document.getElementById('mwOverlay');
@@ -78,11 +81,13 @@ window.MathWarmup = {
     this._next();
   },
   close(){
+    this._clearTimer();
     const ov = document.getElementById('mwOverlay');
     if(ov && ov.parentNode) ov.parentNode.removeChild(ov);
     try{ speechSynthesis.cancel(); }catch(e){}
   },
   switchMode(mode){
+    this._clearTimer();
     this._mode = mode;
     this._next();
   },
@@ -168,12 +173,15 @@ window.MathWarmup = {
         try{ if(S && S.pet){ S.pet.coins = (S.pet.coins || 0) + 1; if(typeof saveState === 'function') saveState(); } }catch(e){}
         try{ if(window.QuizMood) window.QuizMood.right(); }catch(e){}
         fb.innerHTML = `<div style="padding:11px 14px;background:linear-gradient(135deg,var(--teal-soft),var(--yellow-soft));border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);font-weight:800">🎉 答对啦！+1💰</div>`;
+        const st = document.getElementById('mwStats');
+        if(st) st.textContent = '答对 ' + this._count + ' · +' + this._coins + '💰';
       }else{
         fb.innerHTML = `<div style="padding:11px 14px;background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:10px;font-size:13.5px;color:var(--coral);font-weight:700">答案是 <b style="font-family:'Inter',sans-serif">${this._escape(String(t.opts[this._ans]))}</b> —— 记住它，下次一定行！</div>`;
       }
     }
     // 自动下一题（无倒计时惩罚，仅快速过渡）
-    setTimeout(()=>{ this._next(); }, 1100);
+    this._clearTimer();
+    this._nextTimer = setTimeout(()=>{ this._nextTimer = null; this._next(); }, 1100);
   },
 
   _escape(s){
