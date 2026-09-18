@@ -94,7 +94,7 @@ window.WeaknessDetector = {
     if (!analysis || analysis.totalWeakPoints === 0) {
       return '<div class="wrd-wrap" style="text-align:center;padding:20px;color:var(--teal)"><b>🎉 太棒了！目前没有发现的薄弱知识点</b></div>';
     }
-    let html = '<div class="wrd-wrap" style="padding:16px"><h3 style="margin:0 0 12px;color:var(--navy)">📊 学习漏洞报告</h3>';
+    let html = '<div class="wrd-wrap" style="padding:16px"><h3 style="margin:0 0 12px;color:var(--navy)">📊 学习小检查报告</h3>';
     analysis.recommendations.forEach(rec => {
       const color = rec.avgMastery < 40 ? 'var(--coral)' : rec.avgMastery < 60 ? 'var(--yellow)' : 'var(--teal)';
       html += `<div style="background:#F8FAFC;border-radius:12px;padding:14px;margin-bottom:12px;border-left:4px solid ${color}">

@@ -2627,8 +2627,13 @@ window.MATH_BY_GRADE["3b"] = {
                     },
                     {
                         "label": "盒3",
-                        "val": 29,
+                        "val": 28,
                         "color": "#FB923C"
+                    },
+                    {
+                        "label": "余",
+                        "val": 1,
+                        "color": "#F5B800"
                     }
                 ]
             },
@@ -14269,7 +14274,7 @@ window.MATH_BY_GRADE["3b"] = {
         {
             "scene": "小红用1元买了一根冰棒，找回0.4元。她好奇0.4元是多少钱。",
             "question": "0.4等于十分之几？（填分子）",
-            "formula": "0.4 = ?/12",
+            "formula": "0.4 = ?/10",
             "answer": 4,
             "choices": [
                 4,
@@ -14285,19 +14290,19 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "knowledge": "小数初步认识",
             "difficulty": 1,
-            "hint": "0.4=4/12",
+            "hint": "0.4=4/10",
             "variants": [
                 {
                     "question": "0.7=十分之几(填分子)？",
-                    "formula": "0.7=?/12",
+                    "formula": "0.7=?/10",
                     "answer": 7,
-                    "hint": "0.7=7/12"
+                    "hint": "0.7=7/10"
                 },
                 {
                     "question": "0.5=十分之几(填分子)？",
-                    "formula": "0.5=?/12",
+                    "formula": "0.5=?/10",
                     "answer": 5,
-                    "hint": "0.5=5/12"
+                    "hint": "0.5=5/10"
                 }
             ],
             "discoverySteps": [
@@ -14332,7 +14337,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "4−1"
                     ],
                     "answer": "一位小数=十分之几，分子是 4，填 4",
-                    "explain": "一位小数表示十分之几：0.4=(4)/12，分子填 4"
+                    "explain": "一位小数表示十分之几：0.4=(4)/10，分子填 4"
                 }
             ],
             "explainLayers": [
@@ -14363,7 +14368,7 @@ window.MATH_BY_GRADE["3b"] = {
         {
             "scene": "小红用1元买了一根冰棒，找回0.4元。她好奇0.4元是多少钱。",
             "question": "0.4等于十分之几？（填分子）",
-            "formula": "0.4 = ?/14",
+            "formula": "0.4 = ?/10",
             "answer": 4,
             "choices": [
                 4,
@@ -14379,19 +14384,19 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "knowledge": "小数初步认识",
             "difficulty": 1,
-            "hint": "0.4=4/14",
+            "hint": "0.4=4/10",
             "variants": [
                 {
                     "question": "0.7=十分之几(填分子)？",
-                    "formula": "0.7=?/14",
+                    "formula": "0.7=?/10",
                     "answer": 7,
-                    "hint": "0.7=7/14"
+                    "hint": "0.7=7/10"
                 },
                 {
                     "question": "0.5=十分之几(填分子)？",
-                    "formula": "0.5=?/14",
+                    "formula": "0.5=?/10",
                     "answer": 5,
-                    "hint": "0.5=5/14"
+                    "hint": "0.5=5/10"
                 }
             ],
             "discoverySteps": [
@@ -14426,7 +14431,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "4−1"
                     ],
                     "answer": "一位小数=十分之几，分子是 4，填 4",
-                    "explain": "一位小数表示十分之几：0.4=(4)/14，分子填 4"
+                    "explain": "一位小数表示十分之几：0.4=(4)/10，分子填 4"
                 }
             ],
             "explainLayers": [
@@ -14457,7 +14462,7 @@ window.MATH_BY_GRADE["3b"] = {
         {
             "scene": "小亮量得自己的铅笔长0.7分米。他想知道0.7等于十分之几。",
             "question": "0.7等于十分之几？（填分子）",
-            "formula": "0.7 = ?/12",
+            "formula": "0.7 = ?/10",
             "answer": 7,
             "choices": [
                 7,
@@ -14473,19 +14478,19 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "knowledge": "小数初步认识",
             "difficulty": 1,
-            "hint": "0.7=7/12",
+            "hint": "0.7=7/10",
             "variants": [
                 {
                     "question": "0.2=十分之几(填分子)？",
-                    "formula": "0.2=?/12",
+                    "formula": "0.2=?/10",
                     "answer": 2,
-                    "hint": "0.2=2/12"
+                    "hint": "0.2=2/10"
                 },
                 {
                     "question": "0.9=十分之几(填分子)？",
-                    "formula": "0.9=?/12",
+                    "formula": "0.9=?/10",
                     "answer": 9,
-                    "hint": "0.9=9/12"
+                    "hint": "0.9=9/10"
                 }
             ],
             "discoverySteps": [
@@ -14520,7 +14525,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "7−1"
                     ],
                     "answer": "一位小数=十分之几，分子是 7，填 7",
-                    "explain": "一位小数表示十分之几：0.7=(7)/12，分子填 7"
+                    "explain": "一位小数表示十分之几：0.7=(7)/10，分子填 7"
                 }
             ],
             "explainLayers": [
@@ -14551,7 +14556,7 @@ window.MATH_BY_GRADE["3b"] = {
         {
             "scene": "小亮量得自己的铅笔长0.8分米。他想知道0.8等于十分之几。",
             "question": "0.8等于十分之几？（填分子）",
-            "formula": "0.8 = ?/13",
+            "formula": "0.8 = ?/10",
             "answer": 8,
             "choices": [
                 8,
@@ -14567,19 +14572,19 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "knowledge": "小数初步认识",
             "difficulty": 1,
-            "hint": "0.8=8/13",
+            "hint": "0.8=8/10",
             "variants": [
                 {
                     "question": "0.2=十分之几(填分子)？",
-                    "formula": "0.2=?/13",
+                    "formula": "0.2=?/10",
                     "answer": 2,
-                    "hint": "0.2=2/13"
+                    "hint": "0.2=2/10"
                 },
                 {
                     "question": "0.9=十分之几(填分子)？",
-                    "formula": "0.9=?/13",
+                    "formula": "0.9=?/10",
                     "answer": 9,
-                    "hint": "0.9=9/13"
+                    "hint": "0.9=9/10"
                 }
             ],
             "discoverySteps": [
@@ -14614,7 +14619,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "8−1"
                     ],
                     "answer": "一位小数=十分之几，分子是 8，填 8",
-                    "explain": "一位小数表示十分之几：0.8=(8)/13，分子填 8"
+                    "explain": "一位小数表示十分之几：0.8=(8)/10，分子填 8"
                 }
             ],
             "explainLayers": [
@@ -14665,15 +14670,15 @@ window.MATH_BY_GRADE["3b"] = {
             "variants": [
                 {
                     "question": "0.4=十分之几(填分子)？",
-                    "formula": "0.4=?/12",
+                    "formula": "0.4=?/10",
                     "answer": 4,
-                    "hint": "0.4=4/12"
+                    "hint": "0.4=4/10"
                 },
                 {
                     "question": "0.6=十分之几(填分子)？",
-                    "formula": "0.6=?/12",
+                    "formula": "0.6=?/10",
                     "answer": 6,
-                    "hint": "0.6=6/12"
+                    "hint": "0.6=6/10"
                 }
             ],
             "discoverySteps": [
@@ -14739,7 +14744,7 @@ window.MATH_BY_GRADE["3b"] = {
         {
             "scene": "小芳的身高是1.3米。她好奇1.3米中的0.3等于十分之几。",
             "question": "0.3等于十分之几？（填分子）",
-            "formula": "0.3 = ?/14",
+            "formula": "0.3 = ?/10",
             "answer": 3,
             "choices": [
                 3,
@@ -14755,19 +14760,19 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "knowledge": "小数初步认识",
             "difficulty": 1,
-            "hint": "0.3=3/14",
+            "hint": "0.3=3/10",
             "variants": [
                 {
                     "question": "0.4=十分之几(填分子)？",
-                    "formula": "0.4=?/14",
+                    "formula": "0.4=?/10",
                     "answer": 4,
-                    "hint": "0.4=4/14"
+                    "hint": "0.4=4/10"
                 },
                 {
                     "question": "0.6=十分之几(填分子)？",
-                    "formula": "0.6=?/14",
+                    "formula": "0.6=?/10",
                     "answer": 6,
-                    "hint": "0.6=6/14"
+                    "hint": "0.6=6/10"
                 }
             ],
             "discoverySteps": [
@@ -14802,7 +14807,7 @@ window.MATH_BY_GRADE["3b"] = {
                         "3−1"
                     ],
                     "answer": "一位小数=十分之几，分子是 3，填 3",
-                    "explain": "一位小数表示十分之几：0.3=(3)/14，分子填 3"
+                    "explain": "一位小数表示十分之几：0.3=(3)/10，分子填 3"
                 }
             ],
             "explainLayers": [

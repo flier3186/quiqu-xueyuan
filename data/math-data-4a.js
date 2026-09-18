@@ -6379,19 +6379,19 @@ window.MATH_BY_GRADE["4a"] = {
                 "parts": [
                     {
                         "label": "3个班",
-                        "val": 93,
+                        "val": 78,
                         "color": "#00A896"
                     },
                     {
                         "label": "余",
-                        "val": 2,
+                        "val": 17,
                         "color": "#F5B800"
                     }
                 ]
             },
             "knowledge": "笔算除法（除数是整十数）",
             "difficulty": 2,
-            "hint": "95÷26=3余2",
+            "hint": "95÷26=3余17",
             "variants": [
                 {
                     "question": "85÷20=?余?",
@@ -6403,7 +6403,7 @@ window.MATH_BY_GRADE["4a"] = {
                     "question": "76÷26=?余?",
                     "formula": "76÷26=?",
                     "answer": 2,
-                    "hint": "76÷26=2余16"
+                    "hint": "76÷26=2余24"
                 }
             ],
             "discoverySteps": [
@@ -6483,19 +6483,19 @@ window.MATH_BY_GRADE["4a"] = {
                 "parts": [
                     {
                         "label": "3个班",
-                        "val": 101,
+                        "val": 90,
                         "color": "#00A896"
                     },
                     {
                         "label": "余",
-                        "val": 2,
+                        "val": 13,
                         "color": "#F5B800"
                     }
                 ]
             },
             "knowledge": "笔算除法（除数是整十数）",
             "difficulty": 2,
-            "hint": "103÷30=3余2",
+            "hint": "103÷30=3余13",
             "variants": [
                 {
                     "question": "85÷20=?余?",

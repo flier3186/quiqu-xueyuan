@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917j"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917k"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -2279,7 +2279,7 @@ const WeaknessDetector = {
     };
     return `<div style="display:flex;flex-direction:column;gap:10px">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div style="font-weight:700;color:var(--text-1);font-size:16px">🩺 漏洞检测报告</div>
+        <div style="font-weight:700;color:var(--text-1);font-size:16px">🩺 学习小检查报告</div>
         <div style="background:var(--coral);color:#fff;padding:3px 10px;border-radius:var(--radius-full);font-size:12px;font-weight:600">${analysis.summary}</div>
       </div>
       ${wp.length ? wp.map(card).join('') : `<div style="background:var(--teal-50);border-radius:var(--radius-lg);padding:20px;text-align:center;color:var(--teal-700);font-size:13px">🎉 暂无薄弱点，掌握得很好！</div>`}
@@ -3599,11 +3599,11 @@ function renderOverview(){
           <!-- 卡片3：知识漏洞报告 -->
           <div class="card tilt-card hoverable" style="grid-column:span 5;display:flex;flex-direction:column;background:linear-gradient(160deg,#fff 0%,#FFF5F0 100%);border:1px solid rgba(251,146,60,.18)">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-              <h2 style="font-size:16px;font-weight:800;color:var(--navy)">🩺 知识漏洞报告</h2>
+              <h2 style="font-size:16px;font-weight:800;color:var(--navy)">🩺 知识薄弱点</h2>
               <span style="background:var(--coral);color:#fff;padding:3px 10px;border-radius:var(--radius-full);font-size:11px;font-weight:600">${weakCount} 个薄弱点</span>
             </div>
             <div style="flex:1;overflow:auto;max-height:300px">
-              ${weakHTML || '<div style="padding:20px;text-align:center;color:var(--teal-700);background:var(--teal-50);border-radius:var(--radius-lg);font-size:13px">🎉 暂无漏洞，继续保持！</div>'}
+              ${weakHTML || '<div style="padding:20px;text-align:center;color:var(--teal-700);background:var(--teal-50);border-radius:var(--radius-lg);font-size:13px">🎉 全部掌握，继续保持！</div>'}
             </div>
             <div style="margin-top:10px;display:flex;gap:8px">
               <button class="btn" onclick="switchView('math')" style="flex:1;background:var(--coral);color:#fff;font-weight:700;padding:9px;font-size:12.5px">🎯 去练习</button>
@@ -7868,7 +7868,7 @@ function renderParentDashboard(pt){
             <div>
               <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px">DeepSeek API Key</label>
               <div style="display:flex;gap:8px;align-items:center">
-                <input type="password" id="deepseekKeyInput" placeholder="sk-..." value="${(S.apiConfig&&S.apiConfig.deepseekKey)||''}" style="flex:1;padding:10px 12px;border:1.5px solid var(--ink-200);border-radius:10px;font-size:13px;font-family:monospace;background:white;color:var(--navy);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--ink-200)'">
+                <input type="password" id="deepseekKeyInput" placeholder="sk-..." value="" style="flex:1;padding:10px 12px;border:1.5px solid var(--ink-200);border-radius:10px;font-size:13px;font-family:monospace;background:white;color:var(--navy);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--ink-200)'">
                 <button class="btn btn-ghost" id="toggleKeyVisibility" style="padding:10px 12px;font-size:12px;white-space:nowrap">👁 显示</button>
               </div>
               <div style="font-size:11px;color:var(--text-3);margin-top:6px;display:flex;align-items:center;gap:4px">
@@ -8482,6 +8482,7 @@ function signIn(btn){
   const _d=new Date();const today=_d.getFullYear()+'-'+String(_d.getMonth()+1).padStart(2,'0')+'-'+String(_d.getDate()).padStart(2,'0');
   if((S.overview.lastSignDate||'')===today){toast('✅ 今天已经签过到了，明天再来吧！');return;}
   S.overview.lastSignDate=today;setStar(10,'签到成功');
+  if(S.pet){S.pet.coins+=20;saveState();toast('💰 签到 +20 金币，去宠物屋喂食吧！');}
   if(btn){btn.style.background='var(--teal-soft)';const s=btn.querySelector('.em + span');if(s)s.style.color='var(--teal)';}
 }
 function saveParentPwd(){
@@ -9090,54 +9091,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260917j"></script>
-<script src="data/math-reverse-model.js?v=20260917j"></script>
-<script src="data/math-daily-bank.js?v=20260917j"></script>
-<script src="data/math-chain-map.js?v=20260917j"></script>
-<script src="data/english-vocab.js?v=20260917j"></script>
-<script src="data/english-phonics.js?v=20260917j"></script>
-<script src="data/english-listening.js?v=20260917j"></script>
-<script src="data/english-grammar.js?v=20260917j"></script>
-<script src="data/english-scenarios.js?v=20260917j"></script>
-<script src="data/english-rubric.js?v=20260917j"></script>
+<script src="data/math-data-core.js?v=20260917k"></script>
+<script src="data/math-reverse-model.js?v=20260917k"></script>
+<script src="data/math-daily-bank.js?v=20260917k"></script>
+<script src="data/math-chain-map.js?v=20260917k"></script>
+<script src="data/english-vocab.js?v=20260917k"></script>
+<script src="data/english-phonics.js?v=20260917k"></script>
+<script src="data/english-listening.js?v=20260917k"></script>
+<script src="data/english-grammar.js?v=20260917k"></script>
+<script src="data/english-scenarios.js?v=20260917k"></script>
+<script src="data/english-rubric.js?v=20260917k"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260917j"></script>
-<script src="engine/usage-metrics.js?v=20260917j"></script>
-<script src="engine/mic-permission.js?v=20260917j"></script>
-<script src="engine/scene-manager.js?v=20260917j"></script>
-<script src="engine/math-visual-v5.js?v=20260917j"></script>
-<script src="engine/math-manipulative.js?v=20260917j"></script>
-<script src="engine/math-geometry-3d.js?v=20260917j"></script>
-<script src="engine/russian-questioning.js?v=20260917j"></script>
-<script src="engine/reverse-model-judge.js?v=20260917j"></script>
-<script src="engine/parent-panel.js?v=20260917j"></script>
-<script src="engine/cloud-tts.js?v=20260917j"></script>
-<script src="engine/neural-tts.js?v=20260917j"></script>
-<script src="engine/asr.js?v=20260917j"></script>
-<script src="data/grade-limits.js?v=20260917j"></script>
-<script src="engine/math-kernel.js?v=20260917j"></script>
-<script src="engine/listening-math.js?v=20260917j"></script>
+<script src="engine/achievements.js?v=20260917k"></script>
+<script src="engine/usage-metrics.js?v=20260917k"></script>
+<script src="engine/mic-permission.js?v=20260917k"></script>
+<script src="engine/scene-manager.js?v=20260917k"></script>
+<script src="engine/math-visual-v5.js?v=20260917k"></script>
+<script src="engine/math-manipulative.js?v=20260917k"></script>
+<script src="engine/math-geometry-3d.js?v=20260917k"></script>
+<script src="engine/russian-questioning.js?v=20260917k"></script>
+<script src="engine/reverse-model-judge.js?v=20260917k"></script>
+<script src="engine/parent-panel.js?v=20260917k"></script>
+<script src="engine/cloud-tts.js?v=20260917k"></script>
+<script src="engine/neural-tts.js?v=20260917k"></script>
+<script src="engine/asr.js?v=20260917k"></script>
+<script src="data/grade-limits.js?v=20260917k"></script>
+<script src="engine/math-kernel.js?v=20260917k"></script>
+<script src="engine/listening-math.js?v=20260917k"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20260917j"></script>
-<script src="engine/math-warmup.js?v=20260917j"></script>
-<script src="engine/math-flow-v5.js?v=20260917j"></script>
-<script src="engine/math-diagram-master.js?v=20260917j"></script>
-<script src="engine/diagram-followup.js?v=20260917j"></script>
-<script src="engine/math-diagnostic.js?v=20260917j"></script>
-<script src="engine/speak-engine-v5.js?v=20260917j"></script>
-<script src="engine/english-flow-v5.js?v=20260917j"></script>
-<script src="engine/weakness-detector-v5.js?v=20260917j"></script>
-<script src="engine/progress-tracker-v5.js?v=20260917j"></script>
+<script src="engine/pet-whisper.js?v=20260917k"></script>
+<script src="engine/math-warmup.js?v=20260917k"></script>
+<script src="engine/math-flow-v5.js?v=20260917k"></script>
+<script src="engine/math-diagram-master.js?v=20260917k"></script>
+<script src="engine/diagram-followup.js?v=20260917k"></script>
+<script src="engine/math-diagnostic.js?v=20260917k"></script>
+<script src="engine/speak-engine-v5.js?v=20260917k"></script>
+<script src="engine/english-flow-v5.js?v=20260917k"></script>
+<script src="engine/weakness-detector-v5.js?v=20260917k"></script>
+<script src="engine/progress-tracker-v5.js?v=20260917k"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260917j"></script>
-<script src="data/math-2a-2b.js?v=20260917j"></script>
-<script src="data/math-3-6-extend.js?v=20260917j"></script>
-<script src="data/speak-8-new.js?v=20260917j"></script>
-<script src="data/vocab-themes.js?v=20260917j"></script>
-<script src="data/word-dict.js?v=20260917j"></script>
-<script src="data/storybooks.js?v=20260917j"></script>
-<script src="data/tpr-action-house.js?v=20260917j"></script>
-<script src="data/listening-radio.js?v=20260917j"></script>
+<script src="engine/spaced-review-v5.js?v=20260917k"></script>
+<script src="data/math-2a-2b.js?v=20260917k"></script>
+<script src="data/math-3-6-extend.js?v=20260917k"></script>
+<script src="data/speak-8-new.js?v=20260917k"></script>
+<script src="data/vocab-themes.js?v=20260917k"></script>
+<script src="data/word-dict.js?v=20260917k"></script>
+<script src="data/storybooks.js?v=20260917k"></script>
+<script src="data/tpr-action-house.js?v=20260917k"></script>
+<script src="data/listening-radio.js?v=20260917k"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
