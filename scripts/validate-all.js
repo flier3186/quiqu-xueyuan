@@ -45,7 +45,9 @@ const RUNTIME_FILES = [
   'engine/spaced-review-v5.js',
   'engine/progress-tracker-v5.js',
   'engine/weakness-detector-v5.js',
-  'engine/parent-panel.js'
+  'engine/parent-panel.js',
+  'engine/pet-whisper.js',
+  'engine/math-warmup.js'
 ];
 
 // 合法的可视化类型：直接从引擎里提取渲染器方法名，
@@ -159,6 +161,9 @@ grades.forEach(g => {
                             || Math.abs(Math.ceil(expected) - pr.answer) < 1e-6;
             if (isRoundOff) {
               warn(`${tag} 非整除，请人工确认（去尾法/进一法是否得当）— formula="${pr.formula}" 算式结果=${expected} answer=${pr.answer} — "${String(q).slice(0, 40)}"`);
+            } else if (Math.abs(Math.round(expected * 100) / 100 - pr.answer) < 1e-6) {
+              // 保留两位小数（四舍五入）语义：answer === round(expected, 2) 视为一致（如 38÷3 ≈ 12.67）
+              warn(`${tag} 保留两位小数（四舍五入）已放行 — formula="${pr.formula}" 算式结果=${expected} answer=${pr.answer} — "${String(q).slice(0, 40)}"`);
             } else {
               fail(`${tag} R1 违规：答案与算式不符 — question="${String(q).slice(0, 40)}" formula="${pr.formula}" 算式结果=${expected} 但 answer=${pr.answer}`);
             }
