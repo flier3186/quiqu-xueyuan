@@ -45,6 +45,14 @@ window.ParentPanel = {
           <span id="v5DurationLabel" style="font-size:16px;font-weight:800;color:var(--teal);min-width:50px;text-align:center">${s.sessionDuration||15}分钟</span>
         </div>
       </div>
+      <div style="margin:16px 0">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px">🏃 前置引导</div>
+        <div style="display:flex;gap:10px">
+          <div onclick="ParentPanel._setSkipGuide(this,false)" data-skip="off" style="padding:8px 16px;background:${!s.skipGuide?'var(--teal)':'#fff'};color:${!s.skipGuide?'#fff':'var(--teal-700)'};border:1.5px solid var(--teal);border-radius:18px;font-size:13px;font-weight:700;cursor:pointer">完整引导</div>
+          <div onclick="ParentPanel._setSkipGuide(this,true)" data-skip="on" style="padding:8px 16px;background:${s.skipGuide?'var(--coral)':'#fff'};color:${s.skipGuide?'#fff':'var(--coral)'};border:1.5px solid var(--coral);border-radius:18px;font-size:13px;font-weight:700;cursor:pointer">直接做题</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:6px">「直接做题」跳过微课卡/阅读预热/引导发现等前置环节，直接进入正式解题（做题后的讲解与练习保留；到期复习仍优先出现）</div>
+      </div>
       <div style="text-align:center;margin-top:18px">
         <button onclick="ParentPanel._save()" style="padding:12px 32px;background:linear-gradient(135deg,var(--teal),#14C3B2);color:#fff;border:none;border-radius:22px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(37,112,232,.3)">保存设置</button>
       </div>
@@ -55,7 +63,7 @@ window.ParentPanel = {
     try{
       if(typeof S!=='undefined' && S.settings && S.settings.math) return S.settings.math;
     }catch(e){}
-    return { startGrade:'三上', learningState:'new', fractionMode:'all', animSpeed:'normal', sessionDuration:15 };
+    return { startGrade:'三上', learningState:'new', fractionMode:'all', animSpeed:'normal', sessionDuration:15, skipGuide:false };
   },
 
   saveSettings(settings){
@@ -108,6 +116,13 @@ window.ParentPanel = {
     this.saveSettings(s);
   },
 
+  _setSkipGuide(el, on){
+    const s = this.getSettings();
+    s.skipGuide = !!on;
+    this.saveSettings(s);
+    const container = el.closest('.cpa-layer');
+    if(container) container.innerHTML = this.render();
+  },
   _save(){
     if(typeof toast==='function') toast('✅ 设置已保存');
     // 如果有 MathFlowV5 正在运行，重启会话

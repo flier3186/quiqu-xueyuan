@@ -138,7 +138,7 @@ window.MathFlowV5 = {
     // 现在把复习/微课卡作为显式覆盖层，压在模式默认路径之上。
     if(forced){
       this._sess.stage = forced;
-    } else if(this.needsMicrocard(problem)){
+    } else if(this.needsMicrocard(problem) && !this._skipGuideOn()){
       this._sess.stage = 'microcard';
     }
     this._saveProgress();
@@ -211,6 +211,8 @@ window.MathFlowV5 = {
       this._sess.stage = 'warmup';
       mark('warmup');
     }
+    // 家长开关「直接做题」：覆盖模式默认起点，直接进正式解题（P5-B2）
+    if(this._skipGuideOn()){ this._sess.stage = 'solve'; mark('solve'); }
   },
 
   // ===== 当前阶段渲染分发 =====
@@ -322,6 +324,7 @@ window.MathFlowV5 = {
   },
   // 复习之后：新知识点先看微课卡，否则直接进预热
   _afterReview(){
+    if(this._skipGuideOn()){ this.advance('solve'); return; }
     this.advance(this.needsMicrocard(this._sess && this._sess.problem) ? 'microcard' : 'warmup');
   },
 
@@ -359,6 +362,10 @@ window.MathFlowV5 = {
     }catch(e){}
   },
   // 是否需要微课卡：非"已熟练"模式 + 该知识点从未看过
+  // 家长设置：是否跳过前置引导直接做题（P5-B2；到期复习优先级仍最高）
+  _skipGuideOn(){
+    try{ return !!(this._sess && this._sess.parentSettings && this._sess.parentSettings.skipGuide); }catch(e){ return false; }
+  },
   needsMicrocard(problem){
     try{
       if(!problem || !problem.knowledge) return false;
