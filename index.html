@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260917k"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260920a"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -7649,6 +7649,7 @@ function renderParentDashboard(pt){
         <div class="parent-tab" data-pt="ai">🤖 AI 设置</div>
         <div class="parent-tab" data-pt="errors">🐛 错误日志</div>
         <div class="parent-tab" data-pt="profiles">👨‍👩‍👧 档案管理</div>
+        <div class="parent-tab" data-pt="backup">💾 数据备份</div>
       </div>
 
       <div class="parent-section active" data-psec="overview">
@@ -8025,6 +8026,18 @@ function renderParentDashboard(pt){
       <div class="parent-section" data-psec="math">
         <div id="parentMathSettings"></div>
       </div>
+
+      <div class="parent-section" data-psec="backup">
+        <div class="card" style="margin-bottom:16px;border-top:3px solid var(--teal)">
+          <div style="font-size:12px;font-weight:700;color:var(--text-3);margin-bottom:10px">💾 学习数据备份</div>
+          <div id="backupInfo" style="margin-bottom:14px"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn btn-primary" onclick="exportBackup()">📤 导出备份文件</button>
+            <label class="btn btn-yellow" style="cursor:pointer">📥 从备份恢复<input type="file" accept=".json,application/json" style="display:none" onchange="importBackup(this)"></label>
+          </div>
+          <div style="font-size:11px;color:var(--text-3);margin-top:8px">导出 JSON 备份文件保存到电脑/网盘；清缓存或换设备后用「从备份恢复」找回全部学习数据。</div>
+        </div>
+      </div>
     </div>`;
   const heatHtml=renderHeatmap();
   $('#heatmapContainer').innerHTML=heatHtml;
@@ -8055,9 +8068,86 @@ function switchParentTab(pt){
   if(sec) sec.classList.add('active');
   if(pt==='errors'){renderErrorLog();renderWrongProblems();}
   if(pt==='profiles') renderProfiles();
+  if(pt==='backup') renderBackupInfo();
   if(pt==='math' && typeof ParentPanel!=='undefined'){const c=$('#parentMathSettings');if(c)c.innerHTML=ParentPanel.render();}
   if(pt==='overview'&&typeof echarts!=='undefined') setTimeout(()=>initParentCharts(),80);
   if(pt==='ai'){ ensureAiPanelBound(); try{ AsrPanel.refresh(); }catch(e){} }
+}
+// ===== P4 数据备份/恢复：localStorage 全量快照（前缀 quiqu/ququ/quicku）=====
+var QUIQU_BACKUP_PREFIXES=['quiqu','ququ','quicku'];
+function _backupKeys(){
+  var out={},n=0;
+  try{
+    for(var i=0;i<localStorage.length;i++){
+      var k=localStorage.key(i);
+      if(!k)continue;
+      for(var j=0;j<QUIQU_BACKUP_PREFIXES.length;j++){
+        if(k.indexOf(QUIQU_BACKUP_PREFIXES[j])===0){ out[k]=localStorage.getItem(k); n++; break; }
+      }
+    }
+  }catch(e){}
+  return {keys:out,n:n};
+}
+function exportBackup(){
+  var b=_backupKeys();
+  if(!b.n){toast('没有可备份的学习数据');return;}
+  var pad=function(x){return (x<10?'0':'')+x;};
+  var d=new Date();
+  var payload={app:'quiqu-xueyuan',format:1,exportedAt:d.toISOString(),
+    note:'奇趣学园学习数据备份：宠物/复习进度/成就/学习记录/设置。含 API Key（如有），请勿外传。',
+    keys:b.keys};
+  try{
+    var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='quiqu-backup-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'-'+pad(d.getHours())+pad(d.getMinutes())+'.json';
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){try{URL.revokeObjectURL(a.href);}catch(e){} if(a.remove)a.remove();},1000);
+    toast('💾 已导出 '+b.n+' 项数据，请妥善保存备份文件');
+  }catch(e){toast('导出失败：'+((e&&e.message)||e));}
+}
+function _applyBackupPayload(text){
+  var data=null;
+  try{data=JSON.parse(text);}catch(e){return 'invalid';}
+  if(!data||data.app!=='quiqu-xueyuan'||data.format!==1||!data.keys||typeof data.keys!=='object'||Array.isArray(data.keys))return 'invalid';
+  var ks=Object.keys(data.keys);
+  if(!ks.length)return 'empty';
+  var cur=_backupKeys();
+  var msg='将恢复 '+ks.length+' 项学习数据（备份时间：'+(data.exportedAt||'未知')+'）。';
+  if(cur.n)msg+='\n当前本机 '+cur.n+' 项数据将被覆盖！';
+  msg+='\n\n确认恢复吗？';
+  if(typeof confirm==='function'&&!confirm(msg))return 'cancel';
+  var ok=0;
+  for(var i=0;i<ks.length;i++){
+    try{localStorage.setItem(ks[i],data.keys[ks[i]]);ok++;}catch(e){}
+  }
+  return 'ok:'+ok;
+}
+function importBackup(inputEl){
+  var f=inputEl&&inputEl.files&&inputEl.files[0];
+  if(!f){toast('请先选择备份文件');return;}
+  var reader=new FileReader();
+  reader.onload=function(){
+    var r=_applyBackupPayload(reader.result);
+    if(r&&r.indexOf('ok:')===0){
+      toast('✅ 已恢复 '+r.slice(3)+' 项数据，即将刷新页面');
+      setTimeout(function(){location.reload();},1200);
+    }else if(r==='cancel'){toast('已取消恢复');}
+    else if(r==='empty'){toast('❌ 备份文件里没有数据');}
+    else{toast('❌ 不是有效的奇趣学园备份文件');}
+  };
+  reader.onerror=function(){toast('❌ 读取文件失败');};
+  reader.readAsText(f);
+}
+function renderBackupInfo(){
+  var el=document.getElementById('backupInfo');
+  if(!el)return;
+  var b=_backupKeys();
+  var rc=(typeof S!=='undefined'&&S&&Array.isArray(S.reviewQueue))?S.reviewQueue.length:0;
+  el.innerHTML='<div style="font-size:13px;color:var(--navy);line-height:1.9">'+
+    '📦 本机学习数据：<b>'+b.n+'</b> 项（宠物 · 待复习 '+rc+' 题 · 成就打卡 · 学习进度 · 设置）<br>'+
+    '⚠️ 数据只存在这台设备的浏览器里，<b>清除浏览器数据或换设备会全部丢失</b>，建议定期导出备份。<br>'+
+    '🔒 备份文件包含 API Key（如有配置），<b>请勿发送给他人</b>。</div>';
 }
 function ensureAiPanelBound(){
   const inp=$('#deepseekKeyInput');
@@ -9091,54 +9181,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260917k"></script>
-<script src="data/math-reverse-model.js?v=20260917k"></script>
-<script src="data/math-daily-bank.js?v=20260917k"></script>
-<script src="data/math-chain-map.js?v=20260917k"></script>
-<script src="data/english-vocab.js?v=20260917k"></script>
-<script src="data/english-phonics.js?v=20260917k"></script>
-<script src="data/english-listening.js?v=20260917k"></script>
-<script src="data/english-grammar.js?v=20260917k"></script>
-<script src="data/english-scenarios.js?v=20260917k"></script>
-<script src="data/english-rubric.js?v=20260917k"></script>
+<script src="data/math-data-core.js?v=20260920a"></script>
+<script src="data/math-reverse-model.js?v=20260920a"></script>
+<script src="data/math-daily-bank.js?v=20260920a"></script>
+<script src="data/math-chain-map.js?v=20260920a"></script>
+<script src="data/english-vocab.js?v=20260920a"></script>
+<script src="data/english-phonics.js?v=20260920a"></script>
+<script src="data/english-listening.js?v=20260920a"></script>
+<script src="data/english-grammar.js?v=20260920a"></script>
+<script src="data/english-scenarios.js?v=20260920a"></script>
+<script src="data/english-rubric.js?v=20260920a"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260917k"></script>
-<script src="engine/usage-metrics.js?v=20260917k"></script>
-<script src="engine/mic-permission.js?v=20260917k"></script>
-<script src="engine/scene-manager.js?v=20260917k"></script>
-<script src="engine/math-visual-v5.js?v=20260917k"></script>
-<script src="engine/math-manipulative.js?v=20260917k"></script>
-<script src="engine/math-geometry-3d.js?v=20260917k"></script>
-<script src="engine/russian-questioning.js?v=20260917k"></script>
-<script src="engine/reverse-model-judge.js?v=20260917k"></script>
-<script src="engine/parent-panel.js?v=20260917k"></script>
-<script src="engine/cloud-tts.js?v=20260917k"></script>
-<script src="engine/neural-tts.js?v=20260917k"></script>
-<script src="engine/asr.js?v=20260917k"></script>
-<script src="data/grade-limits.js?v=20260917k"></script>
-<script src="engine/math-kernel.js?v=20260917k"></script>
-<script src="engine/listening-math.js?v=20260917k"></script>
+<script src="engine/achievements.js?v=20260920a"></script>
+<script src="engine/usage-metrics.js?v=20260920a"></script>
+<script src="engine/mic-permission.js?v=20260920a"></script>
+<script src="engine/scene-manager.js?v=20260920a"></script>
+<script src="engine/math-visual-v5.js?v=20260920a"></script>
+<script src="engine/math-manipulative.js?v=20260920a"></script>
+<script src="engine/math-geometry-3d.js?v=20260920a"></script>
+<script src="engine/russian-questioning.js?v=20260920a"></script>
+<script src="engine/reverse-model-judge.js?v=20260920a"></script>
+<script src="engine/parent-panel.js?v=20260920a"></script>
+<script src="engine/cloud-tts.js?v=20260920a"></script>
+<script src="engine/neural-tts.js?v=20260920a"></script>
+<script src="engine/asr.js?v=20260920a"></script>
+<script src="data/grade-limits.js?v=20260920a"></script>
+<script src="engine/math-kernel.js?v=20260920a"></script>
+<script src="engine/listening-math.js?v=20260920a"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20260917k"></script>
-<script src="engine/math-warmup.js?v=20260917k"></script>
-<script src="engine/math-flow-v5.js?v=20260917k"></script>
-<script src="engine/math-diagram-master.js?v=20260917k"></script>
-<script src="engine/diagram-followup.js?v=20260917k"></script>
-<script src="engine/math-diagnostic.js?v=20260917k"></script>
-<script src="engine/speak-engine-v5.js?v=20260917k"></script>
-<script src="engine/english-flow-v5.js?v=20260917k"></script>
-<script src="engine/weakness-detector-v5.js?v=20260917k"></script>
-<script src="engine/progress-tracker-v5.js?v=20260917k"></script>
+<script src="engine/pet-whisper.js?v=20260920a"></script>
+<script src="engine/math-warmup.js?v=20260920a"></script>
+<script src="engine/math-flow-v5.js?v=20260920a"></script>
+<script src="engine/math-diagram-master.js?v=20260920a"></script>
+<script src="engine/diagram-followup.js?v=20260920a"></script>
+<script src="engine/math-diagnostic.js?v=20260920a"></script>
+<script src="engine/speak-engine-v5.js?v=20260920a"></script>
+<script src="engine/english-flow-v5.js?v=20260920a"></script>
+<script src="engine/weakness-detector-v5.js?v=20260920a"></script>
+<script src="engine/progress-tracker-v5.js?v=20260920a"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260917k"></script>
-<script src="data/math-2a-2b.js?v=20260917k"></script>
-<script src="data/math-3-6-extend.js?v=20260917k"></script>
-<script src="data/speak-8-new.js?v=20260917k"></script>
-<script src="data/vocab-themes.js?v=20260917k"></script>
-<script src="data/word-dict.js?v=20260917k"></script>
-<script src="data/storybooks.js?v=20260917k"></script>
-<script src="data/tpr-action-house.js?v=20260917k"></script>
-<script src="data/listening-radio.js?v=20260917k"></script>
+<script src="engine/spaced-review-v5.js?v=20260920a"></script>
+<script src="data/math-2a-2b.js?v=20260920a"></script>
+<script src="data/math-3-6-extend.js?v=20260920a"></script>
+<script src="data/speak-8-new.js?v=20260920a"></script>
+<script src="data/vocab-themes.js?v=20260920a"></script>
+<script src="data/word-dict.js?v=20260920a"></script>
+<script src="data/storybooks.js?v=20260920a"></script>
+<script src="data/tpr-action-house.js?v=20260920a"></script>
+<script src="data/listening-radio.js?v=20260920a"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
