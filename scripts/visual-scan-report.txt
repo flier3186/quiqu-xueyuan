@@ -1,12 +1,12 @@
 # MathDiagramMaster.audit() 全库实跑（M1）
-生成：2026-09-18T10:43:16.700Z
+生成：2026-09-20T16:35:38.069Z
 
 ## totals
 {
   "problems": 983,
-  "tested": 280,
-  "parametric": 221,
-  "valueBound": 245,
+  "tested": 276,
+  "parametric": 217,
+  "valueBound": 241,
   "legacyConflicts": 341
 }
 

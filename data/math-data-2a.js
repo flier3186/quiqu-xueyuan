@@ -134,7 +134,7 @@ window.MATH_BY_GRADE["2a"] = {
       "visualData": { "type": "numberLine", "start": 0, "end": 8, "points": [ { "pos": 0, "label": "端点 A", "color": "#FB923C" }, { "pos": 8, "label": "端点 B", "color": "#FB923C" } ], "highlight": [0, 8] },
       "hint": "线段有两个端头，可以量出长度",
       "variants": [
-        { "question": "一条线段可以把两端继续延长吗？", "formula": "线段能无限延长吗？", "answer": "不能", "hint": "两头都有端点，延长不了" },
+        { "question": "线段能像直线一样继续延长吗？", "formula": "线段能无限延长吗？", "answer": "不能", "hint": "线段两头都有端点，长度固定，不能延长" },
         { "question": "两点之间画线段，能画出几条？", "formula": "过两点的线段 = ?", "answer": 1, "hint": "两点之间只有一条线段" } ],
       "discoverySteps": [
         { "q": "👀 图中线段的两头有什么？", "choices": ["两个端点", "一个端点", "没有端点", "虚线"], "answer": "两个端点", "explain": "线段两头都有端点" },

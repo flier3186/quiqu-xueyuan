@@ -64,9 +64,9 @@ window.MathFlowV5 = {
       { answer:'3', reason:'把万以内的数读成了三位数', fix:'读数时要注意数位顺序' },
     ],
     '默认': [
-      { answer:'?', reason:'算错了，可能是运算顺序错了', fix:'按正确的运算顺序重新计算' },
-      { answer:'?', reason:'单位换算错了', fix:'检查单位换算是否正确' },
-      { answer:'?', reason:'审题不清，看错了数字或符号', fix:'仔细读题，圈出关键数字和符号' },
+      { answer:'一个运算顺序弄错的结果', reason:'算错了，可能是运算顺序错了', fix:'按正确的运算顺序重新计算' },
+      { answer:'一个单位弄错的结果', reason:'单位换算错了', fix:'检查单位换算是否正确' },
+      { answer:'一个看错数字的结果', reason:'审题不清，看错了数字或符号', fix:'仔细读题，圈出关键数字和符号' },
     ],
   },
   // 从错误库按知识点随机抽取一个错误
@@ -165,7 +165,7 @@ window.MathFlowV5 = {
         </div>
         <div onclick="MathFlowV5._chooseStudyMode('advanced')" style="padding:14px 16px;background:var(--coral-soft);border:2px solid var(--coral);border-radius:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--coral)';this.style.color='#fff'" onmouseout="this.style.background='var(--coral-soft)';this.style.color='inherit'">
           <div style="font-size:14px;font-weight:700;color:var(--coral)">🚀 已经很熟练了</div>
-          <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">跳过基础环节，直接挑战俄罗斯追问</div>
+          <div style="font-size:12px;color:var(--text-2);margin-top:4px;font-weight:400">跳过基础环节，直接看多解法对比</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-3);text-align:center">💡 以后可以在"设置"中随时修改学习模式</div>
@@ -629,7 +629,7 @@ window.MathFlowV5 = {
     // 启动动态超时检测（8分钟）
     this._startRMETimeout();
     return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 2 · RME 自我建模</span>
+      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 2 · 自己列一列（RME 建模）</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">✏️ 4 分钟 · 在纸上画图或列算式，不用电脑</div>
       <div style="padding:16px 18px;background:linear-gradient(135deg,var(--teal-soft),#fff);border-radius:14px;border:1px solid rgba(0,168,150,.15);margin-bottom:14px">
         <div style="font-size:12px;color:var(--teal-700);font-weight:700;margin-bottom:8px">📖 仔细读题，在纸上用你自己的方法表示数量关系</div>
@@ -777,7 +777,7 @@ window.MathFlowV5 = {
     const errorC = n.errorC || (errors.length > 0 ? errors[0] : this._pickError(problem.knowledge));
 
     return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 2.5 · Neriage 多解法+错误诊断</span>
+      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 2.5 · 多解法对比（Neriage）</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">💡 3 分钟 · 看看别人怎么想的，找出错误在哪</div>
 
       <!-- 3 张解法卡片 -->

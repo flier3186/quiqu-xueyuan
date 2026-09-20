@@ -124,7 +124,7 @@ window.ParentPanel = {
     if(container) container.innerHTML = this.render();
   },
   _save(){
-    if(typeof toast==='function') toast('✅ 设置已保存');
+    if(typeof toast==='function') toast('✅ 设置已保存（下次开始做题时生效）');
     // 如果有 MathFlowV5 正在运行，重启会话
     if(typeof MathFlowV5!=='undefined' && MathFlowV5._sess && typeof renderMath==='function'){
       // 不自动重启，让用户自己点"返回年级选择"

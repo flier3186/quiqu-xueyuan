@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260920b';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20260921a';
 const ASSETS = [
   '/',
   '/index.html',
@@ -112,11 +112,13 @@ self.addEventListener('fetch', event => {
   // 同源 JS/CSS：缓存优先，后台更新
   var url = new URL(event.request.url);
   if(url.origin === self.location.origin && /\.(js|css)$/.test(url.pathname)){
+    // 归一化：去掉 ?v= 再匹配/写入，与 install 预缓存裸键对齐（避免一文件双份缓存）
+    var cacheKey = url.pathname;
     event.respondWith(
       caches.open(CACHE_NAME).then(function(cache){
-        return cache.match(event.request).then(function(cached){
+        return cache.match(cacheKey).then(function(cached){
           var fetchPromise = fetch(event.request).then(function(resp){
-            if(resp && resp.ok) cache.put(event.request, resp.clone());
+            if(resp && resp.ok) cache.put(cacheKey, resp.clone());
             return resp;
           }).catch(function(){return cached;});
           return cached || fetchPromise;
