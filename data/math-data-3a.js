@@ -179,7 +179,7 @@ window.MATH_BY_GRADE["3a"] = {
                     "hint": "每个面都是正方形"
                 }
             ],
-            "visualType": "numberBond",
+            "visualType": "geometry",
             "visualData": {
                 "type": "numberBond",
                 "total": "正方形",
@@ -275,7 +275,7 @@ window.MATH_BY_GRADE["3a"] = {
                     "hint": "上面看是圆形底面"
                 }
             ],
-            "visualType": "numberBond",
+            "visualType": "geometry",
             "visualData": {
                 "type": "numberBond",
                 "total": "长方形",
@@ -371,7 +371,7 @@ window.MATH_BY_GRADE["3a"] = {
                     "hint": "上下 2 个，正面看到 2 个"
                 }
             ],
-            "visualType": "numberBond",
+            "visualType": "geometry",
             "visualData": {
                 "type": "numberBond",
                 "total": 3,

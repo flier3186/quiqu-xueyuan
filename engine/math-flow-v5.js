@@ -241,6 +241,13 @@ window.MathFlowV5 = {
   // ===== 推进阶段（每阶段完成后保存进度，支持断点续学） =====
   advance(stage){
     if(!this._sess) return;
+    // 修复缺陷6：阶段白名单校验——拒绝已移除/非法的阶段值（如 divergent），
+    // 防止写脏 _sess.stage 后 renderCurrent 的 default 分支静默渲染成热身。
+    const _ALLOWED_STAGES = ['review','microcard','warmup','rme','discover','neriage','solve','explain','russian','askChild','practice','complete'];
+    if(_ALLOWED_STAGES.indexOf(stage) < 0){
+      if(typeof console !== 'undefined' && console.warn) console.warn('[MathFlowV5] 忽略未知阶段:', stage);
+      return;
+    }
     this._sess.stage = stage;
     // 记录"真实经过"的阶段，进度条只给真正走过的环节打勾（跳过的不算完成）
     if(!this._sess.visited) this._sess.visited = [];
@@ -1615,6 +1622,19 @@ window.MathFlowV5 = {
     return null;
   },
   // ===== 工具：为 variants 生成安全选项（确保正确答案在选项中且无重复） =====
+  // 非数字题的语义相近干扰词（修复缺陷4：替代原"答案？N"畸形填充）
+  // 几何/形状类题用形状词表，其它非数字题用"条件不足"类通用词表；只提供与正确答案不同的词
+  _nonNumericDistractors(base, problem){
+    const qText = String((problem && problem.question) || '');
+    const kw = String((problem && problem.knowledge) || '');
+    const isGeo = (problem && problem.visualType === 'geometry')
+      || /图形|几何|观察|周长|面积|正方体|长方体|圆柱|三角形|正方形|长方形|圆/.test(kw + qText);
+    const pool = isGeo
+      ? ['正方形','长方形','三角形','圆','正方体','长方体','圆柱','球','棱柱','平行四边形','半圆','扇形']
+      : ['无法确定','缺少条件','以上都不对','不能求出','数据不足'];
+    return pool.map(s => String(s)).filter(s => s !== String(base));
+  },
+
   _safeChoices(v, problem){
     let ans = v.answer != null ? v.answer : problem.answer;
     let choices = (v.choices && v.choices.length) ? v.choices : problem.choices;
@@ -1675,11 +1695,12 @@ window.MathFlowV5 = {
           const k = String(c);
           if(c !== ans && !seen.has(k)){ seen.add(k); distractors.push(c); }
         });
-        while(distractors.length < 3){
-          const fill = base + '？' + (distractors.length + 1);
-          const k = String(fill);
-          if(!seen.has(k)){ seen.add(k); distractors.push(fill); }
-          else { distractors.push(base + '？' + Math.random().toString(36).slice(2,5)); }
+        // 修复缺陷4：不足 3 个干扰项时用语义相近的同类干扰词补齐，不再拼"答案？N"畸形项
+        const fillPool = this._nonNumericDistractors(base, problem);
+        for(const word of fillPool){
+          if(distractors.length >= 3) break;
+          const k = String(word);
+          if(!seen.has(k)){ seen.add(k); distractors.push(word); }
         }
         distractors.length = Math.min(3, distractors.length);
       }
@@ -1704,7 +1725,7 @@ window.MathFlowV5 = {
     const v = (problem.variants && problem.variants[0]) || problem;
     const {ans, choices, correctIdx} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 8 · 阶梯练习 · L1 基础</span>
+      <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 6 · 阶梯练习 · L1 基础</span>
       <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
         <span style="padding:3px 10px;background:var(--teal-soft);color:var(--teal-700);border-radius:12px;font-size:11px;font-weight:700">L1 基础</span>
         <span style="font-size:13px;color:var(--text-3);font-weight:600">先来一道相似的题热热手</span>
@@ -1727,7 +1748,7 @@ window.MathFlowV5 = {
       // 1) 纯文字题：孩子先在没有图形辅助下解答
       const {ans, choices, correctIdx} = this._safeChoices(v, problem);
       return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
-        <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 8 · 阶梯练习 · L2 变式</span>
+        <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 变式</span>
         <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
           <span style="padding:3px 10px;background:var(--yellow-soft);color:var(--yellow-700);border-radius:12px;font-size:11px;font-weight:700">L2 变式</span>
           <span style="font-size:13px;color:var(--text-3);font-weight:600">先读文字解答，再看图验证 📖</span>
@@ -1754,7 +1775,7 @@ window.MathFlowV5 = {
     const visual = _mvHTML(problem) || '<div class="mv-empty">可视化引擎不可用</div>';
     const {ans} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 8 · 阶梯练习 · L2 图形验证</span>
+      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 图形验证</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 用图形对照你的答案</div>
       <div style="background:#fff;border-radius:14px;padding:8px;border:1px solid rgba(245,184,0,.25);margin-bottom:10px">${visual}</div>
       <div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">
@@ -1837,7 +1858,7 @@ window.MathFlowV5 = {
     const trapChoices = [...new Set([ans, trap, ...choices.filter(c => c !== ans && c !== trap)])].slice(0,4);
     const correctIdx = trapChoices.indexOf(ans);
     return `<div class="cpa-layer" style="border-left-color:var(--coral);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 8 · 阶梯练习 · L4 陷阱</span>
+      <span class="cpa-tag" style="background:var(--coral);color:#fff">STAGE 6 · 阶梯练习 · L4 陷阱</span>
       <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
         <span style="padding:3px 10px;background:var(--coral-soft);color:var(--coral);border-radius:12px;font-size:11px;font-weight:700">L4 陷阱</span>
         <span style="font-size:13px;color:var(--text-3);font-weight:600">⚠️ 小心！这道题有容易出错的地方</span>

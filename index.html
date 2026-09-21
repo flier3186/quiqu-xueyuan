@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260921a"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260921b"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -5180,26 +5180,35 @@ function _mathDiscoverySteps(problem){
   while(c1.length<4) c1.push('以上都不对');
   c1 = rot(c1, 1);
 
-  // Step 2：找关键信息 —— 从算式提取关键数
-  const nums = (f.match(/-?\d+(\.\d+)?/g)||[]).filter(n=>parseFloat(n)!==0);
-  const formulaTxt = problem.formula ? `（来自算式 ${problem.formula}）` : '';
-  const keyInfo = nums.length ? `关键数：${nums.slice(0,4).join('、')}${nums.length>4?'...':''}${formulaTxt}` : `从题目场景里找一找故事中提到的数量${formulaTxt}`;
+  // Step 2：找关键信息 —— 从算式提取关键数（修复缺陷1：无算式几何题不再露出"（来自算式 ）"空占位）
+  const hasFormula = !!String(problem.formula || '').trim();
+  const nums = hasFormula ? (f.match(/-?\d+(\.\d+)?/g)||[]).filter(n=>parseFloat(n)!==0) : [];
+  const formulaTxt = hasFormula ? `（来自算式 ${problem.formula}）` : '';
+  const keyInfo = nums.length
+    ? `关键数：${nums.slice(0,4).join('、')}${nums.length>4?'...':''}${formulaTxt}`
+    : (isGeo
+        ? '从图形里找一找：观察方向、看到的面和题目问的形状'
+        : `从题目场景里找一找故事中提到的数量${formulaTxt}`);
   const c2 = rot([keyInfo, '没有给出任何数', '只有问题没有条件', '只有答案没有过程'], 2);
 
-  // Step 3：选方法 —— 正确运算 + 其它运算干扰
+  // Step 3：选方法 —— 正确运算 + 其它运算干扰（修复缺陷2：无算式时不再"看算式里有『=』"落空）
   const otherMethods = ['加法','减法','乘法','除法','画图'].filter(m=>m!==methodName);
   const c3 = rot([methodName, ...otherMethods.slice(0,3)], 1);
+  const explain2 = hasFormula ? `从场景里能找到关键数，写出算式就是：${problem.formula}` : (isGeo ? '观察图形找到答案，不需要列算式。' : '从场景文字里找到关键数量。');
+  const explain3 = hasFormula ? `看算式 ${problem.formula} 里有「${op}」，所以用${methodName}来解决。` : (isGeo ? `这道题靠观察图形就能解决，用到的方法是${methodName}。` : `这道题用${methodName}来解决。`);
 
   return [
     { q:'📖 再读一遍场景，这道题要我们求什么？', choices:c1, answer:problem.question, explain:`题目问的是：${problem.question}` },
-    { q:'🔢 题目给了我们哪些关键的数和条件？', choices:c2, answer:keyInfo, explain:`从场景里能找到关键数${problem.formula?'，写出算式就是：'+problem.formula:''}` },
-    { q:'🧩 要解决这个问题，你觉得该用什么方法？', choices:c3, answer:methodName, explain:`看算式 ${problem.formula} 里有「${op}」，所以用${methodName}来解决。` }
+    { q:'🔢 题目给了我们哪些关键的数和条件？', choices:c2, answer:keyInfo, explain:explain2 },
+    { q:'🧩 要解决这个问题，你觉得该用什么方法？', choices:c3, answer:methodName, explain:explain3 }
   ];
 }
 
 // ===== 辅助：数形结合讲解三层（看图 / 理解 / 推广） =====
 function _mathExplainLayers(problem){
   const t = problem.visualType;
+  // 修复缺陷3：几何观察类题（正方体三视图等）用"观察方向"讲解文案，不再套周长/面积或加减法
+  const isObserve = t==='geometry' && /观察|从(正面|上面|侧面|左面|右面).*看|看到的面|三视图/.test(problem.question || '');
   const vmap = { barModel:'条形模型', areaModel:'面积模型', numberBond:'数字 Bond', fractionStrip:'分数条', numberLine:'数轴', geometry:'几何图形' };
   const vname = vmap[t] || '可视化图形';
   const lookMap = {
@@ -5226,6 +5235,11 @@ function _mathExplainLayers(problem){
     numberLine:'以后遇到比大小、算距离、看温度的题，都可以借助数轴。',
     geometry:'以后遇到周长面积体积的题，都先画图形标数据，公式自然就出来了。'
   };
+  if(isObserve){
+    lookMap.geometry = '看这个立体图形，从正面、上面、侧面观察，看到的面各不相同——题目问的是某一个方向看到的面。';
+    understandMap.geometry = '从不同方向观察同一个立体图形，看到的形状可能不同——形状由「观察方向」决定。';
+    generalizeMap.geometry = '以后遇到「从哪个方向看」的题，先分清方向，再想那个方向能看到几个面、什么形状。';
+  }
   return [
     { icon:'👀', title:'看图 — 图形结构', text:lookMap[t]||`看这个${vname}，它把题目里的数量关系变成了看得见的图形。`, bg:'var(--teal-soft)', color:'var(--teal)' },
     { icon:'🧠', title:'理解 — 数学关系', text:understandMap[t]||`图形揭示了题目里的数量关系。`, bg:'var(--yellow-soft)', color:'var(--yellow-700)' },
@@ -9181,54 +9195,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260921a"></script>
-<script src="data/math-reverse-model.js?v=20260921a"></script>
-<script src="data/math-daily-bank.js?v=20260921a"></script>
-<script src="data/math-chain-map.js?v=20260921a"></script>
-<script src="data/english-vocab.js?v=20260921a"></script>
-<script src="data/english-phonics.js?v=20260921a"></script>
-<script src="data/english-listening.js?v=20260921a"></script>
-<script src="data/english-grammar.js?v=20260921a"></script>
-<script src="data/english-scenarios.js?v=20260921a"></script>
-<script src="data/english-rubric.js?v=20260921a"></script>
+<script src="data/math-data-core.js?v=20260921b"></script>
+<script src="data/math-reverse-model.js?v=20260921b"></script>
+<script src="data/math-daily-bank.js?v=20260921b"></script>
+<script src="data/math-chain-map.js?v=20260921b"></script>
+<script src="data/english-vocab.js?v=20260921b"></script>
+<script src="data/english-phonics.js?v=20260921b"></script>
+<script src="data/english-listening.js?v=20260921b"></script>
+<script src="data/english-grammar.js?v=20260921b"></script>
+<script src="data/english-scenarios.js?v=20260921b"></script>
+<script src="data/english-rubric.js?v=20260921b"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260921a"></script>
-<script src="engine/usage-metrics.js?v=20260921a"></script>
-<script src="engine/mic-permission.js?v=20260921a"></script>
-<script src="engine/scene-manager.js?v=20260921a"></script>
-<script src="engine/math-visual-v5.js?v=20260921a"></script>
-<script src="engine/math-manipulative.js?v=20260921a"></script>
-<script src="engine/math-geometry-3d.js?v=20260921a"></script>
-<script src="engine/russian-questioning.js?v=20260921a"></script>
-<script src="engine/reverse-model-judge.js?v=20260921a"></script>
-<script src="engine/parent-panel.js?v=20260921a"></script>
-<script src="engine/cloud-tts.js?v=20260921a"></script>
-<script src="engine/neural-tts.js?v=20260921a"></script>
-<script src="engine/asr.js?v=20260921a"></script>
-<script src="data/grade-limits.js?v=20260921a"></script>
-<script src="engine/math-kernel.js?v=20260921a"></script>
-<script src="engine/listening-math.js?v=20260921a"></script>
+<script src="engine/achievements.js?v=20260921b"></script>
+<script src="engine/usage-metrics.js?v=20260921b"></script>
+<script src="engine/mic-permission.js?v=20260921b"></script>
+<script src="engine/scene-manager.js?v=20260921b"></script>
+<script src="engine/math-visual-v5.js?v=20260921b"></script>
+<script src="engine/math-manipulative.js?v=20260921b"></script>
+<script src="engine/math-geometry-3d.js?v=20260921b"></script>
+<script src="engine/russian-questioning.js?v=20260921b"></script>
+<script src="engine/reverse-model-judge.js?v=20260921b"></script>
+<script src="engine/parent-panel.js?v=20260921b"></script>
+<script src="engine/cloud-tts.js?v=20260921b"></script>
+<script src="engine/neural-tts.js?v=20260921b"></script>
+<script src="engine/asr.js?v=20260921b"></script>
+<script src="data/grade-limits.js?v=20260921b"></script>
+<script src="engine/math-kernel.js?v=20260921b"></script>
+<script src="engine/listening-math.js?v=20260921b"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20260921a"></script>
-<script src="engine/math-warmup.js?v=20260921a"></script>
-<script src="engine/math-flow-v5.js?v=20260921a"></script>
-<script src="engine/math-diagram-master.js?v=20260921a"></script>
-<script src="engine/diagram-followup.js?v=20260921a"></script>
-<script src="engine/math-diagnostic.js?v=20260921a"></script>
-<script src="engine/speak-engine-v5.js?v=20260921a"></script>
-<script src="engine/english-flow-v5.js?v=20260921a"></script>
-<script src="engine/weakness-detector-v5.js?v=20260921a"></script>
-<script src="engine/progress-tracker-v5.js?v=20260921a"></script>
+<script src="engine/pet-whisper.js?v=20260921b"></script>
+<script src="engine/math-warmup.js?v=20260921b"></script>
+<script src="engine/math-flow-v5.js?v=20260921b"></script>
+<script src="engine/math-diagram-master.js?v=20260921b"></script>
+<script src="engine/diagram-followup.js?v=20260921b"></script>
+<script src="engine/math-diagnostic.js?v=20260921b"></script>
+<script src="engine/speak-engine-v5.js?v=20260921b"></script>
+<script src="engine/english-flow-v5.js?v=20260921b"></script>
+<script src="engine/weakness-detector-v5.js?v=20260921b"></script>
+<script src="engine/progress-tracker-v5.js?v=20260921b"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260921a"></script>
-<script src="data/math-2a-2b.js?v=20260921a"></script>
-<script src="data/math-3-6-extend.js?v=20260921a"></script>
-<script src="data/speak-8-new.js?v=20260921a"></script>
-<script src="data/vocab-themes.js?v=20260921a"></script>
-<script src="data/word-dict.js?v=20260921a"></script>
-<script src="data/storybooks.js?v=20260921a"></script>
-<script src="data/tpr-action-house.js?v=20260921a"></script>
-<script src="data/listening-radio.js?v=20260921a"></script>
+<script src="engine/spaced-review-v5.js?v=20260921b"></script>
+<script src="data/math-2a-2b.js?v=20260921b"></script>
+<script src="data/math-3-6-extend.js?v=20260921b"></script>
+<script src="data/speak-8-new.js?v=20260921b"></script>
+<script src="data/vocab-themes.js?v=20260921b"></script>
+<script src="data/word-dict.js?v=20260921b"></script>
+<script src="data/storybooks.js?v=20260921b"></script>
+<script src="data/tpr-action-house.js?v=20260921b"></script>
+<script src="data/listening-radio.js?v=20260921b"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
