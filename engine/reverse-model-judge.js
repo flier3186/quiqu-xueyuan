@@ -116,7 +116,7 @@ window.ReverseModelJudge = {
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">🧩 看图，把图中的数量关系写成算式/方程</div>
       <div style="background:#fff;border-radius:14px;padding:12px;border:1px solid rgba(0,168,150,.15);margin-bottom:12px">${svg || '<div class="mv-empty" style="padding:16px;text-align:center;color:var(--text-3)">图形加载中…</div>'}</div>
       <div style="padding:12px 14px;background:var(--teal-soft);border-radius:10px;margin-bottom:12px;font-size:14px;color:var(--text-2);line-height:1.7">💬 ${this._escape(item.scene)}</div>
-      <input id="v5ReverseInput" placeholder="写出数量关系式，比如 12-7=5" style="width:100%;padding:12px;border:1.5px solid rgba(30,58,95,.2);border-radius:10px;font-size:15px;font-family:inherit;box-sizing:border-box;margin-bottom:10px" />
+      <input id="v5ReverseInput" placeholder="写出数量关系式，例如：8+5=13" style="width:100%;padding:12px;border:1.5px solid rgba(30,58,95,.2);border-radius:10px;font-size:15px;font-family:inherit;box-sizing:border-box;margin-bottom:10px" />
       <div style="display:flex;gap:10px;justify-content:center">
         <button onclick="ReverseModelJudge._submit()" style="padding:10px 24px;background:var(--teal);color:#fff;border:none;border-radius:20px;font-weight:700;cursor:pointer">提交关系式 →</button>
       </div>

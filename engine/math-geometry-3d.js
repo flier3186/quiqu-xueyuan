@@ -40,15 +40,22 @@
   function grabDims(problem, shape) {
     var s = (problem && (problem.scene || '') + (problem.formula || '')) || '';
     function num(re) { var m = s.match(re); return m ? parseFloat(m[1]) : null; }
-    var d = {};
+    var d = {}; d.lab = {};
     if (shape === 'cuboid' || shape === 'cube') {
-      d.l = num(/长\s*([0-9.]+)/) || num(/棱长\s*([0-9.]+)/) || 8;
-      d.w = num(/宽\s*([0-9.]+)/) || d.l;
-      d.h = num(/高\s*([0-9.]+)/) || (shape === 'cube' ? d.l : 4);
+      var L = num(/长\s*([0-9.]+)/) || num(/棱长\s*([0-9.]+)/);
+      var Wd = num(/宽\s*([0-9.]+)/);
+      var Hg = num(/高\s*([0-9.]+)/);
+      d.l = L || 8; d.w = Wd || d.l; d.h = Hg || (shape === 'cube' ? d.l : 4);
       if (shape === 'cube') { d.w = d.l; d.h = d.l; }
+      d.lab.l = L != null ? L : '';
+      d.lab.w = shape === 'cube' ? d.lab.l : (Wd != null ? Wd : '');
+      d.lab.h = shape === 'cube' ? d.lab.l : (Hg != null ? Hg : '');
     } else {
-      d.r = num(/半径\s*([0-9.]+)/) || num(/底面半径\s*([0-9.]+)/) || 6;
-      d.h = num(/高\s*([0-9.]+)/) || 10;
+      var R = num(/半径\s*([0-9.]+)/) || num(/底面半径\s*([0-9.]+)/);
+      var H2 = num(/高\s*([0-9.]+)/);
+      d.r = R || 6; d.h = H2 || 10;
+      d.lab.r = R != null ? R : '';
+      d.lab.h = H2 != null ? H2 : '';
     }
     return d;
   }
@@ -67,11 +74,11 @@
     var hw = w / 2, hl = l / 2, hh = h / 2;
     if (shape === 'cuboid' || shape === 'cube') {
       faces =
-        '<div class="mgeo-f" style="width:'+w+'px;height:'+h+'px;transform:rotateY(0deg) translateZ('+hw+'px) translate(-50%,-50%);'+faceB+'"><i>'+dims.l+'</i></div>' + // 前
+        '<div class="mgeo-f" style="width:'+w+'px;height:'+h+'px;transform:rotateY(0deg) translateZ('+hw+'px) translate(-50%,-50%);'+faceB+'"><i>'+dims.lab.l+'</i></div>' + // 前
         '<div class="mgeo-f" style="width:'+w+'px;height:'+h+'px;transform:rotateY(180deg) translateZ('+hw+'px) translate(-50%,-50%);'+faceB+'"><i></i></div>' +      // 后
-        '<div class="mgeo-f" style="width:'+l+'px;height:'+h+'px;transform:rotateY(90deg) translateZ('+hl+'px) translate(-50%,-50%);'+face+'"><i>'+dims.w+'</i></div>' + // 右
+        '<div class="mgeo-f" style="width:'+l+'px;height:'+h+'px;transform:rotateY(90deg) translateZ('+hl+'px) translate(-50%,-50%);'+face+'"><i>'+dims.lab.w+'</i></div>' + // 右
         '<div class="mgeo-f" style="width:'+l+'px;height:'+h+'px;transform:rotateY(-90deg) translateZ('+hl+'px) translate(-50%,-50%);'+face+'"><i></i></div>' +       // 左
-        '<div class="mgeo-f" style="width:'+w+'px;height:'+l+'px;transform:rotateX(90deg) translateZ('+hh+'px) translate(-50%,-50%);'+face+'"><i>'+dims.h+'</i></div>' + // 上
+        '<div class="mgeo-f" style="width:'+w+'px;height:'+l+'px;transform:rotateX(90deg) translateZ('+hh+'px) translate(-50%,-50%);'+face+'"><i>'+dims.lab.h+'</i></div>' + // 上
         '<div class="mgeo-f" style="width:'+w+'px;height:'+l+'px;transform:rotateX(-90deg) translateZ('+hh+'px);'+face+'"><i></i></div>';          // 下
     } else if (shape === 'cylinder' || shape === 'cone') {
       // 侧用 24 片薄面近似，底/顶用椭圆
@@ -85,7 +92,7 @@
           side += '<div class="mgeo-f" style="width:'+sw+'px;height:1px;transform:rotateY('+ang+'deg) translateZ('+r+'px) translate(-50%,-50%)"></div>';
         }
       }
-      var bottom = '<div class="mgeo-f" style="width:'+2*r+'px;height:'+2*r+'px;transform:rotateX(-90deg) translateZ('+hh+'px) translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(0,128,110,.9),rgba(0,90,78,.85));border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center"><i style="font-style:normal">r='+dims.r+'</i></div>';
+      var bottom = '<div class="mgeo-f" style="width:'+2*r+'px;height:'+2*r+'px;transform:rotateX(-90deg) translateZ('+hh+'px) translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(0,128,110,.9),rgba(0,90,78,.85));border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center"><i style="font-style:normal">'+(dims.lab.r!==''?'r='+dims.lab.r:'')+'</i></div>';
       var top = shape === 'cylinder' ? '<div class="mgeo-f" style="width:'+2*r+'px;height:'+2*r+'px;transform:rotateX(90deg) translateZ('+hh+'px) translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(0,168,150,.9),rgba(0,120,105,.85));border:2px solid rgba(255,255,255,.85)"></div>' : '';
       var coneTip = shape === 'cone'
         ? Array.from({length: seg}, function (_, k) {
@@ -96,9 +103,10 @@
         : '';
       faces = side + coneTip + bottom + top;
     }
+    var tagged = !!(dims.lab && (dims.lab.l !== '' || dims.lab.w !== '' || dims.lab.h !== ''));
     var hint = shape === 'cone' ? '圆锥：底面是圆，侧面展开是扇形' :
                shape === 'cylinder' ? '圆柱：上下两个一样的圆面 + 侧面展开是长方形' :
-               '长/宽/高都标在面上了，拖一拖转一圈';
+               (tagged ? '长/宽/高都标在面上了，拖一拖转一圈' : '拖一拖转一圈，看看它的每个面');
     return '' +
       '<div class="mp-wrap mgeo-wrap" id="'+id+'" data-mp-type="geo3d" style="padding:16px;border-radius:16px;background:linear-gradient(135deg,#F3F8FF,#E9FBF6);border:1px solid rgba(37,112,232,.18)">' +
         '<div class="mp-title" style="margin-bottom:10px">🧊 3D 几何教具 · '+title+' <span style="font-weight:500;color:var(--text-3);font-size:12px">（按住拖动可以转，松手自己慢慢转）</span></div>' +

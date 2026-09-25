@@ -1318,12 +1318,16 @@ window.MathFlowV5 = {
         seen[k] = 1; pool.push(p);
       };
       // 1) 当前题 + 自己的变体
+      // 变式只有 question/formula/answer/hint，没有 visualType/visualData。
+      // 直接入池 → 抽到它做 L2 图形验证时 _mvHTML 两条路径都空 → 显示「可视化引擎不可用」。
+      // 合并母题字段后再入池，让变式继承视觉配置。
+      const mix = (base, v) => Object.assign({}, base, v);
       add(problem);
-      (problem.variants||[]).forEach(add);
+      (problem.variants||[]).forEach(v => add(mix(problem, v)));
       // 2) 同知识点兄弟题 + 变体
-      bank.forEach(p => { if(p && p.knowledge === kp){ add(p); (p.variants||[]).forEach(add); } });
+      bank.forEach(p => { if(p && p.knowledge === kp){ add(p); (p.variants||[]).forEach(v => add(mix(p, v))); } });
       // 3) 仍不足 3 条时，用全库变体兜底（尽量不让练习只有孤零零一题）
-      if(pool.length < 3){ bank.forEach(p => { (p.variants||[]).forEach(add); }); }
+      if(pool.length < 3){ bank.forEach(p => { (p.variants||[]).forEach(v => add(mix(p, v))); }); }
       return pool.slice(0, 12);
     }catch(e){ return [problem]; }
   },

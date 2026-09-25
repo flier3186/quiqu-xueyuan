@@ -180,21 +180,10 @@ window.MATH_BY_GRADE["3a"] = {
                 }
             ],
             "visualType": "geometry",
-            "visualData": {
-                "type": "numberBond",
-                "total": "正方形",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
+                        "visualData": {
+                "type": "geometry",
+                "shape": "cube",
+                "side": 4
             },
             "discoverySteps": [
                 {
@@ -276,21 +265,11 @@ window.MATH_BY_GRADE["3a"] = {
                 }
             ],
             "visualType": "geometry",
-            "visualData": {
-                "type": "numberBond",
-                "total": "长方形",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
+                        "visualData": {
+                "type": "geometry",
+                "shape": "cylinder",
+                "radius": 2,
+                "height": 4
             },
             "discoverySteps": [
                 {
@@ -372,21 +351,10 @@ window.MATH_BY_GRADE["3a"] = {
                 }
             ],
             "visualType": "geometry",
-            "visualData": {
-                "type": "numberBond",
-                "total": 3,
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": 2,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": 1,
-                        "color": "#00A896"
-                    }
-                ]
+                        "visualData": {
+                "type": "geometry",
+                "shape": "cubes",
+                "topView": [1, 1, 1]
             },
             "discoverySteps": [
                 {

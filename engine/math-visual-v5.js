@@ -92,6 +92,10 @@ window.MathVisualV5 = {
     if(k.indexOf('集合') >= 0 || k.indexOf('韦恩') >= 0) return 'vennDiagram';
     if(k.indexOf('找次品') >= 0 || shape === 'balance') return 'balanceDecision';
     if(k.indexOf('圆的面积') >= 0 || k.indexOf('圆面积') >= 0) return 'circleArea';
+    // 观察物体（2026-09-25 实测修复）：knowledge 含「观察物体 / 从X看 / 三视图 / 立体图形」的题
+    // 历史落到 geometry，而数据缺 shape → geometry 默认 rectangle → 图上出现
+    // 「长/宽/周长/面积 = undefined」。这里显式路由到专用渲染器。
+    if(/观察物体|从(正面|上面|上看|侧面|左面|右面|后面)看|看到的面|三视图|立体图形/.test(k)) return 'observeObject';
     // P0-2 新增：表内乘除（两个乘数均为一位数）→ 点子图。
     // 这类题原本"静态图给条形、动手教具却给乘法点阵"，是 170 处分歧里最大的一类；
     // 统一到点子图后，看到的图与动手的教具是同一个模型（人教版也用点子图讲乘法）。
@@ -145,6 +149,7 @@ window.MathVisualV5 = {
       'numberLine': 'numberLineStep',
       'geometryModel': 'geometryStep',
       'geometry': 'geometryStep',
+      'observeObject': 'geometryStep',
     };
     return map[modelFamily] || null;
   },
@@ -160,6 +165,7 @@ window.MathVisualV5 = {
       'fractionStripStep': 'fractionModel',
       'numberLineStep': 'numberLine',
       'geometryStep': 'geometryModel',
+      'observeObject': 'geometryModel',
     };
     return map[stepRenderer] || '';
   },
@@ -185,7 +191,7 @@ window.MathVisualV5 = {
     }
     this._injectStepStyles();
     const s = step || 1;
-    const html = this[renderer].call(this, data, s);
+    const html = this[renderer].call(this, data, s, problem);
     // 答案零泄漏：第 1/2 步掩码，第 3/3 步为教学揭示步允许出现等式
     return s >= 3 ? html : this._scrubAnswer(html, problem);
   },
@@ -1259,6 +1265,123 @@ window.MathVisualV5 = {
     </div>`;
   },
 
+// ===== 观察物体（立体图形从不同位置看）· 2026-09-25 实测修复 =====
+  // 背景：这类题历史两条兜底都是错的——
+  //   ① 静态图落到 geometry 且数据缺 shape → geometry 默认 rectangle
+  //      → 图上出现「长 / 宽 / 周长 / 面积 = undefined」；
+  //   ② 分步落到 geometryStep 的 else（parallelogram）
+  //      → 画成"平行四边形面积 = 底 × 高 · 等面积矩形"，与题目完全无关。
+  // 现在：只画立体图形本体 + 高亮观察方向；静态图不写任何数字/结论（答案零泄漏），
+  // 结论只在分步第 3 步（教学揭示步）出现。
+  // 注意：路由必须靠 knowledge 判定，不能靠 shape —— 5B「长方体的认识 / 表面积 / 体积」
+  // 也用 shape=cube|cubes，靠 shape 判定会把它们一起误判成观察物体。
+  _observeTopView(data){
+    const d = data || {};
+    let tv = d.topView;
+    if((!tv || !tv.length) && d.params && d.params.topView) tv = d.params.topView;
+    if(!tv || !tv.length) tv = [1, 1, 1];
+    return tv.map(function (n) { const v = Number(n); return isFinite(v) && v > 0 ? v : 1; });
+  },
+  _observeDir(problem){
+    const q = String((problem && problem.question) || '') + ' ' + String((problem && problem.scene) || '');
+    if(/从上面|从上看|俯视/.test(q)) return '上面';
+    if(/从左面|从左看|左视/.test(q)) return '左面';
+    if(/从右面|从右看|右视/.test(q)) return '右面';
+    if(/从后面|从后看|后视/.test(q)) return '后面';
+    if(/从侧面|从侧看|侧视/.test(q)) return '侧面';
+    return '正面';
+  },
+  _observeDirText(dir){ return '从' + dir + '看'; },
+  // 立体图形本体：cube（正方体）/ cylinder（圆柱）/ cubes（小正方体拼摆）
+  _observeBody(shape, data, opts){
+    const o = opts || {};
+    const W = o.W || 440, H = o.H || 220;
+    const hl = o.highlight || '';          // 'front' | 'top' | 'side'（空=不高亮）
+    const teal = '#00A896', tealSoft = 'rgba(0,168,150,0.16)';
+    const coral = '#FB923C';
+    let s = '';
+    if(shape === 'cylinder'){
+      const cx = W/2, r = 60, bh = 104, cy = (H - bh)/2 - 10;
+      if(hl === 'side') s += `<rect x="${cx-r}" y="${cy}" width="${2*r}" height="${bh}" fill="rgba(245,184,0,0.16)"/>`;
+      if(hl === 'top') s += `<ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r*0.3}" fill="rgba(245,184,0,0.30)"/>`;
+      s += `<ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r*0.3}" fill="${tealSoft}" stroke="${teal}" stroke-width="2.5"/>`;
+      s += `<path d="M ${cx-r} ${cy} L ${cx-r} ${cy+bh} A ${r} ${r*0.3} 0 0 0 ${cx+r} ${cy+bh} L ${cx+r} ${cy}" fill="none" stroke="${teal}" stroke-width="2.5"/>`;
+      s += `<ellipse cx="${cx}" cy="${cy+bh}" rx="${r}" ry="${r*0.3}" fill="none" stroke="${teal}" stroke-width="1.6" stroke-dasharray="4,3" opacity="0.55"/>`;
+      if(hl === 'side'){
+        s += `<rect x="${cx-r-5}" y="${cy+bh/2-16}" width="${2*r+10}" height="32" fill="none" stroke="${coral}" stroke-width="2.5" stroke-dasharray="7,4" rx="5"/>`;
+      }
+    } else if(shape === 'cubes'){
+      const tv = this._observeTopView(data);
+      const n = tv.length, cs = Math.min(52, (W - 160) / (n + 0.4));
+      const x0 = (W - n*cs)/2, baseY = H/2 + cs*0.75;
+      const tf = 'rgba(0,168,150,0.34)', sf = 'rgba(0,120,110,0.34)';
+      tv.forEach(function(hgt, i){
+        for(let k = 0; k < hgt; k++){
+          const gx = x0 + i*cs, gy = baseY - (k+1)*cs;
+          s += `<rect x="${gx}" y="${gy}" width="${cs}" height="${cs}" fill="${tealSoft}" stroke="${teal}" stroke-width="2.4"/>`;
+          s += `<path d="M ${gx} ${gy} L ${gx+cs*0.32} ${gy-cs*0.32} L ${gx+cs+cs*0.32} ${gy-cs*0.32} L ${gx+cs} ${gy} Z" fill="${tf}" stroke="${teal}" stroke-width="1.6"/>`;
+          s += `<path d="M ${gx+cs} ${gy} L ${gx+cs+cs*0.32} ${gy-cs*0.32} L ${gx+cs+cs*0.32} ${gy+cs-cs*0.32} L ${gx+cs} ${gy+cs} Z" fill="${sf}" stroke="${teal}" stroke-width="1.6"/>`;
+        }
+      });
+      const topIdx = tv.indexOf(Math.max.apply(null, tv));
+      const gx0 = x0 + topIdx*cs;
+      if(hl === 'top') s += `<rect x="${x0-6}" y="${baseY-cs*Math.max.apply(null, tv)-6}" width="${n*cs+12}" height="${cs*Math.max.apply(null, tv)+12}" fill="none" stroke="${coral}" stroke-width="3" stroke-dasharray="7,4" rx="5"/>`;
+      if(hl === 'front' || hl === 'side') s += `<rect x="${gx0-6}" y="${baseY-cs*tv[topIdx]-6}" width="${cs+12}" height="${cs*tv[topIdx]+12}" fill="none" stroke="${coral}" stroke-width="3" stroke-dasharray="7,4" rx="5"/>`;
+    } else { // cube
+      const ss = 88, dp = 32;
+      const x0 = W/2 - ss/2 - dp/2, y0 = (H - ss)/2 + dp/2 - 8;
+      s += `<path d="M ${x0} ${y0} L ${x0+dp} ${y0-dp} L ${x0+ss+dp} ${y0-dp} L ${x0+ss} ${y0} Z" fill="rgba(0,168,150,0.34)" stroke="${teal}" stroke-width="2"/>`;
+      s += `<path d="M ${x0+ss} ${y0} L ${x0+ss+dp} ${y0-dp} L ${x0+ss+dp} ${y0+ss-dp} L ${x0+ss} ${y0+ss} Z" fill="rgba(0,120,110,0.34)" stroke="${teal}" stroke-width="2"/>`;
+      s += `<rect x="${x0}" y="${y0}" width="${ss}" height="${ss}" fill="${tealSoft}" stroke="${teal}" stroke-width="2.6"/>`;
+      if(hl === 'front') s += `<rect x="${x0-6}" y="${y0-6}" width="${ss+12}" height="${ss+12}" fill="none" stroke="${coral}" stroke-width="3" stroke-dasharray="7,4" rx="5"/>`;
+      if(hl === 'top') s += `<path d="M ${x0} ${y0} L ${x0+dp} ${y0-dp} L ${x0+ss+dp} ${y0-dp} L ${x0+ss} ${y0} Z" fill="none" stroke="${coral}" stroke-width="3" stroke-dasharray="7,4"/>`;
+      if(hl === 'side') s += `<path d="M ${x0+ss} ${y0} L ${x0+ss+dp} ${y0-dp} L ${x0+ss+dp} ${y0+ss-dp} L ${x0+ss} ${y0+ss} Z" fill="none" stroke="${coral}" stroke-width="3" stroke-dasharray="7,4"/>`;
+    }
+    return s;
+  },
+  // 观察方向提示（不含答案、不含数字）
+  _observeTip(dir, W, H){
+    return `<text x="${W/2}" y="${H-14}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FB923C">${this._observeDirText(dir)}（虚线框是观察方向）</text>`;
+  },
+  // 静态图：STAGE 3 看图支架 / L2 图形验证 / 数形结合讲解
+  observeObject(data, problem){
+    const d = data || {};
+    const shape = d.shape || 'cube';
+    const W = 440, H = 220;
+    const dir = this._observeDir(problem);
+    const hl = dir === '上面' ? 'top' : (dir === '正面' ? 'front' : 'side');
+    const svg = this._observeBody(shape, d, { highlight: hl, W: W, H: H }) + this._observeTip(dir, W, H);
+    return `<div class="mv-wrap mv-observe">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+  // 分步：1 画本体 → 2 高亮观察方向 → 3 揭示结论
+  _observeStep(data, step, problem){
+    const d = data || {};
+    const shape = d.shape || 'cube';
+    const W = 440, H = 220;
+    const dir = this._observeDir(problem);
+    const hl = dir === '上面' ? 'top' : (dir === '正面' ? 'front' : 'side');
+    let svg = `<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">观察物体 · 第${step}/3步</text>`;
+    svg += this._observeBody(shape, d, { highlight: step >= 2 ? hl : '', W: W, H: H - 6 });
+    if(step < 3) svg += this._observeTip(dir, W, H);
+    if(step >= 3){
+      svg += `<rect x="40" y="${H-34}" width="${W-80}" height="24" rx="12" fill="#1E3A5F"/>`;
+      svg += `<text x="${W/2}" y="${H-17}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${this._escape(this._observeConclusion(shape, dir, d))}</text>`;
+    }
+    return `<div class="mv-wrap mv-step-geo">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
+  // 分步结论（仅第 3 步揭示步使用，可含数字）
+  _observeConclusion(shape, dir, data){
+    const tv = this._observeTopView(data);
+    const total = tv.reduce(function(a, b){ return a + b; }, 0);
+    if(shape === 'cylinder') return dir === '上面' ? '从上面看，看到的是一个圆' : '从侧面看，看到的是一个长方形';
+    if(shape === 'cubes') return '从' + dir + '看，能看到 ' + total + ' 个正方形';
+    return '正方体的每个面都是完全相同的正方形，从' + dir + '看也是正方形';
+  },
+
   // ============================================================
   // === 7 种优化渲染器（V5 新增） ===
   // ============================================================
@@ -2208,9 +2331,18 @@ window.MathVisualV5 = {
   },
 
   // 分步6：几何 — 从"图形"到"高/底标注"到"割补动画"
-  geometryStep(data, step){
+  geometryStep(data, step, problem){
     const shape=data.shape||'parallelogram';
     const W=440, H=220;
+    // 观察物体（2026-09-25）：cube/cylinder/cubes 且 knowledge 是观察类，走专用分步。
+    // 旧版落到下面的 else（parallelogram）→ 画出"平行四边形面积 = 底 × 高"，与题无关。
+    // 必须带 knowledge 判定：5B「长方体的认识 / 表面积 / 体积」也用 cube/cubes。
+    if(shape==='cube'||shape==='cubes'||shape==='cylinder'){
+      const ok = String((problem && problem.knowledge) || '');
+      if(/观察物体|从(正面|上面|上看|侧面|左面|右面|后面)看|看到的面|三视图|立体图形/.test(ok)){
+        return this._observeStep(data, step, problem);
+      }
+    }
     let svg=`<text x="${W/2}" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A5F">几何 · 第${step}/3步</text>`;
     if(shape==='sphere'){
       const r=data.radius||50, cx=W/2, cy=H/2;

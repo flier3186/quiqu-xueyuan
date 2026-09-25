@@ -24,7 +24,7 @@ window.MATH_REVERSE_MODEL = {
       id: 'rm-3a-002',
       grade: '3a',
       visualType: 'barModel',
-      visualData: { total: 12, parts: [{ label: '苹果', val: 7, color: '#00A896' }, { label: '剩的', val: null, color: '#FB923C' }] },
+      visualData: { total: 12, parts: [{ label: '拿走的', val: null, color: '#00A896' }, { label: '剩的', val: 7, color: '#FB923C' }] },
       scene: '一筐苹果 12 个，拿走一些，还剩 7 个。',
       expect: ['12-?=7', '12-7=5', '?+7=12'],
       rubricHint: '应体现"未知部分=总量-已知部分"，如 12-7=5 或 ?+7=12。'
