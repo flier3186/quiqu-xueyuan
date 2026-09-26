@@ -1580,9 +1580,9 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "id": "5A-PROB-014"
         },
-        {
+                {
             "scene": "小红今年a岁，妈妈比她大25岁。老师问妈妈多少岁。",
-            "question": "妈妈多少岁？(用含a的式子表示)",
+            "question": "妈妈比小红大多少岁？填进式子：妈妈 = a + ?",
             "formula": "妈妈 = a + ?",
             "answer": 25,
             "choices": [
@@ -1609,7 +1609,7 @@ window.MATH_BY_GRADE["5a"] = {
             },
             "knowledge": "用字母表示数和数量关系",
             "difficulty": 2,
-            "hint": "a+25表示妈妈年龄",
+            "hint": "式子里的 ? 就是妈妈比小红大的岁数",
             "variants": [
                 {
                     "question": "小红a岁，妈妈b岁，妈妈比小红大几岁？（用含a、b的式子表示）",
@@ -1690,9 +1690,9 @@ window.MATH_BY_GRADE["5a"] = {
             ],
             "id": "5A-PROB-015"
         },
-        {
-            "scene": "老师教小红用字母表示长方形面积公式。",
-            "question": "长方形面积S=长×宽，长a宽b，S=?",
+                {
+            "scene": "老师教小红用字母表示长方形面积公式，长方形的长和宽都标在图上。",
+            "question": "看图，长方形面积 S = 长 × 宽。用字母表示，S = ?",
             "formula": "S = a × ?",
             "answer": "b",
             "choices": [
@@ -1711,7 +1711,7 @@ window.MATH_BY_GRADE["5a"] = {
             },
             "knowledge": "用字母表示数和数量关系",
             "difficulty": 2,
-            "hint": "S=ab",
+            "hint": "长是 a，宽是图上标的另一个字母",
             "variants": [
                 {
                     "question": "长方形周长C=2(a+?)",
@@ -1727,63 +1727,63 @@ window.MATH_BY_GRADE["5a"] = {
                 }
             ],
             "discoverySteps": [
-          {
+                {
                     "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                              "求长方形面积公式中宽 b",
-                              "求周长",
-                              "求长",
-                              "求面积数值"
+                        "求长方形面积公式中宽 b",
+                        "求周长",
+                        "求长",
+                        "求面积数值"
                     ],
                     "answer": "求长方形面积公式中宽 b",
                     "explain": "题目说长方形面积S=长×宽，长a宽b，问S=a×?中填什么"
-          },
-          {
+                },
+                {
                     "q": "🔢 题目给了我们哪些关键信息？",
                     "choices": [
-                              "长用a表示、宽用b表示、S=长×宽",
-                              "长a宽a",
-                              "只有数字没有字母",
-                              "S=a+b"
+                        "长用a表示、宽用b表示、S=长×宽",
+                        "长a宽a",
+                        "只有数字没有字母",
+                        "S=a+b"
                     ],
                     "answer": "长用a表示、宽用b表示、S=长×宽",
                     "explain": "字母a表示长，字母b表示宽，面积公式S=长×宽=a×b"
-          },
-          {
+                },
+                {
                     "q": "🧩 用什么方法计算？",
                     "choices": [
-                              "代入公式：S=a×b，横线处填b",
-                              "S=a+b",
-                              "S=2a+2b",
-                              "S=a-b"
+                        "代入公式：S=a×b，横线处填b",
+                        "S=a+b",
+                        "S=2a+2b",
+                        "S=a-b"
                     ],
                     "answer": "代入公式：S=a×b，横线处填b",
                     "explain": "长方形面积=长×宽=a×b，所以S=a×b，答案填b"
-          }
-],
+                }
+            ],
             "explainLayers": [
-          {
+                {
                     "icon": "👀",
                     "title": "看图 — 图形结构",
                     "text": "几何图显示长方形，长a、宽b分别用字母标出，面积S=长×宽=a×b",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
-          },
-          {
+                },
+                {
                     "icon": "🧠",
                     "title": "理解 — 数学关系",
                     "text": "用字母表示公式：S=a×b。字母a、b表示长和宽，字母可以代替具体数值参与运算",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
-          },
-          {
+                },
+                {
                     "icon": "🚀",
                     "title": "推广 — 通用规律",
                     "text": "用字母表示公式：面积S=ab、周长C=2(a+b)。字母表示数让公式对任意数值都通用",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
-          }
-],
+                }
+            ],
             "id": "5A-PROB-016"
         },
         {

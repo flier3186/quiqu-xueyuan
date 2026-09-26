@@ -542,6 +542,8 @@ window.MathFlowV5 = {
   // 这里把题里的数量变成逐个入场的实物并按组呈现 —— 具象阶段要能看、能动，不是插图。
   _concrete(problem){
     try{
+      // 概念题（无数量关系）没有可操作的教具；旧版会把 parts[].val=null 画成「一部分 0」
+      if(this._conceptEntry(problem)) return '';
       if(typeof window.MathManipulative === 'undefined' || !window.MathManipulative.scene) return '';
       const h = window.MathManipulative.scene(problem);
       return h || '';
@@ -877,7 +879,7 @@ window.MathFlowV5 = {
       ${pictorialScaffold}
       ${(typeof window._formulaLeaksPreAnswer==='function' && window._formulaLeaksPreAnswer(problem))
         ? `<div style="margin-top:12px;font-size:13px;color:var(--text-3);padding:10px 14px;background:var(--teal-soft);border-radius:10px">🤫 这道题的算式要<b>自己列</b>——先想清楚用哪几个数、怎么算，答完会揭晓完整算式</div>`
-        : `<div style="margin-top:12px;font-size:14px;color:var(--text-2)">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(problem.formula)}</span></div>`}
+        : this._formulaRow(problem.formula, 'var(--teal)')}
       <div style="margin-top:8px;font-size:12px;color:var(--text-3)">选择正确的答案：</div>
       <div class="wp-choices" id="v5SolveChoices" style="grid-template-columns:repeat(${Math.min(problem.choices.length,4)},1fr);margin-top:8px">
         ${problem.choices.map((c,i)=>`<div class="wp-choice" data-idx="${i}" data-val="${c}" onclick="MathFlowV5._solveAnswer(this,${i},${correctIdx})">${this._escape(String(c))}</div>`).join('')}
@@ -955,7 +957,10 @@ window.MathFlowV5 = {
       ? !!MathVisualV5._getStepRenderer(modelFamily)
       : false;
     const hasModelFamily = hasStepRenderer;
-    const visual = _mvHTML(problem) || '<div class="mv-empty">可视化引擎不可用</div>';
+    // 概念题优先给「概念示意图」，没有可看的图时改用「概念对照卡」，绝不落回空图提示
+    const conceptEntry = this._conceptEntry(problem);
+    const visual = this._visualFor(problem);
+    const isConceptVisual = !!(conceptEntry && (!visual || visual.indexOf('mv-concept') >= 0));
     setTimeout(()=>this._initFractionWall(),50);
     const layers = this._explainLayers(problem);
     const methodName = this._methodName(problem);
@@ -970,11 +975,11 @@ window.MathFlowV5 = {
       <span class="cpa-tag pictorial">STAGE 4 · 数形结合讲解</span>
       <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 5 分钟 · 用图形看清这道题的内在结构</div>
       <div style="background:#fff;border-radius:14px;padding:8px;border:1px solid rgba(0,168,150,.15);box-shadow:0 6px 18px rgba(0,168,150,.08)">
-        ${visual}
+        ${visual || this._conceptCardHTML(problem)}
       </div>
-      <div style="text-align:center;margin-top:8px">
+      ${isConceptVisual ? '' : `<div style="text-align:center;margin-top:8px">
         <button onclick="MathFlowV5._replayVisual()" style="padding:8px 18px;background:var(--teal-soft);color:var(--teal-700);border:1px solid rgba(0,168,150,.3);border-radius:18px;font-size:12px;font-weight:700;cursor:pointer">🎬 重新播放动画</button>
-      </div>
+      </div>`}
       <!-- 可拖曳教具：数形结合从"看"升级为"做" -->
       ${this._tool(problem)}
       ${stepControls}
@@ -1737,17 +1742,28 @@ window.MathFlowV5 = {
       <div style="padding:14px 16px;background:linear-gradient(135deg,var(--teal-soft),#fff);border-radius:12px;font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;margin-bottom:10px">
         ${this._escape(v.question || problem.question)}
       </div>
-      <div style="font-size:14px;color:var(--text-2);margin-bottom:6px">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(v.formula || problem.formula)}</span></div>
+      ${this._formulaRow(v.formula || problem.formula, 'var(--teal)')}
       <div class="wp-choices" style="grid-template-columns:repeat(${Math.min(choices.length,4)},1fr)">
         ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._practiceAnswer(this,${i},${correctIdx},1)">${this._escape(String(c))}</div>`).join('')}
       </div>
       <div id="v5PracticeFeedback" style="margin-top:12px"></div>
     </div>`;
   },
+  // 概念题没有算式：不能再出现「算式：」后面空着的一行，直接整行不显示
+  _formulaRow(txt, color){
+    const s = String(txt == null ? '' : txt).trim();
+    if(!s) return '';
+    return `<div style="font-size:14px;color:var(--text-2);margin-bottom:6px">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:${color}">${this._escape(s)}</span></div>`;
+  },
   // L2 变式：先文字后图形（数学阅读训练核心）
   _renderL2(problem){
     const showVisual = this._sess.practiceVisualShown;
     const v = (problem.variants && problem.variants[1]) || (problem.variants && problem.variants[0]) || problem;
+    // 全链路探测：真实数值图 → 概念示意图。旧版这里无条件承诺「看图验证」，
+    // 遇到概念题（无图）就变成点开一片空白 —— 孩子感受＝「点了没反应」。
+    const visualHTML = this._visualFor(problem);
+    const conceptEntry = this._conceptEntry(problem);
+    const isConcept = !!conceptEntry;
     if(!showVisual){
       // 1) 纯文字题：孩子先在没有图形辅助下解答
       const {ans, choices, correctIdx} = this._safeChoices(v, problem);
@@ -1762,28 +1778,28 @@ window.MathFlowV5 = {
         </div>
         ${(typeof window._formulaLeaksPreAnswer==='function' && window._formulaLeaksPreAnswer({formula:(v.formula||problem.formula), question:(v.question||problem.question), scene:v.scene||''}))
           ? `<div style="font-size:13px;color:var(--text-3);padding:8px 12px;background:var(--teal-soft);border-radius:8px;margin-bottom:6px">🤫 算式要自己列，答完再揭晓</div>`
-          : `<div style="font-size:14px;color:var(--text-2);margin-bottom:6px">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--teal)">${this._escape(v.formula || problem.formula)}</span></div>`}
+          : this._formulaRow(v.formula || problem.formula, 'var(--teal)')}
         <div class="wp-choices" style="grid-template-columns:repeat(${Math.min(choices.length,4)},1fr)">
           ${choices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._practiceAnswer(this,${i},${correctIdx},2)">${this._escape(String(c))}</div>`).join('')}
         </div>
         <div style="margin-top:10px;padding:10px 12px;background:var(--teal-soft);border-radius:8px;font-size:12px;color:var(--teal-700);font-weight:600">
-          💡 答完后点击下方按钮，用图形验证你的答案对不对
+          ${isConcept ? '💡 答完后点击下方按钮，用概念对照核对自己的答案' : '💡 答完后点击下方按钮，用图形验证你的答案对不对'}
         </div>
         <div style="text-align:center;margin-top:10px">
-          <button onclick="MathFlowV5._showPracticeVisual()" style="padding:10px 22px;background:var(--teal);color:#fff;border:none;border-radius:18px;font-weight:700;cursor:pointer">📊 看图验证 →</button>
+          <button onclick="MathFlowV5._showPracticeVisual()" style="padding:10px 22px;background:var(--teal);color:#fff;border:none;border-radius:18px;font-weight:700;cursor:pointer">${isConcept ? '📌 概念验证 →' : '📊 看图验证 →'}</button>
         </div>
         <div id="v5PracticeFeedback" style="margin-top:12px"></div>
       </div>`;
     }
-    // 2) 显示图形验证
-    const visual = _mvHTML(problem) || '<div class="mv-empty">可视化引擎不可用</div>';
+    // 2) 显示验证屏：概念题给「概念对照图 + 概念验证」，数值题给「图形 + 图形验证」；
+    //    两者都保证屏上一定有可看的图，不再出现「空图 + 空承诺」。
     const {ans} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--yellow);animation:fadeIn .45s ease">
-      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 图形验证</span>
-      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">📊 用图形对照你的答案</div>
-      <div style="background:#fff;border-radius:14px;padding:8px;border:1px solid rgba(245,184,0,.25);margin-bottom:10px">${visual}</div>
+      <span class="cpa-tag" style="background:var(--yellow);color:var(--navy)">STAGE 6 · 阶梯练习 · L2 ${isConcept ? '概念验证' : '图形验证'}</span>
+      <div style="margin:14px 0 8px;font-size:13px;color:var(--text-3);font-weight:600">${isConcept ? '📌 用概念对照核对你的答案' : '📊 用图形对照你的答案'}</div>
+      <div style="background:#fff;border-radius:14px;padding:8px;border:1px solid rgba(245,184,0,.25);margin-bottom:10px">${visualHTML || this._conceptCardHTML(problem)}</div>
       <div style="padding:12px 14px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;font-size:14px;color:var(--teal-700);line-height:1.7">
-        ✅ 正确答案是 <b>${this._escape(String(ans))}</b>。<br>看，图形里的数量关系和你的答案一致吗？
+        ✅ 正确答案是 <b>${this._escape(String(ans))}</b>。<br>${isConcept ? '对照上面的概念要点，你的选择和它一致吗？' : '看，图形里的数量关系和你的答案一致吗？'}
       </div>
       <div style="text-align:center;margin-top:14px">
         <button onclick="MathFlowV5._practiceNext()" style="padding:10px 24px;background:var(--coral);color:#fff;border:none;border-radius:20px;font-weight:800;cursor:pointer">挑战 L4 陷阱题 →</button>
@@ -1870,7 +1886,7 @@ window.MathFlowV5 = {
       <div style="padding:14px 16px;background:linear-gradient(135deg,#FFE9D6,#fff);border-radius:12px;font-size:15px;color:var(--navy);font-weight:700;line-height:1.7;margin-bottom:10px">
         ${this._escape(v.question || problem.question)}
       </div>
-      <div style="font-size:14px;color:var(--text-2);margin-bottom:6px">算式：<span style="font-family:'Inter',sans-serif;font-weight:800;color:var(--coral)">${this._escape(v.formula || problem.formula)}</span></div>
+      ${this._formulaRow(v.formula || problem.formula, 'var(--coral)')}
       <div style="margin-top:6px;padding:8px 12px;background:#FFE9D6;border-radius:8px;font-size:12px;color:var(--coral);font-weight:600">⚠️ 提示：${this._escape(problem.hint || '注意审题，分清已知和所求')}</div>
       <div class="wp-choices" style="grid-template-columns:repeat(${Math.min(trapChoices.length,4)},1fr);margin-top:8px">
         ${trapChoices.map((c,i)=>`<div class="wp-choice" onclick="MathFlowV5._practiceAnswer(this,${i},${correctIdx},4)">${this._escape(String(c))}</div>`).join('')}
@@ -2195,8 +2211,315 @@ window.MathFlowV5 = {
   // ===== 辅助方法 =====
   // ============================================================
 
+  // ============================================================
+  // 概念题支持（2026-09-26 真机缺陷修复）
+  // 背景：3a/3b 里 13 道「概念判断 / 单位认识」题（formula 为空、没有数量关系）
+  // 被误配成 numberBond 数值图形，数据里 parts[].val 全是 null →
+  //   ① STAGE 4 数形结合讲解：图形区只剩一句「这是一道概念题…」，却还在讲「数字 Bond」；
+  //   ② L2 变式「📊 看图验证」点开后没有图，只有同一句提示（孩子感受＝点了没反应）。
+  // 修法：给这 7 个知识点补「概念示意图 + 概念对照卡」，并把概念分支接入
+  //       L2 验证、STAGE 4 讲解、STAGE 2 引导发现；另拦住预热阶段把 val=null 画成 0。
+  // ============================================================
+  _conceptMap(){
+    if(this.__conceptMap) return this.__conceptMap;
+    // 平移与旋转共用同一张对照图与同一套讲解，只改名称
+    const motion = {
+      key:'motion',
+      look:'看上面这张对照图：左边是平移——物体沿直线整体挪动，方向不变；右边是旋转——物体绕着一个点转动，中心点不动。',
+      keyPoint:'物体是沿着直线整体移动，还是绕着一个固定的点转动',
+      method:'对照「平移沿直线、方向不变；旋转绕点转」来判断',
+      points:[
+        '平移：物体沿直线移动，移动过程中方向不变',
+        '平移的例子：推拉窗户、拉开抽屉、电梯上下、国旗上升',
+        '旋转：物体绕一个点（或一条轴）转动，中心点不动',
+        '旋转的例子：风车叶片、钟表指针、方向盘、荡秋千'
+      ],
+      understand:'平移和旋转都只是位置或朝向在变。平移是「整体沿直线挪动」，物体本身的方向不变；旋转是「绕着一个固定点转」，方向在改变。',
+      generalize:'以后看到物体在动，先问一句：它是整块沿直线挪，还是绕着一个点在转？沿直线挪＝平移，绕点转＝旋转。'
+    };
+    this.__conceptMap = {
+      '平移': Object.assign({}, motion, { name:'平移', judge:'判断是平移还是旋转' }),
+      '旋转': Object.assign({}, motion, { name:'旋转', judge:'判断是平移还是旋转' }),
+      '年、月、日': {
+        key:'calendar', name:'年、月、日', judge:'判断年份或日期的知识',
+        look:'看上面两张 2 月日历：平年的 2 月只有 28 天，闰年的 2 月多出 1 天、是 29 天。',
+        keyPoint:'2 月有多少天：28 天是平年，29 天是闰年',
+        method:'用年份除以 4 看有没有余数',
+        points:[
+          '平年 2 月 28 天，全年 365 天；闰年 2 月 29 天，全年 366 天',
+          '年份能被 4 整除的一般是闰年（整百年要能被 400 整除）',
+          '2024 ÷ 4 = 506，没有余数 → 2024 年是闰年',
+          '节日日期要记牢：儿童节 6 月 1 日、国庆节 10 月 1 日'
+        ],
+        understand:'闰年比平年多出的那一天，就加在 2 月里。所以看 2 月是 28 天还是 29 天，就知道这一年是平年还是闰年。',
+        generalize:'判断平年闰年：普通年份除以 4 没有余数就是闰年；整百年（如 1900 年）要除以 400 没有余数才是闰年。'
+      },
+      '克和千克': {
+        key:'mass', name:'克和千克', judge:'选出合适的质量单位',
+        look:'看上面的等量关系：1 千克 ＝ 1000 克。下面三个例子里，越轻的东西用的单位越小。',
+        keyPoint:'这个东西有多重：轻的用克，重的用千克，很重的用吨',
+        method:'拿生活经验估一估轻重，再选单位',
+        points:[
+          '1 千克 ＝ 1000 克，1 吨 ＝ 1000 千克',
+          '较轻的用「克」：1 个鸡蛋约 50 克、1 袋食盐 500 克',
+          '较重的用「千克」：1 个西瓜约 5 千克、1 头牛约 500 千克',
+          '很重的大宗货物用「吨」，如 1 头大象约 5 吨'
+        ],
+        understand:'单位要和物体的轻重匹配：数字小、东西轻，多半用克；数字大、东西重，多半用千克。',
+        generalize:'估重量时先想生活经验：鸡蛋、硬币、食盐用克；西瓜、书包、小动物用千克；卡车、大象用吨。'
+      },
+      '数字编码': {
+        key:'idcode', name:'数字编码', judge:'判断号码中某一位表示的意思',
+        look:'看上面的身份证号分成了几段：每一段都固定表示一项信息，位数不同，含义就不同。',
+        keyPoint:'这个号码的第几位，固定表示什么信息',
+        method:'把号码分段，再对到「第几位表示什么」上',
+        points:[
+          '身份证号共 18 位，是「分段的编码」',
+          '前 6 位＝地址码（出生地）；第 7～14 位＝出生日期码（年月日）',
+          '第 15～17 位＝顺序码，其中第 17 位（倒数第 2 位）表示性别：奇数男、偶数女',
+          '最后 1 位＝校验码，用来检查号码有没有写错'
+        ],
+        understand:'身份证号不是随便排的，每一段都固定表示一项信息，所以能从号码里读出出生地和出生日期。',
+        generalize:'遇到编码类问题，先想「哪几位/哪一段固定表示什么」，再对着位数去读，别一位一位瞎猜。'
+      },
+      '线段直线射线': {
+        key:'lines', name:'线段直线射线', judge:'判断是线段、射线还是直线',
+        look:'看上面三行图：端点越少，能延长的方向越多——2 个端点是线段，1 个端点是射线，没有端点是直线。',
+        keyPoint:'这条线有几个端点，还能不能无限延长',
+        method:'数端点：2 个→线段，1 个→射线，0 个→直线',
+        points:[
+          '线段：有 2 个端点，可以量出长度',
+          '射线：只有 1 个端点，一端无限延长，量不出长度',
+          '直线：没有端点，两端都无限延长，量不出长度',
+          '「一端无限延长」→射线；「两端都无限延长」→直线'
+        ],
+        understand:'区别只看「端点个数」：2 个端点是线段，1 个端点是射线，0 个端点是直线。',
+        generalize:'以后看到「无限延长」，先数端点：一端延长是射线，两端延长是直线；没说延长就是线段。'
+      },
+      '锐角直角钝角': {
+        key:'angles', name:'锐角直角钝角', judge:'判断是什么角',
+        look:'看上面四个角：拿直角当标尺，比直角小的是锐角，比直角大的是钝角，正好够半圈的是平角。',
+        keyPoint:'这个角比直角大还是小',
+        method:'拿直角当标尺比一比',
+        points:[
+          '锐角：比直角小（小于 90°）',
+          '直角：正好 90°，用「∟」标出来',
+          '钝角：比直角大、比平角小（90°～180°）',
+          '平角：正好 180°，两条边连成一条直线'
+        ],
+        understand:'判断角的大小，就拿直角当标尺：比直角小的是锐角，比直角大的是钝角，正好 90° 的是直角。',
+        generalize:'以后量角先找直角对照：小于直角→锐角，等于→直角，大于→钝角，正好半圈→平角。'
+      }
+    };
+    return this.__conceptMap;
+  },
+  // 命中概念题返回该条配置（含按题干微调），否则 null
+  _conceptEntry(problem){
+    try{
+      if(!problem) return null;
+      const k = String(problem.knowledge || '').trim();
+      if(!k) return null;
+      const map = this._conceptMap();
+      let e = map[k] || null;
+      if(!e){ for(const key in map){ if(k.indexOf(key) >= 0){ e = map[key]; break; } } }
+      if(!e) return null;
+      e = Object.assign({}, e);
+      // 年月日：节日日期题与平年闰年题问的不是同一件事，按题干微调第一步
+      if(e.key === 'calendar' && /节/.test(String(problem.question || ''))) e.judge = '判断这个节日是几月几日';
+      return e;
+    }catch(err){ return null; }
+  },
+  // 概念示意图（按 key 缓存，避免每次重算）
+  _conceptSVG(key){
+    try{
+      this.__conceptSvgCache = this.__conceptSvgCache || {};
+      if(this.__conceptSvgCache[key] != null) return this.__conceptSvgCache[key];
+      const fn = this['_csvg_' + key];
+      this.__conceptSvgCache[key] = (typeof fn === 'function') ? (fn.call(this) || '') : '';
+      return this.__conceptSvgCache[key];
+    }catch(e){ return ''; }
+  },
+  // 该题该看的图：真实数值图优先，概念题退回概念示意图
+  _visualFor(problem){
+    try{
+      const h = _mvHTML(problem);
+      if(h && h.indexOf('mv-empty') < 0) return h;
+    }catch(e){}
+    const e = this._conceptEntry(problem);
+    return (e && this._conceptSVG(e.key)) || '';
+  },
+  // 概念对照卡：没有图形可看时，用「要点」替代空图
+  _conceptCardHTML(problem, answer){
+    const e = this._conceptEntry(problem);
+    const pts = (e && e.points) || ['这是一道概念判断题：答案要靠理解概念来判断，不是靠算数。'];
+    return `<div class="mv-wrap mv-concept-card">
+      <div style="font-size:13px;font-weight:800;color:#0F766E;margin-bottom:8px">📌 ${this._escape((e ? e.name + ' · ' : '') + '概念对照')}</div>
+      <ul style="margin:0;padding-left:20px;font-size:13.5px;line-height:1.95;color:var(--navy)">
+        ${pts.map(x=>`<li>${this._escape(x)}</li>`).join('')}
+      </ul>
+      ${(answer != null && answer !== '') ? `<div style="margin-top:10px;font-size:13.5px;font-weight:800;color:var(--teal-700)">✅ 正确答案：${this._escape(String(answer))}</div>` : ''}
+    </div>`;
+  },
+  // 概念题的引导发现 3 步：改成「判断什么 / 看什么 / 怎么判断」，不再问「求原来有多少」
+  _conceptDiscovery(problem, e){
+    const rot = (arr,k)=>{ const n=arr.length; k=((k%n)+n)%n; return arr.slice(k).concat(arr.slice(0,k)); };
+    // 干扰项必须是「同类概念判断」，不能再放「求原来有多少 / 求相差多少」这类数值算式选项：
+    // 孩子做「拉开抽屉是()现象」时看到这些选项只会更糊涂。
+    const map = this._conceptMap();
+    const others = Object.keys(map).map(k => map[k]).filter(x => x && x.judge && x.judge !== e.judge);
+    const pool = (field, generic) => {
+      const out = [];
+      others.forEach(o => { const v = o[field]; if (v && v !== e[field] && out.indexOf(v) < 0) out.push(v); });
+      generic.forEach(v => { if (v !== e[field] && out.indexOf(v) < 0) out.push(v); });
+      return out.slice(0, 3);
+    };
+    const c1 = rot([e.judge].concat(pool('judge', ['数一数一共有几个图形', '算出结果是多少', '量一量它有多长'])), 1);
+    const c2 = rot([e.keyPoint].concat(pool('keyPoint', ['题目里的数字分别是多少', '算式用的是加法还是减法', '这段文字一共有几行'])), 2);
+    const c3 = rot([e.method].concat(pool('method', ['把题目里的数字全部加起来', '直接猜一个最像的', '用尺子量一量'])), 1);
+    return [
+      { q:'📖 这道题要我们判断什么？', choices:c1, answer:e.judge, explain:`题目让我们${e.judge}。` },
+      { q:'🔎 要判断它，关键看什么？', choices:c2, answer:e.keyPoint, explain:`关键看：${e.keyPoint}。` },
+      { q:'🧩 你会用什么方法判断？', choices:c3, answer:e.method, explain:`${e.method}。${e.understand}` }
+    ];
+  },
+  // ---- 概念示意图（纯 SVG，无外部依赖）----
+  _csvgWrap(w, h, inner){
+    return `<div class="mv-wrap mv-concept"><svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">${inner}</svg></div>`;
+  },
+  // 平移 / 旋转 对照图
+  _csvg_motion(){
+    return this._csvgWrap(520, 200, `
+      <rect x="46" y="50" width="56" height="56" rx="8" fill="#00A896"/>
+      <rect x="172" y="50" width="56" height="56" rx="8" fill="none" stroke="#00A896" stroke-width="2.5" stroke-dasharray="7 5"/>
+      <line x1="110" y1="78" x2="160" y2="78" stroke="#0F766E" stroke-width="3" stroke-linecap="round"/>
+      <polygon points="166,78 154,72 154,84" fill="#0F766E"/>
+      <text x="137" y="134" text-anchor="middle" font-size="13" font-weight="800" fill="#0F766E">平移：沿直线移动</text>
+      <text x="137" y="154" text-anchor="middle" font-size="11.5" fill="#4A6285">方向不变，整体挪动</text>
+      <line x1="260" y1="34" x2="260" y2="158" stroke="#E2E8F0" stroke-width="1.5"/>
+      <path d="M 322 86 A 64 64 0 0 1 450 86" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="6 5"/>
+      <polygon points="454,90 443,84 447,96" fill="#F59E0B"/>
+      <circle cx="386" cy="86" r="7" fill="#F5B800"/>
+      <line x1="386" y1="81" x2="386" y2="38" stroke="#B45309" stroke-width="6" stroke-linecap="round"/>
+      <line x1="387" y1="90" x2="428" y2="112" stroke="#B45309" stroke-width="6" stroke-linecap="round"/>
+      <line x1="383" y1="90" x2="342" y2="64" stroke="#B45309" stroke-width="6" stroke-linecap="round"/>
+      <text x="386" y="134" text-anchor="middle" font-size="13" font-weight="800" fill="#B45309">旋转：绕一个点转动</text>
+      <text x="386" y="154" text-anchor="middle" font-size="11.5" fill="#4A6285">中心点不动，方向在变</text>
+    `);
+  },
+  // 线段 / 射线 / 直线
+  _csvg_lines(){
+    const rows = [
+      { y:52,  name:'线段', cap:'有 2 个端点 · 可以量出长度',   left:false, right:false, dotL:true,  dotR:true  },
+      { y:122, name:'射线', cap:'只有 1 个端点 · 一端无限延长', left:false, right:true,  dotL:true,  dotR:false },
+      { y:192, name:'直线', cap:'没有端点 · 两端都无限延长',    left:true,  right:true,  dotL:false, dotR:false }
+    ];
+    const inner = rows.map(r=>{
+      const x1 = 100, x2 = 282, y = r.y;
+      let s = `<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#1E3A5F" stroke-width="3" stroke-linecap="round"/>`;
+      if(r.left)  s += `<polygon points="${x1},${y} ${x1+12},${y-6} ${x1+12},${y+6}" fill="#1E3A5F"/>`;
+      if(r.right) s += `<polygon points="${x2},${y} ${x2-12},${y-6} ${x2-12},${y+6}" fill="#1E3A5F"/>`;
+      if(r.dotL)  s += `<circle cx="${x1}" cy="${y}" r="5.5" fill="#00A896"/>`;
+      if(r.dotR)  s += `<circle cx="${x2}" cy="${y}" r="5.5" fill="#00A896"/>`;
+      return `<g>${s}<text x="16" y="${y+5}" font-size="13.5" font-weight="800" fill="#1E3A5F">${r.name}</text><text x="300" y="${y+5}" font-size="11.5" fill="#4A6285">${r.cap}</text></g>`;
+    }).join('');
+    return this._csvgWrap(520, 228, inner);
+  },
+  // 锐角 / 直角 / 钝角 / 平角
+  _csvg_angles(){
+    const defs = [
+      { cx:72,  d:42,  name:'锐角', note:'小于 90°' },
+      { cx:190, d:90,  name:'直角', note:'正好 90°' },
+      { cx:308, d:135, name:'钝角', note:'90°~180°' },
+      { cx:426, d:180, name:'平角', note:'正好 180°' }
+    ];
+    const vy = 136, L = 44, r = 19;
+    const inner = defs.map(o=>{
+      const rad = o.d * Math.PI / 180;
+      const ex = o.cx + L*Math.cos(rad), ey = vy - L*Math.sin(rad);
+      let s = `<line x1="${o.cx}" y1="${vy}" x2="${o.cx+L}" y2="${vy}" stroke="#1E3A5F" stroke-width="3" stroke-linecap="round"/>`;
+      s += `<line x1="${o.cx}" y1="${vy}" x2="${ex}" y2="${ey}" stroke="#1E3A5F" stroke-width="3" stroke-linecap="round"/>`;
+      s += `<circle cx="${o.cx}" cy="${vy}" r="3.5" fill="#1E3A5F"/>`;
+      if(o.d === 90){
+        s += `<path d="M ${o.cx+21} ${vy} L ${o.cx+21} ${vy-21} L ${o.cx+42} ${vy-21}" fill="none" stroke="#00A896" stroke-width="2"/>`;
+      }else{
+        s += `<path d="M ${o.cx+r} ${vy} A ${r} ${r} 0 0 0 ${o.cx + r*Math.cos(rad)} ${vy - r*Math.sin(rad)}" fill="none" stroke="#00A896" stroke-width="2"/>`;
+      }
+      return `<g>${s}<text x="${o.cx}" y="${vy+42}" text-anchor="middle" font-size="13" font-weight="800" fill="#1E3A5F">${o.name}</text><text x="${o.cx}" y="${vy+60}" text-anchor="middle" font-size="10.5" fill="#4A6285">${o.note}</text></g>`;
+    }).join('');
+    return this._csvgWrap(520, 212, inner);
+  },
+  // 克 / 千克 / 吨
+  _csvg_mass(){
+    const chip = (x,txt)=>`<rect x="${x}" y="142" width="150" height="42" rx="9" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/><text x="${x+75}" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${txt}</text>`;
+    return this._csvgWrap(520, 200, `
+      <rect x="52" y="30" width="150" height="54" rx="12" fill="#00A896"/>
+      <text x="127" y="64" text-anchor="middle" font-size="20" font-weight="800" fill="#fff">1 千克</text>
+      <text x="260" y="68" text-anchor="middle" font-size="26" font-weight="800" fill="#1E3A5F">=</text>
+      <rect x="318" y="30" width="150" height="54" rx="12" fill="#F5B800"/>
+      <text x="393" y="64" text-anchor="middle" font-size="20" font-weight="800" fill="#3D2C00">1000 克</text>
+      <text x="260" y="122" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0F766E">1 千克 ＝ 1000 克　·　1 吨 ＝ 1000 千克</text>
+      ${chip(28, '鸡蛋 约 50 克')}
+      ${chip(185, '食盐 500 克')}
+      ${chip(342, '西瓜 约 5 千克')}
+    `);
+  },
+  // 身份证号分段编码
+  _csvg_idcode(){
+    const digits = '110101201501011234'.split('');
+    const groups = [
+      { n:6, color:'#00A896', label:'地址码（出生地）', text:'#0F766E' },
+      { n:8, color:'#F5B800', label:'出生日期码', text:'#8A5A00' },
+      { n:3, color:'#E8A0BF', label:'顺序码', text:'#9D4A6B' },
+      { n:1, color:'#94A3B8', label:'校验', text:'#475569' }
+    ];
+    const bw = 24, gap = 3, y = 58, h = 32, x0 = (520 - (digits.length*bw + (digits.length-1)*gap)) / 2;
+    let x = x0, idx = 0, boxes = '', labels = '';
+    groups.forEach(g=>{
+      const gx0 = x;
+      for(let i=0;i<g.n;i++){
+        const isGender = (idx === 16);
+        boxes += `<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="5" fill="${g.color}" opacity="${isGender?1:0.25}" stroke="${g.color}" stroke-width="${isGender?2.5:1.2}"/>`;
+        boxes += `<text x="${x+bw/2}" y="${y+22}" text-anchor="middle" font-size="14" font-weight="700" fill="${isGender?'#fff':'#1E3A5F'}">${digits[idx]}</text>`;
+        x += bw + gap; idx++;
+      }
+      labels += `<text x="${(gx0 + x - gap)/2}" y="${y+h+18}" text-anchor="middle" font-size="10.5" font-weight="700" fill="${g.text}">${g.label}</text>`;
+    });
+    const g17cx = x0 + 16*(bw+gap) + bw/2;
+    return this._csvgWrap(520, 168, `
+      <text x="20" y="26" font-size="13" font-weight="800" fill="#1E3A5F">身份证号 = 18 位分段编码</text>
+      <text x="508" y="26" text-anchor="end" font-size="11.5" font-weight="800" fill="#DC2626">倒数第 2 位 ＝ 性别</text>
+      <line x1="${g17cx}" y1="32" x2="${g17cx}" y2="${y-3}" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="3 3"/>
+      ${boxes}
+      ${labels}
+      <text x="260" y="${y+h+42}" text-anchor="middle" font-size="11.5" fill="#4A6285">奇数为男 · 偶数为女；第 7～14 位是出生日期</text>
+    `);
+  },
+  // 平年 / 闰年 二月日历
+  _csvg_calendar(){
+    const cell = (x,y,extra)=>`<rect x="${x}" y="${y}" width="16" height="16" rx="3" fill="${extra?'#F5B800':'#00A896'}" opacity="${extra?0.35:0.22}" stroke="${extra?'#B45309':'#00A896'}" stroke-width="1.2"${extra?' stroke-dasharray="4 3"':''}/>`;
+    const grid = (ox,oy,extra)=>{
+      let s = '';
+      for(let i=0;i<28+extra;i++){
+        s += cell(ox + (i%7)*18, oy + Math.floor(i/7)*18, i >= 28);
+      }
+      return s;
+    };
+    return this._csvgWrap(520, 196, `
+      <text x="112" y="26" text-anchor="middle" font-size="12.5" font-weight="800" fill="#1E3A5F">平年 · 2 月</text>
+      ${grid(50,38,0)}
+      <text x="112" y="132" text-anchor="middle" font-size="11.5" fill="#4A6285">28 天 · 全年 365 天</text>
+      <line x1="240" y1="30" x2="240" y2="168" stroke="#E2E8F0" stroke-width="1.5"/>
+      <text x="366" y="26" text-anchor="middle" font-size="12.5" font-weight="800" fill="#B45309">闰年 · 2 月</text>
+      ${grid(304,38,1)}
+      <text x="366" y="150" text-anchor="middle" font-size="11.5" fill="#4A6285">29 天 · 全年 366 天</text>
+      <text x="260" y="186" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0F766E">2 月多出的那 1 天，就是平年与闰年的区别</text>
+    `);
+  },
+
   // 引导发现 3 步（理解题意 / 找关键信息 / 选方法）
   _discoverySteps(problem){
+    const conceptEntry = this._conceptEntry(problem);
+    if(conceptEntry) return this._conceptDiscovery(problem, conceptEntry);
     const f = String(problem.formula||'').replace(/\s/g,'');
     const op = this._detectOp(problem.formula);
     const methodName = this._methodName(problem);
@@ -2219,6 +2542,16 @@ window.MathFlowV5 = {
 
   // 数形结合讲解三层（看图 / 理解 / 推广）
   _explainLayers(problem){
+    // 概念题（无数量关系）：三层讲解改成「概念对比 / 关键区别 / 会判断了」，
+    // 否则会对着概念题讲「看这个数字 Bond」，图文自相矛盾。
+    const ce = this._conceptEntry(problem);
+    if(ce){
+      return [
+        { icon:'👀', title:'看图 — 概念对比', text:ce.look, bg:'var(--teal-soft)', color:'var(--teal)' },
+        { icon:'🧠', title:'理解 — 关键区别', text:ce.understand, bg:'var(--yellow-soft)', color:'var(--yellow-700)' },
+        { icon:'🚀', title:'推广 — 会判断了', text:ce.generalize, bg:'var(--coral-soft)', color:'var(--coral)' }
+      ];
+    }
     const t = problem.visualType;
     const vmap = { barModel:'条形模型', areaModel:'面积模型', numberBond:'数字 Bond', fractionStrip:'分数条', numberLine:'数轴', geometry:'几何图形',
       rulerMagnifier:'放大镜尺子', bodyRuler:'身体尺', mapZoom:'地图缩放', balanceScale:'天平对比', vennDiagram:'韦恩图', balanceDecision:'天平决策', circleArea:'圆面积割补' };

@@ -2436,7 +2436,7 @@ window.MATH_EXTEND_3_6 = {
                 }
             ]
         },
-        {
+                {
             "scene": "盒子里有6个红球和4个白球，老师让小红闭眼摸一个。老师问：要让摸到红球和白球的可能性一样大，至少要再放入几个白球？",
             "question": "至少要再放入几个白球？",
             "formula": "6 - 4 = ?",
@@ -2449,7 +2449,7 @@ window.MATH_EXTEND_3_6 = {
             ],
             "visualType": "barModel",
             "visualData": {
-                "total": 6,
+                "total": 10,
                 "parts": [
                     {
                         "label": "红球",
@@ -2457,7 +2457,7 @@ window.MATH_EXTEND_3_6 = {
                         "color": "#00A896"
                     },
                     {
-                        "label": "白球",
+                        "label": "白球（现在）",
                         "val": 4,
                         "color": "#F5B800"
                     }

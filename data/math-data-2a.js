@@ -107,24 +107,111 @@ window.MATH_BY_GRADE["2a"] = {
         { "icon": "🧠", "title": "理解 — 进率 100", "text": "1 米 = 100 厘米，米换成厘米要乘 100", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)" },
         { "icon": "🚀", "title": "推广 — 先想进率再换算", "text": "米↔厘米乘除 100，米↔千米乘除 1000", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
 
-    { "id": "2A-LEN-04", "knowledge": "认识米", "difficulty": 2,
-      "scene": "爸爸量客厅的墙，量出 3 米；妈妈量门，量出 200 厘米。他们想知道墙比门高多少厘米。",
-      "question": "墙比门高多少厘米？",
-      "formula": "300 - 200 = ?", "answer": 100, "choices": [100, 1, 10, 500],
-      "visualType": "barModel",
-      "visualData": { "type": "bar", "total": 300, "bars": [ { "label": "墙 3 米=300 厘米", "value": 300, "color": "#2570E8" }, { "label": "门 200 厘米", "value": 200, "color": "#F5B800" } ] },
-      "hint": "先把单位统一成厘米：3 米 = 300 厘米，再相减",
-      "variants": [
-        { "question": "4 米比 150 厘米多多少厘米？", "formula": "400 - 150 = ?", "answer": 250, "hint": "4 米 = 400 厘米" },
-        { "question": "5 米比 250 厘米多多少厘米？", "formula": "500 - 250 = ?", "answer": 250, "hint": "5 米 = 500 厘米" } ],
-      "discoverySteps": [
-        { "q": "📖 3 米等于多少厘米？", "choices": ["300 厘米", "30 厘米", "3 厘米", "3000 厘米"], "answer": "300 厘米", "explain": "3 个 100 是 300" },
-        { "q": "🔢 现在两根彩条分别是多少厘米？", "choices": ["300 和 200", "3 和 200", "300 和 20", "不知道"], "answer": "300 和 200", "explain": "单位统一后比较才正确" },
-        { "q": "🧩 求相差多少用什么方法？", "choices": ["减法", "加法", "乘法", "除法"], "answer": "减法", "explain": "相差 = 多的一根 - 少的一根" } ],
-      "explainLayers": [
-        { "icon": "👀", "title": "看图 — 图形结构", "text": "两根彩条一长一短，长度差就是答案", "bg": "var(--teal-soft)", "color": "var(--teal)" },
-        { "icon": "🧠", "title": "理解 — 单位要统一", "text": "不同单位的数不能直接加减，先换成同一单位", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)" },
-        { "icon": "🚀", "title": "推广 — 比长短三步", "text": "统一单位 → 比较 → 求差", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
+                {
+            "id": "2A-LEN-04",
+            "knowledge": "认识米",
+            "difficulty": 2,
+            "scene": "爸爸量客厅的墙，量出 3 米；妈妈量门，量出 200 厘米。他们想知道墙比门高多少厘米。",
+            "question": "墙比门高多少厘米？",
+            "formula": "300 - 200 = ?",
+            "answer": 100,
+            "choices": [
+                100,
+                1,
+                10,
+                500
+            ],
+            "visualType": "barModel",
+            "visualData": {
+                "type": "bar",
+                "total": 300,
+                "bars": [
+                    {
+                        "label": "门 200 厘米",
+                        "value": 200,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "墙比门高的部分",
+                        "value": 100,
+                        "color": "#2570E8"
+                    }
+                ]
+            },
+            "hint": "先把单位统一成厘米：3 米 = 300 厘米，再相减",
+            "variants": [
+                {
+                    "question": "4 米比 150 厘米多多少厘米？",
+                    "formula": "400 - 150 = ?",
+                    "answer": 250,
+                    "hint": "4 米 = 400 厘米"
+                },
+                {
+                    "question": "5 米比 250 厘米多多少厘米？",
+                    "formula": "500 - 250 = ?",
+                    "answer": 250,
+                    "hint": "5 米 = 500 厘米"
+                }
+            ],
+            "discoverySteps": [
+                {
+                    "q": "📖 3 米等于多少厘米？",
+                    "choices": [
+                        "300 厘米",
+                        "30 厘米",
+                        "3 厘米",
+                        "3000 厘米"
+                    ],
+                    "answer": "300 厘米",
+                    "explain": "3 个 100 是 300"
+                },
+                {
+                    "q": "🔢 现在两根彩条分别是多少厘米？",
+                    "choices": [
+                        "300 和 200",
+                        "3 和 200",
+                        "300 和 20",
+                        "不知道"
+                    ],
+                    "answer": "300 和 200",
+                    "explain": "单位统一后比较才正确"
+                },
+                {
+                    "q": "🧩 求相差多少用什么方法？",
+                    "choices": [
+                        "减法",
+                        "加法",
+                        "乘法",
+                        "除法"
+                    ],
+                    "answer": "减法",
+                    "explain": "相差 = 多的一根 - 少的一根"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "两根彩条一长一短，长度差就是答案",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 单位要统一",
+                    "text": "不同单位的数不能直接加减，先换成同一单位",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 比长短三步",
+                    "text": "统一单位 → 比较 → 求差",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
 
     { "id": "2A-LEN-05", "knowledge": "线段", "difficulty": 1,
       "scene": "老师在黑板上画了一条线段 AB，A 和 B 是两个端头。",
@@ -796,43 +883,227 @@ window.MATH_BY_GRADE["2a"] = {
         { "icon": "🚀", "title": "推广 — 安排自己的时间", "text": "会算时间，就能自己制定学习计划", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
 
     // ================= 第八单元 · 数学广角——搭配（一） =================
-    { "id": "2A-MATCH-01", "knowledge": "简单的排列", "difficulty": 2,
-      "scene": "数字卡片上有 1、2、3 三张牌，小明要用其中两张摆出两位数，十位和个位不能一样。",
-      "question": "用 1、2、3 能摆出多少个不同的两位数？",
-      "formula": "3 × 2 = ?", "answer": 6, "choices": [6, 3, 4, 9],
-      "visualType": "barModel",
-      "visualData": { "type": "bar", "total": 5, "bars": [ { "label": "十位有 3 种选法", "value": 3, "color": "#2570E8" }, { "label": "个位剩 2 种选法", "value": 2, "color": "#F5B800" } ] },
-      "hint": "十位先选（3 种），个位再从剩下的数里选（2 种），3×2=6",
-      "variants": [
-        { "question": "用 2、5、8 能摆出多少个不同的两位数？", "formula": "3 × 2 = ?", "answer": 6, "hint": "十位 3 种，个位 2 种" },
-        { "question": "用 1、2 能摆出多少个不同的两位数？", "formula": "2 × 1 = ?", "answer": 2, "hint": "12 和 21" } ],
-      "discoverySteps": [
-        { "q": "🔢 十位上的数字有几种选法？", "choices": ["3 种", "2 种", "1 种", "不知道"], "answer": "3 种", "explain": "1、2、3 都可以放在十位" },
-        { "q": "🧮 十位定好后，个位还剩几种选法？", "choices": ["2 种", "3 种", "1 种", "不知道"], "answer": "2 种", "explain": "个位不能和十位相同，只剩 2 个数" },
-        { "q": "🧩 一共有多少种？", "choices": ["6 种", "3 种", "4 种", "不知道"], "answer": "6 种", "explain": "3×2=6（12、13、21、23、31、32）" } ],
-      "explainLayers": [
-        { "icon": "👀", "title": "看图 — 图形结构", "text": "先定十位 3 种，再定个位 2 种", "bg": "var(--teal-soft)", "color": "var(--teal)" },
-        { "icon": "🧠", "title": "理解 — 有序思考", "text": "按顺序一个一个摆，不重复不遗漏", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)" },
-        { "icon": "🚀", "title": "推广 — 排列与顺序有关", "text": "12 和 21 是两个不同的数，顺序变了结果就变", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
+                {
+            "id": "2A-MATCH-01",
+            "knowledge": "简单的排列",
+            "difficulty": 2,
+            "scene": "数字卡片上有 1、2、3 三张牌，小明要用其中两张摆出两位数，十位和个位不能一样。",
+            "question": "用 1、2、3 能摆出多少个不同的两位数？",
+            "formula": "3 × 2 = ?",
+            "answer": 6,
+            "choices": [
+                6,
+                3,
+                4,
+                9
+            ],
+            "visualType": "barModel",
+            "visualData": {
+                "type": "bar",
+                "total": 6,
+                "bars": [
+                    {
+                        "label": "十位选 1 时",
+                        "value": 2,
+                        "color": "#2570E8"
+                    },
+                    {
+                        "label": "十位选 2 时",
+                        "value": 2,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "十位选 3 时",
+                        "value": 2,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "hint": "十位先选（3 种），个位再从剩下的数里选（2 种），3×2=6",
+            "variants": [
+                {
+                    "question": "用 2、5、8 能摆出多少个不同的两位数？",
+                    "formula": "3 × 2 = ?",
+                    "answer": 6,
+                    "hint": "十位 3 种，个位 2 种"
+                },
+                {
+                    "question": "用 1、2 能摆出多少个不同的两位数？",
+                    "formula": "2 × 1 = ?",
+                    "answer": 2,
+                    "hint": "12 和 21"
+                }
+            ],
+            "discoverySteps": [
+                {
+                    "q": "🔢 十位上的数字有几种选法？",
+                    "choices": [
+                        "3 种",
+                        "2 种",
+                        "1 种",
+                        "不知道"
+                    ],
+                    "answer": "3 种",
+                    "explain": "1、2、3 都可以放在十位"
+                },
+                {
+                    "q": "🧮 十位定好后，个位还剩几种选法？",
+                    "choices": [
+                        "2 种",
+                        "3 种",
+                        "1 种",
+                        "不知道"
+                    ],
+                    "answer": "2 种",
+                    "explain": "个位不能和十位相同，只剩 2 个数"
+                },
+                {
+                    "q": "🧩 一共有多少种？",
+                    "choices": [
+                        "6 种",
+                        "3 种",
+                        "4 种",
+                        "不知道"
+                    ],
+                    "answer": "6 种",
+                    "explain": "3×2=6（12、13、21、23、31、32）"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "先定十位 3 种，再定个位 2 种",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 有序思考",
+                    "text": "按顺序一个一个摆，不重复不遗漏",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 排列与顺序有关",
+                    "text": "12 和 21 是两个不同的数，顺序变了结果就变",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
 
-    { "id": "2A-MATCH-02", "knowledge": "简单的组合", "difficulty": 2,
-      "scene": "小丽的衣柜里有 3 件不同的上衣和 2 条不同的裤子，她想配成一套穿。",
-      "question": "一共有多少种不同的搭配方法？",
-      "formula": "3 × 2 = ?", "answer": 6, "choices": [6, 5, 4, 8],
-      "visualType": "barModel",
-      "visualData": { "type": "bar", "total": 5, "bars": [ { "label": "上衣 3 件", "value": 3, "color": "#2570E8" }, { "label": "裤子 2 条", "value": 2, "color": "#F5B800" } ] },
-      "hint": "每件上衣都能配 2 条裤子：3×2=6",
-      "variants": [
-        { "question": "4 件上衣配 2 条裤子，有几种搭配？", "formula": "4 × 2 = ?", "answer": 8, "hint": "每件配 2 条" },
-        { "question": "3 件上衣配 3 条裤子，有几种搭配？", "formula": "3 × 3 = ?", "answer": 9, "hint": "每件配 3 条" } ],
-      "discoverySteps": [
-        { "q": "🔢 衣柜里有几件上衣？几条裤子？", "choices": ["3 件、2 条", "2 件、3 条", "3 件、3 条", "不知道"], "answer": "3 件、2 条", "explain": "3 件上衣、2 条裤子" },
-        { "q": "🧮 拿第 1 件上衣，能配出几种？", "choices": ["2 种", "3 种", "1 种", "不知道"], "answer": "2 种", "explain": "1 件上衣可以配 2 条裤子" },
-        { "q": "🧩 3 件上衣一共能配出多少种？", "choices": ["6 种", "5 种", "4 种", "不知道"], "answer": "6 种", "explain": "3 个 2 是 6：3×2=6" } ],
-      "explainLayers": [
-        { "icon": "👀", "title": "看图 — 图形结构", "text": "每一件上衣都「连」出 2 条裤子", "bg": "var(--teal-soft)", "color": "var(--teal)" },
-        { "icon": "🧠", "title": "理解 — 连线法", "text": "把上衣和裤子一一连线，线有多少条就有多少种搭配", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)" },
-        { "icon": "🚀", "title": "推广 — 分步乘法", "text": "第一步有几种，第二步有几种，乘起来就是总数", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
+                {
+            "id": "2A-MATCH-02",
+            "knowledge": "简单的组合",
+            "difficulty": 2,
+            "scene": "小丽的衣柜里有 3 件不同的上衣和 2 条不同的裤子，她想配成一套穿。",
+            "question": "一共有多少种不同的搭配方法？",
+            "formula": "3 × 2 = ?",
+            "answer": 6,
+            "choices": [
+                6,
+                5,
+                4,
+                8
+            ],
+            "visualType": "barModel",
+            "visualData": {
+                "type": "bar",
+                "total": 6,
+                "bars": [
+                    {
+                        "label": "第 1 件上衣",
+                        "value": 2,
+                        "color": "#2570E8"
+                    },
+                    {
+                        "label": "第 2 件上衣",
+                        "value": 2,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "第 3 件上衣",
+                        "value": 2,
+                        "color": "#00A896"
+                    }
+                ]
+            },
+            "hint": "每件上衣都能配 2 条裤子：3×2=6",
+            "variants": [
+                {
+                    "question": "4 件上衣配 2 条裤子，有几种搭配？",
+                    "formula": "4 × 2 = ?",
+                    "answer": 8,
+                    "hint": "每件配 2 条"
+                },
+                {
+                    "question": "3 件上衣配 3 条裤子，有几种搭配？",
+                    "formula": "3 × 3 = ?",
+                    "answer": 9,
+                    "hint": "每件配 3 条"
+                }
+            ],
+            "discoverySteps": [
+                {
+                    "q": "🔢 衣柜里有几件上衣？几条裤子？",
+                    "choices": [
+                        "3 件、2 条",
+                        "2 件、3 条",
+                        "3 件、3 条",
+                        "不知道"
+                    ],
+                    "answer": "3 件、2 条",
+                    "explain": "3 件上衣、2 条裤子"
+                },
+                {
+                    "q": "🧮 拿第 1 件上衣，能配出几种？",
+                    "choices": [
+                        "2 种",
+                        "3 种",
+                        "1 种",
+                        "不知道"
+                    ],
+                    "answer": "2 种",
+                    "explain": "1 件上衣可以配 2 条裤子"
+                },
+                {
+                    "q": "🧩 3 件上衣一共能配出多少种？",
+                    "choices": [
+                        "6 种",
+                        "5 种",
+                        "4 种",
+                        "不知道"
+                    ],
+                    "answer": "6 种",
+                    "explain": "3 个 2 是 6：3×2=6"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "每一件上衣都「连」出 2 条裤子",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 连线法",
+                    "text": "把上衣和裤子一一连线，线有多少条就有多少种搭配",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 分步乘法",
+                    "text": "第一步有几种，第二步有几种，乘起来就是总数",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
 
     { "id": "2A-MATCH-03", "knowledge": "简单的组合", "difficulty": 2,
       "scene": "水果店有苹果、香蕉、橘子、西瓜、葡萄 5 种水果，妈妈想挑 2 种带回家。",
@@ -891,24 +1162,121 @@ window.MATH_BY_GRADE["2a"] = {
         { "icon": "🧠", "title": "理解 — 递减相加", "text": "每固定一本，可选的本数少 1", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)" },
         { "icon": "🚀", "title": "推广 — 从简单情况找规律", "text": "先算 2 本、3 本，再推出一般规律", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
 
-    { "id": "2A-MATCH-06", "knowledge": "简单的排列", "difficulty": 3,
-      "scene": "小明有 2、5、8、9 四张数字卡片，他想用其中两张摆出两位数，十位和个位不能一样。",
-      "question": "一共能摆出多少个不同的两位数？",
-      "formula": "4 × 3 = ?", "answer": 12, "choices": [12, 8, 16, 6],
-      "visualType": "barModel",
-      "visualData": { "type": "bar", "total": 7, "bars": [ { "label": "十位有 4 种选法", "value": 4, "color": "#2570E8" }, { "label": "个位剩 3 种选法", "value": 3, "color": "#F5B800" } ] },
-      "hint": "十位 4 种，个位剩下 3 种，4×3=12",
-      "variants": [
-        { "question": "用 3 张数字卡片摆两位数，能摆多少个？", "formula": "3 × 2 = ?", "answer": 6, "hint": "3×2=6" },
-        { "question": "用 5 张数字卡片摆两位数，能摆多少个？", "formula": "5 × 4 = ?", "answer": 20, "hint": "5×4=20" } ],
-      "discoverySteps": [
-        { "q": "🔢 一共有几张数字卡片？", "choices": ["4 张", "2 张", "12 张", "不知道"], "answer": "4 张", "explain": "2、5、8、9 共 4 张" },
-        { "q": "🧮 十位有几种选法？", "choices": ["4 种", "3 种", "1 种", "不知道"], "answer": "4 种", "explain": "4 张卡片都能放十位" },
-        { "q": "🧩 个位还剩几种选法？总共多少种？", "choices": ["3 种、12 种", "4 种、16 种", "3 种、7 种", "不知道"], "answer": "3 种、12 种", "explain": "个位剩 3 种，4×3=12" } ],
-      "explainLayers": [
-        { "icon": "👀", "title": "看图 — 图形结构", "text": "分两步：先定十位，再定个位", "bg": "var(--teal-soft)", "color": "var(--teal)" },
-        { "icon": "🧠", "title": "理解 — 分步计数", "text": "第一步 4 种，第二步 3 种，4×3=12 种", "bg": "var(--yellow-soft)", "color": "var(--yellow-700)" },
-        { "icon": "🚀", "title": "推广 — 数字越多，摆法越多", "text": "n 张卡片能摆 n×(n-1) 个两位数", "bg": "var(--coral-soft)", "color": "var(--coral)" } ] },
+                {
+            "id": "2A-MATCH-06",
+            "knowledge": "简单的排列",
+            "difficulty": 3,
+            "scene": "小明有 2、5、8、9 四张数字卡片，他想用其中两张摆出两位数，十位和个位不能一样。",
+            "question": "一共能摆出多少个不同的两位数？",
+            "formula": "4 × 3 = ?",
+            "answer": 12,
+            "choices": [
+                12,
+                8,
+                16,
+                6
+            ],
+            "visualType": "barModel",
+            "visualData": {
+                "type": "bar",
+                "total": 12,
+                "bars": [
+                    {
+                        "label": "十位选 1 时",
+                        "value": 3,
+                        "color": "#2570E8"
+                    },
+                    {
+                        "label": "十位选 2 时",
+                        "value": 3,
+                        "color": "#F5B800"
+                    },
+                    {
+                        "label": "十位选 3 时",
+                        "value": 3,
+                        "color": "#00A896"
+                    },
+                    {
+                        "label": "十位选 4 时",
+                        "value": 3,
+                        "color": "#FB923C"
+                    }
+                ]
+            },
+            "hint": "十位 4 种，个位剩下 3 种，4×3=12",
+            "variants": [
+                {
+                    "question": "用 3 张数字卡片摆两位数，能摆多少个？",
+                    "formula": "3 × 2 = ?",
+                    "answer": 6,
+                    "hint": "3×2=6"
+                },
+                {
+                    "question": "用 5 张数字卡片摆两位数，能摆多少个？",
+                    "formula": "5 × 4 = ?",
+                    "answer": 20,
+                    "hint": "5×4=20"
+                }
+            ],
+            "discoverySteps": [
+                {
+                    "q": "🔢 一共有几张数字卡片？",
+                    "choices": [
+                        "4 张",
+                        "2 张",
+                        "12 张",
+                        "不知道"
+                    ],
+                    "answer": "4 张",
+                    "explain": "2、5、8、9 共 4 张"
+                },
+                {
+                    "q": "🧮 十位有几种选法？",
+                    "choices": [
+                        "4 种",
+                        "3 种",
+                        "1 种",
+                        "不知道"
+                    ],
+                    "answer": "4 种",
+                    "explain": "4 张卡片都能放十位"
+                },
+                {
+                    "q": "🧩 个位还剩几种选法？总共多少种？",
+                    "choices": [
+                        "3 种、12 种",
+                        "4 种、16 种",
+                        "3 种、7 种",
+                        "不知道"
+                    ],
+                    "answer": "3 种、12 种",
+                    "explain": "个位剩 3 种，4×3=12"
+                }
+            ],
+            "explainLayers": [
+                {
+                    "icon": "👀",
+                    "title": "看图 — 图形结构",
+                    "text": "分两步：先定十位，再定个位",
+                    "bg": "var(--teal-soft)",
+                    "color": "var(--teal)"
+                },
+                {
+                    "icon": "🧠",
+                    "title": "理解 — 分步计数",
+                    "text": "第一步 4 种，第二步 3 种，4×3=12 种",
+                    "bg": "var(--yellow-soft)",
+                    "color": "var(--yellow-700)"
+                },
+                {
+                    "icon": "🚀",
+                    "title": "推广 — 数字越多，摆法越多",
+                    "text": "n 张卡片能摆 n×(n-1) 个两位数",
+                    "bg": "var(--coral-soft)",
+                    "color": "var(--coral)"
+                }
+            ]
+        },
   ],
   "knowledgeMap": [
     { "id": "2A-01", "name": "认识厘米", "concept": "厘米是较小的长度单位；量长度时物体左端要对齐 0 刻度", "prerequisite": "一上·比长短", "extends": "2A-02 认识米", "visualStrategy": "尺子刻度", "visualType": "numberLine", "coreLiteracy": "量感", "difficulty": 1, "isKeyTopic": true },

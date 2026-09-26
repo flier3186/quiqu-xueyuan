@@ -1,27 +1,27 @@
 # MathDiagramMaster.audit() 全库实跑（M1）
-生成：2026-09-26T03:00:10.224Z
+生成：2026-09-26T09:59:03.574Z
 
 ## totals
 {
   "problems": 743,
-  "tested": 221,
-  "parametric": 183,
-  "valueBound": 208,
-  "legacyConflicts": 292
+  "tested": 209,
+  "parametric": 171,
+  "valueBound": 196,
+  "legacyConflicts": 290
 }
 
 ## byStage
 {
-  "static": 229,
-  "operable": 429,
-  "animated": 85
+  "static": 250,
+  "operable": 421,
+  "animated": 72
 }
 
 ## byMaster
 {
   "numberLine": 49,
-  "barModel": 233,
-  "numberBond": 62,
+  "barModel": 246,
+  "numberBond": 49,
   "baseTen": 12,
   "geometry": 180,
   "areaModel": 88,
@@ -34,7 +34,7 @@
 ## conflicts（0）
 []
 
-## legacyConflicts（292）
+## legacyConflicts（290）
 [
   {
     "sem": "2a",
@@ -423,13 +423,6 @@
   },
   {
     "sem": "3a",
-    "kp": "笔算乘法连续进位",
-    "master": "baseTen",
-    "v5": "baseTenBlocks",
-    "manip": "share"
-  },
-  {
-    "sem": "3a",
     "kp": "因数末尾有0的乘法",
     "master": "areaModel",
     "v5": "areaModelAnim",
@@ -476,13 +469,6 @@
     "master": "numberBond",
     "v5": "numberBond",
     "manip": "barDrop"
-  },
-  {
-    "sem": "3a",
-    "kp": "锐角直角钝角",
-    "master": "numberBond",
-    "v5": "numberBond",
-    "manip": "share"
   },
   {
     "sem": "3a",

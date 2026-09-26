@@ -1197,8 +1197,8 @@ window.MATH_BY_GRADE["4a"] = {
             ],
             "id": "4A-PROB-010"
         },
-        {
-            "scene": "小红用量角器量一个角，读数是90度。她想知道直角是多少度。",
+                {
+            "scene": "小红用量角器量黑板上的一个角，发现它正好是一个直角。她想知道直角是多少度。",
             "question": "直角等于多少度？",
             "formula": "直角 = ?°",
             "answer": 90,
@@ -1218,7 +1218,7 @@ window.MATH_BY_GRADE["4a"] = {
             },
             "knowledge": "角的度量",
             "difficulty": 1,
-            "hint": "直角90度",
+            "hint": "直角的两条边互相垂直",
             "variants": [
                 {
                     "question": "平角多少度？",

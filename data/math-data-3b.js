@@ -134,498 +134,438 @@ window.MATH_BY_GRADE["3b"] = {
         }
     ],
     "problems": [
-        {
-            "id": "3B-MOVE-01",
-            "scene": "教室的窗户装着滑轨，推开时是贴着轨道直直地滑动。",
-            "question": "推拉教室的窗户是( )现象。",
-            "formula": "",
-            "answer": "平移",
-            "choices": [
-                "平移",
-                "旋转"
-            ],
-            "knowledge": "平移",
-            "difficulty": 2,
-            "hint": "沿直线移动位置不变的是平移",
-            "variants": [
-                {
-                    "question": "拉开抽屉是( )现象。",
-                    "formula": "",
-                    "answer": "平移",
-                    "choices": [
-                        "平移",
-                        "旋转"
-                    ],
-                    "hint": "抽屉沿直线移动"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "平移",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "推拉教室的窗户是( )现象。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "沿直线移动位置不变的是平移"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "认识平移旋转",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "认识平移旋转",
-                    "explain": "沿直线移动位置不变的是平移"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "沿直线移动位置不变的是平移",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "3B-MOVE-02",
-            "scene": "广场上的大风车，叶片绕着中心不停地转。",
-            "question": "风车的叶片转动是( )现象。",
-            "formula": "",
-            "answer": "旋转",
-            "choices": [
-                "旋转",
-                "平移"
-            ],
-            "knowledge": "旋转",
-            "difficulty": 2,
-            "hint": "绕一个点转动是旋转",
-            "variants": [
-                {
-                    "question": "钟面上分针的走动是( )现象。",
-                    "formula": "",
-                    "answer": "旋转",
-                    "choices": [
-                        "旋转",
-                        "平移"
-                    ],
-                    "hint": "分针绕中心转"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "旋转",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "风车的叶片转动是( )现象。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "绕一个点转动是旋转"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "认识平移旋转",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "认识平移旋转",
-                    "explain": "绕一个点转动是旋转"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "绕一个点转动是旋转",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "3B-MOVE-03",
-            "scene": "下面哪些是平移？小明在判断。",
-            "question": "下面属于平移的是( )。",
-            "formula": "",
-            "answer": "电梯上下运动",
-            "choices": [
-                "电梯上下运动",
-                "方向盘转动",
-                "车轮滚动"
-            ],
-            "knowledge": "平移",
-            "difficulty": 2,
-            "hint": "沿直线移动的是平移",
-            "variants": [
-                {
-                    "question": "下面属于旋转的是( )。",
-                    "formula": "",
-                    "answer": "拧开水龙头",
-                    "choices": [
-                        "拧开水龙头",
-                        "推拉门",
-                        "滑滑梯"
-                    ],
-                    "hint": "绕轴转动的是旋转"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "电梯上下运动",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "下面属于平移的是( )。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "沿直线移动的是平移"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "判断平移旋转",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "判断平移旋转",
-                    "explain": "沿直线移动的是平移"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "沿直线移动的是平移",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "3B-MOVE-04",
-            "scene": "公园里的秋千，坐上去后绕横杆摆来摆去。",
-            "question": "荡秋千是( )现象。",
-            "formula": "",
-            "answer": "旋转",
-            "choices": [
-                "旋转",
-                "平移"
-            ],
-            "knowledge": "旋转",
-            "difficulty": 2,
-            "hint": "绕固定点摆动属于旋转",
-            "variants": [
-                {
-                    "question": "坐缆车上下山是( )现象。",
-                    "formula": "",
-                    "answer": "平移",
-                    "choices": [
-                        "平移",
-                        "旋转"
-                    ],
-                    "hint": "缆车沿轨道直线移动"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "旋转",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "荡秋千是( )现象。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "绕固定点摆动属于旋转"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "认识平移旋转",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "认识平移旋转",
-                    "explain": "绕固定点摆动属于旋转"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "绕固定点摆动属于旋转",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "3B-MOVE-05",
-            "scene": "周一升旗仪式，国旗顺着旗杆缓缓上升。",
-            "question": "升旗时国旗上升是( )现象。",
-            "formula": "",
-            "answer": "平移",
-            "choices": [
-                "平移",
-                "旋转"
-            ],
-            "knowledge": "平移",
-            "difficulty": 2,
-            "hint": "国旗沿直线向上移动",
-            "variants": [
-                {
-                    "question": "工厂里的转轮工作是( )现象。",
-                    "formula": "",
-                    "answer": "旋转",
-                    "choices": [
-                        "旋转",
-                        "平移"
-                    ],
-                    "hint": "转轮绕中心转动"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "平移",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "升旗时国旗上升是( )现象。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "国旗沿直线向上移动"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "判断平移旋转",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "判断平移旋转",
-                    "explain": "国旗沿直线向上移动"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "国旗沿直线向上移动",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
+                                                                {
+                                    "id": "3B-MOVE-01",
+                                    "scene": "教室的窗户装着滑轨，推开时是贴着轨道直直地滑动。",
+                                    "question": "推拉教室的窗户是( )现象。",
+                                    "formula": "",
+                                    "answer": "平移",
+                                    "choices": [
+                                        "平移",
+                                        "旋转"
+                                    ],
+                                    "knowledge": "平移",
+                                    "difficulty": 2,
+                                    "hint": "沿直线移动位置不变的是平移",
+                                    "variants": [
+                                        {
+                                            "question": "拉开抽屉是( )现象。",
+                                            "formula": "",
+                                            "answer": "平移",
+                                            "choices": [
+                                                "平移",
+                                                "旋转"
+                                            ],
+                                            "hint": "抽屉沿直线移动"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "motion"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们解决什么？",
+                                            "choices": [
+                                                "推拉窗户属于平移还是旋转",
+                                                "窗户一共有几个角",
+                                                "窗户是什么形状"
+                                            ],
+                                            "answer": "推拉窗户属于平移还是旋转",
+                                            "explain": "题目要判断推拉窗户是哪种运动现象。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "窗户装着滑轨，推开时贴着轨道直直地滑动",
+                                                "窗户绕着合页转圈",
+                                                "窗户被高高举起再放下"
+                                            ],
+                                            "answer": "窗户装着滑轨，推开时贴着轨道直直地滑动",
+                                            "explain": "直直地贴着轨道滑动，说明它没有转圈。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法判断？",
+                                            "choices": [
+                                                "看它是不是沿直线移动、方向不变",
+                                                "看它有没有绕一个点转圈",
+                                                "看它能不能对折后重合"
+                                            ],
+                                            "answer": "看它是不是沿直线移动、方向不变",
+                                            "explain": "沿直线移动、方向不变的才是平移，所以推拉窗户是平移。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 窗户沿轨道滑动",
+                                            "text": "图上窗户下面有一条直直的滑轨，窗户顺着轨道平平地滑过去。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 平移只改位置",
+                                            "text": "窗户滑动时，每个点都朝同一个方向移动相同的距离，窗户的形状和大小都没变。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 认准平移",
+                                            "text": "像推拉窗户、电梯上下、国旗上升，都是沿直线移动，属于平移。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
+                                                                {
+                                    "id": "3B-MOVE-02",
+                                    "scene": "广场上的大风车，叶片绕着中心不停地转。",
+                                    "question": "风车的叶片转动是( )现象。",
+                                    "formula": "",
+                                    "answer": "旋转",
+                                    "choices": [
+                                        "旋转",
+                                        "平移"
+                                    ],
+                                    "knowledge": "旋转",
+                                    "difficulty": 2,
+                                    "hint": "绕一个点转动是旋转",
+                                    "variants": [
+                                        {
+                                            "question": "钟面上分针的走动是( )现象。",
+                                            "formula": "",
+                                            "answer": "旋转",
+                                            "choices": [
+                                                "旋转",
+                                                "平移"
+                                            ],
+                                            "hint": "分针绕中心转"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "motion"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们解决什么？",
+                                            "choices": [
+                                                "风车叶片的转动属于平移还是旋转",
+                                                "风车一共有几个叶片",
+                                                "风车是什么颜色的"
+                                            ],
+                                            "answer": "风车叶片的转动属于平移还是旋转",
+                                            "explain": "题目要判断风车叶片的转动是哪一种运动现象。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "叶片绕着中心不停地转",
+                                                "叶片沿着直线飘走了",
+                                                "叶片被对折成两半"
+                                            ],
+                                            "answer": "叶片绕着中心不停地转",
+                                            "explain": "绕着中间的中心点转，是关键线索。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法判断？",
+                                            "choices": [
+                                                "看它有没有绕一个固定点转圈",
+                                                "看它有没有整体平移一段距离",
+                                                "看它两条边是不是相等"
+                                            ],
+                                            "answer": "看它有没有绕一个固定点转圈",
+                                            "explain": "绕固定点转圈的是旋转，所以风车叶片转动是旋转。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 叶片绕着中心",
+                                            "text": "图上的风车，几个叶片都围着中间的一个中心点转。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 旋转绕点转",
+                                            "text": "叶片转动时，每个点都绕着中心点转圈，位置在变，但叶片的形状和大小不变。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 认准旋转",
+                                            "text": "像风车叶片、钟表指针、旋转木马，都是绕一个固定点转动，属于旋转。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
+                                                                {
+                                    "id": "3B-MOVE-03",
+                                    "scene": "下面哪些是平移？小明在判断。",
+                                    "question": "下面属于平移的是( )。",
+                                    "formula": "",
+                                    "answer": "电梯上下运动",
+                                    "choices": [
+                                        "电梯上下运动",
+                                        "方向盘转动",
+                                        "车轮滚动"
+                                    ],
+                                    "knowledge": "平移",
+                                    "difficulty": 2,
+                                    "hint": "沿直线移动的是平移",
+                                    "variants": [
+                                        {
+                                            "question": "下面属于旋转的是( )。",
+                                            "formula": "",
+                                            "answer": "拧开水龙头",
+                                            "choices": [
+                                                "拧开水龙头",
+                                                "推拉门",
+                                                "滑滑梯"
+                                            ],
+                                            "hint": "绕轴转动的是旋转"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "motion"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们解决什么？",
+                                            "choices": [
+                                                "从几种运动里找出属于平移的",
+                                                "算一算电梯走了多少米",
+                                                "数一数一共有几个图形"
+                                            ],
+                                            "answer": "从几种运动里找出属于平移的",
+                                            "explain": "题目要求从选项里挑出平移现象。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "每个选项都是一种运动方式",
+                                                "题目只给出了一个数字",
+                                                "题目给的是一张方格纸"
+                                            ],
+                                            "answer": "每个选项都是一种运动方式",
+                                            "explain": "要一个一个判断每种运动是平移还是旋转。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法判断？",
+                                            "choices": [
+                                                "看哪种运动是沿直线整体移动的",
+                                                "看哪种运动转得最快",
+                                                "看哪种运动最费力气"
+                                            ],
+                                            "answer": "看哪种运动是沿直线整体移动的",
+                                            "explain": "电梯上下是直上直下、方向不变，所以电梯上下运动是平移。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 几种运动",
+                                            "text": "图上画了几种运动：电梯上下、风车转动、旋转门转动。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 平移沿直线走",
+                                            "text": "电梯升降时整个轿厢沿竖直的直线移动、方向不变；风车和旋转门都是绕着点转圈。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 逐项判断",
+                                            "text": "遇到这类题，先看每种运动是沿直线走还是绕点转，沿直线走的才是平移。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
+                                                                {
+                                    "id": "3B-MOVE-04",
+                                    "scene": "公园里的秋千，坐上去后绕横杆摆来摆去。",
+                                    "question": "荡秋千是( )现象。",
+                                    "formula": "",
+                                    "answer": "旋转",
+                                    "choices": [
+                                        "旋转",
+                                        "平移"
+                                    ],
+                                    "knowledge": "旋转",
+                                    "difficulty": 2,
+                                    "hint": "绕固定点摆动属于旋转",
+                                    "variants": [
+                                        {
+                                            "question": "坐缆车上下山是( )现象。",
+                                            "formula": "",
+                                            "answer": "平移",
+                                            "choices": [
+                                                "平移",
+                                                "旋转"
+                                            ],
+                                            "hint": "缆车沿轨道直线移动"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "motion"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们解决什么？",
+                                            "choices": [
+                                                "荡秋千属于平移还是旋转",
+                                                "秋千的绳子有多长",
+                                                "秋千上坐了几个人"
+                                            ],
+                                            "answer": "荡秋千属于平移还是旋转",
+                                            "explain": "题目要判断荡秋千是哪种运动现象。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "秋千绕着上面的横杆摆来摆去",
+                                                "秋千整体向前平移了一段",
+                                                "秋千被举到了最高处"
+                                            ],
+                                            "answer": "秋千绕着上面的横杆摆来摆去",
+                                            "explain": "绕着横杆摆动，是关键线索。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法判断？",
+                                            "choices": [
+                                                "看它是不是绕一个固定点摆动",
+                                                "看它是不是沿直线跑出去",
+                                                "看它两条绳子一样不一样长"
+                                            ],
+                                            "answer": "看它是不是绕一个固定点摆动",
+                                            "explain": "绕着固定的横杆来回摆动，也属于旋转。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 秋千绕横杆",
+                                            "text": "图上的秋千挂着两条绳子，绳子的上端都固定在同一个横杆上。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 摆动也是旋转",
+                                            "text": "秋千来回摆的时候，座椅绕着横杆那个固定点转来转去，所以是旋转。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 会摆会转的例子",
+                                            "text": "像荡秋千、钟摆、转动的门，都是绕固定点摆动或转动。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
+                                                                {
+                                    "id": "3B-MOVE-05",
+                                    "scene": "周一升旗仪式，国旗顺着旗杆缓缓上升。",
+                                    "question": "升旗时国旗上升是( )现象。",
+                                    "formula": "",
+                                    "answer": "平移",
+                                    "choices": [
+                                        "平移",
+                                        "旋转"
+                                    ],
+                                    "knowledge": "平移",
+                                    "difficulty": 2,
+                                    "hint": "国旗沿直线向上移动",
+                                    "variants": [
+                                        {
+                                            "question": "工厂里的转轮工作是( )现象。",
+                                            "formula": "",
+                                            "answer": "旋转",
+                                            "choices": [
+                                                "旋转",
+                                                "平移"
+                                            ],
+                                            "hint": "转轮绕中心转动"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "motion"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们解决什么？",
+                                            "choices": [
+                                                "国旗上升属于平移还是旋转",
+                                                "国旗一共有几个角",
+                                                "升旗用了多长时间"
+                                            ],
+                                            "answer": "国旗上升属于平移还是旋转",
+                                            "explain": "题目要判断国旗上升是哪种运动现象。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "国旗顺着旗杆直直地往上升",
+                                                "国旗绕着旗杆转圈",
+                                                "国旗左右来回晃"
+                                            ],
+                                            "answer": "国旗顺着旗杆直直地往上升",
+                                            "explain": "顺着旗杆直直上升，方向一直没变。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法判断？",
+                                            "choices": [
+                                                "看它是不是沿直线向上、方向不变",
+                                                "看它是不是绕一个点转圈",
+                                                "看国旗是不是正方形的"
+                                            ],
+                                            "answer": "看它是不是沿直线向上、方向不变",
+                                            "explain": "沿直线向上移动、方向不变，所以国旗上升是平移。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 国旗顺着旗杆上升",
+                                            "text": "图上国旗挂在旗杆上，顺着笔直的旗杆一点点往上移。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 平移方向不变",
+                                            "text": "国旗上升时每个点都向上移动相同的距离，方向始终朝上，形状和大小不变。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 认准平移",
+                                            "text": "像升旗、电梯上下、推拉门，都是沿直线移动，属于平移。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
         {
             "scene": "妈妈买了60颗草莓，平均装进3个盒子里。小红帮忙分装，她想知道每盒装几颗。",
             "question": "每盒装几颗草莓？",
@@ -6024,7 +5964,7 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-117"
         },
-        {
+                {
             "scene": "数学课上老师让同学们数一数四边形有几条边。小明仔细观察后举手回答。",
             "question": "四边形有几条边？",
             "formula": "四边形边数 = ?",
@@ -6061,72 +6001,69 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "四边形一共有几条边",
+                        "四边形一共有几个角",
+                        "四边形是不是封闭的"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「四边形有几条边？」"
+                    "answer": "四边形一共有几条边",
+                    "explain": "题目问的是四边形边的条数。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "“四边形”这个名字就告诉我们边的条数",
+                        "题目给了一条边的长度",
+                        "题目给了四个角的度数"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "“四边形”这个名字就告诉我们边的条数",
+                    "explain": "看名字就知道：四边形就是有四条边的图形。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法得出答案？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "照“四边形”的含义，数出它有 4 条边",
+                        "用尺子量每一条边的长度",
+                        "把四个角的度数加起来"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "照“四边形”的含义，数出它有 4 条边",
+                    "explain": "四边形就是由 4 条边围成的封闭图形，所以答案是 4。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 数一数边",
+                    "text": "图上画了一个四边形，围着它数一圈，正好有 4 条边。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 四边形的含义",
+                    "text": "四条边首尾相接、围成一圈，这样的封闭图形才叫四边形。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 认四边形",
+                    "text": "记住：四边形都有 4 条边、4 个角，而且边要围成封闭的一圈。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-55"
         },
-        {
+                {
             "scene": "小红在纸上画了一些图形：正方形、三角形、圆形、长方形。她想知道其中四边形有几个。",
             "question": "这些图形中四边形有几个？",
             "formula": "四边形数量 = ?",
-            "answer": 3,
+            "answer": 2,
             "choices": [
-                3,
                 2,
+                3,
                 4,
                 1
             ],
@@ -6134,7 +6071,7 @@ window.MATH_BY_GRADE["3b"] = {
             "visualData": {
                 "shape": "quadrilateral",
                 "params": {
-                    "count": 3
+                    "count": 2
                 }
             },
             "knowledge": "四边形的认识",
@@ -6156,65 +6093,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "图中四边形一共有几个",
+                        "图中一共有几个图形",
+                        "图中哪个图形最大"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「这些图形中四边形有几个？」"
+                    "answer": "图中四边形一共有几个",
+                    "explain": "题目要我们数出其中四边形的个数。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "每个图形各有几条边",
+                        "每个图形的面积大小",
+                        "每个图形是什么颜色"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "每个图形各有几条边",
+                    "explain": "判断是不是四边形，只要看它有没有 4 条边。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法数？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "一个一个看：四条边的才算四边形",
+                        "把图形个数直接减 1",
+                        "只看名字里带“方”的图形"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "一个一个看：四条边的才算四边形",
+                    "explain": "按四条边这个标准逐个判断，数出四边形的个数。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 逐个看图形",
+                    "text": "图上画了几个图形，有正方形、长方形、三角形和圆形，它们的边数各不相同。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 四条边才算",
+                    "text": "只有围成 4 条边的封闭图形才是四边形；三角形只有 3 条边，圆形没有直边，都不算。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 逐个数出来",
+                    "text": "数四边形时，先把不是 4 条边的图形去掉，再数剩下的，结果就是 2 个。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-56"
         },
-        {
+                {
             "scene": "老师拿出一个图形让同学们判断是不是四边形。这个图形有四条边、四个角，且是封闭的。",
             "question": "这个图形是不是四边形？（是填1否填0）",
             "formula": "是四边形 = ?",
@@ -6251,65 +6185,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "判断这个图形是不是四边形",
+                        "数这个图形有几条边",
+                        "算这个图形的周长"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「这个图形是不是四边形？（是填1否填0）」"
+                    "answer": "判断这个图形是不是四边形",
+                    "explain": "题目要判断它是不是四边形，是就填 1。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "这个图形有四条边、四个角，并且是封闭的",
+                        "这个图形只有三条边",
+                        "这个图形的边是弯的"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "这个图形有四条边、四个角，并且是封闭的",
+                    "explain": "四条边、四个角、封闭，这三个条件它都符合。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法判断？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "按四边形的三个条件一条条对照",
+                        "用尺子量每条边的长度",
+                        "把四个角的度数加起来"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "按四边形的三个条件一条条对照",
+                    "explain": "四条边、四个角且封闭，全部符合，所以是四边形，填 1。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 认清这个图形",
+                    "text": "图上这个图形被四条边围了一圈，中间是封闭的，没有缺口。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 三条都符合",
+                    "text": "四条边、四个角、封闭——四边形要求的它都有，所以它能叫四边形。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 判断三条件",
+                    "text": "判断四边形就看三条：四条边、四个角、封闭，缺一条就不是四边形。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-57"
         },
-        {
+                {
             "scene": "小红用尺子量了一个长方形，发现相对的两条边长度一样。她好奇长方形对边有什么特征。",
             "question": "长方形对边有什么特征？",
             "formula": "长方形对边 = ?",
@@ -6347,65 +6278,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "长方形相对的两条边有什么关系",
+                        "长方形的周长是多少",
+                        "长方形四个角各是多少度"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「长方形对边有什么特征？」"
+                    "answer": "长方形相对的两条边有什么关系",
+                    "explain": "题目问的是长方形对边之间的关系。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "相对的两条边长度一样长",
+                        "相邻的两条边一样长",
+                        "四条边的长度都不同"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "相对的两条边长度一样长",
+                    "explain": "小红量出相对的两条边一样长，这就是找特征的关键。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法得出特征？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "把上下两条、左右两条分别比一比",
+                        "把四条边加起来算周长",
+                        "把四个角的度数相加"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "把上下两条、左右两条分别比一比",
+                    "explain": "上下两条相等、左右两条相等，所以长方形的对边相等。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 长方形的对边",
+                    "text": "图上这个长方形长 8 厘米、宽 5 厘米，上面和下面两条边一样长，左面和右面两条边也一样长。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 对边相等",
+                    "text": "长方形相对的两条边长度相等：两条长都是 8 厘米，两条宽都是 5 厘米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 长方形的特征",
+                    "text": "记住长方形的特征：对边相等，四个角都是直角。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-58"
         },
-        {
+                {
             "scene": "小亮用尺子量正方形，发现四条边都一样长。他想知道正方形的边长是几厘米。",
             "question": "正方形边长5厘米，四条边一共多少厘米？",
             "formula": "5 + 5 + 5 + 5 = ?",
@@ -6461,65 +6389,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "正方形四条边的总长度",
+                        "正方形一条边的长度",
+                        "正方形的面积"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「正方形边长5厘米，四条边一共多少厘米？」"
+                    "answer": "正方形四条边的总长度",
+                    "explain": "题目要求四条边合起来的总长度。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "正方形的边长是 5 厘米，四条边都一样长",
+                        "正方形的长是 5 厘米、宽是 3 厘米",
+                        "正方形只有两条边"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "正方形的边长是 5 厘米，四条边都一样长",
+                    "explain": "正方形四条边相等，每条都是 5 厘米。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "把四条边相加：5 + 5 + 5 + 5",
+                        "只用两条边相加：5 + 5",
+                        "用边长乘边长：5 × 5"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "把四条边相加：5 + 5 + 5 + 5",
+                    "explain": "四条边分别是 5 厘米，加起来 5+5+5+5=20 厘米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 正方形的四条边",
+                    "text": "图上这个正方形的四条边一样长，每条都是 5 厘米。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 四条边相加",
+                    "text": "要求四条边一共多长，就是把四个 5 厘米加起来：5+5+5+5=20 厘米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 用乘法更快",
+                    "text": "四条边相等时可以用乘法：5×4=20 厘米，比一个一个加快。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-59"
         },
-        {
+                {
             "scene": "老师让同学们画一个长方形，长8厘米宽5厘米。小红画好后用三角尺量了四个角。",
             "question": "长方形四个角一共多少度？",
             "formula": "90 × 4 = ?",
@@ -6557,161 +6482,155 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "长方形四个角合起来一共多少度",
+                        "长方形一个角是多少度",
+                        "长方形一共有几条边"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「长方形四个角一共多少度？」"
+                    "answer": "长方形四个角合起来一共多少度",
+                    "explain": "题目问的是四个角的总度数。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "长方形的每个角都是 90 度",
+                        "长方形的一条边长 8 厘米",
+                        "长方形只有两条边"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "长方形的每个角都是 90 度",
+                    "explain": "用三角尺量过，长方形的四个角都是直角，每个 90 度。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "把四个角相加：90 × 4",
+                        "四个角相加后再除以 2",
+                        "用边长乘 4：8 × 4"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "把四个角相加：90 × 4",
+                    "explain": "四个角各 90 度，90×4=360 度。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 四个直角",
+                    "text": "图上这个长方形的四个角都被标成了直角，每个角都是 90 度。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 四个角相加",
+                    "text": "90 度 + 90 度 + 90 度 + 90 度，四个角合起来是 360 度。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 都是 360 度",
+                    "text": "不管长方形是大是小，四个角都是直角，合起来都是 360 度。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-60"
         },
-        {
-            "scene": "小红沿花坛走了一圈，走了12米。老师告诉她这就是花坛的周长。小红好奇周长是什么意思。",
-            "question": "花坛的周长是多少米？",
-            "formula": "周长 = ?",
-            "answer": 12,
-            "choices": [
-                12,
-                6,
-                24,
-                3
-            ],
-            "visualType": "geometry",
-            "visualData": {
-                "shape": "rectangle",
-                "params": {
-                    "length": 4,
-                    "width": 2
-                }
-            },
-            "knowledge": "周长",
-            "difficulty": 1,
-            "hint": "封闭图形一周的长度",
-            "variants": [
-                {
-                    "question": "沿操场走一圈200米周长多少？",
-                    "formula": "周长=?",
-                    "answer": 200,
-                    "hint": "一圈的长度"
-                },
-                {
-                    "question": "沿池塘走一圈80米周长多少？",
-                    "formula": "周长=?",
-                    "answer": 80,
-                    "hint": "一周的长度"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                                {
+                    "scene": "小红沿长方形花坛走了一圈。花坛的长和宽标在图上，老师告诉她走一圈的长度就是花坛的周长。小红好奇周长是多少米。",
+                    "question": "花坛的周长是多少米？",
+                    "formula": "周长 = ?",
+                    "answer": 12,
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        12,
+                        6,
+                        24,
+                        3
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「花坛的周长是多少米？」"
-                },
-                {
-                    "q": "🔢 题目给了哪些关键信息？",
-                    "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                    "visualType": "geometry",
+                    "visualData": {
+                        "shape": "rectangle",
+                        "params": {
+                            "length": 4,
+                            "width": 2
+                        }
+                    },
+                    "knowledge": "周长",
+                    "difficulty": 1,
+                    "hint": "长方形周长 =（长 + 宽）× 2",
+                    "variants": [
+                        {
+                            "question": "沿操场走一圈200米周长多少？",
+                            "formula": "周长=?",
+                            "answer": 200,
+                            "hint": "一圈的长度"
+                        },
+                        {
+                            "question": "沿池塘走一圈80米周长多少？",
+                            "formula": "周长=?",
+                            "answer": 80,
+                            "hint": "一周的长度"
+                        }
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
-                },
-                {
-                    "q": "🧩 用什么方法解决？",
-                    "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                    "discoverySteps": [
+                        {
+                            "q": "📖 这道题要我们求什么？",
+                            "choices": [
+                                "花坛走一圈的长度",
+                                "花坛有多少平方米",
+                                "花坛有几条边"
+                            ],
+                            "answer": "花坛走一圈的长度",
+                            "explain": "周长就是沿花坛走一圈的长度。"
+                        },
+                        {
+                            "q": "🔢 题目给了哪些关键信息？",
+                            "choices": [
+                                "花坛是长方形，长 4 米、宽 2 米",
+                                "花坛是正方形，边长 4 米",
+                                "花坛的长和宽都是 2 米"
+                            ],
+                            "answer": "花坛是长方形，长 4 米、宽 2 米",
+                            "explain": "图上标着长 4 米、宽 2 米，这是算周长要用的条件。"
+                        },
+                        {
+                            "q": "🧩 用什么方法算？",
+                            "choices": [
+                                "用（长 + 宽）× 2：（4 + 2）× 2",
+                                "用长 × 宽：4 × 2",
+                                "用长 + 宽：4 + 2"
+                            ],
+                            "answer": "用（长 + 宽）× 2：（4 + 2）× 2",
+                            "explain": "长方形周长 =（长+宽）×2，4+2=6，6×2=12 米。"
+                        }
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 花坛的长和宽",
+                            "text": "图上长方形花坛长 4 米、宽 2 米，沿它走一圈就是周长。",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 一长一宽再乘 2",
+                            "text": "一圈要经过两条长和两条宽，先算 4+2=6 米，再乘 2 得 12 米。",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 周长公式",
+                            "text": "长方形周长 =（长+宽）×2，以后看清长和宽就能算。",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
+                    ],
+                    "id": "3A-TIME-61"
                 },
                 {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "3A-TIME-61"
-        },
-        {
             "scene": "一个三角形三边分别是3厘米、4厘米、5厘米。小亮要算它的周长。",
             "question": "三角形的周长是多少厘米？",
             "formula": "3 + 4 + 5 = ?",
@@ -6762,65 +6681,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "三角形三条边一共多长",
+                        "三角形一个角是多少度",
+                        "三角形一共有几条边"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「三角形的周长是多少厘米？」"
+                    "answer": "三角形三条边一共多长",
+                    "explain": "题目要算三角形的周长，也就是三条边的总长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "三条边分别是 3 厘米、4 厘米、5 厘米",
+                        "三角形的底是 3 厘米、高是 4 厘米",
+                        "三角形只有两条边"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "三条边分别是 3 厘米、4 厘米、5 厘米",
+                    "explain": "三条边的长度都给了，加起来就是周长。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "三条边依次相加：3 + 4 + 5",
+                        "只加两条边：3 + 4",
+                        "三条边相乘：3 × 4 × 5"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "三条边依次相加：3 + 4 + 5",
+                    "explain": "周长是围一圈的长度，3+4+5=12 厘米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 三角形的三条边",
+                    "text": "图上把三角形的三条边分开画，分别标着 3 厘米、4 厘米、5 厘米。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 三段拼成一圈",
+                    "text": "围着三角形走一圈，刚好走过 3 厘米、4 厘米、5 厘米三段，合起来就是周长。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 三角形周长",
+                    "text": "三角形的周长就是把三条边相加，不同三角形三条边长度不一样。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-62"
         },
-        {
+                {
             "scene": "正方形边长6厘米，小红要算它的周长。她记得正方形四边相等。",
             "question": "正方形的周长是多少厘米？",
             "formula": "6 × 4 = ?",
@@ -6876,65 +6792,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "正方形围一圈的长度",
+                        "正方形的面积",
+                        "正方形一个角是多少度"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「正方形的周长是多少厘米？」"
+                    "answer": "正方形围一圈的长度",
+                    "explain": "题目要算正方形的周长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "正方形的边长是 6 厘米，四条边都一样长",
+                        "正方形的长 6 厘米、宽 4 厘米",
+                        "正方形两条边一共 6 厘米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "正方形的边长是 6 厘米，四条边都一样长",
+                    "explain": "正方形四条边相等，每条边都是 6 厘米。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用边长 × 4：6 × 4",
+                        "用边长 × 边长：6 × 6",
+                        "只用两条边相加：6 + 6"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用边长 × 4：6 × 4",
+                    "explain": "四条边都是 6 厘米，6×4=24 厘米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 四段一样长",
+                    "text": "图上把正方形的四条边排成一排，每段都是 6 厘米。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 4 个 6 相加",
+                    "text": "四条边合起来就是 4 个 6 厘米，6+6+6+6=24 厘米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 正方形周长",
+                    "text": "正方形周长 = 边长 × 4，记住这个公式算起来很快。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-63"
         },
-        {
+                {
             "scene": "社区要在花园里修一个长方形花坛，长8米、宽5米。工人师傅要在花坛四周围上一圈栅栏。",
             "question": "花坛的周长是多少米？",
             "formula": "(8 + 5) × 2 = ?",
@@ -6972,65 +6885,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "花坛围一圈栅栏要多长",
+                        "花坛有多少平方米",
+                        "花坛一共有几条边"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「花坛的周长是多少米？」"
+                    "answer": "花坛围一圈栅栏要多长",
+                    "explain": "题目要求花坛的周长，也就是围一圈的长度。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "花坛是长方形，长 8 米、宽 5 米",
+                        "花坛是正方形，边长 8 米",
+                        "花坛的长和宽都是 5 米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "花坛是长方形，长 8 米、宽 5 米",
+                    "explain": "长 8 米、宽 5 米，是算周长要用的条件。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用（长 + 宽）× 2：（8 + 5）× 2",
+                        "用长 + 宽：8 + 5",
+                        "用长 × 宽：8 × 5"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用（长 + 宽）× 2：（8 + 5）× 2",
+                    "explain": "8+5=13，13×2=26 米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 花坛的长和宽",
+                    "text": "图上长方形花坛长 8 米、宽 5 米，沿四周围一圈栅栏就是周长。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 两长两宽",
+                    "text": "一圈要经过两条长和两条宽，先算 8+5=13 米，再乘 2 得 26 米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 周长公式",
+                    "text": "长方形周长 =（长+宽）×2，长和宽换成别的数也能这样算。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-64"
         },
-        {
+                {
             "scene": "小明的书桌是个长方形，长12分米、宽8分米。妈妈想给书桌贴一圈防撞条。",
             "question": "需要多长的防撞条？",
             "formula": "(12 + 8) × 2 = ?",
@@ -7068,65 +6978,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "书桌四周围一圈防撞条要多长",
+                        "书桌的面积是多少",
+                        "书桌有多高"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「需要多长的防撞条？」"
+                    "answer": "书桌四周围一圈防撞条要多长",
+                    "explain": "防撞条围书桌一圈，长度就是书桌的周长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "书桌是长方形，长 12 分米、宽 8 分米",
+                        "书桌是正方形，边长 12 分米",
+                        "书桌长 12 分米、高 8 分米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "书桌是长方形，长 12 分米、宽 8 分米",
+                    "explain": "长 12 分米、宽 8 分米，是算周长要用的条件。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用（长 + 宽）× 2：（12 + 8）× 2",
+                        "用长 + 宽：12 + 8",
+                        "用长 × 宽：12 × 8"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用（长 + 宽）× 2：（12 + 8）× 2",
+                    "explain": "12+8=20，20×2=40 分米，就是防撞条的长度。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 书桌的长和宽",
+                    "text": "图上长方形书桌长 12 分米、宽 8 分米，防撞条要沿着四条边贴一圈。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 两长两宽",
+                    "text": "一圈有两条 12 分米和两条 8 分米，先算 12+8=20 分米，再乘 2 得 40 分米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 围一圈的长度",
+                    "text": "求围一圈的长度就用（长+宽）×2，书桌、窗框都这样算。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-65"
         },
-        {
+                {
             "scene": "学校有一块正方形草坪，边长15米。园丁要在草坪四周修一圈小路。",
             "question": "小路一共长多少米？",
             "formula": "15 × 4 = ?",
@@ -7163,65 +7070,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "草坪四周一圈小路的总长",
+                        "草坪有多少平方米",
+                        "草坪的边长是多少"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「小路一共长多少米？」"
+                    "answer": "草坪四周一圈小路的总长",
+                    "explain": "小路沿草坪一圈，长度就是正方形草坪的周长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "草坪是正方形，边长 15 米",
+                        "草坪是长方形，长 15 米、宽 10 米",
+                        "草坪的长和宽一共 15 米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "草坪是正方形，边长 15 米",
+                    "explain": "正方形四边相等，小路四段都是 15 米。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用边长 × 4：15 × 4",
+                        "用边长 × 边长：15 × 15",
+                        "用边长 + 4：15 + 4"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用边长 × 4：15 × 4",
+                    "explain": "四个 15 米相加，就是 15×4=60 米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 正方形的草坪",
+                    "text": "图上正方形草坪的每条边都是 15 米，小路沿着四条边围一圈。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 4 个 15 相加",
+                    "text": "四周小路共有四段，每段 15 米，15+15+15+15=60 米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 正方形周长",
+                    "text": "正方形周长 = 边长 × 4，草坪、方桌面都这样算。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-66"
         },
-        {
+                {
             "scene": "王伯伯要在院子里靠墙围一个长方形菜地，长8米、宽5米，长边靠墙。他要算需要多少米篱笆。",
             "question": "需要多少米篱笆？",
             "formula": "5 + 5 + 8 = ?",
@@ -7260,65 +7164,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "围菜地需要多少米篱笆",
+                        "菜地的面积是多少",
+                        "菜地有几条边靠墙"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「需要多少米篱笆？」"
+                    "answer": "围菜地需要多少米篱笆",
+                    "explain": "要算篱笆的长度，也就是菜地需要围起来部分的总长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "菜地长 8 米、宽 5 米，长边靠墙不用围",
+                        "菜地长 8 米、宽 5 米，四条边都要围",
+                        "菜地是正方形，边长 8 米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "菜地长 8 米、宽 5 米，长边靠墙不用围",
+                    "explain": "长边靠着墙，这段不用篱笆，只需围两条宽和一条长。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用 5 + 5 + 8（两条宽加一条长）",
+                        "用（8 + 5）× 2 = 26",
+                        "用 8 + 8 + 5 = 21"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用 5 + 5 + 8（两条宽加一条长）",
+                    "explain": "两条宽各 5 米，一条长 8 米，5+5+8=18 米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 菜地与墙",
+                    "text": "图上长方形菜地长 8 米、宽 5 米，长的那条边贴着墙。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 靠墙的边不用围",
+                    "text": "靠墙的 8 米不用篱笆，只要围两条 5 米的宽和另一条 8 米的长。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 靠墙少围一边",
+                    "text": "遇到靠墙围菜地，先看清哪条边靠墙，把它从周长里去掉。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-67"
         },
-        {
+                {
             "scene": "两个边长4厘米的正方形拼成一个长方形。小亮要算拼成后的长方形周长。",
             "question": "拼成的长方形周长是多少厘米？",
             "formula": "(8 + 4) × 2 = ?",
@@ -7356,65 +7257,62 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "两个正方形拼成的长方形的周长",
+                        "一个正方形的周长",
+                        "两个正方形的总面积"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「拼成的长方形周长是多少厘米？」"
+                    "answer": "两个正方形拼成的长方形的周长",
+                    "explain": "题目要算拼好后这个大长方形的周长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "每个正方形边长 4 厘米，拼成后长 8 厘米、宽 4 厘米",
+                        "每个正方形边长 4 厘米，拼成后长 4 厘米、宽 4 厘米",
+                        "每个正方形的周长是 16 厘米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "每个正方形边长 4 厘米，拼成后长 8 厘米、宽 4 厘米",
+                    "explain": "两个边长 4 厘米的正方形并排拼起来，长变成 8 厘米，宽还是 4 厘米。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用（长 + 宽）× 2：（8 + 4）× 2",
+                        "用两个正方形周长相加：16 + 16",
+                        "用长 × 宽：8 × 4"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用（长 + 宽）× 2：（8 + 4）× 2",
+                    "explain": "8+4=12，12×2=24 厘米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 两个正方形拼一起",
+                    "text": "图上两个边长 4 厘米的正方形并排拼在一起，拼成一个大长方形。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 拼后长宽变了",
+                    "text": "拼起来后长是 4+4=8 厘米，宽仍是 4 厘米，中间粘在一起的那条边不算在外面。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 拼图先找新长宽",
+                    "text": "图形拼起来后，先找到新的长和宽，再用（长+宽）×2 算周长。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ],
             "id": "3A-TIME-68"
         },
-        {
+                {
             "scene": "李阿姨要给长10米、宽6米的长方形花园围篱笆，宽边靠墙。她要算需要多少米篱笆。",
             "question": "需要多少米篱笆？",
             "formula": "10 + 10 + 6 = ?",
@@ -7453,58 +7351,55 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "discoverySteps": [
                 {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题理解问题",
-                        "直接看答案",
-                        "猜一个",
-                        "跳过"
+                        "围花园需要多少米篱笆",
+                        "花园的面积是多少",
+                        "花园的长是多少米"
                     ],
-                    "answer": "认真读题理解问题",
-                    "explain": "题目问的是「需要多少米篱笆？」"
+                    "answer": "围花园需要多少米篱笆",
+                    "explain": "要算篱笆的长度，也就是花园需要围起来部分的总长。"
                 },
                 {
                     "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "分析已知条件",
-                        "不看条件",
-                        "猜数字",
-                        "随便选"
+                        "花园长 10 米、宽 6 米，一条宽边靠墙不用围",
+                        "花园长 10 米、宽 6 米，四条边都要围",
+                        "花园是正方形，边长 10 米"
                     ],
-                    "answer": "分析已知条件",
-                    "explain": "找出题目中给出的所有数字和条件"
+                    "answer": "花园长 10 米、宽 6 米，一条宽边靠墙不用围",
+                    "explain": "宽边靠着墙，这段不用篱笆，只需围两条长和一条宽。"
                 },
                 {
-                    "q": "🧩 用什么方法解决？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "根据问题选择合适方法",
-                        "随便选",
-                        "加法",
-                        "减法"
+                        "用 10 + 10 + 6（两条长加一条宽）",
+                        "用（10 + 6）× 2 = 32",
+                        "用 10 + 6 + 6 = 22"
                     ],
-                    "answer": "根据问题选择合适方法",
-                    "explain": "根据问题类型选择合适的运算方法"
+                    "answer": "用 10 + 10 + 6（两条长加一条宽）",
+                    "explain": "两条长各 10 米，一条宽 6 米，10+10+6=26 米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "观察图形，理解各部分之间的关系",
+                    "title": "看图 — 花园与墙",
+                    "text": "图上长方形花园长 10 米、宽 6 米，一条宽边贴着墙。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "理解题目中的数学关系",
+                    "title": "理解 — 靠墙的边省掉",
+                    "text": "靠墙的 6 米不用围，只要围两条 10 米的长和另一条 6 米的宽。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类问题的通用解法",
+                    "title": "推广 — 分清哪边靠墙",
+                    "text": "同样靠墙围栏，靠墙的是长边还是宽边不一样，要去掉的边也不一样。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
@@ -12211,8 +12106,8 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-055"
         },
-        {
-            "scene": "老师让同学们记住大月和小月。大月有31天，小红好奇哪些是大月。",
+                {
+            "scene": "老师让同学们记住一年中的大月和小月。小红想知道大月有多少天。",
             "question": "大月有多少天？",
             "formula": "大月 = ? 天",
             "answer": 31,
@@ -12315,8 +12210,8 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-056"
         },
-        {
-            "scene": "小亮查日历发现二月有时28天有时29天。老师告诉他平年二月28天，闰年二月29天。",
+                {
+            "scene": "小亮查日历发现二月的天数有时不一样。老师告诉他平年二月和闰年二月的天数不同。小亮想知道平年二月有多少天。",
             "question": "平年二月有多少天？",
             "formula": "平年二月 = ? 天",
             "answer": 28,
@@ -12424,8 +12319,8 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-057"
         },
-        {
-            "scene": "小红看钟表，下午3时她在上体育课。老师告诉她24时计时法下午3时叫15时。小红好奇下午3时是几时。",
+                {
+            "scene": "小红看钟表，下午 3 时她正在上体育课。老师告诉她可以用 24 时计时法来表示时刻。小红想知道下午 3 时是几时。",
             "question": "下午3时等于24时计时法的几时？",
             "formula": "下午3时 = ? 时",
             "answer": 15,
@@ -13078,108 +12973,108 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-063"
         },
-        {
-            "id": "3B-YMD-01",
-            "scene": "一年有 12 个月，分成了 4 个季度。",
-            "question": "一年有( )个月。",
-            "formula": "",
-            "answer": 12,
-            "choices": [
-                12,
-                10,
-                11,
-                13
-            ],
-            "knowledge": "年、月、日",
-            "difficulty": 2,
-            "hint": "一年 12 个月",
-            "variants": [
-                {
-                    "question": "一年有( )个季度。",
+                                {
+                    "id": "3B-YMD-01",
+                    "scene": "老师告诉同学们，一年分成了 4 个季度。小红想知道一年有多少个月。",
+                    "question": "一年有( )个月。",
                     "formula": "",
-                    "answer": 4,
+                    "answer": 12,
                     "choices": [
-                        4,
-                        3,
-                        2
+                        12,
+                        10,
+                        11,
+                        13
                     ],
-                    "hint": "12 个月分成 4 个季度"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": 12,
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": 6,
-                        "color": "#F5B800"
+                    "knowledge": "年、月、日",
+                    "difficulty": 2,
+                    "hint": "一年 12 个月",
+                    "variants": [
+                        {
+                            "question": "一年有( )个季度。",
+                            "formula": "",
+                            "answer": 4,
+                            "choices": [
+                                4,
+                                3,
+                                2
+                            ],
+                            "hint": "12 个月分成 4 个季度"
+                        }
+                    ],
+                    "visualType": "numberBond",
+                    "visualData": {
+                        "type": "numberBond",
+                        "total": 12,
+                        "parts": [
+                            {
+                                "label": "一部分",
+                                "val": 6,
+                                "color": "#F5B800"
+                            },
+                            {
+                                "label": "另一部分",
+                                "val": 6,
+                                "color": "#00A896"
+                            }
+                        ]
                     },
-                    {
-                        "label": "另一部分",
-                        "val": 6,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
+                    "discoverySteps": [
+                        {
+                            "q": "📖 这道题要我们求什么？",
+                            "choices": [
+                                "一年有多少个月",
+                                "一年有多少天",
+                                "一年有几个季节"
+                            ],
+                            "answer": "一年有多少个月",
+                            "explain": "题目问的是一年的月数。"
+                        },
+                        {
+                            "q": "🔢 题目给了哪些关键信息？",
+                            "choices": [
+                                "一年分成 4 个季度，每季度 3 个月",
+                                "一年有 365 天",
+                                "一年有春夏秋冬四季"
+                            ],
+                            "answer": "一年分成 4 个季度，每季度 3 个月",
+                            "explain": "一年 4 个季度，每个季度 3 个月，合起来就是一年。"
+                        },
+                        {
+                            "q": "🧩 用什么方法得出答案？",
+                            "choices": [
+                                "用 3 × 4 算出 12 个月",
+                                "用 4 + 3 算出 7 个月",
+                                "用 12 ÷ 4 算出 3 个月"
+                            ],
+                            "answer": "用 3 × 4 算出 12 个月",
+                            "explain": "4 个季度，每季度 3 个月，3×4=12，所以一年有 12 个月。"
+                        }
                     ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "一年有( )个月。"
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 一年的月份",
+                            "text": "图上把一年 12 个月排成一圈，从 1 月一直排到 12 月。",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 4 个季度",
+                            "text": "一年分成 4 个季度，每个季度 3 个月，3×4=12 个月。",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 记住月份排布",
+                            "text": "一年 12 个月，1、3、5、7、8、10、12 月是大月，4、6、9、11 月是小月。",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
+                    ]
                 },
                 {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "一年 12 个月"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "认识年月日",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "认识年月日",
-                    "explain": "一年 12 个月"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "一年 12 个月",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
             "id": "3B-YMD-02",
             "scene": "日历上，1、3、5、7、8、10、12 月都是大月。",
             "question": "大月每月有( )天。",
@@ -13226,258 +13121,234 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "discoverySteps": [
                 {
-                    "q": "📖 先读题：这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
+                        "大月每个月有多少天",
+                        "小月每个月有多少天",
+                        "一年有多少个月"
                     ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "大月每月有( )天。"
+                    "answer": "大月每个月有多少天",
+                    "explain": "题目问的是大月的天数。"
                 },
                 {
-                    "q": "🔢 题目给了哪些已知条件？",
+                    "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
+                        "1、3、5、7、8、10、12 月都是大月",
+                        "4、6、9、11 月都是大月",
+                        "2 月也是大月"
                     ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "大月 31 天"
+                    "answer": "1、3、5、7、8、10、12 月都是大月",
+                    "explain": "日历上标出的这些月份都是大月。"
                 },
                 {
-                    "q": "🧩 用什么方法计算？",
+                    "q": "🧩 用什么方法记住大月天数？",
                     "choices": [
-                        "认识大小月",
-                        "随便选一个",
-                        "一律用加法"
+                        "记住大月都是 31 天",
+                        "记住大月都是 30 天",
+                        "记住大月都是 28 天"
                     ],
-                    "answer": "认识大小月",
-                    "explain": "大月 31 天"
+                    "answer": "记住大月都是 31 天",
+                    "explain": "大月每月 31 天，所以答案是 31。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "title": "看图 — 数一数大月",
+                    "text": "图上日历把 1、3、5、7、8、10、12 月涂成同一种颜色，它们都是大月。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "大月 31 天",
+                    "title": "理解 — 大月 31 天",
+                    "text": "这些大月每个月都是 31 天。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "title": "推广 — 大小月记牢",
+                    "text": "大月 31 天，小月 30 天，2 月最特别：平年 28 天，闰年 29 天。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ]
         },
-        {
-            "id": "3B-YMD-03",
-            "scene": "判断闰年：年份能被 4 整除的一般是闰年（整百年除外）。",
-            "question": "2024 年是( )年（2 月有 29 天）。",
-            "formula": "",
-            "answer": "闰",
-            "choices": [
-                "闰",
-                "平"
-            ],
-            "knowledge": "年、月、日",
-            "difficulty": 2,
-            "hint": "2024÷4=506 没有余数，是闰年",
-            "variants": [
-                {
-                    "question": "2023 年是( )年。",
-                    "formula": "",
-                    "answer": "平",
-                    "choices": [
-                        "平",
-                        "闰"
-                    ],
-                    "hint": "2023÷4 有余数，是平年"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "闰",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "2024 年是( )年（2 月有 29 天）。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "2024÷4=506 没有余数，是闰年"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "判断闰年",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "判断闰年",
-                    "explain": "2024÷4=506 没有余数，是闰年"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "2024÷4=506 没有余数，是闰年",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "3B-YMD-04",
-            "scene": "节日日历上标着儿童节和国庆节。",
-            "question": "儿童节是( )月( )日。",
-            "formula": "",
-            "answer": "6月1日",
-            "choices": [
-                "6月1日",
-                "6月6日",
-                "5月1日"
-            ],
-            "knowledge": "年、月、日",
-            "difficulty": 2,
-            "hint": "儿童节 6 月 1 日",
-            "variants": [
-                {
-                    "question": "国庆节是( )月( )日。",
-                    "formula": "",
-                    "answer": "10月1日",
-                    "choices": [
-                        "10月1日",
-                        "9月10日",
-                        "1月1日"
-                    ],
-                    "hint": "国庆节 10 月 1 日"
-                }
-            ],
-            "visualType": "numberBond",
-            "visualData": {
-                "type": "numberBond",
-                "total": "6月1日",
-                "parts": [
-                    {
-                        "label": "一部分",
-                        "val": null,
-                        "color": "#F5B800"
-                    },
-                    {
-                        "label": "另一部分",
-                        "val": null,
-                        "color": "#00A896"
-                    }
-                ]
-            },
-            "discoverySteps": [
-                {
-                    "q": "📖 先读题：这道题要我们求什么？",
-                    "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
-                    ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "儿童节是( )月( )日。"
-                },
-                {
-                    "q": "🔢 题目给了哪些已知条件？",
-                    "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
-                    ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "儿童节 6 月 1 日"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "记节日",
-                        "随便选一个",
-                        "一律用加法"
-                    ],
-                    "answer": "记节日",
-                    "explain": "儿童节 6 月 1 日"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "儿童节 6 月 1 日",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
+                                                                {
+                                    "id": "3B-YMD-03",
+                                    "scene": "判断闰年：年份能被 4 整除的一般是闰年（整百年除外）。",
+                                    "question": "2024 年是( )年（2 月有 29 天）。",
+                                    "formula": "",
+                                    "answer": "闰",
+                                    "choices": [
+                                        "闰",
+                                        "平"
+                                    ],
+                                    "knowledge": "年、月、日",
+                                    "difficulty": 2,
+                                    "hint": "2024÷4=506 没有余数，是闰年",
+                                    "variants": [
+                                        {
+                                            "question": "2023 年是( )年。",
+                                            "formula": "",
+                                            "answer": "平",
+                                            "choices": [
+                                                "平",
+                                                "闰"
+                                            ],
+                                            "hint": "2023÷4 有余数，是平年"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "calendar"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们求什么？",
+                                            "choices": [
+                                                "2024 年是平年还是闰年",
+                                                "2024 年一共有多少天",
+                                                "2024 年 2 月有多少天"
+                                            ],
+                                            "answer": "2024 年是平年还是闰年",
+                                            "explain": "题目要判断 2024 年是闰年还是平年。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "判断方法：年份能被 4 整除的一般是闰年",
+                                                "判断方法：年份是双数的都是闰年",
+                                                "判断方法：年份越大越是闰年"
+                                            ],
+                                            "answer": "判断方法：年份能被 4 整除的一般是闰年",
+                                            "explain": "题目给了判断闰年的方法：看年份能不能被 4 整除。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法判断？",
+                                            "choices": [
+                                                "算 2024 ÷ 4，看有没有余数",
+                                                "算 2024 ÷ 2，看有没有余数",
+                                                "算 2024 ÷ 3，看有没有余数"
+                                            ],
+                                            "answer": "算 2024 ÷ 4，看有没有余数",
+                                            "explain": "2024÷4=506，没有余数，所以 2024 年是闰年。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 2 月的天数",
+                                            "text": "闰年的 2 月有 29 天，比平年多 1 天。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 用除法判断",
+                                            "text": "判断闰年就看年份能不能被 4 整除：2024÷4=506 没有余数，所以是闰年。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 闰年规律",
+                                            "text": "能被 4 整除的一般是闰年，2 月有 29 天；整百年要再能被 400 整除才是闰年。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
+                                                                {
+                                    "id": "3B-YMD-04",
+                                    "scene": "节日日历上标着儿童节和国庆节。",
+                                    "question": "儿童节是( )月( )日。",
+                                    "formula": "",
+                                    "answer": "6月1日",
+                                    "choices": [
+                                        "6月1日",
+                                        "6月6日",
+                                        "5月1日"
+                                    ],
+                                    "knowledge": "年、月、日",
+                                    "difficulty": 2,
+                                    "hint": "儿童节 6 月 1 日",
+                                    "variants": [
+                                        {
+                                            "question": "国庆节是( )月( )日。",
+                                            "formula": "",
+                                            "answer": "10月1日",
+                                            "choices": [
+                                                "10月1日",
+                                                "9月10日",
+                                                "1月1日"
+                                            ],
+                                            "hint": "国庆节 10 月 1 日"
+                                        }
+                                    ],
+                                    "visualType": "concept",
+                                    "visualData": {
+                                        "type": "concept",
+                                        "conceptKey": "calendar"
+                                    },
+                                    "discoverySteps": [
+                                        {
+                                            "q": "📖 这道题要我们求什么？",
+                                            "choices": [
+                                                "儿童节是几月几日",
+                                                "儿童节是星期几",
+                                                "国庆节是几月几日"
+                                            ],
+                                            "answer": "儿童节是几月几日",
+                                            "explain": "题目问的是儿童节的日期。"
+                                        },
+                                        {
+                                            "q": "🔢 题目给了哪些关键信息？",
+                                            "choices": [
+                                                "节日日历上标着儿童节和国庆节",
+                                                "日历上只标了一个节日",
+                                                "题目只给了儿童节的月份没给日期"
+                                            ],
+                                            "answer": "节日日历上标着儿童节和国庆节",
+                                            "explain": "看日历上标出的儿童节，就能读出它的日期。"
+                                        },
+                                        {
+                                            "q": "🧩 用什么方法找出日期？",
+                                            "choices": [
+                                                "在日历上找到儿童节，读出它在 6 月 1 日",
+                                                "把 6 和 1 相加得 7",
+                                                "用 10 减 6 得 4"
+                                            ],
+                                            "answer": "在日历上找到儿童节，读出它在 6 月 1 日",
+                                            "explain": "日历上儿童节标在 6 月 1 日，所以是 6 月 1 日。"
+                                        }
+                                    ],
+                                    "explainLayers": [
+                                        {
+                                            "icon": "👀",
+                                            "title": "看图 — 节日日历",
+                                            "text": "图上日历把 6 月 1 日圈了出来，旁边标着“儿童节”。",
+                                            "bg": "var(--teal-soft)",
+                                            "color": "var(--teal)"
+                                        },
+                                        {
+                                            "icon": "🧠",
+                                            "title": "理解 — 记住常见节日",
+                                            "text": "儿童节是 6 月 1 日；同一张日历上，国庆节是 10 月 1 日。",
+                                            "bg": "var(--yellow-soft)",
+                                            "color": "var(--yellow-700)"
+                                        },
+                                        {
+                                            "icon": "🚀",
+                                            "title": "推广 — 记住日期的顺序",
+                                            "text": "记住常见节日：元旦 1 月 1 日、儿童节 6 月 1 日、国庆节 10 月 1 日。",
+                                            "bg": "var(--coral-soft)",
+                                            "color": "var(--coral)"
+                                        }
+                                    ]
+                                },
         {
             "scene": "小红用1元买了一根冰棒，找回0.3元。她好奇0.3元是多少钱。",
             "question": "0.3等于十分之几？（填分子）",
@@ -14773,7 +14644,7 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-175"
         },
-        {
+                {
             "scene": "小明一步跳了1.7米远。他好奇1.7米中的0.7等于十分之几。",
             "question": "0.7等于十分之几？（填分子）",
             "formula": "0.7=?/10",
@@ -14786,7 +14657,8 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 2,
+                "type": "fractionStrip",
+                "num": 7,
                 "total": 10,
                 "color": "#00A896"
             },
@@ -15581,7 +15453,7 @@ window.MATH_BY_GRADE["3b"] = {
             ],
             "id": "3B-PROB-183"
         },
-        {
+                {
             "id": "3B-REV-01",
             "scene": "一个长方形鱼塘，长 12 米、宽 8 米。",
             "question": "这个鱼塘的周长是多少米？",
@@ -15623,61 +15495,61 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "discoverySteps": [
                 {
-                    "q": "📖 先读题：这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
+                        "鱼塘围一圈的周长是多少米",
+                        "鱼塘的面积是多少平方米",
+                        "鱼塘的长是多少米"
                     ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "这个鱼塘的周长是多少米？"
+                    "answer": "鱼塘围一圈的周长是多少米",
+                    "explain": "题目要求长方形鱼塘的周长。"
                 },
                 {
-                    "q": "🔢 题目给了哪些已知条件？",
+                    "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
+                        "鱼塘是长方形，长 12 米、宽 8 米",
+                        "鱼塘是正方形，边长 12 米",
+                        "鱼塘的长和宽都是 8 米"
                     ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "长方形周长 =（长+宽）×2 =（12+8）×2 = 40 米"
+                    "answer": "鱼塘是长方形，长 12 米、宽 8 米",
+                    "explain": "长 12 米、宽 8 米，是算周长要用的条件。"
                 },
                 {
-                    "q": "🧩 用什么方法计算？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "周长计算",
-                        "随便选一个",
-                        "一律用加法"
+                        "用（长 + 宽）× 2：（12 + 8）× 2",
+                        "用长 × 宽：12 × 8",
+                        "用长 + 宽：12 + 8"
                     ],
-                    "answer": "周长计算",
-                    "explain": "长方形周长 =（长+宽）×2 =（12+8）×2 = 40 米"
+                    "answer": "用（长 + 宽）× 2：（12 + 8）× 2",
+                    "explain": "12+8=20，20×2=40 米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "title": "看图 — 鱼塘的长和宽",
+                    "text": "图上长方形鱼塘长 12 米、宽 8 米，四周合起来的总长就是周长。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "长方形周长 =（长+宽）×2 =（12+8）×2 = 40 米",
+                    "title": "理解 — 两长两宽",
+                    "text": "一圈有两条 12 米和两条 8 米，先算 12+8=20 米，再乘 2 得 40 米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "title": "推广 — 周长和面积别弄混",
+                    "text": "求一圈的长度用（长+宽）×2；求铺满多大用长×宽，两个公式不一样。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }
             ]
         },
-        {
+                {
             "id": "3B-REV-02",
             "scene": "一块长方形菜地，长 10 米、宽 6 米。",
             "question": "这块菜地的面积是多少平方米？",
@@ -15719,55 +15591,55 @@ window.MATH_BY_GRADE["3b"] = {
             },
             "discoverySteps": [
                 {
-                    "q": "📖 先读题：这道题要我们求什么？",
+                    "q": "📖 这道题要我们求什么？",
                     "choices": [
-                        "认真读题，明确问题",
-                        "直接猜一个",
-                        "跳过不看题"
+                        "菜地的面积是多少平方米",
+                        "菜地的周长是多少米",
+                        "菜地一共种了几棵菜"
                     ],
-                    "answer": "认真读题，明确问题",
-                    "explain": "这块菜地的面积是多少平方米？"
+                    "answer": "菜地的面积是多少平方米",
+                    "explain": "题目要求长方形菜地的面积。"
                 },
                 {
-                    "q": "🔢 题目给了哪些已知条件？",
+                    "q": "🔢 题目给了哪些关键信息？",
                     "choices": [
-                        "找出题目中的数和关键关系",
-                        "凭感觉",
-                        "只看答案"
+                        "菜地是长方形，长 10 米、宽 6 米",
+                        "菜地是正方形，边长 6 米",
+                        "菜地的长和宽都是 10 米"
                     ],
-                    "answer": "找出题目中的数和关键关系",
-                    "explain": "长方形面积 = 长×宽 = 10×6 = 60 平方米"
+                    "answer": "菜地是长方形，长 10 米、宽 6 米",
+                    "explain": "长 10 米、宽 6 米，是算面积要用的条件。"
                 },
                 {
-                    "q": "🧩 用什么方法计算？",
+                    "q": "🧩 用什么方法算？",
                     "choices": [
-                        "面积计算",
-                        "随便选一个",
-                        "一律用加法"
+                        "用长 × 宽：10 × 6",
+                        "用（长 + 宽）× 2：（10 + 6）× 2",
+                        "用长 + 宽：10 + 6"
                     ],
-                    "answer": "面积计算",
-                    "explain": "长方形面积 = 长×宽 = 10×6 = 60 平方米"
+                    "answer": "用长 × 宽：10 × 6",
+                    "explain": "长方形面积 = 长 × 宽，10×6=60 平方米。"
                 }
             ],
             "explainLayers": [
                 {
                     "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "通过图示理解题目中数量或图形之间的关系。",
+                    "title": "看图 — 菜地的长和宽",
+                    "text": "图上长方形菜地长 10 米、宽 6 米，铺满这块地的大小就是面积。",
                     "bg": "var(--teal-soft)",
                     "color": "var(--teal)"
                 },
                 {
                     "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "长方形面积 = 长×宽 = 10×6 = 60 平方米",
+                    "title": "理解 — 长乘宽",
+                    "text": "面积是地里面的地方，用长乘宽：10×6=60 平方米。",
                     "bg": "var(--yellow-soft)",
                     "color": "var(--yellow-700)"
                 },
                 {
                     "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "掌握这类题的通用解法，以后遇到类似的也能做对。",
+                    "title": "推广 — 面积和周长区别",
+                    "text": "面积用长×宽，单位是平方米；周长用（长+宽）×2，单位是米，两者不一样。",
                     "bg": "var(--coral-soft)",
                     "color": "var(--coral)"
                 }

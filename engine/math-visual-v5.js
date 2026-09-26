@@ -294,7 +294,12 @@ window.MathVisualV5 = {
     const usable = W - padX*2;
     let x = padX, delay = 0;
     const segs = parts.map((p,i)=>{
-      const w = total>0 ? Math.max((p.val/total)*usable, 2) : 0;
+      // 2026-09-26 修复（VD_BAR_CLIP 残留）：val<=0 的段宽度置 0（零量不该画 2px 假条）；
+      // 其余段按剩余空间钳制，避免「最小 2px」把条形推出 viewBox（实测 3B-PROB-104/115、6a#83/84 溢出 1~2px）
+      const pv = Number(p.val) || 0;
+      const raw = total>0 ? (pv/total)*usable : 0;
+      const remain = Math.max(0, padX + usable - x);
+      const w = pv > 0 ? Math.min(Math.max(raw, 2), remain) : 0;
       const color = this._hex(p.color) || this._palette(i);
       const valLabel = (ans != null && p.val === ans) ? '?' : (p.val != null ? p.val : '');   // 待求段不印答案；val 缺失时不冒 "null"
       // 数值字号随段宽自适应：窄段缩小字号，绝不溢出
@@ -313,6 +318,20 @@ window.MathVisualV5 = {
         ${segs}
       </svg>
     </div>`;
+  },
+
+  // 概念判断题（知识类，无数量关系）：复用教学流程 math-flow-v5.js 的概念示意图（同一份 SSOT）。
+  // 这类题历史上误配 numberBond + parts[].val=null，主渲染链只能返回空串、靠兜底出图；
+  // 数据层改 visualType:"concept" 后由本渲染器在主链直接产出概念图，消除"主链空"的 schema 错配。
+  concept(data, problem){
+    try{
+      const F = (typeof MathFlowV5 !== 'undefined') ? MathFlowV5
+        : ((typeof window !== 'undefined') ? window.MathFlowV5 : null);
+      if(!F || !F._conceptSVG) return '';
+      const e = F._conceptEntry ? F._conceptEntry(problem) : null;
+      const key = (e && e.key) || (data && data.conceptKey) || '';
+      return key ? (F._conceptSVG(key) || '') : '';
+    }catch(err){ return ''; }
   },
 
   // 引擎·点子图（表内乘除专用，P0-2 新增）
@@ -500,37 +519,88 @@ window.MathVisualV5 = {
     </div>`;
   },
 
-  // 4. 分数条 —— 分数认识 / 分数比较
+  // 4. 分数条 —— 分数认识 / 分数比较 / 填分子
   // data: {num, total, color}
+  // 假分数 / 整数（num > total）支持（2026-09-26 修复）：
+  // 旧实现 fillW = num*segW 在 num > total 时涂色超出条框被 viewBox 裁掉（5B-PROB-049 11/4、
+  // 6a#7 4/3、6a#50 6/2 三题实测画面涂色溢出）。改为「每行 total 份、向上堆叠 ⌈num/total⌉ 行」，
+  // 既保留真分数的原样，也把假分数表达为「几个整条 + 余下几份」。
   fractionStrip(data){
     const {num, total, color} = data;
-    const W=560, H=130, padX=24, padY=34, stripW=W-padX*2, stripH=52;
-    const segW=stripW/total;
+    const W=560, padX=24, padY=34, stripW=W-padX*2, stripH=52, rowGap=10;
+    const n = Math.max(1, Math.round(Number(total) || 1));
+    const k = Math.max(0, Math.round(Number(num) || 0));
+    const rows = Math.max(1, Math.ceil(k / n));
+    const H = padY + rows*stripH + (rows-1)*rowGap + 34;
+    const segW=stripW/n;
     const fillHex=this._hex(color);
-    const fillW=num*segW;
-    const dividers=Array.from({length:total-1},(_,i)=>{
-      const x=padX+(i+1)*segW;
-      return `<line x1="${x}" y1="${padY}" x2="${x}" y2="${padY+stripH}" stroke="#fff" stroke-width="2"/>`;
-    }).join('');
-    const labels=Array.from({length:total},(_,i)=>{
+    let body='', left=k;
+    for(let r=0;r<rows;r++){
+      const y = padY + r*(stripH+rowGap);
+      const filled = Math.max(0, Math.min(left, n));
+      left -= filled;
+      const dividers=Array.from({length:n-1},(_,i)=>{
+        const x=padX+(i+1)*segW;
+        return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y+stripH}" stroke="#fff" stroke-width="2"/>`;
+      }).join('');
+      body += `<rect x="${padX}" y="${y}" width="${stripW}" height="${stripH}" fill="#fff" stroke="#1E3A5F" stroke-width="2" rx="5"/>`;
+      if(filled>0) body += `<rect class="mv-frac-fill" x="${padX}" y="${y}" width="${filled*segW}" height="${stripH}" fill="${fillHex}" rx="5"/>`;
+      body += dividers;
+      body += `<rect x="${padX}" y="${y}" width="${stripW}" height="${stripH}" fill="none" stroke="#1E3A5F" stroke-width="2" rx="5"/>`;
+    }
+    // 份数刻度只在单行时标注（多行时行数本身已表达「几个整条」）
+    const labels=(rows===1)?Array.from({length:n},(_,i)=>{
       const x=padX+i*segW+segW/2;
       return `<text x="${x}" y="${padY+stripH+18}" text-anchor="middle" font-size="11" fill="#475569">${i+1}</text>`;
-    }).join('');
+    }).join(''):'';
     const equivs=[];
-    for(let k=2;k<=3;k++){ equivs.push(`${num*k}/${total*k}`); }
+    for(let m=2;m<=3;m++){ equivs.push(`${k*m}/${n*m}`); }
     return `<div class="mv-wrap mv-frac-strip">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
-        <text x="${padX}" y="${padY-12}" font-size="14" font-weight="700" fill="#1E3A5F">${num}/${total}</text>
-        <rect x="${padX}" y="${padY}" width="${stripW}" height="${stripH}" fill="#fff" stroke="#1E3A5F" stroke-width="2" rx="5"/>
-        <rect class="mv-frac-fill" x="${padX}" y="${padY}" width="${fillW}" height="${stripH}" fill="${fillHex}" rx="5"/>
-        ${dividers}
-        <rect x="${padX}" y="${padY}" width="${stripW}" height="${stripH}" fill="none" stroke="#1E3A5F" stroke-width="2" rx="5"/>
+        <text x="${padX}" y="${padY-12}" font-size="14" font-weight="700" fill="#1E3A5F">${k}/${n}</text>
+        ${body}
         ${labels}
       </svg>
-      <div class="mv-frac-equiv">等值分数：${num}/${total} = ${equivs.join(' = ')}</div>
+      <div class="mv-frac-equiv">等值分数：${k}/${n} = ${equivs.join(' = ')}</div>
     </div>`;
   },
 
+  // 逻辑推理卡（2026-09-26 新增）：2B-59~66 小学推理题历史上误配条形图
+  // （bars=[条件1=3,条件2=2,结论=X=1] + total=1 → 首段占满画布、其余段跑到画布外，画面只剩一根条）。
+  // 推理题本来就没有数量关系，正确配图是「线索条件 + 候选对象」的信息卡。
+  // data: {type:'logicCards'}；线索取 problem.scene 分句，候选取 problem.choices（不标出哪个是答案）。
+  logicCards(data, problem){
+    const scene = String((problem && problem.scene) || '').trim();
+    const clues = scene.split(/[。；;]/).map(s => s.trim()).filter(s => s.length > 1);
+    const cands = ((problem && problem.choices) || []).map(c => String(c)).filter(c => c.trim() !== '');
+    const W = 560, padX = 24;
+    const clueH = 32, clueGap = 8;
+    let y = 20, svg = '';
+    svg += `<text x="${padX}" y="${y}" font-size="13" font-weight="700" fill="#1E3A5F">线索条件</text>`;
+    y += 12;
+    clues.forEach((t, i) => {
+      const shown = t.length > 32 ? t.slice(0, 31) + '…' : t;
+      svg += `<rect x="${padX}" y="${y}" width="${W - padX * 2}" height="${clueH}" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1" style="animation:mvFadeIn .4s ${(i * 0.12).toFixed(2)}s ease both"/>
+        <text x="${padX + 14}" y="${y + 21}" font-size="13" font-weight="600" fill="#1E3A5F">${this._escape(shown)}</text>`;
+      y += clueH + clueGap;
+    });
+    y += 14;
+    svg += `<text x="${padX}" y="${y}" font-size="13" font-weight="700" fill="#1E3A5F">候选对象</text>`;
+    y += 12;
+    let x = padX;
+    cands.forEach((t, i) => {
+      const w = Math.max(58, t.length * 17 + 28);
+      if (x + w > W - padX) { x = padX; y += 44; }
+      const col = this._palette(i);
+      svg += `<rect x="${x}" y="${y}" width="${w}" height="34" rx="17" fill="#fff" stroke="${col}" stroke-width="2" style="animation:mvFadeIn .4s ${(i * 0.1).toFixed(2)}s ease both"/>
+        <text x="${x + w / 2}" y="${y + 22}" text-anchor="middle" font-size="14" font-weight="700" fill="${col}">${this._escape(t)}</text>`;
+      x += w + 10;
+    });
+    const H = y + 34 + 16;
+    return `<div class="mv-wrap mv-logic-cards">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
+    </div>`;
+  },
   // 5. 数轴 —— 整数 / 小数 / 负数 / 运算过程
   // data: {start, end, points:[{pos,label,color}], highlight:[a,b]}
   numberLine(data){

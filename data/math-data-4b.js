@@ -8222,393 +8222,471 @@ window.MATH_BY_GRADE["4b"] = {
                 }
             ]
         },
-        {
-            "id": "4B-FRAC-W-01",
-            "scene": "在分数墙上找一找，1/2等于下面哪个分数？",
-            "question": "1/2 = ?（在分数墙上找等值分数）",
-            "formula": "1/2 = ?",
-            "answer": "2/4",
-            "choices": [
-                "2/4",
-                "1/4",
-                "3/4",
-                "1/3"
-            ],
-            "visualType": "fractionWall",
-            "visualData": {},
-            "knowledge": "等值分数·分数墙",
-            "difficulty": 2,
-            "hint": "在分数墙上找到1/2那行，看下面哪行有一段和它一样长",
-            "rmeChoices": [
-                {
-                    "label": "看分数墙",
-                    "desc": "在墙上找等长行",
-                    "correct": true
-                },
-                {
-                    "label": "画分数圆",
-                    "desc": "画圆涂1/2和2/4对比",
-                    "correct": true
-                },
-                {
-                    "label": "背答案",
-                    "desc": "1/2=2/4是记忆",
-                    "correct": false
-                }
-            ],
-            "russianQuestions": [
-                {
-                    "type": "quantity",
-                    "q": "分数墙上1/2那行，下面哪行有一段和它等长？",
-                    "keywords": [
+                                {
+                    "id": "4B-FRAC-W-01",
+                    "scene": "在分数墙上找一找，1/2等于下面哪个分数？",
+                    "question": "1/2 = ?（在分数墙上找等值分数）",
+                    "formula": "1/2 = ?",
+                    "answer": "2/4",
+                    "choices": [
                         "2/4",
-                        "4/8",
-                        "等长",
-                        "一样",
-                        "对等"
-                    ]
-                ,
-                    "options": [{"text":"2/4那行","correct":true},{"text":"1/4那行","correct":false},{"text":"3/4那行","correct":false}]
-                },
-                {
-                    "type": "compare",
-                    "q": "分数墙上3/4等于下面哪个分数？",
-                    "keywords": [
-                        "6/8",
+                        "1/4",
                         "3/4",
-                        "等值",
-                        "一样长",
-                        "6÷8"
+                        "1/3"
+                    ],
+                    "visualType": "fractionWall",
+                    "visualData": {
+                        "type": "fractionWall"
+                    },
+                    "knowledge": "等值分数·分数墙",
+                    "difficulty": 2,
+                    "hint": "在分数墙上找到1/2那行，看下面哪行有一段和它一样长",
+                    "rmeChoices": [
+                        {
+                            "label": "看分数墙",
+                            "desc": "在墙上找等长行",
+                            "correct": true
+                        },
+                        {
+                            "label": "画分数圆",
+                            "desc": "画圆涂1/2和2/4对比",
+                            "correct": true
+                        },
+                        {
+                            "label": "背答案",
+                            "desc": "1/2=2/4是记忆",
+                            "correct": false
+                        }
+                    ],
+                    "russianQuestions": [
+                        {
+                            "type": "quantity",
+                            "q": "分数墙上1/2那行，下面哪行有一段和它等长？",
+                            "keywords": [
+                                "2/4",
+                                "4/8",
+                                "等长",
+                                "一样",
+                                "对等"
+                            ],
+                            "options": [
+                                {
+                                    "text": "2/4那行",
+                                    "correct": true
+                                },
+                                {
+                                    "text": "1/4那行",
+                                    "correct": false
+                                },
+                                {
+                                    "text": "3/4那行",
+                                    "correct": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "compare",
+                            "q": "分数墙上3/4等于下面哪个分数？",
+                            "keywords": [
+                                "6/8",
+                                "3/4",
+                                "等值",
+                                "一样长",
+                                "6÷8"
+                            ],
+                            "options": [
+                                {
+                                    "text": "6/8",
+                                    "correct": true
+                                },
+                                {
+                                    "text": "3/8",
+                                    "correct": false
+                                },
+                                {
+                                    "text": "5/8",
+                                    "correct": false
+                                }
+                            ]
+                        }
+                    ],
+                    "neriageErrors": [
+                        {
+                            "answer": "1/4",
+                            "reason": "分子分母分别加1",
+                            "fix": "等值分数是分子分母同时乘同一个数。1/2=2/4（×2），不是1+1/2+1"
+                        }
+                    ],
+                    "variants": [],
+                    "discoverySteps": [
+                        {
+                            "q": "📖 再读一遍场景，这道题要我们求什么？",
+                            "choices": [
+                                "1/2等于下面哪个分数",
+                                "1/2和哪个分数谁大",
+                                "分数墙有几行",
+                                "求1/2的分子"
+                            ],
+                            "answer": "1/2等于下面哪个分数",
+                            "explain": "题目问在分数墙上找与1/2相等的分数"
+                        },
+                        {
+                            "q": "🔢 题目给了我们哪些关键信息？",
+                            "choices": [
+                                "在分数墙上找和1/2一样长的段",
+                                "背出1/2的答案",
+                                "只看分母",
+                                "没有信息"
+                            ],
+                            "answer": "在分数墙上找和1/2一样长的段",
+                            "explain": "用分数墙比较：哪一行的段和1/2一样长，就是等值分数"
+                        },
+                        {
+                            "q": "🧩 用什么方法计算？",
+                            "choices": [
+                                "分子分母同乘2：1/2=2/4",
+                                "分子分母分别加1：2/3",
+                                "1/2=1/4",
+                                "1/2=3/4"
+                            ],
+                            "answer": "分子分母同乘2：1/2=2/4",
+                            "explain": "分子分母同时乘2：1×2/2×2=2/4，分数墙上看两段一样长"
+                        }
+                    ],
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 图形结构",
+                            "text": "分数墙：1/2那行和2/4那行有一段对齐一样长",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 数学关系",
+                            "text": "等值分数：分子分母同时乘同一个数，大小不变：1/2=2/4",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 通用规律",
+                            "text": "分数墙找等值分数：看哪两行有一样长的段，或用分子分母同乘同除",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
                     ]
-                ,
-                    "options": [{"text":"6/8","correct":true},{"text":"3/8","correct":false},{"text":"5/8","correct":false}]
-                }
-            ],
-            "neriageErrors": [
-                {
-                    "answer": "1/4",
-                    "reason": "分子分母分别加1",
-                    "fix": "等值分数是分子分母同时乘同一个数。1/2=2/4（×2），不是1+1/2+1"
-                }
-            ],
-            "variants": [],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                },
+                                {
+                    "id": "4B-FRAC-W-02",
+                    "scene": "分数墙上，3/4等于下面哪个分数？",
+                    "question": "3/4 = ?（找等值分数）",
+                    "formula": "3/4 = ?",
+                    "answer": "6/8",
                     "choices": [
-                        "1/2等于下面哪个分数",
-                        "1/2和哪个分数谁大",
-                        "分数墙有几行",
-                        "求1/2的分子"
-                    ],
-                    "answer": "1/2等于下面哪个分数",
-                    "explain": "题目问在分数墙上找与1/2相等的分数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "在分数墙上找和1/2一样长的段",
-                        "背出1/2的答案",
-                        "只看分母",
-                        "没有信息"
-                    ],
-                    "answer": "在分数墙上找和1/2一样长的段",
-                    "explain": "用分数墙比较：哪一行的段和1/2一样长，就是等值分数"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "分子分母同乘2：1/2=2/4",
-                        "分子分母分别加1：2/3",
-                        "1/2=1/4",
-                        "1/2=3/4"
-                    ],
-                    "answer": "分子分母同乘2：1/2=2/4",
-                    "explain": "分子分母同时乘2：1×2/2×2=2/4，分数墙上看两段一样长"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "分数墙：1/2那行和2/4那行有一段对齐一样长",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "等值分数：分子分母同时乘同一个数，大小不变：1/2=2/4",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "分数墙找等值分数：看哪两行有一样长的段，或用分子分母同乘同除",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "4B-FRAC-W-02",
-            "scene": "分数墙上，3/4等于下面哪个分数？",
-            "question": "3/4 = ?（找等值分数）",
-            "formula": "3/4 = ?",
-            "answer": "6/8",
-            "choices": [
-                "6/8",
-                "3/8",
-                "5/8",
-                "1/2"
-            ],
-            "visualType": "fractionWall",
-            "visualData": {},
-            "knowledge": "等值分数·分数墙",
-            "difficulty": 2,
-            "hint": "找到3/4那行，看下面哪行有相同长度的段",
-            "rmeChoices": [
-                {
-                    "label": "看分数墙",
-                    "desc": "找3/4等长行",
-                    "correct": true
-                },
-                {
-                    "label": "画分数条",
-                    "desc": "画条对比3/4和6/8",
-                    "correct": true
-                },
-                {
-                    "label": "背答案",
-                    "desc": "3/4=6/8是死的",
-                    "correct": false
-                }
-            ],
-            "russianQuestions": [
-                {
-                    "type": "quantity",
-                    "q": "分数墙上3/4那行，下面哪行有等长的段？",
-                    "keywords": [
                         "6/8",
-                        "等长",
-                        "一样",
-                        "对等",
-                        "3×2/4×2"
+                        "3/8",
+                        "5/8",
+                        "1/2"
+                    ],
+                    "visualType": "fractionWall",
+                    "visualData": {
+                        "type": "fractionWall"
+                    },
+                    "knowledge": "等值分数·分数墙",
+                    "difficulty": 2,
+                    "hint": "找到3/4那行，看下面哪行有相同长度的段",
+                    "rmeChoices": [
+                        {
+                            "label": "看分数墙",
+                            "desc": "找3/4等长行",
+                            "correct": true
+                        },
+                        {
+                            "label": "画分数条",
+                            "desc": "画条对比3/4和6/8",
+                            "correct": true
+                        },
+                        {
+                            "label": "背答案",
+                            "desc": "3/4=6/8是死的",
+                            "correct": false
+                        }
+                    ],
+                    "russianQuestions": [
+                        {
+                            "type": "quantity",
+                            "q": "分数墙上3/4那行，下面哪行有等长的段？",
+                            "keywords": [
+                                "6/8",
+                                "等长",
+                                "一样",
+                                "对等",
+                                "3×2/4×2"
+                            ],
+                            "options": [
+                                {
+                                    "text": "6/8那行",
+                                    "correct": true
+                                },
+                                {
+                                    "text": "3/8那行",
+                                    "correct": false
+                                },
+                                {
+                                    "text": "1/2那行",
+                                    "correct": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "reverse",
+                            "q": "6/8化简后等于几分之几？",
+                            "keywords": [
+                                "3/4",
+                                "化简",
+                                "÷2",
+                                "等值",
+                                "简化"
+                            ],
+                            "options": [
+                                {
+                                    "text": "3/4",
+                                    "correct": true
+                                },
+                                {
+                                    "text": "3/8",
+                                    "correct": false
+                                },
+                                {
+                                    "text": "6/4",
+                                    "correct": false
+                                }
+                            ]
+                        }
+                    ],
+                    "neriageErrors": [
+                        {
+                            "answer": "3/8",
+                            "reason": "只看分母",
+                            "fix": "3/4=6/8（分子分母同时×2），不是3/8"
+                        }
+                    ],
+                    "variants": [],
+                    "discoverySteps": [
+                        {
+                            "q": "📖 再读一遍场景，这道题要我们求什么？",
+                            "choices": [
+                                "3/4等于下面哪个分数",
+                                "3/4和1/2谁大",
+                                "求3/4的分母",
+                                "求3/4的分子"
+                            ],
+                            "answer": "3/4等于下面哪个分数",
+                            "explain": "题目问在分数墙上找与3/4相等的分数"
+                        },
+                        {
+                            "q": "🔢 题目给了我们哪些关键信息？",
+                            "choices": [
+                                "在分数墙上找和3/4一样长的段",
+                                "背出3/4的答案",
+                                "只看分母",
+                                "没有信息"
+                            ],
+                            "answer": "在分数墙上找和3/4一样长的段",
+                            "explain": "用分数墙比较：哪一行的段和3/4一样长"
+                        },
+                        {
+                            "q": "🧩 用什么方法计算？",
+                            "choices": [
+                                "分子分母同乘2：3/4=6/8",
+                                "分母乘2分子不变：3/8",
+                                "3/4=1/2",
+                                "3/4=5/8"
+                            ],
+                            "answer": "分子分母同乘2：3/4=6/8",
+                            "explain": "分子分母同时乘2：3×2/4×2=6/8，大小不变"
+                        }
+                    ],
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 图形结构",
+                            "text": "分数墙：3/4那行和6/8那行有一段对齐一样长",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 数学关系",
+                            "text": "等值分数：分子分母同乘一个数大小不变：3/4=6/8",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 通用规律",
+                            "text": "分数墙找等值分数：等长的段对应等值分数，分子分母可以同乘同除",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
                     ]
-                ,
-                    "options": [{"text":"6/8那行","correct":true},{"text":"3/8那行","correct":false},{"text":"1/2那行","correct":false}]
                 },
-                {
-                    "type": "reverse",
-                    "q": "6/8化简后等于几分之几？",
-                    "keywords": [
-                        "3/4",
-                        "化简",
-                        "÷2",
-                        "等值",
-                        "简化"
-                    ]
-                ,
-                    "options": [{"text":"3/4","correct":true},{"text":"3/8","correct":false},{"text":"6/4","correct":false}]
-                }
-            ],
-            "neriageErrors": [
-                {
-                    "answer": "3/8",
-                    "reason": "只看分母",
-                    "fix": "3/4=6/8（分子分母同时×2），不是3/8"
-                }
-            ],
-            "variants": [],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
+                                {
+                    "id": "4B-FRAC-W-03",
+                    "scene": "分数墙上，2/6和哪个分数等值？",
+                    "question": "2/6 = ?（找等值分数）",
+                    "formula": "2/6 = ?",
+                    "answer": "1/3",
                     "choices": [
-                        "3/4等于下面哪个分数",
-                        "3/4和1/2谁大",
-                        "求3/4的分母",
-                        "求3/4的分子"
-                    ],
-                    "answer": "3/4等于下面哪个分数",
-                    "explain": "题目问在分数墙上找与3/4相等的分数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "在分数墙上找和3/4一样长的段",
-                        "背出3/4的答案",
-                        "只看分母",
-                        "没有信息"
-                    ],
-                    "answer": "在分数墙上找和3/4一样长的段",
-                    "explain": "用分数墙比较：哪一行的段和3/4一样长"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "分子分母同乘2：3/4=6/8",
-                        "分母乘2分子不变：3/8",
-                        "3/4=1/2",
-                        "3/4=5/8"
-                    ],
-                    "answer": "分子分母同乘2：3/4=6/8",
-                    "explain": "分子分母同时乘2：3×2/4×2=6/8，大小不变"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "分数墙：3/4那行和6/8那行有一段对齐一样长",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "等值分数：分子分母同乘一个数大小不变：3/4=6/8",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "分数墙找等值分数：等长的段对应等值分数，分子分母可以同乘同除",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
-        {
-            "id": "4B-FRAC-W-03",
-            "scene": "分数墙上，2/6和哪个分数等值？",
-            "question": "2/6 = ?（找等值分数）",
-            "formula": "2/6 = ?",
-            "answer": "1/3",
-            "choices": [
-                "1/3",
-                "2/3",
-                "3/6",
-                "1/2"
-            ],
-            "visualType": "fractionWall",
-            "visualData": {},
-            "knowledge": "等值分数·分数墙",
-            "difficulty": 2,
-            "hint": "找到2/6那行，看哪一行有相同长度的段",
-            "rmeChoices": [
-                {
-                    "label": "看分数墙",
-                    "desc": "找2/6等长行",
-                    "correct": true
-                },
-                {
-                    "label": "画分数条",
-                    "desc": "画条对比2/6和1/3",
-                    "correct": true
-                },
-                {
-                    "label": "背答案",
-                    "desc": "2/6=1/3是记忆",
-                    "correct": false
-                }
-            ],
-            "russianQuestions": [
-                {
-                    "type": "quantity",
-                    "q": "分数墙上2/6那行，哪行有等长段？",
-                    "keywords": [
                         "1/3",
-                        "等长",
-                        "一样",
-                        "对等",
-                        "2÷2/6÷2"
+                        "2/3",
+                        "3/6",
+                        "1/2"
+                    ],
+                    "visualType": "fractionWall",
+                    "visualData": {
+                        "type": "fractionWall"
+                    },
+                    "knowledge": "等值分数·分数墙",
+                    "difficulty": 2,
+                    "hint": "找到2/6那行，看哪一行有相同长度的段",
+                    "rmeChoices": [
+                        {
+                            "label": "看分数墙",
+                            "desc": "找2/6等长行",
+                            "correct": true
+                        },
+                        {
+                            "label": "画分数条",
+                            "desc": "画条对比2/6和1/3",
+                            "correct": true
+                        },
+                        {
+                            "label": "背答案",
+                            "desc": "2/6=1/3是记忆",
+                            "correct": false
+                        }
+                    ],
+                    "russianQuestions": [
+                        {
+                            "type": "quantity",
+                            "q": "分数墙上2/6那行，哪行有等长段？",
+                            "keywords": [
+                                "1/3",
+                                "等长",
+                                "一样",
+                                "对等",
+                                "2÷2/6÷2"
+                            ],
+                            "options": [
+                                {
+                                    "text": "1/3那行",
+                                    "correct": true
+                                },
+                                {
+                                    "text": "2/3那行",
+                                    "correct": false
+                                },
+                                {
+                                    "text": "1/2那行",
+                                    "correct": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "compare",
+                            "q": "1/3和2/6哪个大？",
+                            "keywords": [
+                                "一样大",
+                                "相等",
+                                "等值",
+                                "相同",
+                                "相等"
+                            ],
+                            "options": [
+                                {
+                                    "text": "一样大（是等值分数）",
+                                    "correct": true
+                                },
+                                {
+                                    "text": "1/3大",
+                                    "correct": false
+                                },
+                                {
+                                    "text": "2/6大",
+                                    "correct": false
+                                }
+                            ]
+                        }
+                    ],
+                    "neriageErrors": [
+                        {
+                            "answer": "2/3",
+                            "reason": "分子分母处理错误",
+                            "fix": "2/6=1/3（分子分母同时÷2），不是2/3"
+                        }
+                    ],
+                    "variants": [],
+                    "discoverySteps": [
+                        {
+                            "q": "📖 再读一遍场景，这道题要我们求什么？",
+                            "choices": [
+                                "2/6等于下面哪个分数",
+                                "2/6和1/2谁大",
+                                "求2/6的分母",
+                                "求2/6的分子"
+                            ],
+                            "answer": "2/6等于下面哪个分数",
+                            "explain": "题目问在分数墙上找与2/6相等的分数"
+                        },
+                        {
+                            "q": "🔢 题目给了我们哪些关键信息？",
+                            "choices": [
+                                "在分数墙上找和2/6一样长的段",
+                                "背出2/6的答案",
+                                "只看分母",
+                                "没有信息"
+                            ],
+                            "answer": "在分数墙上找和2/6一样长的段",
+                            "explain": "用分数墙比较：哪一行的段和2/6一样长"
+                        },
+                        {
+                            "q": "🧩 用什么方法计算？",
+                            "choices": [
+                                "分子分母同除2：2/6=1/3",
+                                "分子分母同乘2：4/6",
+                                "2/6=2/3",
+                                "2/6=1/2"
+                            ],
+                            "answer": "分子分母同除2：2/6=1/3",
+                            "explain": "分子分母同时除以2：2÷2/6÷2=1/3，这就是化简"
+                        }
+                    ],
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 图形结构",
+                            "text": "分数墙：2/6那行和1/3那行有一段对齐一样长",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 数学关系",
+                            "text": "等值分数：分子分母同除同一个数大小不变：2/6=1/3",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 通用规律",
+                            "text": "化简分数：分子分母同时除以它们的公因数，分数大小不变",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
                     ]
-                ,
-                    "options": [{"text":"1/3那行","correct":true},{"text":"2/3那行","correct":false},{"text":"1/2那行","correct":false}]
                 },
-                {
-                    "type": "compare",
-                    "q": "1/3和2/6哪个大？",
-                    "keywords": [
-                        "一样大",
-                        "相等",
-                        "等值",
-                        "相同",
-                        "相等"
-                    ]
-                ,
-                    "options": [{"text":"一样大（是等值分数）","correct":true},{"text":"1/3大","correct":false},{"text":"2/6大","correct":false}]
-                }
-            ],
-            "neriageErrors": [
-                {
-                    "answer": "2/3",
-                    "reason": "分子分母处理错误",
-                    "fix": "2/6=1/3（分子分母同时÷2），不是2/3"
-                }
-            ],
-            "variants": [],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "2/6等于下面哪个分数",
-                        "2/6和1/2谁大",
-                        "求2/6的分母",
-                        "求2/6的分子"
-                    ],
-                    "answer": "2/6等于下面哪个分数",
-                    "explain": "题目问在分数墙上找与2/6相等的分数"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "在分数墙上找和2/6一样长的段",
-                        "背出2/6的答案",
-                        "只看分母",
-                        "没有信息"
-                    ],
-                    "answer": "在分数墙上找和2/6一样长的段",
-                    "explain": "用分数墙比较：哪一行的段和2/6一样长"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "分子分母同除2：2/6=1/3",
-                        "分子分母同乘2：4/6",
-                        "2/6=2/3",
-                        "2/6=1/2"
-                    ],
-                    "answer": "分子分母同除2：2/6=1/3",
-                    "explain": "分子分母同时除以2：2÷2/6÷2=1/3，这就是化简"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "分数墙：2/6那行和1/3那行有一段对齐一样长",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "等值分数：分子分母同除同一个数大小不变：2/6=1/3",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "化简分数：分子分母同时除以它们的公因数，分数大小不变",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ]
-        },
         {
             "id": "4B-NEG-01",
             "scene": "温度计显示-3℃，这表示零下3摄氏度。如果温度升高5℃，现在温度是多少？",
@@ -9050,10 +9128,10 @@ window.MATH_BY_GRADE["4b"] = {
                 }
             ]
         },
-        {
+                {
             "id": "4B-FRAC-N-01",
-            "scene": "在数轴上标出1/2和0.5的位置，它们在同一点吗？",
-            "question": "1/2和0.5在数轴上是否在同一点？",
+            "scene": "小红在数轴上找到了 1/2 的位置。她想把这个分数化成小数。",
+            "question": "把 1/2 化成小数是多少？",
             "formula": "1/2 = ?",
             "answer": "0.5",
             "choices": [
@@ -9077,7 +9155,7 @@ window.MATH_BY_GRADE["4b"] = {
             },
             "knowledge": "分数小数统一·数轴",
             "difficulty": 2,
-            "hint": "1/2 = 0.5，它们在数轴上的位置相同",
+            "hint": "1/2 就是 1 ÷ 2",
             "rmeChoices": [
                 {
                     "label": "画数轴",
@@ -9105,9 +9183,21 @@ window.MATH_BY_GRADE["4b"] = {
                         "相等",
                         "重合",
                         "是"
+                    ],
+                    "options": [
+                        {
+                            "text": "重合（在同一点）",
+                            "correct": true
+                        },
+                        {
+                            "text": "不重合（差一点）",
+                            "correct": false
+                        },
+                        {
+                            "text": "1/2在0.5的左边",
+                            "correct": false
+                        }
                     ]
-                ,
-                    "options": [{"text":"重合（在同一点）","correct":true},{"text":"不重合（差一点）","correct":false},{"text":"1/2在0.5的左边","correct":false}]
                 },
                 {
                     "type": "compare",
@@ -9118,9 +9208,21 @@ window.MATH_BY_GRADE["4b"] = {
                         "相等",
                         "重合",
                         "是"
+                    ],
+                    "options": [
+                        {
+                            "text": "重合（在同一点）",
+                            "correct": true
+                        },
+                        {
+                            "text": "不重合",
+                            "correct": false
+                        },
+                        {
+                            "text": "0.25在1/4的右边",
+                            "correct": false
+                        }
                     ]
-                ,
-                    "options": [{"text":"重合（在同一点）","correct":true},{"text":"不重合","correct":false},{"text":"0.25在1/4的右边","correct":false}]
                 }
             ],
             "neriageErrors": [

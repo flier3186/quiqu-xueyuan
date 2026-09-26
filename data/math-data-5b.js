@@ -2220,9 +2220,9 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-020"
         },
-        {
-            "scene": "小红要把1/2和1/3通分。她找到分母2和3的最小公倍数6。",
-            "question": "1/2通分后分母是6，分子是几？",
+                {
+            "scene": "小红在学习通分。她要把 1/2 化成分母是 6 的分数，想知道分子应该填几。",
+            "question": "1/2 = ?/6，? 处填几？",
             "formula": "1/2 = ?/6",
             "answer": 3,
             "choices": [
@@ -2239,7 +2239,7 @@ window.MATH_BY_GRADE["5b"] = {
             },
             "knowledge": "通分",
             "difficulty": 3,
-            "hint": "同乘3",
+            "hint": "分母 2 变成 6 乘了几，分子就乘几",
             "variants": [
                 {
                     "question": "1/3通分分母6分子是？",
@@ -4961,7 +4961,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-048"
         },
-        {
+                {
             "scene": "小红把11块饼平均分给4个小朋友。老师问她每人分到多少块。",
             "question": "11÷4等于几分之几？(填分子)",
             "formula": "11÷4 = ?/4 (填分子)",
@@ -4974,6 +4974,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
+                "type": "fractionStrip",
                 "num": 11,
                 "total": 4,
                 "color": "#00A896"
@@ -5336,7 +5337,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-052"
         },
-        {
+                {
             "scene": "小红发现1/3和3/9一样大。老师告诉她分数的基本性质。",
             "question": "1/3等于几分之几？(填分子,分母是9)",
             "formula": "1/3 = ?/9",
@@ -5349,8 +5350,9 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
+                "type": "fractionStrip",
                 "num": 3,
-                "total": 5,
+                "total": 9,
                 "color": "#00A896"
             },
             "knowledge": "分数的基本性质",
@@ -5430,7 +5432,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-053"
         },
-        {
+                {
             "scene": "小红发现1/2和3/6一样大。老师告诉她分数的基本性质。",
             "question": "1/2等于几分之几？(填分子,分母是6)",
             "formula": "1/2 = ?/6",
@@ -5443,8 +5445,9 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 2,
-                "total": 5,
+                "type": "fractionStrip",
+                "num": 3,
+                "total": 6,
                 "color": "#00A896"
             },
             "knowledge": "分数的基本性质",
@@ -5728,7 +5731,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-056"
         },
-        {
+                {
             "scene": "小红要把分数8/10化成最简分数。她用分子分母同时除以2。",
             "question": "8/10约分后分子是几？(分母是5)",
             "formula": "8/10 = ?/5",
@@ -5741,8 +5744,9 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 3,
-                "total": 6,
+                "type": "fractionStrip",
+                "num": 4,
+                "total": 5,
                 "color": "#00A896"
             },
             "knowledge": "约分",
@@ -5822,7 +5826,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-057"
         },
-        {
+                {
             "scene": "小红要把分数10/15化成最简分数。她用分子分母同时除以5。",
             "question": "10/15约分后分子是几？(分母是3)",
             "formula": "10/15 = ?/3",
@@ -5835,8 +5839,9 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 3,
-                "total": 5,
+                "type": "fractionStrip",
+                "num": 2,
+                "total": 3,
                 "color": "#00A896"
             },
             "knowledge": "约分",
@@ -5916,194 +5921,196 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-058"
         },
-        {
-            "scene": "小红要把1/2和1/3通分。她找到分母2和3的最小公倍数6。",
-            "question": "1/2通分后分母是6，分子是几？",
-            "formula": "1/2 = ?/6",
-            "answer": 3,
-            "choices": [
-                3,
-                1,
-                6,
-                2
-            ],
-            "visualType": "fractionStrip",
-            "visualData": {
-                "num": 3,
-                "total": 8,
-                "color": "#00A896"
-            },
-            "knowledge": "通分",
-            "difficulty": 3,
-            "hint": "同乘3",
-            "variants": [
-                {
-                    "question": "2/3通分分母9分子是？",
-                    "formula": "2/3=?/9",
-                    "answer": 6,
-                    "hint": "同乘3"
-                },
-                {
-                    "question": "1/4通分分母8分子是？",
-                    "formula": "1/4=?/8",
-                    "answer": 2,
-                    "hint": "同乘2"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
-                    "choices": [
-                        "1/2通分成分母6时分子是几",
-                        "分母2和3的最小公倍数",
-                        "1/2约分后分子",
-                        "3和6的和"
-                    ],
-                    "answer": "1/2通分成分母6时分子是几",
-                    "explain": "1/2与1/3通分用公分母6，求1/2的新分子"
-                },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
-                    "choices": [
-                        "6÷2=3，分母乘3则分子也乘3",
-                        "分母2直接变6",
-                        "只改分子",
-                        "分母乘2"
-                    ],
-                    "answer": "6÷2=3，分母乘3则分子也乘3",
-                    "explain": "公分母6，6是2的3倍"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "分子1×3=3，填3",
-                        "分子1×6=6",
-                        "分子仍是1",
-                        "分子填2"
-                    ],
-                    "answer": "分子1×3=3，填3",
-                    "explain": "分母2×3=6、分子1×3=3，所以1/2=3/6"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "1/2与1/3通分，公分母取最小公倍数6",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
-                },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "6÷2=3，1/2=1×3/(2×3)=3/6，分子是3",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "通分：把分母变一致，分子按相同倍数变化",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5B-PROB-059"
-        },
-        {
-            "scene": "小红要把1/3和1/4通分。她找到分母3和4的最小公倍数12。",
-            "question": "1/3通分后分母是12，分子是几？",
-            "formula": "1/3 = ?/12",
-            "answer": 4,
-            "choices": [
-                4,
-                3,
-                12,
-                2
-            ],
-            "visualType": "fractionStrip",
-            "visualData": {
-                "num": 3,
-                "total": 9,
-                "color": "#00A896"
-            },
-            "knowledge": "通分",
-            "difficulty": 3,
-            "hint": "同乘4",
-            "variants": [
-                {
-                    "question": "1/4通分分母12分子是？",
-                    "formula": "1/4=?/12",
+                                {
+                    "scene": "小红要把 1/2 和另一个分数通分。她找到两个分母的最小公倍数 6。",
+                    "question": "1/2通分后分母是6，分子是几？",
+                    "formula": "1/2 = ?/6",
                     "answer": 3,
-                    "hint": "同乘3"
-                },
-                {
-                    "question": "1/5通分分母10分子是？",
-                    "formula": "1/5=?/10",
-                    "answer": 2,
-                    "hint": "同乘2"
-                }
-            ],
-            "discoverySteps": [
-                {
-                    "q": "📖 再读一遍场景，这道题要我们求什么？",
                     "choices": [
-                        "1/3通分成分母12时分子是几",
-                        "分母3和4的最小公倍数",
-                        "1/3约分后分子",
-                        "3和12的差"
+                        3,
+                        1,
+                        6,
+                        2
                     ],
-                    "answer": "1/3通分成分母12时分子是几",
-                    "explain": "1/3与1/4通分用公分母12，求1/3的新分子"
+                    "visualType": "fractionStrip",
+                    "visualData": {
+                        "type": "fractionStrip",
+                        "num": 3,
+                        "total": 6,
+                        "color": "#00A896"
+                    },
+                    "knowledge": "通分",
+                    "difficulty": 3,
+                    "hint": "同乘3",
+                    "variants": [
+                        {
+                            "question": "2/3通分分母9分子是？",
+                            "formula": "2/3=?/9",
+                            "answer": 6,
+                            "hint": "同乘3"
+                        },
+                        {
+                            "question": "1/4通分分母8分子是？",
+                            "formula": "1/4=?/8",
+                            "answer": 2,
+                            "hint": "同乘2"
+                        }
+                    ],
+                    "discoverySteps": [
+                        {
+                            "q": "📖 再读一遍场景，这道题要我们求什么？",
+                            "choices": [
+                                "1/2通分成分母6时分子是几",
+                                "分母2和3的最小公倍数",
+                                "1/2约分后分子",
+                                "3和6的和"
+                            ],
+                            "answer": "1/2通分成分母6时分子是几",
+                            "explain": "1/2与1/3通分用公分母6，求1/2的新分子"
+                        },
+                        {
+                            "q": "🔢 题目给了我们哪些关键信息？",
+                            "choices": [
+                                "6÷2=3，分母乘3则分子也乘3",
+                                "分母2直接变6",
+                                "只改分子",
+                                "分母乘2"
+                            ],
+                            "answer": "6÷2=3，分母乘3则分子也乘3",
+                            "explain": "公分母6，6是2的3倍"
+                        },
+                        {
+                            "q": "🧩 用什么方法计算？",
+                            "choices": [
+                                "分子1×3=3，填3",
+                                "分子1×6=6",
+                                "分子仍是1",
+                                "分子填2"
+                            ],
+                            "answer": "分子1×3=3，填3",
+                            "explain": "分母2×3=6、分子1×3=3，所以1/2=3/6"
+                        }
+                    ],
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 图形结构",
+                            "text": "1/2与1/3通分，公分母取最小公倍数6",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 数学关系",
+                            "text": "6÷2=3，1/2=1×3/(2×3)=3/6，分子是3",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 通用规律",
+                            "text": "通分：把分母变一致，分子按相同倍数变化",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
+                    ],
+                    "id": "5B-PROB-059"
                 },
-                {
-                    "q": "🔢 题目给了我们哪些关键信息？",
+                                {
+                    "scene": "小红要把 1/3 和 1/4 通分。她找到两个分母的最小公倍数 12。",
+                    "question": "1/3通分后分母是12，分子是几？",
+                    "formula": "1/3 = ?/12",
+                    "answer": 4,
                     "choices": [
-                        "12÷3=4，分母乘4则分子也乘4",
-                        "分母3直接变12",
-                        "只改分子",
-                        "分母乘3"
+                        4,
+                        3,
+                        12,
+                        2
                     ],
-                    "answer": "12÷3=4，分母乘4则分子也乘4",
-                    "explain": "公分母12，12是3的4倍"
-                },
-                {
-                    "q": "🧩 用什么方法计算？",
-                    "choices": [
-                        "分子1×4=4，填4",
-                        "分子1×12=12",
-                        "分子仍是1",
-                        "分子填3"
+                    "visualType": "fractionStrip",
+                    "visualData": {
+                        "type": "fractionStrip",
+                        "num": 4,
+                        "total": 12,
+                        "color": "#00A896"
+                    },
+                    "knowledge": "通分",
+                    "difficulty": 3,
+                    "hint": "同乘4",
+                    "variants": [
+                        {
+                            "question": "1/4通分分母12分子是？",
+                            "formula": "1/4=?/12",
+                            "answer": 3,
+                            "hint": "同乘3"
+                        },
+                        {
+                            "question": "1/5通分分母10分子是？",
+                            "formula": "1/5=?/10",
+                            "answer": 2,
+                            "hint": "同乘2"
+                        }
                     ],
-                    "answer": "分子1×4=4，填4",
-                    "explain": "分母3×4=12、分子1×4=4，所以1/3=4/12"
-                }
-            ],
-            "explainLayers": [
-                {
-                    "icon": "👀",
-                    "title": "看图 — 图形结构",
-                    "text": "1/3与1/4通分，公分母取最小公倍数12",
-                    "bg": "var(--teal-soft)",
-                    "color": "var(--teal)"
+                    "discoverySteps": [
+                        {
+                            "q": "📖 再读一遍场景，这道题要我们求什么？",
+                            "choices": [
+                                "1/3通分成分母12时分子是几",
+                                "分母3和4的最小公倍数",
+                                "1/3约分后分子",
+                                "3和12的差"
+                            ],
+                            "answer": "1/3通分成分母12时分子是几",
+                            "explain": "1/3与1/4通分用公分母12，求1/3的新分子"
+                        },
+                        {
+                            "q": "🔢 题目给了我们哪些关键信息？",
+                            "choices": [
+                                "12÷3=4，分母乘4则分子也乘4",
+                                "分母3直接变12",
+                                "只改分子",
+                                "分母乘3"
+                            ],
+                            "answer": "12÷3=4，分母乘4则分子也乘4",
+                            "explain": "公分母12，12是3的4倍"
+                        },
+                        {
+                            "q": "🧩 用什么方法计算？",
+                            "choices": [
+                                "分子1×4=4，填4",
+                                "分子1×12=12",
+                                "分子仍是1",
+                                "分子填3"
+                            ],
+                            "answer": "分子1×4=4，填4",
+                            "explain": "分母3×4=12、分子1×4=4，所以1/3=4/12"
+                        }
+                    ],
+                    "explainLayers": [
+                        {
+                            "icon": "👀",
+                            "title": "看图 — 图形结构",
+                            "text": "1/3与1/4通分，公分母取最小公倍数12",
+                            "bg": "var(--teal-soft)",
+                            "color": "var(--teal)"
+                        },
+                        {
+                            "icon": "🧠",
+                            "title": "理解 — 数学关系",
+                            "text": "12÷3=4，1/3=1×4/(3×4)=4/12，分子是4",
+                            "bg": "var(--yellow-soft)",
+                            "color": "var(--yellow-700)"
+                        },
+                        {
+                            "icon": "🚀",
+                            "title": "推广 — 通用规律",
+                            "text": "通分：分母统一后，分子按相同倍数放大",
+                            "bg": "var(--coral-soft)",
+                            "color": "var(--coral)"
+                        }
+                    ],
+                    "id": "5B-PROB-060"
                 },
-                {
-                    "icon": "🧠",
-                    "title": "理解 — 数学关系",
-                    "text": "12÷3=4，1/3=1×4/(3×4)=4/12，分子是4",
-                    "bg": "var(--yellow-soft)",
-                    "color": "var(--yellow-700)"
-                },
-                {
-                    "icon": "🚀",
-                    "title": "推广 — 通用规律",
-                    "text": "通分：分母统一后，分子按相同倍数放大",
-                    "bg": "var(--coral-soft)",
-                    "color": "var(--coral)"
-                }
-            ],
-            "id": "5B-PROB-060"
-        },
         {
             "scene": "小红要把0.25化成分数。她知道0.25=25/100。",
             "question": "25/100约分后分母是几？(分子是1)",
@@ -6674,7 +6681,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-066"
         },
-        {
+                {
             "scene": "小红吃了一个蛋糕的1/6，又吃了3/6。她算一共吃了多少。",
             "question": "1/6+3/6等于几分之几？(填分子,分母是6)",
             "formula": "1/6 + 3/6 = ?/6",
@@ -6687,7 +6694,8 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 3,
+                "type": "fractionStrip",
+                "num": 4,
                 "total": 6,
                 "color": "#00A896"
             },
@@ -6862,7 +6870,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-068"
         },
-        {
+                {
             "scene": "小红算1/3+1/3。她通分变成3/9+3/9。",
             "question": "3/9+3/9等于几分之几？(填分子,分母是9)",
             "formula": "3/9 + 3/9 = ?/9",
@@ -6875,8 +6883,9 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 5,
-                "total": 5,
+                "type": "fractionStrip",
+                "num": 6,
+                "total": 9,
                 "color": "#00A896"
             },
             "knowledge": "异分母分数加减法",
@@ -6956,7 +6965,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-069"
         },
-        {
+                {
             "scene": "小红算1/3+1/3。她通分变成2/6+2/6。",
             "question": "2/6+2/6等于几分之几？(填分子,分母是6)",
             "formula": "2/6 + 2/6 = ?/6",
@@ -6969,7 +6978,8 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 5,
+                "type": "fractionStrip",
+                "num": 4,
                 "total": 6,
                 "color": "#00A896"
             },
@@ -7050,7 +7060,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-070"
         },
-        {
+                {
             "scene": "小红算4/5+2/5-1/5。同分母直接加减分子。",
             "question": "4/5+2/5-1/5等于几分之几？(填分子,分母是5)",
             "formula": "4/5+2/5-1/5=?/5",
@@ -7063,7 +7073,8 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 4,
+                "type": "fractionStrip",
+                "num": 5,
                 "total": 5,
                 "color": "#00A896"
             },
@@ -7144,7 +7155,7 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "id": "5B-PROB-071"
         },
-        {
+                {
             "scene": "小红算4/6+2/6-1/6。同分母直接加减分子。",
             "question": "4/6+2/6-1/6等于几分之几？(填分子,分母是6)",
             "formula": "4/6+2/6-1/6=?/6",
@@ -7157,7 +7168,8 @@ window.MATH_BY_GRADE["5b"] = {
             ],
             "visualType": "fractionStrip",
             "visualData": {
-                "num": 4,
+                "type": "fractionStrip",
+                "num": 5,
                 "total": 6,
                 "color": "#00A896"
             },
