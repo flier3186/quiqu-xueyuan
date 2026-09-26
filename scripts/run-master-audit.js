@@ -29,9 +29,6 @@ const dataFiles = [
   'data/math-data-4a.js', 'data/math-data-4b.js',
   'data/math-data-5a.js', 'data/math-data-5b.js',
   'data/math-data-6a.js', 'data/math-data-6b.js',
-  'data/math-data-7a.js', 'data/math-data-7b.js',
-  'data/math-data-8a.js', 'data/math-data-8b.js',
-  'data/math-data-9a.js', 'data/math-data-9b.js',
   'data/math-2a-2b.js',
   'data/math-3-6-extend.js',
 ];

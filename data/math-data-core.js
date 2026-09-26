@@ -5,7 +5,7 @@ window.MATH_LOADED_GRADES = window.MATH_LOADED_GRADES || {};
 // 年级加载状态
 // P0-1 修复：GRADE_ORDER 补上 '2a'。此前它从 '2b' 开始，且全项目无人引用（死配置），
 // 导致任何"按 GRADE_ORDER 遍历"的实现都会漏掉二年级上册。
-window.GRADE_ORDER = ['2a', '2b', '3a', '3b', '4a', '4b', '5a', '5b', '6a', '6b', '7a', '7b', '8a', '8b', '9a', '9b'];
+window.GRADE_ORDER = ['2a', '2b', '3a', '3b', '4a', '4b', '5a', '5b', '6a', '6b'];
 
 // 年级文件名映射
 // P0-1 修复：补 '2a'。此前 2a 不在表内 → loadGrade('2a') 直接 resolve(false)，
@@ -20,13 +20,7 @@ window.GRADE_FILES = {
   '5a': 'math-data-5a.js',
   '5b': 'math-data-5b.js',
   '6a': 'math-data-6a.js',
-  '6b': 'math-data-6b.js',
-  '7a': 'math-data-7a.js',
-  '7b': 'math-data-7b.js',
-  '8a': 'math-data-8a.js',
-  '8b': 'math-data-8b.js',
-  '9a': 'math-data-9a.js',
-  '9b': 'math-data-9b.js'
+  '6b': 'math-data-6b.js'
 };
 
 // 懒加载函数

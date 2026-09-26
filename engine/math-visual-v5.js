@@ -2051,38 +2051,84 @@ window.MathVisualV5 = {
     </div>`;
   },
 
-  // 引擎14：面积网格切分动画（两位数乘法）
-  areaModelAnim(data){
-    const a=data.a||23, b=data.b||15;
-    const aTens=Math.floor(a/10), aOnes=a%10, bTens=Math.floor(b/10), bOnes=b%10;
-    const total=a*b;
-    const W=480, H=280;
-    const ox=60, oy=40, cellW=25, cellH=20;
-    const gW=a*cellW, gH=b*cellH;
-    let svg=`<text x="${W/2}" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${a} × ${b}</text>`;
-    // 大矩形
-    svg+=`<rect x="${ox}" y="${oy}" width="${gW}" height="${gH}" fill="rgba(0,168,150,.08)" stroke="#1E3A5F" stroke-width="1.5" rx="2"/>`;
-    // 切分线
-    const cutX=ox+aTens*cellW, cutY=oy+bTens*cellH;
-    svg+=`<line x1="${cutX}" y1="${oy}" x2="${cutX}" y2="${oy+gH}" stroke="#E8A0BF" stroke-width="2" stroke-dasharray="6,3" class="mv-cut-v"/>`;
-    svg+=`<line x1="${ox}" y1="${cutY}" x2="${ox+gW}" y2="${cutY}" stroke="#E8A0BF" stroke-width="2" stroke-dasharray="6,3" class="mv-cut-h"/>`;
-    // 4个子矩形（逐个填充）
-    const parts=[
-      {x:ox, y:oy, w:aTens*cellW, h:bTens*cellH, v:aTens*bTens*100, c:'#00A896', label:`${aTens}0×${bTens}0=${aTens*bTens*100}`},
-      {x:cutX, y:oy, w:aOnes*cellW, h:bTens*cellH, v:aOnes*bTens*10, c:'#F5B800', label:`${aOnes}0×${bTens}0=${aOnes*bTens*10}`},
-      {x:ox, y:cutY, w:aTens*cellW, h:bOnes*cellH, v:aTens*bOnes*10, c:'#FB923C', label:`${aTens}×${bOnes}0=${aTens*bOnes*10}`},
-      {x:cutX, y:cutY, w:aOnes*cellW, h:bOnes*cellH, v:aOnes*bOnes, c:'#E8A0BF', label:`${aOnes}×${bOnes}=${aOnes*bOnes}`},
-    ];
-    parts.forEach((p,i)=>{
-      svg+=`<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" fill="${p.c}" fill-opacity="0.35" class="mv-part" style="animation:mvFillIn .5s ${i*0.2}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
-      svg+=`<text x="${p.x+p.w/2}" y="${p.y+p.h/2+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${p.label}</text>`;
+  // 引擎14：面积网格切分动画（两位数乘法 / 多位值拆分）
+  // 修复 D1：旧版只读 data.a/data.b，两者缺省就兜底成 23×15 → 题库里用 {rows,cols}（38×46）
+  //          或 {rows:[{count,perRow}]}（乘加混合）写的题全部画成与本题无关的网格（真实页面全库扫描 47 处 / 23 题）。
+  // 修复 D2：个位数因数（如 3×2 面积单位题）走四象限拆解会得到「00×00=0」这类垃圾标签。
+  areaModelAnim(data, problem){
+    data = data || {};
+    // ① 乘加混合（a×b + c×d，如「4 排月季每排 15 株 + 2 排牡丹每排 12 株」）：两组积用条形分段表达
+    if(Array.isArray(data.rows)){
+      const ps = data.rows.map(r => ({
+        label: r && r.label,
+        val: (Number(r && r.count) || 1) * (Number(r && (r.perRow != null ? r.perRow : r.price)) || 0),
+        color: r && r.color
+      }));
+      return this.barModel({ parts: ps }, problem);
+    }
+    // ② 解析本题真实因数：data.a/b → rows/cols → parts[0..1] → 题面公式兜底
+    let a = data.a, b = data.b;
+    if((a == null || b == null) && data.rows != null && data.cols != null){ a = Number(data.rows); b = Number(data.cols); }
+    if((a == null || b == null) && Array.isArray(data.parts) && data.parts.length >= 2){
+      a = Number(data.parts[0] && data.parts[0].val); b = Number(data.parts[1] && data.parts[1].val);
+    }
+    if((a == null || b == null) && problem){
+      const m = String((problem.formula || '') + ' ' + (problem.scene || '')).match(/(\d+)\s*[×x]\s*(\d+)/);
+      if(m){ a = Number(m[1]); b = Number(m[2]); }
+    }
+    a = Number(a); b = Number(b);
+    // 拿不到本题因数就不画乘积网格（绝不编造 23×15）
+    if(!(a > 0) || !(b > 0)) return this.barModel(data, problem);
+    // ③ 两个因数都是个位数「且为整数」：直接摆小方格
+    //   小数不进方格：4.5×3.2 曾被四舍五入成 5×3 的假图，与题面不符
+    if(Number.isInteger(a) && Number.isInteger(b) && a < 10 && b < 10) return this._areaGridSmall(a, b);
+    // ④ 至少一个因数 ≥10：按十位拆块（38→30+8，102→100+2），块块相乘得 2×2 分区，任意位数都成立
+    const blocks = n => { if(n < 10) return [n]; const t = Math.floor(n / 10) * 10, o = n - t; return o > 0 ? [t, o] : [t]; };
+    const A = blocks(a), B = blocks(b);
+    const W = 480, H = 280, ox = 62, oy = 38, gW = 356, gH = 176;
+    const sx = gW / a, sy = gH / b;
+    const xo = []; let acc = 0; A.forEach(v => { xo.push(acc); acc += v * sx; });
+    const yo = []; acc = 0; B.forEach(v => { yo.push(acc); acc += v * sy; });
+    let svg = `<text x="${W/2}" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A5F">${a} × ${b}</text>`;
+    svg += `<rect x="${ox}" y="${oy}" width="${gW}" height="${gH}" fill="rgba(0,168,150,.08)" stroke="#1E3A5F" stroke-width="1.5" rx="2"/>`;
+    if(A.length > 1) svg += `<line x1="${ox + A[0]*sx}" y1="${oy}" x2="${ox + A[0]*sx}" y2="${oy + gH}" stroke="#E8A0BF" stroke-width="2" stroke-dasharray="6,3" class="mv-cut-v"/>`;
+    if(B.length > 1) svg += `<line x1="${ox}" y1="${oy + B[0]*sy}" x2="${ox + gW}" y2="${oy + B[0]*sy}" stroke="#E8A0BF" stroke-width="2" stroke-dasharray="6,3" class="mv-cut-h"/>`;
+    // 标注保持"高位块×低位块"口径（旧版把 5×10 写成「50×10」，标签与算式不符）
+    const cols = ['#00A896', '#F5B800', '#FB923C', '#E8A0BF'];
+    const parts = []; let k = 0;
+    B.forEach((bv, j) => A.forEach((av, i) => {
+      parts.push({ x: ox + xo[i], y: oy + yo[j], w: av * sx, h: bv * sy, c: cols[k++ % 4], label: av + '×' + bv + '=' + (av * bv) });
+    }));
+    parts.forEach((p, i) => {
+      svg += `<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" fill="${p.c}" fill-opacity="0.35" class="mv-part" style="animation:mvFillIn .5s ${i*0.2}s ease both;-webkit-transform-box:fill-box;transform-box:fill-box"/>`;
+      // 分区过小放不下标签就不放（算式已在底栏完整列出，不丢信息，也不出现叠字）
+      if(p.w >= 34 && p.h >= 15) svg += `<text x="${p.x+p.w/2}" y="${p.y+p.h/2+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A5F">${p.label}</text>`;
     });
-    // 总和
-    svg+=`<rect x="50" y="${H-30}" width="${W-100}" height="22" fill="#1E3A5F" rx="11"/>`;
-    svg+=`<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">总面积 = ${parts.map(p=>p.label).join(' + ')}</text>`;
+    svg += `<rect x="50" y="${H-30}" width="${W-100}" height="22" fill="#1E3A5F" rx="11"/>`;
+    svg += `<text x="${W/2}" y="${H-15}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">总面积 = ${parts.map(p=>p.label).join(' + ')}</text>`;
     return `<div class="mv-wrap mv-area-anim">
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${svg}</svg>
     </div>`;
+  },
+
+  // 修复 D2 辅助：两个因数都是个位数时的面积方格（a 行 × b 列，只标边长不印乘积，避免答案泄漏）
+  _areaGridSmall(a, b){
+    a = Math.max(1, Math.round(a)); b = Math.max(1, Math.round(b));
+    const S = 30, padL = 48, padT = 34, padR = 26, padB = 46;
+    const W = padL + b * S + padR, H = padT + a * S + padB;
+    let cells = '';
+    for(let r = 0; r < a; r++){
+      for(let c = 0; c < b; c++){
+        cells += `<rect x="${padL + c * S}" y="${padT + r * S}" width="${S}" height="${S}" fill="${this._palette((r + c) % 2)}" opacity="0.72" stroke="#fff" stroke-width="1"/>`;
+      }
+    }
+    return `<div class="mv-wrap mv-area-model">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+        ${cells}
+        <text x="${W/2}" y="${padT - 16}" text-anchor="middle" font-size="12" font-weight="700" fill="#F5B800">${b} 个</text>
+        <text x="${padL - 16}" y="${padT + a * S / 2}" text-anchor="middle" font-size="12" font-weight="700" fill="#00A896">${a} 行</text>
+        <text x="${W/2}" y="${H - 14}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A5F">${a} × ${b} 的面积</text>
+      </svg></div>`;
   },
 
   // ===== 分步动态演示引擎：6大模型家族的分步动画 =====

@@ -1,40 +1,40 @@
 # MathDiagramMaster.audit() 全库实跑（M1）
-生成：2026-09-20T16:35:38.069Z
+生成：2026-09-26T03:00:10.224Z
 
 ## totals
 {
-  "problems": 983,
-  "tested": 276,
-  "parametric": 217,
-  "valueBound": 241,
-  "legacyConflicts": 341
+  "problems": 743,
+  "tested": 221,
+  "parametric": 183,
+  "valueBound": 208,
+  "legacyConflicts": 292
 }
 
 ## byStage
 {
-  "static": 403,
-  "operable": 491,
-  "animated": 89
+  "static": 229,
+  "operable": 429,
+  "animated": 85
 }
 
 ## byMaster
 {
-  "numberLine": 146,
-  "barModel": 289,
-  "numberBond": 66,
+  "numberLine": 49,
+  "barModel": 233,
+  "numberBond": 62,
   "baseTen": 12,
-  "geometry": 257,
-  "areaModel": 93,
+  "geometry": 180,
+  "areaModel": 88,
   "ruler": 12,
   "balance": 8,
-  "fractionBar": 97,
+  "fractionBar": 96,
   "circleArea": 3
 }
 
 ## conflicts（0）
 []
 
-## legacyConflicts（341）
+## legacyConflicts（292）
 [
   {
     "sem": "2a",
@@ -308,20 +308,6 @@
     "master": "numberBond",
     "v5": "numberBond",
     "manip": "share"
-  },
-  {
-    "sem": "3a",
-    "kp": "观察物体",
-    "master": "numberBond",
-    "v5": "numberBond",
-    "manip": "share"
-  },
-  {
-    "sem": "3a",
-    "kp": "观察物体",
-    "master": "numberBond",
-    "v5": "numberBond",
-    "manip": "barDrop"
   },
   {
     "sem": "3a",
@@ -2093,339 +2079,10 @@
     "master": "barModel",
     "v5": "barModelTranslate",
     "manip": "share"
-  },
-  {
-    "sem": "7a",
-    "kp": "整式运算",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "余角与补角",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "比例分配",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "7a",
-    "kp": "混合运算应用",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "余角与补角应用",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "一元一次方程应用",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "分数应用",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "fraction"
-  },
-  {
-    "sem": "7a",
-    "kp": "统计与百分比",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "7a",
-    "kp": "加法模型",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "生活中负数",
-    "master": "numberLine",
-    "v5": "numberLine",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "角的计算",
-    "master": "numberLine",
-    "v5": "numberLine",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7a",
-    "kp": "统计与百分比",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "7a",
-    "kp": "比例分配",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "7b",
-    "kp": "三角形内角和",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7b",
-    "kp": "多边形内角和",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7b",
-    "kp": "比例分配",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "7b",
-    "kp": "扇形统计图",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7b",
-    "kp": "方程与角度",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7b",
-    "kp": "三角形内角和",
-    "master": "numberLine",
-    "v5": "numberLine",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7b",
-    "kp": "多边形内角和",
-    "master": "numberLine",
-    "v5": "numberLine",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "7b",
-    "kp": "比例分配",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8a",
-    "kp": "空间勾股定理",
-    "master": "numberBond",
-    "v5": "numberBond",
-    "manip": "share"
-  },
-  {
-    "sem": "8a",
-    "kp": "勾股定理应用",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "8a",
-    "kp": "解直角三角形",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "8a",
-    "kp": "统计与百分比",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8a",
-    "kp": "勾股定理实际应用",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "8a",
-    "kp": "统计与百分比",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8b",
-    "kp": "数据的集中趋势",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8b",
-    "kp": "反比例函数系数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8b",
-    "kp": "方程与角度",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "8b",
-    "kp": "扇形统计图",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "8b",
-    "kp": "特殊角三角函数",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "8b",
-    "kp": "加权平均数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8b",
-    "kp": "数据的集中趋势",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "8b",
-    "kp": "加权平均数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "9a",
-    "kp": "圆的周长与面积",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "array"
-  },
-  {
-    "sem": "9a",
-    "kp": "一元二次方程应用",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "9a",
-    "kp": "余弦定理",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "9a",
-    "kp": "圆环面积",
-    "master": "geometry",
-    "v5": "geometry",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "9a",
-    "kp": "正态分布",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "9a",
-    "kp": "一元二次方程应用",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "array"
-  },
-  {
-    "sem": "9a",
-    "kp": "图形旋转",
-    "master": "numberLine",
-    "v5": "numberLine",
-    "manip": "placeValue"
-  },
-  {
-    "sem": "9b",
-    "kp": "反比例函数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "9b",
-    "kp": "概率计算",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "9b",
-    "kp": "加权平均数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "9b",
-    "kp": "加权平均数",
-    "master": "barModel",
-    "v5": "barModelTranslate",
-    "manip": "share"
-  },
-  {
-    "sem": "9b",
-    "kp": "等腰三角形性质",
-    "master": "numberLine",
-    "v5": "numberLine",
-    "manip": "placeValue"
   }
 ]
 
-## nonParametric（59）
+## nonParametric（38）
 [
   {
     "sem": "2a",
@@ -2474,13 +2131,6 @@
     "kp": "有余数的除法",
     "master": "numberBond",
     "question": "需要几条船？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "3a",
-    "kp": "观察物体",
-    "master": "numberBond",
-    "question": "从正面看这排积木，能看到( )个正方形。",
     "reason": "geometry-invariant-to-values"
   },
   {
@@ -2582,90 +2232,6 @@
     "reason": "geometry-invariant-to-values"
   },
   {
-    "sem": "4a",
-    "kp": "计算器使用",
-    "master": "areaModel",
-    "question": "38×46等于多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "三位数乘两位数笔算",
-    "master": "areaModel",
-    "question": "一共买了多少盒粉笔？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "因数有0的乘法",
-    "master": "areaModel",
-    "question": "一共多少个苹果？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "三位数乘两位数笔算",
-    "master": "areaModel",
-    "question": "一共买了多少盒粉笔？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "三位数乘两位数笔算",
-    "master": "areaModel",
-    "question": "一共买了多少盒粉笔？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "因数有0的乘法",
-    "master": "areaModel",
-    "question": "一共多少个苹果？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "因数有0的乘法",
-    "master": "areaModel",
-    "question": "一共多少个苹果？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "口算除法（整十数除）",
-    "master": "areaModel",
-    "question": "每班分多少个跳绳？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4a",
-    "kp": "口算除法（整十数除）",
-    "master": "areaModel",
-    "question": "每班分多少个跳绳？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘除法的意义和各部分关系",
-    "master": "areaModel",
-    "question": "在3×12=36中，36叫什么？(积填1,因数填2)",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法交换律和结合律",
-    "master": "areaModel",
-    "question": "25×4等于多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法分配律",
-    "master": "areaModel",
-    "question": "(20+3)×4等于多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
     "sem": "4b",
     "kp": "简便运算",
     "master": "numberBond",
@@ -2681,44 +2247,9 @@
   },
   {
     "sem": "4b",
-    "kp": "乘除法的意义和各部分关系",
-    "master": "areaModel",
-    "question": "在3×16=48中，48叫什么？(积填1,因数填2)",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘除法的意义和各部分关系",
-    "master": "areaModel",
-    "question": "在4×18=72中，72叫什么？(积填1,因数填3)",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法交换律和结合律",
-    "master": "areaModel",
-    "question": "27×3等于多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法交换律和结合律",
-    "master": "areaModel",
-    "question": "29×4等于多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
     "kp": "乘法分配律",
     "master": "areaModel",
     "question": "(27+3)×6等于多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法分配律",
-    "master": "areaModel",
-    "question": "(28+3)×5等于多少？",
     "reason": "geometry-invariant-to-values"
   },
   {
@@ -2818,31 +2349,10 @@
     "master": "numberBond",
     "question": "13和24的最大公因数是几？",
     "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "8a",
-    "kp": "空间勾股定理",
-    "master": "numberBond",
-    "question": "最长木棍多少分米？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "8b",
-    "kp": "反比例函数系数",
-    "master": "barModel",
-    "question": "k和x=3时的y分别是多少？",
-    "reason": "geometry-invariant-to-values"
-  },
-  {
-    "sem": "8b",
-    "kp": "概率的乘法",
-    "master": "areaModel",
-    "question": "两次都摸到红球的概率是多少？",
-    "reason": "geometry-invariant-to-values"
   }
 ]
 
-## hardcoded（35）
+## hardcoded（13）
 [
   {
     "sem": "3a",
@@ -2887,120 +2397,6 @@
     "question": "还剩多少千克钢材？"
   },
   {
-    "sem": "4a",
-    "kp": "计算器使用",
-    "master": "areaModel",
-    "question": "38×46等于多少？"
-  },
-  {
-    "sem": "4a",
-    "kp": "三位数乘两位数笔算",
-    "master": "areaModel",
-    "question": "一共买了多少盒粉笔？"
-  },
-  {
-    "sem": "4a",
-    "kp": "因数有0的乘法",
-    "master": "areaModel",
-    "question": "一共多少个苹果？"
-  },
-  {
-    "sem": "4a",
-    "kp": "三位数乘两位数笔算",
-    "master": "areaModel",
-    "question": "一共买了多少盒粉笔？"
-  },
-  {
-    "sem": "4a",
-    "kp": "三位数乘两位数笔算",
-    "master": "areaModel",
-    "question": "一共买了多少盒粉笔？"
-  },
-  {
-    "sem": "4a",
-    "kp": "因数有0的乘法",
-    "master": "areaModel",
-    "question": "一共多少个苹果？"
-  },
-  {
-    "sem": "4a",
-    "kp": "因数有0的乘法",
-    "master": "areaModel",
-    "question": "一共多少个苹果？"
-  },
-  {
-    "sem": "4a",
-    "kp": "口算除法（整十数除）",
-    "master": "areaModel",
-    "question": "每班分多少个跳绳？"
-  },
-  {
-    "sem": "4a",
-    "kp": "口算除法（整十数除）",
-    "master": "areaModel",
-    "question": "每班分多少个跳绳？"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘除法的意义和各部分关系",
-    "master": "areaModel",
-    "question": "在3×12=36中，36叫什么？(积填1,因数填2)"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法交换律和结合律",
-    "master": "areaModel",
-    "question": "25×4等于多少？"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法分配律",
-    "master": "areaModel",
-    "question": "(20+3)×4等于多少？"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘除法的意义和各部分关系",
-    "master": "areaModel",
-    "question": "在3×16=48中，48叫什么？(积填1,因数填2)"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘除法的意义和各部分关系",
-    "master": "areaModel",
-    "question": "在4×18=72中，72叫什么？(积填1,因数填3)"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法交换律和结合律",
-    "master": "areaModel",
-    "question": "27×3等于多少？"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法交换律和结合律",
-    "master": "areaModel",
-    "question": "29×4等于多少？"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法分配律",
-    "master": "areaModel",
-    "question": "(27+3)×6等于多少？"
-  },
-  {
-    "sem": "4b",
-    "kp": "乘法分配律",
-    "master": "areaModel",
-    "question": "(28+3)×5等于多少？"
-  },
-  {
-    "sem": "5a",
-    "kp": "小数乘小数",
-    "master": "areaModel",
-    "question": "房间面积是多少平方米？"
-  },
-  {
     "sem": "5a",
     "kp": "小数乘法解决问题",
     "master": "areaModel",
@@ -3014,18 +2410,6 @@
   },
   {
     "sem": "5a",
-    "kp": "小数乘小数",
-    "master": "areaModel",
-    "question": "房间面积是多少平方米？"
-  },
-  {
-    "sem": "5a",
-    "kp": "小数乘小数",
-    "master": "areaModel",
-    "question": "房间面积是多少平方米？"
-  },
-  {
-    "sem": "5a",
     "kp": "小数乘法解决问题",
     "master": "areaModel",
     "question": "超过部分(7-4=3千米)要付多少元？"
@@ -3047,12 +2431,6 @@
     "kp": "小数除法解决问题",
     "master": "areaModel",
     "question": "需要多少个瓶子？(进一法)"
-  },
-  {
-    "sem": "8b",
-    "kp": "概率的乘法",
-    "master": "areaModel",
-    "question": "两次都摸到红球的概率是多少？"
   }
 ]
 

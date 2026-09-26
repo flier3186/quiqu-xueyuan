@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260925a"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260926a"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -3344,7 +3344,7 @@ function renderSidePanel(){
             return `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px">
               ${all.map(a=>`<div title="${a.name}" style="width:100%;aspect-ratio:1;border-radius:10px;background:${a.done?'linear-gradient(135deg,#FEF3C7,#FDE68A)':'var(--ink-100)'};display:flex;align-items:center;justify-content:center;font-size:18px;${a.done?'cursor:pointer':a.progress<a.target?'cursor:default':''};transition:all var(--dur-base)"
                 onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform=''"
-                ${a.done?`onclick="toast('🏆 ${a.name}: ${a.desc}')"`:''}>
+                ${a.done?`onclick="toast('🏆 ${a.name}${a.desc ? ': ' + a.desc : ''}')"`:''}>
                 ${a.done?a.icon:`<span style="font-size:10px;color:var(--text-3)">${Math.round(a.progress*100)}%</span>`}
               </div>`).join('')}
             </div>
@@ -4400,7 +4400,11 @@ function mathAdvance(stage){
 
 // ===== 进入下一题（指针单调推进，永不回绕到第 1 题）=====
 // 修复用户反馈：①日练题目重复 ②做完一轮回到第 1 题而不进下一单元
-const _MATH_SEM_ORDER = ['2a','2b','3a','3b','4a','4b','5a','5b','6a','6b','7a','7b','8a','8b','9a','9b'];
+// 2026-09-25 修复（小学产品越界）：本产品孩子端年级药丸只有 2~6（grade-bar 的 ['2','3','4','5','6']），
+// 但这份顺序表一路排到 9b →「本册做完自动进入下一册」会在 6b 之后把孩子带进 7a，
+// 孩子端会直接看到「七年级上册·有理数与代数初步」「九年级上册·一元二次方程·二次函数」等超纲内容。
+// 收敛为小学段 2a~6b：6b 之后 _mathNextSemKey 返回 null → 停在 6b，提示"已经是最后一册"。
+const _MATH_SEM_ORDER = ['2a','2b','3a','3b','4a','4b','5a','5b','6a','6b'];
 // P2-7：内联占位题库已删除 → 统一走这里取册数据（并容忍"尚未懒加载完成"的空档）
 function _mathGradeData(semKey){
   const M = (typeof MATH_BY_GRADE !== 'undefined' && MATH_BY_GRADE) || {};
@@ -8505,6 +8509,17 @@ const defaultState={
 const STATE_VERSION=5;
 function migrateState(s){
   if(!s || typeof s!=='object') return {};
+  // 2026-09-25 修复：小学产品的年级只允许 2~6。旧版 6b 做完会自动"进入下一册"到 7a，
+  // 把 grade 写成 '7'/'8'/'9' 并随 saveState 落进 localStorage —— 只修顺序表治不好存量档案，
+  // 这里在状态入口统一把超纲年级拉回三年级。
+  try{
+    var _okG = ['2','3','4','5','6'];
+    if(s.math && _okG.indexOf(String(s.math.grade)) < 0) s.math.grade = '3';
+    if(s.profiles) Object.keys(s.profiles).forEach(function(k){
+      var pf = s.profiles[k];
+      if(pf && _okG.indexOf(String(pf.grade)) < 0) pf.grade = '3';
+    });
+  }catch(e){}
   if(!s.stateVersion) s.stateVersion=1;
   // v1→v5：历史结构变更占位。未来升级在此追加 if(s.stateVersion<2){...} 等
   s.stateVersion=STATE_VERSION;
@@ -9195,54 +9210,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260925a"></script>
-<script src="data/math-reverse-model.js?v=20260925a"></script>
-<script src="data/math-daily-bank.js?v=20260925a"></script>
-<script src="data/math-chain-map.js?v=20260925a"></script>
-<script src="data/english-vocab.js?v=20260925a"></script>
-<script src="data/english-phonics.js?v=20260925a"></script>
-<script src="data/english-listening.js?v=20260925a"></script>
-<script src="data/english-grammar.js?v=20260925a"></script>
-<script src="data/english-scenarios.js?v=20260925a"></script>
-<script src="data/english-rubric.js?v=20260925a"></script>
+<script src="data/math-data-core.js?v=20260926a"></script>
+<script src="data/math-reverse-model.js?v=20260926a"></script>
+<script src="data/math-daily-bank.js?v=20260926a"></script>
+<script src="data/math-chain-map.js?v=20260926a"></script>
+<script src="data/english-vocab.js?v=20260926a"></script>
+<script src="data/english-phonics.js?v=20260926a"></script>
+<script src="data/english-listening.js?v=20260926a"></script>
+<script src="data/english-grammar.js?v=20260926a"></script>
+<script src="data/english-scenarios.js?v=20260926a"></script>
+<script src="data/english-rubric.js?v=20260926a"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260925a"></script>
-<script src="engine/usage-metrics.js?v=20260925a"></script>
-<script src="engine/mic-permission.js?v=20260925a"></script>
-<script src="engine/scene-manager.js?v=20260925a"></script>
-<script src="engine/math-visual-v5.js?v=20260925a"></script>
-<script src="engine/math-manipulative.js?v=20260925a"></script>
-<script src="engine/math-geometry-3d.js?v=20260925a"></script>
-<script src="engine/russian-questioning.js?v=20260925a"></script>
-<script src="engine/reverse-model-judge.js?v=20260925a"></script>
-<script src="engine/parent-panel.js?v=20260925a"></script>
-<script src="engine/cloud-tts.js?v=20260925a"></script>
-<script src="engine/neural-tts.js?v=20260925a"></script>
-<script src="engine/asr.js?v=20260925a"></script>
-<script src="data/grade-limits.js?v=20260925a"></script>
-<script src="engine/math-kernel.js?v=20260925a"></script>
-<script src="engine/listening-math.js?v=20260925a"></script>
+<script src="engine/achievements.js?v=20260926a"></script>
+<script src="engine/usage-metrics.js?v=20260926a"></script>
+<script src="engine/mic-permission.js?v=20260926a"></script>
+<script src="engine/scene-manager.js?v=20260926a"></script>
+<script src="engine/math-visual-v5.js?v=20260926a"></script>
+<script src="engine/math-manipulative.js?v=20260926a"></script>
+<script src="engine/math-geometry-3d.js?v=20260926a"></script>
+<script src="engine/russian-questioning.js?v=20260926a"></script>
+<script src="engine/reverse-model-judge.js?v=20260926a"></script>
+<script src="engine/parent-panel.js?v=20260926a"></script>
+<script src="engine/cloud-tts.js?v=20260926a"></script>
+<script src="engine/neural-tts.js?v=20260926a"></script>
+<script src="engine/asr.js?v=20260926a"></script>
+<script src="data/grade-limits.js?v=20260926a"></script>
+<script src="engine/math-kernel.js?v=20260926a"></script>
+<script src="engine/listening-math.js?v=20260926a"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20260925a"></script>
-<script src="engine/math-warmup.js?v=20260925a"></script>
-<script src="engine/math-flow-v5.js?v=20260925a"></script>
-<script src="engine/math-diagram-master.js?v=20260925a"></script>
-<script src="engine/diagram-followup.js?v=20260925a"></script>
-<script src="engine/math-diagnostic.js?v=20260925a"></script>
-<script src="engine/speak-engine-v5.js?v=20260925a"></script>
-<script src="engine/english-flow-v5.js?v=20260925a"></script>
-<script src="engine/weakness-detector-v5.js?v=20260925a"></script>
-<script src="engine/progress-tracker-v5.js?v=20260925a"></script>
+<script src="engine/pet-whisper.js?v=20260926a"></script>
+<script src="engine/math-warmup.js?v=20260926a"></script>
+<script src="engine/math-flow-v5.js?v=20260926a"></script>
+<script src="engine/math-diagram-master.js?v=20260926a"></script>
+<script src="engine/diagram-followup.js?v=20260926a"></script>
+<script src="engine/math-diagnostic.js?v=20260926a"></script>
+<script src="engine/speak-engine-v5.js?v=20260926a"></script>
+<script src="engine/english-flow-v5.js?v=20260926a"></script>
+<script src="engine/weakness-detector-v5.js?v=20260926a"></script>
+<script src="engine/progress-tracker-v5.js?v=20260926a"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260925a"></script>
-<script src="data/math-2a-2b.js?v=20260925a"></script>
-<script src="data/math-3-6-extend.js?v=20260925a"></script>
-<script src="data/speak-8-new.js?v=20260925a"></script>
-<script src="data/vocab-themes.js?v=20260925a"></script>
-<script src="data/word-dict.js?v=20260925a"></script>
-<script src="data/storybooks.js?v=20260925a"></script>
-<script src="data/tpr-action-house.js?v=20260925a"></script>
-<script src="data/listening-radio.js?v=20260925a"></script>
+<script src="engine/spaced-review-v5.js?v=20260926a"></script>
+<script src="data/math-2a-2b.js?v=20260926a"></script>
+<script src="data/math-3-6-extend.js?v=20260926a"></script>
+<script src="data/speak-8-new.js?v=20260926a"></script>
+<script src="data/vocab-themes.js?v=20260926a"></script>
+<script src="data/word-dict.js?v=20260926a"></script>
+<script src="data/storybooks.js?v=20260926a"></script>
+<script src="data/tpr-action-house.js?v=20260926a"></script>
+<script src="data/listening-radio.js?v=20260926a"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
