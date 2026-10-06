@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20261006b"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20261006d"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -928,101 +928,54 @@ h1,h2,h3{letter-spacing:-.01em}
   .speak-layout{grid-template-columns:200px 1fr 240px}
   .pet-layout{grid-template-columns:1fr}
 }
-@media (max-width:980px){
-  .layout-with-side{flex-direction:column}
-  .side-panel{position:static;width:100%;flex-direction:row;flex-wrap:wrap}
-  .side-panel .panel-card{flex:1;min-width:200px}
-  .speak-layout{grid-template-columns:1fr}
+/* 目标设备：电脑（≥1024 为主）+ 平板（768–1023）。手机不再支持。 */
+@media (min-width:768px) and (max-width:1023px){
+  /* 平板：保留侧栏双栏 + 2 列网格，吃满横向空间 */
+  .side-panel{width:230px}
+  .overview-grid{grid-template-columns:repeat(2,1fr)}
+  .bento-grid{grid-template-columns:1fr 1fr !important}
+  .bento-grid>*{grid-column:auto !important;grid-row:auto !important}
+  .tasks-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .chart-row{grid-template-columns:1fr}
+  .speak-layout{grid-template-columns:180px 1fr 220px}
   .persona-list{flex-direction:row;overflow-x:auto}
   .persona-card{min-width:200px}
   .speak-side{flex-direction:row;flex-wrap:wrap}
-  .speak-side>div{flex:1;min-width:240px}
-  .overview-grid{grid-template-columns:1fr}
-  .bento-grid{grid-template-columns:1fr !important}
-  .bento-grid>*{grid-column:auto !important;grid-row:auto !important}
-  .tasks-grid{grid-template-columns:1fr}
-  .stat-grid{grid-template-columns:1fr 1fr}
-  .top-bar{padding:0 12px;height:56px}
-  .top-bar .logo-text{font-size:15px}
-  .top-bar-right{gap:4px}
-  .top-bar-right .parent-btn{padding:6px 10px;font-size:13px}
-  .nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .nav-tab{padding:7px 8px;font-size:13px}
+  .speak-side>div{flex:1;min-width:220px}
+  .top-bar{padding:0 16px;height:60px}
+  .top-bar .logo-text{font-size:16px}
+  .nav-tabs{overflow-x:auto}
+  .nav-tab{padding:7px 10px;font-size:13px}
   .nav-tab span{font-size:11px;white-space:nowrap}
-  .content-area{padding:18px 16px 80px}
-}
-@media (max-width:640px){
-  .top-bar .logo-text{font-size:0;display:none}
-  .top-bar{padding:0 12px;height:56px}
-  .top-bar-right{gap:4px}
-  .top-bar-right .parent-btn{padding:6px 10px;font-size:13px}
-  .nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .nav-tab{padding:5px 6px;font-size:11px;gap:3px}
-  .nav-tab svg{width:18px;height:18px}
-  .nav-tab span{font-size:10px;white-space:nowrap}
-  .nav-tab .underline{display:none}
-  .content-area{padding:12px 10px 70px;width:100%}
-  .icon-btn{width:34px;height:34px}
-  .icon-btn svg{width:16px;height:16px}
-  .parent-btn{padding:4px 10px 4px 4px;gap:4px}
-  .parent-btn svg{width:22px;height:22px}
-  .parent-btn span{font-size:12px}
-  .chat-area{height:auto;max-height:calc(100vh - 180px);min-height:300px}
-  .chat-messages{padding:12px}
-  .msg{max-width:95%}
-  .card{padding:14px}
-  .panel-card{padding:14px}
-  .greeting-text h1{font-size:20px}
-  .listen-wrap{padding:14px}
-  .pet-stage{min-height:400px}
-  .pet-display{width:160px;height:160px}
-  .pet-action-btn{padding:8px 12px;font-size:12px}
-  .pet-selector{flex-wrap:wrap;gap:6px}
-  .pet-sel-item{width:44px;height:44px}
-  .quick-grid{grid-template-columns:repeat(2,1fr)}
-  .eng-banner{padding:14px 16px}
-  .math-banner{padding:14px 16px}
-  .vocab-grid{grid-template-columns:1fr}
-  .phonics-letter-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-  .speak-layout{grid-template-columns:1fr !important}
-  .pet-layout{grid-template-columns:1fr !important}
-  .layout-with-side{flex-direction:column}
-  .side-panel{position:static;width:100%;flex-direction:row;flex-wrap:wrap}
-  .side-panel .panel-card{flex:1;min-width:200px}
-  .chart-row{grid-template-columns:1fr}
-  .report-kpi-row{grid-template-columns:1fr 1fr}
-  .heat-row{grid-template-columns:60px repeat(12,1fr);font-size:10px}
-  .mv-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .mv-wrap svg{max-width:100%;height:auto}
-  .wp-choices{grid-template-columns:1fr 1fr !important}
-  .vocab-grid{grid-template-columns:1fr !important}
-  .phrase-grid{grid-template-columns:1fr !important}
-  .flash-grid{grid-template-columns:1fr 1fr !important}
-  .stat-grid{grid-template-columns:1fr 1fr !important}
-  .quick-grid{grid-template-columns:1fr 1fr !important}
-  .suggest-grid{grid-template-columns:1fr 1fr !important}
-  .mv-geo-outline,.mv-circle-radius{animation:none !important;stroke-dashoffset:0 !important}
-  #floatingPet{bottom:12px !important;right:12px !important}
-  #floatingPet > div{width:64px !important;height:64px !important;border-radius:20px !important}
-  #floatingPet img{border-radius:16px !important}
-  #floatingPet [style*="top:-8px"]{width:22px !important;height:22px !important;font-size:11px !important}
-  #floatingPet [style*="bottom:-10px"]{font-size:9px !important;padding:2px 8px !important}
-}
-/* 超小屏适配（≤380px） */
-@media (max-width:380px){
-  .overview-grid{grid-template-columns:1fr}
-  .tasks-grid{grid-template-columns:1fr}
-  .report-kpi-row{grid-template-columns:1fr}
-  .stat-grid{grid-template-columns:1fr}
-  .quick-grid{grid-template-columns:1fr}
-  .suggest-grid{grid-template-columns:1fr !important}
-  .word-tooltip{max-width:90vw !important}
-  .modal{max-width:96vw !important}
-  .card{gap:8px !important;padding:14px !important}
-  .btn,.btn-primary,.btn-yellow,.btn-ghost{font-size:12px;padding:8px 14px !important}
-  .wp-choice,.listen-opt,.stage-choice{min-height:44px !important;padding:12px 8px !important}
+  .content-area{padding:22px 20px 40px}
 }
 
+/* 宽屏：主内容限宽居中，避免超宽屏行长过长 */
+@media (min-width:1024px){
+  .content-area{max-width:1440px;margin-left:auto;margin-right:auto}
+}
+@media (min-width:1280px){
+  .content-area{padding:28px 36px 48px}
+  .overview-grid{grid-template-columns:repeat(3,1fr)}
+  .stat-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media (min-width:1600px){
+  .content-area{padding:32px 44px 56px;max-width:1600px}
+  .overview-grid{grid-template-columns:repeat(4,1fr)}
+  .tasks-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* 触控（平板）：hover 的位移提升不适用，避免点按后样式"粘住" */
+@media (hover:none){
+  .icon-btn:hover,.btn:hover,.btn-primary:hover,.btn-yellow:hover,.button-3d:hover,
+  .card.hoverable:hover,.quick-item:hover,.task-card:hover,.task-item:hover,
+  .vocab-card:hover,.letter-card:hover,.puzzle-tile:hover,.mini-game-card:hover,
+  .phrase-card:hover,.persona-card:hover,.pet-action-btn:hover,.game-card:hover,
+  .spell-letter:hover,.scene-card:hover,.suggest-card:hover,.listen-btn:hover,
+  .listen-play:hover,.heat-cell:hover,.mic-btn:hover,.pet-sel-item:hover,
+  .btn-record:hover,.btn-listen:hover,.btn-know:hover{transform:none}
+}
 /* 家长面板样式优化 */
 .parent-body{padding:24px 28px;max-height:72vh;overflow-y:auto;display:flex;flex-direction:column;gap:20px}
 .parent-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
@@ -1185,41 +1138,6 @@ h1,h2,h3{letter-spacing:-.01em}
 /* 5) 背景噪点克制，去发闷 */
 body::before{opacity:.35;mix-blend-mode:multiply}
 
-/* 6) 移动优先：主导航改为底部 tab（顶栏保留 logo + 语音 + 家长） */
-@media (max-width:760px){
-  .top-bar{height:60px;padding:0 14px}
-  .top-bar .logo{margin-right:0}
-  .top-bar .logo-mark{width:38px;height:38px;border-radius:11px}
-  .top-bar .logo-text{font-size:17px}
-  .nav-tabs{
-    position:fixed;left:0;right:0;bottom:0;top:auto;z-index:300;
-    flex:initial;gap:0;justify-content:space-around;align-items:stretch;
-    height:60px;padding-bottom:env(safe-area-inset-bottom);
-    background:var(--glass-bg-strong);backdrop-filter:var(--glass-blur);
-    -webkit-backdrop-filter:var(--glass-blur);
-    border-top:1px solid var(--ink-200);box-shadow:0 -6px 20px rgba(14,23,38,.08);
-  }
-  .nav-tab{
-    flex:1;flex-direction:column;justify-content:center;gap:3px;
-    padding:8px 4px;border-radius:0;font-size:11px;font-weight:700;
-    color:var(--text-3);min-height:var(--touch);
-  }
-  .nav-tab .underline{display:none}
-  .nav-tab svg{width:24px;height:24px;fill:var(--text-3)}
-  .nav-tab:hover{background:transparent;color:var(--text-2)}
-  .nav-tab.active{background:transparent;color:var(--teal)}
-  .nav-tab.active svg{fill:var(--teal)}
-  .nav-tab.active::before{
-    content:'';position:absolute;top:6px;width:30px;height:4px;border-radius:4px;
-    background:linear-gradient(90deg,var(--teal),var(--teal-light));
-  }
-  .content-area{padding:18px 16px calc(96px + env(safe-area-inset-bottom))}
-  .overview-grid{grid-template-columns:1fr}
-}
-@media (min-width:761px) and (max-width:980px){
-  .overview-grid{grid-template-columns:1fr 1fr}
-}
-
 /* ---- emoji icon system（替代 SVG 界面图标） ---- */
 .em{display:inline-block;line-height:1;font-style:normal;vertical-align:middle}
 .logo-mark .em{font-size:22px}
@@ -1298,10 +1216,6 @@ window.onerror = function(msg, url, line, col, err) {
     localStorage.setItem('quiqu_error_log', JSON.stringify(logs));
   } catch(e) {}
 };
-// === V5 响应式降级：手机端标记 ===
-if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
-  document.documentElement.classList.add('mobile-mode');
-}
 // === 数据 & 工具 ===
 const ASSETS = {petDragon:'assets/pet3d/dragon-idle.png',petFox:'assets/pet3d/fox-idle.png',petCat:'assets/pet3d/cat-idle.png',petBunny:'assets/pet3d/bunny-idle.png',petWhale:'assets/pet3d/whale-idle.png',teacherEmma:'assets/teacher-emma.jpg',teacherLeo:'assets/teacher-leo.jpg',teacherAria:'assets/teacher-aria.jpg',mouthChart:'assets/mouth-chart-all.jpg'};
 
@@ -4218,7 +4132,7 @@ function renderMath(grade='3'){
         <div id="mathStage" class="math-stage-host">${window.__mathDiagPanel || (
           (!window.MATH_IS_REVIEW && !window.MATH_IS_DIAG && window.MATH_DAILY && window.MATH_DAILY.done >= MATH_DAILY_COUNT && !window.MATH_DAILY_COMPLETE_DISMISSED && !(bankTotal && pIdx >= bankTotal - 1))
             ? renderDailyCompletionCard()
-            : (window.MathFlowV5 ? MathFlowV5.start(problem) : renderMathStage(problem))
+            : (window.MathFlowV5 ? MathFlowV5._resumeOrStart(problem) : renderMathStage(problem))
         )}</div>
         <div class="knowledge-tree">
           <div class="card-title" style="margin-bottom:14px">🌳 知识图谱</div>
@@ -9223,54 +9137,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20261006b"></script>
-<script src="data/math-reverse-model.js?v=20261006b"></script>
-<script src="data/math-daily-bank.js?v=20261006b"></script>
-<script src="data/math-chain-map.js?v=20261006b"></script>
-<script src="data/english-vocab.js?v=20261006b"></script>
-<script src="data/english-phonics.js?v=20261006b"></script>
-<script src="data/english-listening.js?v=20261006b"></script>
-<script src="data/english-grammar.js?v=20261006b"></script>
-<script src="data/english-scenarios.js?v=20261006b"></script>
-<script src="data/english-rubric.js?v=20261006b"></script>
+<script src="data/math-data-core.js?v=20261006d"></script>
+<script src="data/math-reverse-model.js?v=20261006d"></script>
+<script src="data/math-daily-bank.js?v=20261006d"></script>
+<script src="data/math-chain-map.js?v=20261006d"></script>
+<script src="data/english-vocab.js?v=20261006d"></script>
+<script src="data/english-phonics.js?v=20261006d"></script>
+<script src="data/english-listening.js?v=20261006d"></script>
+<script src="data/english-grammar.js?v=20261006d"></script>
+<script src="data/english-scenarios.js?v=20261006d"></script>
+<script src="data/english-rubric.js?v=20261006d"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20261006b"></script>
-<script src="engine/usage-metrics.js?v=20261006b"></script>
-<script src="engine/mic-permission.js?v=20261006b"></script>
-<script src="engine/scene-manager.js?v=20261006b"></script>
-<script src="engine/math-visual-v5.js?v=20261006b"></script>
-<script src="engine/math-manipulative.js?v=20261006b"></script>
-<script src="engine/math-geometry-3d.js?v=20261006b"></script>
-<script src="engine/russian-questioning.js?v=20261006b"></script>
-<script src="engine/reverse-model-judge.js?v=20261006b"></script>
-<script src="engine/parent-panel.js?v=20261006b"></script>
-<script src="engine/cloud-tts.js?v=20261006b"></script>
-<script src="engine/neural-tts.js?v=20261006b"></script>
-<script src="engine/asr.js?v=20261006b"></script>
-<script src="data/grade-limits.js?v=20261006b"></script>
-<script src="engine/math-kernel.js?v=20261006b"></script>
-<script src="engine/listening-math.js?v=20261006b"></script>
+<script src="engine/achievements.js?v=20261006d"></script>
+<script src="engine/usage-metrics.js?v=20261006d"></script>
+<script src="engine/mic-permission.js?v=20261006d"></script>
+<script src="engine/scene-manager.js?v=20261006d"></script>
+<script src="engine/math-visual-v5.js?v=20261006d"></script>
+<script src="engine/math-manipulative.js?v=20261006d"></script>
+<script src="engine/math-geometry-3d.js?v=20261006d"></script>
+<script src="engine/russian-questioning.js?v=20261006d"></script>
+<script src="engine/reverse-model-judge.js?v=20261006d"></script>
+<script src="engine/parent-panel.js?v=20261006d"></script>
+<script src="engine/cloud-tts.js?v=20261006d"></script>
+<script src="engine/neural-tts.js?v=20261006d"></script>
+<script src="engine/asr.js?v=20261006d"></script>
+<script src="data/grade-limits.js?v=20261006d"></script>
+<script src="engine/math-kernel.js?v=20261006d"></script>
+<script src="engine/listening-math.js?v=20261006d"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20261006b"></script>
-<script src="engine/math-warmup.js?v=20261006b"></script>
-<script src="engine/math-flow-v5.js?v=20261006b"></script>
-<script src="engine/math-diagram-master.js?v=20261006b"></script>
-<script src="engine/diagram-followup.js?v=20261006b"></script>
-<script src="engine/math-diagnostic.js?v=20261006b"></script>
-<script src="engine/speak-engine-v5.js?v=20261006b"></script>
-<script src="engine/english-flow-v5.js?v=20261006b"></script>
-<script src="engine/weakness-detector-v5.js?v=20261006b"></script>
-<script src="engine/progress-tracker-v5.js?v=20261006b"></script>
+<script src="engine/pet-whisper.js?v=20261006d"></script>
+<script src="engine/math-warmup.js?v=20261006d"></script>
+<script src="engine/math-flow-v5.js?v=20261006d"></script>
+<script src="engine/math-diagram-master.js?v=20261006d"></script>
+<script src="engine/diagram-followup.js?v=20261006d"></script>
+<script src="engine/math-diagnostic.js?v=20261006d"></script>
+<script src="engine/speak-engine-v5.js?v=20261006d"></script>
+<script src="engine/english-flow-v5.js?v=20261006d"></script>
+<script src="engine/weakness-detector-v5.js?v=20261006d"></script>
+<script src="engine/progress-tracker-v5.js?v=20261006d"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20261006b"></script>
-<script src="data/math-2a-2b.js?v=20261006b"></script>
-<script src="data/math-3-6-extend.js?v=20261006b"></script>
-<script src="data/speak-8-new.js?v=20261006b"></script>
-<script src="data/vocab-themes.js?v=20261006b"></script>
-<script src="data/word-dict.js?v=20261006b"></script>
-<script src="data/storybooks.js?v=20261006b"></script>
-<script src="data/tpr-action-house.js?v=20261006b"></script>
-<script src="data/listening-radio.js?v=20261006b"></script>
+<script src="engine/spaced-review-v5.js?v=20261006d"></script>
+<script src="data/math-2a-2b.js?v=20261006d"></script>
+<script src="data/math-3-6-extend.js?v=20261006d"></script>
+<script src="data/speak-8-new.js?v=20261006d"></script>
+<script src="data/vocab-themes.js?v=20261006d"></script>
+<script src="data/word-dict.js?v=20261006d"></script>
+<script src="data/storybooks.js?v=20261006d"></script>
+<script src="data/tpr-action-house.js?v=20261006d"></script>
+<script src="data/listening-radio.js?v=20261006d"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
@@ -9337,16 +9251,6 @@ if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARI
   var bar = document.getElementById('loading-bar');
   var status = document.getElementById('loading-status');
   if (!overlay) return;
-
-  // 检测移动端
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    var tip = document.createElement('div');
-    tip.id = 'mobile-tip';
-    tip.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);background:#FFF8E6;border:1px solid #F5B800;padding:10px 20px;border-radius:20px;font-size:13px;color:#92400e;z-index:9998;box-shadow:0 2px 8px rgba(0,0,0,.1)';
-    tip.textContent = '💡 建议使用电脑浏览器获得最佳体验';
-    document.body.appendChild(tip);
-    setTimeout(function() { if (tip.parentNode) tip.parentNode.removeChild(tip); }, 5000);
-  }
 
   // 加载超时处理（15秒）
   var timeoutTimer = setTimeout(function() {

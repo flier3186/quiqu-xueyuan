@@ -2403,7 +2403,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "在20米长的路一边植树，每隔5米栽一棵两端都不栽。",
-            "question": "一共要栽多少棵树？",
+            "question": "一共要栽几棵树？",
             "formula": "20 ÷ 5 - 1 = ? (棵)",
             "answer": 3,
             "choices": [
@@ -2517,7 +2517,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红买西瓜，每千克4.6元，买了6千克。她算算要付多少元。",
-            "question": "一共要付多少元？",
+            "question": "一共要付几元？",
             "formula": "4.6 × 6 = ?",
             "answer": 27.6,
             "choices": [
@@ -2616,7 +2616,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红买西瓜，每千克4.7元，买了5千克。她算算要付多少元。",
-            "question": "一共要付多少元？",
+            "question": "总共要付多少元？",
             "formula": "4.7 × 5 = ?",
             "answer": 23.5,
             "choices": [
@@ -2715,7 +2715,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小亮房间长3.6米宽3.2米。他想算房间面积是多少平方米。",
-            "question": "房间面积是多少平方米？",
+            "question": "房间面积一共是多少平方米？",
             "formula": "3.6 × 3.2 = ?",
             "answer": 11.52,
             "choices": [
@@ -2809,7 +2809,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小亮房间长4.7米宽4.2米。他想算房间面积是多少平方米。",
-            "question": "房间面积是多少平方米？",
+            "question": "房间面积等于多少平方米？",
             "formula": "4.7 × 4.2 = ?",
             "answer": 19.74,
             "choices": [
@@ -3205,7 +3205,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "出租车4千米内收12元，超过4千米每千米1.5元。小红坐了7千米。",
-            "question": "超过部分(7-4=3千米)要付多少元？",
+            "question": "超过部分(7-4=3千米)要付几元？",
             "formula": "1.5 × 3 = ?",
             "answer": 4.5,
             "choices": [
@@ -3505,7 +3505,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红买5千克大米共花了36.5元。她算每千克大米多少元。",
-            "question": "每千克大米多少元？",
+            "question": "每一千克大米多少元？",
             "formula": "36.5 ÷ 5 = ?",
             "answer": 7.3,
             "choices": [
@@ -3901,7 +3901,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "妈妈买4.4千克油，每个瓶子最多装0.8千克。需要几个瓶子？",
-            "question": "需要多少个瓶子？(进一法)",
+            "question": "需要几个瓶子？(进一法)",
             "formula": "4.4 ÷ 0.8 = ? (个)",
             "answer": 6,
             "choices": [
@@ -4005,7 +4005,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "妈妈买4.5千克油，每个瓶子最多装0.11千克。需要几个瓶子？",
-            "question": "需要多少个瓶子？(进一法)",
+            "question": "一共需要多少个瓶子？(进一法)",
             "formula": "4.5 ÷ 0.11 = ? (个)",
             "answer": 41,
             "choices": [
@@ -4207,7 +4207,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "袋子里有7个红球，小红闭眼摸一个。老师问摸出什么颜色。",
-            "question": "袋中全是红球，摸出红球是(一定填1,不可能填2,可能填3)",
+            "question": "袋子中全是红球，摸出红球是(一定填1,不可能填2,可能填3)",
             "formula": "全红 → 摸红 ? (1一定/2不可能/3可能)",
             "answer": 1,
             "choices": [
@@ -4617,7 +4617,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红和小亮玩游戏，袋中4红2蓝，摸到红小红赢摸到蓝小亮赢。",
-            "question": "这个游戏公平吗？(公平填1,不公平填3)",
+            "question": "这种游戏公平吗？(公平填1,不公平填3)",
             "formula": "4红2蓝→? (1公平/3不公平)",
             "answer": 3,
             "choices": [
@@ -4913,7 +4913,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红家的平行四边形花坛底6米高6米。她算花坛面积。",
-            "question": "平行四边形面积是多少平方米？",
+            "question": "平行四边形面积一共是多少平方米？",
             "formula": "6 × 6 = ? m²",
             "answer": 36,
             "choices": [
@@ -5009,7 +5009,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红家的平行四边形花坛底6米高3米。她算花坛面积。",
-            "question": "平行四边形面积是多少平方米？",
+            "question": "平行四边形面积等于多少平方米？",
             "formula": "6 × 3 = ? m²",
             "answer": 18,
             "choices": [
@@ -5105,7 +5105,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红画了一个三角形底6厘米高6厘米。她算三角形面积。",
-            "question": "三角形面积是多少平方厘米？",
+            "question": "三角形面积一共是多少平方厘米？",
             "formula": "6 × 6 ÷ 2 = ? cm²",
             "answer": 18,
             "choices": [
@@ -5201,7 +5201,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红画了一个三角形底7厘米高3厘米。她算三角形面积。",
-            "question": "三角形面积是多少平方厘米？",
+            "question": "三角形面积等于多少平方厘米？",
             "formula": "7 × 3 ÷ 2 = ? cm²",
             "answer": 10.5,
             "choices": [
@@ -5297,7 +5297,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小亮家的梯形花圃上底4米下底7米高5米。他算花圃面积。",
-            "question": "梯形面积是多少平方米？",
+            "question": "梯形面积一共是多少平方米？",
             "formula": "(4+7) × 5 ÷ 2 = ? m²",
             "answer": 27.5,
             "choices": [
@@ -5394,7 +5394,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小亮家的梯形花圃上底3米下底5米高5米。他算花圃面积。",
-            "question": "梯形面积是多少平方米？",
+            "question": "梯形面积等于多少平方米？",
             "formula": "(3+5) × 5 ÷ 2 = ? m²",
             "answer": 20,
             "choices": [
@@ -5491,7 +5491,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红家的L形花坛可以分成两个长方形：一个3×3，一个3×3。她算总面积。",
-            "question": "组合图形面积是多少？",
+            "question": "组合图形面积一共是多少？",
             "formula": "3×3 + 3×3 = ?",
             "answer": 18,
             "choices": [
@@ -5597,7 +5597,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红家的L形花坛可以分成两个长方形：一个3×4，一个3×3。她算总面积。",
-            "question": "组合图形面积是多少？",
+            "question": "组合图形面积等于多少？",
             "formula": "3×4 + 3×3 = ?",
             "answer": 21,
             "choices": [
@@ -5703,7 +5703,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红用方格纸估算一片叶子的面积，数了整格16个半格7个。",
-            "question": "叶子面积约是多少格？",
+            "question": "叶子面积约等于多少格？",
             "formula": "16 + 7÷2 = ? (格)",
             "answer": 19.5,
             "choices": [
@@ -5799,7 +5799,7 @@ window.MATH_BY_GRADE["5a"] = {
         },
         {
             "scene": "小红用方格纸估算一片叶子的面积，数了整格17个半格8个。",
-            "question": "叶子面积约是多少格？",
+            "question": "求叶子面积约是多少格？",
             "formula": "17 + 8÷2 = ? (格)",
             "answer": 21,
             "choices": [

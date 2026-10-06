@@ -1869,7 +1869,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有612本图书，平均放在6个书架上。管理员要算每个书架放多少本。",
-            "question": "每个书架放多少本？",
+            "question": "每一个书架放多少本？",
             "formula": "612 ÷ 6 = ?",
             "answer": 102,
             "choices": [
@@ -2543,7 +2543,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "妈妈买了85颗草莓，平均装进3个盒子里。小红帮忙分装，她想知道每盒装几颗。",
-            "question": "每盒装几颗草莓？",
+            "question": "每一盒装几颗草莓？",
             "formula": "85 ÷ 3 = ?",
             "answer": 28,
             "choices": [
@@ -2657,7 +2657,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "妈妈买了49颗草莓，平均装进4个盒子里。小红帮忙分装，她想知道每盒装几颗。",
-            "question": "每盒装几颗草莓？",
+            "question": "平均每盒装几颗草莓？",
             "formula": "49 ÷ 4 = ?",
             "answer": 12,
             "choices": [
@@ -2776,7 +2776,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校买了396本练习本，平均分给2个年级。教务处要算每个年级分多少本。",
-            "question": "每个年级分多少本？",
+            "question": "每一个年级分多少本？",
             "formula": "396 ÷ 2 = ?",
             "answer": 198,
             "choices": [
@@ -2880,7 +2880,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校买了436本练习本，平均分给2个年级。教务处要算每个年级分多少本。",
-            "question": "每个年级分多少本？",
+            "question": "平均每个年级分多少本？",
             "formula": "436 ÷ 2 = ?",
             "answer": 218,
             "choices": [
@@ -2984,7 +2984,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "体育老师有101个皮球，平均分给4个班。他要算每个班分到几个皮球。",
-            "question": "每个班分到几个皮球？",
+            "question": "每一个班分到几个皮球？",
             "formula": "101 ÷ 4 = ?",
             "answer": 25,
             "choices": [
@@ -3103,7 +3103,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "体育老师有109个皮球，平均分给5个班。他要算每个班分到几个皮球。",
-            "question": "每个班分到几个皮球？",
+            "question": "平均每个班分到几个皮球？",
             "formula": "109 ÷ 5 = ?",
             "answer": 21,
             "choices": [
@@ -3227,7 +3227,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "妈妈买了80颗新鲜的草莓，要平均装进5个盒子。小红帮忙分装，她想知道每个盒子装几颗。",
-            "question": "每个盒子装几颗草莓？",
+            "question": "每一个盒子装几颗草莓？",
             "formula": "80 ÷ 5 = ?",
             "answer": 16,
             "choices": [
@@ -3346,7 +3346,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "妈妈买了89颗新鲜的草莓，要平均装进5个盒子。小红帮忙分装，她想知道每个盒子装几颗。",
-            "question": "每个盒子装几颗草莓？",
+            "question": "平均每个盒子装几颗草莓？",
             "formula": "89 ÷ 5 = ?",
             "answer": 17,
             "choices": [
@@ -3470,7 +3470,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有92名同学参加跳绳比赛，平均分成4组。体育老师要算每组有多少人。",
-            "question": "每组有多少人？",
+            "question": "每一组有多少人？",
             "formula": "92 ÷ 4 = ?",
             "answer": 23,
             "choices": [
@@ -3584,7 +3584,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有101名同学参加跳绳比赛，平均分成4组。体育老师要算每组有多少人。",
-            "question": "每组有多少人？",
+            "question": "平均每组有多少人？",
             "formula": "101 ÷ 4 = ?",
             "answer": 25,
             "choices": [
@@ -3703,7 +3703,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小芳有103张画片，平均分给6个好朋友。她要算每个朋友分到多少张画片。",
-            "question": "每个朋友分到多少张画片？",
+            "question": "每一个朋友分到多少张画片？",
             "formula": "103 ÷ 6 = ?",
             "answer": 17,
             "choices": [
@@ -3832,7 +3832,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小芳有110张画片，平均分给7个好朋友。她要算每个朋友分到多少张画片。",
-            "question": "每个朋友分到多少张画片？",
+            "question": "平均每个朋友分到多少张画片？",
             "formula": "110 ÷ 7 = ?",
             "answer": 15,
             "choices": [
@@ -3966,7 +3966,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "图书馆有447本新书，平均放在4个书架上。管理员要算每个书架放多少本。",
-            "question": "每个书架放多少本？",
+            "question": "平均每个书架放多少本？",
             "formula": "447 ÷ 4 = ?",
             "answer": 111,
             "choices": [
@@ -4085,7 +4085,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "图书馆有484本新书，平均放在4个书架上。管理员要算每个书架放多少本。",
-            "question": "每个书架放多少本？",
+            "question": "每个书架放几本？",
             "formula": "484 ÷ 4 = ?",
             "answer": 121,
             "choices": [
@@ -4199,7 +4199,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校买了552本练习本，平均分给5个班。教务处要算每个班分多少本。",
-            "question": "每个班分多少本？",
+            "question": "每一个班分多少本？",
             "formula": "552 ÷ 5 = ?",
             "answer": 110,
             "choices": [
@@ -4323,7 +4323,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校买了587本练习本，平均分给6个班。教务处要算每个班分多少本。",
-            "question": "每个班分多少本？",
+            "question": "平均每个班分多少本？",
             "formula": "587 ÷ 6 = ?",
             "answer": 97,
             "choices": [
@@ -4452,7 +4452,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "体育室有1267根跳绳，平均分给5个年级。体育老师要算每个年级分到多少根。",
-            "question": "每个年级分到多少根？",
+            "question": "每一个年级分到多少根？",
             "formula": "1267 ÷ 5 = ?",
             "answer": 253,
             "choices": [
@@ -4576,7 +4576,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "体育室有753根跳绳，平均分给3个年级。体育老师要算每个年级分到多少根。",
-            "question": "每个年级分到多少根？",
+            "question": "平均每个年级分到多少根？",
             "formula": "753 ÷ 3 = ?",
             "answer": 251,
             "choices": [
@@ -5272,7 +5272,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有710本图书，平均放在5个书架上。管理员要算每个书架放多少本。",
-            "question": "每个书架放多少本？",
+            "question": "平均每一个书架放多少本？",
             "formula": "710 ÷ 5 = ?",
             "answer": 142,
             "choices": [
@@ -5391,7 +5391,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有771本图书，平均放在6个书架上。管理员要算每个书架放多少本。",
-            "question": "每个书架放多少本？",
+            "question": "每个书架放多少本呢？",
             "formula": "771 ÷ 6 = ?",
             "answer": 128,
             "choices": [
@@ -5520,7 +5520,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "体育老师有918个乒乓球，平均分给3个班。他要算每个班分到多少个。",
-            "question": "每个班分到多少个乒乓球？",
+            "question": "每一个班分到多少个乒乓球？",
             "formula": "918 ÷ 3 = ?",
             "answer": 306,
             "choices": [
@@ -5629,7 +5629,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "体育老师有1000个乒乓球，平均分给3个班。他要算每个班分到多少个。",
-            "question": "每个班分到多少个乒乓球？",
+            "question": "平均每个班分到多少个乒乓球？",
             "formula": "1000 ÷ 3 = ?",
             "answer": 333,
             "choices": [
@@ -5743,7 +5743,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "农场收获了1200千克苹果，平均装进3辆卡车。农场主算每辆卡车装多少千克。",
-            "question": "每辆卡车装多少千克？",
+            "question": "每一辆卡车装多少千克？",
             "formula": "1200 ÷ 3 = ?",
             "answer": 400,
             "choices": [
@@ -5852,7 +5852,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "农场收获了696千克苹果，平均装进4辆卡车。农场主算每辆卡车装多少千克。",
-            "question": "每辆卡车装多少千克？",
+            "question": "平均每辆卡车装多少千克？",
             "formula": "696 ÷ 4 = ?",
             "answer": 174,
             "choices": [
@@ -6849,7 +6849,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
                 {
             "scene": "社区要在花园里修一个长方形花坛，长8米、宽5米。工人师傅要在花坛四周围上一圈栅栏。",
-            "question": "花坛的周长是多少米？",
+            "question": "花坛的周长一共是多少米？",
             "formula": "(8 + 5) × 2 = ?",
             "answer": 26,
             "choices": [
@@ -7314,7 +7314,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
                 {
             "scene": "李阿姨要给长10米、宽6米的长方形花园围篱笆，宽边靠墙。她要算需要多少米篱笆。",
-            "question": "需要多少米篱笆？",
+            "question": "需要几米篱笆？",
             "formula": "10 + 10 + 6 = ?",
             "answer": 26,
             "choices": [
@@ -8810,7 +8810,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "老师让同学们用1平方厘米的小正方形摆一个长2厘米宽2厘米的长方形。小红要算需要多少个小正方形。",
-            "question": "需要多少个1平方厘米的小正方形？",
+            "question": "需要几个1平方厘米的小正方形？",
             "formula": "2 × 2 = ?",
             "answer": 4,
             "choices": [
@@ -8907,7 +8907,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "老师让同学们用1平方厘米的小正方形摆一个长4厘米宽2厘米的长方形。小红要算需要多少个小正方形。",
-            "question": "需要多少个1平方厘米的小正方形？",
+            "question": "一共需要多少个1平方厘米的小正方形？",
             "formula": "4 × 2 = ?",
             "answer": 8,
             "choices": [
@@ -9004,7 +9004,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小亮用1平方分米的正方形量桌面，大约能放22个。他好奇桌面面积大约是多少。",
-            "question": "桌面大约多少平方分米？",
+            "question": "桌面大约几平方分米？",
             "formula": "22 × 1 = ?",
             "answer": 22,
             "choices": [
@@ -9118,7 +9118,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小亮用1平方分米的正方形量桌面，大约能放24个。他好奇桌面面积大约是多少。",
-            "question": "桌面大约多少平方分米？",
+            "question": "桌面大约多少平方分米呢？",
             "formula": "24 × 1 = ?",
             "answer": 24,
             "choices": [
@@ -9232,7 +9232,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "爷爷在院子里开垦了一块长方形菜地，长8米、宽4米。他要在菜地里种青菜，想先算算这块地有多大。",
-            "question": "菜地的面积是多少平方米？",
+            "question": "菜地的面积一共是多少平方米？",
             "formula": "8 × 4 = ?",
             "answer": 32,
             "choices": [
@@ -9328,7 +9328,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "爷爷在院子里开垦了一块长方形菜地，长9米、宽5米。他要在菜地里种青菜，想先算算这块地有多大。",
-            "question": "菜地的面积是多少平方米？",
+            "question": "菜地的面积等于多少平方米？",
             "formula": "9 × 5 = ?",
             "answer": 45,
             "choices": [
@@ -9424,7 +9424,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有一块长方形花圃，长7米、宽6米。园丁要种菊花，先算花圃面积。",
-            "question": "花圃的面积是多少平方米？",
+            "question": "花圃的面积一共是多少平方米？",
             "formula": "7 × 6 = ?",
             "answer": 42,
             "choices": [
@@ -9520,7 +9520,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有一块长方形花圃，长8米、宽6米。园丁要种菊花，先算花圃面积。",
-            "question": "花圃的面积是多少平方米？",
+            "question": "花圃的面积等于多少平方米？",
             "formula": "8 × 6 = ?",
             "answer": 48,
             "choices": [
@@ -9616,7 +9616,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有一块正方形草坪，边长8米。园丁要算草坪面积。",
-            "question": "草坪的面积是多少平方米？",
+            "question": "草坪的面积一共是多少平方米？",
             "formula": "8 × 8 = ?",
             "answer": 64,
             "choices": [
@@ -9711,7 +9711,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "学校有一块正方形草坪，边长9米。园丁要算草坪面积。",
-            "question": "草坪的面积是多少平方米？",
+            "question": "草坪的面积等于多少平方米？",
             "formula": "9 × 9 = ?",
             "answer": 81,
             "choices": [
@@ -10487,7 +10487,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小明家装修客厅，客厅长5米、宽5米。用面积1平方米的地砖铺地，要算需要多少块地砖。",
-            "question": "需要多少块地砖？",
+            "question": "需要几块地砖？",
             "formula": "5 × 5 ÷ 1 = ?",
             "answer": 25,
             "choices": [
@@ -10583,7 +10583,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小明家装修客厅，客厅长6米、宽3米。用面积1平方米的地砖铺地，要算需要多少块地砖。",
-            "question": "需要多少块地砖？",
+            "question": "一共需要多少块地砖？",
             "formula": "6 × 3 ÷ 1 = ?",
             "answer": 18,
             "choices": [
@@ -10679,7 +10679,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "工人要粉刷一面墙，墙长9米、高4米。每桶涂料刷4平方米，要算需要几桶涂料。",
-            "question": "需要几桶涂料？",
+            "question": "一共需要几桶涂料？",
             "formula": "9 × 4 ÷ 4 = ?",
             "answer": 9,
             "choices": [
@@ -10775,7 +10775,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "工人要粉刷一面墙，墙长10米、高3米。每桶涂料刷6平方米，要算需要几桶涂料。",
-            "question": "需要几桶涂料？",
+            "question": "要用几桶涂料？",
             "formula": "10 × 3 ÷ 6 = ?",
             "answer": 5,
             "choices": [
@@ -10871,7 +10871,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "地面长7米、宽6米，用面积2平方米的方砖铺设。要算需要多少块方砖。",
-            "question": "需要多少块方砖？",
+            "question": "需要几块方砖？",
             "formula": "7 × 6 ÷ 2 = ?",
             "answer": 21,
             "choices": [
@@ -10967,7 +10967,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "地面长4米、宽4米，用面积2平方米的方砖铺设。要算需要多少块方砖。",
-            "question": "需要多少块方砖？",
+            "question": "一共需要多少块方砖？",
             "formula": "4 × 4 ÷ 2 = ?",
             "answer": 8,
             "choices": [
@@ -11375,7 +11375,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "三(1)班有21人喜欢足球，三(2)班有13人喜欢足球。体育老师要统计两个班一共有多少人喜欢足球。",
-            "question": "两个班一共多少 人喜欢足球？",
+            "question": "两个班总共多少人喜欢足球？",
             "formula": "21 + 13 = ?",
             "answer": 34,
             "choices": [
@@ -11479,7 +11479,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "三(1)班有22人喜欢足球，三(2)班有15人喜欢足球。体育老师要统计两个班一共有多少人喜欢足球。",
-            "question": "两个班一共多少 人喜欢足球？",
+            "question": "两个班加起来多少人喜欢足球？",
             "formula": "22 + 15 = ?",
             "answer": 37,
             "choices": [
@@ -11583,7 +11583,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "三(1)班19人喜欢画画，三(2)班20人喜欢画画。美术老师要统计一共多少 人。",
-            "question": "两个班一共多少人喜欢画画？",
+            "question": "两个班一共几人喜欢画画？",
             "formula": "19 + 20 = ?",
             "answer": 39,
             "choices": [
@@ -11687,7 +11687,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "三(1)班21人喜欢画画，三(2)班23人喜欢画画。美术老师要统计一共多少 人。",
-            "question": "两个班一共多少人喜欢画画？",
+            "question": "两个班总共多少人喜欢画画？",
             "formula": "21 + 23 = ?",
             "answer": 44,
             "choices": [
@@ -11791,7 +11791,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "三(1)班15人喜欢音乐，三(2)班17人喜欢音乐。音乐老师要统计一共多少 人。",
-            "question": "两个班一共多少人喜欢音乐？",
+            "question": "两个班一共几人喜欢音乐？",
             "formula": "15 + 17 = ?",
             "answer": 32,
             "choices": [
@@ -11895,7 +11895,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "三(1)班16人喜欢音乐，三(3)班30人喜欢音乐。音乐老师要统计一共多少 人。",
-            "question": "两个班一共多少人喜欢音乐？",
+            "question": "两个班总共多少人喜欢音乐？",
             "formula": "16 + 30 = ?",
             "answer": 46,
             "choices": [
@@ -14460,7 +14460,7 @@ window.MATH_BY_GRADE["3b"] = {
         
                 {
             "scene": "小明一步跳了1.7米远。他好奇1.7米中的0.7等于十分之几。",
-            "question": "0.7等于十分之几？（填分子）",
+            "question": "0.7用分数表示是十分之几？（填分子）",
             "formula": "0.7=?/10",
             "answer": 7,
             "choices": [
@@ -14555,7 +14555,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小芳的身高是1.3米。她好奇1.3米中的0.3等于十分之几。",
-            "question": "0.3等于十分之几？（填分子）",
+            "question": "0.3用分数表示是十分之几？（填分子）",
             "formula": "0.3 = ?/10",
             "answer": 3,
             "choices": [
@@ -14649,7 +14649,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "文具店里一支铅笔2.7元，一块橡皮1.3元。小亮想买这两样文具，他算算一共多少元。",
-            "question": "买铅笔和橡皮一共多少元？",
+            "question": "买铅笔和橡皮一共几元？",
             "formula": "2.7 + 1.3 = ?",
             "answer": 4,
             "choices": [
@@ -14753,7 +14753,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "文具店里一支铅笔2.4元，一块橡皮1.3元。小亮想买这两样文具，他算算一共多少元。",
-            "question": "买铅笔和橡皮一共多少元？",
+            "question": "买铅笔和橡皮总共多少元？",
             "formula": "2.4 + 1.3 = ?",
             "answer": 3.7,
             "choices": [
@@ -14857,7 +14857,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小红有4.3元零花钱，买了一个发卡用去1.5元。她算算还剩多少钱。",
-            "question": "小红还剩多少元？",
+            "question": "小红还剩几元？",
             "formula": "4.3 - 1.5 = ?",
             "answer": 2.8,
             "choices": [
@@ -14959,7 +14959,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小红有5.2元零花钱，买了一个发卡用去1.7元。她算算还剩多少钱。",
-            "question": "小红还剩多少元？",
+            "question": "小红还剩多少元呢？",
             "formula": "5.2 - 1.7 = ?",
             "answer": 3.5,
             "choices": [
@@ -15061,7 +15061,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小亮身高1.4米，爸爸比他高0.7米。他算算爸爸有多高。",
-            "question": "爸爸身高多少米？",
+            "question": "爸爸身高几米？",
             "formula": "1.4 + 0.7 = ?",
             "answer": 2.1,
             "choices": [
@@ -15165,7 +15165,7 @@ window.MATH_BY_GRADE["3b"] = {
         },
         {
             "scene": "小亮身高1.4米，爸爸比他高0.5米。他算算爸爸有多高。",
-            "question": "爸爸身高多少米？",
+            "question": "爸爸身高多少米呢？",
             "formula": "1.4 + 0.5 = ?",
             "answer": 1.9,
             "choices": [

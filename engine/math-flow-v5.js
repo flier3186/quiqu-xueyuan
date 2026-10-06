@@ -216,6 +216,19 @@ window.MathFlowV5 = {
   },
 
   // ===== 当前阶段渲染分发 =====
+  // 同一题、会话仍在 → 续用现有会话（只重绘当前阶段），避免任何一次中途 render
+  // 触发 start() 把 stage 重置回 warmup —— 表现为"学到一半被打回热身"或"跳过导入"。
+  // 只有题目变了、会话不存在、或尚未选学习模式时，才新建会话。
+  _resumeOrStart(problem){
+    try{
+      const s = this._sess;
+      const k = p => (p && (p.id || p.question)) ? String(p.id || p.question) : '';
+      const hasProfile = !!(typeof S !== 'undefined' && S && S.math && S.math.mathProfile);
+      const same = !!(s && s.problem && k(s.problem) === k(problem) && k(problem) !== '');
+      if(hasProfile && same && s.stage){ return this.renderCurrent(); }
+    }catch(e){}
+    return this.start(problem);
+  },
   renderCurrent(){
     const s = this._sess;
     if(!s || !s.problem) return '<div style="padding:30px;text-align:center;color:var(--text-2)">会话未开始，请先选择一道题</div>';
