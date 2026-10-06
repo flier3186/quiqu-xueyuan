@@ -90,6 +90,14 @@ function checkBounds(topic, out) {
   return true;
 }
 
+// 提示是否泄漏答案：按"数字 token 数值相等"判断（避免子串误判，如答案 8 命中 "38"）；
+// 若答案本身已作为已知数出现在算式里（如 8-0=? 答案 8），不算泄漏。
+function hintLeaks(hint, ans, formula) {
+  if (String(formula).indexOf(String(ans)) >= 0) return false;
+  const nums = String(hint).match(/\d+(?:\.\d+)?/g) || [];
+  return nums.some(n => Math.abs(Number(n) - Number(ans)) < 1e-9);
+}
+
 // ---------- 主压测 ----------
 const PER = 5000;
 const MAX_WINDOW = 30;
@@ -118,9 +126,8 @@ for (const topic of MathKernel.topics()) {
     window.push(fp);
     if (window.length > MAX_WINDOW) window.shift();
 
-    // 3) L1/L2 不含答案数字
-    const ansStr = String(out.answer);
-    if (out.hints[0].indexOf(ansStr) >= 0 || out.hints[1].indexOf(ansStr) >= 0) failHint++;
+    // 3) L1/L2 不含答案（数值 token 比对；答案本就在算式中则豁免）
+    if (hintLeaks(out.hints[0], out.answer, out.formula) || hintLeaks(out.hints[1], out.answer, out.formula)) failHint++;
 
     // 4) 公式可计算出 answer
     if (!formulaYieldsAnswer(out)) failFormula++;

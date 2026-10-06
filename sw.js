@@ -1,4 +1,6 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20260926b';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20261006b';
+// P1-F8：分年级题库（data/math-data-*.js）按需懒加载，由 fetch 处理器运行时缓存，
+// 不在此预缓存（避免首装即全量下载 2.9MB）。math-data-core / math-2a-2b / math-3-6-extend 为启动即用，保留。
 const ASSETS = [
   '/',
   '/index.html',
@@ -14,18 +16,8 @@ const ASSETS = [
   'data/listening-radio.js',
   'data/math-2a-2b.js',
   'data/math-3-6-extend.js',
-  'data/math-data-2a.js',
   'data/math-reverse-model.js',
   'data/english-rubric.js',
-  'data/math-data-2b.js',
-  'data/math-data-3a.js',
-  'data/math-data-3b.js',
-  'data/math-data-4a.js',
-  'data/math-data-4b.js',
-  'data/math-data-5a.js',
-  'data/math-data-5b.js',
-  'data/math-data-6a.js',
-  'data/math-data-6b.js',
   'data/math-data-core.js',
   'data/math-daily-bank.js',
   'data/math-chain-map.js',

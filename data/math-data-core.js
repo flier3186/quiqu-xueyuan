@@ -111,6 +111,8 @@ window.loadGrade = function(grade) {
       }
       // 合并扩展题（必须在 clearCache 之前，否则净化池拿不到新题）
       try { window.applyGradePatch(grade); } catch (e) {}
+      // F2：题库就位后做一次 SRS 键迁移（题干→题目 id），幂等，失败不影响加载
+      try { if (window.SpacedReview && SpacedReview.rekeyGrade) SpacedReview.rekeyGrade(grade); } catch (e) {}
       delete window.MATH_LOADING[grade];
       // 数据换了 → 净化池缓存必须失效
       try { if (window.MathDailyBank && MathDailyBank.clearCache) MathDailyBank.clearCache(); } catch (e) {}

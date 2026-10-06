@@ -235,6 +235,29 @@ window.SpacedReview = (function () {
         '</div>';
     },
 
+    // F2：一次性 SRS 键迁移 —— 把以"题干"为键的旧记录改写成题目 id
+    // 触发时机：该册题库加载完成后由 math-data-core.js 调用（此时题干→id 映射才可用）
+    rekeyGrade(grade) {
+      if (typeof S === 'undefined' || !S) return 0;
+      var data = (typeof window !== 'undefined' && window.MATH_BY_GRADE) ? window.MATH_BY_GRADE[grade] : null;
+      if (!data || !Array.isArray(data.problems)) return 0;
+      S.srsReKeyed = S.srsReKeyed || {};
+      if (S.srsReKeyed[grade]) return 0;
+      var map = {};
+      data.problems.forEach(function (p) { if (p && p.id && p.question) map[String(p.question)] = p.id; });
+      var q = _queue(), n = 0;
+      q.forEach(function (e) {
+        if (e.type !== 'math') return;
+        var nid = map[String(e.key)];
+        if (!nid || nid === e.key) return;
+        if (_find(e.profileId, e.type, nid)) return;
+        e.key = nid; n++;
+      });
+      S.srsReKeyed[grade] = true;
+      if (n) _save();
+      return n;
+    },
+
     // 内部：SM-2 阶梯（保留以测试/兼容）
     _nextInterval: function (cur) {
       return INTERVALS[Math.min(cur + 1, INTERVALS.length - 1)];

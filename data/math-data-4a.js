@@ -394,9 +394,9 @@ window.MATH_BY_GRADE["4a"] = {
             "answer": 45,
             "choices": [
                 45,
-                405,
-                5,
-                450
+                35,
+                55,
+                65
             ],
             "visualType": "numberLine",
             "visualData": {

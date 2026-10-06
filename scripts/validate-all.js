@@ -103,8 +103,52 @@ coreSrc.replace(/'([2-9][ab])':\s*'([^']+)'/g, (_, g, f) => { gradeMap[g] = f; r
 const grades = Object.keys(gradeMap);
 console.log(`[3/4] 分年级题库校验：${grades.length} 个年级（页面懒加载这批）`);
 
-let totalProblems = 0, totalKP = 0, checkedFormulas = 0;
+let totalProblems = 0, totalKP = 0, checkedFormulas = 0, extTotal = 0;
 const problemsByGrade = {};
+
+// 单题校验（分册题库与扩展题共用同一套判据）
+function checkProblem(pr, tag) {
+  const q = pr.question || pr.q || '';
+  if (!q) fail(`${tag} 缺少 question`);
+  if (pr.answer === undefined || pr.answer === null || pr.answer === '')
+    fail(`${tag} 缺少 answer — "${String(q).slice(0, 40)}"`);
+  if (!pr.knowledge) warn(`${tag} 缺少 knowledge 标注 — "${String(q).slice(0, 40)}"`);
+
+  if (Array.isArray(pr.choices) && pr.choices.length) {
+    const hit = pr.choices.some(c => String(c) === String(pr.answer));
+    if (!hit) fail(`${tag} 答案 ${JSON.stringify(pr.answer)} 不在选项中 choices=${JSON.stringify(pr.choices)} — "${String(q).slice(0, 40)}"`);
+  }
+
+  // ★ R1 铁律：答案必须与算式一致
+  if (pr.formula) {
+    const parts = String(pr.formula).split('=');
+    if (parts.length === 2 && /^[?？]+\s*$/.test(parts[1].trim())) {
+      const lhs = parts[0]
+        .replace(/[−–—]/g, '-').replace(/×/g, '*')
+        .replace(/÷\s*(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/g, '÷($1/$2)')
+        .replace(/÷/g, '/');
+      const expected = safeEvalArithmetic(lhs);
+      if (expected !== null && typeof pr.answer === 'number') {
+        checkedFormulas++;
+        const diff = Math.abs(expected - pr.answer);
+        if (diff > 1e-6) {
+          const isRoundOff = Math.abs(Math.floor(expected) - pr.answer) < 1e-6
+                          || Math.abs(Math.ceil(expected) - pr.answer) < 1e-6;
+          if (isRoundOff) {
+            warn(`${tag} 非整除，请人工确认（去尾法/进一法是否得当）— formula="${pr.formula}" 算式结果=${expected} answer=${pr.answer} — "${String(q).slice(0, 40)}"`);
+          } else if (Math.abs(Math.round(expected * 100) / 100 - pr.answer) < 1e-6) {
+            warn(`${tag} 保留两位小数（四舍五入）已放行 — formula="${pr.formula}" 算式结果=${expected} answer=${pr.answer} — "${String(q).slice(0, 40)}"`);
+          } else {
+            fail(`${tag} R1 违规：答案与算式不符 — question="${String(q).slice(0, 40)}" formula="${pr.formula}" 算式结果=${expected} 但 answer=${pr.answer}`);
+          }
+        }
+      }
+    }
+  }
+
+  if (pr.visualType && !RENDERERS.has(pr.visualType))
+    fail(`${tag} visualType="${pr.visualType}" 在引擎中无对应渲染器，会静默回退成 barModel（图画错） — "${String(q).slice(0, 40)}"`);
+}
 
 grades.forEach(g => {
   const f = 'data/' + gradeMap[g];
@@ -122,62 +166,29 @@ grades.forEach(g => {
   totalProblems += problems.length;
   totalKP += kps;
 
-  problems.forEach((pr, idx) => {
-    const tag = `[${g} #${idx + 1}]`;
-    const q = pr.question || pr.q || '';
-
-    // 必填字段
-    if (!q) fail(`${tag} 缺少 question`);
-    if (pr.answer === undefined || pr.answer === null || pr.answer === '')
-      fail(`${tag} 缺少 answer — "${String(q).slice(0, 40)}"`);
-    if (!pr.knowledge) warn(`${tag} 缺少 knowledge 标注 — "${String(q).slice(0, 40)}"`);
-
-    // 答案必须出现在选项里（有选项时）
-    if (Array.isArray(pr.choices) && pr.choices.length) {
-      const hit = pr.choices.some(c => String(c) === String(pr.answer));
-      if (!hit) fail(`${tag} 答案 ${JSON.stringify(pr.answer)} 不在选项中 choices=${JSON.stringify(pr.choices)} — "${String(q).slice(0, 40)}"`);
-    }
-
-    // ★ R1 铁律：答案必须与算式一致（杜绝"减法写成加法"这类低级错误）
-    // 只检查"左边是纯四则、右边是单个 ?"的题型，避免误伤：
-    //   - 有余数除法（23÷4=？...3，answer 是商）
-    //   - 填分子（1/5+2/5=?/5，answer 是分子）
-    if (pr.formula) {
-      const parts = String(pr.formula).split('=');
-      if (parts.length === 2 && /^[?？]+\s*$/.test(parts[1].trim())) {
-        const lhs = parts[0]
-          .replace(/[−–—]/g, '-').replace(/×/g, '*')
-          // 先处理"除以一个分数"：6 ÷ 1/3 = 18，不是 (6÷1)÷3 = 2。
-          // 必须在 ÷→/ 之前做，否则连除 60 ÷ 5 ÷ 4 = 3 会被误判成 60 ÷ (5/4) = 48。
-          .replace(/÷\s*(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/g, '÷($1/$2)')
-          .replace(/÷/g, '/');
-        const expected = safeEvalArithmetic(lhs);
-        if (expected !== null && typeof pr.answer === 'number') {
-          checkedFormulas++;
-          const diff = Math.abs(expected - pr.answer);
-          if (diff > 1e-6) {
-            // 对不上，但答案等于向下/向上取整 —— 可能合法使用了去尾法/进一法，人工确认
-            const isRoundOff = Math.abs(Math.floor(expected) - pr.answer) < 1e-6
-                            || Math.abs(Math.ceil(expected) - pr.answer) < 1e-6;
-            if (isRoundOff) {
-              warn(`${tag} 非整除，请人工确认（去尾法/进一法是否得当）— formula="${pr.formula}" 算式结果=${expected} answer=${pr.answer} — "${String(q).slice(0, 40)}"`);
-            } else if (Math.abs(Math.round(expected * 100) / 100 - pr.answer) < 1e-6) {
-              // 保留两位小数（四舍五入）语义：answer === round(expected, 2) 视为一致（如 38÷3 ≈ 12.67）
-              warn(`${tag} 保留两位小数（四舍五入）已放行 — formula="${pr.formula}" 算式结果=${expected} answer=${pr.answer} — "${String(q).slice(0, 40)}"`);
-            } else {
-              fail(`${tag} R1 违规：答案与算式不符 — question="${String(q).slice(0, 40)}" formula="${pr.formula}" 算式结果=${expected} 但 answer=${pr.answer}`);
-            }
-          }
-        }
-      }
-    }
-
-    // 可视化类型：引擎用 _resolveType 智能路由，不看 visualData.type，
-    // 所以这里只检查 visualType 有没有对应渲染器 —— 没有就会静默回退成 barModel，图会画错。
-    if (pr.visualType && !RENDERERS.has(pr.visualType))
-      fail(`${tag} visualType="${pr.visualType}" 在引擎中无对应渲染器，会静默回退为 barModel（图画错） — "${String(q).slice(0, 40)}"`);
-  });
+  problems.forEach((pr, idx) => checkProblem(pr, `[${g} #${idx + 1}]`));
 });
+
+// ---------------------------------------------------------------- 3b. 扩展题（运行时经 MATH_GRADE_PATCH 合并）
+// 背景：分册文件共 743 题，页面运行时由 math-data-core.js 的 applyGradePatch 把
+// math-3-6-extend.js 的扩展题合并进来（+39 → 使运行时达 782）。此前这批题完全绕过校验。
+{
+  const extPath = path.join(root, 'data/math-3-6-extend.js');
+  if (!fs.existsSync(extPath)) {
+    warn('扩展题文件缺失: data/math-3-6-extend.js');
+  } else {
+    const win = evalWithWindow(fs.readFileSync(extPath, 'utf8'), 'data/math-3-6-extend.js');
+    const ext = (win && win.MATH_EXTEND_3_6) || {};
+    Object.keys(ext).forEach(ek => {
+      const gk = ek.replace(/_e$/, '');
+      (ext[ek] || []).forEach((pr, idx) => {
+        extTotal++;
+        checkProblem(pr, `[扩展 ${gk} #${idx + 1}]`);
+      });
+    });
+    console.log(`[3b/4] 扩展题校验：${extTotal} 道（运行时合计 ${totalProblems + extTotal} 题）`);
+  }
+}
 
 // ---------------------------------------------------------------- 4. 历史全集（仅统计）
 console.log('[4/4] data/math-data.js（历史全集，页面不加载）仅统计，不作门禁');
@@ -210,5 +221,5 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`\n✅ 全部通过：${blocks.length} 个内联块 / ${RUNTIME_FILES.length} 个运行时文件 / ${grades.length} 个年级 / ${totalProblems} 题`);
+console.log(`\n✅ 全部通过：${blocks.length} 个内联块 / ${RUNTIME_FILES.length} 个运行时文件 / ${grades.length} 个年级 / 分册 ${totalProblems} + 扩展 ${extTotal} = ${totalProblems + extTotal} 题`);
 process.exit(0);

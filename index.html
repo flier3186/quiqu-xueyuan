@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
 <link rel="apple-touch-icon" href="assets/icons/icon.svg">
 <link rel="preconnect" href="https://cdn.bootcdn.net">
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20260926b"> defer></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js?v=20261006b"> defer></script>
 <!-- 设计系统：核心 token 在 assets/theme.css（Aria · V7），本 inline <style> 之前加载。
      不引外部字体文件，标题/正文统一用系统圆体字栈（PingFang SC / Microsoft YaHei 加粗）。 -->
 <link rel="stylesheet" href="assets/theme.css">
@@ -8494,6 +8494,7 @@ const defaultState={
   currentSession:null,
   // ===== V5 新增字段（不修改原有字段，只新增） =====
   reviewQueue:[],            // 间隔复习队列
+  srsReKeyed:{},             // F2：SRS 键迁移标记（题干→题目 id，按册）
   lastSession:null,          // 断点续学 {subject, stage, knowledgePoint, time}
   sceneTheme:{date:'',theme:'',words:[]},  // 每日场景主线
   apiConfig:{deepseekKey:''},  // AI API 配置（用户在设置中输入）
@@ -8536,7 +8537,15 @@ function loadState(){
     return {...defaultState, stateVersion:STATE_VERSION};
   }
   s=migrateState(s||{});
-  return {...defaultState,...s};
+  // F13：浅合并会让旧存档缺失的嵌套子字段被旧对象整体覆盖成 undefined。
+  // 对已知嵌套对象补默认键（存档已有的值优先，不覆盖）。profiles 因含动态档案键，不在此列。
+  var _merged={...defaultState,...s};
+  ['overview','math','eng','pet','speak','study','game','apiConfig','sceneTheme'].forEach(function(k){
+    if(defaultState[k]&&typeof defaultState[k]==='object'&&!Array.isArray(defaultState[k])){
+      _merged[k]=Object.assign({},defaultState[k],(_merged[k]&&typeof _merged[k]==='object')?_merged[k]:{});
+    }
+  });
+  return _merged;
 }
 function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
 let S=loadState();
@@ -8573,6 +8582,10 @@ function switchProfile(id){
 }
 // 新增档案
 function addProfile(name){
+  // F4：与 switchProfile 对称 —— 切换前先把当前档案的年级回写，否则会吞掉旧档案最新进度
+  if(!S.profiles[S.currentProfileId]) S.profiles[S.currentProfileId]={name:'宝贝'+S.currentProfileId,grade:S.math.grade,avatarIdx:S.pet.idx,createdAt:Date.now()};
+  else S.profiles[S.currentProfileId].grade=S.math.grade;
+  S.profiles[S.currentProfileId].avatarIdx=S.pet.idx;
   const id='p'+Date.now();
   S.profiles[id]={name,avatarIdx:0,grade:'3',createdAt:Date.now()};
   S.currentProfileId=id;
@@ -9210,54 +9223,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20260926b"></script>
-<script src="data/math-reverse-model.js?v=20260926b"></script>
-<script src="data/math-daily-bank.js?v=20260926b"></script>
-<script src="data/math-chain-map.js?v=20260926b"></script>
-<script src="data/english-vocab.js?v=20260926b"></script>
-<script src="data/english-phonics.js?v=20260926b"></script>
-<script src="data/english-listening.js?v=20260926b"></script>
-<script src="data/english-grammar.js?v=20260926b"></script>
-<script src="data/english-scenarios.js?v=20260926b"></script>
-<script src="data/english-rubric.js?v=20260926b"></script>
+<script src="data/math-data-core.js?v=20261006b"></script>
+<script src="data/math-reverse-model.js?v=20261006b"></script>
+<script src="data/math-daily-bank.js?v=20261006b"></script>
+<script src="data/math-chain-map.js?v=20261006b"></script>
+<script src="data/english-vocab.js?v=20261006b"></script>
+<script src="data/english-phonics.js?v=20261006b"></script>
+<script src="data/english-listening.js?v=20261006b"></script>
+<script src="data/english-grammar.js?v=20261006b"></script>
+<script src="data/english-scenarios.js?v=20261006b"></script>
+<script src="data/english-rubric.js?v=20261006b"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20260926b"></script>
-<script src="engine/usage-metrics.js?v=20260926b"></script>
-<script src="engine/mic-permission.js?v=20260926b"></script>
-<script src="engine/scene-manager.js?v=20260926b"></script>
-<script src="engine/math-visual-v5.js?v=20260926b"></script>
-<script src="engine/math-manipulative.js?v=20260926b"></script>
-<script src="engine/math-geometry-3d.js?v=20260926b"></script>
-<script src="engine/russian-questioning.js?v=20260926b"></script>
-<script src="engine/reverse-model-judge.js?v=20260926b"></script>
-<script src="engine/parent-panel.js?v=20260926b"></script>
-<script src="engine/cloud-tts.js?v=20260926b"></script>
-<script src="engine/neural-tts.js?v=20260926b"></script>
-<script src="engine/asr.js?v=20260926b"></script>
-<script src="data/grade-limits.js?v=20260926b"></script>
-<script src="engine/math-kernel.js?v=20260926b"></script>
-<script src="engine/listening-math.js?v=20260926b"></script>
+<script src="engine/achievements.js?v=20261006b"></script>
+<script src="engine/usage-metrics.js?v=20261006b"></script>
+<script src="engine/mic-permission.js?v=20261006b"></script>
+<script src="engine/scene-manager.js?v=20261006b"></script>
+<script src="engine/math-visual-v5.js?v=20261006b"></script>
+<script src="engine/math-manipulative.js?v=20261006b"></script>
+<script src="engine/math-geometry-3d.js?v=20261006b"></script>
+<script src="engine/russian-questioning.js?v=20261006b"></script>
+<script src="engine/reverse-model-judge.js?v=20261006b"></script>
+<script src="engine/parent-panel.js?v=20261006b"></script>
+<script src="engine/cloud-tts.js?v=20261006b"></script>
+<script src="engine/neural-tts.js?v=20261006b"></script>
+<script src="engine/asr.js?v=20261006b"></script>
+<script src="data/grade-limits.js?v=20261006b"></script>
+<script src="engine/math-kernel.js?v=20261006b"></script>
+<script src="engine/listening-math.js?v=20261006b"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20260926b"></script>
-<script src="engine/math-warmup.js?v=20260926b"></script>
-<script src="engine/math-flow-v5.js?v=20260926b"></script>
-<script src="engine/math-diagram-master.js?v=20260926b"></script>
-<script src="engine/diagram-followup.js?v=20260926b"></script>
-<script src="engine/math-diagnostic.js?v=20260926b"></script>
-<script src="engine/speak-engine-v5.js?v=20260926b"></script>
-<script src="engine/english-flow-v5.js?v=20260926b"></script>
-<script src="engine/weakness-detector-v5.js?v=20260926b"></script>
-<script src="engine/progress-tracker-v5.js?v=20260926b"></script>
+<script src="engine/pet-whisper.js?v=20261006b"></script>
+<script src="engine/math-warmup.js?v=20261006b"></script>
+<script src="engine/math-flow-v5.js?v=20261006b"></script>
+<script src="engine/math-diagram-master.js?v=20261006b"></script>
+<script src="engine/diagram-followup.js?v=20261006b"></script>
+<script src="engine/math-diagnostic.js?v=20261006b"></script>
+<script src="engine/speak-engine-v5.js?v=20261006b"></script>
+<script src="engine/english-flow-v5.js?v=20261006b"></script>
+<script src="engine/weakness-detector-v5.js?v=20261006b"></script>
+<script src="engine/progress-tracker-v5.js?v=20261006b"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20260926b"></script>
-<script src="data/math-2a-2b.js?v=20260926b"></script>
-<script src="data/math-3-6-extend.js?v=20260926b"></script>
-<script src="data/speak-8-new.js?v=20260926b"></script>
-<script src="data/vocab-themes.js?v=20260926b"></script>
-<script src="data/word-dict.js?v=20260926b"></script>
-<script src="data/storybooks.js?v=20260926b"></script>
-<script src="data/tpr-action-house.js?v=20260926b"></script>
-<script src="data/listening-radio.js?v=20260926b"></script>
+<script src="engine/spaced-review-v5.js?v=20261006b"></script>
+<script src="data/math-2a-2b.js?v=20261006b"></script>
+<script src="data/math-3-6-extend.js?v=20261006b"></script>
+<script src="data/speak-8-new.js?v=20261006b"></script>
+<script src="data/vocab-themes.js?v=20261006b"></script>
+<script src="data/word-dict.js?v=20261006b"></script>
+<script src="data/storybooks.js?v=20261006b"></script>
+<script src="data/tpr-action-house.js?v=20261006b"></script>
+<script src="data/listening-radio.js?v=20261006b"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE
@@ -9283,6 +9296,24 @@ if(typeof MATH_EXTEND_3_6!=='undefined'){
   });
   window.MATH_EXTEND_TOTAL = _extTotal;
   console.log('[QuiquV5] 扩展题已登记 ' + _extTotal + ' 道 →', Object.keys(window.MATH_GRADE_PATCH).join(','));
+}
+// 2.5 英语词库合并（P2-F10）
+// 顶层 const VOCAB_BY_GRADE（内联起始集，仅 31 词）不挂 window，导致 data/english-vocab.js
+// 的 window.VOCAB_BY_GRADE（536 词）成为死数据、英语流程只读到 31 词。
+// 现以全量版为准合并进实际使用的那份：grade 缺则补，重叠以全量版为准，内联独有的词补在后面。
+if(typeof window.VOCAB_BY_GRADE!=='undefined' && typeof VOCAB_BY_GRADE!=='undefined' && window.VOCAB_BY_GRADE!==VOCAB_BY_GRADE){
+  var _vwTotal=0;
+  Object.keys(window.VOCAB_BY_GRADE).forEach(function(g){
+    var full=window.VOCAB_BY_GRADE[g]||[];
+    var cur=Array.isArray(VOCAB_BY_GRADE[g])?VOCAB_BY_GRADE[g]:[];
+    if(!full.length){ if(!Array.isArray(VOCAB_BY_GRADE[g])) VOCAB_BY_GRADE[g]=cur; _vwTotal+=cur.length; return; }
+    var seen={}; full.forEach(function(x){seen[String(x.w)]=1;});
+    var extra=cur.filter(function(x){return !seen[String(x.w)];});
+    var merged=full.concat(extra);
+    VOCAB_BY_GRADE[g]=merged;
+    _vwTotal+=merged.length;
+  });
+  console.log('[QuiquV5] 英语词库合并完成：'+Object.keys(VOCAB_BY_GRADE).join(',')+'，合计 '+_vwTotal+' 词');
 }
 // 3. 合并口语场景：const SPEAK_SCENARIOS(内置) + speak-8-new.js 新增8个 = 最多 20 个
 if(typeof window!=='undefined' && window.SPEAK_SCENARIOS && typeof SPEAK_SCENARIOS!=='undefined'){

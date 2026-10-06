@@ -42,6 +42,10 @@ for (const [g, d] of Object.entries(M)) {
   out.push('');
 }
 
+if (totalMain === 0) {
+  console.log('❌ 未读到任何题目（index.html 的 MATH_BY_GRADE 已拆到 data/，此处读到空对象）—— 判为失败');
+  process.exit(1);
+}
 console.log(out.join('\n'));
 console.log('=== 总计：主题 ' + totalMain + ' 题，变式 ' + totalVar + ' 题，共 ' + (totalMain + totalVar) + ' 题');
 console.log('\n=== 知识点分布（全库）');

@@ -516,7 +516,7 @@
           { pos: start, label: H + ':' + (M < 10 ? '0' + M : M), color: COL[0] },
           { pos: end, label: eh + ':' + (em < 10 ? '0' + em : em), color: COL[2] }
         ], highlight: [start, end] },
-        _operands: [H, M, N], _result: N, _op: 'add', _fp: [H, M, N],
+        _operands: [H, M, N], _result: N, _op: 'add', _fp: [H, M, N], _skipEval: true, // 时间式无法用通用算术求值，交人工/专用判据
         choices: makeChoices(N, [N + 60, N - 60, Math.abs(N - 10)])
       };
     },

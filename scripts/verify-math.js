@@ -97,6 +97,10 @@ for (const [grade, gd] of Object.entries(MATH_BY_GRADE)) {
   });
 }
 
+if (totalProblems === 0) {
+  console.log('❌ 未读到任何题目（index.html 的 MATH_BY_GRADE 已拆到 data/，此处读到空对象）—— 判为失败');
+  process.exit(1);
+}
 console.log(`年级: ${Object.keys(MATH_BY_GRADE).join(', ')}`);
 console.log(`主题: ${totalProblems} | 变式: ${totalVariants} | 合计: ${totalProblems + totalVariants}`);
 console.log(`FAIL: ${fails.length}`);

@@ -85,6 +85,10 @@ Object.keys(gradeFiles).forEach(grade => {
 
 console.log('\n=== 验证结果 ===');
 console.log('总题目: ' + totalProblems);
+if (totalProblems === 0) {
+  console.log('❌ 未读到任何题目（数据文件缺失或 root 路径失效）—— 判为失败，杜绝"0 题假通过"');
+  process.exit(1);
+}
 console.log('错误数: ' + errorCount);
 if (issues.length > 0) {
   console.log('\n问题明细:');

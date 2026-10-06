@@ -134,6 +134,10 @@ for (const [grade, gd] of Object.entries(M)) {
     });
   });
 }
+if (totalP + totalV === 0) {
+  console.log('❌ 未读到任何题目（index.html 的 MATH_BY_GRADE 已拆到 data/，此处读到空对象）—— 判为失败');
+  process.exit(1);
+}
 console.log(`主题 ${totalP} | 变式 ${totalV} | 合计 ${totalP + totalV}`);
 console.log(`FAIL: ${fails.length}`); fails.forEach(f => console.log(' ✗ ' + f));
 console.log(`需人工(可判定范围外): ${manual.length}`); manual.forEach(m => console.log(' ? ' + m));

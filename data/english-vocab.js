@@ -1,6 +1,6 @@
 // english-vocab.js · 奇趣学园 V5 英语数据 · 自动生成
 // 全局变量：window.VOCAB_BY_GRADE
-// 词汇分布：二年级2b 80 / 三年级200 / 四年级120 / 五年级130 / 六年级120 = 650词
+// 词汇分布（实测）：合计 536 词（见下方各年级数组）
 // 字段：w(单词) pos(词性) def(释义) ex(例句) coll(搭配) syn(同义词) ant(反义词) unit(教材同步标签) circle(词汇圈: core/expand/challenge)
 
 window.VOCAB_BY_GRADE = {
