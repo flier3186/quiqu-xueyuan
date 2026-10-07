@@ -1226,6 +1226,17 @@ window.onerror = function(msg, url, line, col, err) {
     localStorage.setItem('quiqu_error_log', JSON.stringify(logs));
   } catch(e) {}
 };
+// === V5 错误监控：Promise 未捕获拒绝 ===
+window.addEventListener('unhandledrejection', function(e) {
+  try {
+    var raw = localStorage.getItem('quiqu_error_log');
+    var logs = raw ? JSON.parse(raw) : [];
+    var r = e.reason;
+    logs.push({time: Date.now(), msg: r && r.message ? String(r.message).slice(0,200) : String(r).slice(0,200), url: 'unhandledrejection', line: 0, col: 0, err: r && r.stack ? String(r.stack).slice(0,300) : ''});
+    if (logs.length > 20) logs.shift();
+    localStorage.setItem('quiqu_error_log', JSON.stringify(logs));
+  } catch(e2) {}
+});
 // === 数据 & 工具 ===
 const ASSETS = {petDragon:'assets/pet3d/dragon-idle.webp',petFox:'assets/pet3d/fox-idle.webp',petCat:'assets/pet3d/cat-idle.webp',petBunny:'assets/pet3d/bunny-idle.webp',petWhale:'assets/pet3d/whale-idle.webp',teacherEmma:'assets/teacher-emma.jpg',teacherLeo:'assets/teacher-leo.jpg',teacherAria:'assets/teacher-aria.jpg',mouthChart:'assets/mouth-chart-all.jpg'};
 
@@ -8471,7 +8482,7 @@ function loadState(){
   });
   return _merged;
 }
-function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}
+function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}catch(e){}}
 let S=loadState();
 // ⚠️ `let` 在经典脚本里不会挂到 window —— engine/*.js 里的 `root.S / window.S` 会一直读到 undefined。
 // （2026-09-10 发现：math-kernel.js 的 syncGradeFromState 因此从未生效，年级一直回退硬编码 '3a'。）
@@ -9146,54 +9157,54 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <!-- === V5 数据文件 === -->
-<script src="data/math-data-core.js?v=20261007b"></script>
-<script src="data/math-reverse-model.js?v=20261007b"></script>
-<script src="data/math-daily-bank.js?v=20261007b"></script>
-<script src="data/math-chain-map.js?v=20261007b"></script>
-<script src="data/english-vocab.js?v=20261007b"></script>
-<script src="data/english-phonics.js?v=20261007b"></script>
-<script src="data/english-listening.js?v=20261007b"></script>
-<script src="data/english-grammar.js?v=20261007b"></script>
-<script src="data/english-scenarios.js?v=20261007b"></script>
-<script src="data/english-rubric.js?v=20261007b"></script>
+<script src="data/math-data-core.js?v=20261007c"></script>
+<script src="data/math-reverse-model.js?v=20261007c"></script>
+<script src="data/math-daily-bank.js?v=20261007c"></script>
+<script src="data/math-chain-map.js?v=20261007c"></script>
+<script src="data/english-vocab.js?v=20261007c"></script>
+<script src="data/english-phonics.js?v=20261007c"></script>
+<script src="data/english-listening.js?v=20261007c"></script>
+<script src="data/english-grammar.js?v=20261007c"></script>
+<script src="data/english-scenarios.js?v=20261007c"></script>
+<script src="data/english-rubric.js?v=20261007c"></script>
 <!-- === V5 引擎文件 === -->
-<script src="engine/achievements.js?v=20261007b"></script>
-<script src="engine/usage-metrics.js?v=20261007b"></script>
-<script src="engine/mic-permission.js?v=20261007b"></script>
-<script src="engine/scene-manager.js?v=20261007b"></script>
-<script src="engine/math-visual-v5.js?v=20261007b"></script>
-<script src="engine/math-manipulative.js?v=20261007b"></script>
-<script src="engine/math-geometry-3d.js?v=20261007b"></script>
-<script src="engine/russian-questioning.js?v=20261007b"></script>
-<script src="engine/reverse-model-judge.js?v=20261007b"></script>
-<script src="engine/parent-panel.js?v=20261007b"></script>
-<script src="engine/cloud-tts.js?v=20261007b"></script>
-<script src="engine/neural-tts.js?v=20261007b"></script>
-<script src="engine/asr.js?v=20261007b"></script>
-<script src="data/grade-limits.js?v=20261007b"></script>
-<script src="engine/math-kernel.js?v=20261007b"></script>
-<script src="engine/listening-math.js?v=20261007b"></script>
+<script src="engine/achievements.js?v=20261007c"></script>
+<script src="engine/usage-metrics.js?v=20261007c"></script>
+<script src="engine/mic-permission.js?v=20261007c"></script>
+<script src="engine/scene-manager.js?v=20261007c"></script>
+<script src="engine/math-visual-v5.js?v=20261007c"></script>
+<script src="engine/math-manipulative.js?v=20261007c"></script>
+<script src="engine/math-geometry-3d.js?v=20261007c"></script>
+<script src="engine/russian-questioning.js?v=20261007c"></script>
+<script src="engine/reverse-model-judge.js?v=20261007c"></script>
+<script src="engine/parent-panel.js?v=20261007c"></script>
+<script src="engine/cloud-tts.js?v=20261007c"></script>
+<script src="engine/neural-tts.js?v=20261007c"></script>
+<script src="engine/asr.js?v=20261007c"></script>
+<script src="data/grade-limits.js?v=20261007c"></script>
+<script src="engine/math-kernel.js?v=20261007c"></script>
+<script src="engine/listening-math.js?v=20261007c"></script>
 <script type="module" src="engine/pet-companion.js"></script>
-<script src="engine/pet-whisper.js?v=20261007b"></script>
-<script src="engine/math-warmup.js?v=20261007b"></script>
-<script src="engine/math-flow-v5.js?v=20261007b"></script>
-<script src="engine/math-diagram-master.js?v=20261007b"></script>
-<script src="engine/diagram-followup.js?v=20261007b"></script>
-<script src="engine/math-diagnostic.js?v=20261007b"></script>
-<script src="engine/speak-engine-v5.js?v=20261007b"></script>
-<script src="engine/english-flow-v5.js?v=20261007b"></script>
-<script src="engine/weakness-detector-v5.js?v=20261007b"></script>
-<script src="engine/progress-tracker-v5.js?v=20261007b"></script>
+<script src="engine/pet-whisper.js?v=20261007c"></script>
+<script src="engine/math-warmup.js?v=20261007c"></script>
+<script src="engine/math-flow-v5.js?v=20261007c"></script>
+<script src="engine/math-diagram-master.js?v=20261007c"></script>
+<script src="engine/diagram-followup.js?v=20261007c"></script>
+<script src="engine/math-diagnostic.js?v=20261007c"></script>
+<script src="engine/speak-engine-v5.js?v=20261007c"></script>
+<script src="engine/english-flow-v5.js?v=20261007c"></script>
+<script src="engine/weakness-detector-v5.js?v=20261007c"></script>
+<script src="engine/progress-tracker-v5.js?v=20261007c"></script>
 <script src="lib/ts-fsrs.mjs"></script>
-<script src="engine/spaced-review-v5.js?v=20261007b"></script>
-<script src="data/math-2a-2b.js?v=20261007b"></script>
-<script src="data/math-3-6-extend.js?v=20261007b"></script>
-<script src="data/speak-8-new.js?v=20261007b"></script>
-<script src="data/vocab-themes.js?v=20261007b"></script>
-<script src="data/word-dict.js?v=20261007b"></script>
-<script src="data/storybooks.js?v=20261007b"></script>
-<script src="data/tpr-action-house.js?v=20261007b"></script>
-<script src="data/listening-radio.js?v=20261007b"></script>
+<script src="engine/spaced-review-v5.js?v=20261007c"></script>
+<script src="data/math-2a-2b.js?v=20261007c"></script>
+<script src="data/math-3-6-extend.js?v=20261007c"></script>
+<script src="data/speak-8-new.js?v=20261007c"></script>
+<script src="data/vocab-themes.js?v=20261007c"></script>
+<script src="data/word-dict.js?v=20261007c"></script>
+<script src="data/storybooks.js?v=20261007c"></script>
+<script src="data/tpr-action-house.js?v=20261007c"></script>
+<script src="data/listening-radio.js?v=20261007c"></script>
 <script>
 // ===== 内容扩充合并脚本 =====
 // 1. 合并 2a/2b 二年级数学到 MATH_BY_GRADE

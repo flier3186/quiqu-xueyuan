@@ -50,7 +50,7 @@ h1 { font-size: 20px; color: #1e3a5f; margin-bottom: 16px; }
   const ua = navigator.userAgent;
   const info = document.getElementById('browserInfo');
   info.innerHTML = `
-    <div>浏览器: <b>${ua.includes('Alook') ? 'Alook' : ua.match(/(iPhone|iPad|iPod)/ ? 'Safari/iOS' : ua.match(/Chrome/ ? 'Chrome' : ua.match(/Safari/ ? 'Safari' : 'Unknown')}</b></div>
+    <div>浏览器: <b>${ua.includes('Alook') ? 'Alook' : ua.match(/(iPhone|iPad|iPod)/) ? 'Safari/iOS' : ua.match(/Chrome/) ? 'Chrome' : ua.match(/Safari/) ? 'Safari' : 'Unknown'}</b></div>
     <div>屏幕: <b>${window.innerWidth}x${window.innerHeight}</b></div>
     <div>缩放: <b>${window.devicePixelRatio}x</b></div>
     <div>在线: <b>${navigator.onLine ? '是' : '否'}</b></div>

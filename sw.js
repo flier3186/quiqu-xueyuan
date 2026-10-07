@@ -1,12 +1,12 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20261007b';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20261007c';
 // P1-F8：分年级题库（data/math-data-*.js）按需懒加载，由 fetch 处理器运行时缓存，
 // 不在此预缓存（避免首装即全量下载 2.9MB）。math-data-core / math-2a-2b / math-3-6-extend 为启动即用，保留。
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/assets/theme.css',
-  '/assets/icons/icon.svg',
-  '/manifest.json',
+  './',
+  'index.html',
+  'assets/theme.css',
+  'assets/icons/icon.svg',
+  'manifest.json',
   'data/english-grammar.js',
   'data/english-listening.js',
   'data/english-phonics.js',
@@ -79,6 +79,12 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+// 离线 shell：以 SW scope 解析（子路径部署安全，如 GitHub Pages /quiqu-xueyuan/）
+var offlineShell = function(){
+  var shellUrl = new URL('index.html', self.registration.scope).href;
+  return caches.match(shellUrl).then(function(r){ return r || caches.match('./'); });
+};
+
 // 请求：导航网络优先回退缓存，JS/CSS stale-while-revalidate
 self.addEventListener('fetch', event => {
   if (event.request.mode === 'navigate') {
@@ -88,9 +94,9 @@ self.addEventListener('fetch', event => {
         new Promise(function(resolve){ setTimeout(function(){ resolve(null); }, 5000); })
       ]).then(function(resp){
         if(resp) return resp;
-        return caches.match('/index.html');
+        return offlineShell();
       }).catch(function(){
-        return caches.match('/index.html');
+        return offlineShell();
       })
     );
     return;
