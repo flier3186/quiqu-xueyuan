@@ -3481,7 +3481,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "一个自然保护区面积约4平方千米。小亮想知道1平方千米等于多少公顷。",
-            "question": "1平方千米等于多少公顷？",
+            "question": "1平方千米是多少公顷？",
             "formula": "1km² = ? 公顷",
             "answer": 100,
             "choices": [
@@ -3578,7 +3578,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "一个自然保护区面积约6平方千米。小亮想知道1平方千米等于多少公顷。",
-            "question": "1平方千米等于多少公顷？",
+            "question": "1平方千米能换算成多少公顷？",
             "formula": "1km² = ? 公顷",
             "answer": 100,
             "choices": [
@@ -3867,7 +3867,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "小红用量角器量一个角，读数是130度。她想知道直角是多少度。",
-            "question": "直角等于多少度？",
+            "question": "直角是多少度？",
             "formula": "直角 = ?°",
             "answer": 90,
             "choices": [
@@ -3963,7 +3963,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "小红用量角器量一个角，读数是76度。她想知道直角是多少度。",
-            "question": "直角等于多少度？",
+            "question": "一个直角等于多少度？",
             "formula": "直角 = ?°",
             "answer": 90,
             "choices": [
@@ -4443,7 +4443,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "学校买来13箱粉笔，每箱133盒。总务处要算一共有多少盒粉笔。",
-            "question": "一共买了多少盒粉笔？",
+            "question": "一共买来多少盒粉笔？",
             "formula": "133 × 13 = ?",
             "answer": 1729,
             "choices": [
@@ -4537,7 +4537,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "学校买来15箱粉笔，每箱138盒。总务处要算一共有多少盒粉笔。",
-            "question": "一共买了多少盒粉笔？",
+            "question": "总共买了多少盒粉笔？",
             "formula": "138 × 15 = ?",
             "answer": 2070,
             "choices": [
@@ -4631,7 +4631,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "一箱装119个苹果，装了35箱。果农要算一共多少个苹果。",
-            "question": "一共多少个苹果？",
+            "question": "总共多少个苹果？",
             "formula": "119 × 35 = ?",
             "answer": 4165,
             "choices": [
@@ -4725,7 +4725,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "一箱装129个苹果，装了39箱。果农要算一共多少个苹果。",
-            "question": "一共多少个苹果？",
+            "question": "一共装了多少个苹果？",
             "formula": "129 × 39 = ?",
             "answer": 5031,
             "choices": [
@@ -5022,7 +5022,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "文具店钢笔每支8元，小红买了18支。她算算一共要付多少元。",
-            "question": "一共要付多少元？",
+            "question": "总共要付多少元？",
             "formula": "8 × 18 = ?",
             "answer": 144,
             "choices": [
@@ -5126,7 +5126,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "文具店钢笔每支8元，小红买了21支。她算算一共要付多少元。",
-            "question": "一共要付多少元？",
+            "question": "一共要付几元？",
             "formula": "8 × 21 = ?",
             "answer": 168,
             "choices": [
@@ -5984,7 +5984,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "小亮连接四边形的一条对角线，把它分成了两个三角形。每个三角形内角和是180度。",
-            "question": "四边形内角和等于多少度？",
+            "question": "四边形的内角和是多少度？",
             "formula": "180×2=?",
             "answer": 360,
             "choices": [
@@ -6270,7 +6270,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "体育老师有68个跳绳，平均分给19个班。每班分几个？",
-            "question": "每班分多少个跳绳？",
+            "question": "每班能分多少个跳绳？",
             "formula": "68 ÷ 19 = ?",
             "answer": 3,
             "choices": [
@@ -6468,7 +6468,7 @@ window.MATH_BY_GRADE["4a"] = {
         },
         {
             "scene": "学校有103本故事书，每班分30本。能分给几个班？",
-            "question": "能分给几个班？",
+            "question": "可以分给几个班？",
             "formula": "103 ÷ 30 = ? (个)",
             "answer": 3,
             "choices": [

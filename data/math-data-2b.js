@@ -2003,7 +2003,7 @@ window.MATH_BY_GRADE["2b"] = {
         {
             "id": "2B-18",
             "scene": "每本书8元，买5本共几元？",
-            "question": "一共多少元？",
+            "question": "总共要多少元？",
             "formula": "8×5=?",
             "answer": 40,
             "choices": [
@@ -2650,7 +2650,7 @@ window.MATH_BY_GRADE["2b"] = {
         {
             "id": "2B-24",
             "scene": "16只小鸟，每4只一组。",
-            "question": "可以分几组？",
+            "question": "能分成几组？",
             "formula": "16÷4=?",
             "answer": 4,
             "choices": [
@@ -2879,7 +2879,7 @@ window.MATH_BY_GRADE["2b"] = {
         {
             "id": "2B-26",
             "scene": "30颗糖平均分给6个小朋友。",
-            "question": "每人几颗？",
+            "question": "每人分到几颗？",
             "formula": "30÷6=?",
             "answer": 5,
             "choices": [
@@ -4620,7 +4620,7 @@ window.MATH_BY_GRADE["2b"] = {
                                 {
                     "id": "2B-44",
                     "scene": "妈妈买了5个苹果，每千克8元，共3千克。",
-                    "question": "一共多少元？",
+                    "question": "一共要花多少元？",
                     "formula": "8×3=?",
                     "answer": 24,
                     "choices": [
@@ -5105,7 +5105,7 @@ window.MATH_BY_GRADE["2b"] = {
         {
             "id": "2B-49",
             "scene": "一袋糖有36颗，平均分给4个小朋友，每人几颗？",
-            "question": "每人几颗？",
+            "question": "每人能分几颗？",
             "formula": "36÷4=?",
             "answer": 9,
             "choices": [
@@ -5207,7 +5207,7 @@ window.MATH_BY_GRADE["2b"] = {
                                 {
                     "id": "2B-50",
                     "scene": "小明有28元，买了3本书，每本8元。",
-                    "question": "还剩多少元？",
+                    "question": "还剩几元？",
                     "formula": "28-3×8=?",
                     "answer": 4,
                     "choices": [
@@ -5299,7 +5299,7 @@ window.MATH_BY_GRADE["2b"] = {
                                 {
                     "id": "2B-51",
                     "scene": "学校买了4盒彩笔，每盒12支。",
-                    "question": "一共多少支彩笔？",
+                    "question": "一共买了多少支彩笔？",
                     "formula": "4×12=?",
                     "answer": 48,
                     "choices": [
@@ -5844,7 +5844,7 @@ window.MATH_BY_GRADE["2b"] = {
         {
             "id": "2B-56",
             "scene": "50颗糖平均分给7个小朋友。",
-            "question": "每人几颗？剩几颗？",
+            "question": "每人分几颗？剩几颗？",
             "formula": "50÷7=？...",
             "answer": 7,
             "choices": [

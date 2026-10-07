@@ -30,7 +30,7 @@ const { chromium } = require('playwright-core');
     out.tailOrigin = tail ? tail.style.transformOrigin : 'none';
     out.tailAnim = tail ? getComputedStyle(tail).animationName : 'none';
     out.baseLoaded = !!(base && base.complete && base.naturalWidth > 0);
-    out.baseIsTailless = !!(base && base.src.includes('cat-idle.png'));
+    out.baseIsTailless = !!(base && base.src.includes('cat-idle.webp'));
     // 切到 celebrate：尾骨层应淡出
     window.PetCompanion.setMood('celebrate');
     await new Promise(r => setTimeout(r, 800));

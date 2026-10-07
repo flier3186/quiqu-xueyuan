@@ -5922,7 +5922,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "小红买铅笔用了3.7元，买橡皮用了1.7元。她算算一共花了多少元。",
-            "question": "一共花了多少元？",
+            "question": "总共花了多少元？",
             "formula": "3.7 + 1.7 = ?",
             "answer": 5.4,
             "choices": [
@@ -6026,7 +6026,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "小红买铅笔用了3.4元，买橡皮用了1.11元。她算算一共花了多少元。",
-            "question": "一共花了多少元？",
+            "question": "一共要花多少元？",
             "formula": "3.4 + 1.11 = ?",
             "answer": 4.51,
             "choices": [
@@ -6714,7 +6714,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "小红遇到一个不规则图形，她通过平移把它变成一个长7宽3的长方形。",
-            "question": "平移后长方形的面积是多少？",
+            "question": "平移后得到的长方形面积是多少？",
             "formula": "7 × 3 = ?",
             "answer": 21,
             "choices": [
@@ -6810,7 +6810,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "小刚遇到一个不规则图形，他通过平移把它变成一个长6宽4的长方形。",
-            "question": "平移后长方形的面积是多少？",
+            "question": "拼成长方形的面积是多少？",
             "formula": "6×4=?",
             "answer": 24,
             "choices": [
@@ -6906,7 +6906,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "小红的数学成绩分别是78、80、82分。老师让她算平均分。",
-            "question": "三科平均分是多少？",
+            "question": "三科的平均分是多少？",
             "formula": "(78+80+82) ÷ 3 = ?",
             "answer": 80,
             "choices": [
@@ -7015,7 +7015,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "小红的数学成绩分别是86、92、98分。老师让她算平均分。",
-            "question": "三科平均分是多少？",
+            "question": "三科平均分是几分？",
             "formula": "(86+92+98) ÷ 3 = ?",
             "answer": 92,
             "choices": [
@@ -7124,7 +7124,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "统计图中男生用绿色条表示12人，女生用黄色条表示17人。小红问女生比男生多几人。",
-            "question": "女生比男生多几人？",
+            "question": "女生比男生多多少人？",
             "formula": "17 - 12 = ?",
             "answer": 5,
             "choices": [
@@ -7228,7 +7228,7 @@ window.MATH_BY_GRADE["4b"] = {
         },
         {
             "scene": "统计图中男生用绿色条表示13人，女生用黄色条表示18人。小红问女生比男生多几人。",
-            "question": "女生比男生多几人？",
+            "question": "女生人数比男生多几人？",
             "formula": "18 - 13 = ?",
             "answer": 5,
             "choices": [

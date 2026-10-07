@@ -1308,12 +1308,36 @@ window.MathFlowV5 = {
     // 从"同知识点题库池"按序号抽一道不同题作为本轮练习母题，杜绝重复
     const base = (this._sess.practicePool && this._sess.practicePool[this._sess.practiceIndex]) || problem;
     const level = this._sess.practiceLevels[this._sess.practiceIndex] || 1;
+    this._markPracticeSeen(base && base.question);   // 登记已出过，后续主问题不再抽到它
     // 每次渲染注入随机新数字的同类变体——翻页永远是新题，不再"翻来覆去就那两道"
     this._sess.levelVar = this._freshProblem(base, level);
     if(level === 1) return this._renderL1(base);
     if(level === 2) return this._renderL2(base);
     if(level === 3) return this._renderL3(base);  // 新增 L3
     return this._renderL4(base);
+  },
+
+  // 练习"已出过的题面"登记表：按（日期+册）自动重置，保证同一天同一册内不重复出题。
+  _practiceSeen(sem){
+    try{
+      if(typeof S === 'undefined' || !S) return {};
+      S.math = S.math || {};
+      const today = (typeof _mathTodayKey === 'function') ? _mathTodayKey() : String(new Date().toDateString());
+      const ps = S.math.practiceSeen;
+      if(!ps || ps.date !== today || ps.sem !== sem) S.math.practiceSeen = { date:today, sem:sem, reg:{} };
+      return S.math.practiceSeen.reg;
+    }catch(e){ return {}; }
+  },
+  _markPracticeSeen(question){
+    try{
+      const sem = (window.MATH_SESSION && window.MATH_SESSION.semKey) || '';
+      if(!sem || !question) return;
+      const k = String(question).replace(/\s/g, '');
+      const reg = this._practiceSeen(sem);
+      if(reg[k]) return;
+      reg[k] = 1;
+      if(typeof saveState === 'function') saveState();
+    }catch(e){}
   },
 
   // 构建"同知识点去重题库池"：把当前题 + 自己的变体 + 同知识点兄弟题(及其变体) 收集起来，
@@ -1326,27 +1350,41 @@ window.MathFlowV5 = {
                    ((typeof S!=='undefined' && S.math) ? (S.math.grade + (S.math.semester||'a')) : '');
       const bank = (window.MATH_SESSION && window.MATH_SESSION.bank) ||
                    (typeof MATH_BY_GRADE!=='undefined' && MATH_BY_GRADE[sem] && MATH_BY_GRADE[sem].problems) || [];
-      const seen = {};
-      const pool = [];
       const norm = s => String(s||'').replace(/\s/g,'');
-      const add = p => {
+      const reg = this._practiceSeen(sem);
+      const seen = {};
+      const sameK = [], otherK = [];
+      const add = (arr, p) => {
         if(!p || !p.question) return;
         const k = norm(p.question);
         if(seen[k]) return;
-        seen[k] = 1; pool.push(p);
+        seen[k] = 1; arr.push(p);
       };
-      // 1) 当前题 + 自己的变体
-      // 变式只有 question/formula/answer/hint，没有 visualType/visualData。
-      // 直接入池 → 抽到它做 L2 图形验证时 _mvHTML 两条路径都空 → 显示「可视化引擎不可用」。
-      // 合并母题字段后再入池，让变式继承视觉配置。
+      // 1) 自己的变体（变式只有 question/formula/answer/hint，没有 visualType/visualData；
+      //    合并母题字段后再入池，让变式继承视觉配置，否则 L2 图形验证会显示「可视化引擎不可用」）
       const mix = (base, v) => Object.assign({}, base, v);
-      add(problem);
-      (problem.variants||[]).forEach(v => add(mix(problem, v)));
-      // 2) 同知识点兄弟题 + 变体
-      bank.forEach(p => { if(p && p.knowledge === kp){ add(p); (p.variants||[]).forEach(v => add(mix(p, v))); } });
-      // 3) 仍不足 3 条时，用全库变体兜底（尽量不让练习只有孤零零一题）
-      if(pool.length < 3){ bank.forEach(p => { (p.variants||[]).forEach(v => add(mix(p, v))); }); }
-      return pool.slice(0, 12);
+      // 母题不入池（它在 solve 阶段已作答，练习再出现就是"刚做完又看到同一题"）；
+      // 用占位符把它标记为已见，避免第 2 步按知识点把题库里的同一道题再加回来。
+      seen[norm(problem.question)] = 1;
+      (problem.variants||[]).forEach(v => add(sameK, mix(problem, v)));
+      // 2) 同知识点兄弟题 + 变体（同知识点优先；其他知识点留作"补足新题"用）
+      bank.forEach(p => { if(!p) return; const bucket = (p.knowledge === kp) ? sameK : otherK;
+        add(bucket, p); (p.variants||[]).forEach(v => add(bucket, mix(p, v))); });
+      // 3) 整册范围内「本次还没练过」的题面优先（同知识点排在前、其他知识点补足）；
+      //    绝不把已登记过的题面再放回池子——这是 4a/5a 残留跨题重复的根因。
+      const fresh = a => a.filter(p => !reg[norm(p.question)]);
+      const all = sameK.concat(otherK);
+      let out = fresh(all);
+      // 4) 仅当整册几乎没有未练题（<3）时，才启用复习性重复：按主问题序号轮转，避免每次都同一串
+      if(out.length < 3 && all.length){
+        const st = (Number(window.MATH_SESSION && window.MATH_SESSION.problemIdx) || 0) % all.length;
+        out = out.concat(all.slice(st)).concat(all.slice(0, st));
+      }
+      // 5) 池内按题面去重（复习兜底可能与未练题重叠），并保证池子非空
+      const _seenOut = {}; const _uniqOut = [];
+      out.forEach(p => { const k = norm(p && p.question); if(!k){ _uniqOut.push(p); return; } if(_seenOut[k]) return; _seenOut[k] = 1; _uniqOut.push(p); });
+      out = _uniqOut.length ? _uniqOut : [problem];   // 兜底：无变式且无同知识点兄弟题时，仍以母题成池
+      return out.slice(0, 12);
     }catch(e){ return [problem]; }
   },
 
@@ -1398,11 +1436,10 @@ window.MathFlowV5 = {
   _freshProblem(problem, level){
     try{
       if(problem.visualType === 'fractionStrip') return problem; // 分数概念题不变异（怕破坏图形语义）
-      const hasVariants = problem.variants && problem.variants.length;
       const useVisual = level === 2 && problem.visualType && problem.visualData;
-      // L1/L4 用变体0做模板，L3 用变体1；L2 用母题（文字与图必须同源）
-      const base = useVisual ? problem
-        : (hasVariants ? (problem.variants[(level === 1 || level === 4) ? 0 : 1] || problem.variants[0]) : problem);
+      // 池内每道都已是「去重后的独立题」（自带视觉配置），直接以它自己为模板；
+      // 旧版回退到 problem.variants[x] 会让同一母题的多道池题渲染成同一句题面（重复出题）。
+      const base = problem;
       if(!base || !base.formula) return problem;
       // 带图约束：除数（份数语义）/括号后乘数（周长×2语义）不可变，只变异其余数字
       let keepIdx = null;
@@ -1744,7 +1781,7 @@ window.MathFlowV5 = {
 
   // L1 基础：原题换数字（巩固）
   _renderL1(problem){
-    const v = (problem.variants && problem.variants[0]) || problem;
+    const v = problem;
     const {ans, choices, correctIdx} = this._safeChoices(v, problem);
     return `<div class="cpa-layer" style="border-left-color:var(--teal);animation:fadeIn .45s ease">
       <span class="cpa-tag" style="background:var(--teal);color:#fff">STAGE 6 · 阶梯练习 · L1 基础</span>
@@ -1771,7 +1808,7 @@ window.MathFlowV5 = {
   // L2 变式：先文字后图形（数学阅读训练核心）
   _renderL2(problem){
     const showVisual = this._sess.practiceVisualShown;
-    const v = (problem.variants && problem.variants[1]) || (problem.variants && problem.variants[0]) || problem;
+    const v = problem;
     // 全链路探测：真实数值图 → 概念示意图。旧版这里无条件承诺「看图验证」，
     // 遇到概念题（无图）就变成点开一片空白 —— 孩子感受＝「点了没反应」。
     const visualHTML = this._visualFor(problem);
@@ -1826,7 +1863,7 @@ window.MathFlowV5 = {
   //   2) 变体 question 含数字（自成一道完整题）→ 只用 question；
   //   3) 否则才尝试 _reScene，且改写后仍要语义一致：question 里的关键名词必须在改写后的 scene 中出现。
   _renderL3(problem){
-    const variant = problem.variants && problem.variants[1] || {};
+    const variant = problem;
     // 修复缺陷4：L3 不再用无信息占位句 + 与题干脱节的母题答案生成雷同干扰项。
     // 变体缺 question 时退回母题真实题干（与 L2/L4 对齐），选项也随母题，保证“有前提、可选”。
     const question = variant.question || problem.question;

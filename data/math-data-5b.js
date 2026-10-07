@@ -3712,7 +3712,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红把15个苹果装盒，每盒装1个，要装15盒。老师告诉15÷1=15，所以1和15都是15的因数。",
-            "question": "15有几个因数？",
+            "question": "15一共有几个因数？",
             "formula": "15的因数个数 = ?",
             "answer": 4,
             "choices": [
@@ -4193,7 +4193,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红要给一个长7cm宽4cm高4cm的长方体纸盒涂色。她算表面积。",
-            "question": "表面积是多少平方厘米？",
+            "question": "这个长方体的表面积是多少平方厘米？",
             "formula": "2×(7×4+7×4+4×4) = ?",
             "answer": 144,
             "choices": [
@@ -4290,7 +4290,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红要给一个长5cm宽6cm高4cm的长方体纸盒涂色。她算表面积。",
-            "question": "表面积是多少平方厘米？",
+            "question": "纸盒的表面积是多少平方厘米？",
             "formula": "2×(5×6+5×4+6×4) = ?",
             "answer": 148,
             "choices": [
@@ -4581,7 +4581,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红算一个长5cm宽4cm高4cm的长方体体积。",
-            "question": "体积是多少立方厘米？",
+            "question": "这个长方体的体积是多少立方厘米？",
             "formula": "5 × 4 × 4 = ? cm³",
             "answer": 80,
             "choices": [
@@ -4678,7 +4678,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小刚算一个长6cm宽3cm高2cm的长方体体积。",
-            "question": "体积是多少立方厘米？",
+            "question": "长方体的体积是多少立方厘米？",
             "formula": "6×3×2=?cm³",
             "answer": 36,
             "choices": [
@@ -4775,7 +4775,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红把一块蛋糕平均分成5份，吃了其中1份。老师问她吃了这块蛋糕的几分之几。",
-            "question": "吃了这块蛋糕的几分之几？(填分子)",
+            "question": "吃掉了这块蛋糕的几分之几？(填分子)",
             "formula": "1/? (填分子)",
             "answer": 1,
             "choices": [
@@ -4869,7 +4869,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红把一块蛋糕平均分成6份，吃了其中1份。老师问她吃了这块蛋糕的几分之几。",
-            "question": "吃了这块蛋糕的几分之几？(填分子)",
+            "question": "吃的占这块蛋糕的几分之几？(填分子)",
             "formula": "1/? (填分子)",
             "answer": 1,
             "choices": [
@@ -6208,7 +6208,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红把一个三角形绕一个顶点旋转125度。老师问她旋转后图形什么不变。",
-            "question": "旋转后图形什么不变？(形状大小填1,位置填2)",
+            "question": "图形旋转后什么不变？(形状大小填1,位置填2)",
             "formula": "旋转不变 → ? (1形状/2位置)",
             "answer": 1,
             "choices": [
@@ -6304,7 +6304,7 @@ window.MATH_BY_GRADE["5b"] = {
         },
         {
             "scene": "小红把一个三角形绕一个顶点旋转75度。老师问她旋转后图形什么不变。",
-            "question": "旋转后图形什么不变？(形状大小填1,位置填2)",
+            "question": "旋转后图形的什么不变？(形状大小填1,位置填2)",
             "formula": "旋转不变 → ? (1形状/2位置)",
             "answer": 1,
             "choices": [

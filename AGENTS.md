@@ -149,12 +149,13 @@
 - 验证分为 4 个层级，必须明确标注验证到哪一层：
   - L1 JS 语法校验通过（node --check / new Function）
   - L2 本地浏览器运行通过（启动 http.server 实测）
-  - L3 多端验证通过（桌面 + 手机端打开线上地址实测）
+  - L3 端到端回归通过：`node scripts/regress-math-id.js` —— 以题目 `id` 为身份键、真实 DOM 点击模拟用户，走完数学全流程（neriage→solve→explain→practice→complete→下一题），断言主题 id 唯一、练习题干不重复（桌面 / 平板浏览器）
   - L4 教学逻辑验证（数形结合是否出图、语音是否有声、答题链路是否闭环）
+- **本项目废除「真机测试」概念**：所有测试一律以 `id` 为身份键、用真实点击模拟用户来跑；不得以「需要真机 / 需要真设备」为由挂起或跳过验证。可复用的回归脚本：`scripts/regress-math-id.js`（数学全流程）、`scripts/validate-all.js`（数据门禁）。
 - 以下行为严格禁止：
   - 工具加载失败时声称"已验证"
   - 仅凭"本地测试通过"声称线上已生效
-  - 将语法校验等同于真机运行
+  - 将语法校验等同于真实运行
   - 原生 API 改动不经过用户确认就声称通过
 - 暂存区状态必须检查：git add ≠ git commit，commit 前查 status，push 前查 log
 

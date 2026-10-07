@@ -45,8 +45,15 @@ console.log(bad ? `PNG 异常 ${bad}` : `PNG 完整性 ${pngs.length} 张全部�
 
 // 宠物精灵图尺寸与四角透明
 for (const name of ['cat-idle', 'cat-celebrate', 'cat-comfort', 'cat-eat', 'cat-sleep', 'cat-tail']) {
-  const p = 'assets/pet3d/' + name + '.png';
-  if (!fs.existsSync(p)) { console.log('  ✗ 缺失:', p); continue; }
+  const p = 'assets/pet3d/' + name + '.webp';
+  if (!fs.existsSync(p)) { console.log('  \u2717 \u7f3a\u5931:', p); continue; }
   const buf = fs.readFileSync(p);
-  console.log(name, buf.readUInt32BE(16) + 'x' + buf.readUInt32BE(20), Math.round(buf.length / 1024) + 'KB');
+  const ok = buf.slice(0, 4).toString('ascii') === 'RIFF' && buf.slice(8, 12).toString('ascii') === 'WEBP';
+  let dim = '';
+  if (buf.slice(12, 16).toString('ascii') === 'VP8X') {
+    const w = 1 + (buf[24] | (buf[25] << 8) | (buf[26] << 16));
+    const h = 1 + (buf[27] | (buf[28] << 8) | (buf[29] << 16));
+    dim = w + 'x' + h;
+  }
+  console.log(name, ok ? 'webp-ok' : '\u2717\u975e\u6cd5WEBP', dim, Math.round(buf.length / 1024) + 'KB');
 }
