@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiqu-xueyuan-v5-20261007a';
+const CACHE_NAME = 'quiqu-xueyuan-v5-20261007b';
 // P1-F8：分年级题库（data/math-data-*.js）按需懒加载，由 fetch 处理器运行时缓存，
 // 不在此预缓存（避免首装即全量下载 2.9MB）。math-data-core / math-2a-2b / math-3-6-extend 为启动即用，保留。
 const ASSETS = [
