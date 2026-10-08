@@ -27,11 +27,20 @@ jobs:
         if: github.event_name == 'push'
         uses: actions/configure-pages@v5
 
+      - name: Stage site files (whitelist only)
+        if: github.event_name == 'push'
+        run: |
+          mkdir -p _site
+          cp index.html sw.js manifest.json _site/
+          cp -r assets data engine lib _site/
+          echo "--- staged files ---"
+          find _site -type f | sort
+
       - name: Upload artifact
         if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push'
